@@ -1,0 +1,25 @@
+<p>affiche test</p>
+		  <%if current_user%>
+            <li class="has-children">
+              <ul class="dropdown">
+                  
+                 
+                  <li><%=button_to 'deconnexion', destroy_user_session_path, method: :delete%></li>
+              </ul>
+            </li>
+          <%else%>
+           <li class="has-children">
+                <span class="dropdown-toggle"><a href="">Connexion</a></span>
+              <ul class="dropdown">
+                  <li><%=button_to new_user_registration_path, methode: :get %></a></li>
+                  <li><%=button_to new_user_session_path, methode: :get%></a></li>
+              </ul>
+            </li>
+          <%end%>
+        <a href="<%=new_project_path%>">cree projet</a>
+		<%@project.each do|projet|%><br>
+			<%=projet.nom_du_projet%><br>
+			<%=projet.ptf%><br>
+			<%=projet.forme_d_appui%><br>
+			<a href="<%= project_path(projet.id)%>">voir projet</a>
+<%end%>
