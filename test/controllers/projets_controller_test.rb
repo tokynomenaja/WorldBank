@@ -6,8 +6,8 @@ class ProjetsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get show" do
-    get projets_show_url
+  test "should get new" do
+    get projets_new_url
     assert_response :success
   end
 
@@ -16,8 +16,8 @@ class ProjetsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get new" do
-    get projets_new_url
+  test "should get update" do
+    get projets_update_url
     assert_response :success
   end
 
