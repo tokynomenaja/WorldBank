@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  root'projets#index'
+  get 'projets/show'
+  get 'projets/edit'
+  get 'projets/new'
   get 'static_pages/index'
   get 'static_pages/secret'
   devise_for :users
