@@ -1,0 +1,7 @@
+<%= form_tag url_for(action: "update"), method: "put" do |f| %>
+        <%= label_tag 'nom_du_projet' %>
+        <%= text_field_tag 'nom_du_projet', @project.nom_du_projet, class: 'form-control'%>
+        <%= label_tag 'ptf' %>
+        <%= text_field_tag 'ptf', @project.ptf, class: 'form-control'%>
+        <%= submit_tag "Modify project", class: 'btn btn-lg btn-primary btn-block' %>
+      <% end %>

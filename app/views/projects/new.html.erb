@@ -1,0 +1,10 @@
+<%= form_tag url_for(action: 'create'),method:'post' do%>
+ <input type="text" name="nom_du_projet" placeholder="Nom du projet"><br>
+  <input type="text" name="ptf" placeholder="ptf"><br>
+   <input type="text" name="secteur" placeholder="secteur"><br>
+    <input type="text" name="filière_associees" placeholder="Filière associees"><br>
+       <input type="text" name="institutions_gouvernementales_associees" placeholder="institutions_gouvernementales_associees"><br>
+         <input type="text" name="Objectif_general_du_projet" placeholder="Objectif general du projet"><br>
+        <input type="text" name="appui_specifique_au_secteur_prive" placeholder="Appui specifique au secteur prive"><br>
+ <input type="submit" value="save">
+<%end%>
