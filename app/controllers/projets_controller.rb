@@ -29,7 +29,7 @@ class ProjetsController < ApplicationController
                                 debut_du_projet: params[:debut_du_projet],
                                 fin: params[:fin],
                                 apdem: params[:apdem])
-                                                             
+                                     
                                 @secteur_ids = params[:secteur_ids]
                                 @secteur_ids.each do |x|
                                 Secteurprojet.create(projet_id: @project.id , secteur_id: x.to_i)
