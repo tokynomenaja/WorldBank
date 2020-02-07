@@ -5,7 +5,9 @@
 
       <%=@project.nom_du_projet%><br>
       <%=@project.ptf%><br>
-
+      <%@project.secteurprojets.each do|sp|%>
+        <%=sp.secteur.title%><br>
+      <%end%>
       <%=@project.forme_d_appui%><br>
       <%=@project.filière_associees%>
       <%=@project.iga%><br>
