@@ -235,7 +235,7 @@
     </svg></div>
 
     <%if current_user%>
-        <a href="/users/sign_out" class="q0xs59-6 q0xs59-7 fwuAZd"><div>Se deconnecter</div></a>
+    <div class="q0xs59-6 q0xs59-7 fwuAZd"><div><%=link_to 'Se deconnecter', destroy_user_session_path, method: :delete%></div></div>
     <%else%>
         <a href="/users/sign_in" class="q0xs59-6 q0xs59-7 fwuAZd"><div>connexion</div></a>
         <a href="/users/sign_up" class="q0xs59-6 q0xs59-7 fwuAZd sign"><div>Inscription</div></a>
@@ -689,94 +689,254 @@
   
     <div class="bt96d2-13 dwLDtk search"><div class="sc-1ejeabr-19 gQwHOW"><div placeholder="Email" class="sc-emmjRN hxQqtY"><div class="styles__Wrapper-zznoga-0 UxSKW"><input type="text" id="recherche" name="recherche" placeholder="Rechercher" value="" class="sc-jzgbtB bwwcKt"></div></div><button tabindex="0" type="submit" variant="primary" class="sc-eerKOB cfnPHQ"><span>Rechercher</span></button></divrm></div>
   
-  </header><div class="ais-InstantSearch__root"><main class="z0fved-0 kblbaZ"><header class="aci59a-0 eyAIuG sticky-limit"><div class="sc-1gnwgfb-2 hVIPFV"></div></header><nav class="z0fved-5 gOGYTl"><div class="z0fved-3 kBhqKR"><div data-role="search:input" class="z0fved-6 hSVtUx"><div class="z0fved-7 hyXFca"><svg role="img" title="search" viewBox="0 0 100 100" height="16" class="styles__Icon-sc-16ndowf-0 gUQXeA"><path d="M99.2 84.45a2.4 2.4 0 0 1 .19 3.4l-7.91 8.85a2.38 2.38 0 0 1-3.37.2L62.08 73.72C54.16 79.9 44.75 83.1 35.6 83.1c-8.7 0-17.14-2.89-23.81-8.83C4.79 68.05.62 59.2.06 49.38-.58 38.1 3.62 26.5 11.6 17.59 27.1.25 52.4-2.56 68 11.33c7 6.23 11.16 15.07 11.72 24.9a43.55 43.55 0 0 1-6.53 25.05L99.2 84.45zM14.96 70.68C28.6 82.83 50.88 80.2 64.62 64.8c7.13-7.97 10.89-18.28 10.32-28.3-.48-8.54-4.08-16.2-10.12-21.58-5.77-5.14-13.1-7.63-20.65-7.63-10.32 0-21.09 4.63-29.02 13.51C8.03 28.77 4.27 39.09 4.84 49.1c.48 8.54 4.08 16.2 10.12 21.58z" fill="currentColor"/></svg></div><div class="z0fved-7 z0fved-8 gSsird"><svg role="img" title="search" viewBox="0 0 100 100" height="16" class="styles__Icon-sc-16ndowf-0 gUQXeA"><path d="M99.2 84.45a2.4 2.4 0 0 1 .19 3.4l-7.91 8.85a2.38 2.38 0 0 1-3.37.2L62.08 73.72C54.16 79.9 44.75 83.1 35.6 83.1c-8.7 0-17.14-2.89-23.81-8.83C4.79 68.05.62 59.2.06 49.38-.58 38.1 3.62 26.5 11.6 17.59 27.1.25 52.4-2.56 68 11.33c7 6.23 11.16 15.07 11.72 24.9a43.55 43.55 0 0 1-6.53 25.05L99.2 84.45zM14.96 70.68C28.6 82.83 50.88 80.2 64.62 64.8c7.13-7.97 10.89-18.28 10.32-28.3-.48-8.54-4.08-16.2-10.12-21.58-5.77-5.14-13.1-7.63-20.65-7.63-10.32 0-21.09 4.63-29.02 13.51C8.03 28.77 4.27 39.09 4.84 49.1c.48 8.54 4.08 16.2 10.12 21.58z" fill="currentColor"/></svg></div><form class="ais-SearchBox-form" action="" role="search"><input type="search" placeholder="La tribu de vos rêves ?" autoComplete="off" autoCorrect="off" autoCapitalize="off" spellcheck="false" maxLength="512" class="ais-SearchBox-input" value="" tabindex="0"/></form></div><div class="z0fved-1 jfmoVU"><div class="jzc9rp-0 hqoRsE"><div class="jzc9rp-1 foTkeu"><div class="fdk8rh-3 jzc9rp-3 ggQtML"><div tabindex="-1" class="jzc9rp-5 eZLlzA"><header class="fdk8rh-0 kYNMFW"><div data-role="search:input" class="z0fved-6 hSVtUx"><div class="z0fved-7 hyXFca"><svg role="img" title="location" viewBox="0 0 100 100" height="16" class="styles__Icon-sc-16ndowf-0 gUQXeA"><path d="M49.83 93.46C56.84 83.62 81.48 48 81.48 32.75c0-8.29-3.21-15.71-9.04-20.9A27.53 27.53 0 0 0 53.9 5c-1.2 0-2.4.07-3.63.2-17.51 2-31.77 17.81-31.77 35.27 0 14.98 24.05 44.43 31.31 53zM75.78 8.12c6.9 6.15 10.71 14.9 10.71 24.63 0 19.3-33.07 64.32-34.48 66.23a2.5 2.5 0 0 1-1.9 1.02H50a2.51 2.51 0 0 1-1.88-.84C46.71 97.56 13.5 59.9 13.5 40.47 13.5 20.56 29.75 2.51 49.72.24c9.83-1.12 19.1 1.68 26.06 7.88zM62.71 21.4a16.18 16.18 0 0 1 5.36 12.29c0 9.79-7.98 18.66-17.8 19.78-.7.08-1.4.12-2.08.12-4.12 0-7.93-1.41-10.92-4.07a16.18 16.18 0 0 1-5.36-12.3c0-9.78 7.98-18.65 17.8-19.77 4.9-.55 9.51.85 13 3.95z" fill="currentColor"/></svg></div><div class="z0fved-7 z0fved-8 gSsird"><svg role="img" title="location" viewBox="0 0 100 100" height="16" class="styles__Icon-sc-16ndowf-0 gUQXeA"><path d="M49.83 93.46C56.84 83.62 81.48 48 81.48 32.75c0-8.29-3.21-15.71-9.04-20.9A27.53 27.53 0 0 0 53.9 5c-1.2 0-2.4.07-3.63.2-17.51 2-31.77 17.81-31.77 35.27 0 14.98 24.05 44.43 31.31 53zM75.78 8.12c6.9 6.15 10.71 14.9 10.71 24.63 0 19.3-33.07 64.32-34.48 66.23a2.5 2.5 0 0 1-1.9 1.02H50a2.51 2.51 0 0 1-1.88-.84C46.71 97.56 13.5 59.9 13.5 40.47 13.5 20.56 29.75 2.51 49.72.24c9.83-1.12 19.1 1.68 26.06 7.88zM62.71 21.4a16.18 16.18 0 0 1 5.36 12.29c0 9.79-7.98 18.66-17.8 19.78-.7.08-1.4.12-2.08.12-4.12 0-7.93-1.41-10.92-4.07a16.18 16.18 0 0 1-5.36-12.3c0-9.78 7.98-18.65 17.8-19.77 4.9-.55 9.51.85 13 3.95z" fill="currentColor"/></svg></div><form class="ais-SearchBox-form" action="" role="search"><input type="search" placeholder="Où ?" autoComplete="off" autoCorrect="off" autoCapitalize="off" spellcheck="false" maxLength="512" class="ais-SearchBox-input" value="" tabindex="0"/></form></div></header><div class="fdk8rh-2 bgMfhV"><div class="jzc9rp-6 fCJrZR"><svg role="img" title="cross_target" viewBox="0 0 100 100" width="15" class="styles__Icon-sc-16ndowf-0 kSBSfL"><path d="M61.543 41.984c0 6.217-5.058 11.83-11.298 12.537-6.24.71-11.298-3.756-11.298-9.973 0-6.216 5.058-11.83 11.298-12.538 6.24-.708 11.298 3.758 11.298 9.974zM50.245 54.522c6.96-.79 12.784 3.398 14.252 9.726.388 1.672-.829 3.305-2.542 3.498l-22.586 2.565c-2.065.234-3.72-1.694-3.16-3.688 1.759-6.269 7.377-11.345 14.036-12.101zm1.698 33.868c19.745-3.207 35.635-20.832 36.61-40.607l-9.914 1.126a1.718 1.718 0 0 1-1.903-1.508 1.715 1.715 0 0 1 1.512-1.896l10.316-1.17c-.378-9.469-4.272-17.944-11.073-23.992-6.193-5.505-14.13-8.427-22.697-8.427-.942 0-1.895.048-2.85.12v10.26c0 .946-.77 1.713-1.72 1.713a1.716 1.716 0 0 1-1.718-1.713v-9.865C28.76 15.638 12.87 33.262 11.896 53.038l9.914-1.126c.946-.095 1.796.568 1.903 1.508a1.713 1.713 0 0 1-1.512 1.894l-10.316 1.173c.379 9.468 4.273 17.944 11.075 23.992 6.873 6.112 15.895 9.026 25.546 8.31V78.525c0-.947.77-1.712 1.719-1.712.948 0 1.718.765 1.718 1.712v9.866zm45.593-45.073c.957-.09 1.794.568 1.903 1.507a1.715 1.715 0 0 1-1.514 1.896L92 47.392c-.792 21.747-18.322 41.202-40.057 44.454v5.892c0 .946-.77 1.712-1.718 1.712a1.715 1.715 0 0 1-1.72-1.712V92.22c-.96.066-1.917.11-2.865.11-9.407 0-18.137-3.224-24.97-9.298-7.448-6.62-11.74-15.852-12.212-26.157l-5.544.63a1.718 1.718 0 0 1-1.903-1.507 1.715 1.715 0 0 1 1.513-1.896l5.925-.673c.792-21.748 18.322-41.204 40.057-44.456v-5.89c0-.947.77-1.713 1.719-1.713.948 0 1.718.766 1.718 1.713v5.51c10.492-.717 20.316 2.509 27.837 9.195 7.447 6.622 11.739 15.854 12.212 26.158l5.544-.629z" fill="currentColor" fill-rule="evenodd"/></svg><span>Position actuelle</span></div></div></div></div><div class="fdk8rh-3 jzc9rp-4 kRhcve"><div tabindex="-1" class="jzc9rp-5 eZLlzA"><header tabindex="0" class="fdk8rh-0 kYNMFW"><h3 class="fdk8rh-1 eouleG">&lt; 20 km</h3><svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7">
-      <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
-        <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
-          <g id="chevrondown-content" transform="translate(20.000000, 0.000000)">
-            <g id="chevrondown-universes" transform="translate(335.000000, 1.000000)">
-              <g id="chevrondown-23:20" transform="translate(20.000000, 23.000000)">
-                <g id="chevrondown-arrow:-categories" transform="translate(56.000000, 4.000000)">
-                  <path d="M3.04856165,6.81528316 C2.80864582,7.06157228 2.41966343,7.06157228 2.17986408,6.81528316 C1.94004531,6.56921314 1.94004531,6.17011123 2.17986408,5.92406113 L5.51709927,2.49993527 L2.17996114,-0.92407109 C1.94014237,-1.1702407 1.94014237,-1.56930277 2.17996114,-1.81537279 C2.4197799,-2.0615424 2.80874288,-2.0615424 3.04865871,-1.81537279 L6.82020387,2.05442384 C6.94011325,2.17751861 7,2.33867714 7,2.49991535 C7,2.66123323 6.93999678,2.82251127 6.82010681,2.94554628 L3.04856165,6.81528316 Z" id="arrow" transform="translate(4.500000, 2.500000) rotate(-270.000000) translate(-4.500000, -2.500000) "></path>
+  </header>
+  <div
+   class="ais-InstantSearch__root">
+  <main class="z0fved-0 kblbaZ">
+  <header class="aci59a-0 eyAIuG sticky-limit">
+    <div class="sc-1gnwgfb-2 hVIPFV">
+    </div>
+  </header>
+
+  <!-- FILTRE  -->
+    <nav class="z0fved-5 gOGYTl">
+      <div class="z0fved-3 kBhqKR">
+        <div class="z0fved-1 jfmoVU">
+          <div class="fdk8rh-3 feYJJO">
+            <header class="fdk8rh-0 kYNMFW">
+              <h3 class="fdk8rh-1 eouleG"><span>PTF</span></h3>
+              <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
+                <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
+                  <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
+                    <g id="chevrondown-content" transform="translate(20.000000, 0.000000)">
+                      <g id="chevrondown-universes" transform="translate(335.000000, 1.000000)">
+                        <g id="chevrondown-23:20" transform="translate(20.000000, 23.000000)">
+                          <g id="chevrondown-arrow:-categories" transform="translate(56.000000, 4.000000)">
+                            <path d="M3.04856165,6.81528316 C2.80864582,7.06157228 2.41966343,7.06157228 2.17986408,6.81528316 C1.94004531,6.56921314 1.94004531,6.17011123 2.17986408,5.92406113 L5.51709927,2.49993527 L2.17996114,-0.92407109 C1.94014237,-1.1702407 1.94014237,-1.56930277 2.17996114,-1.81537279 C2.4197799,-2.0615424 2.80874288,-2.0615424 3.04865871,-1.81537279 L6.82020387,2.05442384 C6.94011325,2.17751861 7,2.33867714 7,2.49991535 C7,2.66123323 6.93999678,2.82251127 6.82010681,2.94554628 L3.04856165,6.81528316 Z" id="arrow" transform="translate(4.500000, 2.500000) rotate(-270.000000) translate(-4.500000, -2.500000) "></path>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
                 </g>
-              </g>
-            </g>
-          </g>
-        </g>
-      </g>
-    </svg></header><div class="fdk8rh-2 dgusxH"><div class="jzc9rp-6 fCJrZR">à moins de 5 km</div><div class="jzc9rp-6 fCJrZR">à moins de 10 km</div><div class="jzc9rp-6 fCJrZR">à moins de 20 km</div><div class="jzc9rp-6 fCJrZR">à moins de 50 km</div><div class="jzc9rp-6 fCJrZR">à moins de 100 km</div></div></div></div></div></div><div class="fdk8rh-3 feYJJO"><header class="fdk8rh-0 kYNMFW"><h3 class="fdk8rh-1 eouleG"><span>Secteur</span></h3><svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7">
-      <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
-        <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
-          <g id="chevrondown-content" transform="translate(20.000000, 0.000000)">
-            <g id="chevrondown-universes" transform="translate(335.000000, 1.000000)">
-              <g id="chevrondown-23:20" transform="translate(20.000000, 23.000000)">
-                <g id="chevrondown-arrow:-categories" transform="translate(56.000000, 4.000000)">
-                  <path d="M3.04856165,6.81528316 C2.80864582,7.06157228 2.41966343,7.06157228 2.17986408,6.81528316 C1.94004531,6.56921314 1.94004531,6.17011123 2.17986408,5.92406113 L5.51709927,2.49993527 L2.17996114,-0.92407109 C1.94014237,-1.1702407 1.94014237,-1.56930277 2.17996114,-1.81537279 C2.4197799,-2.0615424 2.80874288,-2.0615424 3.04865871,-1.81537279 L6.82020387,2.05442384 C6.94011325,2.17751861 7,2.33867714 7,2.49991535 C7,2.66123323 6.93999678,2.82251127 6.82010681,2.94554628 L3.04856165,6.81528316 Z" id="arrow" transform="translate(4.500000, 2.500000) rotate(-270.000000) translate(-4.500000, -2.500000) "></path>
+              </svg>
+            </header>
+          </div>
+
+          <div class="fdk8rh-3 feYJJO">
+            <header class="fdk8rh-0 kYNMFW">
+              <h3 class="fdk8rh-1 eouleG"><span>secteur</span></h3>
+              <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
+                <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
+                  <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
+                    <g id="chevrondown-content" transform="translate(20.000000, 0.000000)">
+                      <g id="chevrondown-universes" transform="translate(335.000000, 1.000000)">
+                        <g id="chevrondown-23:20" transform="translate(20.000000, 23.000000)">
+                          <g id="chevrondown-arrow:-categories" transform="translate(56.000000, 4.000000)">
+                            <path d="M3.04856165,6.81528316 C2.80864582,7.06157228 2.41966343,7.06157228 2.17986408,6.81528316 C1.94004531,6.56921314 1.94004531,6.17011123 2.17986408,5.92406113 L5.51709927,2.49993527 L2.17996114,-0.92407109 C1.94014237,-1.1702407 1.94014237,-1.56930277 2.17996114,-1.81537279 C2.4197799,-2.0615424 2.80874288,-2.0615424 3.04865871,-1.81537279 L6.82020387,2.05442384 C6.94011325,2.17751861 7,2.33867714 7,2.49991535 C7,2.66123323 6.93999678,2.82251127 6.82010681,2.94554628 L3.04856165,6.81528316 Z" id="arrow" transform="translate(4.500000, 2.500000) rotate(-270.000000) translate(-4.500000, -2.500000) "></path>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
                 </g>
-              </g>
-            </g>
-          </g>
-        </g>
-      </g>
-    </svg></header><div class="fdk8rh-2 kHRday"><div></div></div></div><div class="fdk8rh-3 feYJJO"><header class="fdk8rh-0 kYNMFW"><h3 class="fdk8rh-1 eouleG"><span>Taille</span></h3><svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7">
-      <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
-        <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
-          <g id="chevrondown-content" transform="translate(20.000000, 0.000000)">
-            <g id="chevrondown-universes" transform="translate(335.000000, 1.000000)">
-              <g id="chevrondown-23:20" transform="translate(20.000000, 23.000000)">
-                <g id="chevrondown-arrow:-categories" transform="translate(56.000000, 4.000000)">
-                  <path d="M3.04856165,6.81528316 C2.80864582,7.06157228 2.41966343,7.06157228 2.17986408,6.81528316 C1.94004531,6.56921314 1.94004531,6.17011123 2.17986408,5.92406113 L5.51709927,2.49993527 L2.17996114,-0.92407109 C1.94014237,-1.1702407 1.94014237,-1.56930277 2.17996114,-1.81537279 C2.4197799,-2.0615424 2.80874288,-2.0615424 3.04865871,-1.81537279 L6.82020387,2.05442384 C6.94011325,2.17751861 7,2.33867714 7,2.49991535 C7,2.66123323 6.93999678,2.82251127 6.82010681,2.94554628 L3.04856165,6.81528316 Z" id="arrow" transform="translate(4.500000, 2.500000) rotate(-270.000000) translate(-4.500000, -2.500000) "></path>
+              </svg>
+            </header>
+          </div>
+
+          <div class="fdk8rh-3 feYJJO">
+            <header class="fdk8rh-0 kYNMFW">
+              <h3 class="fdk8rh-1 eouleG"><span>Appui</span></h3>
+              <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
+                <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
+                  <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
+                    <g id="chevrondown-content" transform="translate(20.000000, 0.000000)">
+                      <g id="chevrondown-universes" transform="translate(335.000000, 1.000000)">
+                        <g id="chevrondown-23:20" transform="translate(20.000000, 23.000000)">
+                          <g id="chevrondown-arrow:-categories" transform="translate(56.000000, 4.000000)">
+                            <path d="M3.04856165,6.81528316 C2.80864582,7.06157228 2.41966343,7.06157228 2.17986408,6.81528316 C1.94004531,6.56921314 1.94004531,6.17011123 2.17986408,5.92406113 L5.51709927,2.49993527 L2.17996114,-0.92407109 C1.94014237,-1.1702407 1.94014237,-1.56930277 2.17996114,-1.81537279 C2.4197799,-2.0615424 2.80874288,-2.0615424 3.04865871,-1.81537279 L6.82020387,2.05442384 C6.94011325,2.17751861 7,2.33867714 7,2.49991535 C7,2.66123323 6.93999678,2.82251127 6.82010681,2.94554628 L3.04856165,6.81528316 Z" id="arrow" transform="translate(4.500000, 2.500000) rotate(-270.000000) translate(-4.500000, -2.500000) "></path>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
                 </g>
-              </g>
-            </g>
-          </g>
-        </g>
-      </g>
-    </svg></header><div class="fdk8rh-2 dgusxH"><div class="ais-RefinementList ais-RefinementList--noRefinement"></div></div></div><div class="fdk8rh-3 feYJJO"><header class="fdk8rh-0 kYNMFW"><h3 class="fdk8rh-1 eouleG"><span>Langues</span></h3><svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7">
-      <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
-        <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
-          <g id="chevrondown-content" transform="translate(20.000000, 0.000000)">
-            <g id="chevrondown-universes" transform="translate(335.000000, 1.000000)">
-              <g id="chevrondown-23:20" transform="translate(20.000000, 23.000000)">
-                <g id="chevrondown-arrow:-categories" transform="translate(56.000000, 4.000000)">
-                  <path d="M3.04856165,6.81528316 C2.80864582,7.06157228 2.41966343,7.06157228 2.17986408,6.81528316 C1.94004531,6.56921314 1.94004531,6.17011123 2.17986408,5.92406113 L5.51709927,2.49993527 L2.17996114,-0.92407109 C1.94014237,-1.1702407 1.94014237,-1.56930277 2.17996114,-1.81537279 C2.4197799,-2.0615424 2.80874288,-2.0615424 3.04865871,-1.81537279 L6.82020387,2.05442384 C6.94011325,2.17751861 7,2.33867714 7,2.49991535 C7,2.66123323 6.93999678,2.82251127 6.82010681,2.94554628 L3.04856165,6.81528316 Z" id="arrow" transform="translate(4.500000, 2.500000) rotate(-270.000000) translate(-4.500000, -2.500000) "></path>
+              </svg>
+            </header>
+          </div>
+
+          <div class="fdk8rh-3 feYJJO">
+            <header class="fdk8rh-0 kYNMFW">
+              <h3 class="fdk8rh-1 eouleG"><span>Filiere</span></h3>
+              <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
+                <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
+                  <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
+                    <g id="chevrondown-content" transform="translate(20.000000, 0.000000)">
+                      <g id="chevrondown-universes" transform="translate(335.000000, 1.000000)">
+                        <g id="chevrondown-23:20" transform="translate(20.000000, 23.000000)">
+                          <g id="chevrondown-arrow:-categories" transform="translate(56.000000, 4.000000)">
+                            <path d="M3.04856165,6.81528316 C2.80864582,7.06157228 2.41966343,7.06157228 2.17986408,6.81528316 C1.94004531,6.56921314 1.94004531,6.17011123 2.17986408,5.92406113 L5.51709927,2.49993527 L2.17996114,-0.92407109 C1.94014237,-1.1702407 1.94014237,-1.56930277 2.17996114,-1.81537279 C2.4197799,-2.0615424 2.80874288,-2.0615424 3.04865871,-1.81537279 L6.82020387,2.05442384 C6.94011325,2.17751861 7,2.33867714 7,2.49991535 C7,2.66123323 6.93999678,2.82251127 6.82010681,2.94554628 L3.04856165,6.81528316 Z" id="arrow" transform="translate(4.500000, 2.500000) rotate(-270.000000) translate(-4.500000, -2.500000) "></path>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
                 </g>
-              </g>
-            </g>
-          </g>
-        </g>
-      </g>
-    </svg></header><div class="fdk8rh-2 dgusxH"><div class="ais-RefinementList ais-RefinementList--noRefinement"></div></div></div></div></div><div class="z0fved-14 bFlzSi"><svg alt="cross" viewBox="0 0 8 8" width="20" height="20">
-      <g id="cross-Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="cross-status-/-application-/-refused" transform="translate(-6.000000, -6.000000)">
-          <g id="cross-status">
-            <g id="cross-cross" transform="translate(6.000000, 6.000000)">
-              <path fill="#000000" d="M4.95078815,4.00001878 L7.80308218,1.1477214 C8.06563927,0.885164004 8.06563927,0.459475449 7.80308218,0.196955611 C7.54052509,-0.0656017879 7.1148746,-0.0656017879 6.85231751,0.196955611 L3.99998591,3.04929055 L1.14765432,0.196918049 C0.885097232,-0.0656393498 0.459446738,-0.0656393498 0.196889647,0.196918049 C-0.0656298823,0.459475449 -0.0656298823,0.885164004 0.196889647,1.14768384 L3.04922124,3.99998122 L0.196889647,6.85231616 C-0.0656298823,7.11487356 -0.0656298823,7.54056211 0.196889647,7.80308195 C0.459446738,8.06563935 0.885097232,8.06563935 1.14765432,7.80308195 L3.99998591,4.95074701 L6.85231751,7.80308195 C7.11483703,8.06563935 7.54052509,8.06563935 7.80308218,7.80308195 C8.06563927,7.54052455 8.06563927,7.11487356 7.80308218,6.85231616 L4.95078815,4.00001878 Z" id="cross-path-1"></path>
-            </g>
-          </g>
-        </g>
-      </g>
-    </svg><div class="z0fved-12 eBSwlM"><span class="z0fved-15 dcGOxh"></span><span class="z0fved-15 dcGOxh"></span><span class="z0fved-15 dcGOxh"></span><span class="z0fved-15 dcGOxh"></span></div></div></nav>
-    <section class="hdl9e2-6 cZnRgl"><header class="hdl9e2-2 kEKYjw"><h2 class="hdl9e2-0 HXuyi"><span height="xxl" width="quarter" class="sc-1g617x9-0 bOnZKF"></span></h2></header>
+              </svg>
+            </header>
+          </div>
+
+          <div class="fdk8rh-3 feYJJO">
+            <header class="fdk8rh-0 kYNMFW">
+              <h3 class="fdk8rh-1 eouleG"><span>IGA</span></h3>
+              <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
+                <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
+                  <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
+                    <g id="chevrondown-content" transform="translate(20.000000, 0.000000)">
+                      <g id="chevrondown-universes" transform="translate(335.000000, 1.000000)">
+                        <g id="chevrondown-23:20" transform="translate(20.000000, 23.000000)">
+                          <g id="chevrondown-arrow:-categories" transform="translate(56.000000, 4.000000)">
+                            <path d="M3.04856165,6.81528316 C2.80864582,7.06157228 2.41966343,7.06157228 2.17986408,6.81528316 C1.94004531,6.56921314 1.94004531,6.17011123 2.17986408,5.92406113 L5.51709927,2.49993527 L2.17996114,-0.92407109 C1.94014237,-1.1702407 1.94014237,-1.56930277 2.17996114,-1.81537279 C2.4197799,-2.0615424 2.80874288,-2.0615424 3.04865871,-1.81537279 L6.82020387,2.05442384 C6.94011325,2.17751861 7,2.33867714 7,2.49991535 C7,2.66123323 6.93999678,2.82251127 6.82010681,2.94554628 L3.04856165,6.81528316 Z" id="arrow" transform="translate(4.500000, 2.500000) rotate(-270.000000) translate(-4.500000, -2.500000) "></path>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </header>
+          </div>
+
+          <div class="fdk8rh-3 feYJJO">
+            <header class="fdk8rh-0 kYNMFW">
+              <h3 class="fdk8rh-1 eouleG"><span>Zone</span></h3>
+              <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
+                <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
+                  <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
+                    <g id="chevrondown-content" transform="translate(20.000000, 0.000000)">
+                      <g id="chevrondown-universes" transform="translate(335.000000, 1.000000)">
+                        <g id="chevrondown-23:20" transform="translate(20.000000, 23.000000)">
+                          <g id="chevrondown-arrow:-categories" transform="translate(56.000000, 4.000000)">
+                            <path d="M3.04856165,6.81528316 C2.80864582,7.06157228 2.41966343,7.06157228 2.17986408,6.81528316 C1.94004531,6.56921314 1.94004531,6.17011123 2.17986408,5.92406113 L5.51709927,2.49993527 L2.17996114,-0.92407109 C1.94014237,-1.1702407 1.94014237,-1.56930277 2.17996114,-1.81537279 C2.4197799,-2.0615424 2.80874288,-2.0615424 3.04865871,-1.81537279 L6.82020387,2.05442384 C6.94011325,2.17751861 7,2.33867714 7,2.49991535 C7,2.66123323 6.93999678,2.82251127 6.82010681,2.94554628 L3.04856165,6.81528316 Z" id="arrow" transform="translate(4.500000, 2.500000) rotate(-270.000000) translate(-4.500000, -2.500000) "></path>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </header>
+          </div>
+
+          <div class="fdk8rh-3 feYJJO">
+            <header class="fdk8rh-0 kYNMFW">
+              <h3 class="fdk8rh-1 eouleG"><span>Beneficiaire</span></h3>
+              <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
+                <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
+                  <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
+                    <g id="chevrondown-content" transform="translate(20.000000, 0.000000)">
+                      <g id="chevrondown-universes" transform="translate(335.000000, 1.000000)">
+                        <g id="chevrondown-23:20" transform="translate(20.000000, 23.000000)">
+                          <g id="chevrondown-arrow:-categories" transform="translate(56.000000, 4.000000)">
+                            <path d="M3.04856165,6.81528316 C2.80864582,7.06157228 2.41966343,7.06157228 2.17986408,6.81528316 C1.94004531,6.56921314 1.94004531,6.17011123 2.17986408,5.92406113 L5.51709927,2.49993527 L2.17996114,-0.92407109 C1.94014237,-1.1702407 1.94014237,-1.56930277 2.17996114,-1.81537279 C2.4197799,-2.0615424 2.80874288,-2.0615424 3.04865871,-1.81537279 L6.82020387,2.05442384 C6.94011325,2.17751861 7,2.33867714 7,2.49991535 C7,2.66123323 6.93999678,2.82251127 6.82010681,2.94554628 L3.04856165,6.81528316 Z" id="arrow" transform="translate(4.500000, 2.500000) rotate(-270.000000) translate(-4.500000, -2.500000) "></path>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </header>
+          </div>
+
+          <div class="fdk8rh-3 feYJJO">
+            <header class="fdk8rh-0 kYNMFW">
+              <h3 class="fdk8rh-1 eouleG"><span>Montant</span></h3>
+              <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
+                <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
+                  <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
+                    <g id="chevrondown-content" transform="translate(20.000000, 0.000000)">
+                      <g id="chevrondown-universes" transform="translate(335.000000, 1.000000)">
+                        <g id="chevrondown-23:20" transform="translate(20.000000, 23.000000)">
+                          <g id="chevrondown-arrow:-categories" transform="translate(56.000000, 4.000000)">
+                            <path d="M3.04856165,6.81528316 C2.80864582,7.06157228 2.41966343,7.06157228 2.17986408,6.81528316 C1.94004531,6.56921314 1.94004531,6.17011123 2.17986408,5.92406113 L5.51709927,2.49993527 L2.17996114,-0.92407109 C1.94014237,-1.1702407 1.94014237,-1.56930277 2.17996114,-1.81537279 C2.4197799,-2.0615424 2.80874288,-2.0615424 3.04865871,-1.81537279 L6.82020387,2.05442384 C6.94011325,2.17751861 7,2.33867714 7,2.49991535 C7,2.66123323 6.93999678,2.82251127 6.82010681,2.94554628 L3.04856165,6.81528316 Z" id="arrow" transform="translate(4.500000, 2.500000) rotate(-270.000000) translate(-4.500000, -2.500000) "></path>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </header>
+          </div>
+
+          <div class="fdk8rh-3 feYJJO">
+            <header class="fdk8rh-0 kYNMFW">
+              <h3 class="fdk8rh-1 eouleG"><span>periode</span></h3>
+              <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
+                <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
+                  <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
+                    <g id="chevrondown-content" transform="translate(20.000000, 0.000000)">
+                      <g id="chevrondown-universes" transform="translate(335.000000, 1.000000)">
+                        <g id="chevrondown-23:20" transform="translate(20.000000, 23.000000)">
+                          <g id="chevrondown-arrow:-categories" transform="translate(56.000000, 4.000000)">
+                            <path d="M3.04856165,6.81528316 C2.80864582,7.06157228 2.41966343,7.06157228 2.17986408,6.81528316 C1.94004531,6.56921314 1.94004531,6.17011123 2.17986408,5.92406113 L5.51709927,2.49993527 L2.17996114,-0.92407109 C1.94014237,-1.1702407 1.94014237,-1.56930277 2.17996114,-1.81537279 C2.4197799,-2.0615424 2.80874288,-2.0615424 3.04865871,-1.81537279 L6.82020387,2.05442384 C6.94011325,2.17751861 7,2.33867714 7,2.49991535 C7,2.66123323 6.93999678,2.82251127 6.82010681,2.94554628 L3.04856165,6.81528316 Z" id="arrow" transform="translate(4.500000, 2.500000) rotate(-270.000000) translate(-4.500000, -2.500000) "></path>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </header>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- FIN FILTRE -->
+
+    <section class="hdl9e2-6 cZnRgl">
         <div class="sc-11unfkk-2 fxFQyp">
           <header class="">
             <div class="qjc24y-1 hlIrlm row">
 
-              <div class="qjc24y-0 jMLWRH col-md-5">
-                <h1 class="vx2fp9-3 ehdisu">Vidéos</h1>
+              <div class="qjc24y-0 jMLWRH col-md-7 border border-primary rounded">
+                <h1 class="vx2fp9-3 ehdisu">Filtres</h1>
                 <div class="vx2fp9-4 envezc">
-                  <div class="sc-11obzva-1 czRmi">
-                      <p>Les séries et documentaires Welcome to the Jungle pour mieux comprendre le monde du travail et trouver l’inspiration.</p><p>La Gueule de l’Emploi, Unique, How To, Bertrand Recrute et Culture +.<br>Tous les mois, retrouvez de nouveaux portraits inspirants, des réponses aux grandes questions que pose le monde du travail et découvrez les backstages des plus grandes entreprises.</p><p>Press play !</p>
-                  </div>
-              </div>
+
+                </div>
               </div>
               
-              <div class="qjc24y-0 jMLWRH col-md-7">
+              <div class="qjc24y-0 jMLWRH col-md-5">
                   <div class="vx2fp9-1 coQzZm">
                     <section>
                       <div class="map" id="map">
                             <div class="map__img">
+                              <a href="" class="region r-1"><div><div>Analamanga</div><div><div class="rond mx-auto text-center">521</div></div></div></a>
+                              <a href="" class="region r-2"><div><div>Bongolava</div><div><div class="rond mx-auto text-center">51</div></div></div></a>
+                              <a href="" class="region r-3"><div><div>Itasy</div><div><div class="rond mx-auto text-center">51</div></div></div></a>
+                              <a href="" class="region r-4"><div><div>Vakinakaratra</div><div><div class="rond mx-auto text-center">51</div></div></div></a>
+                              <a href="" class="region r-5"><div><div>Amoron'i Mania</div><div><div class="rond mx-auto text-center">51</div></div></div></a>
+                              <a href="" class="region r-6"><div><div>Atsimo Atsinanana</div><div><div class="rond mx-auto text-center">521</div></div></div></a>
+                              <a href="" class="region r-7"><div><div>Haute Matsiatra</div><div><div class="rond mx-auto text-center">51</div></div></div></a>
+                              <a href="" class="region r-8"><div><div>Vatovavy-Fitovinany</div><div><div class="rond mx-auto text-center">51</div></div></div></a>
+                              <a href="" class="region r-9"><div><div>Ihorombe</div><div><div class="rond mx-auto text-center">51</div></div></div></a>
+                              <a href="" class="region r-10"><div><div>Alaotra Mangoro</div><div><div class="rond mx-auto text-center">51</div></div></div></a>
+                              <a href="" class="region r-11"><div><div>Analanjirofo</div><div><div class="rond mx-auto text-center">521</div></div></div></a>
+                              <a href="" class="region r-12"><div><div>Atsinanana</div><div><div class="rond mx-auto text-center">51</div></div></div></a>
+                              <a href="" class="region r-13"><div><div>Betsiboka</div><div><div class="rond mx-auto text-center">51</div></div></div></a>
+                              <a href="" class="region r-14"><div><div>Boeny</div><div><div class="rond mx-auto text-center">51</div></div></div></a>
+                              <a href="" class="region r-15"><div><div>Melaky</div><div><div class="rond mx-auto text-center">51</div></div></div></a>
+                              <a href="" class="region r-16"><div><div>Sofia</div><div><div class="rond mx-auto text-center">521</div></div></div></a>
+                              <a href="" class="region r-17"><div><div>Androy</div><div><div class="rond mx-auto text-center">51</div></div></div></a>
+                              <a href="" class="region r-18"><div><div>Anosy</div><div><div class="rond mx-auto text-center">51</div></div></div></a>
+                              <a href="" class="region r-19"><div><div>Atsimo-Andrefana</div><div><div class="rond mx-auto text-center">51</div></div></div></a>
+                              <a href="" class="region r-20"><div><div>Menabe</div><div><div class="rond mx-auto text-center">51</div></div></div></a>
+                              <a href="" class="region r-21"><div><div>Diana</div><div><div class="rond mx-auto text-center">51</div></div></div></a>
+                              <a href="" class="region r-22"><div><div>Sava</div><div><div class="rond mx-auto text-center">51</div></div></div></a>
+
                               <svg xmlns="http://www.w3.org/2000/svg" xmlns:amcharts="http://amcharts.com/ammap"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 1800 2000">
+                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 800 1600">
                                 <g>
                                   <a  id="region-FI-VF" xlink:title="Vatovavy-Fitovinany" xlink:href=""> <path title="Vatovavy-Fitovinany"
                                     d="M555.52,956.55L554.38,956.25L553.05,955.69L550.63,954.26L548.7,952.82L548.33,952.39L546.01,948.27L545.67,947.81L545.26,947.42L544.7,947.12L544.02,946.95L543.03,946.99L542.28,947.12L541.63,947.35L541.14,947.68L540.73,948.06L540.42,948.53L540.2,949.05L540.2,949.67L540.39,950.23L540.99,951.21L541.16,951.72L541.05,952.22L540.36,953.08L540.03,953.57L539.81,954.15L539.59,955.45L539.36,956.01L538.26,957.33L537.95,957.83L537.58,959.1L537.47,959.81L537.29,960.43L533.93,966L533.55,967.25L533.45,967.9L533.51,968.57L533.66,969.19L534.41,970.8L534.43,971.38L534.21,971.87L533.83,972.29L533.31,972.58L532.72,972.78L532.02,972.8L531.05,972.38L529.86,971.65L527.74,969.91L525.75,968.64L525.16,968.52L524.13,968.48L522.79,968.63L521.49,968.94L520.91,969.17L519.45,970.12L518.2,971.31L517.69,971.6L517.08,971.78L516.37,971.86L515.63,971.85L514.91,971.77L513.55,971.47L512.12,971.31L511.41,971.36L510.73,971.47L510.11,971.67L509.57,971.9L507.59,973.23L507.01,973.46L506.36,973.59L503.48,973.76L502.19,974.03L501.47,974.01L500.77,973.81L490.72,983.52L482.47,986.46L481.09,1002.62L479.72,1009.98L471.47,1011.45L465.96,1017.33L464.59,1036.48L460.46,1058.59L454.96,1071.87L457.71,1080.73L461.84,1091.08L454.96,1125.1L450.83,1142.88L446.7,1151.78L450.83,1160.68L434.32,1169.59L421.94,1177.01L427.45,1185.93L445.33,1194.85L454.96,1196.33L459.09,1191.87L468.71,1197.82L472.84,1211.21L486.6,1217.17L500.35,1217.17L511.9,1226.98L513.89,1213.37L517.51,1205.41L519.03,1197.59L533,1164.85L546.97,1132.17L560.83,1087.11L562.36,1084.18L563.97,1079.92L565.77,1069.82L565.98,1066.24L566.38,1064.63L570.35,1055.22L571.38,1051.22L571.75,1047.2L572.17,1045.16L574.11,1041.67L574.83,1039.93L575.03,1038.02L574.76,1036.46L573.94,1036.03L572.51,1037.52L572.04,1035.82L572.95,1034.04L574.42,1032.2L575.58,1030.3L586.54,988.6L592.47,970.16L592.47,970.16L591.56,969.73L582.52,967.23L574.74,967.3L569.23,966.05L568.38,965.64L567.41,964.66L567.04,963.83L566.9,962.99L566.97,962.25L566.97,960.74L566.83,960.08L566.37,958.93L566.03,958.45L565.49,957.96L563.61,956.66L562.98,956.07L562.3,955.65L561.6,955.44L560.43,955.54L557,956.46L556.28,956.54L555.52,956.55z" />
@@ -820,7 +980,7 @@
                                     d="M370.07,659.31L368.35,659.1L366.9,658.71L365.71,658.08L364.87,658.44L363.34,659.92L361.28,661.06L359.42,662.37L358.41,662.86L356.25,663.36L355.17,663.76L354.19,664.28L352.77,664.81L350.95,665.2L347.86,665.5L346.23,666.04L345.19,666.9L344.77,667.86L344,668.61L342.91,669.08L339.94,669.87L337.65,670.2L336.14,670.7L332.62,672.83L331.56,673.34L330.4,673.36L329,673.2L327.86,673.73L326.72,674.4L324.51,675.13L323.12,675.08L322.41,674.34L322.32,672.11L321.69,671.14L320.88,671.2L318.61,672.25L316.85,672.63L315.44,672.54L314.25,672.11L313.02,671.48L311.52,670.87L307.25,670L306.06,669.49L305.35,668.91L304.16,667.69L303.26,667.17L301.9,666.91L301.01,667.95L300.3,669.08L299.8,670.36L299.46,671.54L299.37,672.63L299.61,674.77L299.63,675.82L299.39,676.86L297.65,681.04L297.41,682.13L297.12,684.36L296.68,685.34L293.52,688.55L292.88,689.48L292.08,691.42L290.62,697.07L290.31,699.4L289.88,700.48L289.32,701.55L288.59,702.62L285.74,705.82L285.08,707.04L284.69,708.44L284.57,709.68L284.99,713.45L284.77,714.56L284.12,715.57L279.97,718.74L278.96,718.63L274.67,717.22L273.25,716.93L272.25,717.28L271.38,717.68L270.56,717.68L269.83,717.11L269.05,716.36L267.9,715.75L266.63,715.25L265.02,714.82L263.9,715.05L262.98,715.64L261.39,717.25L260.75,718.14L260.24,719.17L259.9,720.08L259.49,720.83L258.5,722.01L260.32,722.76L261.15,723.68L264.29,728.59L264.75,729.92L264.79,730.77L263.56,732.03L263.21,732.5L262.98,733.09L262.84,733.77L262.91,737.56L264.43,751.47L263.71,757.46L263.41,758.32L263.03,758.74L262.6,759.11L260.7,760.41L260.27,760.79L259.88,761.21L259.57,761.69L259.04,762.77L258.7,763.24L258.28,763.62L256.76,764.47L256.34,764.85L255.94,765.27L255.07,766.84L254.75,767.32L252.89,769.47L252.01,770.17L250.95,771.15L250.33,772.06L250.16,772.83L250.22,773.51L250.61,774.7L250.9,775.99L251.41,781.75L252.06,784.25L252.26,784.83L252.96,788.1L252.93,789.04L252.76,789.79L252.48,790.33L251.45,792.08L251.02,793.08L250.49,795L250.54,795.97L250.87,796.6L251.41,796.87L253.22,797.5L253.73,797.8L254.17,798.16L254.54,798.58L255.41,800.1L257.34,805.37L257.6,805.84L257.97,806.28L258.41,806.66L260.41,807.88L260.88,808.57L261.41,809.52L262.04,811.55L262.53,812.51L263.08,813.15L265.55,813.97L266.17,814.41L266.76,815.28L266.9,816.04L266.81,816.73L266.27,818.01L266.03,818.89L265.84,820.36L266,821.21L266.27,821.86L267.43,823.1L268.74,824.98L269.8,827.1L270.1,827.6L270.82,828.47L273.01,830.33L274.09,831.67L274.87,832.47L275.35,832.81L275.88,833.07L276.49,833.15L277.11,833.04L277.65,832.81L279.15,831.91L280.22,831.41L282.03,830.84L282.68,830.74L283.36,830.81L284.14,831.52L284.4,832.36L284.47,833.61L284.69,834.39L285.69,836.59L286.08,838.54L287.17,841.76L287.41,842.82L287.57,843.92L287.68,847.47L287.26,850.33L287.34,853.76L287.23,854.71L286.9,855.19L286.44,855.51L284.77,856.08L284.43,856.29L284.19,856.59L284.06,857.14L303.64,859.08L322.9,856.17L333.91,840.13L350.41,819.73L361.42,802.27L366.92,781.91L377.93,771.74L388.93,770.29L406.81,771.74L429.34,774L427.28,771.06L422.78,768.64L419.31,763.52L417.89,758.1L414.15,754.81L412.26,751.31L408.85,735.19L397.77,724.4L383.18,704.26L373.62,678.86L370.07,659.31z" />
                                   </a>
                                     <a  id="region-MA-BO" xlink:title="Boeny"
-                                     xlink:href=">"> <path title="Boeny"
+                                     xlink:href=""> <path title="Boeny"
                                     d="M431.21,395.96L427.8,396.95L424.33,398.8L420.6,400.21L416.7,400.8L414.7,401.46L413.41,402.62L412.41,406.37L411.59,407.97L410.41,407.71L410.07,405.02L411.38,401.18L416.27,391.29L417.39,390.09L419.1,388.96L420.47,387.79L422.13,384.9L423.22,383.42L423.2,382.01L421.35,380.77L417.6,379.21L415.88,378.22L414.7,377.25L413.84,376.1L412.5,373.27L412.32,372.65L412.34,369.65L412.19,368.6L411.86,367.72L411.16,367.34L409.45,367.72L406.39,369.38L401.76,370.74L393.47,378.36L382.16,386.6L375.83,388.16L374.65,389.39L375.06,390.5L378.46,391.44L379.91,392.43L377.41,393.18L374.52,393.13L371.6,393.43L369.01,395.19L367.71,396.43L363.05,399.85L360.07,402.69L358.85,403.38L358.79,402.63L358.59,402.1L358.35,401.63L358.17,401.05L355.62,402.94L348.69,410.79L343.8,414.7L341.72,416.89L340.5,421.06L338.9,424.18L338.54,426.02L339.08,426.88L340.34,426.88L341.84,426.67L343.05,426.8L344.24,428.57L343.76,430.8L340.85,435.38L339.53,436.55L338.22,437.3L338.02,438.06L340.03,439.27L340.99,439.49L344.53,439.27L347.26,440.25L351.81,444.54L353.98,445.52L356.61,450.25L357.81,453.27L356.66,454.16L354.44,452.42L352.54,449.7L350.43,447.64L347.53,447.92L348.3,449.98L348.38,452.46L347.46,454.44L345.28,454.94L344.41,454.27L343.18,452.09L342.3,451.82L341.67,452.57L341.57,453.93L341.65,455.39L341.55,456.5L339.13,454.48L337.36,452.33L333.5,444.35L332.11,442.26L330.36,440.47L327.96,438.49L329.99,436.99L330.75,435.36L331.27,433.54L332.54,431.48L331.65,430.48L331.21,429.38L331.06,428.19L331.05,426.85L330.52,426.08L329.24,425.62L326.48,425.26L321.03,425.28L318.4,425.79L315.9,426.8L313.37,428.38L310.79,430.41L308.52,432.78L306.93,435.38L306.28,437.91L307.77,437.2L310.34,435.2L312.99,433.82L312.97,435.82L312.13,437.05L311.13,438.05L310.66,439.27L311.38,441.22L312.45,442.63L312.45,443.33L309.91,443.24L306.93,441.61L306,441.55L304.09,441.7L303.16,441.61L301.57,441.25L300.66,440.82L300.26,439.9L300.17,438.1L300.37,434.32L299.55,433.32L297.17,432.98L295.47,433.08L293.99,433.37L292.61,433.87L285.92,437.8L283.45,438.16L279.48,435.61L277.87,435.42L276.19,435.42L274.54,434.99L272.72,434.27L271.58,434.34L267.96,436.7L264.42,440.49L263.62,442.06L264.26,443.07L265.44,444.07L266.29,445.52L266.35,446.68L266.08,447.57L265.71,448.42L265.48,449.42L265.38,452.31L265.48,452.6L264.62,453.88L262.87,455.65L262.54,456.92L263.67,462.8L262.6,464.77L261.79,465.03L261.04,462.8L259.12,463.76L259.05,462.61L260.24,459.3L260.21,457.68L260.05,457.25L259.64,456.97L258.8,455.78L257.98,452.6L256.55,453.54L255.74,453.93L254.98,454.16L237.05,456.11L236.05,457.03L236.1,458.48L236.99,460.4L238.3,461.77L240.45,462.59L240.73,463.58L240,465.37L238.44,466.46L234.71,467.88L233.53,468.97L232.6,470.44L231.51,471.68L229.83,472.24L228.09,471.9L227.27,470.92L227.09,469.43L227.24,467.49L227.85,465.17L227.91,464.37L227.85,463.31L227.74,462.75L225.82,456.4L225.66,452.77L225.41,451.12L224.64,450.41L220.35,453.38L213.59,456.31L210.61,458.06L208.17,460.43L205.7,463.54L201.96,469.83L199.8,472.6L196.62,474.64L190.22,477.7L191.12,478.48L189.67,479.13L186.51,479.63L184.99,480.05L183.46,480.95L182.64,481.9L181.97,483.01L189.47,491.9L190.84,506.24L197.72,519.15L211.48,530.63L222.48,536.37L223.86,546.42L233.49,557.92L244.49,560.8L249.99,570.86L270.63,566.55L283.01,572.3L306.39,572.3L310.52,579.49L318.77,591.01L331.15,601.09L338.03,596.77L343.54,583.81L350.41,579.49L357.29,570.86L369.67,567.98L377.93,547.86L382.55,528.82L397.18,526.32L413.69,524.89L427.45,526.32L439.83,532.06L449.46,536.37L453.58,530.63L448.08,522.02L435.7,511.97L443.95,503.37L452.21,493.33L450.83,483.3L443.95,473.28L435.7,460.39L431.57,436.08L427.45,417.5L431.21,395.96z" />
                                   </a>
                                     <a  id="region-MA-BE" xlink:title="Betsiboka"
@@ -914,59 +1074,13 @@
             </div>
            </header>
       </div>
-  </section></main></div><footer class="bt96d2-0 foCkmu"><div class="sc-11unfkk-2 fxFQyp"><div class="bt96d2-1 knxWdP"><div class="bt96d2-2 cNrxHZ"><a class="bt96d2-3 bGIZa" href="/fr/"><img alt="Welcome to the Jungle - Logo" src="https://cdn.welcometothejungle.co/wttj-front/production/assets/images/logos/wttj-square.svg?v=3d08f2d8bd6c511554a458de77694a89" class="bt96d2-4 iKoIGt"/></a></div><div class="bt96d2-2 cNrxHZ"><nav class="bt96d2-5 cpILOD"><h4 class="bt96d2-6 bGYjCP"><span>A propos</span></h4><ul class="bt96d2-7 fephAd"><li class="bt96d2-8 ghoRQb"><a class="bt96d2-9 jbJMHU" href="/fr/pages/concept"><span>Concept</span></a></li><li class="bt96d2-8 ghoRQb"><a class="bt96d2-9 jbJMHU" href="/fr/companies/wttj"><span>Qui sommes-nous ?</span></a></li><li class="bt96d2-8 ghoRQb"><a class="bt96d2-9 jbJMHU" href="/fr/magazines"><span>Magazine</span></a></li><li class="bt96d2-8 ghoRQb"><a class="bt96d2-9 jbJMHU" href="/fr/pages/legal"><span>Mentions légales</span></a></li><li class="bt96d2-8 ghoRQb"><a class="bt96d2-9 jbJMHU" href="/fr/pages/terms"><span>CGU</span></a></li><li class="bt96d2-8 ghoRQb"><a class="bt96d2-9 jbJMHU" href="/fr/pages/privacy-policy"><span>Politique de confidentialité</span></a></li><li class="bt96d2-8 ghoRQb"><a class="bt96d2-9 jbJMHU" href="/fr/pages/faq"><span>FAQ</span></a></li></ul></nav></div><div class="bt96d2-2 cNrxHZ"><nav class="bt96d2-5 cpILOD"><h4 class="bt96d2-6 bGYjCP"><span>Nous rencontrer</span></h4><ul class="bt96d2-7 fephAd"><li class="bt96d2-8 ghoRQb"><a href="https://recruiters.welcometothejungle.com" rel="noopener noreferrer" target="_blank" class="bt96d2-10 eznqFQ"><span>Recruteurs</span></a></li><li class="bt96d2-8 ghoRQb"><a class="bt96d2-9 jbJMHU" href="/fr/pages/press"><span>Presse</span></a></li><li class="bt96d2-8 ghoRQb"><a class="bt96d2-9 jbJMHU" href="/fr/companies/wttj/jobs"><span>Jobs</span></a></li><li class="bt96d2-8 ghoRQb"><a class="bt96d2-9 jbJMHU" href="/fr/requests/new"><span>Contact</span></a></li></ul></nav></div><div class="bt96d2-2 cNrxHZ"><nav class="bt96d2-5 cpILOD"><h4 class="bt96d2-6 bGYjCP"><span>La Jungle est partout</span></h4><div class="bt96d2-11 cmsHvo"><a href="https://twitter.com/wttj_fr" rel="noopener noreferrer" target="_blank" class="bt96d2-12 uFupn"><svg alt="Welcome to the Jungle - Twitter" viewBox="0 0 22 17" width="22" height="17">
-      <g id="twitter-footer" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-877.000000, -124.000000)">
-        <g id="twitter-content" transform="translate(119.500000, 70.000000)" fill="#FFFFFF">
-          <g id="twitter-newsletter" transform="translate(713.000000, 0.000000)">
-            <g id="twitter-social-networks" transform="translate(10.000000, 54.000000)">
-              <path d="M55.2933682,1.96191973 C54.9671742,2.10659716 54.6318038,2.22870224 54.2891327,2.32783307 C54.6948323,1.86901807 55.0041473,1.32915692 55.1929647,0.738390739 C55.2352963,0.605970702 55.1914242,0.46102535 55.0825812,0.374419832 C54.9738722,0.287747335 54.8228316,0.277365389 54.7031379,0.348297519 C53.975397,0.77991852 53.190254,1.09010425 52.3669992,1.27148688 C51.5377162,0.461159311 50.4113756,0 49.2469902,0 C46.7891484,0 44.7895188,1.99956266 44.7895188,4.45733749 C44.7895188,4.65091054 44.8017762,4.8434119 44.826023,5.03323404 C41.7760754,4.76544684 38.9405987,3.26636092 36.9934817,0.877910688 C36.9240901,0.792778737 36.8171895,0.746897236 36.7077437,0.755671655 C36.598231,0.764245132 36.4998369,0.826000961 36.4445112,0.920912035 C36.0495954,1.59855165 35.8408178,2.37358061 35.8408178,3.16213959 C35.8408178,4.23616857 36.22428,5.25520673 36.9016517,6.05146844 C36.6956873,5.98013443 36.4958181,5.89098366 36.3050582,5.78508782 C36.2026453,5.72808759 36.0776601,5.72895834 35.9759171,5.78729817 C35.874107,5.84563801 35.8102748,5.95294043 35.8075956,6.07022293 C35.8071267,6.08998211 35.8071267,6.1097413 35.8071267,6.12976841 C35.8071267,7.7329417 36.6699668,9.17630001 37.9891437,9.96298354 C37.875813,9.95166387 37.7625494,9.9352537 37.6500225,9.91375302 C37.5340126,9.89158255 37.4147207,9.93223958 37.3364877,10.0207206 C37.2581208,10.1091345 37.2321994,10.2323783 37.2683018,10.3449052 C37.7565881,11.8693766 39.0137412,12.9906937 40.5335241,13.3325611 C39.2730219,14.1220578 37.8315391,14.5355941 36.3183203,14.5355941 C36.0025752,14.5355941 35.6850217,14.5170406 35.3742331,14.4802684 C35.2198435,14.4619158 35.072219,14.553076 35.0196394,14.6998968 C34.9670599,14.8467846 35.0227875,15.0105514 35.1541359,15.0947456 C37.0981049,16.3411818 39.3458965,17 41.6543723,17 C46.192555,17 49.0315146,14.8599797 50.613924,13.0647069 C52.5871634,10.8261586 53.7188625,7.86315138 53.7188625,4.9355098 C53.7188625,4.81320379 53.716987,4.68969213 53.7132361,4.56658235 C54.491748,3.98003593 55.1620198,3.2701788 55.7074404,2.45429186 C55.790295,2.33037832 55.7813196,2.16661151 55.6853369,2.05254407 C55.5894881,1.93840965 55.4297401,1.90150351 55.2933682,1.96191973 L55.2933682,1.96191973 Z" id="Twitter"></path>
-            </g>
-          </g>
-        </g>
-      </g>
-    </svg></a><a href="https://www.facebook.com/wttj.fr" rel="noopener noreferrer" target="_blank" class="bt96d2-12 uFupn"><svg alt="Welcome to the Jungle - Facebook" viewBox="0 0 10 17" width="10" height="17">
-      <g id="facebook-footer" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-842.000000, -124.000000)">
-        <g id="facebook-content" transform="translate(119.500000, 70.000000)" fill="#FFFFFF">
-          <g id="facebook-newsletter" transform="translate(713.000000, 0.000000)">
-            <g id="facebook-social-networks" transform="translate(10.000000, 54.000000)">
-              <path d="M8.84495906,0.00353713471 L6.64043985,0 C4.16373813,0 2.56318467,1.64211479 2.56318467,4.18372294 L2.56318467,6.11269935 L0.346639202,6.11269935 C0.155103357,6.11269935 0,6.26797957 0,6.45951541 L0,9.25438241 C0,9.44591825 0.155280214,9.60102161 0.346639202,9.60102161 L2.56318467,9.60102161 L2.56318467,16.6533608 C2.56318467,16.8448966 2.71828803,17 2.90982387,17 L5.80178521,17 C5.99332106,17 6.14842441,16.8447198 6.14842441,16.6533608 L6.14842441,9.60102161 L8.74008302,9.60102161 C8.93161886,9.60102161 9.08672222,9.44591825 9.08672222,9.25438241 L9.08778336,6.45951541 C9.08778336,6.36754991 9.05117402,6.27947526 8.98626759,6.21439198 C8.92136117,6.1493087 8.8329328,6.11269935 8.7409673,6.11269935 L6.14842441,6.11269935 L6.14842441,4.47748198 C6.14842441,3.69153064 6.3357157,3.29254185 7.35953934,3.29254185 L8.84460535,3.29201128 C9.03596434,3.29201128 9.19106769,3.13673106 9.19106769,2.94537208 L9.19106769,0.350176337 C9.19106769,0.158994205 9.03614119,0.00389084818 8.84495906,0.00353713471 L8.84495906,0.00353713471 Z" id="Facebook"></path>
-            </g>
-          </g>
-        </g>
-      </g>
-    </svg></a><a href="https://www.linkedin.com/company/wttj-fr" rel="noopener noreferrer" target="_blank" class="bt96d2-12 uFupn"><svg alt="Welcome to the Jungle - LinkedIn" viewBox="0 0 19 17" width="19" height="17">
-      <g id="linkedin" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-923.000000, -124.000000)">
-        <g id="linkedin-content" transform="translate(119.500000, 70.000000)" fill="#FFFFFF">
-          <g id="linkedin-newsletter" transform="translate(713.000000, 0.000000)">
-            <g id="linkedin-social-networks" transform="translate(10.000000, 54.000000)">
-              <path d="M98.7906409,10.4226865 L98.7906409,17 L94.9775305,17 L94.9775305,10.8631953 C94.9775305,9.32157994 94.4260052,8.26948774 93.0457857,8.26948774 C91.9921631,8.26948774 91.3651515,8.97852079 91.0893061,9.66439093 C90.988713,9.90958681 90.9628201,10.2508674 90.9628201,10.594092 L90.9628201,17 L87.1484275,17 C87.1484275,17 87.1997995,6.60626712 87.1484275,5.52939888 L90.9624479,5.52939888 L90.9624479,7.15531068 C90.9547131,7.1674712 90.9446621,7.18058306 90.9373823,7.19237133 L90.9624479,7.19237133 L90.9624479,7.15531068 C91.4691778,6.37484489 92.3741442,5.25992331 94.3997401,5.25992331 C96.9093167,5.25988195 98.7906409,6.89936059 98.7906409,10.4226865 L98.7906409,10.4226865 Z M83.1584104,0 C81.8535117,0 81,0.855910677 81,1.98146238 C81,3.08248622 81.8288184,3.96437244 83.1077829,3.96437244 L83.1332621,3.96437244 C84.4634333,3.96437244 85.2906799,3.08265167 85.2906799,1.98146238 C85.2656143,0.855910677 84.4634333,0 83.1584104,0 L83.1584104,0 Z M81.2265415,17 L85.0394864,17 L85.0394864,5.52939888 L81.2265415,5.52939888 L81.2265415,17 L81.2265415,17 Z" id="LinkedIn"></path>
-            </g>
-          </g>
-        </g>
-      </g>
-    </svg></a><a href="https://www.youtube.com/channel/UCpJfUQ72fmt4qAbkDvz0iNQ" rel="noopener noreferrer" target="_blank" class="bt96d2-12 uFupn"><svg alt="Welcome to the Jungle - YouTube" viewBox="0 0 25 17" width="25" height="17">
-      <g id="youtube-footer" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-966.000000, -124.000000)">
-        <g id="youtube-content" transform="translate(119.500000, 70.000000)" fill="#FFFFFF">
-          <g id="youtube-newsletter" transform="translate(713.000000, 0.000000)">
-            <g id="youtube-social-networks" transform="translate(10.000000, 54.000000)">
-              <path d="M147.968505,2.73465333 C147.669909,1.43754789 146.608961,0.480580146 145.331745,0.337828052 C142.307264,0.000208020273 139.246024,-0.00155435126 136.198884,0.000208020273 C133.15124,-0.00155435126 130.089497,0.000208020273 127.065016,0.337828052 C125.788555,0.480580146 124.728363,1.43754789 124.429767,2.73465333 C124.004784,4.58187047 124,6.59827527 124,8.50012592 C124,10.4019766 124,12.4181296 124.424983,14.265095 C124.723076,15.5619486 125.78352,16.5189164 127.060736,16.6619202 C130.084965,16.999792 133.146456,17.0015544 136.1941,16.999792 C139.242248,17.0015544 142.302984,16.999792 145.326961,16.6619202 C146.603422,16.5191681 147.664621,15.5622004 147.963217,14.265095 C148.388453,12.4178778 148.389963,10.4017248 148.389963,8.50012592 C148.389963,6.59827527 148.393488,4.58187047 147.968505,2.73465333 L147.968505,2.73465333 Z M133.047512,12.2857 L133.047512,4.219829 C135.632407,5.56854676 138.200183,6.90820089 140.801443,8.26522697 C138.208239,9.61016821 135.639205,10.9417658 133.047512,12.2857 L133.047512,12.2857 Z" id="youtube"></path>
-            </g>
-          </g>
-        </g>
-      </g>
-    </svg></a><a href="https://www.instagram.com/welcometothejungle_fr" rel="noopener noreferrer" target="_blank" class="bt96d2-12 uFupn"><svg alt="Welcome to the Jungle - Instagram" viewBox="0 0 18 17" width="18" height="17">
-      <g id="instagram-footer" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-1016.000000, -124.000000)">
-        <g id="instagram-content" transform="translate(119.500000, 70.000000)" fill="#FFFFFF">
-          <g id="instagram-newsletter" transform="translate(713.000000, 0.000000)">
-            <g id="instagram-social-networks" transform="translate(10.000000, 54.000000)">
-              <path d="M185.935608,0 C188.728095,0 190.999969,2.27187433 191,5.06439167 L191,11.9356083 C191,14.7281257 188.728126,17 185.935608,17 L179.064392,17 C176.271874,17 174,14.7281257 174,11.9356083 L174,5.06439167 C174,2.27187433 176.271874,0 179.064392,0 L185.935608,0 Z M189.289801,11.9356083 L189.289801,5.06439167 C189.289801,3.21190707 187.788062,1.71019937 185.935608,1.71019937 L179.064392,1.71019937 C177.211938,1.71019937 175.710199,3.21190707 175.710199,5.06439167 L175.710199,11.9356083 C175.710199,13.7880621 177.211938,15.2898006 179.064392,15.2898006 L185.935608,15.2898006 C187.788062,15.2898006 189.289801,13.7880621 189.289801,11.9356083 Z M182.5,4.10319508 C184.924402,4.10319508 186.896805,6.07556702 186.896805,8.49996915 C186.896805,10.9243713 184.924402,12.8967741 182.5,12.8967741 C180.075598,12.8967741 178.103195,10.9243404 178.103195,8.49996915 C178.103195,6.07559788 180.075598,4.10319508 182.5,4.10319508 Z M182.5,11.1866055 C183.983752,11.1866055 185.186606,9.98375236 185.186606,8.5 C185.186606,7.01621679 183.983783,5.81339445 182.5,5.81339445 C181.016248,5.81339445 179.813394,7.01621679 179.813394,8.5 C179.813394,9.98378321 181.016217,11.1866055 182.5,11.1866055 Z M186.905196,5.18980136 C186.323346,5.18980136 185.851663,4.71811816 185.851663,4.13626745 C185.851663,3.55441675 186.323346,3.08273355 186.905196,3.08273355 C187.487047,3.08273355 187.95873,3.55441675 187.95873,4.13626745 C187.95873,4.71811816 187.487047,5.18980136 186.905196,5.18980136 Z" id="Instagram"></path>
-            </g>
-          </g>
-        </g>
-      </g>
-    </svg></a></div></nav><nav class="bt96d2-5 cpILOD"><h4 class="bt96d2-6 bGYjCP"><span>Restez informés !</span></h4><div class="bt96d2-13 dwLDtk"><p><span>Recevez des conseils et de nouvelles entreprises</span></p><form><div class="sc-1ejeabr-19 gQwHOW"><div placeholder="Email" class="sc-emmjRN hxQqtY"><div class="styles__Wrapper-zznoga-0 UxSKW"><input type="email" id="email" name="email" placeholder="Email" value="" class="sc-jzgbtB bwwcKt"/></div></div><button tabindex="0" type="submit" variant="primary" class="sc-eerKOB cfnPHQ"><span>S&#x27;inscrire</span></button></div></form></div></nav></div></div></div></footer></div></div>
+  </section>
+</main>
+</div>
+  
+  </div></div>
 
-    <p>affiche test</p>
+    <!-- <p>affiche test</p>
       <%if current_user%>
             <li class="has-children">
               <ul class="dropdown">
@@ -990,4 +1104,4 @@
       <%=projet.ptf%><br>
       <%=projet.forme_d_appui%><br>
       <a href="<%= projet_path(projet.id)%>">voir projet</a>
-<%end%>
+<%end%> -->
