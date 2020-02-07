@@ -1,18 +1,23 @@
+
+
+
+
+
       <%=@project.nom_du_projet%><br>
       <%=@project.ptf%><br>
-      <%=@project.secteur%>
-      <%=@project.forme_d_appui%><br>
-      <%=@project.Filière_associees%>
-      <%=@project.institions_gouvernementales_associees%><br>
-      <%=@project.Objectif_generale_du_projet%><br>
-      <%=@project.Appui_specifique_au_secteur_prive%><br>
-      <%=@project.Zone_d_intervention%><br>
-      <%=@project.Partenaire_d_implementaton%><br>
-      <%=@project.Beneficiaires%><br>
-      <%=@project.Montant%><br>
-      <%=@project.Nature_de_l_appui%>
-      <%=@project.Debut_du_projet%>
-      <%=@project.Fin_du_projet%>
-      <%=@project.Alignement_aux_priorites_du_plan_emergeance_Madagascar%>
 
-    <a href="<%=edit_projet_path(@project.id)%>">edit</a>
+      <%=@project.forme_d_appui%><br>
+      <%=@project.filière_associees%>
+      <%=@project.iga%><br>
+      <%=@project.objectif_generale_du_projet%><br>
+      <%=@project.aspsp%><br>
+      <%=@project.zone%><br>
+      <%=@project.partenaire_d_implementaton%><br>
+      <%=@project.beneficiaires%><br>
+      <%=@project.montant%><br>
+      <%=@project.nature_de_l_appui%>
+      <%=@project.debut_du_projet%>
+      <%=@project.fin%>
+      <%=@project.apdem%>
+
+    <a href="edit_projet_path(projet.id)">EDITER</a>
