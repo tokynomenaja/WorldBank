@@ -1,0 +1,3 @@
+class Ptf < ApplicationRecord
+	
+end

@@ -5,20 +5,24 @@ class CreateProjets < ActiveRecord::Migration[6.0]
       t.string :ptf
       t.string :secteur
       t.string :forme_d_appui
-      t.string :Filière_associees
-      t.string :institions_gouvernementales_associees
-      t.string :Objectif_generale_du_projet
-      t.string :Appui_specifique_au_secteur_prive
-      t.string :Zone_d_intervention
-      t.string :Partenaire_d_implementaton
-      t.string :Beneficiaires
-      t.integer :Montant
-      t.string  :Nature_de_l_appui
-      t.integer :Debut_du_projet
-      t.integer :Fin_du_projet
-      t.string :Alignement_aux_priorites_du_plan_emergeance_Madagascar
+      t.string :filière_associees
+      t.string :iga
+      t.string :objectif_generale_du_projet
+      t.string :aspsp
+      t.string :zone
+      t.string :partenaire_d_implementaton
+      t.string :beneficiaires
+      t.integer :montant
+      t.string  :nature_de_l_appui
+      t.integer :debut_du_projet
+      t.integer :fin
+      t.string :apdem
+       
 
+     
+      t.belongs_to :secteur, index: true
       t.belongs_to :user, index: true
+      
       t.timestamps
     end
   end
