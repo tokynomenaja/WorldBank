@@ -986,8 +986,8 @@
           <%end%>
         <a href="<%=new_projet_path%>">cree projet</a>
     <%@project.each do|projet|%><br>
-      <%=projet.nom_du_projet%><br>
-      <%=projet.ptf%><br>
-      <%=projet.forme_d_appui%><br>
-      <a href="<%= projet_path(projet.id)%>">voir projet</a>
-<%end%>
+              <%=projet.nom_du_projet%><br>
+              <%=projet.ptf%><br>
+              <%=projet.forme_d_appui%><br>
+              <a href="<%= projet_path(projet.id)%>">voir projet</a>
+      <%end%>

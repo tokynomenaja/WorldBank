@@ -1,10 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+</html>
 <%= form_tag url_for(action: 'create'),method:'post' do%>
  <input type="text" name="nom_du_projet" placeholder="Nom du projet"><br>
-  <input type="text" name="ptf" placeholder="ptf"><br>
-   <input type="text" name="secteur" placeholder="secteur"><br>
-    <input type="text" name="filière_associees" placeholder="Filière associees"><br>
+ <input type="text" name="ptf" placeholder="pft"><br>
+ <li>
+<input type="checkbox" name="secteur[secteur_ids]" >
+		<ul>
+			 <% Secteur.all.each do |c| %>
+			  <%= check_box_tag "secteur_ids[]", c.id, :id => "secteur_ids_#{c.id}" %>
+			  <%=h c.title%>
+			<% end %>
+			
        <input type="text" name="institutions_gouvernementales_associees" placeholder="institutions_gouvernementales_associees"><br>
          <input type="text" name="Objectif_general_du_projet" placeholder="Objectif general du projet"><br>
         <input type="text" name="appui_specifique_au_secteur_prive" placeholder="Appui specifique au secteur prive"><br>
       <input type="submit" value="save">
 <%end%>
+
+#<!--  select_tag 'secteur_ids', op(Secteur.all.collect{ |s| [s.title, s.id] }), class: "form-input" -->
+
+
+			<input type="checkbox" name="x">
