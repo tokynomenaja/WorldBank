@@ -19,7 +19,7 @@ class CreateProjets < ActiveRecord::Migration[6.0]
       t.string :apdem
        
 
-     
+      t.belongs_to :ptf, index: true
       t.belongs_to :secteur, index: true
       t.belongs_to :user, index: true
       
