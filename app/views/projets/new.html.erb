@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
 
-</body>
-</html>
 <%= form_tag url_for(action: 'create'),method:'post' do%>
  <input type="text" name="nom_du_projet" placeholder="Nom du projet"><br>
  <input type="text" name="ptf" placeholder="pft"><br>
@@ -25,6 +17,4 @@
 <%end%>
 
 #<!--  select_tag 'secteur_ids', op(Secteur.all.collect{ |s| [s.title, s.id] }), class: "form-input" -->
-
-
-			<input type="checkbox" name="x">
+<input type="checkbox" name="x">
