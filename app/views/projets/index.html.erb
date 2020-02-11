@@ -898,11 +898,11 @@
     <section class="hdl9e2-6 cZnRgl">
         <div class="sc-11unfkk-2 fxFQyp">
           <header class="">
-            <div class="qjc24y-1 hlIrlm row no-gutters">
+            <div class="qjc24y-1 hlIrlm row no-gutters align-items-start">
 
               <div class="qjc24y-0 jMLWRH col-md-7 row no-gutters">
                 <div class="col-sm-5">
-                  <div class="height border-bottom">
+                  <div class="height border-bottom mb-2">
                     <h1 class="vx2fp9-3 ehdisu h-font text-center">Les projets d'appui recherchés</h1>
                   </div>
                   <div class="filter pt-2 pb-2">
@@ -913,33 +913,17 @@
                   </div>
                 </div>
                 <div class="col-sm-7 pl-2">
-                  <div class="height border-bottom">
+                  <div class="height border-bottom mb-2">
                     <h1 class="vx2fp9-3 ehdisu h-font text-center">Résultats du filtre</h1>
                   </div>
-                  <div class="result p-2 border-bottom">
-                    <a href="" class="text-muted">fugit iure adipisci! Ipsam,sequi. Dignissimos fugit accusamus debitis!</a>
-                  </div>
-                  <div class="result  text-muted p-2 border-bottom">
-                    <a href="" class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolore? Sapiente similique minusE</a>
-                  </div>
-                  <div class="result  text-muted p-2 border-bottom">
-                    <a href="" class="text-muted">fugit iure adipisci! Ipsam,sequi. Dignissimos fugit accusamus debitis! </a>
-                  </div>
-                  <div class="result  text-muted p-2 border-bottom">
-                     <a href="" class="text-muted">Projets pour l'envirenement WASH</a>
-                  </div>
-                  <div class="result p-2 border-bottom">
-                    <a href="" class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolore? Sapiente similique minus</a>
-                  </div>
-                  <div class="result  text-muted p-2 border-bottom">
-                    <a href="" class="text-muted">Projets pour l'envirenement PAPAILLE</a>
-                  </div>
-                  <div class="result  text-muted p-2 border-bottom">
-                    <a href="" class="text-muted">fugit iure adipisci! Ipsam, sequi. Dignissimos fugit accusamus debitis! </a>
-                  </div>
-                  <div class="result  text-muted p-2 border-bottom">
-                     <a href="" class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolore? Sapiente similique minus</a>
-                  </div>
+                    <%@project.each do|projet|%>
+                      <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                        <a href="<%= projet_path(projet.id) %>" target="blank" class="text-muted"><%=projet.nom_du_projet%></a>
+                      </div>
+                    <%end%>
+                    <div class="text-muted mt-2">
+                      <%= paginate @project %>
+                    </div>
                 </div>
               </div>
               

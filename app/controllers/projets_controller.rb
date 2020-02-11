@@ -2,7 +2,7 @@ class ProjetsController < ApplicationController
   before_action :authenticate_user!, only:[:new, :create]
 
   def index
-     @project = Projet.all
+     @project = Projet.order(:id).page(params[:page]).per(8)
      #  = Project.where(validation: true)	
     
   end
