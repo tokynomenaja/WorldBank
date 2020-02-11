@@ -1077,31 +1077,13 @@
   </section>
 </main>
 </div>
-  
-  </div></div>
 
-    <!-- <p>affiche test</p>
-      <%if current_user%>
-            <li class="has-children">
-              <ul class="dropdown">
-                  
-                 
-                  <li><%=button_to 'deconnexion', destroy_user_session_path, method: :delete%></li>
-              </ul>
-            </li>
-          <%else%>
-           <li class="has-children">
-                <span class="dropdown-toggle"><a href="">Connexion</a></span>
-              <ul class="dropdown">
-                  <li><%=button_to new_user_registration_path, methode: :get %></a></li>
-                  <li><%=button_to new_user_session_path, methode: :get%></a></li>
-              </ul>
-            </li>
-          <%end%>
-        <a href="<%=new_projet_path%>">cree projet</a>
-    <%@project.each do|projet|%><br>
-      <%=projet.nom_du_projet%><br>
-      <%=projet.ptf%><br>
-      <%=projet.forme_d_appui%><br>
-      <a href="<%= projet_path(projet.id)%>">voir projet</a>
-<%end%> -->
+  </div></div>
+ <a href="<%=new_projet_path%>">cree projet</a>
+ <%if @results%>
+<h3>Search Result</h3>  
+    <% @results.each do |result| %>  
+        <%=link_to "#{result.nom_du_projet}", projet_path(result.id) %><br>  
+<%end%>
+<%end%>
+ 

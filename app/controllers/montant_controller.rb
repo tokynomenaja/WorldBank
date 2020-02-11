@@ -1,0 +1,2 @@
+class MontantController < ApplicationController
+end
