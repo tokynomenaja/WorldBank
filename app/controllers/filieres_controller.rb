@@ -1,0 +1,2 @@
+class FilieresController < ApplicationController
+end

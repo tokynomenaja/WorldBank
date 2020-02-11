@@ -3,7 +3,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.3'
 gem 'simple_form'
- gem 'table_print'
+
+gem  "ransack"
+
+gem 'table_print'
+
 gem 'faker'
 gem 'kaminari'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

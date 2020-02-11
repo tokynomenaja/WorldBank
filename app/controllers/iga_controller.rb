@@ -1,0 +1,2 @@
+class IgaController < ApplicationController
+end

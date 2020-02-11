@@ -1,19 +1,37 @@
-      <%=@project.nom_du_projet%><br>
-      <%=@project.ptf%><br>
+
+     <h4>TITRE DE PROJET</h4>
+        <%=@project.nom_du_projet%><br>
+    
+      <h4>PTF</h4>
+       <%=@project.ptf.title%><br>
+
+      <h4>DEBUT DU PROJET</h4>
+       <%=@project.debut_du_projet%>
+
+     <h4>FIN DU PROJET</h4>
+     <%=@project.fin%>
+
+     <h4>MONTANT</h4>
+      <%=@project.montant.price%>
+
+      <h4>SECTEUR</h4>
       <%@project.secteurprojets.each do|sp|%>
         <%=sp.secteur.title%><br>
       <%end%>
-      <%=@project.forme_d_appui%><br>
-      <%=@project.filière_associees%>
-      <%=@project.iga%><br>
-      <%=@project.objectif_generale_du_projet%><br>
-      <%=@project.aspsp%><br>
-      <%=@project.zone%><br>
-      <%=@project.partenaire_d_implementaton%><br>
-      <%=@project.beneficiaires%><br>
-      <%=@project.montant%><br>
-      <%=@project.nature_de_l_appui%>
-      <%=@project.debut_du_projet%>
-      <%=@project.fin%>
-      <%=@project.apdem%>
-    <a href="edit_projet_path(projet.id)">EDITER</a>
+
+      <h4>FILIERE</h4>
+       <%@project.filiereprojets.each do|fp|%>
+        <%=fp.filiere.title%><br>
+      <%end%>
+
+      <h4>IGA</h4>>
+         <%@project.igaprojets.each do|ip|%>
+        <%=ip.iga.title%><br>
+      <%end%>
+
+       <h4>ZONE D'INTERVENTION</h4>>
+         <%@project.zoneprojets .each do|zp|%>
+        <%=zp.zone.title %><br>
+      <%end%>
+
+    <a href="/projets/:id/edit">EDITER</a>
