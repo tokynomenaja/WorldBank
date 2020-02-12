@@ -4,7 +4,6 @@ class ProjetsController < ApplicationController
   def index
      @project = Projet.order(:id).page(params[:page]).per(8)
      #  = Project.where(validation: true)	
-    
   end
   def show
     @project = Projet.find(params[:id])
