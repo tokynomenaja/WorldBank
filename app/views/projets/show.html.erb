@@ -1,37 +1,120 @@
 
-     <h4>TITRE DE PROJET</h4>
-        <%=@project.nom_du_projet%><br>
-    
-      <h4>PTF</h4>
-       <%=@project.ptf.title%><br>
 
-      <h4>DEBUT DU PROJET</h4>
-       <%=@project.debut_du_projet%>
-
-     <h4>FIN DU PROJET</h4>
-     <%=@project.fin%>
-
-     <h4>MONTANT</h4>
-      <%=@project.montant.price%>
-
-      <h4>SECTEUR</h4>
+<div class="logo">
+  <div class="pic">
+    <div class="imge-rep d-flex align-items-center">
+    <img src="/assets/giz.jpg">
+    </div>
+  </div>
+  <div class="h-text text-white pr-4">
+    <h3><%=@project.nom_du_projet%></h3>
+    <p><span class="attr">Secteurs :</span>
+      <span class="word"></span>
       <%@project.secteurprojets.each do|sp|%>
-        <%=sp.secteur.title%><br>
-      <%end%>
+        <%=sp.secteur.title%> ,
+      <%end%>        
+  </p>
+  <p><span class="attr">Forme d'appui : </span>
+     <span class="word">Don</span>
+    </p>
+  <p><span class="attr">Filiere : </span>
+    <span class="word">
+      <%@project.filiereprojets.each do|fp|%>
+       <%=fp.filiere.title%>, 
+      <%end%> 
+    </span>     
+  </p>
+  </div>
+</div>
 
-      <h4>FILIERE</h4>
-       <%@project.filiereprojets.each do|fp|%>
-        <%=fp.filiere.title%><br>
-      <%end%>
+  <div class="show-cont">
+    <div class="objectif mx-auto">
+      <h2 class="text-left color">Objectif général du projet</h2>
+      <div class="mt-2 pt-2">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur, recusandae ipsam. Autem sequi dolores saepe harum reprehenderit 
+        veniam, quidem laborum consequuntur ad eius eaque sint commodi quia vero aliquid adipisci. Lorem ipsum dolor sit, amet consectetur 
+        adipisicing elit. Corporis mollitia amet cumque perferendis iure fugit obcaecati corrupti omnis, explicabo laudantium optio 
+        incidunt qui et animi enim totam id? Sequi, vero.
+      </div>
+      <div class="appui mt-4">
+        <h2 class="color text-left">Appui spécifique au secteur privé</h2>
+        <div class="p-2">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita vitae laudantium ad beatae, at accusamus facere ab doloribus
+            doloremque repudiandae exercitationem repellat nesciunt et dolores voluptatum rerum repellendus sunt facilis.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus ex minus accusamus voluptatum magni quam ratione
+            illum quis tempore, modi laboriosam praesentium voluptatem. Ex fugit laborum obcaecati ad ullam cumque!
+        </div>
+      </div>
 
-      <h4>IGA</h4>>
-         <%@project.igaprojets.each do|ip|%>
-        <%=ip.iga.title%><br>
-      <%end%>
+      <div class="row pt-4 pb-4">
+        <div class="col-md-6 list">
+          <p><span class="attr">Région</span> :</p>
+          <div>
+              <%@project.zoneprojets .each do|zp|%>
+                <span><%=zp.zone.title %>, </span>
+              <%end%>
+          </div>
+          <p><span class="attr">Partenaire d'implementation</span> :
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus, odit? Architecto consequatur consequuntur esse, </p>
+          </p>
+          <p><span class="attr">Bénéficiaire</span> :
+          <p>Necessitatibus, odit? Architecto consequatur consequuntur esse,</p>
+          </p>
+          <p><span class="attr">Montant :</span>
+           <p>Entre <%=@project.montant.price%> d'euros</p>
+          </p>
 
-       <h4>ZONE D'INTERVENTION</h4>>
-         <%@project.zoneprojets .each do|zp|%>
-        <%=zp.zone.title %><br>
-      <%end%>
+        </div>
+        <div class="col-md-6 list">
+          <p><span class="attr">Nature de l'appui : </span> <p>prêt</p> </p>
+          <p><span class="attr">Début : </span><p><%=@project.debut_du_projet%> </p></p>
+          <p><span class="attr">Fin : </span><p><%=@project.fin%></p></p>
+          <p><span class="attr">Alignement aux priorités du plan emergence de Madagascar : </span><p>Priorité 21, 25, 27</p></p>
+        </div>
+    </div>
+</div>
 
-    <a href="/projets/:id/edit">EDITER</a>
+
+
+<!-- 
+
+
+      <h4>TITRE DE PROJET</h4>
+      <%=@project.nom_du_projet%>
+  
+    <h4>PTF</h4>
+     <%=@project.ptf.title%><br>
+
+    <h4>DEBUT DU PROJET</h4>
+     <%=@project.debut_du_projet%>
+
+   <h4>FIN DU PROJET</h4>
+   <%=@project.fin%>
+
+   <h4>MONTANT</h4>
+    
+
+    <h4>SECTEUR</h4>
+    <%@project.secteurprojets.each do|sp|%>
+      <%=sp.secteur.title%><br>
+    <%end%>
+    <h4>shg</h4>
+<%= @project.forme_d_appui %>
+    <h4>FILIERE</h4>
+     <%@project.filiereprojets.each do|fp|%>
+      <%=fp.filiere.title%><br>
+    <%end%>
+
+    <h4>IGA</h4>>
+       <%@project.igaprojets.each do|ip|%>
+      <%=ip.iga.title%><br>
+    <%end%>
+
+     <h4>ZONE D'INTERVENTION</h4>>
+        <%@project.zoneprojets .each do|zp|%>
+          <%=zp.zone.title %><br>
+        <%end%> -->
+<div class="text-center">
+  <a href="/projets/:id/edit" class="sc-eerKOB cfnPHQ">Modifier</a>
+</div>
+  

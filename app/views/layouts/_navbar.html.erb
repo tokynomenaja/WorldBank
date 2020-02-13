@@ -58,13 +58,8 @@ window.__INITIAL_STATE__ = {"form":{},"routing":{"location":null},"notifications
         </div>
         <div class="sc-11unfkk-3 gbfQPZ">
           <nav class="q0xs59-8 gcmJEQ">
-            <div class="q0xs59-9 bHnYFi">
-              <div data-role="language:menu:dropdown" class="q0xs59-16 gZklzx">
-                <div class="q0xs59-13 ddGfFo">
-                <span>🇲🇬</span>
-                <span>mdg</span>
-                </div>
-              </div>
+            <div class="q0xs59-20 jhSsMU beamerTrigger">
+              <a href="#apropos" class="q0xs59-6 q0xs59-7 fwuAZd"><div>À propos</div></a>
             </div>
           </nav>
 
@@ -103,14 +98,13 @@ window.__INITIAL_STATE__ = {"form":{},"routing":{"location":null},"notifications
     </nav>
   
   <header class="sc-10fmshx-0 dCsOFK">
-    <a class="sc-10fmshx-1 iDRETp" href="#">
+    <a class="sc-10fmshx-1 iDRETp" href="<%= root_path %>">
       <%= image_tag "smb.png" ,class:"sc-10fmshx-2 dFNvVh"%>
     </a>
-    </a>
-    <nav class="yhmwkn-1 jIGhqS">
+    <nav class="show">
       <ul class="yhmwkn-2 fKSouh">
         <li class="yhmwkn-5 kARqAl">
-          <a class="yhmwkn-3 kJIsra" href="#apropos">À propos</a>
+          <a class="yhmwkn-3 kJIsra" href="/projets/new">Créer un projet</a>
         </li>
         <li class="yhmwkn-5 kARqAl">
           <a class="yhmwkn-3 kJIsra" href="#">Documents</a>
@@ -121,209 +115,20 @@ window.__INITIAL_STATE__ = {"form":{},"routing":{"location":null},"notifications
       </ul>
     </nav>
   
-    <div class="bt96d2-13 dwLDtk search"><div class="sc-1ejeabr-19 gQwHOW"><div placeholder="Email" class="sc-emmjRN hxQqtY"><div class="styles__Wrapper-zznoga-0 UxSKW"><input type="text" id="recherche" name="recherche" placeholder="Rechercher" value="" class="sc-jzgbtB bwwcKt"></div></div><button tabindex="0" type="submit" variant="primary" class="sc-eerKOB cfnPHQ"><span>Rechercher</span></button></divrm></div>
-  
-  </header>
-
-
-    <header class="aci59a-0 eyAIuG sticky-limit">
-    <div class="sc-1gnwgfb-2 hVIPFV">
+    <div class="bt96d2-13 dwLDtk search">
+      <%= form_tag(projets_path, :method => "get", class: 'sc-1ejeabr-19 gQwHOW') do %>
+        <div placeholder="Email" class="sc-emmjRN hxQqtY">
+          <div class="styles__Wrapper-zznoga-0 UxSKW">
+            <%= search_field_tag :search, params[:search], placeholder: "Rechercher", class: "sc-jzgbtB bwwcKt" %>
+          </div>
+        </div>
+        <button tabindex="0" type="submit" variant="primary" class="sc-eerKOB cfnPHQ"><span>Rechercher</span></button>
+      <% end %>
     </div>
   </header>
 
-  <!-- FILTRE  -->
-    <nav class="z0fved-5 gOGYTl">
-      <div class="z0fved-3 kBhqKR">
-        <div class="z0fved-1 jfmoVU">
-          <div class="fdk8rh-3 feYJJO">
-            <header class="fdk8rh-0 kYNMFW">
-              <h3 class="fdk8rh-1 eouleG"><span>PTF</span></h3>
-              <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
-                <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
-                  <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
-                    <g id="chevrondown-content" transform="translate(20.000000, 0.000000)">
-                      <g id="chevrondown-universes" transform="translate(335.000000, 1.000000)">
-                        <g id="chevrondown-23:20" transform="translate(20.000000, 23.000000)">
-                          <g id="chevrondown-arrow:-categories" transform="translate(56.000000, 4.000000)">
-                            <path d="M3.04856165,6.81528316 C2.80864582,7.06157228 2.41966343,7.06157228 2.17986408,6.81528316 C1.94004531,6.56921314 1.94004531,6.17011123 2.17986408,5.92406113 L5.51709927,2.49993527 L2.17996114,-0.92407109 C1.94014237,-1.1702407 1.94014237,-1.56930277 2.17996114,-1.81537279 C2.4197799,-2.0615424 2.80874288,-2.0615424 3.04865871,-1.81537279 L6.82020387,2.05442384 C6.94011325,2.17751861 7,2.33867714 7,2.49991535 C7,2.66123323 6.93999678,2.82251127 6.82010681,2.94554628 L3.04856165,6.81528316 Z" id="arrow" transform="translate(4.500000, 2.500000) rotate(-270.000000) translate(-4.500000, -2.500000) "></path>
-                          </g>
-                        </g>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </header>
-          </div>
 
-          <div class="fdk8rh-3 feYJJO">
-            <header class="fdk8rh-0 kYNMFW">
-              <h3 class="fdk8rh-1 eouleG"><span>secteur</span></h3>
-              <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
-                <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
-                  <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
-                    <g id="chevrondown-content" transform="translate(20.000000, 0.000000)">
-                      <g id="chevrondown-universes" transform="translate(335.000000, 1.000000)">
-                        <g id="chevrondown-23:20" transform="translate(20.000000, 23.000000)">
-                          <g id="chevrondown-arrow:-categories" transform="translate(56.000000, 4.000000)">
-                            <path d="M3.04856165,6.81528316 C2.80864582,7.06157228 2.41966343,7.06157228 2.17986408,6.81528316 C1.94004531,6.56921314 1.94004531,6.17011123 2.17986408,5.92406113 L5.51709927,2.49993527 L2.17996114,-0.92407109 C1.94014237,-1.1702407 1.94014237,-1.56930277 2.17996114,-1.81537279 C2.4197799,-2.0615424 2.80874288,-2.0615424 3.04865871,-1.81537279 L6.82020387,2.05442384 C6.94011325,2.17751861 7,2.33867714 7,2.49991535 C7,2.66123323 6.93999678,2.82251127 6.82010681,2.94554628 L3.04856165,6.81528316 Z" id="arrow" transform="translate(4.500000, 2.500000) rotate(-270.000000) translate(-4.500000, -2.500000) "></path>
-                          </g>
-                        </g>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </header>
-          </div>
-
-          <div class="fdk8rh-3 feYJJO">
-            <header class="fdk8rh-0 kYNMFW">
-              <h3 class="fdk8rh-1 eouleG"><span>Appui</span></h3>
-              <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
-                <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
-                  <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
-                    <g id="chevrondown-content" transform="translate(20.000000, 0.000000)">
-                      <g id="chevrondown-universes" transform="translate(335.000000, 1.000000)">
-                        <g id="chevrondown-23:20" transform="translate(20.000000, 23.000000)">
-                          <g id="chevrondown-arrow:-categories" transform="translate(56.000000, 4.000000)">
-                            <path d="M3.04856165,6.81528316 C2.80864582,7.06157228 2.41966343,7.06157228 2.17986408,6.81528316 C1.94004531,6.56921314 1.94004531,6.17011123 2.17986408,5.92406113 L5.51709927,2.49993527 L2.17996114,-0.92407109 C1.94014237,-1.1702407 1.94014237,-1.56930277 2.17996114,-1.81537279 C2.4197799,-2.0615424 2.80874288,-2.0615424 3.04865871,-1.81537279 L6.82020387,2.05442384 C6.94011325,2.17751861 7,2.33867714 7,2.49991535 C7,2.66123323 6.93999678,2.82251127 6.82010681,2.94554628 L3.04856165,6.81528316 Z" id="arrow" transform="translate(4.500000, 2.500000) rotate(-270.000000) translate(-4.500000, -2.500000) "></path>
-                          </g>
-                        </g>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </header>
-          </div>
-
-          <div class="fdk8rh-3 feYJJO">
-            <header class="fdk8rh-0 kYNMFW">
-              <h3 class="fdk8rh-1 eouleG"><span>Filiere</span></h3>
-              <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
-                <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
-                  <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
-                    <g id="chevrondown-content" transform="translate(20.000000, 0.000000)">
-                      <g id="chevrondown-universes" transform="translate(335.000000, 1.000000)">
-                        <g id="chevrondown-23:20" transform="translate(20.000000, 23.000000)">
-                          <g id="chevrondown-arrow:-categories" transform="translate(56.000000, 4.000000)">
-                            <path d="M3.04856165,6.81528316 C2.80864582,7.06157228 2.41966343,7.06157228 2.17986408,6.81528316 C1.94004531,6.56921314 1.94004531,6.17011123 2.17986408,5.92406113 L5.51709927,2.49993527 L2.17996114,-0.92407109 C1.94014237,-1.1702407 1.94014237,-1.56930277 2.17996114,-1.81537279 C2.4197799,-2.0615424 2.80874288,-2.0615424 3.04865871,-1.81537279 L6.82020387,2.05442384 C6.94011325,2.17751861 7,2.33867714 7,2.49991535 C7,2.66123323 6.93999678,2.82251127 6.82010681,2.94554628 L3.04856165,6.81528316 Z" id="arrow" transform="translate(4.500000, 2.500000) rotate(-270.000000) translate(-4.500000, -2.500000) "></path>
-                          </g>
-                        </g>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </header>
-          </div>
-
-          <div class="fdk8rh-3 feYJJO">
-            <header class="fdk8rh-0 kYNMFW">
-              <h3 class="fdk8rh-1 eouleG"><span>IGA</span></h3>
-              <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
-                <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
-                  <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
-                    <g id="chevrondown-content" transform="translate(20.000000, 0.000000)">
-                      <g id="chevrondown-universes" transform="translate(335.000000, 1.000000)">
-                        <g id="chevrondown-23:20" transform="translate(20.000000, 23.000000)">
-                          <g id="chevrondown-arrow:-categories" transform="translate(56.000000, 4.000000)">
-                            <path d="M3.04856165,6.81528316 C2.80864582,7.06157228 2.41966343,7.06157228 2.17986408,6.81528316 C1.94004531,6.56921314 1.94004531,6.17011123 2.17986408,5.92406113 L5.51709927,2.49993527 L2.17996114,-0.92407109 C1.94014237,-1.1702407 1.94014237,-1.56930277 2.17996114,-1.81537279 C2.4197799,-2.0615424 2.80874288,-2.0615424 3.04865871,-1.81537279 L6.82020387,2.05442384 C6.94011325,2.17751861 7,2.33867714 7,2.49991535 C7,2.66123323 6.93999678,2.82251127 6.82010681,2.94554628 L3.04856165,6.81528316 Z" id="arrow" transform="translate(4.500000, 2.500000) rotate(-270.000000) translate(-4.500000, -2.500000) "></path>
-                          </g>
-                        </g>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </header>
-          </div>
-
-          <div class="fdk8rh-3 feYJJO">
-            <header class="fdk8rh-0 kYNMFW">
-              <h3 class="fdk8rh-1 eouleG"><span>Zone</span></h3>
-              <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
-                <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
-                  <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
-                    <g id="chevrondown-content" transform="translate(20.000000, 0.000000)">
-                      <g id="chevrondown-universes" transform="translate(335.000000, 1.000000)">
-                        <g id="chevrondown-23:20" transform="translate(20.000000, 23.000000)">
-                          <g id="chevrondown-arrow:-categories" transform="translate(56.000000, 4.000000)">
-                            <path d="M3.04856165,6.81528316 C2.80864582,7.06157228 2.41966343,7.06157228 2.17986408,6.81528316 C1.94004531,6.56921314 1.94004531,6.17011123 2.17986408,5.92406113 L5.51709927,2.49993527 L2.17996114,-0.92407109 C1.94014237,-1.1702407 1.94014237,-1.56930277 2.17996114,-1.81537279 C2.4197799,-2.0615424 2.80874288,-2.0615424 3.04865871,-1.81537279 L6.82020387,2.05442384 C6.94011325,2.17751861 7,2.33867714 7,2.49991535 C7,2.66123323 6.93999678,2.82251127 6.82010681,2.94554628 L3.04856165,6.81528316 Z" id="arrow" transform="translate(4.500000, 2.500000) rotate(-270.000000) translate(-4.500000, -2.500000) "></path>
-                          </g>
-                        </g>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </header>
-          </div>
-
-          <div class="fdk8rh-3 feYJJO">
-            <header class="fdk8rh-0 kYNMFW">
-              <h3 class="fdk8rh-1 eouleG"><span>Beneficiaire</span></h3>
-              <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
-                <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
-                  <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
-                    <g id="chevrondown-content" transform="translate(20.000000, 0.000000)">
-                      <g id="chevrondown-universes" transform="translate(335.000000, 1.000000)">
-                        <g id="chevrondown-23:20" transform="translate(20.000000, 23.000000)">
-                          <g id="chevrondown-arrow:-categories" transform="translate(56.000000, 4.000000)">
-                            <path d="M3.04856165,6.81528316 C2.80864582,7.06157228 2.41966343,7.06157228 2.17986408,6.81528316 C1.94004531,6.56921314 1.94004531,6.17011123 2.17986408,5.92406113 L5.51709927,2.49993527 L2.17996114,-0.92407109 C1.94014237,-1.1702407 1.94014237,-1.56930277 2.17996114,-1.81537279 C2.4197799,-2.0615424 2.80874288,-2.0615424 3.04865871,-1.81537279 L6.82020387,2.05442384 C6.94011325,2.17751861 7,2.33867714 7,2.49991535 C7,2.66123323 6.93999678,2.82251127 6.82010681,2.94554628 L3.04856165,6.81528316 Z" id="arrow" transform="translate(4.500000, 2.500000) rotate(-270.000000) translate(-4.500000, -2.500000) "></path>
-                          </g>
-                        </g>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </header>
-          </div>
-
-          <div class="fdk8rh-3 feYJJO">
-            <header class="fdk8rh-0 kYNMFW">
-              <h3 class="fdk8rh-1 eouleG"><span>Montant</span></h3>
-              <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
-                <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
-                  <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
-                    <g id="chevrondown-content" transform="translate(20.000000, 0.000000)">
-                      <g id="chevrondown-universes" transform="translate(335.000000, 1.000000)">
-                        <g id="chevrondown-23:20" transform="translate(20.000000, 23.000000)">
-                          <g id="chevrondown-arrow:-categories" transform="translate(56.000000, 4.000000)">
-                            <path d="M3.04856165,6.81528316 C2.80864582,7.06157228 2.41966343,7.06157228 2.17986408,6.81528316 C1.94004531,6.56921314 1.94004531,6.17011123 2.17986408,5.92406113 L5.51709927,2.49993527 L2.17996114,-0.92407109 C1.94014237,-1.1702407 1.94014237,-1.56930277 2.17996114,-1.81537279 C2.4197799,-2.0615424 2.80874288,-2.0615424 3.04865871,-1.81537279 L6.82020387,2.05442384 C6.94011325,2.17751861 7,2.33867714 7,2.49991535 C7,2.66123323 6.93999678,2.82251127 6.82010681,2.94554628 L3.04856165,6.81528316 Z" id="arrow" transform="translate(4.500000, 2.500000) rotate(-270.000000) translate(-4.500000, -2.500000) "></path>
-                          </g>
-                        </g>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </header>
-          </div>
-
-          <div class="fdk8rh-3 feYJJO">
-            <header class="fdk8rh-0 kYNMFW">
-              <h3 class="fdk8rh-1 eouleG"><span>periode</span></h3>
-              <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
-                <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
-                  <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
-                    <g id="chevrondown-content" transform="translate(20.000000, 0.000000)">
-                      <g id="chevrondown-universes" transform="translate(335.000000, 1.000000)">
-                        <g id="chevrondown-23:20" transform="translate(20.000000, 23.000000)">
-                          <g id="chevrondown-arrow:-categories" transform="translate(56.000000, 4.000000)">
-                            <path d="M3.04856165,6.81528316 C2.80864582,7.06157228 2.41966343,7.06157228 2.17986408,6.81528316 C1.94004531,6.56921314 1.94004531,6.17011123 2.17986408,5.92406113 L5.51709927,2.49993527 L2.17996114,-0.92407109 C1.94014237,-1.1702407 1.94014237,-1.56930277 2.17996114,-1.81537279 C2.4197799,-2.0615424 2.80874288,-2.0615424 3.04865871,-1.81537279 L6.82020387,2.05442384 C6.94011325,2.17751861 7,2.33867714 7,2.49991535 C7,2.66123323 6.93999678,2.82251127 6.82010681,2.94554628 L3.04856165,6.81528316 Z" id="arrow" transform="translate(4.500000, 2.500000) rotate(-270.000000) translate(-4.500000, -2.500000) "></path>
-                          </g>
-                        </g>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </header>
-          </div>
-        </div>
-      </div>
-    </nav>
-    <!-- FIN FILTRE -->
+  <header class="aci59a-0 eyAIuG sticky-limit">
+    <div class="sc-1gnwgfb-2 hVIPFV">
+    </div>
+  </header>
