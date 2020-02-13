@@ -17,14 +17,14 @@
 			      <h6>SECTEURS</h6>
 					<ul>
 						 <% Secteur.all.each do |c| %><br>
-						  <%= check_box_tag "secteur_ids[]", c.id, :id => "secteur_ids_#{c.id}"%>
-						  <%=h c.title%>
+						  
+						   <%=h c.title%> 
 						<% end %>
 					</ul>
 					<h6>FILIERE</h6>
 					<ul>
 						 <% Filiere.all.each do |c| %><br>
-						  <%= check_box_tag "filiere_ids[]", c.id, :id => "filiere_ids_#{c.id}"%>
+						  <%= check_box("tag",c.id, {checked: false}) %>
 						  <%=h c.title%>
 						<% end %>
 					</ul>
@@ -32,7 +32,7 @@
 					<h6>BENEFICIAIRE</h6>
 					<ul>
 						 <% Beneficiaire.all.each do |c| %><br>
-						  <%= check_box_tag "beneficiaire_ids[]", c.id, :id => "beneficiaire_ids_#{c.id}"%>
+						  <%= check_box("tag",c.id, {checked: false}) %>
 						  <%=h c.title%>
 						<% end %>
 					</ul>			        
@@ -40,14 +40,14 @@
 					<h6>IGA(institution gouvernemental associé)</h6>
 			  <ul>
 						 <% Iga.all.each do |c| %><br>
-						  <%= check_box_tag "iga_ids[]", c.id, :id => "iga_ids_#{c.id}"%>
+						 <%= check_box("tag",c.id, {checked: false}) %>
 						  <%=h c.title%>
 						<% end %>
 					</ul>
 					<h6>ZONE D'INTERVENTION</h6>
 					<ul>
 						 <% Zone.all.each do |c| %><br>
-						  <%= check_box_tag "zone_ids[]", c.id, :id => "zone_ids_#{c.id}"%>
+						 <%= check_box("tag",c.id, {checked: false}) %>
 						  <%=h c.title%>
 						<% end %>
 					</ul>

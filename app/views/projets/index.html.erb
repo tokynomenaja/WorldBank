@@ -201,7 +201,7 @@
 
 <%if @results %>
   <%@results.each do | result|%><br>
-    <%= link_to "#{result.nom_du_projet}" , projet_path(@project.id)  %>
+    <%= link_to "#{result.nom_du_projet}" , projets_path  %>
   <%end%>
 <%end%>
 

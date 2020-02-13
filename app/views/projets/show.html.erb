@@ -1,10 +1,14 @@
-
+<body>
      <h4>TITRE DE PROJET</h4>
         <%=@project.nom_du_projet%><br>
     
       <h4>PTF</h4>
        <%=@project.ptf.title%><br>
 
+       <h4>OBJECTIF DU PROJET</h4>
+       <%=@project.objectif_generale_du_projet%>
+       <h4>SECTEUR PRIVE ASSOCIE</h4>
+       <%=@project.aspsp%>
       <h4>DEBUT DU PROJET</h4>
        <%=@project.debut_du_projet%>
 
@@ -42,3 +46,5 @@
       <%end%>
 
     <a href="/projets/:id/edit">EDITER</a>
+
+</body>

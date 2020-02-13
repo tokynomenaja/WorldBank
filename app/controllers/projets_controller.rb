@@ -1,7 +1,7 @@
 class ProjetsController < ApplicationController
   before_action :authenticate_user!, only:[:new, :create] 
     def index
-      @project = Projet.order(:id).page(params[:page]).per(8)
+      @project = Projet.order(:id).page(params[:page]).per(3)
 
 
        #recherche controller globale(titre du projet)
@@ -130,6 +130,7 @@ class ProjetsController < ApplicationController
                 aspsp: params[:aspsp],
                 partenaire_d_implementaton: params[:partenaire_d_implementaton],
                 montant_id: params[:montant_id],
+                forme_d_appui: params[:forme_d_appui],
                 debut_du_projet: params[:debut_du_projet],
                 fin: params[:fin],
                 apdem: params[:apdem])
