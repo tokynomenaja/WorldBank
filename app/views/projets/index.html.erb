@@ -198,11 +198,81 @@
               </header>
           </div>
   </div></div>
- <a href="<%=new_projet_path%>">cree projet</a>
- <%if @results%>
-<h3>Search Result</h3>  
-    <% @results.each do |result| %>  
-        <%=link_to "#{result.nom_du_projet}", projet_path(result.id) %><br>  
+ <a href="<%=new_projet_path%>">cree projet</a><br>
+
+<%if @results %>
+  <%@results.each do | result|%><br>
+    <%= link_to "#{result.nom_du_projet}" , projet_path(@project.id)  %>
+  <%end%>
+<%end%>
+
+               <%if @res%>
+                 <h3>Search Result zone</h3>  
+                      <% @res.each do |res| %>  
+                      <%= link_to "#{res.projet.nom_du_projet}", projets_path %><br> 
+              <%end%>
+              <%end%>
+
+ <%if @search%>
+   <h3>Search Result </h3>  
+        <% @search.each do |res| %>  
+        <%= link_to "#{res.projet.nom_du_projet}",  projets_path%><br> 
+          
 <%end%>
 <%end%>
+
+             <%if @filiere%>
+               <h3>filiere Result Iga</h3>  
+                    <% @filiere.each do |res| %>  
+                   <%= link_to "#{res.projet.nom_du_projet}", projets_path %><br> 
+                      
+            <%end%>
+            <%end%>
+             
+             <%if @secteur%>
+               <h3>Search Result secteur</h3>  
+                    <% @secteur.each do |res| %>  
+                   <%= link_to "#{res.projet.nom_du_projet}", projets_path%><br> 
+                      
+            <%end%>
+            <%end%>
+
+             <%if @montant%>
+                   <h3>Search Result montant</h3>  
+                        <% @montant.each do |res| %>  
+                       <%= link_to "#{res.nom_du_projet}", projets_path%><br>        
+                <%end%>
+            <%end%>
+
+             <%if @ptf%>
+                   <h3>Search Result montant</h3>  
+                        <% @ptf.each do |res| %>  
+                       <%= link_to "#{res.nom_du_projet}", projets_path%><br>        
+                <%end%>
+            <%end%>
+
+            <%if @ptf%>
+                   <h3>Search Result appui</h3>  
+                        <% @appui.each do |res| %>  
+                       <%= link_to "#{res.nom_du_projet}", projets_path%><br>        
+                <%end%>
+            <%end%>
+
+
+
+            <%if @ben%>
+                   <h3>Search Result appui</h3>  
+                        <% @ben.each do |res| %>  
+                       <%= link_to "#{res.projet.nom_du_projet}", projets_path%><br>        
+                <%end%>
+            <%end%>
+              
+
+             <%if @fin%>
+                   <h3>Search Result appui</h3>  
+                        <% @fin.each do |res| %>  
+                       <%= link_to "#{res.nom_du_projet}", projets_path%><br>        
+                <%end%>
+            <%end%>
  
+     

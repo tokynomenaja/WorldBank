@@ -21,11 +21,26 @@ puts "Filiere crée"
 
 
 Ptf.destroy_all
-      c1 = Ptf.create!(title: "AFD")
-      c2 = Ptf.create!(title: "BANQUE MONDIAL")
-      c3 = Ptf.create!(title: "FIDA")
-      c4 = Ptf.create!(title: "ONUDI")
+      c1 = Ptf.create!(title: "Helvetas")
+      c2 = Ptf.create!(title: "FMI")
+      c3 = Ptf.create!(title: "IFC")
+      c4 = Ptf.create!(title: "UE")
       c5 = Ptf.create!(title: "UNICEF")
+      c6 = Ptf.create!(title: "GIZ")
+      c7 = Ptf.create!(title: "Agence Française de Developpement")
+      c8 = Ptf.create!(title: "ONUDI")
+      c9 = Ptf.create!(title: "JICA")
+      c10 = Ptf.create!(title: "USAID")
+      c11 = Ptf.create!(title: "BAD")
+      c12 = Ptf.create!(title: "PNUD")
+      c13 = Ptf.create!(title: "FIDA")
+      c14= Ptf.create!(title: "CNUCED")
+      c12 = Ptf.create!(title: "Fond Europeen Developpement")
+      c13 = Ptf.create!(title: "BANQUE MONDIALE")
+    
+      
+
+
 
 puts "Ptf"
 
@@ -104,3 +119,28 @@ puts "zone cree"
       m5= Montant.create!(price:"35M-40M")
       m6 = Montant.create!(price:"45M-50M")
       m7 = Montant.create!(price:"50M-55M")
+
+
+Appui.destroy_all
+      
+      a1 = Appui.create!(title:"Prêt")
+      a2 = Appui.create!(title:"Don")
+Beneficiaire.destroy_all
+      
+       b1 = Beneficiaire.create!(title:"Douane")
+       b2 = Beneficiaire.create!(title:"Ministères
+                                  Operateurs Miniers")
+       b3 = Beneficiaire.create!(title:"Producteurs Ménages Ruraux")
+       b4 = Beneficiaire.create!(title:"Micro-entreprises Rurales
+                                  Jeunes")
+       b5 = Beneficiaire.create!(title:"Petites Industries Rurales
+                                  Secteur-Privé")
+       b6 = Beneficiaire.create!(title:"Producteurs
+                                  Secteur-Privé")
+       b7 = Beneficiaire.create!(title:"Citoyens
+                                  Touristes
+                                  Secteur-Privé")
+       b8 = Beneficiaire.create!(title:"Institutions de micro-finance")
+       b9 = Beneficiaire.create!(title:"")
+       b10 = Beneficiaire.create!(title:"")
+       b12 = Beneficiaire.create!(title:"")

@@ -1,0 +1,3 @@
+class BeneficiaireController < ApplicationController
+	
+end

@@ -12,6 +12,8 @@
 
 			      <h6>MONTANT DU PROJET</h6>
 					   <%= select_tag 'montant_id', options_for_select(Montant.all.collect{ |c| [c.price, c.id] }), class: "form-input"%><br>
+					 <h6>APPUI</h6>
+					   <%= select_tag 'appui_id', options_for_select(Appui.all.collect{ |c| [c.title, c.id] }), class: "form-input"%><br>
 			      <h6>SECTEURS</h6>
 					<ul>
 						 <% Secteur.all.each do |c| %><br>
@@ -26,6 +28,15 @@
 						  <%=h c.title%>
 						<% end %>
 					</ul>
+					
+					<h6>BENEFICIAIRE</h6>
+					<ul>
+						 <% Beneficiaire.all.each do |c| %><br>
+						  <%= check_box_tag "beneficiaire_ids[]", c.id, :id => "beneficiaire_ids_#{c.id}"%>
+						  <%=h c.title%>
+						<% end %>
+					</ul>			        
+        
 					<h6>IGA(institution gouvernemental associé)</h6>
 			  <ul>
 						 <% Iga.all.each do |c| %><br>
@@ -40,8 +51,5 @@
 						  <%=h c.title%>
 						<% end %>
 					</ul>
-
-			        
-        <input type="text" name="appui_specifique_au_secteur_prive" placeholder="Appui specifique au secteur prive"><br>
-      <input type="submit" value="save">
+			<input type="submit" name="">
 <%end%>

@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_10_114933) do
+ActiveRecord::Schema.define(version: 2020_02_12_135015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appuis", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "beneficiaires", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "benefprojets", force: :cascade do |t|
+    t.bigint "projet_id"
+    t.bigint "beneficiaire_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["beneficiaire_id"], name: "index_benefprojets_on_beneficiaire_id"
+    t.index ["projet_id"], name: "index_benefprojets_on_projet_id"
+  end
 
   create_table "filiereprojets", force: :cascade do |t|
     t.bigint "projet_id"
@@ -59,11 +80,11 @@ ActiveRecord::Schema.define(version: 2020_02_10_114933) do
     t.string "aspsp"
     t.string "zone"
     t.string "partenaire_d_implementaton"
-    t.string "beneficiaires"
-    t.string "nature_de_l_appui"
     t.string "debut_du_projet"
     t.string "fin"
     t.string "apdem"
+    t.bigint "beneficiaire_id"
+    t.bigint "appui_id"
     t.bigint "periode_id"
     t.bigint "montant_id"
     t.bigint "zone_id"
@@ -73,6 +94,8 @@ ActiveRecord::Schema.define(version: 2020_02_10_114933) do
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["appui_id"], name: "index_projets_on_appui_id"
+    t.index ["beneficiaire_id"], name: "index_projets_on_beneficiaire_id"
     t.index ["iga_id"], name: "index_projets_on_iga_id"
     t.index ["montant_id"], name: "index_projets_on_montant_id"
     t.index ["periode_id"], name: "index_projets_on_periode_id"

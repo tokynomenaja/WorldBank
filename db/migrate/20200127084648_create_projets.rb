@@ -8,8 +8,6 @@ class CreateProjets < ActiveRecord::Migration[6.0]
       t.string :aspsp
       t.string :zone
       t.string :partenaire_d_implementaton
-      t.string :beneficiaires
-      t.string  :nature_de_l_appui
       t.string :debut_du_projet
       t.string :fin
       t.string :apdem
@@ -19,8 +17,8 @@ class CreateProjets < ActiveRecord::Migration[6.0]
 
 
 
-
-
+      t.belongs_to :beneficiaire, index: true
+      t.belongs_to :appui, index: true
       t.belongs_to :periode, index: true
       t.belongs_to :montant, index: true 
       t.belongs_to :zone, index: true
