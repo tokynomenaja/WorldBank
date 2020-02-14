@@ -333,94 +333,39 @@ window.__INITIAL_STATE__ = {"form":{},"routing":{"location":null},"notifications
                    class: 'navbar-form navbar-left') do %>  
                    <%= select_tag 'search_zone' , options_for_select(Zone.all.collect{ |c| [c.title, c.id]}), class: "form-input"
                    %><br> 
-                   <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%> 
-              <%end%>
-
-
-                          <%= form_tag(projets_path, :method => "get",   
-                            class: 'navbar-form navbar-left') do %> 
                             <h3>MONTANT</h3>
                             <%= select_tag 'montant_id' , options_for_select(Montant.all.collect{ |c| [c.price,c.id]}), class: "form-input"
                             %><br> 
-                            <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
-                            </div>  
-                         <%end%>
-
-
-                          <%= form_tag(projets_path, :method => "get",   
-                            class: 'navbar-form navbar-left') do %> 
+                          
                             <h3>APPUI</h3>
                             <%= select_tag 'appui_id' , options_for_select(Appui.all.collect{ |c| [c.title,c.id]}), class: "form-input"
                             %><br> 
-                            <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
-                            </div>  
-                         <%end%>
+                          
 
-
-                          <%= form_tag(projets_path, :method => "get",   
-                            class: 'navbar-form navbar-left') do %> 
                             <h3>PTF</h3>
                             <%= select_tag 'ptf_id' , options_for_select(Ptf.all.collect{ |c| [c.title,c.id]}), class: "form-input"
                             %><br> 
-                            <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
-                            </div>  
-                         <%end%>
-
-
-
-
-
-
-
-
-                <%= form_tag(projets_path, :method => "get",   
-                    class: 'navbar-form navbar-left') do %> 
                     <h3>IGA</h3>
                     <%= select_tag 'search_iga' , options_for_select(Iga.all.collect{ |c| [c.title,c.id]}), class: "form-input"
                     %><br> 
-                    <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
-                    </div>  
-               <%end%>
-
-
-                        <%= form_tag(projets_path, :method => "get",   
-                            class: 'navbar-form navbar-left') do %> 
                             <h3>FILIERE</h3>
                             <%= select_tag 'search_filiere' , options_for_select(Filiere.all.collect{ |c| [c.title,c.id]}),
                             class: "form-input"
                             %><br> 
-                            <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
-                            </div>  
-                        <%end%>
+                           
 
-                  <%= form_tag(projets_path, :method => "get",   
-                            class: 'navbar-form navbar-left') do %> 
+               
                             <h3>SECTEUR</h3>
                             <%= select_tag 'search_secteur' , options_for_select(Secteur.all.collect{ |c| [c.title,c.id]}),
                             class: "form-input"
                             %><br> 
-                            <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
-                            </div>  
-                        <%end%>
-
-
-                  <%= form_tag(projets_path, :method => "get",   
-                            class: 'navbar-form navbar-left') do %> 
                             <h3>BENEFICIAIRE</h3>
                             <%= select_tag 'search_ben' , options_for_select(Beneficiaire.all.collect{ |c| [c.title,c.id]}),
                             class: "form-input"
                             %><br> 
-                            <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
-                            </div>  
-                        <%end%>
-
-
-
-                  <%= form_tag(projets_path, :method => "get",   
-                            class: 'navbar-form navbar-left') do %> 
                             <h3>FIN DU PROJET</h3>
                          <input type="date" name="fin">
                             %><br> 
-                            <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
-                            </div>  
+                            </div> 
+                            <%= button_tag "search", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>   
                         <%end%>

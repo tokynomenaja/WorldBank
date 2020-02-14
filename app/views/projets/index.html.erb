@@ -8,10 +8,62 @@
           <div class="row no-gutters">
             <div class="col-sm-5">
               <div class="filter pt-2 pb-2">
-                <p class="text-muted mb-1"><span>PTF :</span> FIDA</p>
-                <p class="text-muted mb-1"><span>Secteur :</span> Agricole</p>
-                <p class="text-muted mb-1"><span>Zone :</span> Vatovavy-Fitovinany</p class="text-muted">
-                <p class="text-muted mb-1"><span>Montant :</span> Entre 5 millions et 10 millions d'euro </p class="text-muted">
+                <p class="text-muted mb-1"><span>PTF :</span> 
+              <%if @results %>
+                <%@results.each do | result|%><br>
+                  <%= link_to "#{result.ptf.title}" , projets_path  %>
+                <%end%>
+              <%end%>
+               <%if @res%>
+                      <% @res.each do |res| %>  
+                      <%= link_to "#{res.projet.ptf.title}", projets_path %><br> 
+                  <%end%>
+                <%end%>
+              <%if @search%>
+                  <% @search.each do |res| %>  
+                  <%= link_to "#{res.projet.ptf.title}",  projets_path%><br> 
+                  <%end%>
+                <%end%>
+
+
+             <%if @filiere%>
+                  <% @filiere.each do |res| %>  
+                  <%= link_to "#{res.projet.ptf.title}", projets_path %><br>         
+               <%end%>
+            <%end%>
+        
+                     <%if @secteur%>
+                  <% @secteur.each do |res| %>  
+                  <%= link_to "#{res.projet.ptf.title}", projets_path%><br>          
+              <%end%>
+            <%end%>
+             <%if @montant%>
+                    <% @montant.each do |res| %>  
+                    <%= link_to "#{res.ptf.title}", projets_path%><br>        
+                <%end%>
+            <%end%>
+            <%if @ben%>
+                   <% @ben.each do |res| %>  
+                   <%= link_to "#{res.projet.ptf_id}", projets_path%><br>        
+                <%end%>
+            <%end%>
+             <%if @fin%> 
+                     <% @fin.each do |res| %>  
+                     <%= link_to "#{res.ptf_id}", projets_path%><br>        
+                <%end%>
+            <%end%>
+               <%if @ptf%>    
+                    <% @ptf.each do |res| %>  
+                    <%= link_to "#{res.projet.ptf_id}", projets_path%><br>        
+                <%end%>
+            <%end%>
+            </p>                
+                <p class="text-muted mb-1"><span>Secteur :</span> 
+               </p>
+                <p class="text-muted mb-1"><span>Zone :</span>   
+           </p class="text-muted">
+                <p class="text-muted mb-1"><span>Montant :</span> 
+            </p class="text-muted">
               </div>
             </div>
             <div class="col-sm-7 pl-2">
@@ -198,81 +250,4 @@
 </div>
   </div></div>
  <a href="<%=new_projet_path%>">cree projet</a><br>
-
-<%if @results %>
-  <%@results.each do | result|%><br>
-    <%= link_to "#{result.nom_du_projet}" , projets_path  %>
-  <%end%>
-<%end%>
-
-               <%if @res%>
-                 <h3>Search Result zone</h3>  
-                      <% @res.each do |res| %>  
-                      <%= link_to "#{res.projet.nom_du_projet}", projets_path %><br> 
-              <%end%>
-              <%end%>
-
- <%if @search%>
-   <h3>Search Result </h3>  
-        <% @search.each do |res| %>  
-        <%= link_to "#{res.projet.nom_du_projet}",  projets_path%><br> 
-          
-<%end%>
-<%end%>
-
-             <%if @filiere%>
-               <h3>filiere Result Iga</h3>  
-                    <% @filiere.each do |res| %>  
-                   <%= link_to "#{res.projet.nom_du_projet}", projets_path %><br> 
-                      
-            <%end%>
-            <%end%>
-             
-             <%if @secteur%>
-               <h3>Search Result secteur</h3>  
-                    <% @secteur.each do |res| %>  
-                   <%= link_to "#{res.projet.nom_du_projet}", projets_path%><br> 
-                      
-            <%end%>
-            <%end%>
-
-             <%if @montant%>
-                   <h3>Search Result montant</h3>  
-                        <% @montant.each do |res| %>  
-                       <%= link_to "#{res.nom_du_projet}", projets_path%><br>        
-                <%end%>
-            <%end%>
-
-             <%if @ptf%>
-                   <h3>Search Result montant</h3>  
-                        <% @ptf.each do |res| %>  
-                       <%= link_to "#{res.nom_du_projet}", projets_path%><br>        
-                <%end%>
-            <%end%>
-
-            <%if @ptf%>
-                   <h3>Search Result appui</h3>  
-                        <% @appui.each do |res| %>  
-                       <%= link_to "#{res.nom_du_projet}", projets_path%><br>        
-                <%end%>
-            <%end%>
-
-
-
-            <%if @ben%>
-                   <h3>Search Result appui</h3>  
-                        <% @ben.each do |res| %>  
-                       <%= link_to "#{res.projet.nom_du_projet}", projets_path%><br>        
-                <%end%>
-            <%end%>
-              
-
-             <%if @fin%>
-                   <h3>Search Result appui</h3>  
-                        <% @fin.each do |res| %>  
-                       <%= link_to "#{res.nom_du_projet}", projets_path%><br>        
-                <%end%>
-            <%end%>
- 
-     
 
