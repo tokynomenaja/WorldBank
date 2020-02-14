@@ -1,15 +1,7 @@
 class HomeController < ApplicationController
   def index
     @project = Projet.order(:id).page(params[:page]).per(3)
-  #recherche controller globale(titre du projet)
-      if params[:search]
-        if params[:search] == 1
-            redirect_to(root_path)
-        else  
-          @parameter = params[:search].downcase  
-          @results = Projet.all.where("lower(nom_du_projet) LIKE :search", search: "%#{@parameter}%")  
-        end  
-    end 
+
   #recherhe controller ptf
     if params[:ptf_id]
           Ptf.find(params[:ptf_id]).projets
