@@ -1,3 +1,4 @@
+
 <div class="logo">
   <div class="pic">
     <div class="imge-rep d-flex align-items-center">
@@ -8,6 +9,7 @@
     <h3><%=@project.nom_du_projet%></h3>
     <p><span class="attr">Secteurs :</span>
       <span class="word"></span>
+
       <%@project.secteurprojets.each do|sp|%>
         <%=sp.secteur.title%> ,
       <%end%>        

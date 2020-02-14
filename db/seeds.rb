@@ -10,7 +10,7 @@
  
   
 Secteur.destroy_all
-
+      c0 = Secteur.create!(title:"")
       c1 = Secteur.create!(title: "MICROFINANCE")
       c2 = Secteur.create!(title: "INDUSTRIE EXTRACTIVE")
       c3 = Secteur.create!(title: "COMMERCE")   
@@ -26,7 +26,7 @@ puts "Filiere crée"
 
 
 Ptf.destroy_all
-
+      c0  = Ptf.create!(title:"")
       c1  = Ptf.create!(title: "Helvetas")
       c2  = Ptf.create!(title: "FMI")
       c3  = Ptf.create!(title: "IFC")
@@ -51,6 +51,7 @@ Ptf.destroy_all
 puts "Ptf"
 
 Filiere.destroy_all
+      c0 = Filiere.create!(title:"")
       c1 = Filiere.create!(title: "Apiculture")
       c2 = Filiere.create!(title: "Artisanat")
       c3 = Filiere.create!(title: "Aviculture")
@@ -70,7 +71,7 @@ Filiere.destroy_all
  puts "Filiere create"    
 
 Iga.destroy_all
-      
+      c0 = Iga.create!(title:"")
       c1 = Iga.create!(title: "Ministère de l’Energie, de l’Eau et des Hydrocarbures")
       c2 = Iga.create!(title: "Ministère de l Economie et des Finances")
       c3 = Iga.create!(title: "MICA (Ministère de l’Industrie, du Commerce et de l’Artisanat )")
@@ -91,7 +92,7 @@ Iga.destroy_all
 puts "iga create"
 
 Zone.destroy_all
-
+      z0 = Zone.create!(title:"")
       z1 = Zone.create!(title:"Diana")
       z2 = Zone.create!(title:"Sava")
       z3 = Zone.create!(title:"Itasy")
@@ -126,7 +127,7 @@ Zone.destroy_all
 puts "zone create"
  
  Montant.destroy_all
-
+      m1 = Montant.create!(price:"")
       m1 = Montant.create!(price:"5M-10M")
       m2 = Montant.create!(price:"10M-15M")
       m3 = Montant.create!(price:"15M-20M")
@@ -138,7 +139,7 @@ puts "zone create"
       m9 = Montant.create!(price:"65M-70M")
 
 Appui.destroy_all
-      
+      a0 = Appui.create!(title:"")
       a1 = Appui.create!(title:"Prêt")
       a2 = Appui.create!(title:"Don")
 
@@ -146,7 +147,7 @@ puts "Appui create"
 
 
 Beneficiaire.destroy_all
-      
+       b0 = Beneficiaire.create!(title:"")
        b1 = Beneficiaire.create!(title:"Douane")
        b2 = Beneficiaire.create!(title:"Ministères
                                   Operateurs Miniers")
@@ -214,24 +215,24 @@ puts "Beneficiaire"
               @pro.save
            
 
-                Zoneprojet.create!(projet_id: 1 , zone_id: 1)
-                Zoneprojet.create!(projet_id: 1 , zone_id: 17)
-                Zoneprojet.create!(projet_id: 1 , zone_id: 22)
+                Zoneprojet.create!(projet_id: 1 , zone_id: 2)
+                Zoneprojet.create!(projet_id: 1 , zone_id: 18)
                 Zoneprojet.create!(projet_id: 1 , zone_id: 23)
+                Zoneprojet.create!(projet_id: 1 , zone_id: 24)
 
-                Benefprojet.create!(projet_id: 1 , beneficiaire_id: 9)
                 Benefprojet.create!(projet_id: 1 , beneficiaire_id: 10)
                 Benefprojet.create!(projet_id: 1 , beneficiaire_id: 11)
                 Benefprojet.create!(projet_id: 1 , beneficiaire_id: 12)
                 Benefprojet.create!(projet_id: 1 , beneficiaire_id: 13)
+                Benefprojet.create!(projet_id: 1 , beneficiaire_id: 14)
 
-                Igaprojet.create!(projet_id: 1 , iga_id: 3)
-                Igaprojet.create!(projet_id: 1 , iga_id: 11)
+                Igaprojet.create!(projet_id: 1 , iga_id: 4)
                 Igaprojet.create!(projet_id: 1 , iga_id: 12)
+                Igaprojet.create!(projet_id: 1 , iga_id: 13)
 
 
-                Secteurprojet.create(projet_id: 1 , secteur_id: 6)
-                Secteurprojet.create(projet_id: 1 , secteur_id: 7)
+                Secteurprojet.create(projet_id: 1 , secteur_id: 14)
+                Secteurprojet.create(projet_id: 1 , secteur_id: 15)
 
 puts "projet create1"
  
@@ -258,22 +259,22 @@ puts "projet create1"
                 @pro2.save
            
 
-                Zoneprojet.create!(projet_id: 2 , zone_id: 24)
+                Zoneprojet.create!(projet_id: 2 , zone_id: 25)
                
 
-                Benefprojet.create!(projet_id: 2 , beneficiaire_id: 14)
                 Benefprojet.create!(projet_id: 2 , beneficiaire_id: 15)
                 Benefprojet.create!(projet_id: 2 , beneficiaire_id: 16)
+                Benefprojet.create!(projet_id: 2 , beneficiaire_id: 17)
                
 
-                Igaprojet.create!(projet_id: 2 , iga_id: 12)
                 Igaprojet.create!(projet_id: 2 , iga_id: 13)
                 Igaprojet.create!(projet_id: 2 , iga_id: 14)
+                Igaprojet.create!(projet_id: 2 , iga_id: 15)
 
 
-                Secteurprojet.create(projet_id: 2 , secteur_id: 8)
                 Secteurprojet.create(projet_id: 2 , secteur_id: 9)
                 Secteurprojet.create(projet_id: 2 , secteur_id: 10)
+                Secteurprojet.create(projet_id: 2 , secteur_id: 11)
 
 
 puts "projet create1"
@@ -314,31 +315,31 @@ puts "projet create1"
                 fin: "2021", 
                 apdem: "Priorité 8, 27")
 
-                @pro3.ptf = Ptf.find(13)
-                @pro3.montant = Montant.find(7)
-                @pro3.appui = Appui.find(1)
+                @pro3.ptf = Ptf.find(14)
+                @pro3.montant = Montant.find(8)
+                @pro3.appui = Appui.find(2)
                 @pro3.save
            
 
+                Zoneprojet.create!(projet_id: 3 , zone_id: 14)
                 Zoneprojet.create!(projet_id: 3 , zone_id: 13)
-                Zoneprojet.create!(projet_id: 3 , zone_id: 12)
-                Zoneprojet.create!(projet_id: 3 , zone_id:  5)
                 Zoneprojet.create!(projet_id: 3 , zone_id:  4)
-                Zoneprojet.create!(projet_id: 3 , zone_id:  1)
-                Zoneprojet.create!(projet_id: 3 , zone_id:  7)
+                Zoneprojet.create!(projet_id: 3 , zone_id:  3)
+                Zoneprojet.create!(projet_id: 3 , zone_id:  2)
+                Zoneprojet.create!(projet_id: 3 , zone_id:  6)
 
-                Benefprojet.create!(projet_id: 3 , beneficiaire_id: 6)
-                Benefprojet.create!(projet_id: 3 , beneficiaire_id: 17)
+                Benefprojet.create!(projet_id: 3 , beneficiaire_id: 7)
                 Benefprojet.create!(projet_id: 3 , beneficiaire_id: 18)
+                Benefprojet.create!(projet_id: 3 , beneficiaire_id: 19)
              
-                Igaprojet.create!(projet_id: 3 , iga_id:3)
-                Igaprojet.create!(projet_id: 3 , iga_id: 11)
+                Igaprojet.create!(projet_id: 3 , iga_id:4)
                 Igaprojet.create!(projet_id: 3 , iga_id: 12)
+                Igaprojet.create!(projet_id: 3 , iga_id: 13)
 
 
-                Secteurprojet.create(projet_id: 3 , secteur_id: 9)
-                Secteurprojet.create(projet_id: 3 , secteur_id: 3)
-                 Secteurprojet.create(projet_id: 3 , secteur_id: 4)
+                Secteurprojet.create(projet_id: 3 , secteur_id: 10)
+                Secteurprojet.create(projet_id: 3 , secteur_id: 4)
+                 Secteurprojet.create(projet_id: 3 , secteur_id: 3)
 
 
 
@@ -365,29 +366,29 @@ puts "projet create3"
                    @pro4.appui = Appui.find(2)                 
                    @pro4.save
            
+                              Zoneprojet.create!(projet_id: 4 , zone_id: 5)                 
                               Zoneprojet.create!(projet_id: 4 , zone_id: 4)                 
-                              Zoneprojet.create!(projet_id: 4 , zone_id: 3)                 
-                              Zoneprojet.create!(projet_id: 4 , zone_id: 15)                 
-                              Zoneprojet.create!(projet_id: 4 , zone_id: 14)                 
-                              Zoneprojet.create!(projet_id: 4 , zone_id: 16)
-                              Zoneprojet.create!(projet_id: 4 , zone_id: 18)                 
-                              Zoneprojet.create!(projet_id: 4 , zone_id: 12)                 
-                              Zoneprojet.create!(projet_id: 4 , zone_id: 13)                 
-                              Zoneprojet.create!(projet_id: 4 , zone_id: 7)                
-                              Zoneprojet.create!(projet_id: 4 , zone_id: 10)
+                              Zoneprojet.create!(projet_id: 4 , zone_id: 16)                 
+                              Zoneprojet.create!(projet_id: 4 , zone_id: 16)                 
+                              Zoneprojet.create!(projet_id: 4 , zone_id: 17)
                               Zoneprojet.create!(projet_id: 4 , zone_id: 19)                 
-                              Zoneprojet.create!(projet_id: 4 , zone_id: 22)                 
-                              Zoneprojet.create!(projet_id: 4 , zone_id: 21)
+                              Zoneprojet.create!(projet_id: 4 , zone_id: 13)                 
+                              Zoneprojet.create!(projet_id: 4 , zone_id: 14)                 
+                              Zoneprojet.create!(projet_id: 4 , zone_id: 8)                
+                              Zoneprojet.create!(projet_id: 4 , zone_id: 11)
+                              Zoneprojet.create!(projet_id: 4 , zone_id: 20)                 
+                              Zoneprojet.create!(projet_id: 4 , zone_id: 23)                 
+                              Zoneprojet.create!(projet_id: 4 , zone_id: 22)
 
-                             Benefprojet.create!(projet_id: 4 , beneficiaire_id: 3)
+                             Benefprojet.create!(projet_id: 4 , beneficiaire_id: 4)
                        
 
-                             Igaprojet.create!(projet_id: 4 , iga_id: 4)                 
                              Igaprojet.create!(projet_id: 4 , iga_id: 5)                 
-                             Igaprojet.create!(projet_id: 4 , iga_id: 6)
+                             Igaprojet.create!(projet_id: 4 , iga_id: 6)                 
+                             Igaprojet.create!(projet_id: 4 , iga_id: 7)
 
-                             Secteurprojet.create(projet_id: 4 , secteur_id: 4)                
-                             Secteurprojet.create(projet_id: 4 , secteur_id: 9)
+                             Secteurprojet.create(projet_id: 4 , secteur_id: 5)                
+                             Secteurprojet.create(projet_id: 4 , secteur_id: 10)
 
  puts "projet create4"
 
