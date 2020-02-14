@@ -1,3 +1,30 @@
+  <header class="sc-10fmshx-0 dCsOFK">
+    <nav class="show">
+      <ul class="yhmwkn-2 fKSouh">
+        <li class="yhmwkn-5 kARqAl">
+          <a class="yhmwkn-3 kJIsra" href="/projets/new">Créer un projet</a>
+        </li>
+        <li class="yhmwkn-5 kARqAl">
+          <a class="yhmwkn-3 kJIsra" href="#">Documents</a>
+        </li>
+        <li class="yhmwkn-5 kARqAl">
+          <a class="yhmwkn-3 kJIsra active" href="#">CONTACT</a>
+        </li>
+      </ul>
+    </nav>
+  
+    <div class="bt96d2-13 dwLDtk search">
+      <%= form_tag(projets_path, :method => "get", class: 'sc-1ejeabr-19 gQwHOW') do %>
+        <div placeholder="Email" class="sc-emmjRN hxQqtY">
+          <div class="styles__Wrapper-zznoga-0 UxSKW">
+            <%= search_field_tag :search, params[:search], placeholder: "Rechercher", class: "sc-jzgbtB bwwcKt" %>
+          </div>
+        </div>
+        <button tabindex="0" type="submit" variant="primary" class="sc-eerKOB cfnPHQ"><span>Rechercher</span></button>
+      <% end %>
+    </div>
+  </header>
+
 
   <!-- FILTRE  -->
     <nav class="z0fved-5 gOGYTl">
@@ -345,47 +372,6 @@
                     </svg>
                   </div>
             </div>
-            <script>
-              var map = document.querySelector('#map')
-              var paths = map.querySelectorAll('.map__img a')
-              var links = map.querySelectorAll('.map__list a')
-          
-              //prototype forEach
-              if (NodeList.prototype.forEach === undefined) {
-              NodeList.prototype.forEach = function (call) {
-              [].forEach.call(this, call)
-              }
-              }
-          
-              var activeArea = (function (id ){
-              map.querySelectorAll('.is-active').forEach(function (item) {
-              item.classList.remove('is-active')
-              })
-              if (id !== undefined) {
-              document.querySelector('#list-' + id).classList.add('is-active')
-              document.querySelector('#region-' + id).classList.add('is-active') 
-              }
-              })
-          
-              paths.forEach(function (path) {
-              path.addEventListener('mouseenter', function () {
-              var id = this.id.replace('region-','') 
-              activeArea(id)    
-              })
-              });
-          
-              links.forEach(function (link) {
-              link.addEventListener('mouseenter', function (){
-              var id = this.id.replace('list-','')
-              activeArea(id)
-              })
-              })
-          
-              map.addEventListener('mouseover', function () {
-              activeArea()
-              })
-            </script>
-          
             </section>
           </div>
         </div>
@@ -402,3 +388,104 @@
     </div>
   </header>
 </div>
+
+
+
+
+<!--     
+
+               <%= form_tag(projets_path, :method => "get",   
+                   class: 'navbar-form navbar-left') do %>  
+                   <%= select_tag 'search_zone' , options_for_select(Zone.all.collect{ |c| [c.title, c.id]}), class: "form-input"
+                   %><br> 
+                   <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%> 
+              <%end%>
+
+
+                          <%= form_tag(projets_path, :method => "get",   
+                            class: 'navbar-form navbar-left') do %> 
+                            <h3>MONTANT</h3>
+                            <%= select_tag 'montant_id' , options_for_select(Montant.all.collect{ |c| [c.price,c.id]}), class: "form-input"
+                            %><br> 
+                            <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
+                            </div>  
+                         <%end%>
+
+
+                          <%= form_tag(projets_path, :method => "get",   
+                            class: 'navbar-form navbar-left') do %> 
+                            <h3>APPUI</h3>
+                            <%= select_tag 'appui_id' , options_for_select(Appui.all.collect{ |c| [c.title,c.id]}), class: "form-input"
+                            %><br> 
+                            <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
+                            </div>  
+                         <%end%>
+
+
+                          <%= form_tag(projets_path, :method => "get",   
+                            class: 'navbar-form navbar-left') do %> 
+                            <h3>PTF</h3>
+                            <%= select_tag 'ptf_id' , options_for_select(Ptf.all.collect{ |c| [c.title,c.id]}), class: "form-input"
+                            %><br> 
+                            <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
+                            </div>  
+                         <%end%>
+
+
+
+
+
+
+
+
+                <%= form_tag(projets_path, :method => "get",   
+                    class: 'navbar-form navbar-left') do %> 
+                    <h3>IGA</h3>
+                    <%= select_tag 'search_iga' , options_for_select(Iga.all.collect{ |c| [c.title,c.id]}), class: "form-input"
+                    %><br> 
+                    <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
+                    </div>  
+               <%end%>
+
+
+                        <%= form_tag(projets_path, :method => "get",   
+                            class: 'navbar-form navbar-left') do %> 
+                            <h3>FILIERE</h3>
+                            <%= select_tag 'search_filiere' , options_for_select(Filiere.all.collect{ |c| [c.title,c.id]}),
+                            class: "form-input"
+                            %><br> 
+                            <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
+                            </div>  
+                        <%end%>
+
+                  <%= form_tag(projets_path, :method => "get",   
+                            class: 'navbar-form navbar-left') do %> 
+                            <h3>SECTEUR</h3>
+                            <%= select_tag 'search_secteur' , options_for_select(Secteur.all.collect{ |c| [c.title,c.id]}),
+                            class: "form-input"
+                            %><br> 
+                            <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
+                            </div>  
+                        <%end%>
+
+
+                  <%= form_tag(projets_path, :method => "get",   
+                            class: 'navbar-form navbar-left') do %> 
+                            <h3>BENEFICIAIRE</h3>
+                            <%= select_tag 'search_ben' , options_for_select(Beneficiaire.all.collect{ |c| [c.title,c.id]}),
+                            class: "form-input"
+                            %><br> 
+                            <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
+                            </div>  
+                        <%end%>
+
+
+
+                  <%= form_tag(projets_path, :method => "get",   
+                            class: 'navbar-form navbar-left') do %> 
+                            <h3>FIN DU PROJET</h3>
+                         <input type="date" name="fin">
+                            %><br> 
+                            <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
+                            </div>  
+                        <%end%> -->

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <div class="sc-11unfkk-2 fxFQyp">
   <header class="">
@@ -24,6 +25,10 @@
                   <% @search.each do |res| %>  
                   <%= link_to "#{res.projet.ptf.title}",  projets_path%><br> 
                   <%end%>
+                <%@project.each do|projet|%>
+                  <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                    <a href="<%= projet_path(projet.id) %>" target="blank" class="text-muted"><%=projet.nom_du_projet%></a>
+                  </div>
                 <%end%>
 
 
