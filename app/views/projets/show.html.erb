@@ -5,8 +5,12 @@
     <img src="/assets/giz.jpg">
     </div>
   </div>
+  
   <div class="h-text text-white pr-4">
     <h3><%=@project.nom_du_projet%></h3>
+  </div>
+<div class="asi"> 
+  <div class="aside">
     <p><span class="attr">Secteurs :</span>
       <span class="word"></span>
 
@@ -26,6 +30,7 @@
   </p>
   </div>
 </div>
+</div>
   <div class="show-cont pt-4 pb-4">
     <div class="objectif mx-auto">
       <h2 class="text-left color">Objectif général du projet</h2>
@@ -40,27 +45,27 @@
       </div>
       <div class="row pt-4 pb-4">
         <div class="col-md-6 list">
-          <p><span class="attr">Région</span> :</p>
-          <div>
+          <p><span class="attr">Région : </span></p>
+          <div class="mb-3">
               <%@project.zoneprojets .each do|zp|%>
                 <span><%=zp.zone.title %>, </span>
               <%end%>
           </div>
-          <p><span class="attr">Partenaire d'implementation</span> :
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus, odit? Architecto consequatur consequuntur esse, </p>
+          <p><span class="attr">Partenaire d'implementation : </span>
+          <p class="mb-3"><%= @project.partenaire_d_implementaton %></p>
           </p>
-          <p><span class="attr">Bénéficiaire</span> :
-          <p>Necessitatibus, odit? Architecto consequatur consequuntur esse,</p>
+          <p><span class="attr">Bénéficiaire : </span>
+          <p class="mb-3">Necessitatibus, odit? Architecto consequatur consequuntur esse,</p>
           </p>
-          <p><span class="attr">Montant :</span>
-           <p>Entre <%=@project.montant.price%> d'euros</p>
+          <p><span class="attr">Montant : </span>
+           <p class="mb-3">Entre <%=@project.montant.price%> d'euros</p>
           </p>
         </div>
         <div class="col-md-6 list">
-          <p><span class="attr">Nature de l'appui : </span> <p><%=@project.appui.title%></p> </p>
-          <p><span class="attr">Début : </span><p><%=@project.debut_du_projet%> </p></p>
-          <p><span class="attr">Fin : </span><p><%=@project.fin%></p></p>
-          <p><span class="attr">Alignement aux priorités du plan emergence de Madagascar : </span><p>Priorité 21, 25, 27</p></p>
+          <p class="mb-3"><span class="attr">Nature de l'appui : </span><%=@project.appui.title%></p>
+          <p class="mb-3"><span class="attr">Début : </span><%=@project.debut_du_projet%></p>
+        <p class="mb-3"><span class="attr">Fin : </span><%=@project.fin%></p>
+          <p class="mb-3"><span class="attr">Alignement aux priorités du plan emergence de Madagascar : </span><p><%= @project.apdem %></p></p>
         </div>
     </div>
     <div class="text-right">

@@ -10,7 +10,7 @@
  
   
 Secteur.destroy_all
-      c0 = Secteur.create!(title:"")
+      C0 = Secteur.create!(title:"")
       c1 = Secteur.create!(title: "MICROFINANCE")
       c2 = Secteur.create!(title: "INDUSTRIE EXTRACTIVE")
       c3 = Secteur.create!(title: "COMMERCE")   
@@ -26,7 +26,7 @@ puts "Filiere crée"
 
 
 Ptf.destroy_all
-      c0  = Ptf.create!(title:"")
+      c0 = Ptf.create!(title:"")
       c1  = Ptf.create!(title: "Helvetas")
       c2  = Ptf.create!(title: "FMI")
       c3  = Ptf.create!(title: "IFC")
@@ -92,7 +92,7 @@ Iga.destroy_all
 puts "iga create"
 
 Zone.destroy_all
-      z0 = Zone.create!(title:"")
+      zo = Zone.create!(title:"")
       z1 = Zone.create!(title:"Diana")
       z2 = Zone.create!(title:"Sava")
       z3 = Zone.create!(title:"Itasy")
@@ -127,7 +127,7 @@ Zone.destroy_all
 puts "zone create"
  
  Montant.destroy_all
-      m1 = Montant.create!(price:"")
+      m0 = Montant.create!(price:"")
       m1 = Montant.create!(price:"5M-10M")
       m2 = Montant.create!(price:"10M-15M")
       m3 = Montant.create!(price:"15M-20M")
@@ -147,7 +147,8 @@ puts "Appui create"
 
 
 Beneficiaire.destroy_all
-       b0 = Beneficiaire.create!(title:"")
+     
+        b0 = Beneficiaire.create!(title:"")
        b1 = Beneficiaire.create!(title:"Douane")
        b2 = Beneficiaire.create!(title:"Ministères
                                   Operateurs Miniers")
@@ -209,7 +210,7 @@ puts "Beneficiaire"
               - L'eau à Tuléar" , partenaire_d_implementaton: "" ,
               debut_du_projet: "01/01/2019" , fin: "01/01/2024" , apdem: "Priorité 21, 25, 27")
 
-              @pro.ptf = Ptf.find(7)
+              @pro.ptf = Ptf.find(10)
               @pro.montant = Montant.find(9)
               @pro.appui = Appui.find(1)
               @pro.save
@@ -218,7 +219,7 @@ puts "Beneficiaire"
                 Zoneprojet.create!(projet_id: 1 , zone_id: 2)
                 Zoneprojet.create!(projet_id: 1 , zone_id: 18)
                 Zoneprojet.create!(projet_id: 1 , zone_id: 23)
-                Zoneprojet.create!(projet_id: 1 , zone_id: 24)
+                Zoneprojet.create!(projet_id: 1 , zone_id: 23)
 
                 Benefprojet.create!(projet_id: 1 , beneficiaire_id: 10)
                 Benefprojet.create!(projet_id: 1 , beneficiaire_id: 11)
@@ -259,7 +260,7 @@ puts "projet create1"
                 @pro2.save
            
 
-                Zoneprojet.create!(projet_id: 2 , zone_id: 25)
+                Zoneprojet.create!(projet_id: 2 , zone_id: 23)
                
 
                 Benefprojet.create!(projet_id: 2 , beneficiaire_id: 15)
@@ -267,9 +268,9 @@ puts "projet create1"
                 Benefprojet.create!(projet_id: 2 , beneficiaire_id: 17)
                
 
+                Igaprojet.create!(projet_id: 2 , iga_id: 12)
                 Igaprojet.create!(projet_id: 2 , iga_id: 13)
-                Igaprojet.create!(projet_id: 2 , iga_id: 14)
-                Igaprojet.create!(projet_id: 2 , iga_id: 15)
+                Igaprojet.create!(projet_id: 2 , iga_id: 11)
 
 
                 Secteurprojet.create(projet_id: 2 , secteur_id: 9)
@@ -329,8 +330,8 @@ puts "projet create1"
                 Zoneprojet.create!(projet_id: 3 , zone_id:  6)
 
                 Benefprojet.create!(projet_id: 3 , beneficiaire_id: 7)
+                Benefprojet.create!(projet_id: 3 , beneficiaire_id: 17)
                 Benefprojet.create!(projet_id: 3 , beneficiaire_id: 18)
-                Benefprojet.create!(projet_id: 3 , beneficiaire_id: 19)
              
                 Igaprojet.create!(projet_id: 3 , iga_id:4)
                 Igaprojet.create!(projet_id: 3 , iga_id: 12)

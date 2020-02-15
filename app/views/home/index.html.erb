@@ -1,3 +1,6 @@
+
+
+ 
   <header class="sc-10fmshx-0 dCsOFK">
     <nav class="show">
       <ul class="yhmwkn-2 fKSouh">
@@ -24,15 +27,44 @@
       <% end %>
     </div>
   </header>
-
-
   <!-- FILTRE  -->
     <nav class="z0fved-5 gOGYTl">
       <div class="z0fved-3 kBhqKR">
         <div class="z0fved-1 jfmoVU">
           <div class="fdk8rh-3 feYJJO">
             <header class="fdk8rh-0 kYNMFW">
-              <h3 class="fdk8rh-1 eouleG"><span>PTF</span></h3>
+               <%= form_tag(root_path, :method => "get",   
+                   class: 'navbar-form navbar-left') do %> 
+              <h3  class= "fdk8rh-1 eouleG">
+                                          <%= select_tag 'ptf_id', options_for_select(Ptf.all.collect{ |c| [c.title,c.id]}), :include_blank => "pft", class: "select"%>
+                           
+            </h3>
+              <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
+                <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
+                  <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
+                    <g id="chevrondown-content" transform="translate(20.000000, 0.000000)">
+                      <g id="chevrondown-universes" transform="translate(335.000000, 1.000000)">
+                        <g id="chevrondown-23:20" transform="translate(20.000000, 23.000000)">
+                          <g id="chevrondown-arrow:-categories" transform="translate(56.000000, 4.000000)">
+                            <path d="M3.04856165,6.81528316 C2.80864582,7.06157228 2.41966343,7.06157228 2.17986408,6.81528316 C1.94004531,6.56921314 1.94004531,6.17011123 2.17986408,5.92406113 L5.51709927,2.49993527 L2.17996114,-0.92407109 C1.94014237,-1.1702407 1.94014237,-1.56930277 2.17996114,-1.81537279 C2.4197799,-2.0615424 2.80874288,-2.0615424 3.04865871,-1.81537279 L6.82020387,2.05442384 C6.94011325,2.17751861 7,2.33867714 7,2.49991535 C7,2.66123323 6.93999678,2.82251127 6.82010681,2.94554628 L3.04856165,6.81528316 Z" id="arrow" transform="translate(4.500000, 2.500000) rotate(-270.000000) translate(-4.500000, -2.500000) ">
+  
+                            </path>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </header>
+          </div>
+
+          <div class="fdk8rh-3 feYJJO">
+            <header class="fdk8rh-0 kYNMFW">
+              <h3 class="fdk8rh-1 eouleG">
+                 <%= select_tag 'search_secteur' , options_for_select(Secteur.all.collect{ |c| [c.title,c.id]}),:include_blank => "Secteur",class: "select"
+                %>
+              </h3>
               <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
                 <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
                   <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
@@ -53,7 +85,9 @@
 
           <div class="fdk8rh-3 feYJJO">
             <header class="fdk8rh-0 kYNMFW">
-              <h3 class="fdk8rh-1 eouleG"><span>secteur</span></h3>
+              <h3 class="fdk8rh-1 eouleG">
+                <%= select_tag 'appui_id' , options_for_select(Appui.all.collect{ |c| [c.title,c.id]}), :include_blank => "Appui", class: "select" %><br> 
+              </h3>
               <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
                 <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
                   <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
@@ -74,7 +108,11 @@
 
           <div class="fdk8rh-3 feYJJO">
             <header class="fdk8rh-0 kYNMFW">
-              <h3 class="fdk8rh-1 eouleG"><span>Appui</span></h3>
+              <h3 class="fdk8rh-1 eouleG">
+                 <%= select_tag 'search_filiere' , options_for_select(Filiere.all.collect{ |c| [c.title,c.id]}),:include_blank => "Filiere",
+                          
+                           class: "select" %>
+              </h3>
               <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
                 <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
                   <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
@@ -95,7 +133,10 @@
 
           <div class="fdk8rh-3 feYJJO">
             <header class="fdk8rh-0 kYNMFW">
-              <h3 class="fdk8rh-1 eouleG"><span>Filiere</span></h3>
+              <h3 class="fdk8rh-1 eouleG">
+                <%= select_tag 'search_iga' , options_for_select(Iga.all.collect{ |c| [c.title,c.id]}), :include_blank => "Iga",
+                           class: "select"  %>
+              </h3>
               <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
                 <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
                   <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
@@ -116,7 +157,12 @@
 
           <div class="fdk8rh-3 feYJJO">
             <header class="fdk8rh-0 kYNMFW">
-              <h3 class="fdk8rh-1 eouleG"><span>IGA</span></h3>
+              <h3 class="fdk8rh-1 eouleG">
+                
+                   <%= select_tag 'search_zone' , options_for_select(Zone.all.collect{ |c| [c.title, c.id]}),:include_blank => "Region",
+                    class: "select"%>
+
+              </h3>
               <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
                 <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
                   <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
@@ -137,7 +183,9 @@
 
           <div class="fdk8rh-3 feYJJO">
             <header class="fdk8rh-0 kYNMFW">
-              <h3 class="fdk8rh-1 eouleG"><span>Région</span></h3>
+              <h3 class="fdk8rh-1 eouleG">
+                <%= select_tag 'search_ben' , options_for_select(Beneficiaire.all.collect{ |c| [c.title,c.id]}),:include_blank => "Beneficiaire",
+                            class: "select" %></h3>
               <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
                 <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
                   <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
@@ -158,7 +206,12 @@
 
           <div class="fdk8rh-3 feYJJO">
             <header class="fdk8rh-0 kYNMFW">
-              <h3 class="fdk8rh-1 eouleG"><span>Beneficiaire</span></h3>
+              <h3 class="fdk8rh-1 eouleG">
+                 <span>
+                    <%= select_tag 'montant_id' , options_for_select(Montant.all.collect{ |c| [c.price,c.id]}),:include_blank => "Montant",
+                          class: "select" %>         
+                 </span>        
+              </h3>
               <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
                 <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
                   <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
@@ -179,7 +232,9 @@
 
           <div class="fdk8rh-3 feYJJO">
             <header class="fdk8rh-0 kYNMFW">
-              <h3 class="fdk8rh-1 eouleG"><span>Montant</span></h3>
+              <h3 class="fdk8rh-1 eouleG">
+                <input type="date" name="fin" placeholder="fin" class="select">
+             </h3>
               <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
                 <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
                   <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
@@ -196,30 +251,15 @@
                 </g>
               </svg>
             </header>
-          </div>
+                <%= submit_tag "search", :class => 'btn btn-info glyphicon glyphicon-search submit',:name => nil%>   
+            <%end%>
 
-          <div class="fdk8rh-3 feYJJO">
-            <header class="fdk8rh-0 kYNMFW">
-              <h3 class="fdk8rh-1 eouleG"><span>periode</span></h3>
-              <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
-                <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
-                  <g id="chevrondown-search-bar" transform="translate(315.000000, 206.000000)" fill="#AFAFB3" stroke="#AFAFB3" stroke-width="0.5">
-                    <g id="chevrondown-content" transform="translate(20.000000, 0.000000)">
-                      <g id="chevrondown-universes" transform="translate(335.000000, 1.000000)">
-                        <g id="chevrondown-23:20" transform="translate(20.000000, 23.000000)">
-                          <g id="chevrondown-arrow:-categories" transform="translate(56.000000, 4.000000)">
-                            <path d="M3.04856165,6.81528316 C2.80864582,7.06157228 2.41966343,7.06157228 2.17986408,6.81528316 C1.94004531,6.56921314 1.94004531,6.17011123 2.17986408,5.92406113 L5.51709927,2.49993527 L2.17996114,-0.92407109 C1.94014237,-1.1702407 1.94014237,-1.56930277 2.17996114,-1.81537279 C2.4197799,-2.0615424 2.80874288,-2.0615424 3.04865871,-1.81537279 L6.82020387,2.05442384 C6.94011325,2.17751861 7,2.33867714 7,2.49991535 C7,2.66123323 6.93999678,2.82251127 6.82010681,2.94554628 L3.04856165,6.81528316 Z" id="arrow" transform="translate(4.500000, 2.500000) rotate(-270.000000) translate(-4.500000, -2.500000) "></path>
-                          </g>
-                        </g>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </header>
+        
           </div>
         </div>
       </div>
+
+          
     </nav>
     <!-- FIN FILTRE -->
 
@@ -234,26 +274,118 @@
           <div class="row no-gutters">
             <div class="col-sm-5">
               <div class="filter pt-2 pb-2">
-                <p class="text-muted mb-1"><span>PTF :</span> FIDA</p>
-                <p class="text-muted mb-1"><span>Secteur :</span> Agricole</p>
-                <p class="text-muted mb-1"><span>Région :</span> Vatovavy-Fitovinany</p class="text-muted">
-                <p class="text-muted mb-1"><span>Montant :</span> Entre 5 millions et 10 millions d'euros </p class="text-muted">
+                <%if @ptf_1 != ""%>
+                <p class="text-muted mb-1"><span>PTF :</span><%= @ptf_1 %></p>
+                <%end%>
+                 <% if @montant_1 != "" %>
+                <p class="text-muted mb-1"><span>MONTANT :</span><%= @montant_1 %></p>
+                <%end%>
+                 <%if @secteur_1 != ""%>
+                <p class="text-muted mb-1"><span>SECTEUR :</span><%= @secteur_1 %></p>
+                <% end %>
+                 <% if @zone_1 != ""%>
+                <p class="text-muted mb-1"><span>REGION :</span><%= @zone_1 %></p>
+                <% end %>
+                 <% if @filiere_1 != ""%>
+                <p class="text-muted mb-1"><span>FILIERE :</span><%= @filiere_1 %></p>
+                <% end %>
+                 <% if @iga_1 != ""%>
+                <p class="text-muted mb-1"><span>IGA :</span><%= @iga_1 %></p>
+                <% end %>
+                 <% if @ben_1 != ""%>
+                <p class="text-muted mb-1"><span>BENEFICIAIRE :</span><%= @ben_1 %></p>
+                <% end %>
+                 <% if @appui_1 != ""%>
+                <p class="text-muted mb-1"><span> NATURE D'APPUI :</span><%= @appui_1 %></p>
+                <% end %>
+                 <% if @fin_1 != ""%>
+                <p class="text-muted mb-1"><span>FIN DU PROJET :</span><%= @fin_1 %></p>
+
+                <%end%>
+              
               </div>
             </div>
             <div class="col-sm-7 pl-2">
-                <%@project.each do|projet|%>
                   <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                    <a href="<%= projet_path(projet.id) %>" target="blank" class="text-muted"><%=projet.nom_du_projet%></a>
-                  </div>
+             <%if @results %>
+              <%@results.each do | result|%><br>
+                <%= link_to "#{result.nom_du_projet}" , projets_path  %>
+              <%end%>
+            <%end%>
+               <%if @res%>
+                 <h3>Search Result zone</h3>  
+                      <% @res.each do |res| %>  
+                      <%= link_to "#{res.projet.nom_du_projet}", projets_path %><br> 
+              <%end%>
+              <%end%>
+                 <%if @search%> 
+                        <% @search.each do |res| %>  
+                        <%= link_to "#{res.projet.nom_du_projet}",  projets_path%><br>            
                 <%end%>
+                <%end%>
+
+             <%if @filiere%>
+                    <% @filiere.each do |res| %>  
+                   <%= link_to "#{res.projet.nom_du_projet}", projets_path %><br> 
+                  
+            <%end%>
+            <%end%>
+             
+             <%if @secteur%>
+                    <% @secteur.each do |res| %>  
+                   <%= link_to "#{res.projet.nom_du_projet}", projets_path%><br> 
+                      
+            <%end%>
+            <%end%>
+
+             <%if @montant%>
+                        <% @montant.each do |res| %>  
+                       <%= link_to "#{res.nom_du_projet}", projets_path%><br>        
+                <%end%>
+            <%end%>
+
+             <%if @ptf%>
+                        <% @ptf.each do |res| %>  
+                       <%= link_to "#{res.nom_du_projet}", projets_path%><br>        
+                <%end%>
+            <%end%>
+
+            <%if @appui%>
+                       <% @appui.each do |res| %>  
+                       <%= link_to "#{res.nom_du_projet}", projets_path%><br>        
+                <%end%>
+            <%end%>
+
+            <%if @ben%>
+                    <% @ben.each do |res| %>  
+                     <%= link_to "#{res.projet.nom_du_projet}", projets_path%><br>        
+                <%end%>
+            <%end%>
+             <%if @fin%>
+                        <% @fin.each do |res| %>  
+                       <%= link_to "#{res.nom_du_projet}", projets_path%><br>        
+                <%end%>
+            <%end%>
+
+                  </div>
+
+              
                 <div class="text-muted mt-2">
                   <%= paginate @project %>
                 </div>
+               
+         
             </div>
           </div>
       </div>
+
       <div class="qjc24y-0 jMLWRH col-md-5">
         <div class="vx2fp9-1 coQzZm">
+
+
+      
+ 
+
           <section>
             <div class="map" id="map">
                   <div class="map__img">
@@ -279,7 +411,7 @@
                     <a href="" class="region r-20"><div><div>Menabe</div><div><div class="rond mx-auto text-center">51</div></div></div></a>
                     <a href="" class="region r-21"><div><div>Diana</div><div><div class="rond mx-auto text-center">51</div></div></div></a>
                     <a href="" class="region r-22"><div><div>Sava</div><div><div class="rond mx-auto text-center">51</div></div></div></a>
-
+   
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:amcharts="http://amcharts.com/ammap"
                       xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 800 1600">
                       <g>
@@ -370,8 +502,53 @@
                       </a>
                     </g>
                     </svg>
+                      
+ 
                   </div>
+                  
             </div>
+
+            <script>
+              var map = document.querySelector('#map')
+              var paths = map.querySelectorAll('.map__img a')
+              var links = map.querySelectorAll('.map__list a')
+          
+              //prototype forEach
+              if (NodeList.prototype.forEach === undefined) {
+              NodeList.prototype.forEach = function (call) {
+              [].forEach.call(this, call)
+              }
+              }
+          
+              var activeArea = (function (id ){
+              map.querySelectorAll('.is-active').forEach(function (item) {
+              item.classList.remove('is-active')
+              })
+              if (id !== undefined) {
+              document.querySelector('#list-' + id).classList.add('is-active')
+              document.querySelector('#region-' + id).classList.add('is-active') 
+              }
+              })
+          
+              paths.forEach(function (path) {
+              path.addEventListener('mouseenter', function () {
+              var id = this.id.replace('region-','') 
+              activeArea(id)    
+              })
+              });
+          
+              links.forEach(function (link) {
+              link.addEventListener('mouseenter', function (){
+              var id = this.id.replace('list-','')
+              activeArea(id)
+              })
+              })
+          
+              map.addEventListener('mouseover', function () {
+              activeArea()
+              })
+            </script>
+          
             </section>
           </div>
         </div>
@@ -384,100 +561,6 @@
 
 
 
-<!--     
-
-               <%= form_tag(projets_path, :method => "get",   
-                   class: 'navbar-form navbar-left') do %>  
-                   <%= select_tag 'search_zone' , options_for_select(Zone.all.collect{ |c| [c.title, c.id]}), class: "form-input"
-                   %><br> 
-                   <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%> 
-              <%end%>
-
-
-                          <%= form_tag(projets_path, :method => "get",   
-                            class: 'navbar-form navbar-left') do %> 
-                            <h3>MONTANT</h3>
-                            <%= select_tag 'montant_id' , options_for_select(Montant.all.collect{ |c| [c.price,c.id]}), class: "form-input"
-                            %><br> 
-                            <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
-                            </div>  
-                         <%end%>
-
-
-                          <%= form_tag(projets_path, :method => "get",   
-                            class: 'navbar-form navbar-left') do %> 
-                            <h3>APPUI</h3>
-                            <%= select_tag 'appui_id' , options_for_select(Appui.all.collect{ |c| [c.title,c.id]}), class: "form-input"
-                            %><br> 
-                            <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
-                            </div>  
-                         <%end%>
-
-
-                          <%= form_tag(projets_path, :method => "get",   
-                            class: 'navbar-form navbar-left') do %> 
-                            <h3>PTF</h3>
-                            <%= select_tag 'ptf_id' , options_for_select(Ptf.all.collect{ |c| [c.title,c.id]}), class: "form-input"
-                            %><br> 
-                            <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
-                            </div>  
-                         <%end%>
 
 
 
-
-
-
-
-
-                <%= form_tag(projets_path, :method => "get",   
-                    class: 'navbar-form navbar-left') do %> 
-                    <h3>IGA</h3>
-                    <%= select_tag 'search_iga' , options_for_select(Iga.all.collect{ |c| [c.title,c.id]}), class: "form-input"
-                    %><br> 
-                    <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
-                    </div>  
-               <%end%>
-
-
-                        <%= form_tag(projets_path, :method => "get",   
-                            class: 'navbar-form navbar-left') do %> 
-                            <h3>FILIERE</h3>
-                            <%= select_tag 'search_filiere' , options_for_select(Filiere.all.collect{ |c| [c.title,c.id]}),
-                            class: "form-input"
-                            %><br> 
-                            <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
-                            </div>  
-                        <%end%>
-
-                  <%= form_tag(projets_path, :method => "get",   
-                            class: 'navbar-form navbar-left') do %> 
-                            <h3>SECTEUR</h3>
-                            <%= select_tag 'search_secteur' , options_for_select(Secteur.all.collect{ |c| [c.title,c.id]}),
-                            class: "form-input"
-                            %><br> 
-                            <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
-                            </div>  
-                        <%end%>
-
-
-                  <%= form_tag(projets_path, :method => "get",   
-                            class: 'navbar-form navbar-left') do %> 
-                            <h3>BENEFICIAIRE</h3>
-                            <%= select_tag 'search_ben' , options_for_select(Beneficiaire.all.collect{ |c| [c.title,c.id]}),
-                            class: "form-input"
-                            %><br> 
-                            <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
-                            </div>  
-                        <%end%>
-
-
-
-                  <%= form_tag(projets_path, :method => "get",   
-                            class: 'navbar-form navbar-left') do %> 
-                            <h3>FIN DU PROJET</h3>
-                         <input type="date" name="fin">
-                            %><br> 
-                            <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
-                            </div>  
-                        <%end%> -->

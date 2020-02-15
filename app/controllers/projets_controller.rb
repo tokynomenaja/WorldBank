@@ -1,8 +1,7 @@
 class ProjetsController < ApplicationController
   before_action :authenticate_user!, only:[:new, :create] 
     def index
-      @project = Projet.order(:id).page(params[:page]).per(3)
-        #recherche controller globale(titre du projet)
+  
         if params[:search]
           if params[:search] == nil
               redirect_to(root_path)
@@ -11,7 +10,13 @@ class ProjetsController < ApplicationController
             @results = Projet.all.where("lower(nom_du_projet) LIKE :search", search: "%#{@parameter}%")  
           end  
       end 
-    end
+
+  
+  
+    
+        
+      end
+  
     def show
       @project = Projet.find(params[:id])
     end  
