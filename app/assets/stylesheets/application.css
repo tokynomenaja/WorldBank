@@ -303,7 +303,7 @@ login
 /* sc-component-id: sc-16uf8k7-0 */
 .KKaIu{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:inherit;font-size:inherit;width:6.875rem;}
 /* sc-component-id: sc-1gnwgfb-2 */
-.hVIPFV{position:relative;width:100%;height:100%;background: url('tuktuk.jpg');background-repeat: no-repeat;background-size: cover;filter:brightness(1);position:relative;overflow:hidden;-webkit-backface-visibility:hidden;backface-visibility:hidden;opacity:1;} 
+.hVIPFV{position:relative;width:100%;height:100%;background-image: url('/tuktuk.jpg');background-repeat: no-repeat;background-size: cover;filter:brightness(1);position:relative;overflow:hidden;-webkit-backface-visibility:hidden;backface-visibility:hidden;opacity:1;} 
 .position{position: absolute !important; top: 70px; right: 50px;}
 a.position:hover{color: #ffffff;text-decoration: none;}
 /* sc-component-id: aci59a-0 */
