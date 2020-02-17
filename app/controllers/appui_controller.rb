@@ -1,2 +1,0 @@
-class AppuiController < ApplicationController
-end

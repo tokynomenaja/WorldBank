@@ -1,2 +1,0 @@
-class PtfsController < ApplicationController
-end

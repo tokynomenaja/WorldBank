@@ -1,3 +1,0 @@
-class BeneficiaireController < ApplicationController
-	
-end

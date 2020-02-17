@@ -1,2 +1,0 @@
-class FilieresController < ApplicationController
-end
