@@ -1,7 +1,0 @@
- <div class="sc-11unfkk-2 fxFQyp">
-     <%if @results%>
-      <h3>Search Result</h3>  
-      <% @results.each do |result| %>  
-          <%=link_to "#{result.nom_du_projet}", projets_path(result.id) %><br>  
-      <%end%>
-  <%end%>
