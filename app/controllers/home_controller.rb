@@ -13,8 +13,6 @@ def index
        @appui_1 = ""
        @filiere_1 = ""
 
-
-  
        #recherche controller globale(titre du projet)
                       if params[:search]
                         if params[:search] == 1
