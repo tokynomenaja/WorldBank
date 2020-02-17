@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
+ 
  # namespace :admin do
  # 	resources :projets
  # 	resources :users
  # end
  # 	resources :secteur
  # 	resources :pft
- #    resources :filiere
+ #  resources :filiere
 
   
-   root to: 'projets#index'
+   root to: 'home#index'
    devise_for :users
    resources :projets
    get '/search' => 'projets#search', :as => 'search_projet'
