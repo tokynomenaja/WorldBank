@@ -316,7 +316,7 @@ puts "projet create1"
                 fin: "2021", 
                 apdem: "Priorité 8, 27")
 
-                @pro3.ptf = Ptf.find(14)
+                @pro3.ptf = Ptf.find(13)
                 @pro3.montant = Montant.find(8)
                 @pro3.appui = Appui.find(2)
                 @pro3.save
