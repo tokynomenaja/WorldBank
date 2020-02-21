@@ -13,6 +13,19 @@
       <ol>
         <li><%= render "devise/shared/error_messages", resource: resource %></li>
       </ol>
+      <div class="field mb-2 row">
+        <div class="col-md-6">
+          <%= f.label :Nom %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",class:'form-control', placeholder:'Nom' %>
+        </div>
+        <div class="col-md-6">
+          <%= f.label :Prénom %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",class:'form-control', placeholder:'Prénom' %>
+        </div>
+      </div>
+      <div class="field">
+        <label for="org">Organisme</label>
+      </div>
     <div class="field mb-2">
       <%= f.label :Adresse_email %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email",class:'form-control', placeholder:'Adresse email' %>

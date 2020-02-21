@@ -1,5 +1,5 @@
-  <header class="aci59a-0 eyAIuG sticky-limit">
-    <div class="sc-1gnwgfb-2 hVIPFV">
+  <header class="aci59a-0 eyAIuG haute sticky-limit">
+    <div class="sc-1gnwgfb-2 stom">
     </div>
   </header>
 <div class="mt-4 mb-4">
@@ -13,7 +13,7 @@
 					<input type="text" name="nom_du_projet" id="nom" placeholder="Nom du projet" class="form-control">
 				</div>
 			</div>
-			<div class="d-flex justify-content-around mb-3">
+			<div class="d-flex justify-content-between mb-3">
 				<div>
 					<h6 class="table">PTF</h6>
 					<%= select_tag 'ptf_id', options_for_select(Ptf.all.collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>

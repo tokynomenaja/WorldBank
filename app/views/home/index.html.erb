@@ -114,7 +114,7 @@
           <div class="fdk8rh-3 feYJJO">
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
-                 <%= select_tag 'search_filiere' , options_for_select(Filiere.all.collect{ |c| [c.title,c.id]}),:include_blank => "Filiere",
+                 <%= select_tag 'search_filiere' , options_for_select(Filiere.all.collect{ |c| [c.title,c.id]}),:include_blank => "Filière",
                           
                            class: "select fdk8rh-1 eouleG" %>
               </h3>
@@ -164,7 +164,7 @@
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
                 
-                   <%= select_tag 'search_zone' , options_for_select(Zone.all.collect{ |c| [c.title, c.id]}),:include_blank => "Region",
+                   <%= select_tag 'search_zone' , options_for_select(Zone.all.collect{ |c| [c.title, c.id]}),:include_blank => "Région",
                     class: "select fdk8rh-1 eouleG"%>
 
               </h3>
@@ -189,7 +189,7 @@
           <div class="fdk8rh-3 feYJJO">
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
-                <%= select_tag 'search_ben' , options_for_select(Beneficiaire.all.collect{ |c| [c.title,c.id]}),:include_blank => "Beneficiaire",
+                <%= select_tag 'search_ben' , options_for_select(Beneficiaire.all.collect{ |c| [c.title,c.id]}),:include_blank => "Bénéficiaire",
                             class: "select fdk8rh-1 eouleG" %></h3>
               <svg alt="chevron-down" viewBox="0 0 11 7" width="11" height="7" class="svg">
                 <g id="chevrondown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-745.000000, -233.000000)">
@@ -241,16 +241,19 @@
                 <input type="date" name="fin" placeholder="fin" class="select fdk8rh-1 eouleG">
              </h3>
             </header>
-                <%= submit_tag "search", :class => 'btn btn-info glyphicon glyphicon-search submit',:name => nil%>   
-            <%end%>
-
-        
           </div>
-        </div>
+          <div class="fdk8rh-3 feYJJO">
+            <header class="fdk8rh-0 kYNMFW">
+              <h3 class="fdk8rh-1 eouleG">
+                <%= submit_tag "Filtrer", :class => 'btn bold',:name => nil%>
+             </h3>
+            </header>
+          </div>   
+       <%end%>
       </div>
-
-          
-    </nav>
+    </div>
+  </div>
+</nav>
     <!-- FIN FILTRE -->
 
 
@@ -265,36 +268,29 @@
             <div class="col-sm-5">
               <div class="filter pt-2 pb-2">
                 <%if @ptf_1 != ""%>
-                <p class="text-muted mb-1"><span>PTF :</span><%= @ptf_1 %></p>
+                <p class="text-muted mb-1"><span>PTF &nbsp;:&nbsp; </span><%= @ptf_1 %></p>
                 <%end%>
                  <% if @montant_1 != "" %>
-                <p class="text-muted mb-1"><span>MONTANT :</span><%= @montant_1 %></p>
+                <p class="text-muted mb-1"><span>Montant &nbsp;:&nbsp; </span> <%= @montant_1 %></p>
                 <%end%>
                  <%if @secteur_1 != ""%>
-                <p class="text-muted mb-1"><span>SECTEUR :</span><%= @secteur_1 %></p>
+                <p class="text-muted mb-1"><span>Secteur &nbsp;:&nbsp; </span> <%= @secteur_1 %></p>
                 <% end %>
                  <% if @zone_1 != ""%>
-                <p class="text-muted mb-1"><span>REGION :</span><%= @zone_1 %></p>
+                <p class="text-muted mb-1"><span>Région &nbsp;:&nbsp; </span> <%= @zone_1 %></p>
                 <% end %>
                  <% if @filiere_1 != ""%>
-                <p class="text-muted mb-1"><span>FILIERE :</span><%= @filiere_1 %></p>
+                <p class="text-muted mb-1"><span>Filière &nbsp;:&nbsp; </span> <%= @filiere_1 %></p>
                 <% end %>
                  <% if @iga_1 != ""%>
-                <p class="text-muted mb-1"><span>IGA :</span><%= @iga_1 %></p>
+                <p class="text-muted mb-1"><span>IGA &nbsp;:&nbsp; </span> <%= @iga_1 %></p>
                 <% end %>
                  <% if @ben_1 != ""%>
-                <p class="text-muted mb-1"><span>BENEFICIAIRE :</span><%= @ben_1 %></p>
+                <p class="text-muted mb-1"><span>Bénéficiaire &nbsp;:&nbsp; </span> <%= @ben_1 %></p>
                 <% end %>
                  <% if @appui_1 != ""%>
-                <p class="text-muted mb-1"><span> NATURE D'APPUI :</span><%= @appui_1 %></p>
+                <p class="text-muted mb-1"><span> Nature d'appui &nbsp;:&nbsp; </span> <%= @appui_1 %></p>
                 <% end %>
-                 <%
-=begin%>
- <% if @fin_1 != ""%>
-                <p class="text-muted mb-1"><span>FIN DU PROJET :</span><%= @fin_1 %></p>
-                <%end%> 
-<%
-=end%>
               
               </div>
             </div>
@@ -386,11 +382,6 @@
 
       <div class="qjc24y-0 jMLWRH col-md-5">
         <div class="vx2fp9-1 coQzZm">
-
-
-      
- 
-
           <section>
             <div class="map" id="map">
                   <div class="map__img">
