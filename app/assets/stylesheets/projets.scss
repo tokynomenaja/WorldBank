@@ -12,6 +12,7 @@
 
 .map__img{
     width:800px;
+    position: relative;
 }
 
 .map__img path{
@@ -54,11 +55,11 @@
 }
 .rond{ background: #fff; width: 25px;height: 25px; border-radius: 12px; line-height: 25px;} .rond:hover{border: solid rgb(126, 118, 118) 2px;font-weight: normal;}
 
-.r-1{top:250px; right: 195px;} .r-2{top:255px; left: 200px;} .r-3{top:280px; left:240px} .r-4{top: 315px; left:220px} .r-5{bottom:234px; right:232px}
-.r-6{bottom:95px; right: 188px;} .r-7{top:400px; right: 225px;} .r-8{bottom:205px; left:260px} .r-9{bottom: 150px; left:185px} .r-10{top:200px; right:150px}
-.r-11{top:140px; right: 110px} .r-12{top:260px; right: 130px;} .r-13{top:205px; left:225px} .r-14{top:145px; left:220px}
-.r-15{top:200px; left:135px} .r-16{top:85px; right:190px} .r-17{bottom:10px; left:175px} .r-20{top:325px; left:130px} .r-18{bottom:40px; left:220px}
-.r-19{bottom:80px; left:80px;} .r-21{top:15px; right: 150px;} .r-22{top:60px; right:105px}
+.r-1{top:15.3rem; right: 5.8rem;} .r-2{top:16rem; left: 6rem;} .r-3{top:17.6rem; left:9rem;} .r-4{top: 19.8rem; left:7.5rem;} .r-5{bottom:14rem; right:7rem;}
+.r-6{bottom:5.9rem; right: 5.6rem;} .r-7{bottom:11.5rem; right: 8rem;} .r-8{bottom:13rem; right:3rem;} .r-9{bottom: 9rem; left:6rem;} .r-10{top:12rem; right:2.5rem;}
+.r-11{top:9rem; right: 0.4rem;} .r-12{top:17rem; right: 2rem;} .r-13{top:12.5rem; left:9rem;} .r-14{top:9rem; left:7.3rem;}
+.r-15{top:13rem; left:1.5rem;} .r-16{top:6rem; right:5.8rem;} .r-17{bottom:0.5rem; left:5rem;} .r-20{top:20rem; left:3rem;} .r-18{bottom:2rem; left:8.5rem;}
+.r-19{bottom:7rem; left:-1rem;} .r-21{top:0.5rem; right: 2.5rem;} .r-22{top:3rem; right:1.2rem;}
 .h-font {font-size: 1.1rem;}
 
 .filter p span{font-family: welcomeweb,welcomeweb,sans-serif; color: #52c39b;font-size: 0.9rem; text-transform: uppercase;}
@@ -96,3 +97,5 @@
 .show-cont{margin-top: 6rem;font-family: welcomeweb,welcomeweb,sans-serif;}
 .objectif{width: 90%;}
 .color{color: #52c39b;}
+.btn-col{padding: 5px 0px;border-bottom: solid 1px #52c39b;color: #52c39b;margin-bottom: 1rem;}.btn-col:hover{text-decoration: none;color: #52c39b;}
+.table{color: #52c39b !important;}

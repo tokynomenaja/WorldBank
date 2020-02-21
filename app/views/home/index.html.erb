@@ -1,8 +1,13 @@
 
 
  
+  <header class="aci59a-0 eyAIuG sticky-limit">
+    <div class="sc-1gnwgfb-2 hVIPFV">
+    </div>
+  </header>
+ 
   <header class="sc-10fmshx-0 dCsOFK">
-    <nav class="show">
+    <nav class="show bold">
       <ul class="yhmwkn-2 fKSouh">
         <li class="yhmwkn-5 kARqAl">
           <a class="yhmwkn-3 kJIsra" href="/projets/new">Créer un projet</a>
@@ -23,7 +28,7 @@
             <%= search_field_tag :search, params[:search], placeholder: "Rechercher", class: "sc-jzgbtB bwwcKt" %>
           </div>
         </div>
-        <button tabindex="0" type="submit" variant="primary" class="sc-eerKOB cfnPHQ"><span>Rechercher</span></button>
+        <button tabindex="0" type="submit" variant="primary" class="sc-eerKOB cfnPHQ bold"><span>Rechercher</span></button>
       <% end %>
     </div>
   </header>
@@ -294,64 +299,83 @@
               </div>
             </div>
             <div class="col-sm-7 pl-2">
-                  <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                <div>
              <%if @results %>
-              <%@results.each do | result|%><br>
+              <%@results.each do | result|%>
+              <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                 <%= link_to "#{result.nom_du_projet}" , projet_path(result.id), target: 'blank' %>
+              </div>
               <%end%>
             <%end%>
                <%if @res%>
-                 <h3>Search Result zone</h3>  
                       <% @res.each do |res| %>  
-                      <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank' %><br> 
+                      <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                      <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank' %>
+                      </div>
               <%end%>
               <%end%>
                  <%if @search%> 
                         <% @search.each do |res| %>  
-                        <%= link_to "#{res.projet.nom_du_projet}",  projet_path(res.projet.id), target: 'blank'%><br>            
+                        <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                        <%= link_to "#{res.projet.nom_du_projet}",  projet_path(res.projet.id), target: 'blank'%>
+                        </div>          
                 <%end%>
                 <%end%>
 
              <%if @filiere%>
                     <% @filiere.each do |res| %>  
-                   <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank' %><br> 
+                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                   <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank' %>
+                    </div>
                   
             <%end%>
             <%end%>
              
              <%if @secteur%>
                     <% @secteur.each do |res| %>  
-                   <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank'%><br> 
+                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                   <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank'%>
+                    </div>
                       
             <%end%>
             <%end%>
 
              <%if @montant%>
                         <% @montant.each do |res| %>  
-                       <%= link_to "#{res.nom_du_projet}", projet_path(res.id), target: 'blank'%><br>        
+                        <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                       <%= link_to "#{res.nom_du_projet}", projet_path(res.id), target: 'blank'%>
+                        </div>       
                 <%end%>
             <%end%>
 
              <%if @ptf%>
                         <% @ptf.each do |res| %>  
-                       <%= link_to "#{res.nom_du_projet}", projet_path(res.id), target: 'blank'%><br>        
+                        <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                       <%= link_to "#{res.nom_du_projet}", projet_path(res.id), target: 'blank'%>
+                        </div>        
                 <%end%>
             <%end%>
 
             <%if @appui%>
                        <% @appui.each do |res| %>  
-                       <%= link_to "#{res.nom_du_projet}", projet_path(res.id), target: 'blank'%><br>        
+                       <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                       <%= link_to "#{res.nom_du_projet}", projet_path(res.id), target: 'blank'%>
+                       </div>        
                 <%end%>
             <%end%>
 
             <%if @ben%>
                     <% @ben.each do |res| %>  
-                     <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank'%><br>        
+                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                     <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank'%>
+                    </div>    
                 <%end%>
             <%end%>
              <%if @fin%>
                         <% @fin.each do |res| %>  
-                       <%= link_to "#{res.nom_du_projet}", projet_path(res.id), target: 'blank'%><br>        
+                        <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                       <%= link_to "#{res.nom_du_projet}", projet_path(res.id), target: 'blank'%>
+                        </div>  
                 <%end%>
             <%end%>
 
