@@ -1,0 +1,33 @@
+<div class="row">
+		  <div class="col-sm-6">
+		    <div class="card">
+		      <div class="card-body">
+
+		        <h5 class="card-title"><%= @projet.nom_du_projet %></h5>
+		        <%if @projet.logo.attached?%>
+				    	<%= image_tag @projet.logo, alt: 'logo', class:"card-img-top"%>
+				<%else%>
+						<img class="card-img-top" width="100px" height="300px" src="" alt="Card image cap">
+				<%end%>
+		        <p class="card-text"><%= @projet.objectif_generale_du_projet %></p>
+		        <% @projet.secteurprojets.each do |s|%>
+		        	<p><%= s.secteur.title%></p>
+		        <%end%>
+		        <% @projet.filiereprojets.each do |f|%>
+		        	<p><%= f.filiere.title%></p>
+		        <%end%>
+		        <% @projet.zoneprojets.each do |z|%>
+		        	<p><%= z.zone.title%></p>
+		        <%end%>
+		        <p><%= @projet.forme_d_appui%></p>
+		        <p><%= @projet.debut_du_projet%></p>
+		        <p><%= @projet.fin%></p>
+		        <p><%= @projet.apdem%></p>
+		        <p><%= @projet.appui.title%></p>
+		        <p><%= @projet.montant.price%></p>
+		        <p><%= @projet.ptf.title%></p>
+		      </div>
+		    </div>
+		  </div>
+
+</div>

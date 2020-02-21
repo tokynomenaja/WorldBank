@@ -1,0 +1,20 @@
+<div class="row">
+
+	<% @projets.each do |p|%>
+		  <div class="col-sm-6">
+		    <div class="card">
+		    	
+		      <div class="card-body">
+		        <h5 class="card-title"><%= p.nom_du_projet %></h5>
+		        <p class="card-text"><%= p.objectif_generale_du_projet %></p>
+		    	
+		        <a href="<%= super_admin_projet_path(p.id)%>" class="btn btn-primary">Voir</a>
+		        <a href="<%= super_admin_projet_path(p.id)%>" class="btn btn-warning" data-method="put">Valider</a>
+		        <a href="<%= super_admin_projet_path(p.id)%>" class="btn btn-danger" data-method="delete" data-confirm="Voulez-vous refuser ce projet?">Refuser</a>
+		      </div>
+		    </div>
+		  </div>
+
+	<%end%>
+
+</div>

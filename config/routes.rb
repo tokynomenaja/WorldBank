@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
  
- # namespace :admin do
- # 	resources :projets
- # 	resources :users
- # end
+  	namespace :admin do
+	  	resources :projets
+	  	resources :users
+    end
  # 	resources :secteur
  # 	resources :pft
  #  resources :filiere
 
+ 	  namespace :super_admin do
+	    resources :users   
+	    resources :projets
+  	end
   
    root to: 'home#index'
    devise_for :users

@@ -1,4 +1,4 @@
-<!-- 
+
  <tr>
 	      <th scope="col">Id</th>
 	      <th scope="col">Email</th>
@@ -6,12 +6,12 @@
 	    </tr>
 	  </thead>
 	  <tbody>
-	      <% @users.each #do |user|%>
+	      <% @users.each do |user|%>
 	    <tr>
 	      <th scope="row"><%=user.id%></th>
 	      <td><%=user.email%></td>
 	    </tr>
-	      <%#end%>
+	      <%end%>
 	  </tbody>
 </table>
 </div>
@@ -26,11 +26,11 @@
 	    </tr>
 	  </thead>
 	  <tbody>
-	      <% @users.each #do |user|%>
+	      <% @users.each do |user|%>
 	    <tr>
 	      <th scope="row"><%=user.id%></th>
 	      <td><%=user.email%></td>
 	      <td><a href="/admin/users/<%=user.id%>" data-method="put" class="btn btn-success">Valider</a></td>
 	    </tr>
 	    <a href="/admin/users/<%=user.id%>" data-method="delete" class="btn btn-danger btn-sm">Refuser</a></td>
-	      <%#end%> -->
+	      <%end%> -->

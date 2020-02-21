@@ -1,0 +1,55 @@
+
+<%= form_tag url_for(action: 'update'), method:'patch' do%>
+ <input type="text" name="nom_du_projet" placeholder="Nom du projet"><br>
+         <h6>PTF</h6>
+             <%= select_tag 'ptf_id', options_for_select(Ptf.all.collect{ |c| [c.title, c.id] }), class: "form-input"%><br>
+
+             <h6>DEBUT DU PROJET</h6>
+             <input type="date" name="debut_du_projet" placeholder=""><br>
+            <h6>FIN DU PROJET</h6>
+
+             <input type="date" name="fin" placeholder=""><br>
+
+			      <h6>MONTANT DU PROJET</h6>
+					   <%= select_tag 'montant_id', options_for_select(Montant.all.collect{ |c| [c.price, c.id] }), class: "form-input"%><br>
+					 <h6>APPUI</h6>
+					   <%= select_tag 'appui_id', options_for_select(Appui.all.collect{ |c| [c.title, c.id] }), class: "form-input"%><br>
+			      <h6>SECTEURS</h6>
+					<ul>
+						 <% Secteur.all.each do |c| %><br>
+						   <%= check_box_tag("secteur_ids[]",c.id) %>
+						   <%= c.title%> 
+						<% end %>
+					</ul>
+					<h6>FILIERE</h6>
+					<ul>
+						 <% Filiere.all.each do |c| %><br>
+						  <%= check_box_tag("filiere_ids[]",c.id) %>
+						  <%= c.title%>
+						<% end %>
+					</ul>
+					
+					<h6>BENEFICIAIRE</h6>
+					<ul>
+						 <% Beneficiaire.all.each do |c| %><br>
+						  <%= check_box_tag("beneficiare_ids[]",c.id) %>
+						  <%= c.title%>
+						<% end %>
+					</ul>			        
+        
+					<h6>IGA(institution gouvernemental associé)</h6>
+			  <ul>
+						 <% Iga.all.each do |c| %><br>
+						 <%= check_box_tag("iga_ids[]",c.id) %>
+						  <%= c.title%>
+						<% end %>
+					</ul>
+					<h6>ZONE D'INTERVENTION</h6>
+					<ul>
+						 <% Zone.all.each do |c| %><br>
+						 <%= check_box_tag("zone_ids[]",c.id) %>
+						  <%= c.title%>
+						<% end %>
+					</ul>
+			<input type="submit" value="Modifier">
+<%end%>

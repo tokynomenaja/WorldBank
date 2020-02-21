@@ -1,0 +1,44 @@
+
+<div class="container">
+	<h2>Listes des bailleurs</h2>
+	<table class="table table-bordered table-dark">
+	  <thead>
+	    <tr>
+	      <th scope="col">Id</th>
+	      <th scope="col">Email</th>
+	
+	    </tr>
+	  </thead>
+	  <tbody>
+	      <% @bailleurs.each do |b|%>
+	    <tr>
+	      <th scope="row"><%=b.id%></th>
+	      <td><%=b.email%></td>
+	    </tr>
+	      <%end%>
+	  </tbody>
+</table>
+</div>
+<div class="container">
+<table class="table table-bordered table-dark">
+	<h2>Listes des bailleurs en attente</h2>
+	  <thead>
+	    <tr>
+	      <th scope="col">Id</th>
+	      <th scope="col">Email</th> 
+	      <th scope="col">Action</th>
+
+	    </tr>
+	  </thead>
+	  <tbody>
+	      <% @bailleurs_en_attente.each do |ba|%>
+	    <tr>
+	      <th scope="row"><%=ba.id%></th>
+	      <td><%=ba.email%></td>
+	      <td><a href="/super_admin/users/<%=ba.id%>" data-method="put" class="btn btn-warning">Valider</a></td>
+	      <td><a href="/super_admin/users/<%=ba.id%>" class="btn btn-warning">Voir</a></td>
+	    </tr>
+	      <%end%>
+	  </tbody>
+</table>
+</div>

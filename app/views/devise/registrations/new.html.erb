@@ -1,5 +1,5 @@
 
-<h2>Sign up</h2>
+<h2>Inscription</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -22,8 +22,19 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <div>
+    <p>
+    <%= f.radio_button :is_admin, false, :class => ''%>
+    <%= f.label :is_admin, "Je suis bailleur", :value => "false"  %>
+    <%= f.radio_button :is_admin, nil, :checked => true, :class => ''%>
+    <%= f.label :is_admin, "Je suis visiteur", :value => "nil" %>
+
+    </p>
+ 
+  </div>
+
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "S'inscrire" %>
   </div>
 <% end %>
 
