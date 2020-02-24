@@ -1,36 +1,41 @@
 
-<div class="logo">
-  <div class="pic">
-    <div class="imge-rep d-flex align-items-center">
-    <%= image_tag "/giz.jpg"%>
+ 
+  <header class="aci59a-0 eyAIuG sticky-limit">
+    <div class="sc-1gnwgfb-2 stom-show hVIPFV">
+    </div>
+  </header>
+  <div class="logo">
+    <div class="pic">
+      <div class="imge-rep d-flex align-items-center">
+      <%= image_tag "/giz.jpg"%>
+      </div>
+    </div>
+    
+    <div class="h-text text-white pr-4">
+      <h3><%=@project.nom_du_projet%></h3>
+    </div>
+    <div class="asi"> 
+      <div class="aside">
+        <p><span class="attr">Secteurs :</span>
+          <span class="word"></span>
+  
+          <%@project.secteurprojets.each do|sp|%>
+            <%=sp.secteur.title%> ,
+          <%end%>        
+      </p>
+      <p><span class="attr">Forme d'appui : </span>
+        <span class="word"><%= @project.appui.title%></span>
+        </p>
+      <p><span class="attr">Filiere : </span>
+        <span class="word">
+          <%@project.filiereprojets.each do|fp|%>
+          <%=fp.filiere.title%>, 
+          <%end%> 
+        </span>     
+      </p>
+      </div>
     </div>
   </div>
-  
-  <div class="h-text text-white pr-4">
-    <h3><%=@project.nom_du_projet%></h3>
-  </div>
-<div class="asi"> 
-  <div class="aside">
-    <p><span class="attr">Secteurs :</span>
-      <span class="word"></span>
-
-      <%@project.secteurprojets.each do|sp|%>
-        <%=sp.secteur.title%> ,
-      <%end%>        
-  </p>
-  <p><span class="attr">Forme d'appui : </span>
-     <span class="word">Don</span>
-    </p>
-  <p><span class="attr">Filiere : </span>
-    <span class="word">
-      <%@project.filiereprojets.each do|fp|%>
-       <%=fp.filiere.title%>, 
-      <%end%> 
-    </span>     
-  </p>
-  </div>
-</div>
-</div>
   <div class="show-cont pt-4 pb-4">
     <div class="objectif mx-auto">
       <h2 class="text-left color">Objectif général du projet</h2>

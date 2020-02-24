@@ -1,9 +1,11 @@
+  <header class="aci59a-0 eyAIuG haute sticky-limit">
+    <div class="sc-1gnwgfb-2 stom">
+    </div>
+       <div class="head-te"><marquee behavior="" direction="">La communauté internationale réaffirme son soutient aux pays les plus pauvres</marquee></div>
+  </header>
 
-<h2>Inscription</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
+<div class="mx-auto sign-up p-4">
+  <h2 class="text-center">Inscrivez-vous</h2>
   <div class="field">
     <%= f.label :first_name, "Nom" %><br />
     <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
@@ -62,3 +64,46 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+  <!-- <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class:'form') do |f| %>
+    
+      <ol>
+        <li><%= render "devise/shared/error_messages", resource: resource %></li>
+      </ol>
+      <div class="field mb-2 row">
+        <div class="col-md-6">
+          <%= f.label :Nom %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",class:'form-control', placeholder:'Nom' %>
+        </div>
+        <div class="col-md-6">
+          <%= f.label :Prénom %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",class:'form-control', placeholder:'Prénom' %>
+        </div>
+      </div>
+      <div class="field">
+        <label for="org">Organisme</label>
+      </div>
+    <div class="field mb-2">
+      <%= f.label :Adresse_email %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email",class:'form-control', placeholder:'Adresse email' %>
+    </div>
+  
+    <div class="field mb-2">
+      <%= f.label :Mot_de_passe %>
+      <% if @minimum_password_length %>
+        <% @minimum_password_length %>
+      <% end %>
+      <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder:'Minimum 6 caractères' %>
+    </div>
+  
+    <div class="field">
+      <%= f.label :Entrez_le_mot_de_passe_à_nouveau %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'form-control', placeholder:'confirmer votre mot de passe' %>
+    </div>
+  
+    <div class="actions mb-2">
+      <%= f.submit "s'inscrire",class:'sc-eerKOB cfnPHQ mt-3' %>
+    </div>
+  <% end %>
+  
+  <%= render "devise/shared/links" %>
+</div> -->

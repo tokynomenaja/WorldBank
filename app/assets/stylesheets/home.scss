@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.large{width: 9rem}
+.large{width: 9rem;}
 .containerA{
     margin: 2% auto;
     width: 210px;
@@ -67,9 +67,42 @@ image-c:hover{
 
 
 .select{
-        background: white;
+    background: transparent url('/chev.png') no-repeat;
+    background-position: 4.5rem center;
+    border-style: none;
+}
+.reset{
+    background: transparent;
     border-style: none;
 }
 .submit{
         margin-left: 60px;
 }
+
+.popover__title {
+    font-size: 24px;
+    line-height: 36px;
+    text-decoration: none;
+    color: rgb(228, 68, 68);
+    text-align: center;
+    padding: 15px 0;
+  }
+  
+  .popover__wrapper {
+    position: relative;
+  }
+  .popover__content {
+    visibility: hidden;
+    position: absolute;
+    left: -150px;
+    top: 3.7rem;
+    background: #555555;
+    color: seashell;
+    text-align: center;
+    font-size: 0.8rem;
+  }
+
+  .popover__wrapper:hover .popover__content {
+    visibility: visible;
+  }
+  
