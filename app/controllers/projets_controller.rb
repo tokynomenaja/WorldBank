@@ -13,7 +13,7 @@ class ProjetsController < ApplicationController
       end
    
         
-      end
+    end
   
     def show
       @project = Projet.find(params[:id])

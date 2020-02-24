@@ -1,5 +1,4 @@
-
-   <header class="aci59a-0 eyAIuG sticky-limit">
+<header class="aci59a-0 eyAIuG sticky-limit">
     <div class="sc-1gnwgfb-2 hVIPFV">
     </div>
   </header>
@@ -8,7 +7,7 @@
     <nav class="show bold">
       <ul class="yhmwkn-2 fKSouh">
         <li class="yhmwkn-5 kARqAl">
-          <a class="yhmwkn-3 kJIsra active" href="#">Actualités </a>
+          <a class="yhmwkn-3 kJIsra active" href="#">Actualités </a>
         </li>
         <li class="yhmwkn-5 kARqAl">
           <a class="yhmwkn-3 kJIsra" href="admin/projets/new">Créer un projet</a>
@@ -35,8 +34,8 @@
           <%end%>
         <%else%>
             <a href="<%= new_user_session_path%>" class="sc-eerKOB cfnPHQ bold" style="color: white;text-decoration: none;"><span>Rechercher</span></a>
-            <%end%>        <%end%>
-      <% end %>
+        <%end%>   
+      <%end%>
     </div>
   </header>
   <!-- FILTRE  -->
@@ -83,7 +82,7 @@
               </h3>
             </header>
             <div class="popover__content rounded">
-               Institutions Gouvernementales Associées
+               Institutions Gouvernementales Associées
             </div>
           </div>
 
@@ -131,7 +130,6 @@
                 <%else%>
                   <a href="<%= new_user_session_path %>" class="btn bold">Filtrer</a>
                 <%end%>
-
              </h3>
             </header>
           </div>   
@@ -141,8 +139,6 @@
   </div>
 </nav>
     <!-- FIN FILTRE -->
-
-
 <div class="sc-11unfkk-2 fxFQyp">
   <header class="">
     <div class="qjc24y-1 hlIrlm row no-gutters align-items-start">
@@ -203,7 +199,6 @@
                         </div>          
                 <%end%>
                 <%end%>
-
              <%if @filiere%>
               <% @filiere.each do |res| %>  
                 <% if res.projet.validation == true%>
@@ -230,7 +225,6 @@
                 </div>       
               <%end%>
             <%end%>
-
              <%if @ptf%>
                         <% @ptf.each do |res| %>  
                         <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
@@ -238,7 +232,6 @@
                         </div>        
                 <%end%>
             <%end%>
-
             <%if @appui%>
                        <% @appui.each do |res| %>  
                        <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
@@ -246,7 +239,6 @@
                        </div>        
                 <%end%>
             <%end%>
-
             <%if @ben%>
               <% @ben.each do |res| %>  
                 <% if res.projet.validation == true%>
@@ -446,22 +438,18 @@
             <div class="containerA">
         <div id="carousel">
             <figure><img src="logo/afd11.jpg" alt="" class="image-c"></figure>
-					<figure><img src="logo/cnuced11.jpg" alt="" class="image-c"></figure>
-					<figure><img src="logo/giz11.jpg" alt="" class="image-c"></figure>
-					<figure><img src="logo/helvetas1.jpg" alt="" class="image-c"></figure>
-					<figure><img src="logo/imf1.jpg" alt="" class="image-c"></figure>
-					<figure><img src="logo/jica1.png" alt="" class="image-c"></figure>
-					<figure><img src="logo/mica1.jpg" alt="" class="image-c"></figure>
-					<figure><img src="logo/onudi1.jpg" alt="" class="image-c"></figure>
-					<figure><img src="logo/pnud1.jpg" alt="" class="image-c"></figure>
-					<figure><img src="logo/ue1.jpg" alt="" class="image-c"></figure>
-					<figure><img src="logo/unicef1.jpg" alt="" class="image-c"></figure>
-					<figure><img src="logo/USAID1.jpg" alt="" class="image-c"></figure>
-					<figure><img src="logo/wbg1.jpg" alt="" class="image-c"></figure>
+          <figure><img src="logo/cnuced11.jpg" alt="" class="image-c"></figure>
+          <figure><img src="logo/giz11.jpg" alt="" class="image-c"></figure>
+          <figure><img src="logo/helvetas1.jpg" alt="" class="image-c"></figure>
+          <figure><img src="logo/imf1.jpg" alt="" class="image-c"></figure>
+          <figure><img src="logo/jica1.png" alt="" class="image-c"></figure>
+          <figure><img src="logo/mica1.jpg" alt="" class="image-c"></figure>
+          <figure><img src="logo/onudi1.jpg" alt="" class="image-c"></figure>
+          <figure><img src="logo/pnud1.jpg" alt="" class="image-c"></figure>
+          <figure><img src="logo/ue1.jpg" alt="" class="image-c"></figure>
+          <figure><img src="logo/unicef1.jpg" alt="" class="image-c"></figure>
+          <figure><img src="logo/USAID1.jpg" alt="" class="image-c"></figure>
+          <figure><img src="logo/wbg1.jpg" alt="" class="image-c"></figure>
           </div>
       </div>
   </section>
-
-
-
-
