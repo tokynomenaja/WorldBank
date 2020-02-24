@@ -60,6 +60,11 @@ class Admin::ProjetsController < ApplicationController
 
   def edit
     @projet = Projet.find(params[:id])
+    @secteurprojets = Secteurprojet.where(projet_id: @projet.id)
+    @sects = []
+    @secteurprojets.each do |sp|
+      @sects << sp.secteur
+    end
   end
 
   def update
@@ -76,28 +81,36 @@ class Admin::ProjetsController < ApplicationController
               debut_du_projet: params[:debut_du_projet],
               fin: params[:fin],
               apdem: params[:apdem], bailleur_id: current_user.id)
-        
+              
+          puts "*"*100
+           puts params[:sects]
+            puts "*"*100
+              params[:sects].each do |s|
 
-              @secteur_ids = params[:secteur_ids]
-                @secteur_ids.each do |x|
-                  Secteurprojet.update(projet_id: @project.id , secteur_id: x.to_i)
+                Secteurprojet.where(secteur_id: s.id, projet_id: @projet.id).destroy_all
+              end
+              for x in 0..Secteur.all.count-1
+                if params[:"secteur_#{x}"]
+                    Secteurprojet.create(projet_id: @projet.id, secteur_id: params[:"secteur_#{x}"])
                 end
-              @filiere_ids = params[:filiere_ids]
-                @filiere_ids.each do |x|
-                  Filiereprojet.update(projet_id: @project.id , filiere_id: x.to_i)
-                end
-              @iga_ids = params[:iga_ids]
-                @iga_ids.each do |i|
-                  Igaprojet.update(projet_id: @project.id , iga_id: i.to_i) 
-                end
-              @zone_ids = params[:zone_ids]
-                @zone_ids.each do |z|
-                  Zoneprojet.update(projet_id: @project.id , zone_id: z.to_i)
-                end
-              @beneficiaire_ids = params[:beneficiaire_ids]
-                @beneficiaire_ids.each do |b|
-                  Benefprojet.update(projet_id: @project.id , beneficiaire_id: b.to_i)
-                end
+              end
+              
+              # @filiere_ids = params[:filiere_ids]
+              #   @filiere_ids.each do |x|
+              #     Filiereprojet.update(projet_id: @project.id , filiere_id: x.to_i)
+              #   end
+              # @iga_ids = params[:iga_ids]
+              #   @iga_ids.each do |i|
+              #     Igaprojet.update(projet_id: @project.id , iga_id: i.to_i) 
+              #   end
+              # @zone_ids = params[:zone_ids]
+              #   @zone_ids.each do |z|
+              #     Zoneprojet.update(projet_id: @project.id , zone_id: z.to_i)
+              #   end
+              # @beneficiaire_ids = params[:beneficiaire_ids]
+              #   @beneficiaire_ids.each do |b|
+              #     Benefprojet.update(projet_id: @project.id , beneficiaire_id: b.to_i)
+              #   end
 
                 redirect_to  admin_projet_path
              else

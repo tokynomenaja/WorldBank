@@ -1,0 +1,9 @@
+class CreateOrganismes < ActiveRecord::Migration[6.0]
+  def change
+    create_table :organismes do |t|
+      t.string :nom
+
+      t.timestamps
+    end
+  end
+end

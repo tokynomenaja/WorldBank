@@ -12,8 +12,8 @@ class SuperAdmin::ProjetsController < ApplicationController
 
   def update
   	@projet = Projet.find(params[:id])
- 	@projet.update(validation: true)
- 	redirect_to super_admin_projets_path
+   	@projet.update(validation: true)
+   	redirect_to super_admin_projets_path
   end
 
   def destroy

@@ -5,12 +5,33 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :first_name, "Nom" %><br />
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name, "Prénoms" %><br />
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone, "Téléphone" %><br />
+    <%= f.text_field :phone, autofocus: true, autocomplete: "phone" %>
+  </div>
+
+  <div class="field">
+     <%= f.label :Organisme, "Organisme"%><br />
+     <%= f.select :organisme_id, Organisme.all.collect { |o| [ o.nom, o.id ] }, include_blank: true%>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :email, "Email" %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :password, "Mot de passe" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -18,9 +39,11 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation, "Entrez le mot de passe à nouveau" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
+
+
 
   <div>
     <p>

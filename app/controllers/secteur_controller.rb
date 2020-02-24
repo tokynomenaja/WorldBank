@@ -3,6 +3,6 @@ class SecteurController < ApplicationController
    	
    end
    def show
-   	@secteur = Secteur.find(params[:id])
+   		@secteur = Secteur.find(params[:id])
    end
 end

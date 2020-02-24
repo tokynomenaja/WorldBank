@@ -14,5 +14,7 @@ class User < ApplicationRecord
 	    end
 	  end
 
+	belongs_to :organisme
+
 
 end

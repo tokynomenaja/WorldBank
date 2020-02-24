@@ -5,6 +5,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
     create_table :users do |t|
 
       ## Database authenticatable
+      t.string :first_name,         null: false,  default: ""
+      t.string :last_name,          null: false, default: ""
+      t.string :phone,              null: false, default: ""
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 
@@ -36,6 +39,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.timestamps null: false
       t.boolean :is_admin, default: nil
       t.boolean :is_super_admin, default: false
+      t.boolean :is_consultant, default: false
+      t.belongs_to :organisme, index: true
       
     end
 

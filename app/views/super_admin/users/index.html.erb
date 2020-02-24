@@ -42,3 +42,47 @@
 	  </tbody>
 </table>
 </div>
+
+<div class="container">
+	<h2>Listes des consultants</h2>
+	<table class="table table-bordered table-dark">
+	  <thead>
+	    <tr>
+	      <th scope="col">Id</th>
+	      <th scope="col">Email</th>
+	
+	    </tr>
+	  </thead>
+	  <tbody>
+	      <% @consultants.each do |b|%>
+	    <tr>
+	      <th scope="row"><%=b.id%></th>
+	      <td><%=b.email%></td>
+	    </tr>
+	      <%end%>
+	  </tbody>
+</table>
+</div>
+<div class="container">
+<table class="table table-bordered table-dark">
+	<h2>Listes des consultants en attente</h2>
+	  <thead>
+	    <tr>
+	      <th scope="col">Id</th>
+	      <th scope="col">Email</th> 
+	      <th scope="col">Action</th>
+
+	    </tr>
+	  </thead>
+	  <tbody>
+	      <% @consultants_en_attente.each do |c|%>
+	    <tr>
+	      <th scope="row"><%=c.id%></th>
+	      <td><%=c.email%></td>
+	      <td><a href="/super_admin/users/<%=c.id%>" data-method="put" class="btn btn-warning">Valider</a></td>
+	      <td><a href="/super_admin/users/<%=c.id%>" class="btn btn-warning">Voir</a></td>
+	    </tr>
+	      <%end%>
+	  </tbody>
+</table>
+</div>

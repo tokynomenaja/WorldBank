@@ -20,8 +20,14 @@
             <%= search_field_tag :search, params[:search], placeholder: "Rechercher", class: "sc-jzgbtB bwwcKt" %>
           </div>
         </div>
-        <button tabindex="0" type="submit" variant="primary" class="sc-eerKOB cfnPHQ"><span>Rechercher</span></button>
-      <% end %>
+        <% if current_user %> 
+          <% if current_user.is_consultant == true || current_user.is_super_admin == true || current_user.is_admin == true%>
+          <button tabindex="0" type="submit" variant="primary" class="sc-eerKOB cfnPHQ"><span>Rechercher</span></button>
+          <%end%>
+        <%else%>
+            <a href="<%= new_user_session_path%>" class="sc-eerKOB cfnPHQ" style="color: white;text-decoration: none;"><span>Rechercher</span></a>
+        <%end%>
+      <%end %>
     </div>
   </header>
   <!-- FILTRE  -->
@@ -233,7 +239,14 @@
                 <input type="date" name="fin" placeholder="fin" class="select fdk8rh-1 eouleG">
              </h3>
             </header>
-                <%= submit_tag "search", :class => 'btn btn-info glyphicon glyphicon-search submit',:name => nil%>   
+
+            <% if current_user %> 
+              <% if current_user.is_consultant == true || current_user.is_super_admin == true || current_user.is_admin == true%>
+                <%= submit_tag "Rechercher", :class => 'btn btn-info glyphicon glyphicon-search submit',:name => nil%>
+              <%end%>
+              <%else%>
+              <a href="<%= new_user_session_path %>" class="btn btn-info glyphicon glyphicon-search submit">Rechercher</a>
+            <%end%>
             <%end%>
 
         
@@ -311,15 +324,18 @@
 
              <%if @filiere%>
                     <% @filiere.each do |res| %>  
+                    <% if res.projet.validation == true%>
                    <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank' %><br> 
+                <%end%>
                   
             <%end%>
             <%end%>
              
              <%if @secteur%>
                     <% @secteur.each do |res| %>  
+                  <% if res.projet.validation == true%>
                    <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank'%><br> 
-                      
+                  <%end%>   
             <%end%>
             <%end%>
 
@@ -343,7 +359,9 @@
 
             <%if @ben%>
                     <% @ben.each do |res| %>  
-                     <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank'%><br>        
+                    <% if res.projet.validation == true%>
+                     <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank'%><br>
+                    <%end%>     
                 <%end%>
             <%end%>
              <%if @fin%>

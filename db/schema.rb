@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_21_060646) do
+ActiveRecord::Schema.define(version: 2020_02_21_110414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,12 @@ ActiveRecord::Schema.define(version: 2020_02_21_060646) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "organismes", force: :cascade do |t|
+    t.string "nom"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "projets", force: :cascade do |t|
     t.string "nom_du_projet"
     t.string "forme_d_appui"
@@ -137,6 +143,9 @@ ActiveRecord::Schema.define(version: 2020_02_21_060646) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "first_name", default: "", null: false
+    t.string "last_name", default: "", null: false
+    t.string "phone", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -146,7 +155,10 @@ ActiveRecord::Schema.define(version: 2020_02_21_060646) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "is_admin"
     t.boolean "is_super_admin", default: false
+    t.boolean "is_consultant", default: false
+    t.bigint "organisme_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["organisme_id"], name: "index_users_on_organisme_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

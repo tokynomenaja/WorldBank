@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-       
+      
 def index
 
        @project = Projet.order(:id).page(params[:page]).per(3)
@@ -19,7 +19,8 @@ def index
                             redirect_to(root_path)
                         else  
                           @parameter = params[:search].downcase  
-                          @results = Projet.all.where("lower(nom_du_projet) LIKE :search", search: "%#{@parameter}%")  
+                          @res = Projet.where(validation: true)
+                          @results = @res.where("lower(nom_du_projet) LIKE :search", search: "%#{@parameter}%")  
                         end  
                     end 
               #recherhe controller ptf
@@ -30,7 +31,7 @@ def index
                                redirect_to(root_path)
                         else  
                           @parameter = params[:ptf_id].downcase  
-                          @ptf = Projet.all.where(ptf_id: params[:ptf_id])
+                          @ptf = Projet.all.where(ptf_id: params[:ptf_id], validation: true)
                           @ptf_1 = Ptf.find(params[:ptf_id]).title.to_s  
                         end 
                     end 
@@ -45,7 +46,7 @@ def index
                          
                         else  
                           @parameter = params[:montant_id].downcase  
-                          @montant = Projet.all.where(montant_id: params[:montant_id]) 
+                          @montant = Projet.all.where(montant_id: params[:montant_id], validation: true) 
                           @montant_1 = Montant.find(params[:montant_id]).price.to_s 
                         end 
                     end 
@@ -60,7 +61,7 @@ def index
                          
                         else  
                           @parameter = params[:appui_id].downcase  
-                          @appui = Projet.all.where(appui_id: params[:appui_id])  
+                          @appui = Projet.all.where(appui_id: params[:appui_id], validation: true)  
                           @appui_1 = Appui.find(params[:appui_id]).title.to_s
                         end 
                     end 
@@ -72,7 +73,7 @@ def index
                          
                         else  
                           @parameter = params[:fin].downcase  
-                          @fin = Projet.all.where(fin: params[:fin])  
+                          @fin = Projet.all.where(fin: params[:fin], validation: true)  
                         end 
                     end 
 

@@ -7,7 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
- 
+Organisme.destroy_all
+      c0 = Organisme.create!(nom:"")
+      c1 = Organisme.create!(nom:"Ministère de l'économie Msy")
+      c2 = Organisme.create!(nom:"Ministère de Finances")
+      c3 = Organisme.create!(nom:"FMI")
+      c4 = Organisme.create!(nom:"USAID")
+
+puts  "Organismes créés"   
   
 Secteur.destroy_all
       C0 = Secteur.create!(title:"")
@@ -232,8 +239,8 @@ puts "Beneficiaire"
                 Igaprojet.create!(projet_id: 1 , iga_id: 13)
 
 
-                Secteurprojet.create(projet_id: 1 , secteur_id: 14)
-                Secteurprojet.create(projet_id: 1 , secteur_id: 15)
+                Secteurprojet.create(projet_id: 1 , secteur_id: 10)
+                Secteurprojet.create(projet_id: 1 , secteur_id: 11)
 
 puts "projet create1"
  
