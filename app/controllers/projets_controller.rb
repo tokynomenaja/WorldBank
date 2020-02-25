@@ -10,10 +10,8 @@ class ProjetsController < ApplicationController
             @res = Projet.where(validation: true) 
             @results = @res.where("lower(nom_du_projet) LIKE :search", search: "%#{@parameter}%")
           end  
-      end
-   
-        
-      end
+      end  
+    end
   
     def show
       @project = Projet.find(params[:id])

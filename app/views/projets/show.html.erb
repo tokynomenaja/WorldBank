@@ -2,11 +2,16 @@
 <div class="logo">
   <div class="pic">
     <div class="imge-rep d-flex align-items-center">
-    <%= image_tag "/giz.jpg"%>
+   <%if @project.logo.attached?%>
+              <%= image_tag @project.logo, alt: 'logo', class:"card-img-top"%>
+        <%else%>
+            <img class="card-img-top" width="100px" height="300px" src="" alt="Card image cap">
+        <%end%>
     </div>
   </div>
   
   <div class="h-text text-white pr-4">
+         
     <h3><%=@project.nom_du_projet%></h3>
   </div>
 <div class="asi"> 
@@ -35,12 +40,12 @@
     <div class="objectif mx-auto">
       <h2 class="text-left color">Objectif général du projet</h2>
       <div class="mt-2 pt-2">
-        <%=@project.objectif_generale_du_projet%>
+        <%=raw @project.objectif_generale_du_projet%>
       </div>
       <div class="appui mt-4">
         <h2 class="color text-left">Appui spécifique au secteur privé</h2>
         <div class="p-2">
-          <%=@project.aspsp%>
+          <%=raw @project.aspsp%>
         </div>
       </div>
       <div class="row pt-4 pb-4">
@@ -51,6 +56,15 @@
                 <span><%=zp.zone.title %>, </span>
               <%end%>
           </div>
+          <div class="mb-3">
+        <%if @project.files.attached?%>
+          <%@project.files.each do|file|%> 
+          PDF: <%= link_to file.name, rails_blob_path(file, disposition: "attachement") %>
+          <%end%>
+        <%else%>
+            <img src="#">
+        <%end%>
+        </div>
           <p><span class="attr">Partenaire d'implementation : </span>
           <p class="mb-3"><%= @project.partenaire_d_implementaton %></p>
           </p>
@@ -67,10 +81,10 @@
         <p class="mb-3"><span class="attr">Fin : </span><%=@project.fin%></p>
           <p class="mb-3"><span class="attr">Alignement aux priorités du plan emergence de Madagascar : </span><p><%= @project.apdem %></p></p>
         </div>
+
     </div>
     <div class="text-right">
       <a href="/projets/:id/edit" class="sc-eerKOB cfnPHQ mr-2">Télecharger</a>
-      <a href="/projets/:id/edit" class="sc-eerKOB cfnPHQ">Modifier</a>
     </div>
   </div>
 </div>

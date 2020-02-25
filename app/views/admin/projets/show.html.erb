@@ -9,7 +9,15 @@
 				<%else%>
 						<img class="card-img-top" width="100px" height="300px" src="" alt="Card image cap">
 				<%end%>
-		        <p class="card-text"><%= @projet.objectif_generale_du_projet %></p>
+				<h4>pdf</h4>
+				<%if @projet.files.attached?%>
+					<%@projet.files.each do|file|%>	
+					PDF: <%= link_to file.name, rails_blob_path(file, disposition: "attachement") %>
+					<%end%>
+				<%else%>
+						<img src="#">
+				<%end%>
+		        <p class="card-text"><%=raw @projet.objectif_generale_du_projet %></p>
 		        <% @projet.secteurprojets.each do |s|%>
 		        	<p><%= s.secteur.title%></p>
 		        <%end%>
@@ -19,6 +27,7 @@
 		        <% @projet.zoneprojets.each do |z|%>
 		        	<p><%= z.zone.title%></p>
 		        <%end%>
+		         <%=raw @projet.aspsp%>
 		        <p><%= @projet.forme_d_appui%></p>
 		        <p><%= @projet.debut_du_projet%></p>
 		        <p><%= @projet.fin%></p>

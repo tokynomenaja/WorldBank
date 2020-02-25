@@ -6,6 +6,20 @@ gem 'simple_form'
 
 gem  "ransack"
 
+
+gem "mini_magick"
+gem 'paperclip'
+gem 'ckeditor'
+gem 'carrierwave'
+gem 'dragonfly'
+gem 'mongoid-paperclip', require: 'mongoid_paperclip'
+gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
+gem 'mini_magick'
+
+
+
+
+
 gem 'table_print'
 
 gem 'faker'
