@@ -20,7 +20,7 @@ window.__INITIAL_STATE__ = {"form":{},"routing":{"location":null},"notifications
           <%if current_user%>
             <div class="q0xs59-20 jhSsMU beamerTrigger">
               <div class="q0xs59-6 q0xs59-7">
-                <%=link_to 'Se deconnecter', destroy_user_session_path, method: :delete, class: 'fwuAZd'%>
+                <%=button_to 'Se deconnecter', destroy_user_session_path, method: :delete, class: 'fwuAZd'%>
               </div>
             </div>
           <%else%>

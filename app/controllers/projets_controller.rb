@@ -11,8 +11,7 @@ class ProjetsController < ApplicationController
             @results = @res.where("lower(nom_du_projet) LIKE :search", search: "%#{@parameter}%")
           end  
       end
-   
-        
+
     end
   
     def show

@@ -183,7 +183,6 @@ Beneficiaire.destroy_all
        b18 = Beneficiaire.create(title:"structures intermediaire")
 puts "Beneficiaire"
 
-
 @pro = Projet.new(nom_du_projet: "MADAGASCAR INTEGRATED GROWTH POLES AND CORRIDOR - PIC 2.2", objectif_generale_du_projet: "Contribuer au développement durable des secteurs tourisme et
               agroalimentaire en améliorant l'accès aux infrastructures et 
               aux services dans les régions cibles de Madagascar.",  aspsp: "
@@ -399,4 +398,3 @@ puts "projet create3"
                              Secteurprojet.create(projet_id: 4 , secteur_id: 10)
 
  puts "projet create4"
-

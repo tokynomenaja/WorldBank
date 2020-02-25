@@ -9,6 +9,7 @@ class CreateProjets < ActiveRecord::Migration[6.0]
       t.string :debut_du_projet
       t.string :fin
       t.string :apdem
+
        
       t.boolean :validation, default: false
 

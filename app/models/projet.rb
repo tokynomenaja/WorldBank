@@ -1,4 +1,7 @@
 class Projet < ApplicationRecord
+       validates :objectif_generale_du_projet, presence: true
+
+
         belongs_to :bailleur, optional: true, class_name: 'User'
         belongs_to :ptf, optional: true
         belongs_to :montant, optional: true
@@ -22,6 +25,7 @@ class Projet < ApplicationRecord
         has_many :secteurs, through: :secteurprojets
 
         has_one_attached :logo
-       
+        
+        has_many_attached :files
 
 end
