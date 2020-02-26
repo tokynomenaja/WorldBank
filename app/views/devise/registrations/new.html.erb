@@ -1,73 +1,69 @@
   <header class="aci59a-0 eyAIuG haute sticky-limit">
     <div class="sc-1gnwgfb-2 stom">
     </div>
-       <div class="head-te"><marquee behavior="" direction="">La communauté internationale réaffirme son soutient aux pays les plus pauvres</marquee></div>
+       <div class="head-te"><marquee behavior="" direction="">La communauté internationale réaffirme son soutien aux pays les plus pauvres</marquee></div>
   </header>
 
 <div class="mx-auto sign-up p-4">
   <h2 class="text-center">Inscrivez-vous</h2>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class:'form') do |f| %>
-    
-      <ol>
-        <li><%= render "devise/shared/error_messages", resource: resource %></li>
-      </ol>
-  <div class="field">
-    <%= f.label :first_name, "Nom" %><br />
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class:'form-control'%>
-  </div>
+    <ol>
+      <li><%= render "devise/shared/error_messages", resource: resource %></li>
+    </ol>
+    <div class="field mb-2 row">
+      <div class="col-md-6">
+        <%= f.label :first_name, "Nom" %>
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class:'form-control', placeholder: 'Nom'%>
+      </div>
+      <div class="col-md-6">
+        <%= f.label :last_name, "Prénoms" %>
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class:'form-control', placeholder: 'Prénom' %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :last_name, "Prénoms" %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class:'form-control' %>
-  </div>
-
-  <div class="field">
-    <%= f.label :phone, "Téléphone" %><br />
-    <%= f.text_field :phone, autofocus: true, autocomplete: "phone", class:'form-control'%>
-  </div>
-
-  <div class="field">
-     <%= f.label :Organisme, "Organisme"%><br />
-     <%= f.select :organisme_id, Organisme.all.collect { |o| [ o.nom, o.id ] }, include_blank: true%>
-  </div>
+    <div class="field mb-2 row">
+      <div class="col-md-6">
+        <%= f.label :phone, "Téléphone" %>
+        <%= f.text_field :phone, autofocus: true, autocomplete: "phone", class:'form-control', placeholder: 'Téléphone'%>
+      </div>
+      <div class="col-md-6">
+        <%= f.label :Organisme, "Organisme"%>
+        <%= f.select(:organisme_id, Organisme.all.collect { |o| [ o.nom, o.id ] }, {include_blank: "choisir"}, { :class => 'form-control' }) %>
+      </div>
+    </div>
 
 
-  <div class="field">
-    <%= f.label :email, "Email" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'form-control' %>
-  </div>
+    <div class="field mb-2">
+      <%= f.label :email, "Email" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'form-control', placeholder:'Adresse email' %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password, "Mot de passe" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password", class:'form-control' %>
-  </div>
+    <div class="field mb-2">
+      <%= f.label :password, "Mot de passe" %>
+      <%= f.password_field :password, autocomplete: "new-password", class:'form-control', placeholder: '6 caractères minimum' %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Entrez le mot de passe à nouveau" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'form-control' %>
-  </div>
+    <div class="field mb-2">
+      <%= f.label :password_confirmation, "Entrez le mot de passe à nouveau" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'form-control', placeholder: 'Confirmer' %>
+    </div>
 
 
 
-  <div>
-    <p>
-    <%= f.radio_button :is_admin, false, :class => ''%>
-    <%= f.label :is_admin, "Je suis bailleur", :value => "false"  %>
-    <%= f.radio_button :is_admin, nil, :checked => true, :class => ''%>
-    <%= f.label :is_admin, "Je suis visiteur", :value => "nil" %>
+    <div class="row mt-3 mb-2">
+      <div class="col-md-6">
+        <%= f.radio_button :is_admin, false, :class => ''%>
+        <%= f.label :is_admin, "Je suis bailleur", :value => "false"  %>
+      </div>
+      <div class="col-md-6">
+        <%= f.radio_button :is_admin, nil, :checked => true, :class => ''%>
+        <%= f.label :is_admin, "Je suis visiteur", :value => "nil" %>
+      </div>
+    </div>
 
-    </p>
- 
-  </div>
-
-  <div class="actions">
-    <%= f.submit "S'inscrire", class:'sc-eerKOB cfnPHQ mt-3' %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-  
+    <div class="actions mb-2">
+      <%= f.submit "S'inscrire", class:'sc-eerKOB cfnPHQ mt-3' %>
+    </div>
+  <% end %>
+  <%= render "devise/shared/links" %>
 </div>

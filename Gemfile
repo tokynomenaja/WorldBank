@@ -6,6 +6,8 @@ gem 'simple_form'
 
 gem  "ransack"
 
+gem 'turbolinks', '~> 5'
+
 gem 'table_print'
 
 gem 'faker'
