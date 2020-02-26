@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_21_110414) do
+ActiveRecord::Schema.define(version: 2020_02_21_125001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,16 @@ ActiveRecord::Schema.define(version: 2020_02_21_110414) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["beneficiaire_id"], name: "index_benefprojets_on_beneficiaire_id"
     t.index ["projet_id"], name: "index_benefprojets_on_projet_id"
+  end
+
+  create_table "ckeditor_assets", force: :cascade do |t|
+    t.string "data_file_name", null: false
+    t.string "data_content_type"
+    t.integer "data_file_size"
+    t.string "type", limit: 30
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
   create_table "filiereprojets", force: :cascade do |t|
