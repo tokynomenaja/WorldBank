@@ -1,0 +1,42 @@
+<noscript>
+  <iframe src="//www.googletagmanager.com/ns.html?id=GTM-N5NM9B3" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+</noscript>
+<script type="text/javascript">
+window.__INITIAL_STATE__ = {"form":{},"routing":{"location":null},"notifications":[],"modal":{"opened":false,"children":null},"ssr":{"notification":null},"socket":{"socket":null},"session":{"unconfirmed":false,"linkedInUser":null,"locked":false,"confirmationUpdateError":null,"confirmationUpdateInfo":null,"unlockUpdateError":null,"unlockUpdateInfo":null,"afterSignin":null,"linkedInLoading":false},"magazineRequests":{},"api":{"collections":{},"resources":{},"resourceErrors":{},"collectionTtl":{}},"bookmarks":{"meetings":[],"organizations":[],"articles":[],"jobs":[]},"i18n":{"organizationLocale":{},"locale":"fr","languageAlert":"hide"}}</script>
+<div class="container-g" id="app">
+  <div class="sc-11unfkk-0 iMrUmY">
+    <nav id="site-upper-nav" class="q0xs59-19 ghzkpM">
+        <div class="sc-11unfkk-3 cHltbi">
+            <a href="#" rel="noopener noreferrer" target="_blank" title="Recruteurs" class="q0xs59-2 bvQzJc">
+            <span> <%#<%= image_tag "smb.png" ,class:"sc-10fmshx-2 dFNvVh"%></span>
+            </a>
+        </div>
+        <div class="sc-11unfkk-3 gbfQPZ">
+          <nav class="q0xs59-8 gcmJEQ">
+            <div class="q0xs59-20 jhSsMU beamerTrigger">
+              <a href="<%= super_admin_users_path%>" class="q0xs59-6 q0xs59-7 fwuAZd"><div>Visiteurs</div></a>
+            </div>
+            <div class="q0xs59-20 jhSsMU beamerTrigger">
+              <a href="<%= super_admin_projets_path%>" class="q0xs59-6 q0xs59-7 fwuAZd"><div>Projets</div></a>
+            </div>
+          </nav>
+          <%if current_user%>
+            <div class="q0xs59-20 jhSsMU beamerTrigger">
+              <div class="q0xs59-6 q0xs59-7">
+                <%=link_to 'Se deconnecter', destroy_user_session_path, method: :delete, class: 'fwuAZd'%>
+              </div>
+            </div>
+          <%else%>
+            <div class="q0xs59-20 jhSsMU beamerTrigger">
+              <a href="/users/sign_in" class="q0xs59-6 q0xs59-7 fwuAZd"><div>Connexion</div></a>
+            </div>
+            <div class="q0xs59-20 jhSsMU beamerTrigger">
+              <a href="/users/sign_up" class="q0xs59-6 q0xs59-7 fwuAZd"><div>Inscription</div></a>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </nav>
+
+
+ 

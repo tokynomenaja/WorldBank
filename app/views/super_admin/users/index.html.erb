@@ -1,4 +1,7 @@
-
+<header class="aci59a-0 eyAIuG sticky-limit">
+    <div class="sc-1gnwgfb-2 hVIPFV">
+    </div>
+</header>
 <div class="container">
 	<h2>Listes des bailleurs</h2>
 	<table class="table table-bordered table-dark">
@@ -6,6 +9,7 @@
 	    <tr>
 	      <th scope="col">Id</th>
 	      <th scope="col">Email</th>
+	      <th scope="col">Action</th>
 	
 	    </tr>
 	  </thead>
@@ -14,6 +18,7 @@
 	    <tr>
 	      <th scope="row"><%=b.id%></th>
 	      <td><%=b.email%></td>
+	      <td><a href="/super_admin/users/<%=b.id%>" class="btn btn-warning">Voir</a></td>
 	    </tr>
 	      <%end%>
 	  </tbody>
@@ -50,6 +55,7 @@
 	    <tr>
 	      <th scope="col">Id</th>
 	      <th scope="col">Email</th>
+	      <th scope="col">Action</th>
 	
 	    </tr>
 	  </thead>
@@ -58,6 +64,7 @@
 	    <tr>
 	      <th scope="row"><%=b.id%></th>
 	      <td><%=b.email%></td>
+	      <td><a href="/super_admin/users/<%=b.id%>" class="btn btn-warning">Voir</a></td>
 	    </tr>
 	      <%end%>
 	  </tbody>

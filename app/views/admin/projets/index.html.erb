@@ -1,3 +1,9 @@
+
+<header class="aci59a-0 eyAIuG sticky-limit">
+    <div class="sc-1gnwgfb-2 hVIPFV">
+      
+    </div>
+</header>
 <div class="row">
 
 	<% @projets.each do |p|%>
@@ -7,10 +13,10 @@
 		      <div class="card-body">
 		        <h5 class="card-title"><%= p.nom_du_projet %></h5>
 		        <p class="card-text"><%= p.objectif_generale_du_projet %></p>
-		        <%if p.logo.attached?%>
-				    	<%= image_tag p.logo, alt: 'logo', class:"card-img-circle"%>
-					<%else%>
-						<img class="card-img-top" width="100px" height="300px" src="" alt="Card image cap">
+		        <%if p.picture.attached?%>
+				    	<%= image_tag p.picture, alt: 'picture', class:"card-img-circle"%>
+				<%else%>
+					<img class="card-img-top" width="100px" height="300px" src="" alt="Card image cap">
 				<%end%>
 		    	
 		        <a href="<%= admin_projet_path(p.id)%>" class="btn btn-primary">Voir</a>

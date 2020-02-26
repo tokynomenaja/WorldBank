@@ -1,57 +1,144 @@
 
-<%= form_tag url_for(action: 'create'),method:'post', multipart: true do%>
- <input type="text" name="nom_du_projet" placeholder="Nom du projet"><br>
-         <h6>PTF</h6>
-             <%= select_tag 'ptf_id', options_for_select(Ptf.all.collect{ |c| [c.title, c.id] }), class: "form-input"%><br>
+<header class="aci59a-0 eyAIuG sticky-limit">
+    <div class="sc-1gnwgfb-2 hVIPFV">
+      
+    </div>
+</header>
+<div class="mt-4 mb-4">
+	<%= form_tag url_for(action: 'create'),method:'post', class:'form', multipart: true do%>
+		<div class="container">
+			<div class="row mb-2">
+				<div class="col-6">
+					<div>
+						<label for="nom" class="mr-2 table">Nom du projet </label>
+					</div>
+					<input type="text" name="nom_du_projet" id="nom" placeholder="Nom du projet" class="form-control">
+				</div>
+				<div class="col-6">
+					<div>
+						<label for="lien" class="mr-2 table">Lien du site</label>
+					</div>
+					<input type="text" name="lien" id="lien" placeholder="Site web" class="form-control">
+				</div>
+			</div>
+			<div class="d-flex justify-content-between mb-3">
+				<div>
+					<h6 class="table">PTF</h6>
+					<%= select_tag 'ptf_id', options_for_select(Ptf.all.collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
+				</div>
+				<div>
+					<h6 class="table">Début</h6>
+					<input type="date" name="debut_du_projet" class="form-control">
+				</div>
+				<div>
+					<h6 class="table">Fin</h6>
+					<input type="date" name="fin" class="form-control">
+				</div>
+				<div>
+					<h6 class="table">Montant</h6>
+					<%= select_tag 'montant_id', options_for_select(Montant.all.collect{ |c| [c.price, c.id] }), :include_blank => "choisir", class: "form-control"%>
+				</div>
+				<div>
+					<h6 class="table">Apui</h6>
+					<%= select_tag 'appui_id', options_for_select(Appui.all.collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
+				</div>
+			</div>
+		</div>
 
-             <h6>DEBUT DU PROJET</h6>
-             <input type="date" name="debut_du_projet" placeholder=""><br>
-            <h6>FIN DU PROJET</h6>
+		<div class="container mb-2">
+			<a class="btn-col" data-toggle="collapse" href="#secteur" role="button" aria-expanded="false" aria-controls="collapseExample">
+				secteur
+			</a>
+				<div class="collapse" id="secteur">
+				<div class="card card-body">
+					<div class="row">
+						<% Secteur.all.each do |c| %>
+							<div class="col-md-4">
+								<%= check_box_tag("secteur_ids[]",c.id) %>
+								<%= c.title%>
+							</div> 
+						<% end %>
+					</div>
+				</div>
+				</div>
+			</div>
 
-             <input type="date" name="fin" placeholder=""><br>
 
-			      <h6>MONTANT DU PROJET</h6>
-					   <%= select_tag 'montant_id', options_for_select(Montant.all.collect{ |c| [c.price, c.id] }), class: "form-input"%><br>
-					 <h6>APPUI</h6>
-					   <%= select_tag 'appui_id', options_for_select(Appui.all.collect{ |c| [c.title, c.id] }), class: "form-input"%><br>
-			      <h6>SECTEURS</h6>
-					<ul>
-						 <% Secteur.all.each do |c| %><br>
-						   <%= check_box_tag("secteur_ids[]",c.id) %>
-						   <%= c.title%> 
-						<% end %>
-					</ul>
-					<h6>FILIERE</h6>
-					<ul>
-						 <% Filiere.all.each do |c| %><br>
-						  <%= check_box_tag("filiere_ids[]",c.id) %>
-						  <%= c.title%>
-						<% end %>
-					</ul>
-					
-					<h6>BENEFICIAIRE</h6>
-					<ul>
-						 <% Beneficiaire.all.each do |c| %><br>
-						  <%= check_box_tag("beneficiaire_ids[]",c.id) %>
-						  <%= c.title%>
-						<% end %>
-					</ul>			        
-        
-					<h6>IGA(institution gouvernemental associé)</h6>
-			  		<ul>
-						 <% Iga.all.each do |c| %><br>
-						 <%= check_box_tag("iga_ids[]",c.id) %>
-						  <%= c.title%>
-						<% end %>
-					</ul>
-					<h6>ZONE D'INTERVENTION</h6>
-					<ul>
-						 <% Zone.all.each do |c| %><br>
-						 <%= check_box_tag("zone_ids[]",c.id) %>
-						  <%= c.title%>
-						<% end %>
-					</ul>
 
-				<%= file_field_tag :logo, required: true%>
-			<input type="submit" value="Créer">
-<%end%>
+			<div class="container mb-2">
+			<a class="btn-col" data-toggle="collapse" href="#filiere" role="button" aria-expanded="false" aria-controls="collapseExample">
+				Filiere
+			</a>
+				<div class="collapse" id="filiere">
+				<div class="card card-body">
+					<div class="row">
+						<% Filiere.all.each do |c| %>
+							<div class="col-md-3">
+								<%= check_box_tag("filiere_ids[]",c.id) %>
+								<%= c.title%>
+							</div>
+						<% end %>
+					</div>
+				</div>
+				</div>
+			</div>
+
+			<div class="container mb-2">
+				<a class="btn-col" data-toggle="collapse" href="#Beneficiaire" role="button" aria-expanded="false" aria-controls="collapseExample">
+					Beneficiaire
+				</a>
+				<div class="collapse" id="Beneficiaire">
+					<div class="card card-body">
+						<div class="row">
+							<% Beneficiaire.all.each do |c| %>
+								<div class="col-md-4">
+									<%= check_box_tag("beneficiaire_ids[]",c.id) %>
+									<%= c.title%>
+								</div>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		<div class="container mb-2">
+			<a class="btn-col" data-toggle="collapse" href="#iga" role="button" aria-expanded="false" aria-controls="collapseExample">
+				IGA(institution gouvernemental associé)
+			</a>
+			<div class="collapse" id="iga">
+				<div class="card card-body">
+					<div class="row">
+						<% Iga.all.each do |c| %>
+							<div class="col-md-12">
+								<%= check_box_tag("iga_ids[]",c.id) %>
+								<%= c.title%>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container mb-2">
+			<a class="btn-col" data-toggle="collapse" href="#zi" role="button" aria-expanded="false" aria-controls="collapseExample">
+				Région
+			</a>
+			<div class="collapse" id="zi">
+				<div class="card card-body">
+					<div class="row">
+						<% Zone.all.each do |c| %>
+							<div class="col-md-4">
+								<%= check_box_tag("zone_ids[]",c.id) %>
+								<%= c.title%>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			<div class="picture">
+				<%= file_field_tag :picture%>
+			</div>
+			<div class="mt-4">
+				<input type="submit" value="Créer" class="sc-eerKOB cfnPHQ">
+			</div>
+		</div>
+	<% end %>
+</div>

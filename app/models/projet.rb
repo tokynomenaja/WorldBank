@@ -21,7 +21,7 @@ class Projet < ApplicationRecord
         has_many :secteurprojets 
         has_many :secteurs, through: :secteurprojets
 
-        has_one_attached :logo
+        has_one_attached :picture
        
 
 end

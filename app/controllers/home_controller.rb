@@ -1,17 +1,15 @@
 class HomeController < ApplicationController
       
 def index
-
-       @project = Projet.order(:id).page(params[:page]).per(3)
-       @ptf_1 = ""
-       @montant_1 = ""
-       @appui_1 = ""
-       @zone_1 = ""
-       @ben_1 = ""
-       @iga_1 = ""
-       @secteur_1 = ""
-       @appui_1 = ""
-       @filiere_1 = ""
+      @project = Projet.order(:id).page(params[:page]).per(3)
+      @ptf_1 = ""
+      @montant_1 = ""
+      @appui_1 = ""
+      @zone_1 = ""
+      @ben_1 = ""
+      @iga_1 = ""
+      @secteur_1 = ""
+      @filiere_1 = ""
 
        #recherche controller globale(titre du projet)
                       if params[:search]
@@ -19,8 +17,8 @@ def index
                             redirect_to(root_path)
                         else  
                           @parameter = params[:search].downcase  
-                          @res = Projet.where(validation: true)
-                          @results = @res.where("lower(nom_du_projet) LIKE :search", search: "%#{@parameter}%")  
+                          @req = Projet.where(validation: true)
+                          @results = @req.where("lower(nom_du_projet) LIKE :search", search: "%#{@parameter}%")  
                         end  
                     end 
               #recherhe controller ptf
@@ -97,14 +95,14 @@ def index
 
                        if params[:search_zone]
                            if params[:search_zone] && params[:search_zone] != ""
-                          if params[:search_zone]== 1
-                             redirect_to(root_path)
-                             
-                           else
-                              @parameter = params[:search_zone].downcase
-                              @res = Zoneprojet.all.where(zone_id: params[:search_zone]) 
-                              @zone_1 = Zone.find(params[:search_zone]).title.to_s              
-                        end
+                            if params[:search_zone]== 1
+                               redirect_to(root_path)
+                               
+                             else
+                                @parameter = params[:search_zone].downcase
+                                @res = Zoneprojet.all.where(zone_id: params[:search_zone]) 
+                                @zone_1 = Zone.find(params[:search_zone]).title.to_s              
+                          end
                        end  
                      end
                #recherche controller beneficiaire

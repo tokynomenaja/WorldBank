@@ -8,7 +8,6 @@
 
 
 Organisme.destroy_all
-      c0 = Organisme.create!(nom:"")
       c1 = Organisme.create!(nom:"Ministère de l'économie Msy")
       c2 = Organisme.create!(nom:"Ministère de Finances")
       c3 = Organisme.create!(nom:"FMI")
@@ -17,7 +16,6 @@ Organisme.destroy_all
 puts  "Organismes créés"   
   
 Secteur.destroy_all
-      C0 = Secteur.create!(title:"")
       c1 = Secteur.create!(title: "MICROFINANCE")
       c2 = Secteur.create!(title: "INDUSTRIE EXTRACTIVE")
       c3 = Secteur.create!(title: "COMMERCE")   
@@ -33,7 +31,6 @@ puts "Filiere crée"
 
 
 Ptf.destroy_all
-      c0 = Ptf.create!(title:"")
       c1  = Ptf.create!(title: "Helvetas")
       c2  = Ptf.create!(title: "FMI")
       c3  = Ptf.create!(title: "IFC")
@@ -58,7 +55,6 @@ Ptf.destroy_all
 puts "Ptf"
 
 Filiere.destroy_all
-      c0 = Filiere.create!(title:"")
       c1 = Filiere.create!(title: "Apiculture")
       c2 = Filiere.create!(title: "Artisanat")
       c3 = Filiere.create!(title: "Aviculture")
@@ -99,42 +95,40 @@ Iga.destroy_all
 puts "iga create"
 
 Zone.destroy_all
-      zo = Zone.create!(title:"")
-      z1 = Zone.create!(title:"Diana")
-      z2 = Zone.create!(title:"Sava")
+      z1 = Zone.create!(title:"Analamanga")
+      z2 = Zone.create!(title:"Bongolava")
       z3 = Zone.create!(title:"Itasy")
-      z4 = Zone.create!(title:"Analamanga")
-      z5 = Zone.create!(title:"Vakinakaratra")
+      z4 = Zone.create!(title:"Vakinakaratra")
+      z5 = Zone.create!(title:"Amoron'i Mania")
 
-      z6 = Zone.create!(title:"Bongolava")                   
-      z7 = Zone.create!(title:"Sofia")
-      z8 = Zone.create!(title:"Boeny")
-      z9 = Zone.create!(title:"Betsileo")                        
+      z6 = Zone.create!(title:"Atsimo Antsinana")                   
+      z7 = Zone.create!(title:"Haute Matsiatra")
+      z8 = Zone.create!(title:"Vatovavy-Fitovinany")
+      z9 = Zone.create!(title:"Ihorombe")                        
 
 
 
-      z10 = Zone.create!(title:"Melaky")
+      z10 = Zone.create!(title:"Alaotra Mangoro")
 
-      z11 = Zone.create!(title:"Alaotra-mangoro")
+      z11 = Zone.create!(title:"Analanjirofo")
       z12 = Zone.create!(title:"Atsinanana")
-      z13 = Zone.create!(title:"Analanjirofo")
-      z14 = Zone.create!(title:"Amoron'i Mania")
-      z15= Zone.create!(title:"Haute Matsiatra")
+      z13 = Zone.create!(title:"Betsiboka")
+      z14 = Zone.create!(title:"Boeny")
+      z15= Zone.create!(title:"Melaky")
 
-      z16 = Zone.create!(title:"Vatovavy-Fitovinany")
-      z17 = Zone.create!(title:"Atsimo-Andrefana")
-      z18 = Zone.create!(title:"Ihorombe")
-      z19 = Zone.create!(title:"Menabe")
-      z20 = Zone.create!(title:"Atsimo-atsinana")
+      z16 = Zone.create!(title:"Sofia")
+      z17 = Zone.create!(title:"Androy")
+      z18 = Zone.create!(title:"Anosy")
+      z19 = Zone.create!(title:"Atsimo Andrefana")
+      z20 = Zone.create!(title:"Menabe")
 
-      z21 = Zone.create!(title:"Androy")
-      z22 = Zone.create!(title:"Anosy")
-      z23 = Zone.create!(title:"Sainte-Marie")
+      z21 = Zone.create!(title:"Diana")
+      z22 = Zone.create!(title:"Sava")
+      z23 = Zone.create!(title:"Sainte Marie")
       z24 = Zone.create(title:"National")
 puts "zone create"
  
  Montant.destroy_all
-      m0 = Montant.create!(price:"")
       m1 = Montant.create!(price:"5M-10M")
       m2 = Montant.create!(price:"10M-15M")
       m3 = Montant.create!(price:"15M-20M")
@@ -146,7 +140,6 @@ puts "zone create"
       m9 = Montant.create!(price:"65M-70M")
 
 Appui.destroy_all
-      a0 = Appui.create!(title:"")
       a1 = Appui.create!(title:"Prêt")
       a2 = Appui.create!(title:"Don")
 
@@ -154,8 +147,6 @@ puts "Appui create"
 
 
 Beneficiaire.destroy_all
-     
-        b0 = Beneficiaire.create!(title:"")
        b1 = Beneficiaire.create!(title:"Douane")
        b2 = Beneficiaire.create!(title:"Ministères
                                   Operateurs Miniers")
@@ -225,7 +216,6 @@ puts "Beneficiaire"
 
                 Zoneprojet.create!(projet_id: 1 , zone_id: 2)
                 Zoneprojet.create!(projet_id: 1 , zone_id: 18)
-                Zoneprojet.create!(projet_id: 1 , zone_id: 23)
                 Zoneprojet.create!(projet_id: 1 , zone_id: 23)
 
                 Benefprojet.create!(projet_id: 1 , beneficiaire_id: 10)
