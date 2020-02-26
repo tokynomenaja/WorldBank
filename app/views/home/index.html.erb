@@ -104,8 +104,9 @@
           <div class="fdk8rh-3 feYJJO">
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
-                 <span>
-                    <%= select_tag 'montant_id' , options_for_select(Montant.all.collect{ |c| [c.price,c.id]}),:include_blank => "Montant",class: "reset fdk8rh-1 eouleG large", id:"price" %>         
+                 <span>  
+                    <input name="montant" type = "range" min="0" max="100" onchange="rangevalue.value=value"/>
+                  <output id="rangevalue">50</output>       
                  </span>        
               </h3>
             </header>
@@ -172,6 +173,9 @@
                 <% end %>
                  <% if @appui_1 != ""%>
                 <p class="text-muted mb-1"><span> Nature d'appui &nbsp;:&nbsp; </span> <%= @appui_1 %></p>
+                <% end %>
+                 <% if @fin_1 != ""%>
+                <p class="text-muted mb-1"><span> fin  &nbsp;:&nbsp; </span> <%= @fin_1 %></p>
                 <% end %>
               
               </div>

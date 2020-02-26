@@ -133,17 +133,7 @@ Zone.destroy_all
       z24 = Zone.create(title:"National")
 puts "zone create"
  
- Montant.destroy_all
-      m0 = Montant.create!(price:"")
-      m1 = Montant.create!(price:"5M-10M")
-      m2 = Montant.create!(price:"10M-15M")
-      m3 = Montant.create!(price:"15M-20M")
-      m4 = Montant.create!(price:"20M-35M")
-      m5= Montant.create!(price:"35M-40M")
-      m6 = Montant.create!(price:"45M-50M")
-      m7 = Montant.create!(price:"50M-55M")
-      m8 = Montant.create!(price:"60M-65M")
-      m9 = Montant.create!(price:"65M-70M")
+
 
 Appui.destroy_all
       a0 = Appui.create!(title:"")
@@ -217,7 +207,6 @@ puts "Beneficiaire"
               debut_du_projet: "01/01/2019" , fin: "01/01/2024" , apdem: "Priorité 21, 25, 27")
 
               @pro.ptf = Ptf.find(10)
-              @pro.montant = Montant.find(9)
               @pro.appui = Appui.find(1)
               @pro.save
            
@@ -261,7 +250,7 @@ puts "projet create1"
               fin: "02/03/2020", apdem:"")
 
                 @pro2.ptf = Ptf.find(11)
-                @pro2.montant = Montant.find(1)
+                
                 @pro2.appui = Appui.find(1)
                 @pro2.save
            
@@ -323,7 +312,6 @@ puts "projet create1"
                 apdem: "Priorité 8, 27")
 
                 @pro3.ptf = Ptf.find(13)
-                @pro3.montant = Montant.find(8)
                 @pro3.appui = Appui.find(2)
                 @pro3.save
            
@@ -352,9 +340,6 @@ puts "projet create1"
 
 puts "projet create3"
 
-
-
-
  @pro4 = Projet.new(nom_du_projet: "Formation Professionnelle d'Amélioration de la Production Agricole (FORMAPROD)", 
                    objectif_generale_du_projet: "FORMAPROD vise à revaloriser les métiers de l’agriculture par la 
                                                 formation agricole qualifiante des 
@@ -364,12 +349,11 @@ puts "projet create3"
                           infrastructures de soutien à la commercialisation et 
                           à la transformation (marché communal, magasins de groupage, etc.),
                           désenclavements des pôles agricoles.",
-                   forme_d_appui: "",
+                   forme_d_appui: "",montant: "20",
                    partenaire_d_implementaton: "Administration",
                    debut_du_projet: "01/01/2012", 
                    fin: "01/01/2022" , apdem: "Proprieté 27")
                    @pro4.ptf = Ptf.find(13)
-                   @pro4.montant = Montant.find(5)
                    @pro4.appui = Appui.find(2)                 
                    @pro4.save
            

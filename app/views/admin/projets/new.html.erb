@@ -12,17 +12,19 @@
              <input type="date" name="fin" placeholder=""><br>
 
 			      <h6>MONTANT DU PROJET</h6>
-					   <%= select_tag 'montant_id', options_for_select(Montant.all.collect{ |c| [c.price, c.id] }), class: "form-input"%><br>
-					   <input type="range" id="montant" name="montant_id" min="0" max="70">
-			<h6>APPUI</h6>
+					  <input name="montant" type = "range" min="0" max="100" onchange="rangevalue.value=value"/>
+                  <output id="rangevalue">50</output>      
+					<h6>APPUI</h6>
 					   <%= select_tag 'appui_id', options_for_select(Appui.all.collect{ |c| [c.title, c.id] }), class: "form-input"%><br>
-			      <h6>SECTEURS</h6>
+
+			         <h6>SECTEURS</h6>
 					<ul>
 						 <% Secteur.all.each do |c| %><br>
 						   <%= check_box_tag("secteur_ids[]",c.id) %>
 						   <%= c.title%> 
 						<% end %>
 					</ul>
+
 					<h6>FILIERE</h6>
 					<ul>
 						 <% Filiere.all.each do |c| %><br>
