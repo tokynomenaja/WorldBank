@@ -1,10 +1,17 @@
-
- 
-  <header class="aci59a-0 eyAIuG sticky-limit">
-    <div class="sc-1gnwgfb-2 stom-show hVIPFV">
-
+<header class="aci59a-0 eyAIuG sticky-limit">
+    <div class="sc-1gnwgfb-2 hVIPFV pict">
+      <style type="text/css">
+        .pict {
+          <% if @project.picture.attached?%>
+            background-image: url(<%= rails_blob_url(@project.picture)%>);
+          <%else%>
+            background-image: url('/maki.jpg');
+          <%end%>
+        }
+      </style>
+      
     </div>
-  </header>
+</header>
   <div class="logo">
     <div class="pic">
       <div class="imge-rep d-flex align-items-center">
@@ -50,10 +57,10 @@
       </div>
       <div class="row pt-4 pb-4">
         <div class="col-md-6 list">
-          <p><span class="attr">Région : </span></p>
+          <p><span class="attr">Régions : </span></p>
           <div class="mb-3">
               <%@project.zoneprojets .each do|zp|%>
-                <span><%=zp.zone.title %>, </span>
+                <span><%=zp.zone.title %> </span>
               <%end%>
           </div>
           <div class="mb-3">
@@ -70,8 +77,8 @@
           </p>
           <p><span class="attr">Bénéficiaire : </span></p>
           <div class="mb-3">
-              <%@project.benefprojets .each do|ben|%>
-                <span><%=ben.beneficiaire.title %>, </span>
+              <%@project.benefprojets.each do|ben|%>
+                <span><%= ben.beneficiaire.title %> </span>
               <%end%>
           </div>
           <p><span class="attr">Montant : </span>

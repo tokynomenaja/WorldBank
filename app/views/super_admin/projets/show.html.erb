@@ -1,27 +1,95 @@
-<div class="row">
-		  <div class="col-sm-6">
-		    <div class="card">
-		      <div class="card-body">
-		        <h5 class="card-title"><%= @projet.nom_du_projet %></h5>
-		        <p class="card-text"><%= @projet.objectif_generale_du_projet %></p>
-		        <% @projet.secteurprojets.each do |s|%>
-		        	<p><%= s.secteur.title%></p>
-		        <%end%>
-		        <% @projet.filiereprojets.each do |f|%>
-		        	<p><%= f.filiere.title%></p>
-		        <%end%>
-		        <% @projet.zoneprojets.each do |z|%>
-		        	<p><%= z.zone.title%></p>
-		        <%end%>
-		        <p><%= @projet.forme_d_appui%></p>
-		        <p><%= @projet.debut_du_projet%></p>
-		        <p><%= @projet.fin%></p>
-		        <p><%= @projet.apdem%></p>
-		        <p><%= @projet.appui.title%></p>
-		        <p><%= @projet.montant.price%></p>
-		        <p><%= @projet.ptf.title%></p>
-		      </div>
-		    </div>
-		  </div>
+ 
+<header class="aci59a-0 eyAIuG sticky-limit">
+    <div class="sc-1gnwgfb-2 hVIPFV pict">
+      <style type="text/css">
+        .pict {
+          <% if @projet.picture.attached?%>
+            background-image: url(<%= rails_blob_url(@projet.picture)%>);
+          <%else%>
+            background-image: url('/maki.jpg');
+          <%end%>
+        }
 
-</div>
+      </style>
+      
+    </div>
+</header>
+  <div class="logo">
+    <div class="pic">
+      <div class="imge-rep d-flex align-items-center">
+      <%= image_tag "/giz.jpg"%>
+      </div>
+    </div>
+    
+    <div class="h-text text-white pr-4">
+      <h3><%=@projet.nom_du_projet%></h3>
+    </div>
+    <div class="asi"> 
+      <div class="aside">
+        <p><span class="attr">Secteurs :</span>
+          <span class="word"></span>
+  
+          <%@projet.secteurprojets.each do|sp|%>
+            <%=sp.secteur.title%> ,
+          <%end%>        
+      </p>
+      <p><span class="attr">Forme d'appui : </span>
+        <span class="word"><%= @projet.appui.title%></span>
+        </p>
+      <p><span class="attr">Filiere : </span>
+        <span class="word">
+          <%@projet.filiereprojets.each do|fp|%>
+          <%=fp.filiere.title%>, 
+          <%end%> 
+        </span>     
+      </p>
+      </div>
+    </div>
+  </div>
+  <div class="show-cont pt-4 pb-4">
+    <div class="objectif mx-auto">
+      <h2 class="text-left color">Objectif général du projet</h2>
+      <div class="mt-2 pt-2">
+        <%=@projet.objectif_generale_du_projet%>
+      </div>
+      <div class="appui mt-4">
+        <h2 class="color text-left">Appui spécifique au secteur privé</h2>
+        <div class="p-2">
+          <%=@projet.aspsp%>
+        </div>
+      </div>
+      <div class="row pt-4 pb-4">
+        <div class="col-md-6 list">
+          <p><span class="attr">Région : </span></p>
+          <div class="mb-3">
+              <%@projet.zoneprojets .each do|zp|%>
+                <span><%=zp.zone.title %>, </span>
+              <%end%>
+          </div>
+          <p><span class="attr">Partenaire d'implementation : </span>
+          <p class="mb-3"><%= @projet.partenaire_d_implementaton %></p>
+          </p>
+          <p><span class="attr">Bénéficiaire : </span>
+         	<div class="mb-3">
+              <%@projet.benefprojets.each do|ben|%>
+                <span><%= ben.beneficiaire.title %> </span>
+              <%end%>
+          </div>
+          </p>
+          <p><span class="attr">Montant : </span>
+           <p class="mb-3">Entre <%=@projet.montant.price%> d'euros</p>
+          </p>
+        </div>
+        <div class="col-md-6 list">
+          <p class="mb-3"><span class="attr">Nature de l'appui : </span><%=@projet.appui.title%></p>
+          <p class="mb-3"><span class="attr">Début : </span><%=@projet.debut_du_projet%></p>
+        <p class="mb-3"><span class="attr">Fin : </span><%=@projet.fin%></p>
+          <p class="mb-3"><span class="attr">Alignement aux priorités du plan emergence de Madagascar : </span><p><%= @projet.apdem %></p></p>
+        </div>
+
+
+        <div class="text-right">
+           <a href="<%= super_admin_projet_path(@projet.id)%>" class="btn btn-warning sc-eerKOB cfnPHQ mr-2" data-method="put">Valider</a>
+            <a href="<%= super_admin_projet_path(@projet.id)%>" class="btn btn-danger sc-eerKOB cfnPHQ mr-2" data-method="delete" data-confirm="Voulez-vous refuser ce projet?">Refuser</a>
+        </div>
+    </div>

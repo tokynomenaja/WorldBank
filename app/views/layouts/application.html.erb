@@ -14,9 +14,24 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </head>
   <body class="body">
-    <%= render "layouts/navbar.html.erb" %>
-      <%= yield %>
-    <%= render "layouts/footer.html.erb" %>
+
+    <% if current_user%>
+      <% if current_user.is_admin == true%>
+        <%= render "layouts/nav_admin.html.erb" %>
+          <%= yield %>
+      <%elsif current_user.is_super_admin == true%>
+        <%= render "layouts/nav_super_admin.html.erb" %>
+          <%= yield %>
+      <%else%>
+        <%= render "layouts/navbar.html.erb" %>
+          <%= yield %>
+        <%= render "layouts/footer.html.erb" %>
+      <%end%>
+    <%else%>
+       <%= render "layouts/navbar.html.erb" %>
+          <%= yield %>
+        <%= render "layouts/footer.html.erb" %>
+    <%end%>
   </body>
 </html>
 

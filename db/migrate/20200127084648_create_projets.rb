@@ -3,13 +3,13 @@ class CreateProjets < ActiveRecord::Migration[6.0]
     create_table :projets do |t|
       t.string :nom_du_projet
       t.string :forme_d_appui
-      t.string :objectif_generale_du_projet
-      t.string :aspsp
+      t.text   :objectif_generale_du_projet
+      t.text   :aspsp
       t.string :partenaire_d_implementaton
       t.string :debut_du_projet
       t.string :fin
       t.string :apdem
-
+      t.string :lien
        
       t.boolean :validation, default: false
 

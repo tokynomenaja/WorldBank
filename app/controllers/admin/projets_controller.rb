@@ -46,9 +46,8 @@ class Admin::ProjetsController < ApplicationController
                 end
 
           if @project.save
-
             @project.files.attach(params[:files])
-            @project.logo.attach(params[:logo])
+            @project.picture.attach(params[:picture])
             redirect_to admin_projets_path
           else
             render :new
