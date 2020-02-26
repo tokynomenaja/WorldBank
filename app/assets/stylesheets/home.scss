@@ -3,69 +3,6 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .large{width: 9rem;}
-.containerA{
-    margin: 2% auto;
-    width: 210px;
-    height: 140px;
-    position: relative;
-    perspective: 100000px;
-}
-#carousel{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    transform-style: preserve-3d;
-    animation: rotation 20s infinite linear;
-}
-
-
-#carousel figure{
-    display: block;
-    position: absolute;
-    width: auto;
-    height: auto;
-    left: 10px;
-    top: 10px;
-    /* background: black; */
-    overflow: hidden;
-    /* border: solid 5px black; */
-}
-#carousel figure:nth-child(1){transform: rotateY(0deg) translateZ(288px);}
-#carousel figure:nth-child(2) { transform: rotateY(40deg) translateZ(288px);}
-#carousel figure:nth-child(3) { transform: rotateY(80deg) translateZ(288px);}
-#carousel figure:nth-child(4) { transform: rotateY(120deg) translateZ(288px);}
-#carousel figure:nth-child(5) { transform: rotateY(160deg) translateZ(288px);}
-#carousel figure:nth-child(6) { transform: rotateY(200deg) translateZ(288px);}
-#carousel figure:nth-child(7) { transform: rotateY(240deg) translateZ(288px);}
-#carousel figure:nth-child(8) { transform: rotateY(280deg) translateZ(288px);}
-#carousel figure:nth-child(9) { transform: rotateY(320deg) translateZ(288px);}
-#carousel figure:nth-child(10) { transform: rotateY(320deg) translateZ(288px);}
-#carousel figure:nth-child(11) { transform: rotateY(320deg) translateZ(288px);}
-#carousel figure:nth-child(12) { transform: rotateY(320deg) translateZ(288px);}
-#carousel figure:nth-child(13) { transform: rotateY(320deg) translateZ(288px);}
-
-img{
-    /* -webkit-filter: grayscale(1); */
-    cursor: pointer;
-    transition: all .5s ease;
-}
-image-c:hover{
-    -webkit-filter: grayscale(0);
-  transform: scale(1.2,1.2);
-}
-
-@keyframes rotation{
-    from{
-        transform: rotateY(360deg);
-    }
-    to{
-        transform: rotateY(0deg);
-    }
-}
-
-
-
-
 .select{
     background: transparent url('/chev.png') no-repeat;
     background-position: 4.5rem center;
@@ -96,11 +33,13 @@ image-c:hover{
     position: absolute;
     left: -150px;
     top: 3.7rem;
+    width: 13rem;
     background: #555555;
     color: seashell;
     text-align: center;
     font-size: 0.8rem;
   }
+  .popover__content_f{left: 1rem;width: 10rem !important;}
 
   .popover__wrapper:hover .popover__content {
     visibility: visible;

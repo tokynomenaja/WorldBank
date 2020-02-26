@@ -16,9 +16,7 @@ gem 'mongoid-paperclip', require: 'mongoid_paperclip'
 gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
 gem 'mini_magick'
 
-
-
-
+gem 'turbolinks', '~> 5'
 
 gem 'table_print'
 

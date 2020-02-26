@@ -4,23 +4,6 @@
   </header>
  
   <header class="sc-10fmshx-0 dCsOFK">
-    <nav class="show bold">
-      <ul class="yhmwkn-2 fKSouh">
-        <li class="yhmwkn-5 kARqAl">
-          <a class="yhmwkn-3 kJIsra active" href="#">Actualités </a>
-        </li>
-        <li class="yhmwkn-5 kARqAl">
-          <a class="yhmwkn-3 kJIsra" href="<%= new_admin_projet_path%>">Créer un projet</a>
-        </li>
-        <li class="yhmwkn-5 kARqAl">
-          <a class="yhmwkn-3 kJIsra" href="#">Publications</a>
-        </li>
-        <li class="yhmwkn-5 kARqAl">
-          <a class="yhmwkn-3 kJIsra active" href="#">Nous contacter</a>
-        </li>
-      </ul>
-    </nav>
-  
     <div class="bt96d2-13 dwLDtk search">
       <%= form_tag(root_path, :method => "get", class: 'sc-1ejeabr-19 gQwHOW') do %>
         <div placeholder="Email" class="sc-emmjRN hxQqtY">
@@ -42,7 +25,7 @@
     <nav class="z0fved-5 gOGYTl">
       <div class="z0fved-3 kBhqKR">
         <div class="z0fved-1 jfmoVU">
-          <div class="fdk8rh-3 feYJJO">
+          <div class="fdk8rh-3 feYJJO popover__wrapper">
             <header class="fdk8rh-0 kYNMFW">
                <%= form_tag(root_path, :method => "get",   
                    class: 'navbar-form navbar-left') do %> 
@@ -50,6 +33,9 @@
                 <%= select_tag 'ptf_id', options_for_select(Ptf.all.collect{ |c| [c.title,c.id]}), :include_blank => "ptf", class: "select fdk8rh-1 eouleG large"%>          
             </h3>
             </header>
+            <div class="popover__content_f popover__content rounded">
+              Partenaire Technique et Financier
+           </div>
           </div>
 
           <div class="fdk8rh-3 feYJJO">
@@ -115,20 +101,18 @@
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
                 <input type="date" name="fin" placeholder="fin" class="reset fdk8rh-1 eouleG">
-
              </h3>
             </header>
           </div>
           <div class="fdk8rh-3 feYJJO">
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
-
                 <% if current_user %> 
                   <% if current_user.is_consultant == true || current_user.is_super_admin == true || current_user.is_admin == true%>
-                    <%= submit_tag "Filtrer", :class => 'btn bold',:name => nil%>
+                    <%= submit_tag "Rechercher", :class => 'btn-reset sear', :name => nil%>
                   <%end%>
                 <%else%>
-                  <a href="<%= new_user_session_path %>" class="btn bold">Filtrer</a>
+                  <a href="<%= new_user_session_path %>" class="sear">Rechercher</a>
                 <%end%>
              </h3>
             </header>
@@ -428,6 +412,7 @@
     </div>
   </header>
 </div>
+<<<<<<< HEAD
  <section>
             <div class="containerA">
         <div id="carousel">
@@ -447,3 +432,24 @@
           </div>
       </div>
   </section>
+=======
+<section>
+  <div class="container">
+    <div class="d-flex mt-5 mb-2">
+      <a href="#" class="image-c"><img src="logo/afd11.jpg" alt=""></a>
+      <a href="#" class="image-c"><img src="logo/cnuced11.jpg" alt=""></a>
+      <a href="#" class="image-c"><img src="logo/giz11.jpg" alt=""></a>
+      <a href="#" class="image-c"><img src="logo/helvetas1.jpg" alt=""></a>
+      <a href="#" class="image-c"><img src="logo/imf1.jpg" alt=""></a>
+      <a href="#" class="image-c"><img src="logo/jica1.png" alt=""></a>
+      <a href="#" class="image-c"><img src="logo/mica1.jpg" alt=""></a>
+      <a href="#" class="image-c"><img src="logo/onudi1.jpg" alt=""></a>
+      <a href="#" class="image-c"><img src="logo/pnud1.jpg" alt=""></a>
+      <a href="#" class="image-c"><img src="logo/ue1.jpg" alt=""></a>
+      <a href="#" class="image-c"><img src="logo/unicef1.jpg" alt=""></a href="#">
+      <a href="#" class="image-c"><img src="logo/USAID1.jpg" alt=""></a>
+      <a href="#" class="image-c"><img src="logo/wbg1.jpg" alt=""></a>
+    </div>
+  </div>
+</section>
+>>>>>>> toky
