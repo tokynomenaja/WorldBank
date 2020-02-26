@@ -31,7 +31,7 @@
           </div>
         </div>
         <% if current_user %> 
-          <% if current_user.is_consultant == true || current_user.is_super_admin == true || current_user.is_admin == true%>
+          <% if current_user.is_consultant == true || current_user.is_consultant == false || current_user.is_super_admin == true || current_user.is_admin == true%>
           <button tabindex="0" type="submit" variant="primary" class="sc-eerKOB cfnPHQ bold"><span>Rechercher</span></button>
           <%end%>
         <%else%>
@@ -127,7 +127,7 @@
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
                 <% if current_user %> 
-                  <% if current_user.is_consultant == true || current_user.is_super_admin == true || current_user.is_admin == true%>
+                  <% if current_user.is_consultant == true || current_user.is_consultant == false || current_user.is_super_admin == true || current_user.is_admin == true%>
                     <%= submit_tag "Rechercher", :class => 'btn-reset sear', :name => nil%>
                   <%end%>
                 <%else%>

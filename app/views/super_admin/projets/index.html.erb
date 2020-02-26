@@ -9,7 +9,7 @@
 		    	
 		      <div class="card-body">
 		        <h5 class="card-title"><%= p.nom_du_projet %></h5>
-		        <p class="card-text"><%= p.objectif_generale_du_projet.truncate(100) %></p>
+		        <p class="card-text"><%= raw p.objectif_generale_du_projet.truncate(100) %></p>
 		    	
 		        <a href="<%= super_admin_projet_path(p.id)%>" class="btn btn-primary">Voir</a>
 		      </div>

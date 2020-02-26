@@ -12,7 +12,7 @@
 		    	
 		      <div class="card-body">
 		        <h5 class="card-title"><%= p.nom_du_projet %></h5>
-		        <p class="card-text"><%= p.objectif_generale_du_projet.truncate(150)%></p>
+		        <p class="card-text"><%= raw p.objectif_generale_du_projet.truncate(150)%></p>
 		        <%if p.picture.attached?%>
 				    	<%= image_tag p.picture, alt: 'picture', class:"card-img-circle"%>
 				<%else%>
