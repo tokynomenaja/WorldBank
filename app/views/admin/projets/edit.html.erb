@@ -11,8 +11,7 @@
 
             <input type="date" name="fin" placeholder="" value="<%= @projet.fin%>"><br>
 
-			    <h6>MONTANT DU PROJET : <span><%= @projet.montant.price%></span></h6>
-					<%= select_tag 'montant_id', options_for_select(Montant.all.collect{ |c| [c.price, c.id]}), class: "form-input"%><br>
+			    <h6>MONTANT DU PROJET : <span><%=@projet.montant%></span>
 					<h6>APPUI : <span><%= @projet.ptf.title%></span></h6>
 					<%= select_tag 'appui_id', options_for_select(Appui.all.collect{ |c| [c.title, c.id]}), class: "form-input"%><br>
 			      <h6>SECTEURS</h6>

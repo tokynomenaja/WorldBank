@@ -35,7 +35,8 @@
 				</div>
 				<div>
 					<h6 class="table">Montant</h6>
-					<%= select_tag 'montant_id', options_for_select(Montant.all.collect{ |c| [c.price, c.id] }), :include_blank => "choisir", class: "form-control"%>
+					<input name="montant" type = "range" min="0" max="100" onchange="rangevalue.value=value"/>
+                  	<output id="rangevalue">50</output> 
 				</div>
 				<div>
 					<h6 class="table">Apui</h6>
@@ -164,3 +165,4 @@
 		</div>
 	<% end %>
 </div>
+

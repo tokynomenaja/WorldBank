@@ -70,14 +70,14 @@
           <p class="mb-3"><%= @projet.partenaire_d_implementaton %></p>
           </p>
           <p><span class="attr">Bénéficiaire : </span>
-         	<div class="mb-3">
+          <div class="mb-3">
               <%@projet.benefprojets.each do|ben|%>
                 <span><%= ben.beneficiaire.title %> </span>
               <%end%>
           </div>
           </p>
           <p><span class="attr">Montant : </span>
-           <p class="mb-3">Entre <%=@projet.montant.price%> d'euros</p>
+           <p class="mb-3"><%=@projet.montant%> USD</p>
           </p>
         </div>
         <div class="col-md-6 list">

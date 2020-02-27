@@ -1,15 +1,19 @@
 class HomeController < ApplicationController
       
 def index
-      @project = Projet.order(:id).page(params[:page]).per(3)
-      @ptf_1 = ""
-      @montant_1 = ""
-      @appui_1 = ""
-      @zone_1 = ""
-      @ben_1 = ""
-      @iga_1 = ""
-      @secteur_1 = ""
-      @filiere_1 = ""
+
+
+       @project = Projet.order(:id).page(params[:page]).per(3)
+       @ptf_1 = ""
+       @montant_1 = ""
+       @appui_1 = ""
+       @zone_1 = ""
+       @ben_1 = ""
+       @iga_1 = ""
+       @secteur_1 = ""
+       @filiere_1 = ""
+       @fin_1 = ""
+
 
        #recherche controller globale(titre du projet)
                       if params[:search]
@@ -37,18 +41,18 @@ def index
 
               #recherche controller Montant
 
-                       if params[:montant_id]
-                         if params[:montant_id] && params[:montant_id] != ""
-                        if params[:montant_id] == 1 
+                       if params[:montant]
+                         if params[:montant] && params[:montant] != ""
+                           if params[:montant] == 1
                            redirect_to(root_path)
                          
                         else  
-                          @parameter = params[:montant_id].downcase  
-                          @montant = Projet.all.where(montant_id: params[:montant_id], validation: true) 
-                          @montant_1 = Montant.find(params[:montant_id]).price.to_s 
+                          @parameter = params[:montant].downcase  
+                          @montant = Projet.all.where(montant: params[:montant], validation: true) 
+                         
                         end 
                     end 
-                  end
+                   end
               #recherche controller  appui
                          if params[:appui_id]
                          
@@ -66,7 +70,8 @@ def index
                   end
                #recherche controller  appui
                         if params[:fin]
-                        if params[:fin] == 1
+                          if params[:fin] && params[:fin] != ""
+                              if params[:fin]== 1
                            redirect_to(root_path)
                          
                         else  
@@ -74,7 +79,7 @@ def index
                           @fin = Projet.all.where(fin: params[:fin], validation: true)  
                         end 
                     end 
-
+                  end
 
               #recherche controller filiere
 
