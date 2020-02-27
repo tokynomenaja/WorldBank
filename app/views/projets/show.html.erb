@@ -40,6 +40,11 @@
           <%end%> 
         </span>     
       </p>
+      <p><span class="attr">Lien du site : </span>
+        <span class="word">
+          <a href="https://<%= @project.lien.remove('https://')%>"><%= @project.lien%></a>
+        </span>
+      </p>
       </div>
     </div>
   </div>
@@ -66,7 +71,7 @@
           <div class="mb-3">
         <%if @project.files.attached?%>
           <%@project.files.each do|file|%> 
-          Ficher : <%= link_to file.name, rails_blob_path(file, disposition: "attachement") %>
+          Document du projet : <%= link_to filename, rails_blob_path(file, disposition: "attachement") %>
           <%end%>
         <%end%>
         </div>

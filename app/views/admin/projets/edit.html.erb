@@ -1,6 +1,12 @@
-
-<%= form_tag url_for(action: 'update'), method:'patch' do%>
-<input type="text" name="nom_du_projet" placeholder="Nom du projet" value="<%= @projet.nom_du_projet%>"><br>
+<header class="aci59a-0 eyAIuG sticky-limit">
+    <div class="sc-1gnwgfb-2 hVIPFV pict">
+    
+    </div>
+</header>
+<div class="mt-4 mb-4">
+<%= form_tag url_for(action: 'update'), method:'put' do%>
+		<label>Nom du projet :</label>
+		<input type="text" name="nom_du_projet" placeholder="Nom du projet" value="<%= @projet.nom_du_projet%>"><br>
         <h6>PTF : <span><%= @projet.ptf.title%></span></h6>
              <%= select_tag 'ptf_id', options_for_select(Ptf.all.collect{ |c| [c.title, c.id]}), class: "form-input"%><br>
 
@@ -12,7 +18,7 @@
             <input type="date" name="fin" placeholder="" value="<%= @projet.fin%>"><br>
 
 			    <h6>MONTANT DU PROJET : <span><%=@projet.montant%></span>
-					<h6>APPUI : <span><%= @projet.ptf.title%></span></h6>
+					<h6>Appui : <span><%= @projet.appui.title%></span></h6>
 					<%= select_tag 'appui_id', options_for_select(Appui.all.collect{ |c| [c.title, c.id]}), class: "form-input"%><br>
 			      <h6>SECTEURS</h6>
 			       <% @projet.secteurprojets.each do |s|%>
@@ -22,6 +28,7 @@
 						<input type="hidden" name="sects" value="<%= @sects%>">
 
 						 <% Secteur.all.each_with_index do |c,x| %><br> 
+						 <% if @sects %> 
 						 <% if @sects.include? c %>
 
 						   <%= check_box_tag("secteur_#{x}",c.id, checked: true) %>
@@ -29,40 +36,99 @@
 						 <%else%>
 						 	<%= check_box_tag("secteur_#{x}",c.id) %>
 						 <%end%>
+						 <%end%>
 						   <%= c.title%> 
 
 						<% end %>
 					</ul>
 					<h6>FILIERE</h6>
-					<ul>
-						 <% Filiere.all.each do |c| %><br>
-						  <%= check_box_tag("filiere_ids[]",c.id) %>
-						  <%= c.title%>
-						<% end %>
-					</ul>
+						<% @projet.filiereprojets.each do |f|%>
+			        	<p><%= f.filiere.title%></p>
+			        	<%end%>
+						<ul>
+							<input type="hidden" name="fils" value="<%= @fils%>">
+
+							 <% Filiere.all.each_with_index do |c,x| %><br> 
+							 <% if @fils%>
+							 <% if @fils.include? c %>
+
+							   <%= check_box_tag("filiere_#{x}",c.id, checked: true) %>
+
+							 <%else%>
+							 	<%= check_box_tag("filiere_#{x}",c.id) %>
+							 <%end%>
+							 <%end%>
+							   <%= c.title%> 
+
+							<% end %>
+						</ul>
 					
 					<h6>BENEFICIAIRE</h6>
-					<ul>
-						 <% Beneficiaire.all.each do |c| %><br>
-						  <%= check_box_tag("beneficiare_ids[]",c.id) %>
-						  <%= c.title%>
-						<% end %>
-					</ul>			        
+						<% @projet.benefprojets.each do |b|%>
+			        	<p><%= b.beneficiaire.title%></p>
+			        	<%end%>
+						<ul>
+							<input type="hidden" name="bens" value="<%= @bens%>">
+
+							 <% Beneficiaire.all.each_with_index do |c,x| %><br> 
+							 <% if @bens%>
+							 <% if @bens.include? c %>
+
+							   <%= check_box_tag("beneficiaire_#{x}",c.id, checked: true) %>
+
+							 <%else%>
+							 	<%= check_box_tag("beneficiaire_#{x}",c.id) %>
+							 <%end%>
+							 <%end%>
+							   <%= c.title%> 
+
+							<% end %>
+						</ul>			        
         
 					<h6>IGA(institution gouvernemental associé)</h6>
-			  		<ul>
-						 <% Iga.all.each do |c| %><br>
-						 <%= check_box_tag("iga_ids[]",c.id) %>
-						  <%= c.title%>
-						<% end %>
-					</ul>
+			  			<% @projet.igaprojets.each do |i|%>
+			        	<p><%= i.iga.title%></p>
+			        	<%end%>
+						<ul>
+							<input type="hidden" name="igas" value="<%= @igas%>">
+
+							 <% Iga.all.each_with_index do |c,x| %><br> 
+							 <% if @igas%>
+							 <% if @igas.include? c %>
+
+							   <%= check_box_tag("iga_#{x}",c.id, checked: true) %>
+
+							 <%else%>
+							 	<%= check_box_tag("iga_#{x}",c.id) %>
+							 <%end%>
+							 <%end%>
+							   <%= c.title%> 
+
+							<% end %>
+						</ul>			
+
+
 					<h6>ZONE D'INTERVENTION</h6>
-					<ul>
-						 <% Zone.all.each do |c| %><br>
-						 <%= check_box_tag("zone_ids[]",c.id) %>
-						  <%= c.title%>
-						<% end %>
-					</ul>
-					
+						<% @projet.zoneprojets.each do |z|%>
+			        	<p><%= z.zone.title%></p>
+			        	<%end%>
+						<ul>
+							<input type="hidden" name="zones" value="<%= @zones%>">
+
+							 <% Zone.all.each_with_index do |c,x| %><br> 
+							 <% if @zones%>
+							 <% if @zones.include? c %>
+
+							   <%= check_box_tag("zone_#{x}",c.id, checked: true) %>
+
+							 <%else%>
+							 	<%= check_box_tag("zone_#{x}",c.id) %>
+							 <%end%>
+							 <%end%>
+							   <%= c.title%> 
+
+							<% end %>
+						</ul>					
 			<input type="submit" value="Modifier">
 <%end%>
+</div>

@@ -7,19 +7,22 @@
 <div class="row">
 
 	<% @projets.each do |p|%>
-		  <div class="col-sm-6">
+		  <div class="col-sm-4">
 		    <div class="card">
 		    	
 		      <div class="card-body">
 		        <h5 class="card-title"><%= p.nom_du_projet %></h5>
 		        <p class="card-text"><%= raw p.objectif_generale_du_projet.truncate(150)%></p>
-		        <%if p.picture.attached?%>
-				    	<%= image_tag p.picture, alt: 'picture', class:"card-img-circle"%>
-				<%else%>
-					<img class="card-img-top" width="100px" height="300px" src="" alt="Card image cap">
-				<%end%>
-		    	
-		        <a href="<%= admin_projet_path(p.id)%>" class="btn btn-primary">Voir</a>
+		        <p>
+		        	<%if p.picture.attached?%>
+				    	<%= image_tag p.picture, alt: 'picture', width: '200', height: '200', class:"card-img-circle"%>
+					<%else%>
+						<img class="card-img-top" width="100px" height="300px" src="" alt="Card image cap">
+					<%end%>
+		        </p>
+		       
+		    	<p><a href="<%= admin_projet_path(p.id)%>" class="btn btn-primary">Voir</a></p>	
+		        
 		      </div>
 		    </div>
 		  </div>

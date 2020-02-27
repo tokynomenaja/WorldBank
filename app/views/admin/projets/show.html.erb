@@ -34,13 +34,18 @@
       </p>
       <p><span class="attr">Forme d'appui : </span>
         <span class="word"><%= @projet.appui.title%></span>
-        </p>
+      </p>
       <p><span class="attr">Filiere : </span>
         <span class="word">
           <%@projet.filiereprojets.each do|fp|%>
           <%=fp.filiere.title%>, 
           <%end%> 
         </span>     
+      </p>
+      <p><span class="attr">Lien du site : </span>
+        <span class="word">
+          <a href="https://<%= @projet.lien.remove('https://')%>"><%= @projet.lien%></a>
+          </span>
       </p>
       </div>
     </div>
@@ -85,9 +90,9 @@
           <p class="mb-3"><span class="attr">Fin : </span><%=@projet.fin%></p>
           <p class="mb-3"><span class="attr">Alignement aux priorités du plan emergence de Madagascar : </span><p><%= @projet.apdem %></p></p>
           <%if @projet.files.attached?%>
-          <%@projet.files.each do|file|%> 
-          <p><span class="attr">Ficher : </span><%= link_to file.name, rails_blob_path(file, disposition: "attachement") %></p>
-          <%end%>
+            <%@projet.files.each do|file|%> 
+            <p><span class="attr">Fichier : </span><%= link_to file.filename, rails_blob_path(file, disposition: "attachement") %></p>
+            <%end%>
         <%end%>
         </div>
     </div>
