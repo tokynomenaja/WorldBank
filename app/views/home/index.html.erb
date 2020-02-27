@@ -49,7 +49,7 @@
                <%= form_tag(root_path, :method => "get",   
                    class: 'navbar-form navbar-left') do %> 
               <h3  class= "fdk8rh-1 eouleG">
-                <%= select_tag 'ptf_id', options_for_select(Ptf.all.collect{ |c| [c.title,c.id]}), :include_blank => "ptf", class: "select fdk8rh-1 eouleG large"%>          
+                <%= select_tag 'ptf_id', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title,c.id]}), :include_blank => "ptf", class: "select fdk8rh-1 eouleG large"%>          
             </h3>
             </header>
             <div class="popover__content_f popover__content rounded">
@@ -60,7 +60,7 @@
           <div class="fdk8rh-3 feYJJO">
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
-                 <%= select_tag 'search_secteur' , options_for_select(Secteur.all.collect{ |c| [c.title,c.id]}),:include_blank => "Secteur",class: "select fdk8rh-1 eouleG large"%>
+                 <%= select_tag 'search_secteur' , options_for_select(Secteur.all.order(:title).collect{ |c| [c.title,c.id]}),:include_blank => "Secteur",class: "select fdk8rh-1 eouleG large"%>
               </h3>
             </header>
           </div>
@@ -68,7 +68,7 @@
           <div class="fdk8rh-3 feYJJO">
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
-                <%= select_tag 'appui_id' , options_for_select(Appui.all.collect{ |c| [c.title,c.id]}), :include_blank => "Appui", class: "select fdk8rh-1 eouleG large" %>
+                <%= select_tag 'appui_id' , options_for_select(Appui.all.order(:title).collect{ |c| [c.title,c.id]}), :include_blank => "Appui", class: "select fdk8rh-1 eouleG large" %>
               </h3>
             </header>
           </div>
@@ -76,14 +76,14 @@
           <div class="fdk8rh-3 feYJJO">
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
-                 <%= select_tag 'search_filiere' , options_for_select(Filiere.all.collect{ |c| [c.title,c.id]}),:include_blank => "Filière", class: "select fdk8rh-1 eouleG large" %>
+                 <%= select_tag 'search_filiere' , options_for_select(Filiere.all.order(:title).collect{ |c| [c.title,c.id]}),:include_blank => "Filière", class: "select fdk8rh-1 eouleG large" %>
               </h3>
             </header>
           </div>
           <div class="fdk8rh-3 feYJJO popover__wrapper">
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
-                <%= select_tag 'search_iga' , options_for_select(Iga.all.collect{ |c| [c.title,c.id]}), :include_blank => "Iga", class: "select fdk8rh-1 eouleG largepopover__title large"  %>
+                <%= select_tag 'search_iga' , options_for_select(Iga.all.order(:title).collect{ |c| [c.title,c.id]}), :include_blank => "Iga", class: "select fdk8rh-1 eouleG largepopover__title large"  %>
               </h3>
             </header>
             <div class="popover__content rounded">
@@ -94,7 +94,7 @@
           <div class="fdk8rh-3 feYJJO">
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
-                   <%= select_tag 'search_zone' , options_for_select(Zone.all.collect{ |c| [c.title, c.id]}),:include_blank => "Région",class: "select fdk8rh-1 eouleG large"%>
+                   <%= select_tag 'search_zone' , options_for_select(Zone.all.order(:title).collect{ |c| [c.title, c.id]}),:include_blank => "Région",class: "select fdk8rh-1 eouleG large"%>
               </h3>
             </header>
           </div>
@@ -102,7 +102,7 @@
           <div class="fdk8rh-3 feYJJO">
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
-                <%= select_tag 'search_ben' , options_for_select(Beneficiaire.all.collect{ |c| [c.title,c.id]}),:include_blank => "Bénéficiaire",class: "select fdk8rh-1 eouleG large" %></h3>
+                <%= select_tag 'search_ben' , options_for_select(Beneficiaire.all.order(:title).collect{ |c| [c.title,c.id]}),:include_blank => "Bénéficiaire",class: "select fdk8rh-1 eouleG large" %></h3>
             </header>
           </div>
 
@@ -112,7 +112,7 @@
                  <span>
                     <input name="montant"  type = "range" min="0" max="60" style="width: 60px;" onchange="rangevalue.value=value"/>
                     <output id="rangevalue">5</output>       
-                  </span>        
+                  </span>       
               </h3>
             </header>
           </div>
@@ -274,7 +274,7 @@
           <section>
             <div class="map" id="map">
                   <div class="map__img">
-        
+          
                     <% Zone.all.each do |zone| %>
 
                     <a class="region r-<%= zone.id %>">
