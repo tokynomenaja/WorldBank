@@ -20,8 +20,8 @@ def index
                             redirect_to(root_path)
                         else  
                           @parameter = params[:search].downcase  
-                          @res = Projet.where(validation: true)
-                          @results = @res.where("lower(nom_du_projet) LIKE :search", search: "%#{@parameter}%")  
+                          @req = Projet.where(validation: true)
+                          @results = @req.where("lower(nom_du_projet) LIKE :search", search: "%#{@parameter}%")  
                         end  
                     end 
               #recherhe controller ptf
@@ -42,6 +42,7 @@ def index
 
                        if params[:montant]
                          if params[:montant] && params[:montant] != ""
+                           if params[:montant] == 1
                            redirect_to(root_path)
                          
                         else  
@@ -50,7 +51,7 @@ def index
                          
                         end 
                     end 
-                  
+                   end
               #recherche controller  appui
                          if params[:appui_id]
                          
@@ -69,6 +70,7 @@ def index
                #recherche controller  appui
                         if params[:fin]
                           if params[:fin] && params[:fin] != ""
+                              if params[:fin]== 1
                            redirect_to(root_path)
                          
                         else  
@@ -76,7 +78,7 @@ def index
                           @fin = Projet.all.where(fin: params[:fin], validation: true)  
                         end 
                     end 
-
+                  end
 
               #recherche controller filiere
 
