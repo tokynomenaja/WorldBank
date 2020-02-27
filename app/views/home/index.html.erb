@@ -3,36 +3,36 @@
     </div>
   </header>
   <% if current_user %> 
-  <% if current_user.is_consultant == true || current_user.is_super_admin == true || current_user.is_admin == true%>
-  <% Zone.all.each do |zone| %>
-    <div class="modal fade" id="exampleModalLong<%= zone.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Projets dans la région <%= zone.title %></h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <% if zone.projets.where(validation: true).count == 0%>
-            <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-              <p>Pas de projet pour le moment</p>
+    <% if current_user.is_consultant == true || current_user.is_super_admin == true || current_user.is_admin == true%>
+      <% Zone.all.each do |zone| %>
+      <div class="modal fade" id="exampleModalLong<%= zone.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Projets dans la région <%= zone.title %></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-          <%else%>
-            <% zone.projets.where(validation: true).each do |zoneprojet| %>
-            <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-              <a href="<%= projet_path(zoneprojet.id)%>" class="text-muted reshover"><%=zoneprojet.nom_du_projet %></a>
+            <% if zone.projets.where(validation: true).count == 0%>
+              <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                <p>Pas de projet pour le moment</p>
+              </div>
+            <%else%>
+              <% zone.projets.where(validation: true).each do |zoneprojet| %>
+                <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                  <a href="<%= projet_path(zoneprojet.id)%>" class="text-muted reshover"><%=zoneprojet.nom_du_projet %></a>
+                </div>
+              <% end %>
+            <% end %>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
             </div>
-           <% end %>
-           <% end %>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
           </div>
         </div>
       </div>
-    </div>
-  <% end %>
-  <% end %>
+      <% end %>
+     <% end %>
   <% end %>
   <header class="sc-10fmshx-0 dCsOFK">
     <div class="bt96d2-13 dwLDtk search">
@@ -44,10 +44,10 @@
         </div>
         <% if current_user %> 
           <% if current_user.is_consultant == true || current_user.is_consultant == false || current_user.is_super_admin == true || current_user.is_admin == true%>
-          <button tabindex="0" type="submit" variant="primary" class="sc-eerKOB cfnPHQ bold"><span>Rechercher</span></button>
+          <button tabindex="0" type="submit" variant="primary" class="sc-eerKOB cfnPHQ bold sear"><span>Rechercher</span></button>
           <%end%>
         <%else%>
-            <a href="<%= new_user_session_path%>" class="sc-eerKOB cfnPHQ bold"><span>Rechercher</span></a>
+            <a href="<%= new_user_session_path%>" class="sc-eerKOB cfnPHQ bold sear"><span>Rechercher</span></a>
         <%end%>   
       <%end%>
     </div>
@@ -112,24 +112,32 @@
             </header>
           </div>
 
-          <div class="fdk8rh-3 feYJJO">
-            <header class="fdk8rh-0 kYNMFW">
+          <div class="fdk8rh-3 feYJJO dropdown select">
+            <header class="fdk8rh-0 kYNMFW" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <h3 class="fdk8rh-1 eouleG">
-                 <span>
-                    <input name="montant"  type = "range" min="0" max="60" style="width: 60px;" onchange="rangevalue.value=value"/>
-                    <output id="rangevalue">5</output>       
-                  </span>       
+                Montant
               </h3>
             </header>
+            <div class="dropdown-menu dropcust" aria-labelledby="dropdownMenuButton">
+              <span class="text-center">
+                <div>
+                  <input name="montant"  type = "range" min="0" max="100" class="custom-range" onchange="rangevalue.value=value"/>
+                </div>
+                <div>
+                  <output id="rangevalue">50</output><span> USD</span>
+                </div>     
+              </span> 
+            </div>
           </div>
 
           <div class="fdk8rh-3 feYJJO">
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
-                <input type="date" name="fin" placeholder="fin" class="reset fdk8rh-1 eouleG">
+                <input type="text" name="fin" id="datepicker" class="reset fdk8rh-1 eouleG">
              </h3>
             </header>
-          </div>
+          </div>  
+
           <div class="fdk8rh-3 feYJJO">
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
@@ -280,7 +288,6 @@
           <section>
             <div class="map" id="map">
                   <div class="map__img">
-                    <% Zone.all.each do |zone| %>
                     <% if current_user %> 
                       <% if current_user.is_consultant == true || current_user.is_super_admin == true || current_user.is_admin == true%>
                         <% Zone.all.each do |zone| %>
@@ -292,8 +299,8 @@
                             </div>
                           </div>
                         </a>
-                        <% end %>
-                      <% end %>
+                    <% end %>
+                  <% end %>
                     <% else %>
                       <% Zone.all.each do |zone| %>
                       <a class="region r-<%= zone.id %>" href="<%= new_user_session_path%>">
@@ -452,28 +459,3 @@
     </div>
   </div>
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
