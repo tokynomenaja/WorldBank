@@ -66,10 +66,8 @@
           <div class="mb-3">
         <%if @project.files.attached?%>
           <%@project.files.each do|file|%> 
-          PDF: <%= link_to file.name, rails_blob_path(file, disposition: "attachement") %>
+          Ficher : <%= link_to file.name, rails_blob_path(file, disposition: "attachement") %>
           <%end%>
-        <%else%>
-            <img src="#">
         <%end%>
         </div>
           <p><span class="attr">Partenaire d'implementation : </span>

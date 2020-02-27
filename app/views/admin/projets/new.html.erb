@@ -131,36 +131,37 @@
 				</div>
 			</div>
 		</div>
-			<div class="container mb-2">
-				<a class="btn-col" data-toggle="collapse" href="#objectif" role="button" aria-expanded="false" aria-controls="collapseExample">
-					Objectif general du projet
-				</a>
-				<div class="collapse" id="objectif">
-					<div class="card card-body">
-						<%=cktext_area_tag :objectif_generale_du_projet, as: :ckeditor, :input_html => {:toolbar => 'Full'}%>
-					</div>
+		<div class="container mb-2">
+			<a class="btn-col" data-toggle="collapse" href="#objectif" role="button" aria-expanded="false" aria-controls="collapseExample">
+				Objectif general du projet
+			</a>
+			<div class="collapse" id="objectif">
+				<div class="card card-body">
+					<%=cktext_area_tag :objectif_generale_du_projet, as: :ckeditor, :input_html => {:toolbar => 'Full'}%>
 				</div>
 			</div>
-			<div class="container mb-2">
-				<a class="btn-col" data-toggle="collapse" href="#appui-specifique" role="button" aria-expanded="false" aria-controls="collapseExample">
-					Appui spécifique au secteur privé
-				</a>
-				<div class="collapse" id="appui-specifique">
-					<div class="card card-body">
-					<%=cktext_area_tag :aspsp, as: :ckeditor, :input_html => {:toolbar => 'Full'}%>
-					</div>
+		</div>
+		<div class="container mb-2">
+			<a class="btn-col" data-toggle="collapse" href="#appui-specifique" role="button" aria-expanded="false" aria-controls="collapseExample">
+				Appui spécifique au secteur privé
+			</a>
+			<div class="collapse" id="appui-specifique">
+				<div class="card card-body">
+				<%=cktext_area_tag :aspsp, as: :ckeditor, :input_html => {:toolbar => 'Full'}%>
 				</div>
 			</div>
-			<div class="container mb-2">
-				Fichiers du projet :<%= file_field_tag :files, required: true%>
-				
-			</div>
-			<div class=" container mb-2 picture">
-				Photo du projet :<%= file_field_tag :picture, required: true%>
-			</div>
-			<div class="mt-4">
-				<input type="submit" value="Créer" class="sc-eerKOB cfnPHQ">
-			</div>
+		</div>
+		<div class="container mb-2 mt-4">
+			Fichiers du projet :<%= file_field_tag :files, required: true%>
+			
+		</div>
+		<div class=" container mb-2 mt-4 picture">
+			Photo du projet :<%= file_field_tag :picture, required: true%>
+		</div>
+		<div class="container mt-4">
+			<input type="submit" value="Créer" class="sc-eerKOB cfnPHQ">
 		</div>
 	<% end %>
 </div>
+
+

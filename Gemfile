@@ -6,8 +6,6 @@ gem 'simple_form'
 
 gem  "ransack"
 
-
-gem "mini_magick"
 gem 'paperclip'
 gem 'ckeditor'
 gem 'carrierwave'
@@ -15,8 +13,6 @@ gem 'dragonfly'
 gem 'mongoid-paperclip', require: 'mongoid_paperclip'
 gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
 gem 'mini_magick'
-
-gem 'turbolinks', '~> 5'
 
 gem 'table_print'
 
