@@ -1,4 +1,4 @@
- 
+<% i = 0%>
 <header class="aci59a-0 eyAIuG sticky-limit">
     <div class="sc-1gnwgfb-2 hVIPFV pict">
       <style type="text/css">
@@ -20,9 +20,10 @@
       <%= image_tag "/giz.jpg"%>
       </div>
     </div>
-    
-    <div class="h-text text-white pr-4">
-      <h3><%=@projet.nom_du_projet%></h3>
+    <div class="d-flex align-items-center h-text">
+      <div class="text-white pr-4">
+        <h3><%=@projet.nom_du_projet%></h3>
+      </div>
     </div>
     <div class="asi"> 
       <div class="aside">
@@ -39,7 +40,7 @@
       <p><span class="attr">Filiere : </span>
         <span class="word">
           <%@projet.filiereprojets.each do|fp|%>
-          <%=fp.filiere.title%>, 
+          <%=fp.filiere.title%>,
           <%end%> 
         </span>     
       </p>
@@ -63,8 +64,13 @@
           <p><span class="attr">Région : </span></p>
           <div class="mb-3">
               <%@projet.zoneprojets .each do|zp|%>
-                <span><%=zp.zone.title %>, </span>
-              <%end%>
+                <%if i == 0%>
+                  <span><%=zp.zone.title %></span>
+                <% else %>
+                  <span>, <%=zp.zone.title %></span>
+                <% end %>
+                <% i += 1 %>
+              <% end %>
           </div>
           <p><span class="attr">Partenaire d'implementation : </span>
           <p class="mb-3"><%= @projet.partenaire_d_implementaton %></p>

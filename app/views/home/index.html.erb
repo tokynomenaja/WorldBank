@@ -130,10 +130,10 @@
             </div>
           </div>
 
-          <div class="fdk8rh-3 feYJJO">
+          <div class="fdk8rh-3 feYJJO select">
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
-                <input type="text" name="fin" id="datepicker" class="reset fdk8rh-1 eouleG">
+                <input type="text" name="fin" class="reset fdk8rh-1 eouleG" placeholder="JJ/AAAA">
              </h3>
             </header>
           </div>  
@@ -289,7 +289,7 @@
             <div class="map" id="map">
                   <div class="map__img">
                     <% if current_user %> 
-                      <% if current_user.is_consultant == true || current_user.is_super_admin == true || current_user.is_admin == true%>
+                      <% if current_user.is_consultant == true  || current_user.is_consultant == false || current_user.is_super_admin == true || current_user.is_admin == true%>
                         <% Zone.all.each do |zone| %>
                         <a class="region r-<%= zone.id %>">
                           <div data-toggle="modal" data-target="#exampleModalLong<%= zone.id %>">

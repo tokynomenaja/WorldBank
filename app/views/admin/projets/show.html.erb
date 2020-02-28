@@ -86,7 +86,7 @@
           <p class="mb-3"><span class="attr">Alignement aux priorités du plan emergence de Madagascar : </span><p><%= @projet.apdem %></p></p>
           <%if @projet.files.attached?%>
           <%@projet.files.each do|file|%> 
-          <p><span class="attr">Ficher : </span><%= link_to file.name, rails_blob_path(file, disposition: "attachement") %></p>
+          <p><span class="attr">Ficher : </span><%= link_to file.filename, rails_blob_path(file, disposition: "attachement") %></p>
           <%end%>
         <%end%>
         </div>
