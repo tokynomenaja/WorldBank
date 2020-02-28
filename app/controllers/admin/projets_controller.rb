@@ -95,7 +95,7 @@ class Admin::ProjetsController < ApplicationController
 
   def update
          puts "*"*100
-  	@projet = Projet.find(params[:id],)
+  	     @projet = Projet.find(params[:id],)
          if @projet.update(nom_du_projet: params[:nom_du_projet],
               ptf_id: params[:ptf_id],
               forme_d_appui: params[:forme_d_appui],
