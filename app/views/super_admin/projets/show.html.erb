@@ -10,8 +10,7 @@
           <%end%>
         }
 
-      </style>
-      
+      </style>  
     </div>
 </header>
   <div class="logo">
@@ -26,22 +25,49 @@
     </div>
     <div class="asi"> 
       <div class="aside">
-        <p><span class="attr">Secteurs :</span>
-          <span class="word"></span>
-  
-          <%@projet.secteurprojets.each do|sp|%>
-            <%=sp.secteur.title%> ,
-          <%end%>        
-      </p>
+        <% if @projet.secteurprojets.count == 1%>
+          <p><span class="attr">Secteur :</span>
+            <span class="word"></span>
+              <%@projet.secteurprojets.each do|sp|%>
+              <%=sp.secteur.title%> 
+            <%end%>        
+          </p>
+        <%else%>
+            <p><span class="attr">Secteurs :</span>
+              <span class="word"></span>
+                <%@projet.secteurprojets.each do|sp|%>
+                <%=sp.secteur.title%> |
+            <%end%>        
+          </p>
+        <%end%>
       <p><span class="attr">Forme d'appui : </span>
         <span class="word"><%= @projet.appui.title%></span>
+      </p>
+      <% if @projet.filiereprojets.count == 1%>
+        <p><span class="attr">Filiere : </span>
+          <span class="word">
+            <%@projet.filiereprojets.each do|fp|%>
+            <%=fp.filiere.title%>
+            <%end%> 
+          </span>     
         </p>
-      <p><span class="attr">Filiere : </span>
-        <span class="word">
-          <%@projet.filiereprojets.each do|fp|%>
-          <%=fp.filiere.title%>, 
-          <%end%> 
-        </span>     
+      <%else%>
+        <p><span class="attr">Filieres : </span>
+          <span class="word">
+            <%@projet.filiereprojets.each do|fp|%>
+            <%=fp.filiere.title%> |
+            <%end%> 
+          </span>     
+        </p>
+      <%end%>
+      <p><span class="attr">Lien du site : </span>
+        <% if @projet.ptf.lien%>
+          <span class="word">
+            <a href="https://<%= @projet.ptf.lien.remove('https://')%>"><%= @projet.ptf.lien%></a>
+          </span>
+        <%else%>
+          <span>Pas de lien</span>
+        <%end%>
       </p>
       </div>
     </div>
@@ -60,36 +86,62 @@
       </div>
       <div class="row pt-4 pb-4">
         <div class="col-md-6 list">
-          <p><span class="attr">Région : </span></p>
-          <div class="mb-3">
-              <%@projet.zoneprojets .each do|zp|%>
-                <span><%=zp.zone.title %>, </span>
-              <%end%>
-          </div>
-          <p><span class="attr">Partenaire d'implementation : </span>
+          <% if  @projet.zoneprojets.count == 1%>
+            <p><span class="attr">Région : </span></p>
+            <div class="mb-3">
+                <%@projet.zoneprojets.each do|zp|%>
+                  <span><%=zp.zone.title %> </span>
+                <%end%>
+            </div>
+          <%else%>
+            <p><span class="attr">Régions : </span></p>
+            <div class="mb-3">
+                <%@projet.zoneprojets.each do|zp|%>
+                  <span><%=zp.zone.title %> | </span>
+                <%end%>
+            </div>
+          <%end%>
+          <p><span class="attr">Partenaire d'implémentation : </span>
           <p class="mb-3"><%= @projet.partenaire_d_implementaton %></p>
           </p>
-          <p><span class="attr">Bénéficiaire : </span>
-          <div class="mb-3">
-              <%@projet.benefprojets.each do|ben|%>
-                <span><%= ben.beneficiaire.title %> </span>
-              <%end%>
-          </div>
-          </p>
+
+          <% if @projet.benefprojets.count == 1 %>
+            <p><span class="attr">Bénéficiaire : </span>
+              <div class="mb-3">
+                <%@projet.benefprojets.each do|ben|%>
+                  <span><%= ben.beneficiaire.title %> </span>
+                <%end%>
+              </div>
+            </p>
+          <%else%>
+              <p><span class="attr">Bénéficiaires : </span>
+              <div class="mb-3">
+                <%@projet.benefprojets.each do|ben|%>
+                  <span><%= ben.beneficiaire.title %> | </span>
+                <%end%>
+              </div>
+            </p>  
+
+          <%end%>
+
+
           <p><span class="attr">Montant : </span>
-           <p class="mb-3"><%=@projet.montant%> USD</p>
+           <p class="mb-3"><%=@projet.montant%> Millions USD</p>
           </p>
         </div>
         <div class="col-md-6 list">
           <p class="mb-3"><span class="attr">Nature de l'appui : </span><%=@projet.appui.title%></p>
           <p class="mb-3"><span class="attr">Début : </span><%=@projet.debut_du_projet%></p>
-        <p class="mb-3"><span class="attr">Fin : </span><%=@projet.fin%></p>
-          <p class="mb-3"><span class="attr">Alignement aux priorités du plan emergence de Madagascar : </span><p><%= @projet.apdem %></p></p>
+          <p class="mb-3"><span class="attr">Fin : </span><%=@projet.fin%></p>
+          <p class="mb-3"><span class="attr">Alignement aux priorités du plan Emergence de Madagascar : </span><p><%= @projet.apdem %></p></p>
+          <%if @projet.files.attached?%>
+            <%@projet.files.each do|file|%> 
+            <p><span class="attr">Fichier : </span><%= link_to file.filename, rails_blob_path(file, disposition: "attachement") %></p>
+            <%end%>
+        <%end%>
         </div>
-
-
-        <div class="text-right">
-           <a href="<%= super_admin_projet_path(@projet.id)%>" class="btn btn-warning sc-eerKOB cfnPHQ mr-2" data-method="put">Valider</a>
-            <a href="<%= super_admin_projet_path(@projet.id)%>" class="btn btn-danger sc-eerKOB cfnPHQ mr-2" data-method="delete" data-confirm="Voulez-vous refuser ce projet?">Refuser</a>
-        </div>
+    </div>
+    <div class="text-right">
+      <a href="<%= super_admin_projet_path(@projet.id)%>" class="btn btn-warning" data-method="put">Valider</a>
+      <a href="<%= super_admin_projet_path(@projet.id)%>" class="btn btn-danger" data-confirm="Voulez-vous refusez ce projet ?">Annuler</a>
     </div>

@@ -100,7 +100,7 @@ end
                 
               else
                 @parameter = params[:search_zone].downcase
-                @res = Zoneprojet.all.where(zone_id: params[:search_zone]) 
+                @zone = Zoneprojet.all.where(zone_id: params[:search_zone]) 
                 @zone_1 = Zone.find(params[:search_zone]).title.to_s              
           end
         end  
@@ -129,7 +129,7 @@ end
               
           else
             @parameter = params[:search_iga]
-            @search = Igaprojet.all.where(iga_id: params[:search_iga])
+            @iga = Igaprojet.all.where(iga_id: params[:search_iga])
             @iga_1 = Iga.find(params[:search_iga]).title.to_s
           end 
       end

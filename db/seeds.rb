@@ -31,21 +31,21 @@ puts "Filiere crée"
 
 
 Ptf.destroy_all
-      c1  = Ptf.create!(title: "Helvetas")
-      c2  = Ptf.create!(title: "FMI")
-      c3  = Ptf.create!(title: "IFC")
+      c1  = Ptf.create!(title: "Helvetas", lien: 'https://www.Helvetas.com')
+      c2  = Ptf.create!(title: "FMI", lien: 'https://www.fmi.com')
+      c3  = Ptf.create!(title: "IFC", lien: 'https://www.ifc.com')
       c4  = Ptf.create!(title: "UE")
       c5  = Ptf.create!(title: "UNICEF")
       c6  = Ptf.create!(title: "GIZ")
-      c7  = Ptf.create!(title: "Agence Française de Developpement")
+      c7  = Ptf.create!(title: "Agence Française de Développement")
       c8  = Ptf.create!(title: "ONUDI")
       c9  = Ptf.create!(title: "JICA")
       c10 = Ptf.create!(title: "USAID")
       c11 = Ptf.create!(title: "BAD")
       c12 = Ptf.create!(title: "PNUD")
       c13 = Ptf.create!(title: "FIDA")
-      c14 =  Ptf.create!(title:  "CNUCED")
-      c12 = Ptf.create!(title: "Fond Europeen Developpement")
+      c14 =  Ptf.create!(title: "CNUCED")
+      c12 = Ptf.create!(title: "Fond Européen Développement")
       c13 = Ptf.create!(title: "BANQUE MONDIALE")
     
       
@@ -59,9 +59,9 @@ Filiere.destroy_all
       c2 = Filiere.create!(title: "Artisanat")
       c3 = Filiere.create!(title: "Aviculture")
       c4 = Filiere.create!(title: "Boviculture")
-      c5 = Filiere.create!(title: "Culture maraiĉhère")
+      c5 = Filiere.create!(title: "Culture maraîchère")
       c6 = Filiere.create!(title: "Epices")
-      c7 = Filiere.create!(title: "Fruit")
+      c7 = Filiere.create!(title: "Fruits")
       c8 = Filiere.create!(title: "Grains secs")
       c9 = Filiere.create!(title: "Pêche")
       c10 = Filiere.create!(title: "Pisciculture")
@@ -74,13 +74,12 @@ Filiere.destroy_all
  puts "Filiere create"    
 
 Iga.destroy_all
-      c0 = Iga.create!(title:"")
       c1 = Iga.create!(title: "Ministère de l’Energie, de l’Eau et des Hydrocarbures")
-      c2 = Iga.create!(title: "Ministère de l Economie et des Finances")
+      c2 = Iga.create!(title: "Ministère de l'Economie et des Finances")
       c3 = Iga.create!(title: "MICA (Ministère de l’Industrie, du Commerce et de l’Artisanat )")
       c4 = Iga.create!(title: "Ministère de l’Enseignement Supérieur et de la Recherche Scientifique ")
       c5 = Iga.create!(title: "Ministère de l’Agriculture, de l’Elevage et de la Pêche" )
-      c6 = Iga.create!(title: "Ministère de l Economie et des Finances Ministère de l Aménagement du Territoire,
+      c6 = Iga.create!(title: "Ministère de l'Economie et des Finances Ministère de l'Aménagement du Territoire,
                       de l Habitat et des Travaux Publics")
       c7 = Iga.create!(title: "Ministère de la Communication et de la Culture" )
       c8 = Iga.create!(title: "Ministère du Tourisme des Transports et de la Météorologie")
@@ -89,7 +88,7 @@ Iga.destroy_all
       c11 = Iga.create!(title: "MAEP")
       c12 = Iga.create!(title: "EDBM")
       c13 = Iga.create(title: "M2PATE")
-      c14 = Iga.create(title:"MIDSP")
+      c14 = Iga.create(title: "MIDSP")
 
 
 puts "iga create"
@@ -137,7 +136,7 @@ puts "Appui create"
 
 Beneficiaire.destroy_all
        b1 = Beneficiaire.create!(title:"Douane")
-       b2 = Beneficiaire.create!(title:"Ministères
+       b2 = Beneficiaire.create!(title:"Ministère
                                   Operateurs Miniers")
        b3 = Beneficiaire.create!(title:"Producteurs Ménages Ruraux")            
                                                                          
@@ -147,20 +146,20 @@ Beneficiaire.destroy_all
                                   Secteur-Privé")
        b6 = Beneficiaire.create!(title:"Producteurs")
                                   
-       b7 = Beneficiaire.create!(title:"Citoyens  Touristes
+       b7 = Beneficiaire.create!(title:"Citoyens Touristes
                                   Secteur-Privé")
                                  
        b8 = Beneficiaire.create!(title:"Institutions de micro-finance")
        b9 = Beneficiaire.create!(title:"Agriculteurs")
        b10 = Beneficiaire.create!(title:"Commerçants")
-       b11 = Beneficiaire.create!(title:"investisseur en agro-industrie")
-       b12 = Beneficiaire.create!(title:"citoyens")
+       b11 = Beneficiaire.create!(title:"Investisseur en agro-industrie")
+       b12 = Beneficiaire.create!(title:"Citoyens")
        b13 = Beneficiaire.create!(title: "Secteur-Privé")
-       b14 = Beneficiaire.create!(title:"investisseurs privés")
-       b15 = Beneficiaire.create(title:"femmes etjeunes entrepreneurs")
-       b16 = Beneficiaire.create(title:"structures gouvernementales")
+       b14 = Beneficiaire.create!(title:"Investisseur privé")
+       b15 = Beneficiaire.create(title:"Femmes et Jeunes Entrepreneurs")
+       b16 = Beneficiaire.create(title:"Structures Gouvernementales")
        b17 = Beneficiaire.create(title:"EDBM")
-       b18 = Beneficiaire.create(title:"structures intermediaire")
+       b18 = Beneficiaire.create(title:"Structure intermédiaire")
 puts "Beneficiaire"
 
 @pro = Projet.new(nom_du_projet: "MADAGASCAR INTEGRATED GROWTH POLES AND CORRIDOR - PIC 2.2", objectif_generale_du_projet: "Contribuer au développement durable des secteurs tourisme et
