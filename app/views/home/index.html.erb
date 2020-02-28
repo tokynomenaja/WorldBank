@@ -130,10 +130,11 @@
             </div>
           </div>
 
-          <div class="fdk8rh-3 feYJJO">
+          <div class="fdk8rh-3 feYJJO select">
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
                 <input type="date" name="fin"  class="reset fdk8rh-1 eouleG">
+
              </h3>
             </header>
           </div>  
@@ -203,17 +204,17 @@
                 </div>
               <%end%>
             <%end%>
-            <%if @res%>
-              <% @res.each do |zn| %> 
-              <% if zn.projet.validation == true%>
+            <%if @zone%>
+              <% @zone.each do |res| %> 
+              <% if res.projet.validation == true%>
                 <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <%= link_to "#{zn.projet.nom_du_projet}", projet_path(zn.projet.id), target: 'blank', class: 'text-muted reshover' %>
+                  <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
                 </div>
               <%end%>
               <%end%>
             <%end%>
-            <%if @search%> 
-              <% @search.each do |res| %>  
+            <%if @iga%> 
+              <% @iga.each do |res| %>  
               <% if res.projet.validation == true%>
                 <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                   <%= link_to "#{res.projet.nom_du_projet}",  projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
@@ -289,7 +290,7 @@
             <div class="map" id="map">
                   <div class="map__img">
                     <% if current_user %> 
-                      <% if current_user.is_consultant == true || current_user.is_super_admin == true || current_user.is_admin == true%>
+                      <% if current_user.is_consultant == true || current_user.is_consultant == false || current_user.is_super_admin == true || current_user.is_admin == true%>
                         <% Zone.all.each do |zone| %>
                         <a class="region r-<%= zone.id %>">
                           <div data-toggle="modal" data-target="#exampleModalLong<%= zone.id %>">

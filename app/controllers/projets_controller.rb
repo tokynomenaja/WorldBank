@@ -15,6 +15,6 @@ class ProjetsController < ApplicationController
     end
   
     def show
-      @project = Projet.find(params[:id])
+      @projet = Projet.find(params[:id])
     end  
   end

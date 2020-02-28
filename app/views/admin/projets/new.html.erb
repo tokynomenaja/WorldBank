@@ -13,17 +13,11 @@
 					</div>
 					<input type="text" name="nom_du_projet" id="nom" placeholder="Nom du projet" class="form-control">
 				</div>
-				<div class="col-6">
-					<div>
-						<label for="lien" class="mr-2 table">Lien du site</label>
-					</div>
-					<input type="text" name="lien" id="lien" placeholder="Site web" class="form-control">
-				</div>
 			</div>
 			<div class="d-flex justify-content-between mb-3">
 				<div>
 					<h6 class="table">PTF</h6>
-					<%= select_tag 'ptf_id', options_for_select(Ptf.all.collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
+					<%= select_tag 'ptf_id', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
 				</div>
 				<div>
 					<h6 class="table">Début</h6>
@@ -36,23 +30,23 @@
 				<div>
 					<h6 class="table">Montant</h6>
 					<input name="montant" type = "range" min="0" max="100" onchange="rangevalue.value=value"/>
-                  	<output id="rangevalue">50</output> 
+                  	<output id="rangevalue">50 Millions USD</output> 
 				</div>
 				<div>
-					<h6 class="table">Apui</h6>
-					<%= select_tag 'appui_id', options_for_select(Appui.all.collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
+					<h6 class="table">Appui</h6>
+					<%= select_tag 'appui_id', options_for_select(Appui.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
 				</div>
 			</div>
 		</div>
 
 		<div class="container mb-2">
 			<a class="btn-col" data-toggle="collapse" href="#secteur" role="button" aria-expanded="false" aria-controls="collapseExample">
-				Secteur
+				Secteurs
 			</a>
 				<div class="collapse" id="secteur">
 				<div class="card card-body">
 					<div class="row">
-						<% Secteur.all.each do |c| %>
+						<% Secteur.all.order(:title).each do |c| %>
 							<div class="col-md-4">
 								<%= check_box_tag("secteur_ids[]",c.id) %>
 								<%= c.title%>
@@ -65,12 +59,12 @@
 
 			<div class="container mb-2">
 			<a class="btn-col" data-toggle="collapse" href="#filiere" role="button" aria-expanded="false" aria-controls="collapseExample">
-				Filière
+				Filières
 			</a>
 				<div class="collapse" id="filiere">
 				<div class="card card-body">
 					<div class="row">
-						<% Filiere.all.each do |c| %>
+						<% Filiere.all.order(:title).each do |c| %>
 							<div class="col-md-3">
 								<%= check_box_tag("filiere_ids[]",c.id) %>
 								<%= c.title%>
@@ -83,12 +77,12 @@
 
 			<div class="container mb-2">
 				<a class="btn-col" data-toggle="collapse" href="#Beneficiaire" role="button" aria-expanded="false" aria-controls="collapseExample">
-					Beneficiaire
+					Bénéficiaires
 				</a>
 				<div class="collapse" id="Beneficiaire">
 					<div class="card card-body">
 						<div class="row">
-							<% Beneficiaire.all.each do |c| %>
+							<% Beneficiaire.all.order(:title).each do |c| %>
 								<div class="col-md-4">
 									<%= check_box_tag("beneficiaire_ids[]",c.id) %>
 									<%= c.title%>
@@ -100,12 +94,12 @@
 			</div>
 		<div class="container mb-2">
 			<a class="btn-col" data-toggle="collapse" href="#iga" role="button" aria-expanded="false" aria-controls="collapseExample">
-				IGA(institution gouvernemental associé)
+				IGA (Institution Gouvernementale Associée)
 			</a>
 			<div class="collapse" id="iga">
 				<div class="card card-body">
 					<div class="row">
-						<% Iga.all.each do |c| %>
+						<% Iga.all.order(:title).each do |c| %>
 							<div class="col-md-12">
 								<%= check_box_tag("iga_ids[]",c.id) %>
 								<%= c.title%>
@@ -117,12 +111,12 @@
 		</div>
 		<div class="container mb-2">
 			<a class="btn-col" data-toggle="collapse" href="#zi" role="button" aria-expanded="false" aria-controls="collapseExample">
-				Région
+				Régions
 			</a>
 			<div class="collapse" id="zi">
 				<div class="card card-body">
 					<div class="row">
-						<% Zone.all.each do |c| %>
+						<% Zone.all.order(:title).each do |c| %>
 							<div class="col-md-4">
 								<%= check_box_tag("zone_ids[]",c.id) %>
 								<%= c.title%>
@@ -134,7 +128,7 @@
 		</div>
 		<div class="container mb-2">
 			<a class="btn-col" data-toggle="collapse" href="#objectif" role="button" aria-expanded="false" aria-controls="collapseExample">
-				Objectif general du projet
+				Objectif général du projet
 			</a>
 			<div class="collapse" id="objectif">
 				<div class="card card-body">
@@ -153,11 +147,11 @@
 			</div>
 		</div>
 		<div class="container mb-2 mt-4">
-			Fichiers du projet :<%= file_field_tag :files, required: true%>
+			Fichier du projet : <%= file_field_tag :files, required: true, multiple: true%>
 			
 		</div>
 		<div class=" container mb-2 mt-4 picture">
-			Photo du projet :<%= file_field_tag :picture, required: true%>
+			Photo du projet : <%= file_field_tag :picture, required: true%>
 		</div>
 		<div class="container mt-4">
 			<input type="submit" value="Créer" class="sc-eerKOB cfnPHQ">

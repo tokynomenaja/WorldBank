@@ -2,14 +2,14 @@
     <div class="sc-1gnwgfb-2 hVIPFV pict">
       <style type="text/css">
         .pict {
-          <% if @project.picture.attached?%>
-            background-image: url(<%= rails_blob_url(@project.picture)%>);
+          <% if @projet.picture.attached?%>
+            background-image: url(<%= rails_blob_url(@projet.picture)%>);
           <%else%>
             background-image: url('/maki.jpg');
           <%end%>
         }
-      </style>
-      
+
+      </style>  
     </div>
 </header>
   <div class="logo">
@@ -18,27 +18,65 @@
       <%= image_tag "/giz.jpg"%>
       </div>
     </div>
-    
-    <div class="h-text text-white pr-4">
-      <h3><%=@project.nom_du_projet%></h3>
+    <div class="d-flex align-items-center h-text">
+      <div class="text-white pr-4">
+        <h3><%=@projet.nom_du_projet%></h3>
+      </div>
     </div>
     <div class="asi"> 
       <div class="aside">
-        <p><span class="attr">Secteurs :</span>
-          <span class="word"></span>
-          <%@project.secteurprojets.each do|sp|%>
-            <%=sp.secteur.title%> ,
-          <%end%>        
-      </p>
+          <% if  @projet.secteurprojets.count == 1%>
+              <p><span class="attr">Secteur : </span>
+          <%else%>
+              <p><span class="attr">Secteurs : </span>
+          <%end%>
+            <span class="word">
+              
+              <% i = 0%>
+              <%@projet.secteurprojets .each do|sp|%>
+                <%if i == 0%>
+                  <span><%=sp.secteur.title %></span>
+                <% else %>
+                  <span>, <%=sp.secteur.title %></span>
+                <% end %>
+                <% i += 1 %>
+              <% end %>
+              
+            </span>
+          </p>
+       
       <p><span class="attr">Forme d'appui : </span>
-        <span class="word"><%= @project.appui.title%></span>
-        </p>
-      <p><span class="attr">Filiere : </span>
-        <span class="word">
-          <%@project.filiereprojets.each do|fp|%>
-          <%=fp.filiere.title%>, 
-          <%end%> 
-        </span>     
+        <span class="word"><%= @projet.appui.title%></span>
+      </p>
+
+          <% if  @projet.filiereprojets.count == 1%>
+              <p><span class="attr">Filière : </span>
+          <%else%>
+              <p><span class="attr">Filières : </span>
+          <%end%>
+          <span class="word">
+              <% i = 0%>
+              <%@projet.filiereprojets .each do|fp|%>
+                <%if i == 0%>
+                  <span><%=fp.filiere.title %></span>
+                <% else %>
+                  <span>, <%=fp.filiere.title %></span>
+                <% end %>
+                <% i += 1 %>
+              <% end %>
+            
+          </span>
+          </p>
+  
+        
+      <p><span class="attr">Lien du site : </span>
+        <% if @projet.ptf.lien%>
+          <span class="word">
+            <a href="https://<%= @projet.ptf.lien.remove('https://')%>"><%= @projet.ptf.lien%></a>
+          </span>
+        <%else%>
+          <span>Pas de lien</span>
+        <%end%>
       </p>
       </div>
     </div>
@@ -47,53 +85,71 @@
     <div class="objectif mx-auto">
       <h2 class="text-left color">Objectif général du projet</h2>
       <div class="mt-2 pt-2">
-        <%=raw @project.objectif_generale_du_projet%>
+        <%= raw @projet.objectif_generale_du_projet%>
       </div>
       <div class="appui mt-4">
         <h2 class="color text-left">Appui spécifique au secteur privé</h2>
         <div class="p-2">
-          <%=raw @project.aspsp%>
+          <%= raw @projet.aspsp%>
         </div>
       </div>
       <div class="row pt-4 pb-4">
         <div class="col-md-6 list">
-          <p><span class="attr">Régions : </span></p>
-          <div class="mb-3">
-              <%@project.zoneprojets .each do|zp|%>
-                <span><%=zp.zone.title %> </span>
-              <%end%>
-          </div>
-          <div class="mb-3">
-        <%if @project.files.attached?%>
-          <%@project.files.each do|file|%> 
-          Ficher : <%= link_to file.name, rails_blob_path(file, disposition: "attachement") %>
+          <% if  @projet.zoneprojets.count == 1%>
+              <p><span class="attr">Région : </span></p>
+          <%else%>
+              <p><span class="attr">Régions : </span></p>
           <%end%>
-        <%end%>
-        </div>
-          <p><span class="attr">Partenaire d'implementation : </span>
-          <p class="mb-3"><%= @project.partenaire_d_implementaton %></p>
-          </p>
-          <p><span class="attr">Bénéficiaire : </span></p>
           <div class="mb-3">
-              <%@project.benefprojets.each do|ben|%>
-                <span><%= ben.beneficiaire.title %> </span>
-              <%end%>
+            <% i = 0%>
+              <%@projet.zoneprojets .each do|zp|%>
+                <%if i == 0%>
+                  <span><%=zp.zone.title %></span>
+                <% else %>
+                  <span>, <%=zp.zone.title %></span>
+                <% end %>
+                <% i += 1 %>
+              <% end %>
           </div>
+          
+          <p><span class="attr">Partenaire d'implémentation : </span>
+          <p class="mb-3"><%= @projet.partenaire_d_implementaton %></p>
+          </p>
+
+
+          <% if  @projet.benefprojets.count == 1%>
+              <p><span class="attr">Bénéficiaire : </span></p>
+          <%else%>
+              <p><span class="attr">Bénéficiaires : </span></p>
+          <%end%>
+          <div class="mb-3">
+            <% i = 0%>
+              <%@projet.benefprojets .each do|ben|%>
+                <%if i == 0%>
+                  <span><%=ben.beneficiaire.title %></span>
+                <% else %>
+                  <span>, <%=ben.beneficiaire.title %></span>
+                <% end %>
+                <% i += 1 %>
+              <% end %>
+          </div>
+
           <p><span class="attr">Montant : </span>
-           <p class="mb-3"> <%=@project.montant%> USD</p>
+           <p class="mb-3"><%=@projet.montant%> Millions USD</p>
           </p>
         </div>
         <div class="col-md-6 list">
-          <p class="mb-3"><span class="attr">Nature de l'appui : </span><%=@project.appui.title%></p>
-          <p class="mb-3"><span class="attr">Début : </span><%=@project.debut_du_projet%></p>
-        <p class="mb-3"><span class="attr">Fin : </span><%=@project.fin%></p>
-          <p class="mb-3"><span class="attr">Alignement aux priorités du plan emergence de Madagascar : </span><p><%= @project.apdem %></p></p>
+          <p class="mb-3"><span class="attr">Nature de l'appui : </span><%=@projet.appui.title%></p>
+          <p class="mb-3"><span class="attr">Début : </span><%=@projet.debut_du_projet%></p>
+          <p class="mb-3"><span class="attr">Fin : </span><%=@projet.fin%></p>
+          <p class="mb-3"><span class="attr">Alignement aux priorités du plan Emergence de Madagascar : </span><p><%= @projet.apdem %></p></p>
+          <%if @projet.files.attached?%>
+            <%@projet.files.each do|file|%> 
+            <p><span class="attr">Fichier : </span><%= link_to file.filename, rails_blob_path(file, disposition: "attachement") %></p>
+            <%end%>
+        <%end%>
         </div>
-
     </div>
     <div class="text-right">
-      <a href="/projets/:id/edit" class="sc-eerKOB cfnPHQ mr-2">Télecharger</a>
+     <a href="<%= projet_path(@projet.id)%>" class="btn btn-warning">Télécharger</a>
     </div>
-  </div>
-</div>
-
