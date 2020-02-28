@@ -1,19 +1,20 @@
-<header class="aci59a-0 eyAIuG sticky-limit">
-    <div class="sc-1gnwgfb-2 hVIPFV">
-    </div>
-</header>
-<div class="row">
+	<%if @projets.count == 0 %>
+<div class=" container sans-head">
+		<div class="text-center text-muted mt-4 mb-4">
+			<p>Rien a valider !!</p>
+		</div>
+	<%else%>
+<div class=" container d-flex flex-wrap sans-head">
 	<% @projets.each do |p|%>
-		  <div class="col-sm-6">
-		    <div class="card">
-		    	
-		      <div class="card-body">
-		        <h5 class="card-title"><%= p.nom_du_projet %></h5>
-		        <p class="card-text"><%= raw p.objectif_generale_du_projet.truncate(100) %></p>
-		    	
-		        <a href="<%= super_admin_projet_path(p.id)%>" class="btn btn-primary">Voir</a>
-		      </div>
-		    </div>
-		  </div>
+			<div class="col-sm-6 mb-3">
+				<div class="card">
+					<div class="card-body">
+					<h5 class="card-title"><%= p.nom_du_projet %></h5>
+					<p class="card-text"><%= raw p.objectif_generale_du_projet.truncate(100) %></p>
+					<a href="<%= super_admin_projet_path(p.id)%>" class="btn btn-primary">Voir</a>
+					</div>
+				</div>
+			</div>
+		<%end%>
 	<%end%>
 </div>
