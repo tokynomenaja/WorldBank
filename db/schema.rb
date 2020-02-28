@@ -112,7 +112,6 @@ ActiveRecord::Schema.define(version: 2020_02_21_125001) do
     t.string "debut_du_projet"
     t.string "fin"
     t.string "apdem"
-    t.string "lien"
     t.string "montant"
     t.boolean "validation", default: false
     t.bigint "appui_id"
@@ -127,6 +126,8 @@ ActiveRecord::Schema.define(version: 2020_02_21_125001) do
 
   create_table "ptfs", force: :cascade do |t|
     t.string "title"
+    t.string "image_url"
+    t.string "lien"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -20,7 +20,7 @@ class Admin::ProjetsController < ApplicationController
                 forme_d_appui: params[:forme_d_appui],
                 debut_du_projet: params[:debut_du_projet],
                 fin: params[:fin],
-                apdem: params[:apdem], lien: params[:lien], bailleur_id: current_user.id)
+                apdem: params[:apdem], bailleur_id: current_user.id)
                      
                   @secteur_ids = params[:secteur_ids]
                 @secteur_ids.each do |x|
