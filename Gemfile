@@ -10,12 +10,10 @@ gem 'paperclip'
 gem 'ckeditor'
 gem 'carrierwave'
 gem 'dragonfly'
-gem 'mongoid-paperclip', require: 'mongoid_paperclip'
-gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
 gem 'mini_magick'
 gem 'jquery-rails'
 gem 'table_print'
-
+  
 gem 'faker'
 gem 'kaminari'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

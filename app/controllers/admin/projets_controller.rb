@@ -17,10 +17,9 @@ class Admin::ProjetsController < ApplicationController
                 aspsp: params[:aspsp],
                 partenaire_d_implementaton: params[:partenaire_d_implementaton],
                 montant: params[:montant],
-                forme_d_appui: params[:forme_d_appui],
                 debut_du_projet: params[:debut_du_projet],
                 fin: params[:fin],
-                apdem: params[:apdem], bailleur_id: current_user.id)
+                bailleur_id: current_user.id)
                      
                   @secteur_ids = params[:secteur_ids]
                 @secteur_ids.each do |x|
@@ -43,6 +42,11 @@ class Admin::ProjetsController < ApplicationController
                 @beneficiaire_ids = params[:beneficiaire_ids]
                 @beneficiaire_ids.each do |b|
                   Benefprojet.create(projet_id: @project.id , beneficiaire_id: b.to_i)
+                end
+
+                @pem_ids = params[:pem_ids]
+                @pem_ids.each do |p|
+                Pemprojet.create(projet_id: @project.id , pem_id: p.to_i)
                 end
 
           if @project.save
