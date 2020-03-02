@@ -25,7 +25,7 @@
  table{border-collapse:collapse;border-spacing:0}
  td,th{padding:0}td:not([align]),th:not([align]){text-align:left}
 a{text-decoration: none;}
-a:hover{text-decoration: none !important; color: #343435;}
+a:hover{text-decoration: none !important; color: #fff !important;}
 .reshover:hover{text-decoration: underline !important;}
 body{background: #f9f9f9 !important;}
 .login{
