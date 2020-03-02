@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_21_125001) do
+ActiveRecord::Schema.define(version: 2020_02_28_132518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,12 @@ ActiveRecord::Schema.define(version: 2020_02_21_125001) do
     t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
+  create_table "engagements", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "filiereprojets", force: :cascade do |t|
     t.bigint "projet_id"
     t.bigint "filiere_id"
@@ -103,24 +109,41 @@ ActiveRecord::Schema.define(version: 2020_02_21_125001) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "pemprojets", force: :cascade do |t|
+    t.bigint "pem_id"
+    t.bigint "projet_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["pem_id"], name: "index_pemprojets_on_pem_id"
+    t.index ["projet_id"], name: "index_pemprojets_on_projet_id"
+  end
+
+  create_table "pems", force: :cascade do |t|
+    t.string "title"
+    t.bigint "engagement_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["engagement_id"], name: "index_pems_on_engagement_id"
+  end
+
   create_table "projets", force: :cascade do |t|
     t.string "nom_du_projet"
-    t.string "forme_d_appui"
     t.text "objectif_generale_du_projet"
     t.text "aspsp"
     t.string "partenaire_d_implementaton"
     t.string "debut_du_projet"
     t.string "fin"
-    t.string "apdem"
     t.string "montant"
     t.boolean "validation", default: false
     t.bigint "appui_id"
     t.bigint "ptf_id"
     t.bigint "bailleur_id"
+    t.bigint "pem_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["appui_id"], name: "index_projets_on_appui_id"
     t.index ["bailleur_id"], name: "index_projets_on_bailleur_id"
+    t.index ["pem_id"], name: "index_projets_on_pem_id"
     t.index ["ptf_id"], name: "index_projets_on_ptf_id"
   end
 

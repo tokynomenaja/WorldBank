@@ -143,7 +143,9 @@
           <p class="mb-3"><span class="attr">Début : </span><%=@projet.debut_du_projet%></p>
 
           <p class="mb-3"><span class="attr">Fin : </span><%=@projet.fin%></p>
-          <p class="mb-3"><span class="attr">Alignement aux priorités du plan Emergence de Madagascar : </span><p><%= @projet.apdem %></p></p>
+          <p class="mb-3"><span class="attr">Alignement aux priorités du plan Emergence de Madagascar : </span><p>  </span><% @projet.pemprojets.each do |p|%>
+                <p> <%=p.pem.title%></p>
+            <%end%></p></p>
           <%if @projet.files.attached?%>
             <%@projet.files.each do|file|%> 
             <p><span class="attr">Fichier : </span><%= link_to file.filename, rails_blob_path(file, disposition: "attachement") %></p>

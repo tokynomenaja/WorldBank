@@ -29,6 +29,62 @@ Secteur.destroy_all
 
 puts "Filiere crée"
 
+Engagement.destroy_all
+
+      c1  = Engagement.create!(title: "Engagement 1 : La paix et la sécurité")
+      c2  = Engagement.create!(title: "Engagement 2 : Lutte contre la corruption avec tolérance zéro")
+      c3  = Engagement.create!(title: "Engagement 3 : Autonomie et responsabilisation des collectivités territoriales décentralisées")
+      c4  = Engagement.create!(title: "Engagement 4 : L'éducation pour tous")
+      c5  = Engagement.create!(title: "Engagement 5 : la santé est un droit inaliénable pour chaque citoyen")
+      c6  = Engagement.create!(title: "Engagement 6 : l'emploi décent pour tous")
+      c7  = Engagement.create!(title: "Engagement 7 : Promotion de l'habitat et la modernisation de Madagascar (ODD 11,9)")
+      c8  = Engagement.create!(title: "Engagement 8 : Le sport et la culture doivent être un tremplin pour porter haut la fierté nationale")
+      c9  = Engagement.create!(title: "Engagement 10 : l'industrialisation de Madagascar ")
+      c10 = Engagement.create!(title: "Engagement 11 : L'industrie touristique")
+      c11 = Engagement.create!(title: "Engagement 12 : L'autosuffisance alimentaire")
+      c12 = Engagement.create!(title: "Engagement n 9 : L'énergie et l'eau pour tous")
+      c13 = Engagement.create!(title: "Engagement 13 : 1a gestion durable et la conservation de nos ressources naturelles")
+     
+    
+puts "Engagement"
+Pem.destroy_all
+
+      z1 = Pem.create!(title:"PRIORITÉ 1 : Assurer la défense et la sécurité sur l'ensemble du territoire national",engagement_id: 1) 
+      z2 = Pem.create!(title:"PRIORITÉ 2 : Garantir une justice équitable, plus accessible et renforcer l'État de droit",engagement_id: 1)
+      z3 = Pem.create!(title:"PRIORITÉ 3 : Réconcilier les Malagasy et renforcer la participation citoyenne",engagement_id: 2)
+      z4 = Pem.create!(title:"PRI0RITÉ 4 : Améliorer la gouvernance responsable, rationnelle et performante des finances publiques",engagement_id: 2)
+      z5 = Pem.create!(title:"PRIORITÉ 5 : Développer l'espace budgétaire et améliorer la qualité des dépenses publiques",engagement_id: 2)
+      z6 = Pem.create!(title:"PRIORITÉ 6 : Rationaliser l'administration pour une bonne gouvernance institutionnelle",engagement_id: 3)                   
+      z7 = Pem.create!(title:"PRIORITÉ 7 : Instaurer une politique de décentralisation émergente",engagement_id: 3)
+      z8 = Pem.create!(title:"PRIORITÉ 8 : En matière de gouvernance foncière et territoriale : structurer Madagascar et faciliter le développement rural",engagement_id: 3)
+      z9 = Pem.create!(title:"PRIORITÉ 9 : Offrir une éducation de qualité pour tous",engagement_id: 4)                        
+      z10 = Pem.create!(title:"PRIORITÉ 10 : L'Accès aux soins et bien-être social pour tous",engagement_id: 5)
+      z11 = Pem.create!(title:"PRIORITÉ 11 : Assurer un service de santé de qualité pour tous et renforcer la planification familiale",engagement_id: 5)
+      z12 = Pem.create!(title:"PRIORITÉ 12 : Favoriser la création d'emplois et promouvoir le travail décent",engagement_id: 6)
+      z13 = Pem.create!(title:"PRIORITÉ 13 : Promouvoir l'autonomisation des femmes et la protection des droits de l'enfant",engagement_id: 6)
+      z14 = Pem.create!(title:"PRIORITÉ 14 : Garantir l'accès à un logement décent pour chaque ménage",engagement_id: 7)
+      z15 = Pem.create!(title:"PRIORITÉ 15 : Doter le pays des infrastructures de standing international",engagement_id: 7)
+      z16 = Pem.create!(title:"PRIORITÉ 16 : Doter le pays d'infrastructures de transports cohérents à l'émergence",engagement_id: 7)
+      z17 = Pem.create!(title:"PRIORITÉ 17 : Promouvoir l'accès au sport et l'épanouissement de la jeunesse",engagement_id: 8)
+      z18 = Pem.create!(title:"PRIORITÉ 18 : Promouvoir la culture pour asseoir l'identité culturelle Malagasyengagement_id:",engagement_id: 8)
+      z19 = Pem.create!(title:"PRIORITÉ 19 : Renforcer l'Identité Nationale",engagement_id: 8)
+      z20 = Pem.create!(title:"PRIORITÉ 20 : Densifier le tissu industriel par l'industrialisation régionale par la mise en place de Zones d'Émergence Industrielles",engagement_id: 10)
+      z21 = Pem.create!(title:"PRIORITÉ 21 : Développer l'esprit entrepreneurial et d'innovation",engagement_id: 10)
+      z22 = Pem.create!(title:"PRIORITÉ 22 : Rendre Madagascar un acteur de la révolution numérique",engagement_id: 10)
+      z23 = Pem.create!(title:"PRIORITÉ 23 : Faire émerger le potentiel minierengagement_id:",engagement_id: 10)
+      z24 = Pem.create(title:"PRIORITÉ 24 : Faire émerger le potentiel pétrolier",engagement_id: 10)
+      z25 = Pem.create!(title:"PRIORITÉ 25 : Promouvoir l'exploitation et la valorisation durable des espaces touristiques",engagement_id: 11)
+      z26 = Pem.create!(title:"PRIORITÉ 26 : Disposer des infrastructures médiatiques et de télécommunication moderne",engagement_id: 11)
+      z27 = Pem.create(title:"PRIORITÉ 27 : Faire de Madagascar un grenier de l'Océan Indien avec une agriculture modernisée",engagement_id: 12)
+      z28 = Pem.create(title:"PRIORITÉ 28 : Renforcer la production énergétique et l'accès à l'énergie",engagement_id: 9)
+      z29 = Pem.create(title:"PRIORITÉ 29 : Garantir l'accès universel à l'eau potable",engagement_id: 9)
+      z30 = Pem.create(title:"PRIORITÉ 30 : Préserver les ressources naturelles et l'environnement",engagement_id: 13)
+      z31 = Pem.create(title:"PRIORITÉ 31 : Renforcer les résiliences communautaires par l'accès à des informations scientifiques pertinentes sur les risques et catastrophes",engagement_id: 13)
+      z32 = Pem.create(title:"PRIORITÉ 32 : S'adapter et atténuer les effets du changement climatique",engagement_id: 13)
+      z33 = Pem.create(title:"PRIORITÉ 33 : Valoriser l'économie bleue à Madagascar",engagement_id: 13)
+
+
+puts "Pem create"
 
 Ptf.destroy_all
       c1  = Ptf.create!(title: "Helvetas", lien: 'https://www.Helvetas.com')
@@ -53,6 +109,10 @@ Ptf.destroy_all
 
 
 puts "Ptf"
+
+
+
+
 
 Filiere.destroy_all
       c1 = Filiere.create!(title: "Apiculture")
@@ -127,10 +187,14 @@ Zone.destroy_all
       z24 = Zone.create(title:"National")
 puts "zone create"
 
+
+
 Appui.destroy_all
       a1 = Appui.create!(title:"Prêt")
       a2 = Appui.create!(title:"Don")
-
+      a3 = Appui.create!(title:"Co-financement") 
+      a4 = Appui.create!(title:"Assistance Technique") 
+      a5 = Appui.create!(title:"Participation aux risques") 
 puts "Appui create"
 
 
@@ -193,7 +257,7 @@ puts "Beneficiaire"
               de renforcer l’attrait des investissements dans le secteur de l’hôtellerie, par :
               - Routes urbaines à Nosy-Be
               - L'eau à Tuléar" , partenaire_d_implementaton: "" ,
-              debut_du_projet: "01/01/2019" , fin: "01/01/2024" , apdem: "Priorité 21, 25, 27",montant: "55")
+              debut_du_projet: "01/01/2019" , fin: "01/01/2024" ,montant: "55")
 
               @pro.ptf = Ptf.find(10)
               @pro.appui = Appui.find(1)
@@ -232,10 +296,9 @@ puts "projet create1"
                 Renforcer les capacités de l’EDBM et 
                   des structures intervenant dans la promotion des investissements : Formation; mise à  disposition d’un Expert Résident pour un transfert de connaissance,
                  missions internationales d’échange d’expérience sur la promotion.", 
-              forme_d_appui: "SOUTIEN A LA PROMOTION DES INVESTISSEMENTS PRIVES",
               partenaire_d_implementaton: "EDBM",
               debut_du_projet: "01/01/2019", 
-              fin: "02/03/2020", apdem:"Priorité 27,26", montant: "45")
+              fin: "02/03/2020", montant: "45")
 
                 @pro2.ptf = Ptf.find(11)
                 
@@ -287,17 +350,14 @@ puts "projet create1"
                  .Composante 4 - 
                  Coordination de projet, guidage des investissements agricoles et appui aux politiques publiques
                   ",
-                forme_d_appui: "
-                - Appui au développement des chaines de valeur
-                - Facilitation et mise en place de politiques publiques promouvant l'agribusiness
-                - Infrastructures Routières",
+               
                partenaire_d_implementaton: "
               - Projet PIC
               - Ministère de l’Agriculture,de l’Elevage et de la Pêche
                   " ,
                debut_du_projet: " 2015",
                 fin: "2021", 
-                apdem: "Priorité 8, 27", montant: "50")
+               montant: "50")
 
                 @pro3.ptf = Ptf.find(13)
                 @pro3.appui = Appui.find(2)
@@ -337,10 +397,10 @@ puts "projet create3"
                           infrastructures de soutien à la commercialisation et 
                           à la transformation (marché communal, magasins de groupage, etc.),
                           désenclavements des pôles agricoles.",
-                   forme_d_appui: "",montant: "20",
+                   montant: "20",
                    partenaire_d_implementaton: "Administration",
                    debut_du_projet: "01/01/2012", 
-                   fin: "01/01/2022" , apdem: "Proprieté 27")
+                   fin: "01/01/2022")
                    @pro4.ptf = Ptf.find(13)
                    @pro4.appui = Appui.find(2)                 
                    @pro4.save
