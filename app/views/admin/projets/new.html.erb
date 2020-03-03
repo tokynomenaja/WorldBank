@@ -117,13 +117,35 @@
 				<div class="collapse" id="engagement">
 				<div class="card card-body">
 					<div class="row">
+						<%id = 0 %>
 						<%Engagement.all.order(:title).each do |c| %>
 							<div class="col-md-12">
-								<%= c.title%>
-								<%c.pems.each do |p|%>
-								<%=check_box_tag("pem_ids[]",p.id) %> 
-								<%= p.title %><br>
-								<%end%>
+								<div data-toggle="modal" data-target="#eng<%= id %>">
+									<%= c.title%> 
+								</div>
+								<div  id="eng<%= id %>"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+										  <div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLabel"><%= c.title%> </h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											  <span aria-hidden="true">&times;</span>
+											</button>
+										  </div>
+										  <div class="modal-body">
+											<%c.pems.each do |p|%>
+											<p>
+												<%=check_box_tag("pem_ids[]",p.id) %> 
+												<%= p.title %>
+											</p>
+											<%end%>
+										  </div>
+										  <div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+										  </div>
+										</div>
+									  </div>
+								</div>
 							</div>
 						<% end %>
 					</div>
@@ -148,10 +170,10 @@
 			</div>
 		</div>
 		<div class="container mb-2">
-			<a class="btn-col" data-toggle="collapse" href="#objectif" role="button" aria-expanded="false" aria-controls="collapseExample">
+			<a class="btn-col">
 				Objectif général du projet
 			</a>
-			<div class="collapse" id="objectif">
+			<div class="collapse">
 				<div class="card card-body">
 					<%=cktext_area_tag :objectif_generale_du_projet%>
 				</div>
