@@ -11,7 +11,7 @@
 					<div>
 						<label for="nom" class="mr-2 table">Nom du projet </label>
 					</div>
-					<input type="text" name="nom_du_projet" id="nom" placeholder="Nom du projet" class="form-control">
+					<input type="text" name="nom_du_projet" id="nom" placeholder="Nom du projet" class="form-control" required="true">
 				</div>
 			</div>
 			<div class="d-flex justify-content-between mb-3">
@@ -21,16 +21,17 @@
 				</div>
 				<div>
 					<h6 class="table">Début</h6>
-					<input type="date" name="debut_du_projet" class="form-control">
+					<input type="date" name="debut_du_projet" class="form-control" required="true">
 				</div>
 				<div>
 					<h6 class="table">Fin</h6>
-					<input type="date" name="fin" class="form-control">
+					<input type="date" name="fin" class="form-control" required="true">
 				</div>
 				<div>
 					<h6 class="table">Montant</h6>
 					<input name="montant" type = "range" min="0" max="100" onchange="rangevalue.value=value"/>
                   	<div><output id="rangevalue">50</output><span> Millions USD</span></div>
+
 				</div>
 				<div>
 					<h6 class="table">Appui</h6>
@@ -66,7 +67,7 @@
 					<div class="row">
 						<% Filiere.all.order(:title).each do |c| %>
 							<div class="col-md-3">
-								<%= check_box_tag("filiere_ids[]",c.id) %>
+								<%= check_box_tag("filiere_ids[]",c.id)%>
 								<%= c.title%>
 							</div>
 						<% end %>
@@ -174,7 +175,7 @@
 			</a>
 			<div class="collapse">
 				<div class="card card-body">
-					<%=cktext_area_tag :objectif_generale_du_projet, as: :ckeditor, :input_html => {:toolbar => 'Full'}%>
+					<%=cktext_area_tag :objectif_generale_du_projet%>
 				</div>
 			</div>
 		</div>
@@ -184,7 +185,7 @@
 			</a>
 			<div class="collapse" id="appui-specifique">
 				<div class="card card-body">
-				<%=cktext_area_tag :aspsp, as: :ckeditor, :input_html => {:toolbar => 'Full'}%>
+				<%=cktext_area_tag :aspsp%>
 				</div>
 			</div>
 		</div>
@@ -197,6 +198,16 @@
 		</div>
 		<div class="container mt-4">
 			<input type="submit" value="Créer" class="sc-eerKOB cfnPHQ">
+			<a href="#" onclick="nbr()">Limiter</a>
 		</div>
 	<% end %>
 </div>
+
+<script type="text/javascript">
+	
+	var element
+    element = CKEDITOR.document.find('.obj');
+    console.log('test');
+    var xxx = document.getElementById("cke_1_contents");
+    console.log(xxx);
+</script>

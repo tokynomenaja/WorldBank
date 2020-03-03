@@ -1,134 +1,213 @@
 <header class="aci59a-0 eyAIuG sticky-limit">
-    <div class="sc-1gnwgfb-2 hVIPFV pict">
-    
+    <div class="sc-1gnwgfb-2 hVIPFV">
+      
     </div>
 </header>
 <div class="mt-4 mb-4">
-<%= form_tag url_for(action: 'update'), method:'put' do%>
-		<label>Nom du projet :</label>
-		<input type="text" name="nom_du_projet" placeholder="Nom du projet" value="<%= @projet.nom_du_projet%>"><br>
-        <h6>PTF : <span><%= @projet.ptf.title%></span></h6>
-             <%= select_tag 'ptf_id', options_for_select(Ptf.all.collect{ |c| [c.title, c.id]}), class: "form-input"%><br>
+	<%= form_tag url_for(action: 'update'),method:'put', class:'form', multipart: true do%>
+		<div class="container">
+			<div class="row mb-2">
+				<div class="col-6">
+					<div>
+						<label for="nom" class="mr-2 table">Nom du projet </label>
+					</div>
+					<input type="text" name="nom_du_projet" id="nom"  value="<%= @projet.nom_du_projet%>" class="form-control">
+				</div>
+			</div>
+			<div class="d-flex justify-content-between mb-3">
+				<div>
+					<h6 class="table">PTF : <span> <%= @projet.ptf.title%></span> </h6>
+					<%= select_tag 'ptf_id', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
+				</div>
+				<div>
+					<h6 class="table">Début</h6>
+					<input type="date" name="debut_du_projet" value="<%= @projet.debut_du_projet%>" class="form-control">
+				</div>
+				<div>
+					<h6 class="table">Fin</h6>
+					<input type="date" name="fin" value="<%= @projet.fin%>" class="form-control">
+				</div>
+				<div>
+					<h6 class="table">Montant</h6>
+					<input name="montant" type = "range" min="0" max="100" onchange="rangevalue.value=value" value="<%=@projet.montant%>"/>
+                  	<output id="rangevalue">50 Millions USD</output> 
+				</div>
+				<div>
+					<h6 class="table">Appui<span> <%= @projet.appui.title%></span></h6>
+					<%= select_tag 'appui_id', options_for_select(Appui.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
+				</div>
+			</div>
+		</div>
 
-            <h6>DEBUT DU PROJET</h6>
-            <input type="date" name="debut_du_projet" placeholder="" value="<%= @projet.debut_du_projet%>"><br>
-            <h6>FIN DU PROJET</h6>
-
-
-            <input type="date" name="fin" placeholder="" value="<%= @projet.fin%>"><br>
-
-			    <h6>MONTANT DU PROJET : <span><%=@projet.montant%></span>
-					<h6>Appui : <span><%= @projet.appui.title%></span></h6>
-					<%= select_tag 'appui_id', options_for_select(Appui.all.collect{ |c| [c.title, c.id]}), class: "form-input"%><br>
-			      <h6>SECTEURS</h6>
-			       <% @projet.secteurprojets.each do |s|%>
-		        	<p><%= s.secteur.title%></p>
-		        	<%end%>
-					<ul>
-						<input type="hidden" name="sects" value="<%= @sects%>">
-
-						 <% Secteur.all.each_with_index do |c,x| %><br> 
-						 <% if @sects %> 
-						 <% if @sects.include? c %>
-
-						   <%= check_box_tag("secteur_#{x}",c.id, checked: true) %>
-
-						 <%else%>
-						 	<%= check_box_tag("secteur_#{x}",c.id) %>
-						 <%end%>
-						 <%end%>
-						   <%= c.title%> 
-
+		<div class="container mb-2">
+			<a class="btn-col" data-toggle="collapse" href="#secteur" role="button" aria-expanded="false" aria-controls="collapseExample">
+				Secteurs
+			</a>
+			<% @projet.secteurprojets.each do |s|%>
+		        <p><%= s.secteur.title%></p>
+		    <%end%>
+				<div class="collapse" id="secteur">
+				<div class="card card-body">
+					<div class="row">
+						<% Secteur.all.order(:title).each_with_index do |c,x| %>
+							<div class="col-md-4">
+								<% if @sects %> 
+						 			<% if @sects.include? c %>
+										<%= check_box_tag("secteur_#{x}",c.id) %>
+									<%else%>
+										<%= check_box_tag("secteur_#{x}",c.id) %>
+									<%end%>
+								<%end%>
+								<%= c.title%>
+							</div> 
 						<% end %>
-					</ul>
-					<h6>FILIERE</h6>
-						<% @projet.filiereprojets.each do |f|%>
-			        	<p><%= f.filiere.title%></p>
-			        	<%end%>
-						<ul>
-							<input type="hidden" name="fils" value="<%= @fils%>">
+					</div>
+				</div>
+				</div>
+			</div>
 
-							 <% Filiere.all.each_with_index do |c,x| %><br> 
-							 <% if @fils%>
-							 <% if @fils.include? c %>
+			<div class="container mb-2">
+			<a class="btn-col" data-toggle="collapse" href="#filiere" role="button" aria-expanded="false" aria-controls="collapseExample">
+				Filières
+			</a>
+			<% @projet.filiereprojets.each do |f|%>
+			    <p><%= f.filiere.title%></p>
+			<%end%>
+				<div class="collapse" id="filiere">
+				<div class="card card-body">
+					<div class="row">
+						<% Filiere.all.order(:title).each_with_index do |c,x| %>
+							<div class="col-md-3">
+								<% if @fils%>
+							 		<% if @fils.include? c %>
+										<%= check_box_tag("filiere_#{x}",c.id, checked: true) %>
+									<%else%>
+										<%= check_box_tag("filiere_#{x}",c.id) %>
+									<%end%>
+								<%end%>
+								<%= c.title%>
+							</div>
+						<% end %>
+					</div>
+				</div>
+				</div>
+			</div>
 
-							   <%= check_box_tag("filiere_#{x}",c.id, checked: true) %>
+			<div class="container mb-2">
+				<a class="btn-col" data-toggle="collapse" href="#Beneficiaire" role="button" aria-expanded="false" aria-controls="collapseExample">
+					Bénéficiaires
+				</a>
+				<% @projet.benefprojets.each do |b|%>
+			        <p><%= b.beneficiaire.title%></p>
+			    <%end%>
+				<div class="collapse" id="Beneficiaire">
+					<div class="card card-body">
+						<div class="row">
+							<% Beneficiaire.all.order(:title).each_with_index do |c,x| %>
+								<div class="col-md-4">
+									<% if @bens%>
+							 			<% if @bens.include? c %>
 
-							 <%else%>
-							 	<%= check_box_tag("filiere_#{x}",c.id) %>
-							 <%end%>
-							 <%end%>
-							   <%= c.title%> 
-
+							   			<%= check_box_tag("beneficiaire_#{x}",c.id, checked: true) %>
+							   			<%else%>
+							 				<%= check_box_tag("beneficiaire_#{x}",c.id) %>
+							 			<%end%>
+							 		<%end%>
+							   		<%= c.title%> 
+								</div>
 							<% end %>
-						</ul>
-					
-					<h6>BENEFICIAIRE</h6>
-						<% @projet.benefprojets.each do |b|%>
-			        	<p><%= b.beneficiaire.title%></p>
-			        	<%end%>
-						<ul>
-							<input type="hidden" name="bens" value="<%= @bens%>">
+						</div>
+					</div>
+				</div>
+			</div>
 
-							 <% Beneficiaire.all.each_with_index do |c,x| %><br> 
-							 <% if @bens%>
-							 <% if @bens.include? c %>
+		<div class="container mb-2">
+			<a class="btn-col" data-toggle="collapse" href="#iga" role="button" aria-expanded="false" aria-controls="collapseExample">
+				IGA (Institution Gouvernementale Associée)
+			</a>
+				<% @projet.igaprojets.each do |i|%>
+			    	<p><%= i.iga.title%></p>
+			    <%end%>
+			<div class="collapse" id="iga">
+				<div class="card card-body">
+					<div class="row">
+						<% Iga.all.order(:title).each_with_index do |c,x| %>
+							<div class="col-md-12">
+								<% if @igas%>
+							 		<% if @igas.include? c %>
+										<%= check_box_tag("iga_#{x}",c.id, checked: true) %>
 
-							   <%= check_box_tag("beneficiaire_#{x}",c.id, checked: true) %>
+							 		<%else%>
+							 			<%= check_box_tag("iga_#{x}",c.id) %>
+							 		<%end%>
+							 	<%end%>
+							 	<%= c.title%>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container mb-2">
+			<a class="btn-col" data-toggle="collapse" href="#zi" role="button" aria-expanded="false" aria-controls="collapseExample">
+				Régions
+			</a>
 
-							 <%else%>
-							 	<%= check_box_tag("beneficiaire_#{x}",c.id) %>
-							 <%end%>
-							 <%end%>
-							   <%= c.title%> 
-
-							<% end %>
-						</ul>			        
-        
-					<h6>IGA(institution gouvernemental associé)</h6>
-			  			<% @projet.igaprojets.each do |i|%>
-			        	<p><%= i.iga.title%></p>
-			        	<%end%>
-						<ul>
-							<input type="hidden" name="igas" value="<%= @igas%>">
-
-							 <% Iga.all.each_with_index do |c,x| %><br> 
-							 <% if @igas%>
-							 <% if @igas.include? c %>
-
-							   <%= check_box_tag("iga_#{x}",c.id, checked: true) %>
-
-							 <%else%>
-							 	<%= check_box_tag("iga_#{x}",c.id) %>
-							 <%end%>
-							 <%end%>
-							   <%= c.title%> 
-
-							<% end %>
-						</ul>			
-
-
-					<h6>ZONE D'INTERVENTION</h6>
-						<% @projet.zoneprojets.each do |z|%>
-			        	<p><%= z.zone.title%></p>
-			        	<%end%>
-						<ul>
-							<input type="hidden" name="zones" value="<%= @zones%>">
-
-							 <% Zone.all.each_with_index do |c,x| %><br> 
-							 <% if @zones%>
-							 <% if @zones.include? c %>
-
-							   <%= check_box_tag("zone_#{x}",c.id, checked: true) %>
-
-							 <%else%>
-							 	<%= check_box_tag("zone_#{x}",c.id) %>
-							 <%end%>
-							 <%end%>
-							   <%= c.title%> 
-
-							<% end %>
-						</ul>					
-			<input type="submit" value="Modifier">
-<%end%>
+			<% @projet.zoneprojets.each do |z|%>
+			    <p><%= z.zone.title%></p>
+			<%end%>
+			<div class="collapse" id="zi">
+				<div class="card card-body">
+					<div class="row">
+						<% Zone.all.order(:title).each_with_index do |c,x| %>
+							<div class="col-md-4">
+								<% if @zones%>
+							 		<% if @zones.include? c %>
+										<%= check_box_tag("zone_#{x}",c.id, checked: true) %>
+									<%else%>
+							 			<%= check_box_tag("zone_#{x}",c.id) %>
+							 		<%end%>
+							 	<%end%>
+							 	<%= c.title%>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container mb-2">
+			<a class="btn-col" data-toggle="collapse" href="#objectif" role="button" aria-expanded="false" aria-controls="collapseExample">
+				Objectif général du projet
+			</a>
+			 <%= raw @projet.objectif_generale_du_projet%>
+			<div class="collapse" id="objectif">
+				<div class="card card-body">
+					<%=cktext_area_tag :objectif_generale_du_projet , "#{@projet.objectif_generale_du_projet}"%>
+				</div>
+			</div>
+		</div>
+		<div class="container mb-2">
+			<a class="btn-col" data-toggle="collapse" href="#appui-specifique" role="button" aria-expanded="false" aria-controls="collapseExample">
+				Appui spécifique au secteur privé
+			</a>
+			<p><%= raw @projet.aspsp%></p>
+			<div class="collapse" id="appui-specifique">
+				<div class="card card-body">
+				<%=cktext_area_tag :aspsp, "#{@projet.aspsp}"%>
+				</div>
+			</div>
+		</div>
+		<div class="container mt-4">
+			<input type="submit" value="Modifier" class="sc-eerKOB cfnPHQ">
+		</div>
+	<% end %>
 </div>
+
+<script type="text/javascript">
+	
+	var element
+    element = CKEDITOR.document.find('.obj');
+    console.log('test');
+    var xxx = document.getElementById("cke_1_contents");
+    console.log(xxx);
+</script>
