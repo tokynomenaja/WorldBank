@@ -138,12 +138,12 @@ ActiveRecord::Schema.define(version: 2020_02_28_132518) do
     t.bigint "appui_id"
     t.bigint "ptf_id"
     t.bigint "bailleur_id"
-    t.bigint "pem_id"
+    t.bigint "pems_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["appui_id"], name: "index_projets_on_appui_id"
     t.index ["bailleur_id"], name: "index_projets_on_bailleur_id"
-    t.index ["pem_id"], name: "index_projets_on_pem_id"
+    t.index ["pems_id"], name: "index_projets_on_pems_id"
     t.index ["ptf_id"], name: "index_projets_on_ptf_id"
   end
 
