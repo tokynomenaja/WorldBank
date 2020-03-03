@@ -5,48 +5,37 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-
-Organisme.destroy_all
-      c1 = Organisme.create!(nom:"Ministère de l'économie Msy")
-      c2 = Organisme.create!(nom:"Ministère de Finances")
-      c3 = Organisme.create!(nom:"FMI")
-      c4 = Organisme.create!(nom:"USAID")
-
-puts  "Organismes créés"   
-  
+   
 Secteur.destroy_all
-      c1 = Secteur.create!(title: "MICROFINANCE")
-      c2 = Secteur.create!(title: "INDUSTRIE EXTRACTIVE")
-      c3 = Secteur.create!(title: "COMMERCE")   
-      c4 = Secteur.create!(title: "INFRASTRUCTURE")
-      c5 = Secteur.create!(title: "TOURISME")
-      c6 = Secteur.create!(title: "TOURISME AGRIBUSINESS")     
-      c7 = Secteur.create!(title: "ENTREPRENARIAT")
-      c8 = Secteur.create!(title: "INDUSTRIE TEXTILE")
-      c9 = Secteur.create!(title: "AGROBUSINESS")
-      c10 = Secteur.create!(title: "TOURISME")
+      c1 = Secteur.create!(title: "INDUSTRIE EXTRACTIVE")
+      c2 = Secteur.create!(title: "COMMERCE")   
+      c3 = Secteur.create!(title: "INFRASTRUCTURES")
+      c4 = Secteur.create!(title: "TOURISME")   
+      c5 = Secteur.create!(title: "ENTREPREUNARIAT")
+      c6 = Secteur.create!(title: "INDUSTRIE TEXTILE")
+      c7 = Secteur.create!(title: "AGROBUSINESS")
+      c8 = Secteur.create!(title: "PROMOTION DES INVESTISSEMENTS")
+      c9 = Secteur.create!(title: "FINANCES")
+      c10 = Secteur.create!(title: "ENERGIE")
 
-puts "Filiere crée"
+puts "Filière créée"
 
 
 Ptf.destroy_all
-      c1  = Ptf.create!(title: "Helvetas", lien: 'https://www.Helvetas.com')
-      c2  = Ptf.create!(title: "FMI", lien: 'https://www.fmi.com')
-      c3  = Ptf.create!(title: "IFC", lien: 'https://www.ifc.com')
-      c4  = Ptf.create!(title: "UE")
-      c5  = Ptf.create!(title: "UNICEF")
-      c6  = Ptf.create!(title: "GIZ")
-      c7  = Ptf.create!(title: "Agence Française de Développement")
-      c8  = Ptf.create!(title: "ONUDI")
-      c9  = Ptf.create!(title: "JICA")
-      c10 = Ptf.create!(title: "USAID")
-      c11 = Ptf.create!(title: "BAD")
-      c12 = Ptf.create!(title: "PNUD")
-      c13 = Ptf.create!(title: "FIDA")
-      c14 =  Ptf.create!(title: "CNUCED")
-      c12 = Ptf.create!(title: "Fond Européen Développement")
-      c13 = Ptf.create!(title: "BANQUE MONDIALE")
+      c1  = Ptf.create!(title: "Helvetas", lien: 'https://www.helvetas.com', image_url: "/helvetas1.jpg")
+      c2  = Ptf.create!(title: "FMI", lien: 'https://www.fmi.com', image_url: "/logoptf/imf.jpeg")
+      c3  = Ptf.create!(title: "IFC", lien: 'https://www.ifc.com', image_url: "/ifc1.jpg")
+      c4  = Ptf.create!(title: "UE", image_url: "/logoptf/ue.jpeg")
+      c5  = Ptf.create!(title: "UNICEF", image_url: "/logoptf/unicef.jpeg")
+      c6  = Ptf.create!(title: "GIZ", image_url: "/giz.jpg")
+      c7  = Ptf.create!(title: "AFD")
+      c8  = Ptf.create!(title: "ONUDI", image_url: "/logoptf/onudi.jpeg")
+      c9  = Ptf.create!(title: "JICA", image_url: "/logoptf/jica.jpeg")
+      c10 = Ptf.create!(title: "USAID", image_url: "/logoptf/usaid.jpeg")
+      c11 = Ptf.create!(title: "BAD", image_url: "/logoptf/bad.jpeg")
+      c12 = Ptf.create!(title: "PNUD", image_url: "/logoptf/pnud.jpeg")
+      c13 = Ptf.create!(title: "FIDA", image_url: "/logoptf/fida.jpeg")
+      c14 =  Ptf.create!(title: "CNUCED", image_url: "/cnuced11.jpg")
     
       
 
@@ -59,7 +48,7 @@ Filiere.destroy_all
       c2 = Filiere.create!(title: "Artisanat")
       c3 = Filiere.create!(title: "Aviculture")
       c4 = Filiere.create!(title: "Boviculture")
-      c5 = Filiere.create!(title: "Culture maraîchère")
+      c5 =   Filiere.create!(title: "Culture maraîchère")
       c6 = Filiere.create!(title: "Epices")
       c7 = Filiere.create!(title: "Fruits")
       c8 = Filiere.create!(title: "Grains secs")

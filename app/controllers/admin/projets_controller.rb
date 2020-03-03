@@ -94,55 +94,37 @@ class Admin::ProjetsController < ApplicationController
   end
 
   def update
-         puts "*"*100
   	     @projet = Projet.find(params[:id],)
-         if @projet.update(nom_du_projet: params[:nom_du_projet],
-              ptf_id: params[:ptf_id],
-              forme_d_appui: params[:forme_d_appui],
-              objectif_generale_du_projet: params[:objectif_generale_du_projet],
-              aspsp: params[:aspsp],
-              partenaire_d_implementaton: params[:partenaire_d_implementaton],montant: params[:montant],
-              debut_du_projet: params[:debut_du_projet],
-              fin: params[:fin],
-              apdem: params[:apdem], bailleur_id: current_user.id)
-              
+         if @projet.update(nom_du_projet: params[:nom_du_projet], 
+           debut_du_projet: params[:debut_du_projet], objectif_generale_du_projet: params[:objectif_generale_du_projet],aspsp: params[:aspsp],partenaire_d_implementaton: params[:partenaire_d_implementaton],montant: params[:montant],fin: params[:fin], appui_id: params[:appui_id], ptf_id: params[:ptf_id], 
+           bailleur_id: current_user.id)
+        
+         puts "*"*100
           
-           puts params[:sects]
-            puts "*"*100
-              params[:sects].each do |s|
+              @projet.secteurprojets.destroy_all
 
-                Secteurprojet.where(secteur_id: s.id, projet_id: @projet.id).destroy_all
-              end
               for x in 0..Secteur.all.count-1
                 if params[:"secteur_#{x}"]
                     Secteurprojet.create(projet_id: @projet.id, secteur_id: params[:"secteur_#{x}"])
                 end
               end
 
-              params[:fils].each do |f|
-
-                Filiereprojet.where(filiere_id: f.id, projet_id: @projet.id).destroy_all
-              end
+              @projet.filiereprojets.destroy_all
               for x in 0..Filiere.all.count-1
                 if params[:"filiere_#{x}"]
                     Filiereprojet.create(projet_id: @projet.id, filiere_id: params[:"filiere_#{x}"])
                 end
               end
 
-              params[:bens].each do |b|
-
-                Benefprojet.where(beneficiaire_id: b.id, projet_id: @projet.id).destroy_all
-              end
+            
+              @projet.benefprojets.destroy_all
               for x in 0..Beneficiaire.all.count-1
                 if params[:"beneficiaire_#{x}"]
                     Benefprojet.create(projet_id: @projet.id, beneficiaire_id: params[:"beneficiaire_#{x}"])
                 end
               end
 
-              params[:igas].each do |i|
-
-                Igaprojet.where(iga_id: i.id, projet_id: @projet.id).destroy_all
-              end
+              @projet.igaprojets.destroy_all
               for x in 0..Iga.all.count-1
                 if params[:"iga_#{x}"]
                     Igaprojet.create(projet_id: @projet.id, iga_id: params[:"iga_#{x}"])
@@ -150,10 +132,7 @@ class Admin::ProjetsController < ApplicationController
               end
 
 
-              params[:zones].each do |z|
-
-                Zoneprojet.where(zone_id: z.id, projet_id: @projet.id).destroy_all
-              end
+              @projet.zoneprojets.destroy_all
               for x in 0..Zone.all.count-1
                 if params[:"zone_#{x}"]
                     Zoneprojet.create(projet_id: @projet.id, zone_id: params[:"zone_#{x}"])
@@ -161,6 +140,7 @@ class Admin::ProjetsController < ApplicationController
               end
                 redirect_to  admin_projet_path
              else
+                puts 'Tsy mety'*10
                 render :edit     
             end
   end
