@@ -16,14 +16,14 @@ Organisme.destroy_all
 puts  "Organismes créés"   
   
 Secteur.destroy_all
-      c1 = Secteur.create!(title: "MICROFINANCE")
+      c1 = Secteur.create!(title: "PROMOTION D'INVESTISSEMENT")
       c2 = Secteur.create!(title: "INDUSTRIE EXTRACTIVE")
       c3 = Secteur.create!(title: "COMMERCE")   
       c4 = Secteur.create!(title: "INFRASTRUCTURE")
       c5 = Secteur.create!(title: "TOURISME")
-      c6 = Secteur.create!(title: "TOURISME AGRIBUSINESS")     
-      c7 = Secteur.create!(title: "ENTREPRENARIAT")
-      c8 = Secteur.create!(title: "INDUSTRIE TEXTILE")
+      c6 = Secteur.create!(title: "FINANCE")     
+      c7 = Secteur.create!(title: "ENERGIE")
+      c8 = Secteur.create!(title: "ENTREPRENARIAT")
       c9 = Secteur.create!(title: "AGROBUSINESS")
       c10 = Secteur.create!(title: "TOURISME")
 
@@ -101,8 +101,7 @@ Ptf.destroy_all
       c12 = Ptf.create!(title: "PNUD")
       c13 = Ptf.create!(title: "FIDA")
       c14 =  Ptf.create!(title: "CNUCED")
-      c12 = Ptf.create!(title: "Fond Européen Développement")
-      c13 = Ptf.create!(title: "BANQUE MONDIALE")
+    
     
       
 
