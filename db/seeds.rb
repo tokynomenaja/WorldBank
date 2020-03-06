@@ -93,7 +93,7 @@ Ptf.destroy_all
       c10 = Ptf.create!(title: "USAID", image_url: "/logoptf/usaid.jpeg")
       c11 = Ptf.create!(title: "BAD", image_url: "/logoptf/bad.jpeg")
       c12 = Ptf.create!(title: "PNUD", image_url: "/logoptf/pnud.jpeg")
-      c13 = Ptf.create!(title: "FIDA", image_url: "/logoptf/fida.jpeg")
+      c13 = Ptf.create!(title: "FIDA", image_url: "/fida.jpeg")
       c14 =  Ptf.create!(title: "CNUCED", image_url: "/cnuced11.jpg")
 
 

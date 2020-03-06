@@ -29,9 +29,14 @@
 				</div>
 				<div>
 					<h6 class="table">Montant</h6>
-					<input name="montant" type = "range" min="0" max="100" onchange="rangevalue.value=value"/>
-                  	<div><output id="rangevalue">50</output><span> Millions USD</span></div>
-
+					<div class="form-control d-flex">
+						<input type="text" name="montant" placeholder="Montant" class="border-0" required="true">
+						<div class="border-left unit dropdown-toggle pl-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Unité</div>
+						<div class="dropdown-menu mt-cust">
+							<div class="dropdown-item">USD</div>
+							<div class="dropdown-item">Euro</div>
+						</div>
+					</div>
 				</div>
 				<div>
 					<h6 class="table">Appui</h6>
@@ -190,7 +195,7 @@
 			</div>
 		</div>
 		<div class="container mb-2 mt-4">
-			Fichier du projet : <%= file_field_tag :files, required: true, multiple: true%>
+			Fichier du projet : <%= file_field_tag :files, required: true,value: "dfsfdsfd" , multiple: true%>
 			
 		</div>
 		<div class=" container mb-2 mt-4 picture">
