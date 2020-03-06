@@ -20,3 +20,120 @@
 }
 .custom-range{width: 95% !important;}
 .puce{list-style-image: url(/li.png);}
+
+
+//DRopdown search
+
+.multiselect{
+	width: 200px;
+}
+.selectBox{
+	position: relative;
+}
+.selectBox select{
+	font-weight: bold;
+}
+.overSelect{
+	position: absolute;
+	left: 0; rigth: 0; top: 0; bottom: 0;
+}
+#checkboxes {
+	display: none;
+	border: 1px #dadada solid;
+}
+#checkboxes label:hover {
+	 display: block;
+}
+#checkboxes label:hover {
+	 background-color: #1e90ff;
+}
+
+
+
+
+///dropdowns2222
+
+
+
+
+.dropdown2 {
+  position: absolute;
+  top:50%;
+  transform: translateY(-50%);
+}
+
+a {
+  color: #fff;
+}
+
+.dropdown2 dd,
+.dropdown2 dt {
+  margin: 0px;
+  padding: 0px;
+}
+
+.dropdown2 ul {
+  margin: -1px 0 0 0;
+}
+
+.dropdown2 dd {
+  position: relative;
+}
+
+.dropdown2 a,
+.dropdown2 a:visited {
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+  font-size: 12px;
+}
+
+.dropdown2 dt a {
+  background-color: #4F6877;
+  display: block;
+  padding: 8px 20px 5px 10px;
+  min-height: 25px;
+  line-height: 24px;
+  overflow: hidden;
+  border: 0;
+  width: 272px;
+}
+
+.dropdown2 dt a span,
+.multiSel span {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 3px 2px 0;
+}
+
+.dropdown2 dd ul {
+  background-color: #4F6877;
+  border: 0;
+  color: #fff;
+  display: none;
+  left: 0px;
+  padding: 2px 15px 2px 5px;
+  position: absolute;
+  top: 2px;
+  width: 280px;
+  list-style: none;
+  height: 100px;
+  overflow: auto;
+}
+
+.dropdown2 span.value {
+  display: none;
+}
+
+.dropdown2 dd ul li a {
+  padding: 5px;
+  display: block;
+}
+
+.dropdown2 dd ul li a:hover {
+  background-color: #fff;
+}
+
+
+
+

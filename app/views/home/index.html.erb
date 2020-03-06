@@ -61,7 +61,7 @@
                <%= form_tag(root_path, :method => "get",   
                    class: 'navbar-form navbar-left') do %> 
               <h3  class= "fdk8rh-1 eouleG">
-                <%= select_tag 'ptf_id', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title,c.id]}), :include_blank => "ptf", class: "select fdk8rh-1 eouleG large"%>          
+                <%= select_tag 'ptf_id', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title,c.id]}), :include_blank => "ptf", class: "select fdk8rh-1 eouleG large"%> 
             </h3>
             </header>
           </div>
@@ -69,9 +69,37 @@
           <div class="fdk8rh-3 feYJJO">
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
-                 <%= select_tag 'search_secteur' , options_for_select(Secteur.all.order(:title).collect{ |c| [c.title,c.id]}),:include_blank => "Secteur",class: "select fdk8rh-1 eouleG large"%>
+                 <div class= "fdk8rh-1 eouleG large">
+                      <div class="selectBox" onclick="showCheckboxes()">
+                            <select>
+                              <option> Secteur</option>
+                            </select>
+                            <div class="overSelect"></div>
+                      </div>
+                       <div id="checkboxes">
+                      <%Secteur.all.each do |s|%>
+                          <label >
+                            <%= check_box_tag("search_secteur[]",s.id) %>
+                            <%= s.title%></label>
+                      <%end%>
+                      </div>
+                     
+                 </div>
               </h3>
             </header>
+             <script >
+                      var expanded = false;
+                      function showCheckboxes(){
+                        var checkboxes = document.getElementById("checkboxes");
+                        if (!expanded) {
+                          checkboxes.style.display = "block";
+                          expanded = true;
+                        } else {
+                          checkboxes.style.display = "none";
+                          expanded = false;
+                        }
+                      } 
+              </script>
           </div>
 
           <div class="fdk8rh-3 feYJJO">
@@ -79,7 +107,66 @@
               <h3 class="fdk8rh-1 eouleG">
                 <%= select_tag 'appui_id' , options_for_select(Appui.all.order(:title).collect{ |c| [c.title,c.id]}), :include_blank => "Appui", class: "select fdk8rh-1 eouleG large" %>
               </h3>
+
+                        <dl class="dropdown2"> 
+                              <dt>
+                              <a href="#">
+                                <span class="hida">Appui</span>    
+                                <p class="multiSel"></p>  
+                              </a>
+                              </dt>
+                              <dd>
+                                  <div class="mutliSelect">
+                                      
+                                      <ul>
+                                        <%= Appui.all.each do |a|%>
+                                          <li>
+                                              <input type="checkbox" name="appui_id"><%=a.title%></li>
+                                          <li>
+                                             <%end%>
+                                      </ul>
+                                     
+                                  </div>
+                              </dd>
+                          </dl>
             </header>
+            <script type="text/javascript">
+              
+                  $(".dropdown dt a").on('click', function() {
+                              $(".dropdown dd ul").slideToggle('fast');
+                            });
+
+                            $(".dropdown dd ul li a").on('click', function() {
+                              $(".dropdown dd ul").hide();
+                            });
+
+                            function getSelectedValue(id) {
+                              return $("#" + id).find("dt a span.value").html();
+                            }
+
+                            $(document).bind('click', function(e) {
+                              var $clicked = $(e.target);
+                              if (!$clicked.parents().hasClass("dropdown")) $(".dropdown dd ul").hide();
+                            });
+
+                            $('.mutliSelect input[type="checkbox"]').on('click', function() {
+
+                              var title = $(this).closest('.mutliSelect').find('input[type="checkbox"]').val(),
+                                title = $(this).val() + ",";
+
+                              if ($(this).is(':checked')) {
+                                var html = '<span title="' + title + '">' + title + '</span>';
+                                $('.multiSel').append(html);
+                                $(".hida").hide();
+                              } else {
+                                $('span[title="' + title + '"]').remove();
+                                var ret = $(".hida");
+                                $('.dropdown dt a').append(ret);
+
+                              }
+                            });
+
+            </script>
           </div>
 
           <div class="fdk8rh-3 feYJJO">
@@ -194,7 +281,13 @@
                   <p class="text-muted mb-1"><span>Montant &nbsp;:&nbsp; </span> <%= @montant_1 %></p>
                   <%end%>
                   <%if @secteur_1 != ""%>
-                  <p class="text-muted mb-1"><span>Secteur &nbsp;:&nbsp; </span> <%= @secteur_1 %></p>
+                  
+                  <%@parameter.each do |i|%>
+
+                    <%@secteur_1 = Secteur.all.find(i.to_i).title%>
+                    <p class="text-muted mb-1"><span>Secteur &nbsp;:&nbsp; </span> <%= @secteur_1 %></p>
+                  <%end%>
+                  
                   <% end %>
                   <% if @zone_1 != ""%>
                   <p class="text-muted mb-1"><span>Région &nbsp;:&nbsp; </span> <%= @zone_1 %></p>
@@ -250,15 +343,18 @@
                 <%end%>
               <%end%>
               
-              <%if @secteur%>
-                <% @secteur.each do |res| %>  
+
+              <%@parameter.each do |i|%>
+                  <%@secteur = Secteurprojet.all.where(secteur_id: i.to_i)%>
+                  <%@secteur.each do |res|%>              
                   <% if res.projet.validation == true%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                       <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                   <%end%>   
-                <%end%>
+                  <%end%>   
               <%end%>
+            
               <%if @montant%>
                 <% @montant.each do |res| %>  
                   <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
@@ -296,7 +392,8 @@
                   </div>  
                 <%end%>
               <%end%>
-
+                   Nombre des projets: <%= Projet.where(validation: true).count%>
+                   Montant des projets:
               </div>
               </div>
             </div>

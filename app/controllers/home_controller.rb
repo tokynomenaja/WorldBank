@@ -141,12 +141,14 @@ end
           if params[:search_secteur]== 1
               redirect_to(root_path)
           else
+          
               @parameter = params[:search_secteur]
-              @secteur = Secteurprojet.all.where(secteur_id: params[:search_secteur])
-              @secteur_1 = Secteur.find(params[:search_secteur]).title.to_s 
+              @parameter.each do |i|
+                  @secteur = Secteurprojet.all.where(secteur_id: i.to_i)
+                  @secteur_1 = Secteur.all.find(i.to_i).title
+              end
           end
       end
     end
   end
-  
 end

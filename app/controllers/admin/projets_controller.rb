@@ -16,7 +16,7 @@ class Admin::ProjetsController < ApplicationController
                 objectif_generale_du_projet: params[:objectif_generale_du_projet],
                 aspsp: params[:aspsp],
                 partenaire_d_implementaton: params[:partenaire_d_implementaton],
-                montant: params[:montant],
+                montant_id: params[:montant_id],
                 debut_du_projet: params[:debut_du_projet],
                 fin: params[:fin],
                 bailleur_id: current_user.id)
