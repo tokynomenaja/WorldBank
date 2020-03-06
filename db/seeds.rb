@@ -80,23 +80,8 @@ Pem.destroy_all
 puts "Pem créé"
 
 Ptf.destroy_all
-<<<<<<< HEAD
 
-      c1  = Ptf.create!(title: "Helvetas", lien: 'https://www.helvetas.com', image_url: "/helvetas1.jpg")
-      c2  = Ptf.create!(title: "FMI", lien: 'https://www.fmi.com', image_url: "/logoptf/imf.jpeg")
-      c3  = Ptf.create!(title: "IFC", lien: 'https://www.ifc.com', image_url: "/ifc1.jpg")
-      c4  = Ptf.create!(title: "UE", image_url: "/logoptf/ue.jpeg")
-      c5  = Ptf.create!(title: "UNICEF", image_url: "/logoptf/unicef.jpeg")
-      c6  = Ptf.create!(title: "GIZ", image_url: "/giz.jpg")
-      c7  = Ptf.create!(title: "AFD")
-      c8  = Ptf.create!(title: "ONUDI", image_url: "/logoptf/onudi.jpeg")
-      c9  = Ptf.create!(title: "JICA", image_url: "/logoptf/jica.jpeg")
-      c10 = Ptf.create!(title: "USAID", image_url: "/logoptf/usaid.jpeg")
-      c11 = Ptf.create!(title: "BAD", image_url: "/logoptf/bad.jpeg")
-      c12 = Ptf.create!(title: "PNUD", image_url: "/logoptf/pnud.jpeg")
-      c13 = Ptf.create!(title: "FIDA", image_url: "/fida.jpeg")
-      c14 =  Ptf.create!(title: "CNUCED", image_url: "/cnuced11.jpg")
-=======
+
       c1  = Ptf.create!(title: "Helvetas", lien: 'https://www.helvetas.org/fr/madagascar', image_url: "/helvetas1.jpg")
       c2  = Ptf.create!(title: "FMI", lien: 'https://www.imf.org/en/Countries/ResRep/MDG', image_url: "/logoptf/imf.jpeg")
       c3  = Ptf.create!(title: "IFC", lien: 'https://www.ifc.org/wps/wcm/connect/region__ext_content/IFC_External_Corporate_Site/Sub-Saharan+Africa', image_url: "/ifc1.jpg")
@@ -112,9 +97,6 @@ Ptf.destroy_all
       c13 = Ptf.create!(title: "FIDA", lien: 'https://www.ifad.org/en/web/operations/country/id/madagascar', image_url: "/logoptf/fida.jpeg")
       c14 = Ptf.create!(title: "CNUCED", lien: 'https://unctad.org/en/Pages/Home.aspx', image_url: "/cnuced11.jpg")
     
-      
->>>>>>> Rina
-
 
 
 puts "Ptf Créé"
@@ -291,11 +273,8 @@ puts "Beneficiaire créé"
               de renforcer l’attrait des investissements dans le secteur de l’hôtellerie, par :
               - Routes urbaines à Nosy-Be
               - L'eau à Tuléar" , partenaire_d_implementaton: "" ,
-<<<<<<< HEAD
-              debut_du_projet: "01/01/2019" , fin: "01/01/2024" )
-=======
+
               debut_du_projet: "01/01/2019" , fin: "01/01/2024")
->>>>>>> Rina
 
               @pro.ptf = Ptf.find(10)
               @pro.appui = Appui.find(1)
@@ -395,10 +374,6 @@ puts "projet créé2"
                   " ,
                debut_du_projet: " 2015",
                 fin: "2021")
-<<<<<<< HEAD
-               
-=======
->>>>>>> Rina
 
                 @pro3.ptf = Ptf.find(13)
                 @pro3.appui = Appui.find(2)
@@ -469,14 +444,13 @@ puts "projet créé2"
                              Secteurprojet.create(projet_id: 4 , secteur_id: 5)                
                              Secteurprojet.create(projet_id: 4 , secteur_id: 10)
 
-<<<<<<< HEAD
+
  puts "projet create4"
 
 Montant.destroy_all
           m1 = Montant.create!(unite: "USD")
           m1 = Montant.create!(unite: "EURO")
           m1 = Montant.create!(unite: "CRYTOMONAIE")
-=======
  puts "projet créé4"
 
 
@@ -494,4 +468,3 @@ SecteurFiliere.destroy_all
   SecteurFiliere.create!(secteur_id: 2, filiere_id: 28)
   SecteurFiliere.create!(secteur_id: 2, filiere_id: 21)
   SecteurFiliere.create!(secteur_id: 2, filiere_id: 29)
->>>>>>> Rina
