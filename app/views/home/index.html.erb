@@ -112,28 +112,27 @@
             </header>
           </div>
 
-          <div class="fdk8rh-3 feYJJO dropdown select">
-            <header class="fdk8rh-0 kYNMFW" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <div class="fdk8rh-3 feYJJO select" id="range-drop">
+            <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
                 Montant
               </h3>
             </header>
-            <div class="dropdown-menu dropcust" aria-labelledby="dropdownMenuButton">
+<!--             <div class="dropdown-menu dropcust" aria-labelledby="dropdownMenuButton">
               <span class="text-center">
                 <div>
-                  <input name="montant"  type = "range" min="0" max="100" class="custom-range" onchange="rangevalue.value=value"/>
+                  <input name="montant"  type = "range" min="0" max="100" class="custom-range" step="10" onchange="rangevalue.value=value"/>
                 </div>
                 <div>
                   <output id="rangevalue">50</output><span>Millions USD</span>
                 </div>     
               </span> 
-            </div>
+            </div> -->
           </div>
 
           <div class="fdk8rh-3 feYJJO select">
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
-
                 <input type="text" name="fin" class="reset fdk8rh-1 eouleG" placeholder="MM/AAAA">
              </h3>
             </header>
@@ -159,6 +158,25 @@
 </nav>
     <!-- FIN FILTRE -->
 <div class="sc-11unfkk-2 fxFQyp">
+  <div class="range-content mx-auto" id="range-content">
+    <div class="middle mt-2 mb-4">
+      <div class="multi-range-slider">
+        <div class="p-3 text-center">
+          Entre
+        <output id="rangevalueleft">80</output><span> millions et </span>
+        <output id="rangevalueright">320</output><span> millions de USD</span>
+        </div>
+        <input type="range" name="" id="input-left" min="0" max="400" step="80" value="80" onchange="rangevalueleft.value=value">
+        <input type="range" name="" id="input-right" min="0" max="400" step="80" value="320" onchange="rangevalueright.value=value">
+        <div class="slider">
+          <div class="track"></div>
+          <div class="range"></div>
+          <div class="thumb left"></div>
+          <div class="thumb right"></div>
+        </div>
+      </div>
+    </div>
+  </div>
   <header class="">
     <div class="qjc24y-1 hlIrlm row no-gutters align-items-start">
       <% if current_user %> 
@@ -416,22 +434,4 @@
     </div>
   </header>
 </div>
-<section>
-  <div class="container">
-    <div class="d-flex mt-5 mb-2">
-      <a href="#" class="image-c"><img src="logo/afd11.jpg" alt=""></a>
-      <a href="#" class="image-c"><img src="logo/cnuced11.jpg" alt=""></a>
-      <a href="#" class="image-c"><img src="logo/giz11.jpg" alt=""></a>
-      <a href="#" class="image-c"><img src="logo/helvetas1.jpg" alt=""></a>
-      <a href="#" class="image-c"><img src="logo/imf1.jpg" alt=""></a>
-      <a href="#" class="image-c"><img src="logo/jica1.png" alt=""></a>
-      <a href="#" class="image-c"><img src="logo/onudi1.jpg" alt=""></a>
-      <a href="#" class="image-c"><img src="logo/pnud1.jpg" alt=""></a>
-      <a href="#" class="image-c"><img src="logo/ue1.jpg" alt=""></a>
-      <a href="#" class="image-c"><img src="logo/unicef1.jpg" alt=""></a href="#">
-      <a href="#" class="image-c"><img src="logo/USAID1.jpg" alt=""></a>
-    </div>
-  </div>
-</section>
-
 <%= render "/layouts/footer.html.erb" %>

@@ -1,8 +1,6 @@
 <noscript>
   <iframe src="//www.googletagmanager.com/ns.html?id=GTM-N5NM9B3" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
 </noscript>
-<script type="text/javascript">
-window.__INITIAL_STATE__ = {"form":{},"routing":{"location":null},"notifications":[],"modal":{"opened":false,"children":null},"ssr":{"notification":null},"socket":{"socket":null},"session":{"unconfirmed":false,"linkedInUser":null,"locked":false,"confirmationUpdateError":null,"confirmationUpdateInfo":null,"unlockUpdateError":null,"unlockUpdateInfo":null,"afterSignin":null,"linkedInLoading":false},"magazineRequests":{},"api":{"collections":{},"resources":{},"resourceErrors":{},"collectionTtl":{}},"bookmarks":{"meetings":[],"organizations":[],"articles":[],"jobs":[]},"i18n":{"organizationLocale":{},"locale":"fr","languageAlert":"hide"}}</script>
 <div class="container-g" id="app">
   <div class="sc-11unfkk-0 iMrUmY">
     <nav id="site-upper-nav" class="q0xs59-19 ghzkpM">
@@ -25,8 +23,12 @@ window.__INITIAL_STATE__ = {"form":{},"routing":{"location":null},"notifications
             </div>
           </div>
         <%else%>
-          <div class="q0xs59-20 jhSsMU beamerTrigger">
-            <a href="/users/sign_in" class="q0xs59-6 q0xs59-7 fwuAZd"><div>Connexion</div></a>
+          <div class="q0xs59-20 jhSsMU sans-hover beamerTrigger dropdwn">
+            <span class="q0xs59-6 q0xs59-7 fwuAZd"><div>Connexion</div></span>
+            <div class="droppos">
+              <p class="dropdwn-content border-bottom p-3 mb-0"><a href="/users/sign_in">Se connecter</a></p>
+              <p class="dropdwn-content p-3 mb-0"><a href="/users/sign_up">S'inscrire</a></p>
+            </div>
           </div>
         <% end %>
       </div>

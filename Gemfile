@@ -11,7 +11,7 @@ gem 'ckeditor'
 gem 'carrierwave'
 gem 'dragonfly'
 gem 'mini_magick'
-gem 'jquery-rails'
+
 gem 'table_print'
   
 gem 'faker'
