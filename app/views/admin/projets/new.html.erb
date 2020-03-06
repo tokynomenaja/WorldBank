@@ -31,7 +31,8 @@
 					<h6 class="table">Montant</h6>
 					<input name="montant" type = "range" min="0" max="100" onchange="rangevalue.value=value"/>
                   	<div><output id="rangevalue">50</output><span> Millions USD</span></div>
-
+                  	
+                  		<%= select_tag 'montant_id', options_for_select(Montant.all.collect{ |c| [c.unite, c.id] }), :include_blank => "unité", class: "form-control"%>
 				</div>
 				<div>
 					<h6 class="table">Appui</h6>
