@@ -20,6 +20,11 @@ class Admin::ProjetsController < ApplicationController
                 debut_du_projet: params[:debut_du_projet],
                 fin: params[:fin],
                 bailleur_id: current_user.id)
+
+                if params[:creer] == 'Enregistrer'
+                    @project.update(validation: nil)
+
+                end
                      
                   @secteur_ids = params[:secteur_ids]
                 @secteur_ids.each do |x|
@@ -102,8 +107,14 @@ class Admin::ProjetsController < ApplicationController
          if @projet.update(nom_du_projet: params[:nom_du_projet], 
            debut_du_projet: params[:debut_du_projet], objectif_generale_du_projet: params[:objectif_generale_du_projet],aspsp: params[:aspsp],partenaire_d_implementaton: params[:partenaire_d_implementaton],montant: params[:montant],fin: params[:fin], appui_id: params[:appui_id], ptf_id: params[:ptf_id], 
            bailleur_id: current_user.id)
+
+          if params[:modifier] == 'Enregistrer la modification'
+            @project.update(validation: nil)
+
+          end
         
          puts "*"*100
+
           
               @projet.secteurprojets.destroy_all
 
