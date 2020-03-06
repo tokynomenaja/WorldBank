@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
  
-
+    resources :actus
+    resources :publications
+    resources :apropos
+    resources :contacts
 
     	namespace :admin do
 	  	resources :projets

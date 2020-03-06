@@ -61,7 +61,7 @@ body{background: #f9f9f9 !important;}
 .field label{color: #52c39b}
 .list-sty{list-style-type: decimal;}
 .btn-reset{border: 0;background: transparent;}
-.sear{color: #343435;text-transform: uppercase;}, .eouleG a.sear:hover{color: #343435 !important;text-decoration: none !important;}
+.sear{color: #343435;text-transform: uppercase;} .eouleG a.sear:hover{color: #343435 !important;text-decoration: none !important;}
 /* 
 login
 */
@@ -383,7 +383,7 @@ a.position:hover{color: #ffffff;text-decoration: none;}
 /*RANGE*/
   .toggleclass{
     width: 50%;
-    display: none !important;
+    display: none;
   }
   .range-content{
     position: absolute;
@@ -394,8 +394,12 @@ a.position:hover{color: #ffffff;text-decoration: none;}
     z-index: 1;
     border: 2px solid #e6e6e6;
   }
+  .range-y-content{
+    top: 0rem;
+  }
  .middle {
     position: relative;
+    width: 70%;
  }
  .slider{
       position:relative;
@@ -441,6 +445,10 @@ a.position:hover{color: #ffffff;text-decoration: none;}
     right: 20%;
     transform: translate(15px, -10px);
  }
+
+ div.valeur span{
+  width: 25%;
+ }
  
  input[type=range]{
     position: absolute;
@@ -455,6 +463,12 @@ a.position:hover{color: #ffffff;text-decoration: none;}
  input[type=range]::-webkit-slider-thumb {
     pointer-events: all;
     -webkit-appearance: none;
+    height: 30px;
+    width: 30px;
+ }
+ input[type=range]::-moz-slider-thumb {
+    pointer-events: all;
+    -moz-appearance: none;
     height: 30px;
     width: 30px;
  }
