@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_28_132518) do
+ActiveRecord::Schema.define(version: 2020_03_04_130426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -133,17 +133,14 @@ ActiveRecord::Schema.define(version: 2020_02_28_132518) do
     t.string "partenaire_d_implementaton"
     t.string "debut_du_projet"
     t.string "fin"
-    t.string "montant"
     t.boolean "validation", default: false
     t.bigint "appui_id"
     t.bigint "ptf_id"
     t.bigint "bailleur_id"
-    t.bigint "pems_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["appui_id"], name: "index_projets_on_appui_id"
     t.index ["bailleur_id"], name: "index_projets_on_bailleur_id"
-    t.index ["pems_id"], name: "index_projets_on_pems_id"
     t.index ["ptf_id"], name: "index_projets_on_ptf_id"
   end
 
@@ -153,6 +150,15 @@ ActiveRecord::Schema.define(version: 2020_02_28_132518) do
     t.string "lien"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "secteur_filieres", force: :cascade do |t|
+    t.bigint "secteur_id"
+    t.bigint "filiere_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["filiere_id"], name: "index_secteur_filieres_on_filiere_id"
+    t.index ["secteur_id"], name: "index_secteur_filieres_on_secteur_id"
   end
 
   create_table "secteurprojets", force: :cascade do |t|

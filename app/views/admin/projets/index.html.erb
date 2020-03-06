@@ -15,8 +15,10 @@
 				<p><a href="<%= admin_projet_path(p.id)%>" class="btn btn-primary">Voir</a>
 					<%if p.validation == false%>
 						<span class="btn btn-warning">En attente de validation</span>	
+					<%elsif p.validation == nil%>
+						<span class="btn btn-danger">Non publié<span>
 					<%else%>
-						<span class="btn btn-success">Déjà validé<span>
+						<span class="btn btn-success">Publié<span>
 					<%end%>
 				</p>	
 			</div>

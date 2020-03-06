@@ -6,7 +6,7 @@
 <div class="mt-4 mb-4">
 	<%= form_tag url_for(action: 'create'),method:'post', class:'form', multipart: true do%>
 		<div class="container">
-			<div class="row mb-2">
+			<div class=" row mb-2">
 				<div class="col-6">
 					<div>
 						<label for="nom" class="mr-2 table">Nom du projet </label>
@@ -14,11 +14,29 @@
 					<input type="text" name="nom_du_projet" id="nom" placeholder="Nom du projet" class="form-control" required="true">
 				</div>
 			</div>
-			<div class="d-flex justify-content-between mb-3">
-				<div>
-					<h6 class="table">PTF</h6>
-					<%= select_tag 'ptf_id', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
+		</div>
+		<div class="container mb-2">
+			<a class="table">
+				Objectif général du projet
+			</a>
+			<div class="mt-2">
+				<div class="card card-body">
+					<%=cktext_area_tag :objectif_generale_du_projet%>
 				</div>
+			</div>
+		</div>
+		<div class="container mb-2">
+			<a class="table">
+				Appui spécifique au secteur privé
+			</a>
+			<div class="mt-2">
+				<div class="card card-body">
+				<%=cktext_area_tag :aspsp%>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="d-flex justify-content-between mb-3">
 				<div>
 					<h6 class="table">Début</h6>
 					<input type="date" name="debut_du_projet" class="form-control" required="true">
@@ -33,18 +51,14 @@
                   	<div><output id="rangevalue">50</output><span> Millions USD</span></div>
 
 				</div>
-				<div>
-					<h6 class="table">Appui</h6>
-					<%= select_tag 'appui_id', options_for_select(Appui.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
-				</div>
 			</div>
 		</div>
 
 		<div class="container mb-2">
-			<a class="btn-col" data-toggle="collapse" href="#secteur" role="button" aria-expanded="false" aria-controls="collapseExample">
+			<a class="table">
 				Secteurs
 			</a>
-				<div class="collapse" id="secteur">
+				<div class="mt-2">
 				<div class="card card-body">
 					<div class="row">
 						<% Secteur.all.order(:title).each do |c| %>
@@ -58,15 +72,20 @@
 				</div>
 			</div>
 
-			<div class="container mb-2">
-			<a class="btn-col" data-toggle="collapse" href="#filiere" role="button" aria-expanded="false" aria-controls="collapseExample">
+			<div class="container">
+				<h6 class="table">Appui</h6>
+				<%= select_tag 'appui_id', options_for_select(Appui.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
+			</div>
+
+			<div class="container mb-2 mt-2">
+			<a class="table">
 				Filières
 			</a>
-				<div class="collapse" id="filiere">
+				<div class="mt-2">
 				<div class="card card-body">
 					<div class="row">
 						<% Filiere.all.order(:title).each do |c| %>
-							<div class="col-md-3">
+							<div class="col-md-4">
 								<%= check_box_tag("filiere_ids[]",c.id)%>
 								<%= c.title%>
 							</div>
@@ -77,10 +96,10 @@
 			</div>
 
 			<div class="container mb-2">
-				<a class="btn-col" data-toggle="collapse" href="#Beneficiaire" role="button" aria-expanded="false" aria-controls="collapseExample">
+				<a class="table">
 					Bénéficiaires
 				</a>
-				<div class="collapse" id="Beneficiaire">
+				<div class="mt-2">
 					<div class="card card-body">
 						<div class="row">
 							<% Beneficiaire.all.order(:title).each do |c| %>
@@ -94,10 +113,10 @@
 				</div>
 			</div>
 		<div class="container mb-2">
-			<a class="btn-col" data-toggle="collapse" href="#iga" role="button" aria-expanded="false" aria-controls="collapseExample">
-				IGA (Institution Gouvernementale Associée)
+			<a class="table">
+				Institution Gouvernementale Associée
 			</a>
-			<div class="collapse" id="iga">
+			<div  class="mt-2">
 				<div class="card card-body">
 					<div class="row">
 						<% Iga.all.order(:title).each do |c| %>
@@ -111,41 +130,23 @@
 			</div>
 		</div>
 		<div class="container mb-2">
-			<a class="btn-col" data-toggle="collapse" href="#engagement" role="button" aria-expanded="false" aria-controls="collapseExample">
-				PEM(Alignement aux priorites du plan emergence de madagascar)
+			<a class="table">
+				Alignement aux priorités du Plan Emergence de Madagascar
 			</a>
-				<div class="collapse" id="engagement">
+				<div class="mt-2">
 				<div class="card card-body">
 					<div class="row">
-						<%id = 0 %>
-						<%Engagement.all.order(:title).each do |c| %>
+						<%Engagement.all.order(:id).each do |c| %>
 							<div class="col-md-12">
-								<div data-toggle="modal" data-target="#eng<%= id %>">
+								<p class="mt-2 mb-0">
 									<%= c.title%> 
+								</p>
+								<%c.pems.each do |p|%>
+								<div class="ml-4">
+									<%=check_box_tag("pem_ids[]",p.id) %> 
+									<%= p.title %>
 								</div>
-								<div  id="eng<%= id %>"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-									<div class="modal-dialog" role="document">
-										<div class="modal-content">
-										  <div class="modal-header">
-											<h5 class="modal-title" id="exampleModalLabel"><%= c.title%> </h5>
-											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											  <span aria-hidden="true">&times;</span>
-											</button>
-										  </div>
-										  <div class="modal-body">
-											<%c.pems.each do |p|%>
-											<p>
-												<%=check_box_tag("pem_ids[]",p.id) %> 
-												<%= p.title %>
-											</p>
-											<%end%>
-										  </div>
-										  <div class="modal-footer">
-											<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-										  </div>
-										</div>
-									  </div>
-								</div>
+								<%end%>
 							</div>
 						<% end %>
 					</div>
@@ -153,10 +154,10 @@
 				</div>
 			</div>
 		<div class="container mb-2">
-			<a class="btn-col" data-toggle="collapse" href="#zi" role="button" aria-expanded="false" aria-controls="collapseExample">
+			<a class="table">
 				Régions
 			</a>
-			<div class="collapse" id="zi">
+			<div class="mt-2">
 				<div class="card card-body">
 					<div class="row">
 						<% Zone.all.order(:title).each do |c| %>
@@ -169,36 +170,14 @@
 				</div>
 			</div>
 		</div>
-		<div class="container mb-2">
-			<a class="btn-col">
-				Objectif général du projet
-			</a>
-			<div class="collapse">
-				<div class="card card-body">
-					<%=cktext_area_tag :objectif_generale_du_projet%>
-				</div>
-			</div>
-		</div>
-		<div class="container mb-2">
-			<a class="btn-col" data-toggle="collapse" href="#appui-specifique" role="button" aria-expanded="false" aria-controls="collapseExample">
-				Appui spécifique au secteur privé
-			</a>
-			<div class="collapse" id="appui-specifique">
-				<div class="card card-body">
-				<%=cktext_area_tag :aspsp%>
-				</div>
-			</div>
-		</div>
 		<div class="container mb-2 mt-4">
 			Fichier du projet : <%= file_field_tag :files, required: true, multiple: true%>
 			
 		</div>
-		<div class=" container mb-2 mt-4 picture">
-			Photo du projet : <%= file_field_tag :picture, required: true%>
-		</div>
 		<div class="container mt-4">
-			<input type="submit" value="Créer" class="sc-eerKOB cfnPHQ">
-			<a href="#" onclick="nbr()">Limiter</a>
+			<input type="submit" name="creer" value="Enregistrer" class="btn btn-secondary">
+			<input type="submit" name="creer" value="Publier" class="sc-eerKOB cfnPHQ">
+			
 		</div>
 	<% end %>
 </div>

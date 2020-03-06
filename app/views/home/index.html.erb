@@ -69,11 +69,11 @@
           <div class="fdk8rh-3 feYJJO">
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
-                 <%= select_tag 'search_secteur' , options_for_select(Secteur.all.order(:title).collect{ |c| [c.title,c.id]}),:include_blank => "Secteur",class: "select fdk8rh-1 eouleG large"%>
+                 <%= select_tag 'search_secteur' , options_for_select(Secteur.all.order(:title).collect{ |c| [c.title,c.id]}),:include_blank => "Secteur",class: "select fdk8rh-1 eouleG large", id: "secteur"%>
+
               </h3>
             </header>
           </div>
-
           <div class="fdk8rh-3 feYJJO">
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">

@@ -12,13 +12,12 @@ Secteur.destroy_all
       c3 = Secteur.create!(title: "INFRASTRUCTURES")
       c4 = Secteur.create!(title: "TOURISME")   
       c5 = Secteur.create!(title: "ENTREPREUNARIAT")
-      c6 = Secteur.create!(title: "INDUSTRIE TEXTILE")
       c7 = Secteur.create!(title: "AGROBUSINESS")
       c8 = Secteur.create!(title: "PROMOTION DES INVESTISSEMENTS")
       c9 = Secteur.create!(title: "FINANCES")
       c10 = Secteur.create!(title: "ENERGIE")
 
-puts "Filière créée"
+puts "Secteur créée"
 
 Engagement.destroy_all
 
@@ -30,14 +29,15 @@ Engagement.destroy_all
       c6  = Engagement.create!(title: "Engagement 6 : l'emploi décent pour tous")
       c7  = Engagement.create!(title: "Engagement 7 : Promotion de l'habitat et la modernisation de Madagascar (ODD 11,9)")
       c8  = Engagement.create!(title: "Engagement 8 : Le sport et la culture doivent être un tremplin pour porter haut la fierté nationale")
+      c12 = Engagement.create!(title: "Engagement 9 : L'énergie et l'eau pour tous")
       c9  = Engagement.create!(title: "Engagement 10 : l'industrialisation de Madagascar ")
       c10 = Engagement.create!(title: "Engagement 11 : L'industrie touristique")
       c11 = Engagement.create!(title: "Engagement 12 : L'autosuffisance alimentaire")
-      c12 = Engagement.create!(title: "Engagement n 9 : L'énergie et l'eau pour tous")
       c13 = Engagement.create!(title: "Engagement 13 : 1a gestion durable et la conservation de nos ressources naturelles")
      
     
-puts "Engagement"
+puts "Engagement créé"
+
 Pem.destroy_all
 
       z1 = Pem.create!(title:"PRIORITÉ 1 : Assurer la défense et la sécurité sur l'ensemble du territoire national",engagement_id: 1) 
@@ -75,52 +75,77 @@ Pem.destroy_all
       z33 = Pem.create(title:"PRIORITÉ 33 : Valoriser l'économie bleue à Madagascar",engagement_id: 13)
 
 
-puts "Pem create"
+puts "Pem créé"
 
 Ptf.destroy_all
-      c1  = Ptf.create!(title: "Helvetas", lien: 'https://www.helvetas.com', image_url: "/helvetas1.jpg")
-      c2  = Ptf.create!(title: "FMI", lien: 'https://www.fmi.com', image_url: "/logoptf/imf.jpeg")
-      c3  = Ptf.create!(title: "IFC", lien: 'https://www.ifc.com', image_url: "/ifc1.jpg")
-      c4  = Ptf.create!(title: "UE", image_url: "/logoptf/ue.jpeg")
-      c5  = Ptf.create!(title: "UNICEF", image_url: "/logoptf/unicef.jpeg")
-      c6  = Ptf.create!(title: "GIZ", image_url: "/giz.jpg")
-      c7  = Ptf.create!(title: "AFD")
-      c8  = Ptf.create!(title: "ONUDI", image_url: "/logoptf/onudi.jpeg")
-      c9  = Ptf.create!(title: "JICA", image_url: "/logoptf/jica.jpeg")
-      c10 = Ptf.create!(title: "USAID", image_url: "/logoptf/usaid.jpeg")
-      c11 = Ptf.create!(title: "BAD", image_url: "/logoptf/bad.jpeg")
-      c12 = Ptf.create!(title: "PNUD", image_url: "/logoptf/pnud.jpeg")
-      c13 = Ptf.create!(title: "FIDA", image_url: "/logoptf/fida.jpeg")
-      c14 =  Ptf.create!(title: "CNUCED", image_url: "/cnuced11.jpg")
+      c1  = Ptf.create!(title: "Helvetas", lien: 'https://www.helvetas.org/fr/madagascar', image_url: "/helvetas1.jpg")
+      c2  = Ptf.create!(title: "FMI", lien: 'https://www.imf.org/en/Countries/ResRep/MDG', image_url: "/logoptf/imf.jpeg")
+      c3  = Ptf.create!(title: "IFC", lien: 'https://www.ifc.org/wps/wcm/connect/region__ext_content/IFC_External_Corporate_Site/Sub-Saharan+Africa', image_url: "/ifc1.jpg")
+      c4  = Ptf.create!(title: "UE", lien: 'https://eeas.europa.eu/delegations/madagascar_en', image_url: "/logoptf/ue.jpeg")
+      c5  = Ptf.create!(title: "UNICEF", lien: 'https://www.unicef.org/madagascar/en', image_url: "/logoptf/unicef.jpeg")
+      c6  = Ptf.create!(title: "GIZ", lien: 'https://www.giz.de/en/worldwide/322.html', image_url: "/giz.jpg")
+      c7  = Ptf.create!(title: "AFD", lien: 'https://www.afd.fr/en/page-region-pays/madagascar')
+      c8  = Ptf.create!(title: "ONUDI", lien: 'https://www.unido.org/who-we-are-unido-worldwide-africa-offices/madagascar', image_url: "/logoptf/onudi.jpeg")
+      c9  = Ptf.create!(title: "JICA", lien: 'https://www.jica.go.jp/madagascar/french/index.html', image_url: "/logoptf/jica.jpeg")
+      c10 = Ptf.create!(title: "USAID", lien: 'https://www.usaid.gov/madagascar', image_url: "/logoptf/usaid.jpeg")
+      c11 = Ptf.create!(title: "BAD", lien: 'https://www.usaid.gov/madagascar', image_url: "/logoptf/bad.jpeg")
+      c12 = Ptf.create!(title: "PNUD", lien: 'https://www.mg.undp.org/', image_url: "/logoptf/pnud.jpeg")
+      c13 = Ptf.create!(title: "FIDA", lien: 'https://www.ifad.org/en/web/operations/country/id/madagascar', image_url: "/logoptf/fida.jpeg")
+      c14 = Ptf.create!(title: "CNUCED", lien: 'https://unctad.org/en/Pages/Home.aspx', image_url: "/cnuced11.jpg")
     
       
 
 
 
-puts "Ptf"
+puts "Ptf Créé"
 
 
 
 
 
 Filiere.destroy_all
-      c1 = Filiere.create!(title: "Apiculture")
-      c2 = Filiere.create!(title: "Artisanat")
-      c3 = Filiere.create!(title: "Aviculture")
-      c4 = Filiere.create!(title: "Boviculture")
-      c5 =   Filiere.create!(title: "Culture maraîchère")
-      c6 = Filiere.create!(title: "Epices")
-      c7 = Filiere.create!(title: "Fruits")
-      c8 = Filiere.create!(title: "Grains secs")
-      c9 = Filiere.create!(title: "Pêche")
-      c10 = Filiere.create!(title: "Pisciculture")
-      c11 = Filiere.create!(title: "Racine")
-      c12 = Filiere.create!(title: "Tubercule")
-      c13 = Filiere.create!(title: "Transformation")
-      c14 = Filiere.create!(title: "Commerce")
-      c15 = Filiere.create!(title: "Agrobusiness")
+      c1 = Filiere.create!(title: "Grains secs")
+      c2 = Filiere.create!(title: "Riz")
+      c3 = Filiere.create!(title: "Céréales")
+      c4 = Filiere.create!(title: "Vanille")
+      c5 = Filiere.create!(title: "Coton")
+      c6 = Filiere.create!(title: "Noix")
+      c7 = Filiere.create!(title: "Charbon vert")
+      c8 = Filiere.create!(title: "Cacao")
+      c9 = Filiere.create!(title: "Huiles essentielles")
+      c10 = Filiere.create!(title: "Sucre")
+      c11 = Filiere.create!(title: "Huile de palme")
+      c12 = Filiere.create!(title: "Fruits")
+      c13 = Filiere.create!(title: "Epices")
+      c14 = Filiere.create!(title: "Apiculture")
+      c15 = Filiere.create!(title: "Boviculture")
+      c16 = Filiere.create!(title: "Aviculture")
+      c17 = Filiere.create!(title: "Légumes")
+      c18 = Filiere.create!(title: "Pisciculture")
+      c19 = Filiere.create!(title: "Artisanat")
+      c20 = Filiere.create!(title: "Produits laitiers")
+      c21 = Filiere.create!(title: "Soie sauvage/raphia")
+      c22 = Filiere.create!(title: "Industrie textile")
+      c23 = Filiere.create!(title: "NTIC")
+      c24 = Filiere.create!(title: "Tourisme")
+      c25 = Filiere.create!(title: "Agribusiness")
+      c26 = Filiere.create!(title: "Infrastructures")
+      c27 = Filiere.create!(title: "Exportation")
+      c28 = Filiere.create!(title: "Multi-sectorielle")
+      c29 = Filiere.create!(title: "Peau de crocodile")
+      c30 = Filiere.create!(title: "Cuir")
+      c31 = Filiere.create!(title: "Gouvernance locale")
+      c32 = Filiere.create!(title: "Commerce")
+      c33 = Filiere.create!(title: "Industrie sucrière")
+      c34 = Filiere.create!(title: "Hydro agriculture")
+      c35 = Filiere.create!(title: "Energie")
+      c36 = Filiere.create!(title: "Wash")
+      c37 = Filiere.create!(title: "Banque")
+      c38 = Filiere.create!(title: "Fond de garantie")
+      c39 = Filiere.create!(title: "Microfinance")
+      c40 = Filiere.create!(title: "Grandes mines")
      
- puts "Filiere create"    
+ puts "Filiere créée"    
 
 Iga.destroy_all
       c1 = Iga.create!(title: "Ministère de l’Energie, de l’Eau et des Hydrocarbures")
@@ -140,7 +165,7 @@ Iga.destroy_all
       c14 = Iga.create(title: "MIDSP")
 
 
-puts "iga create"
+puts "iga créé"
 
 Zone.destroy_all
       z1 = Zone.create!(title:"Analamanga")
@@ -174,7 +199,7 @@ Zone.destroy_all
       z22 = Zone.create!(title:"Sava")
       z23 = Zone.create!(title:"Sainte Marie")
       z24 = Zone.create(title:"National")
-puts "zone create"
+puts "zone créée"
 
 
 
@@ -184,7 +209,7 @@ Appui.destroy_all
       a3 = Appui.create!(title:"Co-financement") 
       a4 = Appui.create!(title:"Assistance Technique") 
       a5 = Appui.create!(title:"Participation aux risques") 
-puts "Appui create"
+puts "Appui créé"
 
 
 Beneficiaire.destroy_all
@@ -213,7 +238,7 @@ Beneficiaire.destroy_all
        b16 = Beneficiaire.create(title:"Structures Gouvernementales")
        b17 = Beneficiaire.create(title:"EDBM")
        b18 = Beneficiaire.create(title:"Structure intermédiaire")
-puts "Beneficiaire"
+puts "Beneficiaire créé"
 
 @pro = Projet.new(nom_du_projet: "MADAGASCAR INTEGRATED GROWTH POLES AND CORRIDOR - PIC 2.2", objectif_generale_du_projet: "Contribuer au développement durable des secteurs tourisme et
               agroalimentaire en améliorant l'accès aux infrastructures et 
@@ -246,7 +271,7 @@ puts "Beneficiaire"
               de renforcer l’attrait des investissements dans le secteur de l’hôtellerie, par :
               - Routes urbaines à Nosy-Be
               - L'eau à Tuléar" , partenaire_d_implementaton: "" ,
-              debut_du_projet: "01/01/2019" , fin: "01/01/2024" ,montant: "55")
+              debut_du_projet: "01/01/2019" , fin: "01/01/2024")
 
               @pro.ptf = Ptf.find(10)
               @pro.appui = Appui.find(1)
@@ -271,7 +296,7 @@ puts "Beneficiaire"
                 Secteurprojet.create(projet_id: 1 , secteur_id: 10)
                 Secteurprojet.create(projet_id: 1 , secteur_id: 11)
 
-puts "projet create1"
+puts "projet créé1"
  
 
  @pro2 = Projet.new(nom_du_projet: "Projet d'Appui à la Promotion des investissements - PAPI",
@@ -287,7 +312,7 @@ puts "projet create1"
                  missions internationales d’échange d’expérience sur la promotion.", 
               partenaire_d_implementaton: "EDBM",
               debut_du_projet: "01/01/2019", 
-              fin: "02/03/2020", montant: "45")
+              fin: "02/03/2020")
 
                 @pro2.ptf = Ptf.find(11)
                 
@@ -313,7 +338,7 @@ puts "projet create1"
                 Secteurprojet.create(projet_id: 2 , secteur_id: 11)
 
 
-puts "projet create1"
+puts "projet créé2"
  @pro3 = Projet.new(nom_du_projet: "Projet de Croissance Agricole et 
                     de Sécurisation Foncière - CASEF", 
                objectif_generale_du_projet: "Améliorer la sécurisation foncière et 
@@ -345,8 +370,7 @@ puts "projet create1"
               - Ministère de l’Agriculture,de l’Elevage et de la Pêche
                   " ,
                debut_du_projet: " 2015",
-                fin: "2021", 
-               montant: "50")
+                fin: "2021")
 
                 @pro3.ptf = Ptf.find(13)
                 @pro3.appui = Appui.find(2)
@@ -375,7 +399,7 @@ puts "projet create1"
 
 
 
-puts "projet create3"
+puts "projet créé2"
 
  @pro4 = Projet.new(nom_du_projet: "Formation Professionnelle d'Amélioration de la Production Agricole (FORMAPROD)", 
                    objectif_generale_du_projet: "FORMAPROD vise à revaloriser les métiers de l’agriculture par la 
@@ -386,7 +410,6 @@ puts "projet create3"
                           infrastructures de soutien à la commercialisation et 
                           à la transformation (marché communal, magasins de groupage, etc.),
                           désenclavements des pôles agricoles.",
-                   montant: "20",
                    partenaire_d_implementaton: "Administration",
                    debut_du_projet: "01/01/2012", 
                    fin: "01/01/2022")
@@ -418,4 +441,20 @@ puts "projet create3"
                              Secteurprojet.create(projet_id: 4 , secteur_id: 5)                
                              Secteurprojet.create(projet_id: 4 , secteur_id: 10)
 
- puts "projet create4"
+ puts "projet créé4"
+
+
+SecteurFiliere.destroy_all
+
+  SecteurFiliere.create!(secteur_id: 6, filiere_id: 1)
+  SecteurFiliere.create!(secteur_id: 6, filiere_id: 2)
+  SecteurFiliere.create!(secteur_id: 6, filiere_id: 3)
+  SecteurFiliere.create!(secteur_id: 6, filiere_id: 4)
+  SecteurFiliere.create!(secteur_id: 6, filiere_id: 5)
+  SecteurFiliere.create!(secteur_id: 6, filiere_id: 6)
+  SecteurFiliere.create!(secteur_id: 7, filiere_id: 22)
+  SecteurFiliere.create!(secteur_id: 7, filiere_id: 23)
+  SecteurFiliere.create!(secteur_id: 7, filiere_id: 24)
+  SecteurFiliere.create!(secteur_id: 2, filiere_id: 28)
+  SecteurFiliere.create!(secteur_id: 2, filiere_id: 21)
+  SecteurFiliere.create!(secteur_id: 2, filiere_id: 29)

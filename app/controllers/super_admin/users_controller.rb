@@ -4,11 +4,8 @@ class SuperAdmin::UsersController < ApplicationController
 
 
 	def index
-		@bailleurs = User.where(is_admin: true)
-		@bailleurs_en_attente = User.where(is_admin: false)	
-
-		@consultants = User.where(is_consultant: true, is_super_admin: false, is_admin: nil)
-		@consultants_en_attente = User.where(is_consultant: false, is_super_admin: false, is_admin: nil)
+		@users = User.where(is_admin: true).or(User.where(is_consultant: true))
+		@users_en_attente = User.where(is_consultant: false,is_super_admin: false,is_admin: nil)	
 	end
 
 	def show
@@ -21,14 +18,21 @@ class SuperAdmin::UsersController < ApplicationController
 	    end
  	end
 
+ 	
+
  	def update
  		@user = User.find(params[:id])
- 		if @user.is_consultant == false
+ 		if buttonparams == 'Consultant'
  			@user.update(is_consultant: true)
- 		if @user.is_admin == false
+ 		else
  			@user.update(is_admin: true)
  		end
- 	end
+
+ 		# if @user.is_consultant == false
+ 		# 	@user.update(is_consultant: true)
+ 		# if @user.is_admin == false
+ 		# 	@user.update(is_admin: true)
+ 		# end
  		redirect_to super_admin_users_path
  	end
 
@@ -36,5 +40,11 @@ class SuperAdmin::UsersController < ApplicationController
  		@user = User.find(params[:id])
  		@user.destroy
  		redirect_to super_admin_users_path
+ 	end
+
+ 	private 
+
+ 	def buttonparams
+ 		params[:valider]
  	end
 end

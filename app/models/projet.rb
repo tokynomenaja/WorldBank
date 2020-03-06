@@ -24,7 +24,7 @@ class Projet < ApplicationRecord
         has_many :secteurs, through: :secteurprojets
 
         has_many :pemprojets
-        has_many :pem, through: :pemprojets
+        has_many :pems, through: :pemprojets
         
         has_many_attached :files
         has_one_attached :picture

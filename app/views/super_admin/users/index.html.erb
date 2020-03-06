@@ -1,6 +1,6 @@
 <div class="container sans-head">
-	<h4	>Listes des bailleurs</h4>
-	<%if @bailleurs.count == 0%>
+	<h4	>Listes des comptes validés</h4>
+	<%if @users.count == 0%>
 		<div class="text-center text-muted mt-4 mb-4">
 			Aucun pour le moment
 		</div>
@@ -14,20 +14,28 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% @bailleurs.each do |b|%>
+			<% @users.each do |b|%>
 			<tr>
 			<th scope="row"><%=b.id%></th>
 			<td><%=b.email%></td>
 			<td><a href="/super_admin/users/<%=b.id%>" class="btn btn-warning">Voir</a></td>
-			</tr>
-			<%end%>
+			<td>
+				<%if b.is_admin == true%>
+					<span class="btn btn-success">Bailleur</span>
+				<%elsif b.is_consultant == true%>
+					<span class="btn btn-primary">Consultant</span>
+				<%end%>
+				</tr>
+				<%end%>
+				
+			</td>
 		</tbody>
 		</table>
 	<% end %>
 </div>
 <div class="container">
-	<h4>Listes des bailleurs en attente</h4>
-	<%if @bailleurs_en_attente.count == 0%>
+	<h4>Listes de demandes en attente de validation</h4>
+	<%if @users_en_attente.count == 0%>
 		<div class="text-center text-muted mt-4 mb-4">
 			Aucun pour le moment
 		</div>
@@ -37,15 +45,25 @@
 		<tr>
 			<th scope="col">Id</th>
 			<th scope="col">Email</th> 
-			<th scope="col">Action</th>
+			<th scope="col">Valider en tant que</th>
+			<th scope="col">Valider en tant que</th>
+			<th scope="col">Action </th>
 		</tr>
 		</thead>
 		<tbody>
-			<% @bailleurs_en_attente.each do |ba|%>
+			<% @users_en_attente.each do |ba|%>
 		<tr>
 			<th scope="row"><%=ba.id%></th>
 			<td><%=ba.email%></td>
-			<td><a href="/super_admin/users/<%=ba.id%>" data-method="put" class="btn btn-warning">Valider</a></td>
+			
+
+			<%= form_for ba, url: super_admin_user_path(ba.id), method: :put do |f| %>
+				<td><input type="submit" name="valider" value="Bailleur"></td>
+				<td><input type="submit" name="valider" value="Consultant"></td>
+
+			<%end%>
+			<!-- <td><a href="/super_admin/users/<%=ba.id%>"  data-method="put" class="btn btn-warning"><input type="submit" name="valider" value="Bailleur"></a></td>
+			<td><a href="/super_admin/users/<%=ba.id%>"  data-method="put" class="btn btn-warning"><input type="submit" name="valider" value="Consultant"></a></td> -->
 			<td><a href="/super_admin/users/<%=ba.id%>" class="btn btn-warning">Voir</a></td>
 		</tr>
 			<%end%>
@@ -54,58 +72,4 @@
 <%end%>
 </div>
 
-<div class="container">
-	<h4>Listes des visiteurs</h4>
-	<% if @consultants.count == 0 %>
-		<div class="text-center text-muted mt-4 mb-4">
-			Aucun pour le moment
-		</div>
-	<%else%>
-		<table class="table table-bordered table-dark">
-		<thead>
-			<tr>
-			<th scope="col">Id</th>
-			<th scope="col">Email</th>
-			<th scope="col">Action</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% @consultants.each do |b|%>
-			<tr>
-			<th scope="row"><%=b.id%></th>
-			<td><%=b.email%></td>
-			<td><a href="/super_admin/users/<%=b.id%>" class="btn btn-warning">Voir</a></td>
-			</tr>
-			<%end%>
-		</tbody>
-		</table>
-	<%end%>
-</div>
-<div class="container">
-	<h4>Listes des visiteurs en attente</h4>
-	<%if @consultants_en_attente.count == 0%>
-		<div class="text-center text-muted mt-4 mb-4">
-			Aucun pour le moment
-		</div>
-	<% else %>
-		<table class="table table-bordered table-dark">
-		<thead>
-			<tr>
-			<th scope="col">Id</th>
-			<th scope="col">Email</th> 
-			<th scope="col">Action</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% @consultants_en_attente.each do |c|%>
-			<tr>
-			<th scope="row"><%=c.id%></th>
-			<td><%=c.email%></td>
-			<td><a href="/super_admin/users/<%=c.id%>" data-method="put" class="btn btn-warning">Valider</a></td>
-			<td><a href="/super_admin/users/<%=c.id%>" class="btn btn-warning">Voir</a></td>
-			</tr>
-			<%end%>
-		</tbody>
-		</table>
-	<% end %>
-</div>
+

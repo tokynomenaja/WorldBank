@@ -19,6 +19,12 @@
 		    	<%=@user.email%></p>
 		    <p><span>Organisme :</span>
 		    	<%=@user.organisme.nom%></p>
+			<%= form_for @user, url: super_admin_user_path(@user.id), method: :put do |f| %>
+ 
+				<p>Valider en tant que : <input type="submit" name="valider" value="Bailleur"> 
+				 <input type="submit" name="valider" value="Consultant"></p>
+
+			<%end%>
 		</div>
 	</div>
 
