@@ -1,7 +1,6 @@
 
 var inputLeft = document.getElementById("input-left");
 var inputRight = document.getElementById("input-right");
-
 var thumbLeft = document.querySelector(".slider > .thumb.left");
 var thumbRight = document.querySelector(".slider > .thumb.right");
 var range = document.querySelector(".slider > .range");
@@ -31,6 +30,15 @@ setRightValue();
 inputLeft.addEventListener("input", setLeftValue);
 inputRight.addEventListener("input", setRightValue);
 
+var sector = document.getElementById("check");
+    console.log(sector)
+function showCheckboxes(){
+    var contentSector = document.getElementById("scontent")
+    console.log(contentSector)
+        contentSector.classList.toggle('toggleclass')
+}
+showCheckboxes()
+sector.addEventListener("click", showCheckboxes)
 
 //dropdown
 
