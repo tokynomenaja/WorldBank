@@ -239,52 +239,54 @@
               <div class="col-sm-5">
                 <div class="filter pt-2 pb-2">
                   
-                    <%if @ptf_1 != ""%>
+                  <%if @ptf_1 != ""%>
                     <%@params_ptf.each do |i|%>
-                    <%@ptf_1 = Ptf.all.find(i.to_i).title%>
-                    <p class="text-muted mb-1"><span>PTF &nbsp;:&nbsp; </span> <%= @ptf_1%></p>
-                  <%end%>
+                      <%@ptf_1 = Ptf.all.find(i.to_i).title%>
+                      <p class="text-muted mb-1"><span>PTF &nbsp;:&nbsp; </span> <%= @ptf_1%></p>
+                    <%end%>
                   <%end%>
 
                   <% if @montant_1 != "" %>
-                  <p class="text-muted mb-1"><span>Montant &nbsp;:&nbsp; </span> <%= @montant_1 %></p>
+                    <p class="text-muted mb-1"><span>Montant &nbsp;:&nbsp; </span> <%= @montant_1 %></p>
                   <%end%>
+
                   <%if @secteur_1 != ""%>
-                  <%@params_secteur.each do |i|%>
-                    <%@secteur_1 = Secteur.all.find(i.to_i).title%>
-                    <p class="text-muted mb-1"><span>Secteur &nbsp;:&nbsp; </span> <%= @secteur_1 %></p>
+                    <%@params_secteur.each do |i|%>
+                      <%@secteur_1 = Secteur.all.find(i.to_i).title%>
+                      <p class="text-muted mb-1"><span>Secteur &nbsp;:&nbsp; </span> <%= @secteur_1 %></p>
+                    <%end%>
                   <%end%>
-                  <% end %>
 
                   <% if @zone_1 != ""%>
                     <%@params_zone.each do |i|%>
-                    <%@zone_1 = Zone.all.find(i.to_i).title%>     
-                  <p class="text-muted mb-1"><span>Région &nbsp;:&nbsp; </span> <%= @zone_1 %></p>
-                  <% end %>
+                      <%@zone_1 = Zone.all.find(i.to_i).title%>     
+                      <p class="text-muted mb-1"><span>Région &nbsp;:&nbsp; </span> <%= @zone_1 %></p>
+                    <%end%>
                   <%end%>
 
                   <% if @filiere_1 != ""%>
                     <%@params_filiere.each do |i|%>
-                    <%@filiere_1 = Filiere.all.find(i.to_i).title%>
-                  <p class="text-muted mb-1"><span>Filière &nbsp;:&nbsp; </span> <%= @filiere_1 %></p>
-                  <% end %>
-                   <%end%>
-                   <%if @iga_1 != ""%>
+                      <%@filiere_1 = Filiere.all.find(i.to_i).title%>
+                      <p class="text-muted mb-1"><span>Filière &nbsp;:&nbsp; </span> <%= @filiere_1 %></p>
+                    <%end%>
+                  <%end%>
+
+                  <%if @iga_1 != ""%>
                     <%@params_iga.each do |i|%>
-                    <%@iga_1 = Iga.all.find(i.to_i).title%>
-                  <p class="text-muted mb-1"><span>IGA &nbsp;:&nbsp; </span> <%= @iga_1 %></p>
-                  <% end %>
+                      <%@iga_1 = Iga.all.find(i.to_i).title%>
+                      <p class="text-muted mb-1"><span>IGA &nbsp;:&nbsp; </span> <%= @iga_1 %></p>
+                    <%end%>
                   <%end%>
 
                   <% if @ben_1 != ""%>
-                  <p class="text-muted mb-1"><span>Bénéficiaire &nbsp;:&nbsp; </span> <%= @ben_1 %></p>
-                  <% end %>
+                    <p class="text-muted mb-1"><span>Bénéficiaire &nbsp;:&nbsp; </span> <%= @ben_1 %></p>
+                  <%end%>
 
                   <% if @appui_1 != ""%>
                     <%@params_appui.each do |i|%>
-                    <%@appui_1 = Appui.all.find(i.to_i).title%>
-                  <p class="text-muted mb-1"><span> Nature d'appui &nbsp;:&nbsp; </span> <%= @appui_1 %></p>
-                  <%end%>
+                      <%@appui_1 = Appui.all.find(i.to_i).title%>
+                      <p class="text-muted mb-1"><span> Nature d'appui &nbsp;:&nbsp; </span> <%= @appui_1 %></p>
+                    <%end%>
                   <%end%>
 
                 </div>
@@ -300,53 +302,52 @@
               <%end%>
 
               <%if @params_zone%>
-              <%@params_zone.each do |z|%>
-                <%@zone = Zoneprojet.all.where(zone_id: z.to_i)%>
-                <% @zone.each do |res| %> 
-                <% if res.projet.validation == true%>
-                  <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                    <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
-                  </div>
-                <%end%>
-                <%end%>
+                <%@params_zone.each do |z|%>
+                  <%@zone = Zoneprojet.all.where(zone_id: z.to_i)%>
+                    <% @zone.each do |res| %> 
+                      <% if res.projet.validation == true%>
+                        <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                        <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
+                        </div>
+                      <%end%>
+                    <%end%>
                 <%end%>
               <%end%>
 
               <%if @iga%> 
                 <% @iga.each do |res| %>  
-                <% if res.projet.validation == true%>
-                  <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                  <% if res.projet.validation == true%>
+                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                     <%= link_to "#{res.projet.nom_du_projet}",  projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
-                  </div>          
-                <%end%>
+                    </div>          
+                  <%end%>
                 <%end%>
               <%end%>
 
               <%if @params_filiere%>
-              <%@params_filiere.each do |f|%>
-                <%@filiere = Filiereprojet.all.where(filiere_id: f.to_i)%>
-                <% @filiere.each do |res| %>  
-                  <% if res.projet.validation == true%>
-                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                      <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
-                    </div>
-                  <%end%>
-                  <%end%>
+                <%@params_filiere.each do |f|%>
+                  <%@filiere = Filiereprojet.all.where(filiere_id: f.to_i)%>
+                    <% @filiere.each do |res| %>  
+                      <% if res.projet.validation == true%>
+                        <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                        <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
+                        </div>
+                      <%end%>
+                    <%end%>
                 <%end%>
               <%end%>
               
               <%if @params_secteur%>
-              <%@params_secteur.each do |i|%>
+                <%@params_secteur.each do |i|%>
                   <%@secteur = Secteurprojet.all.where(secteur_id: i.to_i)%>
-                  <%@secteur.each do |res|%>              
-                  <% if res.projet.validation == true%>
-                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                      <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
-                    </div>
-                  <%end%>   
-                  <%end%> 
-                  <%end%>  
-              <%end%>
+                    <%@secteur.each do |res|%>              
+                      <% if res.projet.validation == true%>
+                        <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                        <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
+                        </div>
+                      <%end%>   
+                    <%end%> 
+                <%end%>  
               <%end%>
             
               <%if @montant%>
@@ -359,12 +360,12 @@
 
               <%if @ptf%>
                 <% @ptf.each do |p| %>  
-                <% if res.projet.validation == true%>
-                  <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                  <% if res.projet.validation == true%>
+                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                     <%= link_to "#{p.nom_du_projet}", projet_path(p.id), target: 'blank', class: 'text-muted reshover' %>
-                          </div>        
+                    </div>        
+                  <%end%>
                 <%end%>
-              <%end%>
               <%end%>
             
 
@@ -373,8 +374,8 @@
                   <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                     <%= link_to "#{a.nom_du_projet}", projet_path(a.id), target: 'blank', class: 'text-muted reshover' %>
                         </div>        
-                 <%end%>
                 <%end%>
+              <%end%>
 
               <%if @ben%>
                 <% @ben.each do |b| %>  
