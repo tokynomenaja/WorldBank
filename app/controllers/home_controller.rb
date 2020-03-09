@@ -11,7 +11,9 @@ def index
        @secteur_1 = ""
        @filiere_1 = ""
        @fin_1 = ""
+
   #recherche controller globale(titre du projet)
+
       if params[:search]
         if params[:search] == 1
             redirect_to(root_path)
@@ -25,68 +27,76 @@ def index
 
       if params[:ptf_id]
         if params[:ptf_id] && params[:ptf_id] != "" 
-        if params[:ptf_id] == 1
+          if params[:ptf_id] == 1
                 redirect_to(root_path)
-        else  
-          @parameter = params[:ptf_id].downcase  
-          @ptf = Projet.all.where(ptf_id: params[:ptf_id], validation: true)
-          @ptf_1 = Ptf.find(params[:ptf_id]).title.to_s  
+            else  
+             @params_ptf = params[:ptf_id]
+               @params_ptf.each do |p|
+             @ptf = Projet.all.where(ptf_id: params[:ptf_id], validation: true)
+          @ptf_1 = Ptf.all.find(p.to_i).title 
         end 
-    end 
+      end 
+    end
   end
 
   #recherche controller Montant
-  if params[:montant]
-    if params[:montant] && params[:montant] != ""
-      if params[:montant] == 1
-      redirect_to(root_path)
+
+      if params[:montant]
+         if params[:montant] && params[:montant] != ""
+          if params[:montant] == 1
+            redirect_to(root_path)
     
-  else  
-    @parameter = params[:montant].downcase  
-    @montant = Projet.all.where(montant: params[:montant], validation: true) 
+        else  
+         @params_montant = params[:montant].downcase  
+       @montant = Projet.all.where(montant: params[:montant], validation: true) 
     
-  end 
-  end 
+      end 
+    end 
   end
+
   #recherche controller  appui
-    if params[:appui_id]
-    
-  if params[:appui_id] && params[:appui_id] != ""
-    
-  if params[:appui_id]== 1 
-      redirect_to(root_path) 
-    
-  else  
-    @parameter = params[:appui_id].downcase  
-    @appui = Projet.all.where(appui_id: params[:appui_id], validation: true)  
-    @appui_1 = Appui.find(params[:appui_id]).title.to_s
-  end 
-  end 
+
+      if params[:appui_id]  
+        if params[:appui_id] && params[:appui_id] != ""  
+          if params[:appui_id]== 1 
+            redirect_to(root_path)  
+          else  
+            @params_appui = params[:appui_id] 
+            @parameter.each do |a|
+            @appui = Projet.all.where(appui_id: params[:appui_id], validation: true)  
+            @appui_1 = Appui.all.find(a.to_i).title
+       end 
+      end
+    end 
   end
+
   #recherche controller  appui
+
   if params[:fin]
     if params[:fin] && params[:fin] != ""
         if params[:fin]== 1
       redirect_to(root_path)
     
-  else  
-    @parameter = params[:fin].downcase  
-    @fin = Projet.all.where(fin: params[:fin], validation: true)  
-  end 
-  end 
-end
+         else  
+         @parameter = params[:fin]
+         @fin = Projet.all.where(fin: params[:fin], validation: true)  
+      end 
+    end 
+  end
 
   #recherche controller filiere
 
     if params[:search_filiere]
-          if params[:search_filiere] && params[:search_filiere] != ""
-      if params[:search_filiere]== 1
+      if params[:search_filiere] && params[:search_filiere] != ""
+        if params[:search_filiere]== 1
           redirect_to(root_path)
         
-      else
-        @parameter = params[:search_filiere].downcase
-        @filiere = Filiereprojet.all.where(filiere_id: params[:search_filiere])
-        @filiere_1 = Filiere.find(params[:search_filiere]).title.to_s
+          else
+           @params_filiere = params[:search_filiere]
+           @params_filiere.each do |f|
+           @filiere = Filiereprojet.all.where(filiere_id: params[:search_filiere])
+           @filiere_1 = Filiere.all.find(f.to_i).title
+       end
       end
     end  
   end
@@ -95,57 +105,58 @@ end
 
         if params[:search_zone]
             if params[:search_zone] && params[:search_zone] != ""
-            if params[:search_zone]== 1
+              if params[:search_zone]== 1
                 redirect_to(root_path)
                 
               else
-                @parameter = params[:search_zone].downcase
+                @params_zone = params[:search_zone]
+                @params_zone.each do |z|
                 @zone = Zoneprojet.all.where(zone_id: params[:search_zone]) 
-                @zone_1 = Zone.find(params[:search_zone]).title.to_s              
+                @zone_1 = Zone.all.find(z.to_i).title             
           end
         end  
       end
+    end
   #recherche controller beneficiaire
 
         if params[:search_ben]
-            if params[:search_ben] && params[:search_ben] != ""
-          if params[:search_ben]== 1
-              redirect_to(root_path)
+          if params[:search_ben] && params[:search_ben] != ""
+            if params[:search_ben]== 1
+               redirect_to(root_path)
               
-            else
-              @parameter = params[:search_ben].downcase
-              @ben = Benefprojet.all.where(beneficiaire_id: params[:search_ben])   
-              @ben_1 = Beneficiaire.find(params[:search_ben]).title.to_s            
-        end
+              else
+                @parameter = params[:search_ben]
+                @ben = Benefprojet.all.where(beneficiaire_id: params[:search_ben])   
+                @ben_1 = Beneficiaire.find(params[:search_ben]).title.to_s            
+          end
         end  
       end
 
   #recherche controller IGA
 
       if params[:search_iga]
-            if params[:search_id] && params[:search_id] != ""
+        if params[:search_id] && params[:search_id] != ""
           if params[:search_iga]== 1
               redirect_to(root_path)
               
-          else
-            @parameter = params[:search_iga]
+            else
+            @params_iga = params[:search_iga]
             @iga = Igaprojet.all.where(iga_id: params[:search_iga])
             @iga_1 = Iga.find(params[:search_iga]).title.to_s
-          end 
+        end
       end
     end
   #recherche controller secteur
 
       if params[:search_secteur]
-            if params[:search_secteur] && params[:search_secteur] != ""
+        if params[:search_secteur] && params[:search_secteur] != ""
           if params[:search_secteur]== 1
               redirect_to(root_path)
-          else
-          
-              @parameter = params[:search_secteur]
-              @parameter.each do |i|
-                  @secteur = Secteurprojet.all.where(secteur_id: i.to_i)
-                  @secteur_1 = Secteur.all.find(i.to_i).title
+              else
+              @params_secteur = params[:search_secteur]
+              @params_secteur.each do |i|
+              @secteur = Secteurprojet.all.where(secteur_id: i.to_i)
+              @secteur_1 = Secteur.all.find(i.to_i).title
               end
           end
       end
