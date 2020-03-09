@@ -40,7 +40,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.boolean :is_admin, default: nil
       t.boolean :is_super_admin, default: false
       t.boolean :is_consultant, default: false
-      t.belongs_to :organisme, index: true
       
     end
 

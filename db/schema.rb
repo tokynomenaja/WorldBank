@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_04_130426) do
+ActiveRecord::Schema.define(version: 2020_03_09_063703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,16 +104,22 @@ ActiveRecord::Schema.define(version: 2020_03_04_130426) do
   end
 
   create_table "montants", force: :cascade do |t|
-    t.string "unite"
     t.integer "price"
+    t.bigint "unite_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["unite_id"], name: "index_montants_on_unite_id"
   end
 
   create_table "organismes", force: :cascade do |t|
-    t.string "nom"
+    t.bigint "ptf_id"
+    t.bigint "iga_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["iga_id"], name: "index_organismes_on_iga_id"
+    t.index ["ptf_id"], name: "index_organismes_on_ptf_id"
+    t.index ["user_id"], name: "index_organismes_on_user_id"
   end
 
   create_table "pemprojets", force: :cascade do |t|
@@ -179,6 +185,14 @@ ActiveRecord::Schema.define(version: 2020_03_04_130426) do
 
   create_table "secteurs", force: :cascade do |t|
     t.string "title"
+    t.bigint "montant_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["montant_id"], name: "index_secteurs_on_montant_id"
+  end
+
+  create_table "unites", force: :cascade do |t|
+    t.string "nom"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -197,9 +211,7 @@ ActiveRecord::Schema.define(version: 2020_03_04_130426) do
     t.boolean "is_admin"
     t.boolean "is_super_admin", default: false
     t.boolean "is_consultant", default: false
-    t.bigint "organisme_id"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["organisme_id"], name: "index_users_on_organisme_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

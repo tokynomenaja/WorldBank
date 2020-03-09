@@ -1,3 +1,6 @@
 class Organisme < ApplicationRecord
-	has_many :users
+	belongs_to :ptf, optional: true
+	belongs_to :iga, optional: true
+	belongs_to :user
+
 end

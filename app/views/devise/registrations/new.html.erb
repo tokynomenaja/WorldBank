@@ -28,7 +28,23 @@
       </div>
       <div class="col-md-6">
         <%= f.label :Organisme, "Organisme"%>
-        <%= f.select(:organisme_id, Organisme.all.collect { |o| [ o.nom, o.id ] }, {include_blank: "choisir"}, { :class => 'form-control' }) %>
+
+        <%@organism = []%>
+        <% Ptf.all.each do |p|%>
+
+          <%@organism << p%>
+
+        <%end%>
+        <% Iga.all.each do |i|%>
+
+          <%@organism << i%>
+
+        <%end%>
+        <select class="form-control" name="organisme">
+          <% @organism.each do |o|%>
+            <option value="<%= o.title%>"><%= o.title%></option>
+          <%end%>
+        </select>
       </div>
     </div>
 

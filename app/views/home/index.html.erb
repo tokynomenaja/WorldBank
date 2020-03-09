@@ -294,7 +294,7 @@
                 <%end%>
               <%end%>
               
-
+              <% if @parameter%>
               <%@parameter.each do |i|%>
                   <%@secteur = Secteurprojet.all.where(secteur_id: i.to_i)%>
                   <%@secteur.each do |res|%>              
@@ -304,6 +304,7 @@
                     </div>
                   <%end%>   
                   <%end%>   
+              <%end%>
               <%end%>
             
               <%if @montant%>

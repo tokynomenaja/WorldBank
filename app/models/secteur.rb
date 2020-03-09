@@ -5,5 +5,7 @@ class Secteur < ApplicationRecord
 	has_many :secteurfilieres
 	has_many :filieres, through: :secteurfilieres
 
+	belongs_to :montant, optional: true
+
 
 end
