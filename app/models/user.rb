@@ -14,7 +14,7 @@ class User < ApplicationRecord
 	    end
 	  end
 
-	belongs_to :organisme
+	has_one :organisme
 
 
 end

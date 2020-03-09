@@ -12,7 +12,6 @@ class CreateProjets < ActiveRecord::Migration[6.0]
       t.belongs_to :appui, index: true
       t.belongs_to :ptf, index: true
       t.references :bailleur, index: true
-      t.belongs_to :montant, index: true
 
       t.timestamps
     end

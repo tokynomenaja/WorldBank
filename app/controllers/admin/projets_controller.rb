@@ -110,7 +110,6 @@ class Admin::ProjetsController < ApplicationController
 
           if params[:modifier] == 'Enregistrer la modification'
             @project.update(validation: nil)
-
           end
         
          puts "*"*100

@@ -1,8 +1,7 @@
 class Projet < ApplicationRecord
         validates :objectif_generale_du_projet, presence: true
         validates :aspsp, presence: true
-
-        belongs_to :montant, optional: true
+        
         belongs_to :bailleur, optional: true, class_name: 'User'
         belongs_to :ptf, optional: true
         belongs_to :appui, optional: true

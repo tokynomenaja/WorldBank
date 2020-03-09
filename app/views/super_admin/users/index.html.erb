@@ -18,7 +18,8 @@
 			<tr>
 			<th scope="row"><%=b.id%></th>
 			<td><%=b.email%></td>
-			<td><a href="/super_admin/users/<%=b.id%>" class="btn btn-warning">Voir</a></td>
+			<td><a href="/super_admin/users/<%=b.id%>" class="btn btn-warning">Voir</a>
+			<a href="/super_admin/users/<%=b.id%>" data-method= "delete" class="btn btn-danger" data-confirm="Voulez-vous retirer cet utilisateur ?">Retirer</a></td>
 			<td>
 				<%if b.is_admin == true%>
 					<span class="btn btn-success">Bailleur</span>

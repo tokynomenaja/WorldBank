@@ -52,8 +52,9 @@
 						<input type="text" name="montant" placeholder="Montant" class="border-0" required="true">
 						<div class="border-left unit dropdown-toggle pl-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Unité</div>
 						<div class="dropdown-menu mt-cust">
-							<div class="dropdown-item">USD</div>
-							<div class="dropdown-item">Euro</div>
+							<% Unite.all.each do |u|%>
+								<div class="dropdown-item"><%= u.nom%></div>
+							<%end%>
 						</div>
 					</div>
 				</div>
@@ -177,7 +178,7 @@
 			</div>
 		</div>
 		<div class="container mb-2 mt-4">
-			Fichier du projet : <%= file_field_tag :files, required: true,value: "dfsfdsfd" , multiple: true%>
+			Documents du projet : <%= file_field_tag :files, required: true, multiple: true%>
 			
 		</div>
 		<div class="container mt-4">

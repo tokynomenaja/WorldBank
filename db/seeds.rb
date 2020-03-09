@@ -96,14 +96,8 @@ Ptf.destroy_all
       c12 = Ptf.create!(title: "PNUD", lien: 'https://www.mg.undp.org/', image_url: "/logoptf/pnud.jpeg")
       c13 = Ptf.create!(title: "FIDA", lien: 'https://www.ifad.org/en/web/operations/country/id/madagascar', image_url: "/logoptf/fida.jpeg")
       c14 = Ptf.create!(title: "CNUCED", lien: 'https://unctad.org/en/Pages/Home.aspx', image_url: "/cnuced11.jpg")
-    
-
 
 puts "Ptf Créé"
-
-
-
-
 
 Filiere.destroy_all
       c1 = Filiere.create!(title: "Grains secs")
@@ -299,7 +293,7 @@ puts "Beneficiaire créé"
                 Secteurprojet.create(projet_id: 1 , secteur_id: 10)
                 Secteurprojet.create(projet_id: 1 , secteur_id: 11)
 
-puts "projet créé1"
+puts "projet1"
  
 
  @pro2 = Projet.new(nom_du_projet: "Projet d'Appui à la Promotion des investissements - PAPI",
@@ -341,7 +335,7 @@ puts "projet créé1"
                 Secteurprojet.create(projet_id: 2 , secteur_id: 11)
 
 
-puts "projet créé2"
+puts "projet2"
  @pro3 = Projet.new(nom_du_projet: "Projet de Croissance Agricole et 
                     de Sécurisation Foncière - CASEF", 
                objectif_generale_du_projet: "Améliorer la sécurisation foncière et 
@@ -402,7 +396,7 @@ puts "projet créé2"
 
 
 
-puts "projet créé2"
+puts "projet3"
 
  @pro4 = Projet.new(nom_du_projet: "Formation Professionnelle d'Amélioration de la Production Agricole (FORMAPROD)", 
                    objectif_generale_du_projet: "FORMAPROD vise à revaloriser les métiers de l’agriculture par la 
@@ -445,13 +439,13 @@ puts "projet créé2"
                              Secteurprojet.create(projet_id: 4 , secteur_id: 10)
 
 
- puts "projet create4"
+ puts "projet4"
 
-Montant.destroy_all
-          m1 = Montant.create!(unite: "USD")
-          m1 = Montant.create!(unite: "EURO")
-          m1 = Montant.create!(unite: "CRYTOMONAIE")
- puts "projet créé4"
+Unite.destroy_all
+          Unite.create!(nom: "USD")
+          Unite.create!(nom: "EURO")
+          Unite.create!(nom: "CRYTOMONAIE")
+ puts "Unités créées"
 
 
 SecteurFiliere.destroy_all
@@ -468,3 +462,4 @@ SecteurFiliere.destroy_all
   SecteurFiliere.create!(secteur_id: 2, filiere_id: 28)
   SecteurFiliere.create!(secteur_id: 2, filiere_id: 21)
   SecteurFiliere.create!(secteur_id: 2, filiere_id: 29)
+
