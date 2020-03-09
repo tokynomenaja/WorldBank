@@ -79,34 +79,22 @@
             </h3>
             </header>
           </div>
-
-          <div class="fdk8rh-3 feYJJO">
-            <header class="fdk8rh-0 kYNMFW">
-              <h3 class="fdk8rh-1 eouleG">
-                 <div class= "fdk8rh-1 eouleG large">
-                      <div class="selectBox" onclick="showCheckboxes()">
-                            <select>
-                              <option> Secteur</option>
-                            </select>
-                      </div>
-                       <div id="checkboxes">
-                      <%Secteur.all.each do |s|%>
-                          <label >
-                            <%= check_box_tag("search_secteur[]",s.id) %>
-                            <%= s.title%></label>
-                      <%end%>
-                      </div> 
-                 </div>
-              </h3>
-            </header>
-          </div>
+        <div class="fdk8rh-3 feYJJO" id="check">
+          <header class="fdk8rh-0 kYNMFW">
+            <h3 class="fdk8rh-1 eouleG">
+              <div class= "fdk8rh-1 eouleG large select">
+                secteur
+              </div>
+            </h3>
+          </header>
+        </div>
           <div class="fdk8rh-3 feYJJO">
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
                  <div class="selectBox" onclick="appui()">
-                            <select>
-                              <option> Appui</option>
-                            </select>
+                      <select>
+                        <option> Appui</option>
+                      </select>
                       </div>
                        <div id="appui_id">
                       <%Appui.all.each do |a|%>
@@ -114,13 +102,10 @@
                             <%= check_box_tag("appui_id[]",a.id) %>
                             <%= a.title%></label>
                       <%end%>
-                      </div> 
+                  </div> 
               </h3>
-
-            </header>
-           
-          </div>
-
+          </header>
+        </div>
           <div class="fdk8rh-3 feYJJO">
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
@@ -165,61 +150,58 @@
               </h3>
             </header>
           </div>
+        <div class="fdk8rh-3 feYJJO">
+          <header class="fdk8rh-0 kYNMFW">
+            <h3 class="fdk8rh-1 eouleG">
+              <%= select_tag 'search_ben' , options_for_select(Beneficiaire.all.order(:title).collect{ |c| [c.title,c.id]}),:include_blank => "Bénéficiaire",class: "select fdk8rh-1 eouleG large" %></h3>
+          </header>
+        </div>
 
-          <div class="fdk8rh-3 feYJJO">
-            <header class="fdk8rh-0 kYNMFW">
-              <h3 class="fdk8rh-1 eouleG">
-                <%= select_tag 'search_ben' , options_for_select(Beneficiaire.all.order(:title).collect{ |c| [c.title,c.id]}),:include_blank => "Bénéficiaire",class: "select fdk8rh-1 eouleG large" %></h3>
-            </header>
-          </div>
+        <div class="fdk8rh-3 feYJJO" id="range-drop">
+          <header class="fdk8rh-0 kYNMFW">
+            <h3 class="fdk8rh-1 eouleG large select">
+              Montant
+            </h3>
+          </header>
+        </div>
 
-          <div class="fdk8rh-3 feYJJO select" id="range-drop">
-            <header class="fdk8rh-0 kYNMFW">
-              <h3 class="fdk8rh-1 eouleG">
-                Montant
-              </h3>
-            </header>
-<!--             <div class="dropdown-menu dropcust" aria-labelledby="dropdownMenuButton">
-              <span class="text-center">
-                <div>
-                  <input name="montant"  type = "range" min="0" max="100" class="custom-range" step="10" onchange="rangevalue.value=value"/>
-                </div>
-                <div>
-                  <output id="rangevalue">50</output><span>Millions USD</span>
-                </div>     
-              </span> 
-            </div> -->
-          </div>
+        <div class="fdk8rh-3 feYJJO">
+          <header class="fdk8rh-0 kYNMFW">
+            <h3 class="fdk8rh-1 eouleG large select">
+              <input type="text" name="fin" class="reset fdk8rh-1 eouleG" placeholder="MM/AAAA">
+           </h3>
+          </header>
+        </div>  
 
-          <div class="fdk8rh-3 feYJJO select">
-            <header class="fdk8rh-0 kYNMFW">
-              <h3 class="fdk8rh-1 eouleG">
-                <input type="text" name="fin" class="reset fdk8rh-1 eouleG" placeholder="MM/AAAA">
-             </h3>
-            </header>
-          </div>  
-
-          <div class="fdk8rh-3 feYJJO">
-            <header class="fdk8rh-0 kYNMFW">
-              <h3 class="fdk8rh-1 eouleG">
-                <% if current_user %> 
-                  <% if current_user.is_consultant == true || current_user.is_consultant == false || current_user.is_super_admin == true || current_user.is_admin == true%>
-                    <%= submit_tag "Rechercher", :class => 'btn-reset sear', :name => nil%>
-                  <%end%>
-                <%else%>
-                  <a href="<%= new_user_session_path %>" class="sear">Rechercher</a>
-                <%end%>
-             </h3>
-            </header>
-          </div>   
-       <%end%>
-      </div>
+        <div class="btn-filtre kYNMFW eouleG fdk8rh-0 rounded">
+          <% if current_user %> 
+            <% if current_user.is_consultant == true || current_user.is_consultant == false || current_user.is_super_admin == true || current_user.is_admin == true%>
+              <%= submit_tag "Rechercher", :class => 'btn-reset sear', :name => nil%>
+            <%end%>
+          <%else%>
+            <a href="<%= new_user_session_path %>" class="sear">Rechercher</a>
+          <%end%>
+        </div> 
+     <%end%>
     </div>
-  </div>
-</nav>
+  </nav>
     <!-- FIN FILTRE -->
 <div class="sc-11unfkk-2 fxFQyp">
-  <div class="range-content mx-auto rounded" id="range-content">
+  <div class="filter-drop mx-auto p-2 secteur-content rounded" id="scontent">
+    <div class="secteur-content">
+      <%Secteur.all.order(:title).each do |s|%>
+        <div class="fdk8rh-1 eouleG">
+          <label class="d-flex align-items-center">
+            <%= check_box_tag("search_secteur[]",s.id) %>
+            <%= s.title%>
+          </label>
+        </div>
+      <%end%>
+    </div>
+  </div> 
+</div>
+<div class="sc-11unfkk-2 fxFQyp">
+  <div class="filter-drop range-content mx-auto rounded fdk8rh-1 eouleG" id="range-content">
     <div class="middle mx-auto mt-2 mb-4">
       <div class="multi-range-slider">
         <div class="p-3 text-center">
@@ -428,7 +410,7 @@
             </div>
         </div>
       <% else %>
-      <div class="qjc24y-0 jMLWRH col-md-7 pt-5" >
+      <div class="qjc24y-0 jMLWRH col-md-7 pt-5 text-justify" >
        <p>
         La Plateforme Multi-Bailleurs pour le Secteur Privé, la Finance et l’Industrie Extractive est chargée, à
         un niveau technique, de la coordination des projets relatifs au développement du secteur privé, de la

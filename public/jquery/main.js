@@ -1,7 +1,6 @@
 
 var inputLeft = document.getElementById("input-left");
 var inputRight = document.getElementById("input-right");
-
 var thumbLeft = document.querySelector(".slider > .thumb.left");
 var thumbRight = document.querySelector(".slider > .thumb.right");
 var range = document.querySelector(".slider > .range");
@@ -31,6 +30,15 @@ setRightValue();
 inputLeft.addEventListener("input", setLeftValue);
 inputRight.addEventListener("input", setRightValue);
 
+var sector = document.getElementById("check");
+    console.log(sector)
+function showCheckboxes(){
+    var contentSector = document.getElementById("scontent")
+    console.log(contentSector)
+        contentSector.classList.toggle('toggleclass')
+}
+showCheckboxes()
+sector.addEventListener("click", showCheckboxes)
 
 //dropdown
 
@@ -41,66 +49,3 @@ function showHide(){
 }
 showHide()
 drop.addEventListener("click", showHide)
-
-// recheche multiselect
-
-var expanded = false;
-function showCheckboxes(){
-    var checkboxes = document.getElementById("checkboxes");
-            if (!expanded) {
-            checkboxes.style.display = "block";
-            expanded = true;
-             } else {
-            checkboxes.style.display = "none";
-            expanded = false;
-             }
-} 
-
-var expanded = false;
-function ptf(){
-    var checkboxes = document.getElementById("ptf_id");
-            if (!expanded) {
-            ptf_id.style.display = "block";
-            expanded = true;
-             } else {
-            ptf_id.style.display = "none";
-            expanded = false;
-             }
-} 
-
-var expanded = false;
-function filiere(){
-    var checkboxes = document.getElementById("filiere_id");
-            if (!expanded) {
-            filiere_id.style.display = "block";
-            expanded = true;
-             } else {
-            filiere_id.style.display = "none";
-            expanded = false;
-             }
-} 
-
-var expanded = false;
-function appui(){
-    var checkboxes = document.getElementById("appui_id");
-            if (!expanded) {
-            appui_id.style.display = "block";
-            expanded = true;
-             } else {
-            appui_id.style.display = "none";
-            expanded = false;
-             }
-} 
-
-var expanded = false;
-function zone(){
-    var checkboxes = document.getElementById("zone_id");
-            if (!expanded) {
-            zone_id.style.display = "block";
-            expanded = true;
-             } else {
-            zone_id.style.display = "none";
-            expanded = false;
-             }
-} 
-
