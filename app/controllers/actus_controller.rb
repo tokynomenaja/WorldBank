@@ -1,5 +1,6 @@
 class ActusController < ApplicationController
   def index
+
   end
 
   def new
