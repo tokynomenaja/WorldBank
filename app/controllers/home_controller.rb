@@ -62,7 +62,7 @@ def index
             redirect_to(root_path)  
           else  
             @params_appui = params[:appui_id] 
-            @parameter.each do |a|
+            @params_appui.each do |a|
             @appui = Projet.all.where(appui_id: params[:appui_id], validation: true)  
             @appui_1 = Appui.all.find(a.to_i).title
        end 

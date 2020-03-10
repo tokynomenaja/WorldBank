@@ -56,28 +56,27 @@
     <nav class="z0fved-5 gOGYTl">
       <div class="z0fved-3 kBhqKR">
         <div class="z0fved-1 jfmoVU">
-          <div class="fdk8rh-3 feYJJO" title="Partenaire Technique et Financier">
+          <div class="fdk8rh-3 feYJJO" title="Partenaire Technique et Financier" id="ptf-listener">
             <header class="fdk8rh-0 kYNMFW">
-               <%= form_tag(root_path, :method => "get",   
-                   class: 'navbar-form navbar-left') do %> 
+               <%= form_tag(root_path, :method => "get", class: 'navbar-form navbar-left') do %> 
               <h3  class= "fdk8rh-1 eouleG">
-                 <div class= "fdk8rh-1 eouleG large">
-                      <div class="selectBox" onclick="ptf()">
-                            <select>
-                              <option> ptf</option>
-                            </select>
-                      </div>
-                       <div id="ptf_id">
-                      <%Ptf.all.each do |p|%>
-                          <label >
-                            <%= check_box_tag("ptf_id[]",p.id) %>
-                            <%= p.title%></label>
-                      <%end%>
-                      </div> 
+                 <div class= "fdk8rh-1 eouleG large select">
+                  PTF
                  </div>
-
-            </h3>
+              </h3>
             </header>
+          </div>
+          <div class="ptf-content filter-drop">
+            <div class="mx-auto p-2 rounded" id="ptf-check">
+              <%Ptf.all.each do |p|%>
+                <div class="fdk8rh-1 eouleG">
+                  <label class="d-flex align-items-center">
+                    <%= check_box_tag("ptf_id[]",p.id) %>
+                    <%= p.title%>   
+                  </label>
+                </div>
+              <%end%>
+            </div>
           </div>
         <div class="fdk8rh-3 feYJJO" id="check">
           <header class="fdk8rh-0 kYNMFW">
@@ -87,43 +86,62 @@
               </div>
             </h3>
           </header>
-        </div>
-          <div class="fdk8rh-3 feYJJO">
+          </div>
+          <div class="secteur-content filter-drop">
+            <div class="mx-auto p-2 rounded" id="scontent">
+              <%Secteur.all.order(:title).each do |s|%>
+                <div class="fdk8rh-1 eouleG">
+                  <label class="d-flex align-items-center">
+                    <%= check_box_tag("search_secteur[]",s.id) %>
+                    <%= s.title%>
+                  </label>
+                </div>
+              <%end%>
+            </div> 
+          </div>
+          <div class="fdk8rh-3 feYJJO" id="appui-listener">
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
-                 <div class="selectBox" onclick="appui()">
-                      <select>
-                        <option> Appui</option>
-                      </select>
-                      </div>
-                       <div id="">
-                      <%Appui.all.each do |a|%>
-                          <label >
-                            <%= check_box_tag("appui_id[]",a.id) %>
-                            <%= a.title%></label>
-                      <%end%>
-                  </div> 
-              </h3>
-          </header>
-        </div>
-          <div class="fdk8rh-3 feYJJO">
-            <header class="fdk8rh-0 kYNMFW">
-              <h3 class="fdk8rh-1 eouleG">
-                  <div class="selectBox" onclick="filiere()">
-                            <select>
-                              <option> Filiere</option>
-                            </select>
-                      </div>
-                       <div id="filiere_id">
-                      <%Filiere.all.each do |f|%>
-                          <label >
-                            <%= check_box_tag("search_filiere[]",f.id) %>
-                            <%= f.title%></label>
-                      <%end%>
-                      </div> 
+                <div class= "fdk8rh-1 eouleG large select">
+                  Appui
+                </div>
               </h3>
             </header>
           </div>
+          <div class="appui-content filter-drop">
+            <div class="mx-auto p-2 rounded" id="appui-check">
+              <%Appui.all.each do |a|%>
+                <div class="fdk8rh-1 eouleG">                
+                    <label class="d-flex align-items-center">
+                      <%= check_box_tag("appui_id[]",a.id) %>
+                      <%= a.title%>
+                    </label>
+                </div>
+              <%end%>
+            </div>
+          </div> 
+          <div class="fdk8rh-3 feYJJO" id="filiere-listener">
+            <header class="fdk8rh-0 kYNMFW">
+              <h3 class="fdk8rh-1 eouleG">
+                <div class= "fdk8rh-1 eouleG large select">
+                  Filière
+                </div>
+              </h3>
+            </header>
+          </div>
+          <div class="filiere-content filter-drop" id="filiere-check">
+            <div class="mx-auto p-2 rounded">
+                <%Filiere.all.each do |f|%>
+                  <div class="fdk8rh-1 eouleG">
+                    <label class="d-flex align-items-center">
+                      <%= check_box_tag("search_filiere[]",f.id) %>
+                      <%= f.title%>
+                    </label>
+                  </div>
+                <%end%>
+            </div>
+          </div>
+
           <div class="fdk8rh-3 feYJJO" title="Institutions Gouvernementales Associées">
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
@@ -132,23 +150,26 @@
             </header>
           </div>
 
-          <div class="fdk8rh-3 feYJJO">
+          <div class="fdk8rh-3 feYJJO" id="zone-listener">
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
-                    <div class="selectBox" onclick="zone()">
-                            <select>
-                              <option> Zone</option>
-                            </select>
-                      </div>
-                       <div id="zone_id">
-                      <%Zone.all.each do |z|%>
-                          <label >
-                            <%= check_box_tag("search_zone[]",z.id) %>
-                            <%= z.title%></label>
-                      <%end%>
-                      </div> 
+                <div class= "fdk8rh-1 eouleG large select">
+                  Zone
+                </div>
               </h3>
             </header>
+            <div class="filiere-content zone-content filter-drop" id="zone-check">
+              <div class="mx-auto p-2 rounded">
+                <%Zone.all.each do |z|%>
+                  <div class="fdk8rh-1 eouleG">
+                    <label class="d-flex align-items-center">
+                      <%= check_box_tag("search_zone[]",z.id) %>
+                      <%= z.title%>
+                    </label>
+                  </div>
+                <%end%>
+              </div>
+            </div>
           </div>
         <div class="fdk8rh-3 feYJJO">
           <header class="fdk8rh-0 kYNMFW">
@@ -164,14 +185,59 @@
             </h3>
           </header>
         </div>
-
-        <div class="fdk8rh-3 feYJJO">
+          <div class="filter-drop range-content mx-auto rounded eouleG" id="range-content">
+            <div class="middle mx-auto mt-2 mb-4">
+              <div class="multi-range-slider">
+                <div class="p-3 text-center">
+                  Entre
+                <output id="rangevalueleft">80</output><span> millions et </span>
+                <output id="rangevalueright">320</output><span> millions de USD</span>
+                </div>
+                <input type="range" name="" id="input-left" min="0" max="400" step="80" value="80" onchange="rangevalueleft.value=value">
+                <input type="range" name="" id="input-right" min="0" max="400" step="80" value="320" onchange="rangevalueright.value=value">
+                <div class="slider">
+                  <div class="track"></div>
+                  <div class="range"></div>
+                  <div class="thumb left"></div>
+                  <div class="thumb right"></div>
+                </div>
+                  <div class="d-flex mt-2 valeur">
+                    <span>0</span>
+                    <span>80</span>
+                    <span class="text-right pr-4">160</span>
+                    <span class="text-right pr-2">240</span>
+                    <span class="text-right">320</span>
+                    <span class="text-right">400</span>
+                  </div>
+              </div>
+            </div>
+          </div>
+        <div class="fdk8rh-3 feYJJO" id="year-drop">
           <header class="fdk8rh-0 kYNMFW">
             <h3 class="fdk8rh-1 eouleG large select">
-              <input type="text" name="fin" class="reset fdk8rh-1 eouleG" placeholder="MM/AAAA">
+              Periode
            </h3>
           </header>
         </div>  
+        <div class="filter-drop range-year-content mx-auto rounded eouleG" id="range-year-content">
+          <div class="middle mx-auto mt-2 mb-4">
+            <div class="multi-range-slider">
+              <div class="p-3 text-center">
+                Entre l'année 
+              <output id="rangevalueleftyear">2005</output><span> et </span>
+              <output id="rangevaluerightyear">2030</output>
+              </div>
+              <input type="range" name="" id="input-year-left" min="2005" max="2030" value="2005" onchange="rangevalueleftyear.value=value">
+              <input type="range" name="" id="input-year-right" min="2005" max="2030" value="2030" onchange="rangevaluerightyear.value=value">
+              <div class="y-slider">
+                <div class="y-track"></div>
+                <div class="y-range"></div>
+                <div class="y-thumb y-left"></div>
+                <div class="y-thumb y-right"></div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div class="btn-filtre kYNMFW eouleG fdk8rh-0 rounded">
           <% if current_user %> 
@@ -187,47 +253,6 @@
   </nav>
     <!-- FIN FILTRE -->
 <div class="sc-11unfkk-2 fxFQyp">
-  <div class="filter-drop mx-auto p-2 secteur-content rounded" id="scontent">
-    <div class="secteur-content">
-      <%Secteur.all.order(:title).each do |s|%>
-        <div class="fdk8rh-1 eouleG">
-          <label class="d-flex align-items-center">
-            <%= check_box_tag("search_secteur[]",s.id) %>
-            <%= s.title%>
-          </label>
-        </div>
-      <%end%>
-    </div>
-  </div> 
-</div>
-<div class="sc-11unfkk-2 fxFQyp">
-  <div class="filter-drop range-content mx-auto rounded fdk8rh-1 eouleG" id="range-content">
-    <div class="middle mx-auto mt-2 mb-4">
-      <div class="multi-range-slider">
-        <div class="p-3 text-center">
-          Entre
-        <output id="rangevalueleft">80</output><span> millions et </span>
-        <output id="rangevalueright">320</output><span> millions de USD</span>
-        </div>
-        <input type="range" name="" id="input-left" min="0" max="400" step="80" value="80" onchange="rangevalueleft.value=value">
-        <input type="range" name="" id="input-right" min="0" max="400" step="80" value="320" onchange="rangevalueright.value=value">
-        <div class="slider">
-          <div class="track"></div>
-          <div class="range"></div>
-          <div class="thumb left"></div>
-          <div class="thumb right"></div>
-        </div>
-          <div class="d-flex mt-2 valeur">
-            <span>0</span>
-            <span>80</span>
-            <span class="text-right pr-4">160</span>
-            <span class="text-right pr-2">240</span>
-            <span class="text-right">320</span>
-            <span class="text-right">400</span>
-          </div>
-      </div>
-    </div>
-  </div>
   <header class="">
     <div class="qjc24y-1 hlIrlm row no-gutters align-items-start">
       <% if current_user %> 
@@ -364,7 +389,6 @@
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                     <%= link_to "#{p.nom_du_projet}", projet_path(p.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>        
-                  <%end%>
                 <%end%>
               <%end%>
             
