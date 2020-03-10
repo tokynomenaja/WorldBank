@@ -4,6 +4,9 @@ var inputRight = document.getElementById("input-right");
 var thumbLeft = document.querySelector(".slider > .thumb.left");
 var thumbRight = document.querySelector(".slider > .thumb.right");
 var range = document.querySelector(".slider > .range");
+var values = [0,5,10,40,100,"+"];
+var outputLeft = document.getElementById('output-left');
+var outputRight = document.getElementById('output-right');
 
 function setLeftValue(){
     var _this = inputLeft,
@@ -29,6 +32,18 @@ function setRightValue(){
 setRightValue();
 inputLeft.addEventListener("input", setLeftValue);
 inputRight.addEventListener("input", setRightValue);
+
+// VALEUR DE LA RANGE
+function valueLeft(){
+    outputLeft.innerHTML = values[this.value];
+};
+function valueRight(){
+    outputRight.innerHTML = values[this.value];
+};
+inputRight.addEventListener('input', valueRight)
+inputLeft.addEventListener('input', valueLeft)
+
+//FIN RANGE
 
 var drop = document.getElementById("range-drop")
 function showHide(){
@@ -142,3 +157,4 @@ zone.addEventListener("click", showZoneCheckboxes)
 
 // }
 // window.addEventListener('click', exPle)
+
