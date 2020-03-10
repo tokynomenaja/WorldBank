@@ -5,7 +5,7 @@
 <div class="logo">
     <div class="pic">
       <div class="imge-rep d-flex align-items-center">
-      <%= image_tag "#{@user.organisme.ptf.image_url}"%>
+      <%= image_tag "/#{@user.organisme.ptf.image_url}"%>
       </div>
     </div>
 <div class="container">
@@ -22,8 +22,12 @@
 		    	<%=@user.last_name%></p>
 		    <p><span>Email :</span>
 		    	<%=@user.email%></p>
-		    <p><span>Organisme :</span>
-		    	<%=@user.organisme.nom%></p>
+		    <p><span>Vous êtes dans le</span>
+		    	<%if @user.organisme.ptf%>
+		    		ptf : <%=@user.organisme.ptf.title%></p>
+		    	<%else%>
+		    		iga : <%=@user.organisme.iga.title%></p>
+		    	<%end%>
 		    <%if @user.is_admin == true%>
 		    	<p><span class="btn btn-success">Vous êtes bailleur</span></p>
 		    <% elsif  @user.is_consultant == true%>
