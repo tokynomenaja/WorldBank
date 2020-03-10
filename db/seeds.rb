@@ -164,37 +164,35 @@ Iga.destroy_all
 puts "iga créé"
 
 Zone.destroy_all
-      z1 = Zone.create!(title:"Analamanga")
-      z2 = Zone.create!(title:"Bongolava")
-      z3 = Zone.create!(title:"Itasy")
-      z4 = Zone.create!(title:"Vakinakaratra")
-      z5 = Zone.create!(title:"Amoron'i Mania")
-
-      z6 = Zone.create!(title:"Atsimo Antsinana")                   
-      z7 = Zone.create!(title:"Haute Matsiatra")
-      z8 = Zone.create!(title:"Vatovavy-Fitovinany")
-      z9 = Zone.create!(title:"Ihorombe")                        
-
-
-
+      z24 = Zone.create(title:"National")
       z10 = Zone.create!(title:"Alaotra Mangoro")
-
+      z5 = Zone.create!(title:"Amoron'i Mania")
+      z1 = Zone.create!(title:"Analamanga")
       z11 = Zone.create!(title:"Analanjirofo")
-      z12 = Zone.create!(title:"Atsinanana")
-      z13 = Zone.create!(title:"Betsiboka")
-      z14 = Zone.create!(title:"Boeny")
-      z15= Zone.create!(title:"Melaky")
-
-      z16 = Zone.create!(title:"Sofia")
       z17 = Zone.create!(title:"Androy")
       z18 = Zone.create!(title:"Anosy")
       z19 = Zone.create!(title:"Atsimo Andrefana")
-      z20 = Zone.create!(title:"Menabe")
-
+      z6 = Zone.create!(title:"Atsimo Antsinana")                   
+      z12 = Zone.create!(title:"Atsinanana")
+      z13 = Zone.create!(title:"Betsiboka")
+      z14 = Zone.create!(title:"Boeny")
+      z2 = Zone.create!(title:"Bongolava")
       z21 = Zone.create!(title:"Diana")
+      z7 = Zone.create!(title:"Haute Matsiatra")
+      z9 = Zone.create!(title:"Ihorombe")                        
+      z3 = Zone.create!(title:"Itasy")
+      z15= Zone.create!(title:"Melaky")
+      z20 = Zone.create!(title:"Menabe")
       z22 = Zone.create!(title:"Sava")
-      z23 = Zone.create!(title:"Sainte Marie")
-      z24 = Zone.create(title:"National")
+      z16 = Zone.create!(title:"Sofia")
+      z4 = Zone.create!(title:"Vakinakaratra")
+      z8 = Zone.create!(title:"Vatovavy-Fitovinany")
+
+
+
+
+
+
 puts "zone créée"
 
 
