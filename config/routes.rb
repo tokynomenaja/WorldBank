@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
  
     resources :actus
-    resources :publications
     resources :apropos
     resources :contacts
+    resources :publications
 
     	namespace :admin do
 	  	resources :projets
@@ -14,6 +14,7 @@ Rails.application.routes.draw do
  #  resources :filiere
 
  	  namespace :super_admin do
+      resources :publications
 	    resources :users   
 	    resources :projets
   	end
