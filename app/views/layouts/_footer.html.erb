@@ -40,8 +40,13 @@
 <section>
   <div class="container">
     <div class="d-flex mb-5">
-      <a href="#" class="image-c"><img src="logo/afd11.jpg" alt=""></a>
-      <a href="#" class="image-c"><img src="logo/cnuced11.jpg" alt=""></a>
+      <%Ptf.all.order(:title).each do |p|%>
+
+        <a href="https://<%= p.lien.remove('https://')%>" class="image-c" target="_blank"><img src="<%= p.image_url%>" alt=""></a>
+
+      <%end%>
+
+     <!--  <a href="#" class="image-c"><img src="logo/cnuced11.jpg" alt=""></a>
       <a href="#" class="image-c"><img src="logo/giz11.jpg" alt=""></a>
       <a href="#" class="image-c"><img src="logo/helvetas1.jpg" alt=""></a>
       <a href="#" class="image-c"><img src="logo/imf1.jpg" alt=""></a>
@@ -50,7 +55,7 @@
       <a href="#" class="image-c"><img src="logo/pnud1.jpg" alt=""></a>
       <a href="#" class="image-c"><img src="logo/ue1.jpg" alt=""></a>
       <a href="#" class="image-c"><img src="logo/unicef1.jpg" alt=""></a>
-      <a href="#" class="image-c"><img src="logo/USAID1.jpg" alt=""></a>
+      <a href="#" class="image-c"><img src="logo/USAID1.jpg" alt=""></a> -->
     </div>
   </div>
 </section>

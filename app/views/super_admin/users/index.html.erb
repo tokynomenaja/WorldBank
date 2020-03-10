@@ -59,12 +59,9 @@
 			
 
 			<%= form_for ba, url: super_admin_user_path(ba.id), method: :put do |f| %>
-				<td><input type="submit" name="valider" value="Bailleur"></td>
-				<td><input type="submit" name="valider" value="Consultant"></td>
-
+				<td><%= f.submit 'valider', name: 'valider', value: 'Bailleur', class: 'btn btn-success'%></td>
+				<td><%= f.submit 'valider', name: 'valider', value: 'Consultant', class: 'btn btn-primary'%></td>			
 			<%end%>
-			<!-- <td><a href="/super_admin/users/<%=ba.id%>"  data-method="put" class="btn btn-warning"><input type="submit" name="valider" value="Bailleur"></a></td>
-			<td><a href="/super_admin/users/<%=ba.id%>"  data-method="put" class="btn btn-warning"><input type="submit" name="valider" value="Consultant"></a></td> -->
 			<td><a href="/super_admin/users/<%=ba.id%>" class="btn btn-warning">Voir</a></td>
 		</tr>
 			<%end%>

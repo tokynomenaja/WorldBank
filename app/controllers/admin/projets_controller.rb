@@ -11,13 +11,13 @@ class Admin::ProjetsController < ApplicationController
     end
     def create
               @project = Projet.create!(nom_du_projet: params[:nom_du_projet],
-                ptf_id: params[:ptf_id],
+                ptf_id: params[:ptf],
                 appui_id: params[:appui],
                 objectif_generale_du_projet: params[:objectif_generale_du_projet],
                 aspsp: params[:aspsp],
-                partenaire_d_implementaton: params[:partenaire_d_implementaton],
+                partenaire_d_implementaton: params[:partenaire_d_implementaton],comment: params[:comment],
                 debut_du_projet: params[:debut_du_projet],
-                fin: params[:fin],
+                fin: params[:fin], siteweb: params[:site],
                 bailleur_id: current_user.id)
 
                 if params[:creer] == 'Enregistrer'

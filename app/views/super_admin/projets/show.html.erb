@@ -15,7 +15,9 @@
   <div class="logo">
     <div class="pic">
       <div class="imge-rep d-flex align-items-center">
-      <%= image_tag "#{@projet.ptf.image_url}"%>
+        <%if @projet.ptf.image_url%>
+          <img src="/<%= @projet.ptf.image_url%>">
+        <%end%>
       </div>
     </div>
     <div class="d-flex align-items-center h-text">
@@ -69,10 +71,10 @@
           </p>
   
         
-      <p><span class="attr">Lien du site : </span>
-        <% if @projet.ptf.lien%>
+      <p><span class="attr">Site web : </span>
+        <% if @projet.siteweb%>
           <span class="word">
-            <a href="https://<%= @projet.ptf.lien.remove('https://')%>"><%= @projet.ptf.lien%></a>
+            <a href="https://<%= @projet.siteweb.remove('https://')%>"><%= @projet.siteweb%></a>
           </span>
         <%else%>
           <span>Pas de lien</span>
@@ -134,24 +136,28 @@
               <% end %>
           </div>
 
-          <p><span class="attr">Montant : </span>
-           <p class="mb-3"><%=@projet.montant%> Millions USD</p>
-          </p>
+          <% @projet.montants.each do |m|%>
+            <p><span class="attr">Montant  pour le secteur <%= m.secteur.title.downcase%> :</span>
+                <p class="mb-3"><%= m.price %> <%= m.unite.nom%></p>
+            </p>
+
+          <%end%>
         </div>
         <div class="col-md-6 list">
           <p class="mb-3"><span class="attr">Nature de l'appui : </span><%=@projet.appui.title%></p>
           <p class="mb-3"><span class="attr">Début : </span><%=@projet.debut_du_projet%></p>
 
           <p class="mb-3"><span class="attr">Fin : </span><%=@projet.fin%></p>
-          <p class="mb-3"><span class="attr">Alignement aux priorités du plan Emergence de Madagascar : </span><p>  </span><% @projet.pemprojets.each do |p|%>
+          <p class="mb-3"><span class="attr">Alignement aux priorités du plan Emergence de Madagascar : </span><p></span><% @projet.pemprojets.each do |p|%>
                 <p> <%=p.pem.title%></p>
             <%end%></p></p>
+
           <%if @projet.files.attached?%>
             <%@projet.files.each do|file|%> 
             <p><span class="attr">Fichier : </span><%= link_to file.filename, rails_blob_path(file, disposition: "attachement") %></p>
             <%end%>
         <%end%>
-           <p class="mb-3"><span class="attr">Créé par : </span><%=@projet.bailleur.first_name%></p>
+       
         </div>
     </div>
     <div class="text-right">

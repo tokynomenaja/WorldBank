@@ -15,7 +15,7 @@
   <div class="logo">
     <div class="pic">
       <div class="imge-rep d-flex align-items-center">
-      <%= image_tag "/giz.jpg"%>
+        <img src="/<%= @projet.ptf.image_url%>">
       </div>
     </div>
     <div class="d-flex align-items-center h-text">
@@ -69,13 +69,13 @@
           </p>
   
         
-      <p><span class="attr">Lien du site : </span>
-        <% if @projet.ptf.lien%>
+      <p><span class="attr">Site web : </span>
+        <% if @projet.siteweb%>
           <span class="word">
-            <a href="https://<%= @projet.ptf.lien.remove('https://')%>"><%= @projet.ptf.lien%></a>
+            <a href="https://<%= @projet.siteweb.remove('https://')%>"><%= @projet.siteweb%></a>
           </span>
         <%else%>
-          <span>Pas de lien</span>
+          <span>Pas de site</span>
         <%end%>
       </p>
       </div>
@@ -134,9 +134,12 @@
               <% end %>
           </div>
 
-          <p><span class="attr">Montant : </span>
-           <p class="mb-3"><%=@projet.montant%> Millions USD</p>
-          </p>
+          <% @projet.montants.each do |m|%>
+            <p><span class="attr">Montant  pour le secteur <%= m.secteur.title.downcase%> :</span>
+                <p class="mb-3"><%= m.price %> <%= m.unite.nom%></p>
+            </p>
+
+          <%end%>
         </div>
         <div class="col-md-6 list">
           <p class="mb-3"><span class="attr">Nature de l'appui : </span><%=@projet.appui.title%></p>

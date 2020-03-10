@@ -7,6 +7,8 @@ class CreateProjets < ActiveRecord::Migration[6.0]
       t.string :partenaire_d_implementaton
       t.string :debut_du_projet
       t.string :fin 
+      t.text   :comment
+      t.string :siteweb
 
       t.boolean :validation, default: false
       t.belongs_to :appui, index: true

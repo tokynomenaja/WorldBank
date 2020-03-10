@@ -58,6 +58,16 @@
 			</div>
 		</div>
 
+		<div class="container">
+			<h6 class="table">Partenaire Technique Financier</h6>
+			<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
+		</div>
+
+		<div class="container">
+			<h6 class="table">Nature de l'appui</h6>
+			<%= select_tag 'appui', options_for_select(Appui.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
+		</div>
+
 		<div class="container mb-2">
 			<a class="table">
 				Secteurs
@@ -89,10 +99,6 @@
 				}
 
 			</script>
-			<div class="container">
-				<h6 class="table">Appui</h6>
-				<%= select_tag 'appui', options_for_select(Appui.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
-			</div>
 
 			<div class="container mb-2 mt-2">
 			<a class="table">
@@ -189,6 +195,12 @@
 		</div>
 		<div class="container mb-2 mt-4">
 			Documents du projet : <%= file_field_tag :files, required: true, multiple: true%>
+			<p><span>Site web :</span><input type="text" name="site" class="form-control"></p>
+			
+		</div>
+		<div class="container mb-2 mt-4">
+			<label for="comment">Commentaire :</label>
+			<textarea name="comment" class="form-control"  rows="5" placeholder="Commentaire qui s'adresse à l'administrateur"></textarea>
 			
 		</div>
 		<div class="container mt-4">
