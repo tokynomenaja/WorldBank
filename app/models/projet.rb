@@ -5,6 +5,7 @@ class Projet < ApplicationRecord
         belongs_to :bailleur, optional: true, class_name: 'User'
         belongs_to :ptf, optional: true
         belongs_to :appui, optional: true
+        has_many :montants
 # relation de table entre projet et secteur a travers benefprojet
         has_many :benefprojets
         has_many :beneficiaires, through: :benefprojets

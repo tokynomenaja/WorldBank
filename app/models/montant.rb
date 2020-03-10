@@ -1,4 +1,5 @@
 class Montant < ApplicationRecord
-	has_many :secteurs
-	belongs_to :unite, optional: true
+	belongs_to :secteur
+	belongs_to :projet
+	belongs_to :unite
 end

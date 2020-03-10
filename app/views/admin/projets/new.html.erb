@@ -46,17 +46,14 @@
 					<input type="date" name="fin" class="form-control" required="true">
 				</div>
 				<div>
-					<h6 class="table">Montant</h6>
-
-					<div class="form-control d-flex">
-						<input type="text" name="montant" placeholder="Montant" class="border-0" required="true">
-						<div class="border-left unit dropdown-toggle pl-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Unité</div>
-						<div class="dropdown-menu mt-cust">
-							<% Unite.all.each do |u|%>
-								<div class="dropdown-item"><%= u.nom%></div>
-							<%end%>
+					<h6 class="table">Montant pour le secteur :</h6>
+					<% Secteur.all.each do |s|%>
+						<div class="form-control" id="montant<%=s.id%>" style="display: none;">
+							<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title%>" class="border-0">
+							<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "border-left unit dropdown-toggle pl-2"%>
 						</div>
-					</div>
+
+					<%end%>
 				</div>
 			</div>
 		</div>
@@ -70,7 +67,7 @@
 					<div class="row">
 						<% Secteur.all.order(:title).each do |c| %>
 							<div class="col-md-4">
-								<%= check_box_tag("secteur_ids[]",c.id) %>
+								<%= check_box_tag("secteur_ids[]",c.id, false, id: :"s#{c.id}",:onclick => "check(#{c.id})")%>
 								<%= c.title%>
 							</div> 
 						<% end %>
@@ -79,9 +76,22 @@
 				</div>
 			</div>
 
+			<script type="text/javascript">
+				function check(x){
+					var m = document.getElementById('montant'+x);
+					if(m.style.display == "block"){
+						m.style.display = "none";
+						m.classList.remove('d-flex');
+					}else{
+						m.style.display = "block";
+						m.classList.add('d-flex');
+					}
+				}
+
+			</script>
 			<div class="container">
 				<h6 class="table">Appui</h6>
-				<%= select_tag 'appui_id', options_for_select(Appui.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
+				<%= select_tag 'appui', options_for_select(Appui.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
 			</div>
 
 			<div class="container mb-2 mt-2">
@@ -182,18 +192,11 @@
 			
 		</div>
 		<div class="container mt-4">
-			<input type="submit" name="creer" value="Enregistrer" class="btn btn-secondary">
-			<input type="submit" name="creer" value="Publier" class="sc-eerKOB cfnPHQ">
+			<%= submit_tag :creer, :value => "Enregistrer", :class => "btn btn-secondary"%>
+			<%= submit_tag :creer, :value => "Publier", :class => "sc-eerKOB cfnPHQ"%>
+			<!-- <input type="submit" name="creer" value="Enregistrer" class="btn btn-secondary">
+			<input type="submit" name="creer" value="Publier" class="sc-eerKOB cfnPHQ"> -->
 			
 		</div>
 	<% end %>
 </div>
-
-<script type="text/javascript">
-	
-	var element
-    element = CKEDITOR.document.find('.obj');
-    console.log('test');
-    var xxx = document.getElementById("cke_1_contents");
-    console.log(xxx);
-</script>

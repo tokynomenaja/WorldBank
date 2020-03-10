@@ -106,8 +106,12 @@ ActiveRecord::Schema.define(version: 2020_03_09_063703) do
   create_table "montants", force: :cascade do |t|
     t.integer "price"
     t.bigint "unite_id"
+    t.bigint "projet_id"
+    t.bigint "secteur_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["projet_id"], name: "index_montants_on_projet_id"
+    t.index ["secteur_id"], name: "index_montants_on_secteur_id"
     t.index ["unite_id"], name: "index_montants_on_unite_id"
   end
 
@@ -185,10 +189,8 @@ ActiveRecord::Schema.define(version: 2020_03_09_063703) do
 
   create_table "secteurs", force: :cascade do |t|
     t.string "title"
-    t.bigint "montant_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["montant_id"], name: "index_secteurs_on_montant_id"
   end
 
   create_table "unites", force: :cascade do |t|

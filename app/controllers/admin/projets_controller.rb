@@ -12,11 +12,10 @@ class Admin::ProjetsController < ApplicationController
     def create
               @project = Projet.create!(nom_du_projet: params[:nom_du_projet],
                 ptf_id: params[:ptf_id],
-                appui_id: params[:appui_id],
+                appui_id: params[:appui],
                 objectif_generale_du_projet: params[:objectif_generale_du_projet],
                 aspsp: params[:aspsp],
                 partenaire_d_implementaton: params[:partenaire_d_implementaton],
-                montant_id: params[:montant_id],
                 debut_du_projet: params[:debut_du_projet],
                 fin: params[:fin],
                 bailleur_id: current_user.id)
@@ -24,6 +23,12 @@ class Admin::ProjetsController < ApplicationController
                 if params[:creer] == 'Enregistrer'
                     @project.update(validation: nil)
 
+                end
+
+                for x in 1..Secteur.all.count
+                  if params[:"montant#{x}"].to_i > 0
+                    Montant.create(price: params[:"montant#{x}"],secteur_id: x, projet_id: @project.id, unite_id: params[:"unite_id#{x}"])
+                  end
                 end
                      
                   @secteur_ids = params[:secteur_ids]
