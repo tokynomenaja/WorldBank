@@ -68,7 +68,7 @@
           </div>
           <div class="ptf-content filter-drop">
             <div class="mx-auto p-2 rounded" id="ptf-check">
-              <%Ptf.all.each do |p|%>
+              <%Ptf.all.order(:title).each do |p|%>
                 <div class="fdk8rh-1 eouleG">
                   <label class="d-flex align-items-center">
                     <%= check_box_tag("ptf_id[]",p.id) %>
@@ -110,7 +110,7 @@
           </div>
           <div class="appui-content filter-drop">
             <div class="mx-auto p-2 rounded" id="appui-check">
-              <%Appui.all.each do |a|%>
+              <%Appui.all.order(:title).each do |a|%>
                 <div class="fdk8rh-1 eouleG">                
                     <label class="d-flex align-items-center">
                       <%= check_box_tag("appui_id[]",a.id) %>
@@ -131,7 +131,7 @@
           </div>
           <div class="filiere-content filter-drop" id="filiere-check">
             <div class="mx-auto p-2 rounded">
-                <%Filiere.all.each do |f|%>
+                <%Filiere.all.order(:title).each do |f|%>
                   <div class="fdk8rh-1 eouleG">
                     <label class="d-flex align-items-center">
                       <%= check_box_tag("search_filiere[]",f.id) %>
@@ -392,13 +392,14 @@
                   <%end%>
                 <%end%>
               <%end%>
-            <%end%>
 
               <%if @appui%>
                 <% @appui.each do |a| %>  
-                  <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                  <% if b.projet.validation == true%>
+                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                     <%= link_to "#{a.nom_du_projet}", projet_path(a.id), target: 'blank', class: 'text-muted reshover' %>
-                        </div>        
+                    </div>        
+                  <%end%>
                 <%end%>
               <%end%>
 

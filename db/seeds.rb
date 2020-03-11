@@ -266,7 +266,7 @@ puts "Beneficiaire créé"
               - Routes urbaines à Nosy-Be
               - L'eau à Tuléar" , partenaire_d_implementaton: "" ,
 
-              debut_du_projet: "01/01/2019" , fin: "01/01/2024")
+              debut_du_projet: "01/01/2019" , fin: "01/01/2024",bailleur_id: 2)
 
               @pro.ptf = Ptf.find(10)
               @pro.appui = Appui.find(1)
@@ -307,7 +307,7 @@ puts "projet1"
                  missions internationales d’échange d’expérience sur la promotion.", 
               partenaire_d_implementaton: "EDBM",
               debut_du_projet: "01/01/2019", 
-              fin: "02/03/2020")
+              fin: "02/03/2020", bailleur_id: 2)
 
                 @pro2.ptf = Ptf.find(11)
                 
@@ -365,7 +365,7 @@ puts "projet2"
               - Ministère de l’Agriculture,de l’Elevage et de la Pêche
                   " ,
                debut_du_projet: " 2015",
-                fin: "2021")
+                fin: "2021", bailleur_id: 2)
 
                 @pro3.ptf = Ptf.find(13)
                 @pro3.appui = Appui.find(2)
@@ -407,7 +407,7 @@ puts "projet3"
                           désenclavements des pôles agricoles.",
                    partenaire_d_implementaton: "Administration",
                    debut_du_projet: "01/01/2012", 
-                   fin: "01/01/2022")
+                   fin: "01/01/2022", bailleur_id: 2)
                    @pro4.ptf = Ptf.find(13)
                    @pro4.appui = Appui.find(2)                 
                    @pro4.save
@@ -442,7 +442,7 @@ puts "projet3"
 Unite.destroy_all
           Unite.create!(nom: "USD")
           Unite.create!(nom: "EURO")
-          Unite.create!(nom: "CRYTOMONAIE")
+          Unite.create!(nom: "UAC")
  puts "Unités créées"
 
 
@@ -460,4 +460,11 @@ SecteurFiliere.destroy_all
   SecteurFiliere.create!(secteur_id: 2, filiere_id: 28)
   SecteurFiliere.create!(secteur_id: 2, filiere_id: 21)
   SecteurFiliere.create!(secteur_id: 2, filiere_id: 29)
+
+
+
+User.destroy_all
+  User.create!(first_name: "Admin", last_name: "Admin", email: "admin@gmail.com",phone: "0342145678",is_admin: nil, is_consultant: false, is_super_admin: true,password: "azerty",password_confirmation: "azerty")
+  User.create!(first_name: "Bailleur", last_name: "bailleur",email: "bailleur@gmail.com", phone: "0342145645",is_admin: true, is_consultant: false, is_super_admin: false,password: "azerty",password_confirmation: "azerty")
+  User.create!(first_name: "Consultant", last_name: "consultant",email: "consultant@gmail.com", phone: "0342845678",is_admin: nil, is_consultant: true, is_super_admin: false,password: "azerty",password_confirmation: "azerty")
 
