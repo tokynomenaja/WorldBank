@@ -47,13 +47,20 @@ def index
             redirect_to(root_path)
     
         else  
-         @params_montant = params[:montant].downcase  
-       @montant = Projet.all.where(montant: params[:montant], validation: true) 
-    
-      end 
+         @params_montant = params[:montant] 
+                @pro = Projet.all.where(validation: true)
+                @m1 = params[:montant][0].to_i
+                @m2 = params[:montant][1].to_i
+                @r = []
+                @pro.each do |pro|
+                  if pro.price >= @m1 && pro.price <= @m2
+                    @r << pro
+                  end
+                end
+     
     end 
   end
-
+end
   #recherche controller  appui
 
       if params[:appui_id]  
