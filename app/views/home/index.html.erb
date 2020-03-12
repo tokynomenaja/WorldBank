@@ -190,13 +190,11 @@
               <div class="multi-range-slider">
                 <div class="p-3 text-center">
                   Entre
-                <output id="output-left">5</output><span> millions et </span>
-                <output id="output-right">100</output><span> millions de USD</span>
+                <output id="output-left">0</output><span> millions et </span>
+                <output id="output-right">+</output><span> millions de USD</span>
                 </div>
-
-                <input type="range" name="montant[]" id="input-left" min="0" max="400" step="80" value="80" onchange="rangevalueleft.value=value">
-                <input type="range" name="montant[]" id="input-right" min="0" max="400" step="80" value="320" onchange="rangevalueright.value=value">
-
+                <input type="range" name="" id="input-left" min="0" max="5" step="1" value="0">
+                <input type="range" name="" id="input-right" min="0" max="5" step="1" value="5">
                 <div class="slider">
                   <div class="track"></div>
                   <div class="range"></div>
@@ -229,8 +227,8 @@
               <output id="rangevalueleftyear">2008</output><span> et </span>
               <output id="rangevaluerightyear">2030</output>
               </div>
-              <input type="range" name="" id="input-year-left" min="2008" max="2030" value="2005" onchange="rangevalueleftyear.value=value">
-              <input type="range" name="" id="input-year-right" min="2008" max="2030" value="2030" onchange="rangevaluerightyear.value=value">
+              <input type="range" name="fin[]" id="input-year-left" min="2008" max="2030" value="2005" onchange="rangevalueleftyear.value=value">
+              <input type="range" name="fin[]" id="input-year-right" min="2008" max="2030" value="2030" onchange="rangevaluerightyear.value=value">
               <div class="y-slider">
                 <div class="y-track"></div>
                 <div class="y-range"></div>
@@ -380,17 +378,10 @@
                 <%end%>  
               <%end%>
             
-              <%if @r%>
-                <% @r.each do |res| %>  
-                  <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <%= link_to "#{res.nom_du_projet}", projet_path(res.id), target: 'blank', class: 'text-muted reshover' %>
-                  </div>       
-                <%end%>
-              <%end%>
 
               <%if @ptf%>
                 <% @ptf.each do |p| %>  
-                  <% if p.projet.validation == true%>
+                  <% if p.validation == true%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                     <%= link_to "#{p.nom_du_projet}", projet_path(p.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>        
@@ -400,7 +391,7 @@
 
               <%if @appui%>
                 <% @appui.each do |a| %>  
-                  <% if b.projet.validation == true%>
+                  <% if a.projet.validation == true%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                     <%= link_to "#{a.nom_du_projet}", projet_path(a.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>        
@@ -428,8 +419,8 @@
                 <%end%>
               <%end%>
 
-              <%if @fin%>
-                <% @fin.each do |f| %>  
+              <%if @d%>
+                <% @d.each do |f| %>  
                   <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                     <%= link_to "#{f.nom_du_projet}", projet_path(f.id), target: 'blank', class: 'text-muted reshover' %>
                   </div>  

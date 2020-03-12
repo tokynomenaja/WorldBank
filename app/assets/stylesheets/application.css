@@ -438,8 +438,8 @@ a.position:hover{color: #ffffff;text-decoration: none;}
  .slider > .range{
     position: absolute;
     z-index: 2;
-    left: 20%;
-    right: 20%;
+    left: 0%;
+    right: 0%;
     top: 0;
     bottom: 0;
     border-radius: 5px;
@@ -467,7 +467,7 @@ a.position:hover{color: #ffffff;text-decoration: none;}
  }
 
  .slider > .thumb.left{
-    left: 20%;
+    left: 0%;
     transform: translate(-15px, -10px);
  }
  .y-slider > .y-thumb.y-left{
@@ -475,7 +475,7 @@ a.position:hover{color: #ffffff;text-decoration: none;}
     transform: translate(-15px, -10px);
  }
  .slider > .thumb.right{
-    right: 20%;
+    right: 0%;
     transform: translate(15px, -10px);
  }
 .y-slider > .y-thumb.y-right{
