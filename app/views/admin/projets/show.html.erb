@@ -57,16 +57,17 @@
           <span class="word">
               <% i = 0%>
               <%@projet.filiereprojets .each do|fp|%>
-                <%if i == 0%>
+             <%if i == 0%>
                   <span><%=fp.filiere.title %></span>
                 <% else %>
-                  <span>, <%=fp.filiere.title %></span>
+                  <%if zp == @projet.filiereprojets.last%>
+                    <span><%=fp.filiere.title %></span>
+                  <%else%>
+                    <span><%=fp.filiere.title %>, </span>
+                  <%end%>
                 <% end %>
                 <% i += 1 %>
               <% end %>
-            
-          </span>
-          </p>
   
         
       <p><span class="attr">Site web : </span>
@@ -106,7 +107,11 @@
                 <%if i == 0%>
                   <span><%=zp.zone.title %></span>
                 <% else %>
-                  <span>, <%=zp.zone.title %></span>
+                  <%if zp == @projet.zoneprojets.last%>
+                    <span><%=zp.zone.title %></span>
+                  <%else%>
+                    <span><%=zp.zone.title %>, </span>
+                  <%end%>
                 <% end %>
                 <% i += 1 %>
               <% end %>
@@ -124,11 +129,15 @@
           <%end%>
           <div class="mb-3">
             <% i = 0%>
-              <%@projet.benefprojets .each do|ben|%>
-                <%if i == 0%>
+           <%@projet.benefprojets .each do|ben|%>
+              <%if i == 0%>
                   <span><%=ben.beneficiaire.title %></span>
                 <% else %>
-                  <span>, <%=ben.beneficiaire.title %></span>
+                  <%if ben == @projet.benefprojets.last%>
+                    <span><%=ben.beneficiaire.title %></span>
+                  <%else%>
+                    <span><%=ben.beneficiaire.title %>, </span>
+                  <%end%>
                 <% end %>
                 <% i += 1 %>
               <% end %>

@@ -34,16 +34,17 @@
               
               <% i = 0%>
               <%@projet.secteurprojets .each do|sp|%>
-                <%if i == 0%>
+              <%if i == 0%>
                   <span><%=sp.secteur.title %></span>
                 <% else %>
-                  <span>, <%=sp.secteur.title %></span>
+                  <%if zp == @projet.secteurprojets.last%>
+                    <span><%=sp.secteur.title %></span>
+                  <%else%>
+                    <span><%=sp.secteur.title %>, </span>
+                  <%end%>
                 <% end %>
                 <% i += 1 %>
               <% end %>
-              
-            </span>
-          </p>
        
       <p><span class="attr">Forme d'appui : </span>
         <span class="word"><%= @projet.appui.title%></span>
@@ -57,16 +58,17 @@
           <span class="word">
               <% i = 0%>
               <%@projet.filiereprojets .each do|fp|%>
-                <%if i == 0%>
+             <%if i == 0%>
                   <span><%=fp.filiere.title %></span>
                 <% else %>
-                  <span>, <%=fp.filiere.title %></span>
+                  <%if zp == @projet.filiereprojets.last%>
+                    <span><%=fp.filiere.title %></span>
+                  <%else%>
+                    <span><%=fp.filiere.title %>, </span>
+                  <%end%>
                 <% end %>
                 <% i += 1 %>
               <% end %>
-            
-          </span>
-          </p>
   
         
       <p><span class="attr">Site web : </span>
@@ -103,14 +105,18 @@
           <div class="mb-3">
             <% i = 0%>
               <%@projet.zoneprojets .each do|zp|%>
-                <%if i == 0%>
+              
+          <%if i == 0%>
                   <span><%=zp.zone.title %></span>
                 <% else %>
-                  <span>, <%=zp.zone.title %></span>
+                  <%if zp == @projet.zoneprojets.last%>
+                    <span><%=zp.zone.title %></span>
+                  <%else%>
+                    <span><%=zp.zone.title %>, </span>
+                  <%end%>
                 <% end %>
                 <% i += 1 %>
               <% end %>
-          </div>
           
           <p><span class="attr">Partenaire d'implémentation : </span>
           <p class="mb-3"><%= @projet.partenaire_d_implementaton %></p>
@@ -125,10 +131,14 @@
           <div class="mb-3">
             <% i = 0%>
               <%@projet.benefprojets .each do|ben|%>
-                <%if i == 0%>
+                 <%if i == 0%>
                   <span><%=ben.beneficiaire.title %></span>
                 <% else %>
-                  <span>, <%=ben.beneficiaire.title %></span>
+                  <%if ben == @projet.benefprojets.last%>
+                    <span><%=ben.beneficiaire.title %></span>
+                  <%else%>
+                    <span><%=ben.beneficiaire.title %>, </span>
+                  <%end%>
                 <% end %>
                 <% i += 1 %>
               <% end %>

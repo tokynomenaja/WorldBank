@@ -82,9 +82,7 @@ end
   #recherche controller  appui
 
   if params[:fin]
-    puts "="*30
     puts params[:fin]
-    puts "="*30
      if params[:fin] && params[:fin] != ""
         if params[:fin]== 1
       redirect_to(root_path)
@@ -181,6 +179,14 @@ end
               end
           end
       end
+    end
+
+    @montant_total = 0
+    Projet.all.where(validation: true).each do |p|
+      p.montants.each do |m|
+        @montant_total += m.price.to_i
+      end
+
     end
   end
 end

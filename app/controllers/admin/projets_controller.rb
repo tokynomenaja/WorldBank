@@ -26,8 +26,28 @@ class Admin::ProjetsController < ApplicationController
                 end
 
                 for x in 1..Secteur.all.count
+                  case params[:"unite_id#{x}"]
+                    when "1"
+                      @montant = params[:"montant#{x}"]
+                      @uac = Tarif.where(unite_id:  1, reference: "UAC").last.valeur
+                      @convert_uac = @montant.to_i / @uac
+                      @usd = Tarif.where(unite_id:  1, reference: "UAC").last.valeur
+                      @convert_usd = @convert_uac * @usd
+                    when "2"
+                      @montant = params[:"montant#{x}"]
+                      @uac = Tarif.where(unite_id:  2, reference: "UAC").last.valeur
+                      @convert_uac = @montant.to_i / @uac
+                      @usd = Tarif.where(unite_id:  1, reference: "UAC").last.valeur
+                      @convert_usd = @convert_uac * @usd
+                    when "3"
+                      @montant = params[:"montant#{x}"]
+                      @convert_uac = @montant.to_i
+                      @usd = Tarif.where(unite_id:  1, reference: "UAC").last.valeur
+                      @convert_usd = @convert_uac * @usd
+
+                  end
                   if params[:"montant#{x}"].to_i > 0
-                    Montant.create(price: params[:"montant#{x}"],secteur_id: x, projet_id: @project.id, unite_id: params[:"unite_id#{x}"])
+                    Montant.create(price: @convert_usd.to_i,secteur_id: x, projet_id: @project.id, unite_id: 1)
                   end
                 end
                      
@@ -176,5 +196,10 @@ class Admin::ProjetsController < ApplicationController
       redirect_to root_path
     
     end
+  end
+
+  def conversion
+    
+    
   end
 end

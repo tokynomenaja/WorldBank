@@ -90,11 +90,11 @@ Ptf.destroy_all
       c6  = Ptf.create!(title: "GIZ", lien: 'https://www.giz.de/en/worldwide/322.html', image_url: "logo/giz11.jpg")
       c7  = Ptf.create!(title: "AFD", lien: 'https://www.afd.fr/en/page-region-pays/madagascar', image_url: "logo/afd11.jpg")
       c8  = Ptf.create!(title: "ONUDI", lien: 'https://www.unido.org/who-we-are-unido-worldwide-africa-offices/madagascar', image_url: "logo/onudi1.jpg")
-      c9  = Ptf.create!(title: "JICA", lien: 'https://www.jica.go.jp/madagascar/french/index.html', image_url: "logo/jica1.png")
+      c9  = Ptf.create!(title: "JICA", lien: 'https://www.jica.go.jp/madagascar/french/index.html', image_url: "logo/JICA.jpg")
       c10 = Ptf.create!(title: "USAID", lien: 'https://www.usaid.gov/madagascar', image_url: "logo/USAID1.jpg")
-      c11 = Ptf.create!(title: "BAD", lien: 'https://www.afdb.org/en/countries/southern-africa/madagascar', image_url: "logoptf/bad.jpeg")
+      c11 = Ptf.create!(title: "BAD", lien: 'https://www.afdb.org/en/countries/southern-africa/madagascar', image_url: "logo/BAD.jpg")
       c12 = Ptf.create!(title: "PNUD", lien: 'https://www.mg.undp.org/', image_url: "logo/pnud1.jpg")
-      c13 = Ptf.create!(title: "FIDA", lien: 'https://www.ifad.org/en/web/operations/country/id/madagascar', image_url: "logoptf/fida.jpeg")
+      c13 = Ptf.create!(title: "FIDA", lien: 'https://www.ifad.org/en/web/operations/country/id/madagascar', image_url: "logo/FIDA.jpg")
       c14 = Ptf.create!(title: "CNUCED", lien: 'https://unctad.org/en/Pages/Home.aspx', image_url: "logo/cnuced11.jpg")
 
 puts "Ptf Créé"
@@ -443,8 +443,14 @@ Unite.destroy_all
           Unite.create!(nom: "USD")
           Unite.create!(nom: "EURO")
           Unite.create!(nom: "UAC")
+          Unite.create!(nom: "MGA")
  puts "Unités créées"
 
+Tarif.destroy_all
+      Tarif.create(reference: "UAC", valeur: 1.39373, unite_id: 1)
+      Tarif.create(reference: "UAC", valeur: 1.21910, unite_id: 2)
+      Tarif.create(reference: "UAC", valeur: 4863.04, unite_id: 4)
+puts "tarifs créés"
 
 SecteurFiliere.destroy_all
 

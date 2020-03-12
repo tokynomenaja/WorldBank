@@ -7,6 +7,8 @@ var range = document.querySelector(".slider > .range");
 var values = [0,5,10,40,100,"+"];
 var outputLeft = document.getElementById('output-left');
 var outputRight = document.getElementById('output-right');
+var ir = document.getElementById('ir');
+var il = document.getElementById('il');
 
 function setLeftValue(){
     var _this = inputLeft,
@@ -36,9 +38,11 @@ inputRight.addEventListener("input", setRightValue);
 // VALEUR DE LA RANGE
 function valueLeft(){
     outputLeft.innerHTML = values[this.value];
+    il.value = values[this.value];
 };
 function valueRight(){
     outputRight.innerHTML = values[this.value];
+    ir.value = values[this.value];
 };
 inputRight.addEventListener('input', valueRight)
 inputLeft.addEventListener('input', valueLeft)
