@@ -1,7 +1,9 @@
 
 class SuperAdmin::PublicationsController < ApplicationController
+	before_action :authenticate_user!
+
 	def create
-	  	@pub = Publication.create!(title: params[:title], description: params[:description])
+	  	@pub = Publication.create!(title: params[:title], description: params[:description], user_id: current_user.id)
 
 	    	if @pub.save
 	    		@pub.files.attach(params[:files])
@@ -11,10 +13,10 @@ class SuperAdmin::PublicationsController < ApplicationController
 
 	        end  
 	end    
-
-
 	def update
 		
 	end 
-	 
+	def index
+		@pubs = Publication.all 
+	end
 end
