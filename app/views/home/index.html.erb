@@ -53,21 +53,21 @@
     </div>
   </header>
   <!-- FILTRE  -->
-    <nav class="z0fved-5 gOGYTl">
+    <nav class="z0fved-5 gOGYTl position-relative">
       <div class="z0fved-3 kBhqKR">
         <div class="z0fved-1 jfmoVU">
-          <div class="fdk8rh-3 feYJJO" title="Partenaire Technique et Financier" id="ptf-listener">
+          <div class="fdk8rh-3 feYJJO" title="Partenaire Technique et Financier">
             <header class="fdk8rh-0 kYNMFW">
                <%= form_tag(root_path, :method => "get", class: 'navbar-form navbar-left') do %> 
               <h3  class= "fdk8rh-1 eouleG">
-                 <div class= "fdk8rh-1 eouleG large select">
+                 <div class= "fdk8rh-1 eouleG large select" id="ptf-listener">
                   PTF
                  </div>
               </h3>
             </header>
           </div>
           <div class="ptf-content filter-drop">
-            <div class="mx-auto p-2 rounded" id="ptf-check">
+            <div class="mx-auto p-2 rounded toggleclass" id="ptf-check">
               <%Ptf.all.each do |p|%>
                 <div class="fdk8rh-1 eouleG">
                   <label class="d-flex align-items-center">
@@ -78,19 +78,20 @@
               <%end%>
             </div>
           </div>
-        <div class="fdk8rh-3 feYJJO" id="check">
+        <div class="fdk8rh-3 feYJJO">
           <header class="fdk8rh-0 kYNMFW">
             <h3 class="fdk8rh-1 eouleG">
-              <div class= "fdk8rh-1 eouleG large select">
+              <div class= "fdk8rh-1 eouleG large select" id="check">
                 secteur
               </div>
             </h3>
           </header>
           </div>
           <div class="secteur-content filter-drop">
-            <div class="mx-auto p-2 rounded" id="scontent">
+            <div class="mx-auto p-2 rounded toggleclass" id="scontent">
+              <span id="compteurSecteur" hidden><%=Secteur.count%></span>
               <%Secteur.all.order(:title).each do |s|%>
-                <div class="fdk8rh-1 eouleG">
+                <div class="fdk8rh-1 eouleG" id="secteur<%= s.id %>">
                   <label class="d-flex align-items-center">
                     <%= check_box_tag("search_secteur[]",s.id) %>
                     <%= s.title%>
@@ -99,17 +100,17 @@
               <%end%>
             </div> 
           </div>
-          <div class="fdk8rh-3 feYJJO" id="appui-listener">
+          <div class="fdk8rh-3 feYJJO">
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
-                <div class= "fdk8rh-1 eouleG large select">
+                <div class= "fdk8rh-1 eouleG large select" id="appui-listener">
                   Appui
                 </div>
               </h3>
             </header>
           </div>
           <div class="appui-content filter-drop">
-            <div class="mx-auto p-2 rounded" id="appui-check">
+            <div class="mx-auto p-2 rounded toggleclass" id="appui-check">
               <%Appui.all.each do |a|%>
                 <div class="fdk8rh-1 eouleG">                
                     <label class="d-flex align-items-center">
@@ -120,16 +121,16 @@
               <%end%>
             </div>
           </div> 
-          <div class="fdk8rh-3 feYJJO" id="filiere-listener">
+          <div class="fdk8rh-3 feYJJO">
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
-                <div class= "fdk8rh-1 eouleG large select">
+                <div class= "fdk8rh-1 eouleG large select" id="filiere-listener">
                   Filière
                 </div>
               </h3>
             </header>
           </div>
-          <div class="filiere-content filter-drop" id="filiere-check">
+          <div class="filiere-content filter-drop toggleclass" id="filiere-check">
             <div class="mx-auto p-2 rounded">
                 <%Filiere.all.each do |f|%>
                   <div class="fdk8rh-1 eouleG">
@@ -150,15 +151,15 @@
             </header>
           </div>
 
-          <div class="fdk8rh-3 feYJJO" id="zone-listener">
+          <div class="fdk8rh-3 feYJJO">
             <header class="fdk8rh-0 kYNMFW">
               <h3 class="fdk8rh-1 eouleG">
-                <div class= "fdk8rh-1 eouleG large select">
+                <div class= "fdk8rh-1 eouleG large select" id="zone-listener">
                   Zone
                 </div>
               </h3>
             </header>
-            <div class="filiere-content zone-content filter-drop" id="zone-check">
+            <div class="filiere-content zone-content filter-drop toggleclass" id="zone-check">
               <div class="mx-auto p-2 rounded">
                 <%Zone.all.each do |z|%>
                   <div class="fdk8rh-1 eouleG">
@@ -178,14 +179,14 @@
           </header>
         </div>
 
-        <div class="fdk8rh-3 feYJJO" id="range-drop">
+        <div class="fdk8rh-3 feYJJO">
           <header class="fdk8rh-0 kYNMFW">
-            <h3 class="fdk8rh-1 eouleG large select">
+            <h3 class="fdk8rh-1 eouleG large select" id="range-drop">
               Montant
             </h3>
           </header>
         </div>
-          <div class="filter-drop range-content mx-auto rounded eouleG" id="range-content">
+          <div class="filter-drop range-content mx-auto rounded eouleG toggleclass" id="range-content">
             <div class="middle mx-auto mt-2 mb-4">
               <div class="multi-range-slider">
                 <div class="p-3 text-center">
@@ -201,25 +202,25 @@
                   <div class="thumb left"></div>
                   <div class="thumb right"></div>
                 </div>
-                  <div class="d-flex mt-2 valeur">
-                    <span>0</span>
-                    <span>5</span>
-                    <span class="text-right pr-4">10</span>
-                    <span class="text-right pr-2">40</span>
-                    <span class="text-right">100</span>
-                    <span class="text-right">+</span>
-                  </div>
+                <div class="d-flex mt-2 valeur">
+                  <span>0</span>
+                  <span>5</span>
+                  <span class="text-right pr-4">10</span>
+                  <span class="text-right pr-2">40</span>
+                  <span class="text-right">100</span>
+                  <span class="text-right">+</span>
+                </div>
               </div>
             </div>
           </div>
-        <div class="fdk8rh-3 feYJJO" id="year-drop">
+        <div class="fdk8rh-3 feYJJO">
           <header class="fdk8rh-0 kYNMFW">
-            <h3 class="fdk8rh-1 eouleG large select">
+            <h3 class="fdk8rh-1 eouleG large select" id="year-drop">
               Periode
            </h3>
           </header>
         </div>  
-        <div class="filter-drop range-year-content mx-auto rounded eouleG" id="range-year-content">
+        <div class="filter-drop range-year-content mx-auto rounded eouleG toggleclass" id="range-year-content">
           <div class="middle mx-auto mt-2 mb-4">
             <div class="multi-range-slider">
               <div class="p-3 text-center">
@@ -227,28 +228,33 @@
               <output id="rangevalueleftyear">2008</output><span> et </span>
               <output id="rangevaluerightyear">2030</output>
               </div>
-              <input type="range" name="" id="input-year-left" min="2008" max="2030" value="2005" onchange="rangevalueleftyear.value=value">
-              <input type="range" name="" id="input-year-right" min="2008" max="2030" value="2030" onchange="rangevaluerightyear.value=value">
+              <input type="range" name="" step="1" id="input-year-left" min="2008" max="2030" value="2005" onchange="rangevalueleftyear.value=value">
+              <input type="range" name="" step="1" id="input-year-right" min="2008" max="2030" value="2030" onchange="rangevaluerightyear.value=value">
               <div class="y-slider">
                 <div class="y-track"></div>
                 <div class="y-range"></div>
                 <div class="y-thumb y-left"></div>
                 <div class="y-thumb y-right"></div>
               </div>
+              <div class="d-flex mt-2 justify-content-between valeur">
+                <span>2008</span>
+                <span class="text-right">2030</span>
+              </div>
             </div>
           </div>
         </div>
-
         <div class="btn-filtre kYNMFW eouleG fdk8rh-0 rounded">
-          <% if current_user %> 
-            <% if current_user.is_consultant == true || current_user.is_consultant == false || current_user.is_super_admin == true || current_user.is_admin == true%>
-              <%= submit_tag "Rechercher", :class => 'btn-reset sear', :name => nil%>
-            <%end%>
-          <%else%>
-            <a href="<%= new_user_session_path %>" class="sear">Rechercher</a>
-          <%end%>
         </div> 
      <%end%>
+    </div>
+    <div class="position-absolute text-white place text-center p-3 rounded">
+      <% if current_user %> 
+        <% if current_user.is_consultant == true || current_user.is_consultant == false || current_user.is_super_admin == true || current_user.is_admin == true%>
+          <%= submit_tag "Rechercher", :class => 'btn-reset sear', :name => nil%>
+        <%end%>
+      <%else%>
+        <a href="<%= new_user_session_path %>" class="sear">Rechercher</a>
+      <%end%>
     </div>
   </nav>
     <!-- FIN FILTRE -->
@@ -392,7 +398,6 @@
                   <%end%>
                 <%end%>
               <%end%>
-            <%end%>
 
               <%if @appui%>
                 <% @appui.each do |a| %>  
