@@ -1,0 +1,34 @@
+
+
+<header class="aci59a-0 eyAIuG sticky-limit">
+    <div class="sc-1gnwgfb-2 hVIPFV pict">
+    </div>
+</header>
+<%= form_tag url_for(action: 'create'),method:'post', class:'form', multipart: true do%>
+
+	<div class="container">
+			<div class=" row mb-2">
+				<div class="col-6">
+					<div>
+						<label for="nom" class="mr-2 table">Titre </label>
+					</div>
+					<input type="text" name="title" id="nom" placeholder="title" class="form-control" required="true">
+				</div>
+			</div>
+			<div class=" row mb-2">
+				<div class="col-6">
+					<div>
+						<label for="nom" class="mr-2 table">Description </label>
+					</div>
+					<input type="text" name="description" id="nom" placeholder="description" class="form-control" required="true">
+				</div>
+			</div>
+		</div>
+
+	<div class="container mb-2 mt-4">
+			<span class="mr-2 table">Documents de publication :</span>
+			<p><%= file_field_tag :files, required: true, multiple: true%></p> <br>
+			<p><input type="submit" name="cree" value="Publier" class="sc-eerKOB cfnPHQ"></p>
+		
+	</div>		
+<%end%>
