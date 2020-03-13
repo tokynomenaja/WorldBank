@@ -37,13 +37,32 @@
 		</div>
 		<div class="container">
 			<div class="d-flex justify-content-between mb-3">
-				<div>
+				<div class="col-md-4 pl-0">
 					<h6 class="table">Début</h6>
-					<input type="date" name="debut_du_projet" class="form-control" required="true">
+					  <div class="ui calendar" id="example7">
+					    <div class="ui input left icon w-100">
+					      <i class="time icon"></i>
+							<input type="text" name="debut_du_projet" class="form-control" placeholder="MM/YY" required="true">
+					    </div>
+					  </div>
 				</div>
-				<div>
+				<div class="col-md-4">
 					<h6 class="table">Fin</h6>
-					<input type="date" name="fin" class="form-control" required="true">
+				    <div class="ui calendar" id="example">
+					    <div class="ui input left icon">
+					      <i class="time icon"></i>
+					      <input type="text" name="fin" class="form-control" placeholder="MM/YY" required="true">
+					    </div>
+					</div>
+				</div>
+				<div class="col-md-4 pr-0">
+					<h6 class="table">Montant pour le secteur :</h6>
+					<% Secteur.all.each do |s|%>
+						<div class="form-control pr-0" id="montant<%=s.id%>" style="display: none;">
+							<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title%>" class="border-0">
+							<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset"%>
+						</div>
+					<%end%>
 				</div>
 			</div>
 		</div>
@@ -288,3 +307,11 @@
 		</div>
 	<% end %>
 </div>
+<script type="text/javascript">
+    $('#example7').calendar({
+      type: 'month'
+    });
+    $('#example').calendar({
+      type: 'month'
+    });
+</script>
