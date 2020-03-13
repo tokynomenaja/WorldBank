@@ -45,28 +45,24 @@
 					<h6 class="table">Fin</h6>
 					<input type="date" name="fin" class="form-control" required="true">
 				</div>
-				<div>
-					<h6 class="table">Montant pour le secteur :</h6>
-					<% Secteur.all.each do |s|%>
-						<div class="form-control" id="montant<%=s.id%>" style="display: none;">
-							<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title%>" class="border-0">
-							<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "border-left unit dropdown-toggle pl-2"%>
-						</div>
-
-					<%end%>
-				</div>
 			</div>
 		</div>
 
 		<div class="container">
-			<h6 class="table">Partenaire Technique Financier</h6>
-			<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
+			<div class=" row mb-2">
+				<div class="col-6">
+					<h6 class="table">Partenaire Technique Financier</h6>
+					<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
+				</div>
+				<div class="col-6">
+					<h6 class="table">Nature de l'appui</h6>
+					<%= select_tag 'appui', options_for_select(Appui.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
+					
+				</div>
+					
+			</div>
 		</div>
 
-		<div class="container">
-			<h6 class="table">Nature de l'appui</h6>
-			<%= select_tag 'appui', options_for_select(Appui.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
-		</div>
 
 		<div class="container mb-2">
 			<a class="table">
@@ -84,7 +80,16 @@
 					</div>
 				</div>
 				</div>
-			</div>
+			<h6 class="table">Montant pour le secteur :</h6>
+				<% Secteur.all.each do |s|%>
+					<div class="form-control" id="montant<%=s.id%>" style="display: none;">
+						<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title%>" class="border-0">
+						<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "border-left unit dropdown-toggle pl-2"%>
+					</div>
+
+				<%end%>
+		</div>
+
 
 			<script type="text/javascript">
 				function check(x){
@@ -132,9 +137,78 @@
 								</div>
 							<% end %>
 						</div>
+						<div class="mt-2">
+					<button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#atr"> Autre</button><br>
+							
+						</div>
+					<div class="collapse" id="atr">
+						<div class="container">
+							<div class="row">
+								
+									<div class="col-md-5" style="text-align: center;">
+										<h6>Ajout de nouveau bénéficiaire</h6>
+								    	<input type="text" name="newben" size=15 placeholder="nouveau bénéficiaire" class="form-control" id="inp"><br>	
+								    	<input type="button" class="sc-eerKOB cfnPHQ" value="Ajouter" id="ajout">			
+									</div>
+									
+
+									<div class="col-md-7">
+										<h6 style="text-align: center;">Le(s) nouveau(x) bénéficiaire(s) </h6>
+										<% 10.times do |b|%>
+									    	<div id="check<%= b%>" style="display: block;">
+												<p id="p<%= b%>" style="display: none;">
+													<%= check_box_tag("checkben#{b}", :id => "c#{b}") %>
+													<span id="s<%= b%>"></span>	
+													<span id="s1<%= b%>"></span>	
+													<span id="s2<%= b%>"></span>	
+													<span id="s3<%= b%>"></span>	
+													<span id="s4<%= b%>"></span>	
+													<span id="s5<%= b%>"></span>	
+													<span id="s6<%= b%>"></span>	
+													<span id="s7<%= b%>"></span>	
+													<span id="s8<%= b%>"></span>	
+													<span id="s9<%= b%>"></span>	
+													<input type="hidden" name="valben<%= b%>" id="valben<%= b%>">	
+												</p>								
+											</div>
+									    <%end%>
+									</div>
+								
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function ajoutBen(){
+			<% 10.times do |x|%>			
+				var hid<%= x%> = document.getElementById('valben<%= x%>');
+				var p<%= x%> = document.getElementById('p<%= x%>');
+			<%end%>
+			var val = document.getElementById('inp').value;
+			if(hid0.value == "" && val != ""){
+
+				p0.style.display = "block";
+				document.getElementById('s0').innerHTML = val;
+				hid0.value = val;
+			}
+			<% for y in 1..9%>
+			else if (hid<%= y%>.value == '' && val != "") {
+				p<%= y%>.style.display = "block";
+				document.getElementById('s<%=y%><%=y%>').innerHTML = document.getElementById('inp').value;
+				hid<%=y%>.value = document.getElementById('inp').value;
+			}
+			<%end%>
+		}
+		document.getElementById("ajout").addEventListener('click',function ()
+			{
+			    ajoutBen();
+			   }  ); 
+	</script>
+
+			
 		<div class="container mb-2">
 			<a class="table">
 				Institution Gouvernementale Associée
@@ -183,7 +257,7 @@
 			<div class="mt-2">
 				<div class="card card-body">
 					<div class="row">
-						<% Zone.all.order(:title).each do |c| %>
+						<% Zone.all.each do |c| %>
 							<div class="col-md-4">
 								<%= check_box_tag("zone_ids[]",c.id) %>
 								<%= c.title%>
@@ -195,8 +269,10 @@
 		</div>
 		<div class="container mb-2 mt-4">
 			Documents du projet : <%= file_field_tag :files, required: true, multiple: true%>
-			<p><span>Site web :</span><input type="text" name="site" class="form-control"></p>
 			
+		</div>
+		<div class="container mb-2 mt-4">
+			<p><span>Site web :</span><input type="text" name="site" class="form-control"></p>
 		</div>
 		<div class="container mb-2 mt-4">
 			<label for="comment">Commentaire :</label>

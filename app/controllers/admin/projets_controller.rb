@@ -91,6 +91,10 @@ class Admin::ProjetsController < ApplicationController
 
   def show
     @projet = Projet.find(params[:id])
+    if params[:creer] == 'Publier'
+      @project.update(validation: false)
+
+    end
   end
 
   def edit
@@ -128,78 +132,78 @@ class Admin::ProjetsController < ApplicationController
   end
 
   def update
-  	     @projet = Projet.find(params[:id],)
-         if @projet.update(nom_du_projet: params[:nom_du_projet], 
-           debut_du_projet: params[:debut_du_projet], objectif_generale_du_projet: params[:objectif_generale_du_projet],aspsp: params[:aspsp],partenaire_d_implementaton: params[:partenaire_d_implementaton],fin: params[:fin], appui_id: params[:appui], ptf_id: params[:ptf], 
-           bailleur_id: current_user.id)
+    @projet = Projet.find(params[:id])
+    if @projet.update(nom_du_projet: params[:nom_du_projet], 
+     debut_du_projet: params[:debut_du_projet], objectif_generale_du_projet: params[:objectif_generale_du_projet],aspsp: params[:aspsp],partenaire_d_implementaton: params[:partenaire_d_implementaton],fin: params[:fin], appui_id: params[:appui], ptf_id: params[:ptf], 
+     bailleur_id: current_user.id)
 
-          if params[:modifier] == 'Publier' || params[:modifier] == 'Re-publier'
-            @projet.update(validation: false)
+    if params[:modifier] == 'Publier' || params[:modifier] == 'Re-publier'
+      @projet.update(validation: false)
 
-          end
-          
-              @projet.secteurprojets.destroy_all
-
-              for x in 0..Secteur.all.count-1
-                if params[:"secteur_#{x}"]
-                    Secteurprojet.create(projet_id: @projet.id, secteur_id: params[:"secteur_#{x}"])
-                end
-              end
-
-              @projet.filiereprojets.destroy_all
-              for x in 0..Filiere.all.count-1
-                if params[:"filiere_#{x}"]
-                    Filiereprojet.create(projet_id: @projet.id, filiere_id: params[:"filiere_#{x}"])
-                end
-              end
-
-            
-              @projet.benefprojets.destroy_all
-              for x in 0..Beneficiaire.all.count-1
-                if params[:"beneficiaire_#{x}"]
-                    Benefprojet.create(projet_id: @projet.id, beneficiaire_id: params[:"beneficiaire_#{x}"])
-                end
-              end
-
-              @projet.igaprojets.destroy_all
-              for x in 0..Iga.all.count-1
-                if params[:"iga_#{x}"]
-                    Igaprojet.create(projet_id: @projet.id, iga_id: params[:"iga_#{x}"])
-                end
-              end
-
-
-              @projet.zoneprojets.destroy_all
-              for x in 0..Zone.all.count-1
-                if params[:"zone_#{x}"]
-                    Zoneprojet.create(projet_id: @projet.id, zone_id: params[:"zone_#{x}"])
-                end
-              end
-                redirect_to  admin_projet_path
-             else
-                puts 'erreur'*10
-                render :edit     
-            end
-  end
-
-  def destroy
-  	@projet = Projet.find(params[:id])
-  	@projet.destroy
-  	redirect_to admin_projets_path
-  end
-
-  private
-  def check_if_admin
-    if current_user.is_admin == nil || current_user.is_admin == false
-
-      flash[:danger] = "Vous n'êtes pas bailleur"
-      redirect_to root_path
-    
     end
+
+    @projet.secteurprojets.destroy_all
+    @projet.montants.destroy_all
+
+    for x in 0..Secteur.all.count
+      if params[:"secteur_#{x}"]
+        Secteurprojet.create(projet_id: @projet.id, secteur_id: params[:"secteur_#{x}"])
+        Montant.create(price: params[:"montant#{params[:"secteur_#{x}"]}"],secteur_id: params[:"secteur_#{x}"], projet_id: @projet.id, unite_id: params[:"unite_id#{params[:"secteur_#{x}"]}"])
+      end
+    end
+
+
+    @projet.filiereprojets.destroy_all
+    for x in 0..Filiere.all.count-1
+      if params[:"filiere_#{x}"]
+        Filiereprojet.create(projet_id: @projet.id, filiere_id: params[:"filiere_#{x}"])
+      end
+    end
+
+
+    @projet.benefprojets.destroy_all
+    for x in 0..Beneficiaire.all.count-1
+      if params[:"beneficiaire_#{x}"]
+        Benefprojet.create(projet_id: @projet.id, beneficiaire_id: params[:"beneficiaire_#{x}"])
+      end
+    end
+
+    @projet.igaprojets.destroy_all
+    for x in 0..Iga.all.count-1
+      if params[:"iga_#{x}"]
+        Igaprojet.create(projet_id: @projet.id, iga_id: params[:"iga_#{x}"])
+      end
+    end
+
+
+    @projet.zoneprojets.destroy_all
+    for x in 0..Zone.all.count-1
+      if params[:"zone_#{x}"]
+        Zoneprojet.create(projet_id: @projet.id, zone_id: params[:"zone_#{x}"])
+      end
+    end
+    redirect_to  admin_projet_path
+  else
+    puts 'erreur'*10
+    render :edit     
+  end
+end
+
+def destroy
+  @projet = Projet.find(params[:id])
+  @projet.destroy
+  redirect_to admin_projets_path
+end
+
+private
+def check_if_admin
+  if current_user.is_admin == nil || current_user.is_admin == false
+
+    flash[:danger] = "Vous n'êtes pas bailleur"
+    redirect_to root_path
+    
   end
 
-  def conversion
-    
-    
-  end
+end
+
 end
