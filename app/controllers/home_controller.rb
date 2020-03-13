@@ -47,13 +47,22 @@ def index
             redirect_to(root_path)
     
         else  
-         @params_montant = params[:montant].downcase  
-       @montant = Projet.all.where(montant: params[:montant], validation: true) 
-    
-      end 
+         @params_montant = params[:montant] 
+                @pro = Projet.all.where(validation: true)
+                @m1 = params[:montant][0].to_i
+                @m2 = params[:montant][1].to_i
+                @r = []
+                @pro.each do |pro|
+                  pro.montants.each do |m|
+                  if m.price >= @m1 && m.price <= @m2
+                    @r << pro
+                  end
+                end
+              end
+     
     end 
   end
-
+end
   #recherche controller  appui
 
       if params[:appui_id]  
@@ -73,13 +82,23 @@ def index
   #recherche controller  appui
 
   if params[:fin]
-    if params[:fin] && params[:fin] != ""
+    puts params[:fin]
+     if params[:fin] && params[:fin] != ""
         if params[:fin]== 1
       redirect_to(root_path)
     
          else  
          @parameter = params[:fin]
-         @fin = Projet.all.where(fin: params[:fin], validation: true)  
+         @fin = Projet.all.where(validation: true) 
+         @d1 =  params[:fin][0].to_i
+         @d2 =  params[:fin][1].to_i
+         @d =[]
+         @fin.each do |f|
+          if f.fin.year >= @d1 && f.fin.year <= @d2
+            @d << f
+            
+          end
+         end
       end 
     end 
   end
@@ -135,7 +154,7 @@ def index
   #recherche controller IGA
 
       if params[:search_iga]
-        if params[:search_id] && params[:search_id] != ""
+        if params[:search_iga] && params[:search_iga] != ""
           if params[:search_iga]== 1
               redirect_to(root_path)
               
@@ -160,6 +179,14 @@ def index
               end
           end
       end
+    end
+
+    @montant_total = 0
+    Projet.all.where(validation: true).each do |p|
+      p.montants.each do |m|
+        @montant_total += m.price.to_i
+      end
+
     end
   end
 end

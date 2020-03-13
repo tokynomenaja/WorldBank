@@ -5,8 +5,8 @@ class CreateProjets < ActiveRecord::Migration[6.0]
       t.text   :objectif_generale_du_projet
       t.text   :aspsp
       t.string :partenaire_d_implementaton
-      t.string :debut_du_projet
-      t.string :fin 
+      t.date   :debut_du_projet
+      t.date   :fin 
       t.text   :comment
       t.string :siteweb
 

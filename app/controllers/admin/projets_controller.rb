@@ -26,8 +26,28 @@ class Admin::ProjetsController < ApplicationController
                 end
 
                 for x in 1..Secteur.all.count
+                  case params[:"unite_id#{x}"]
+                    when "1"
+                      @montant = params[:"montant#{x}"]
+                      @uac = Tarif.where(unite_id:  1, reference: "UAC").last.valeur
+                      @convert_uac = @montant.to_i / @uac
+                      @usd = Tarif.where(unite_id:  1, reference: "UAC").last.valeur
+                      @convert_usd = @convert_uac * @usd
+                    when "2"
+                      @montant = params[:"montant#{x}"]
+                      @uac = Tarif.where(unite_id:  2, reference: "UAC").last.valeur
+                      @convert_uac = @montant.to_i / @uac
+                      @usd = Tarif.where(unite_id:  1, reference: "UAC").last.valeur
+                      @convert_usd = @convert_uac * @usd
+                    when "3"
+                      @montant = params[:"montant#{x}"]
+                      @convert_uac = @montant.to_i
+                      @usd = Tarif.where(unite_id:  1, reference: "UAC").last.valeur
+                      @convert_usd = @convert_uac * @usd
+
+                  end
                   if params[:"montant#{x}"].to_i > 0
-                    Montant.create(price: params[:"montant#{x}"],secteur_id: x, projet_id: @project.id, unite_id: params[:"unite_id#{x}"])
+                    Montant.create(price: @convert_usd.to_i,secteur_id: x, projet_id: @project.id, unite_id: 1)
                   end
                 end
                      
@@ -110,15 +130,13 @@ class Admin::ProjetsController < ApplicationController
   def update
   	     @projet = Projet.find(params[:id],)
          if @projet.update(nom_du_projet: params[:nom_du_projet], 
-           debut_du_projet: params[:debut_du_projet], objectif_generale_du_projet: params[:objectif_generale_du_projet],aspsp: params[:aspsp],partenaire_d_implementaton: params[:partenaire_d_implementaton],montant: params[:montant],fin: params[:fin], appui_id: params[:appui_id], ptf_id: params[:ptf_id], 
+           debut_du_projet: params[:debut_du_projet], objectif_generale_du_projet: params[:objectif_generale_du_projet],aspsp: params[:aspsp],partenaire_d_implementaton: params[:partenaire_d_implementaton],fin: params[:fin], appui_id: params[:appui], ptf_id: params[:ptf], 
            bailleur_id: current_user.id)
 
-          if params[:modifier] == 'Enregistrer la modification'
-            @project.update(validation: nil)
-          end
-        
-         puts "*"*100
+          if params[:modifier] == 'Publier' || params[:modifier] == 'Re-publier'
+            @projet.update(validation: false)
 
+          end
           
               @projet.secteurprojets.destroy_all
 
@@ -159,7 +177,7 @@ class Admin::ProjetsController < ApplicationController
               end
                 redirect_to  admin_projet_path
              else
-                puts 'Tsy mety'*10
+                puts 'erreur'*10
                 render :edit     
             end
   end
@@ -178,5 +196,10 @@ class Admin::ProjetsController < ApplicationController
       redirect_to root_path
     
     end
+  end
+
+  def conversion
+    
+    
   end
 end

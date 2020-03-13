@@ -17,7 +17,7 @@
 			<div class="d-flex justify-content-between mb-3">
 				<div>
 					<h6 class="table">PTF : <span> <%= @projet.ptf.title%></span> </h6>
-					<%= select_tag 'ptf_id', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
+					<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
 				</div>
 				<div>
 					<h6 class="table">Début</h6>
@@ -28,13 +28,8 @@
 					<input type="date" name="fin" value="<%= @projet.fin%>" class="form-control">
 				</div>
 				<div>
-					<h6 class="table">Montant</h6>
-					<input name="montant" type = "range" min="0" max="100" onchange="rangevalue.value=value" value="<%=@projet.montant%>"/>
-                  	<output id="rangevalue">50 Millions USD</output> 
-				</div>
-				<div>
 					<h6 class="table">Appui<span> <%= @projet.appui.title%></span></h6>
-					<%= select_tag 'appui_id', options_for_select(Appui.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
+					<%= select_tag 'appui', options_for_select(Appui.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
 				</div>
 			</div>
 		</div>
@@ -198,13 +193,13 @@
 			</div>
 		</div>
 		<div class="container mt-4">
-			<%= if @projet.validation == nil%>
+			<%if @projet.validation == nil%>
 				<input type="submit" name="modifier" value="Enregistrer la modification" class="btn btn-secondary">
 				<input type="submit" name="modifier" value="Publier" class="sc-eerKOB cfnPHQ">
 			<%else%>
-				<input type="submit" name="modifier" value="Republier" class="sc-eerKOB cfnPHQ">
+				<input type="submit" name="modifier" value="Re-publier" class="sc-eerKOB cfnPHQ">
 			<%end%>
-			<input type="submit" name="modifier" value="Annuler la modification" class="sc-eerKOB cfnPHQ">
+			<a href="<%= admin_projet_path(@projet.id)%>" class="btn btn-secondary">Annuler la modification</a>
 		</div>
 	<% end %>
 </div>

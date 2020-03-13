@@ -90,11 +90,11 @@ Ptf.destroy_all
       c6  = Ptf.create!(title: "GIZ", lien: 'https://www.giz.de/en/worldwide/322.html', image_url: "logo/giz11.jpg")
       c7  = Ptf.create!(title: "AFD", lien: 'https://www.afd.fr/en/page-region-pays/madagascar', image_url: "logo/afd11.jpg")
       c8  = Ptf.create!(title: "ONUDI", lien: 'https://www.unido.org/who-we-are-unido-worldwide-africa-offices/madagascar', image_url: "logo/onudi1.jpg")
-      c9  = Ptf.create!(title: "JICA", lien: 'https://www.jica.go.jp/madagascar/french/index.html', image_url: "logo/jica1.png")
+      c9  = Ptf.create!(title: "JICA", lien: 'https://www.jica.go.jp/madagascar/french/index.html', image_url: "logo/JICA.jpg")
       c10 = Ptf.create!(title: "USAID", lien: 'https://www.usaid.gov/madagascar', image_url: "logo/USAID1.jpg")
-      c11 = Ptf.create!(title: "BAD", lien: 'https://www.afdb.org/en/countries/southern-africa/madagascar', image_url: "logoptf/bad.jpeg")
+      c11 = Ptf.create!(title: "BAD", lien: 'https://www.afdb.org/en/countries/southern-africa/madagascar', image_url: "logo/BAD.jpg")
       c12 = Ptf.create!(title: "PNUD", lien: 'https://www.mg.undp.org/', image_url: "logo/pnud1.jpg")
-      c13 = Ptf.create!(title: "FIDA", lien: 'https://www.ifad.org/en/web/operations/country/id/madagascar', image_url: "logoptf/fida.jpeg")
+      c13 = Ptf.create!(title: "FIDA", lien: 'https://www.ifad.org/en/web/operations/country/id/madagascar', image_url: "logo/FIDA.jpg")
       c14 = Ptf.create!(title: "CNUCED", lien: 'https://unctad.org/en/Pages/Home.aspx', image_url: "logo/cnuced11.jpg")
 
 puts "Ptf Créé"
@@ -266,7 +266,7 @@ puts "Beneficiaire créé"
               - Routes urbaines à Nosy-Be
               - L'eau à Tuléar" , partenaire_d_implementaton: "" ,
 
-              debut_du_projet: "01/01/2019" , fin: "01/01/2024")
+              debut_du_projet: "01/01/2019" , fin: "01/01/2024",bailleur_id: 2)
 
               @pro.ptf = Ptf.find(10)
               @pro.appui = Appui.find(1)
@@ -307,7 +307,7 @@ puts "projet1"
                  missions internationales d’échange d’expérience sur la promotion.", 
               partenaire_d_implementaton: "EDBM",
               debut_du_projet: "01/01/2019", 
-              fin: "02/03/2020")
+              fin: "02/03/2020", bailleur_id: 2)
 
                 @pro2.ptf = Ptf.find(11)
                 
@@ -365,7 +365,7 @@ puts "projet2"
               - Ministère de l’Agriculture,de l’Elevage et de la Pêche
                   " ,
                debut_du_projet: " 2015",
-                fin: "2021")
+                fin: "2021", bailleur_id: 2)
 
                 @pro3.ptf = Ptf.find(13)
                 @pro3.appui = Appui.find(2)
@@ -407,7 +407,7 @@ puts "projet3"
                           désenclavements des pôles agricoles.",
                    partenaire_d_implementaton: "Administration",
                    debut_du_projet: "01/01/2012", 
-                   fin: "01/01/2022")
+                   fin: "01/01/2022", bailleur_id: 2)
                    @pro4.ptf = Ptf.find(13)
                    @pro4.appui = Appui.find(2)                 
                    @pro4.save
@@ -442,9 +442,15 @@ puts "projet3"
 Unite.destroy_all
           Unite.create!(nom: "USD")
           Unite.create!(nom: "EURO")
-          Unite.create!(nom: "CRYTOMONAIE")
+          Unite.create!(nom: "UAC")
+          Unite.create!(nom: "MGA")
  puts "Unités créées"
 
+Tarif.destroy_all
+      Tarif.create(reference: "UAC", valeur: 1.39373, unite_id: 1)
+      Tarif.create(reference: "UAC", valeur: 1.21910, unite_id: 2)
+      Tarif.create(reference: "UAC", valeur: 4863.04, unite_id: 4)
+puts "tarifs créés"
 
 SecteurFiliere.destroy_all
 
@@ -460,4 +466,11 @@ SecteurFiliere.destroy_all
   SecteurFiliere.create!(secteur_id: 2, filiere_id: 28)
   SecteurFiliere.create!(secteur_id: 2, filiere_id: 21)
   SecteurFiliere.create!(secteur_id: 2, filiere_id: 29)
+
+
+
+User.destroy_all
+  User.create!(first_name: "Admin", last_name: "Admin", email: "admin@gmail.com",phone: "0342145678",is_admin: nil, is_consultant: false, is_super_admin: true,password: "azerty",password_confirmation: "azerty")
+  User.create!(first_name: "Bailleur", last_name: "bailleur",email: "bailleur@gmail.com", phone: "0342145645",is_admin: true, is_consultant: false, is_super_admin: false,password: "azerty",password_confirmation: "azerty")
+  User.create!(first_name: "Consultant", last_name: "consultant",email: "consultant@gmail.com", phone: "0342845678",is_admin: nil, is_consultant: true, is_super_admin: false,password: "azerty",password_confirmation: "azerty")
 

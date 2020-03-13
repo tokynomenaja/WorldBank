@@ -1,6 +1,4 @@
 
-//Montant filtre
-
 var inputLeft = document.getElementById("input-left");
 var inputRight = document.getElementById("input-right");
 var thumbLeft = document.querySelector(".slider > .thumb.left");
@@ -9,6 +7,8 @@ var range = document.querySelector(".slider > .range");
 var values = [0,5,10,40,100,"+"];
 var outputLeft = document.getElementById('output-left');
 var outputRight = document.getElementById('output-right');
+var ir = document.getElementById('ir');
+var il = document.getElementById('il');
 
 function setLeftValue(){
     var _this = inputLeft,
@@ -38,16 +38,27 @@ inputRight.addEventListener("input", setRightValue);
 // VALEUR DE LA RANGE
 function valueLeft(){
     outputLeft.innerHTML = values[this.value];
+    il.value = values[this.value];
 };
 function valueRight(){
     outputRight.innerHTML = values[this.value];
+    ir.value = values[this.value];
 };
 inputRight.addEventListener('input', valueRight)
 inputLeft.addEventListener('input', valueLeft)
 
+//FIN RANGE
 
+var drop = document.getElementById("range-drop")
+function showHide(){
+    var content = document.getElementById("range-content")
+        content.classList.toggle('toggleclass')
+}
+showHide()
+drop.addEventListener("click", showHide)
 
-// periode filtre
+// PERIODE 
+
 var inputYearLeft = document.getElementById("input-year-left");
 var inputYearRight = document.getElementById("input-year-right");
 var thumbYearLeft = document.querySelector(".y-slider > .y-thumb.y-left");
@@ -79,27 +90,75 @@ setRightValue();
 inputYearLeft.addEventListener("input", setLeftYearValue);
 inputYearRight.addEventListener("input", setRightYearValue);
 
-
-//show hide
-var checkArray = ["ptf-check","scontent","appui-check","filiere-check","zone-check","range-content","range-year-content"]
-var idArray = ["ptf-listener","check","appui-listener","filiere-listener","zone-listener","range-drop","year-drop"]
-var compteurSecteur = document.getElementById("compteurSecteur").textContent
-var compteurSecteurNum = parseInt(compteurSecteur)
-for (var i = 1; i <= compteurSecteurNum; i++) {
-
-    var a = document.getElementById("secteur" + i.toString())
-    console.log("======================================")
-    console.log(a.id)
+var dropYear = document.getElementById("year-drop")
+function showHideYear(){
+    var content = document.getElementById("range-year-content")
+        content.classList.toggle('toggleclass')
 }
+showHideYear()
+dropYear.addEventListener("click", showHideYear)
 
-    window.addEventListener('click', function(e){
-        for (var i = 0; i < idArray.length; i++) {
-            var ecouteur = document.getElementById(idArray[i])
-            var declencheur = document.getElementById(checkArray[i])
-            if (e.target.id === ecouteur.id) {
-                declencheur.classList.remove('toggleclass')
-            }else if (e.target != declencheur.id ) {
-                declencheur.classList.add('toggleclass')
-            }
-        }
-    })
+// FIN PERIODE
+
+var ptf = document.getElementById("ptf-listener")
+function showPtfCheckboxes(){
+    var ptfContent = document.getElementById("ptf-check")
+        ptfContent.classList.toggle('toggleclass')
+}
+showPtfCheckboxes()
+ptf.addEventListener("click", showPtfCheckboxes)
+
+var appui = document.getElementById("appui-listener")
+function showAppuiCheckboxes(){
+    var appuiContent = document.getElementById("appui-check")
+        appuiContent.classList.toggle('toggleclass')
+}
+showAppuiCheckboxes()
+appui.addEventListener("click", showAppuiCheckboxes)
+
+var sector = document.getElementById("check");
+function showCheckboxes(){
+    var contentSector = document.getElementById("scontent")
+        contentSector.classList.toggle('toggleclass')
+}
+showCheckboxes()
+sector.addEventListener("click", showCheckboxes)
+
+var filiere = document.getElementById("filiere-listener")
+function showFiliereCheckboxes(){
+    var filiereContent = document.getElementById("filiere-check")
+        filiereContent.classList.toggle('toggleclass')
+}
+showFiliereCheckboxes()
+filiere.addEventListener("click", showFiliereCheckboxes)
+
+var zone = document.getElementById("zone-listener")
+function showZoneCheckboxes(){
+    var zoneContent = document.getElementById("zone-check")
+        zoneContent.classList.toggle('toggleclass')
+}
+showZoneCheckboxes()
+zone.addEventListener("click", showZoneCheckboxes)
+
+//REMOVE DROP
+
+// var reset = ['ptf-check','scontent', 'appui-check', 'filiere-check"', 'zone-check', 'range-year-content', 'range-content']
+// function closed(event){
+//     console.log(event.target)
+//     for (var i = 0; i < reset.length; i++) {
+//         var tagId = document.getElementById(reset[i])
+//         console.log(tagId)
+//         if ( event.target =! tagId && event.target.parentNode != tagId) {
+//             tagId.classList.add('toggleclass')
+//         }
+//     }
+// }
+// window.addEventListener('click', closed)
+
+
+// function exPle(event){
+//     var test = document.getElementById('zone-check')
+
+// }
+// window.addEventListener('click', exPle)
+

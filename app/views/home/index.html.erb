@@ -67,8 +67,8 @@
             </header>
           </div>
           <div class="ptf-content filter-drop">
-            <div class="mx-auto p-2 rounded toggleclass" id="ptf-check">
-              <%Ptf.all.each do |p|%>
+            <div class="mx-auto p-2 rounded" id="ptf-check">
+              <%Ptf.all.order(:title).each do |p|%>
                 <div class="fdk8rh-1 eouleG">
                   <label class="d-flex align-items-center">
                     <%= check_box_tag("ptf_id[]",p.id) %>
@@ -110,8 +110,8 @@
             </header>
           </div>
           <div class="appui-content filter-drop">
-            <div class="mx-auto p-2 rounded toggleclass" id="appui-check">
-              <%Appui.all.each do |a|%>
+            <div class="mx-auto p-2 rounded" id="appui-check">
+              <%Appui.all.order(:title).each do |a|%>
                 <div class="fdk8rh-1 eouleG">                
                     <label class="d-flex align-items-center">
                       <%= check_box_tag("appui_id[]",a.id) %>
@@ -132,7 +132,7 @@
           </div>
           <div class="filiere-content filter-drop toggleclass" id="filiere-check">
             <div class="mx-auto p-2 rounded">
-                <%Filiere.all.each do |f|%>
+                <%Filiere.all.order(:title).each do |f|%>
                   <div class="fdk8rh-1 eouleG">
                     <label class="d-flex align-items-center">
                       <%= check_box_tag("search_filiere[]",f.id) %>
@@ -169,7 +169,7 @@
                     </label>
                   </div>
                 <%end%>
-              </div>
+              </div> 
             </div>
           </div>
         <div class="fdk8rh-3 feYJJO">
@@ -191,11 +191,13 @@
               <div class="multi-range-slider">
                 <div class="p-3 text-center">
                   Entre
-                <output id="output-left">5</output><span> millions et </span>
-                <output id="output-right">100</output><span> millions de USD</span>
+                <output id="output-left">0</output><span> millions et </span>
+                <output id="output-right">+</output><span> millions de USD</span>
                 </div>
-                <input type="range" name="" id="input-left" min="0" max="5" step="1" value="1">
-                <input type="range" name="" id="input-right" min="0" max="5" step="1" value="4">
+                <input type="range"  id="input-left" min="0" max="5" step="1" value="0">
+                <input type="range"  id="input-right" min="0" max="5" step="1" value="0">
+                <input type="hidden" name="montant[]" id="il">
+                <input type="hidden" name="montant[]" id="ir">
                 <div class="slider">
                   <div class="track"></div>
                   <div class="range"></div>
@@ -228,8 +230,8 @@
               <output id="rangevalueleftyear">2008</output><span> et </span>
               <output id="rangevaluerightyear">2030</output>
               </div>
-              <input type="range" name="" step="1" id="input-year-left" min="2008" max="2030" value="2005" onchange="rangevalueleftyear.value=value">
-              <input type="range" name="" step="1" id="input-year-right" min="2008" max="2030" value="2030" onchange="rangevaluerightyear.value=value">
+              <input type="range" name="fin[]" id="input-year-left" min="2008" max="2030"  onchange="rangevalueleftyear.value=value">
+              <input type="range" name="fin[]" id="input-year-right" min="2008" max="2030"  onchange="rangevaluerightyear.value=value">
               <div class="y-slider">
                 <div class="y-track"></div>
                 <div class="y-range"></div>
@@ -278,7 +280,10 @@
                   <%end%>
 
                   <% if @montant_1 != "" %>
+                    <%@params_montant.each do |m|%>
+                      <%@montant_1 = Montant.all.find(m.to_i).price%>
                     <p class="text-muted mb-1"><span>Montant &nbsp;:&nbsp; </span> <%= @montant_1 %></p>
+                  <%end%>
                   <%end%>
 
                   <%if @secteur_1 != ""%>
@@ -381,17 +386,10 @@
                 <%end%>  
               <%end%>
             
-              <%if @montant%>
-                <% @montant.each do |res| %>  
-                  <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <%= link_to "#{res.nom_du_projet}", projet_path(res.id), target: 'blank', class: 'text-muted reshover' %>
-                  </div>       
-                <%end%>
-              <%end%>
 
               <%if @ptf%>
                 <% @ptf.each do |p| %>  
-                  <% if p.projet.validation == true%>
+                  <% if p.validation == true%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                     <%= link_to "#{p.nom_du_projet}", projet_path(p.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>        
@@ -401,9 +399,11 @@
 
               <%if @appui%>
                 <% @appui.each do |a| %>  
-                  <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                  <% if a.projet.validation == true%>
+                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                     <%= link_to "#{a.nom_du_projet}", projet_path(a.id), target: 'blank', class: 'text-muted reshover' %>
-                        </div>        
+                    </div>        
+                  <%end%>
                 <%end%>
               <%end%>
 
@@ -427,15 +427,17 @@
                 <%end%>
               <%end%>
 
-              <%if @fin%>
-                <% @fin.each do |f| %>  
+              <%if @d%>
+                <% @d.each do |f| %>  
                   <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                     <%= link_to "#{f.nom_du_projet}", projet_path(f.id), target: 'blank', class: 'text-muted reshover' %>
                   </div>  
                 <%end%>
               <%end%>
-                   Nombre des projets: <%= Projet.where(validation: true).count%><br>
-                   Montant des projets:
+                   Nombre des projets : <%= Projet.where(validation: true).count%><br>
+                   Nombre de PTF total : <%= Ptf.count%><br>
+                   Argent investit total : <%= @montant_total%> millions USD<br>
+                   Nombre des secteurs covert : <%= Secteur.all.count%>
               </div>
               </div>
             </div>
