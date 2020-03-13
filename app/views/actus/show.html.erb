@@ -1,2 +1,12 @@
-<h1>Actus#show</h1>
-<p>Find me in app/views/actus/show.html.erb</p>
+
+<div class="container sans-head">
+		<div class="titre" style="text-align: center;">
+		   <h3>Liste des documents associés :</h3>
+	   </div><br>
+	<h3>Liste des documents associés :</h3>
+	<%if @actu.files.attached?%>
+		<%@actu.files.all.each do|file|%> 
+			<p><%= link_to file.filename, rails_blob_path(file, disposition: "attachement"), class: "attr" %></p>
+		<%end%>
+	
+	<%end%>
