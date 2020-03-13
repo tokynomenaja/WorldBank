@@ -17,6 +17,8 @@ Rails.application.routes.draw do
       resources :publications
 	    resources :users   
 	    resources :projets
+      resources :actus
+
   	end
   
    root to: 'home#index'
