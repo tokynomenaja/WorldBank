@@ -1,0 +1,36 @@
+  <header class="aci59a-0 eyAIuG haute sticky-limit">
+    <div class="sc-1gnwgfb-2 stom">
+    </div>
+       <div class="head-te"><marquee behavior="" direction=""></marquee></div>
+  </header>
+<div class="sc-11unfkk-2 fxFQyp m-5">
+  <header class="">
+    <div class="qjc24y-1 hlIrlm">  
+      <div class="qjc24y-0 jMLWRH">
+        <div class="login mx-auto">
+          <h2>Contactez-nous</h2>
+         	<%= form_tag url_for(action: 'create'), method:'post', class:'form' do%>
+         		<div class="field form-group">
+              		<div class="form-content text-left">
+              			<label for="email">Email</label>
+		                
+		               	<input type="email" class="form-control form-width" value="<%= current_user.email%>" id="email" placeholder="email@gmail.com">
+              		</div>
+            	</div>
+          
+	            <div class="field form-group">
+	              <div class="form-content text-left">
+	                 <label for="message">Message</label>      
+	                 <textarea name="message" placeholder="Laisser votre message" class="form-control form-width" rows="5" id="message" required="true"></textarea>         
+	              </div>
+	            </div>	           
+	            <div class="actions mb-4">
+                <%= submit_tag :Envoyer, :class => "sc-eerKOB cfnPHQ"%>
+	            </div>
+         	<%end%>
+           
+        </div>
+      </div>
+    </div>
+  </header>
+</div>

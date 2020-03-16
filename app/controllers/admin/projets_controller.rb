@@ -29,10 +29,7 @@ class Admin::ProjetsController < ApplicationController
                   case params[:"unite_id#{x}"]
                     when "1"
                       @montant = params[:"montant#{x}"]
-                      @uac = Tarif.where(unite_id:  1, reference: "UAC").last.valeur
-                      @convert_uac = @montant.to_i / @uac
-                      @usd = Tarif.where(unite_id:  1, reference: "UAC").last.valeur
-                      @convert_usd = @convert_uac * @usd
+                      @convert_usd = @montant
                     when "2"
                       @montant = params[:"montant#{x}"]
                       @uac = Tarif.where(unite_id:  2, reference: "UAC").last.valeur
@@ -69,7 +66,13 @@ class Admin::ProjetsController < ApplicationController
                   Zoneprojet.create(projet_id: @project.id , zone_id: z.to_i)
                 end
 
-                @beneficiaire_ids = params[:beneficiaire_ids]
+                10.times do |x|
+                  if params[:"checkben#{x}"] && params[:newben] != ""
+                    @ben = Beneficiaire.create(title: params[:"valben#{x}"])
+                    Benefprojet.create(projet_id: @project.id , beneficiaire_id: @ben.id)
+                  end
+                end
+                  @beneficiaire_ids = params[:beneficiaire_ids]
                 @beneficiaire_ids.each do |b|
                   Benefprojet.create(projet_id: @project.id , beneficiaire_id: b.to_i)
                 end

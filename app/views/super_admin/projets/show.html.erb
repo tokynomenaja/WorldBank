@@ -2,10 +2,12 @@
     <div class="sc-1gnwgfb-2 hVIPFV pict">
       <style type="text/css">
         .pict {
-          <% if @projet.picture.attached?%>
-            background-image: url(<%= rails_blob_url(@projet.picture)%>);
+           <%if @projet.secteurprojets.count == 1%>
+            <%@projet.secteurprojets.each do|sp|%>
+              background-image: url('/<%=sp.secteur.image_url%>');
+            <%end%>
           <%else%>
-            background-image: url('/maki.jpg');
+            background-image: url('/secteur/accueil.jpg');
           <%end%>
         }
 
@@ -33,15 +35,12 @@
               <p><span class="attr">Secteurs : </span>
           <%end%>
             <span class="word">
-              
-              <% i = 0%>
               <%@projet.secteurprojets .each do|sp|%>
-                <%if i == 0%>
-                  <span><%=sp.secteur.title %></span>
-                <% else %>
-                  <span>, <%=sp.secteur.title %></span>
-                <% end %>
-                <% i += 1 %>
+                  <% if sp == @projet.secteurprojets.last%>
+                    <span><%=sp.secteur.title %></span>
+                  <% else %>
+                    <span><%=sp.secteur.title %>, </span>
+                  <% end %>
               <% end %>
               
             </span>
@@ -57,29 +56,16 @@
               <p><span class="attr">Filières : </span>
           <%end%>
           <span class="word">
-              <% i = 0%>
               <%@projet.filiereprojets .each do|fp|%>
-                <%if i == 0%>
+                <% if fp == @projet.filiereprojets.last%>
                   <span><%=fp.filiere.title %></span>
                 <% else %>
-                  <span>, <%=fp.filiere.title %></span>
+                  <span><%=fp.filiere.title %>, </span>
                 <% end %>
-                <% i += 1 %>
               <% end %>
             
           </span>
           </p>
-  
-        
-      <p><span class="attr">Site web : </span>
-        <% if @projet.siteweb%>
-          <span class="word">
-            <a href="https://<%= @projet.siteweb.remove('https://')%>"><%= @projet.siteweb%></a>
-          </span>
-        <%else%>
-          <span>Pas de lien</span>
-        <%end%>
-      </p>
       </div>
     </div>
   </div>
@@ -103,14 +89,12 @@
               <p><span class="attr">Régions : </span></p>
           <%end%>
           <div class="mb-3">
-            <% i = 0%>
               <%@projet.zoneprojets .each do|zp|%>
-                <%if i == 0%>
+                <% if zp == @projet.zoneprojets.last%>
                   <span><%=zp.zone.title %></span>
-                <% else %>
-                  <span>, <%=zp.zone.title %></span>
+                <%else%>
+                  <span><%=zp.zone.title %>, </span>
                 <% end %>
-                <% i += 1 %>
               <% end %>
           </div>
           
@@ -125,14 +109,12 @@
               <p><span class="attr">Bénéficiaires : </span></p>
           <%end%>
           <div class="mb-3">
-            <% i = 0%>
               <%@projet.benefprojets .each do|ben|%>
-                <%if i == 0%>
-                  <span><%=ben.beneficiaire.title %></span>
-                <% else %>
-                  <span>, <%=ben.beneficiaire.title %></span>
-                <% end %>
-                <% i += 1 %>
+                  <%if ben = @projet.benefprojets.last%>
+                    <span><%=ben.beneficiaire.title %></span>
+                  <% else %>
+                    <span><%=ben.beneficiaire.title %>, </span>
+                  <% end %>
               <% end %>
           </div>
 
@@ -145,12 +127,18 @@
         </div>
         <div class="col-md-6 list">
           <p class="mb-3"><span class="attr">Nature de l'appui : </span><%=@projet.appui.title%></p>
-          <p class="mb-3"><span class="attr">Début : </span><%=@projet.debut_du_projet%></p>
-
-          <p class="mb-3"><span class="attr">Fin : </span><%=@projet.fin%></p>
+          <p class="mb-3"><span class="attr">Début : </span><%=@projet.debut_du_projet%> &nbsp;&nbsp;&nbsp;&nbsp;<span class="attr">Fin : </span><%=@projet.fin%></p>
           <p class="mb-3"><span class="attr">Alignement aux priorités du plan Emergence de Madagascar : </span><p></span><% @projet.pemprojets.each do |p|%>
                 <p> <%=p.pem.title%></p>
-            <%end%></p></p>
+            <%end%></p>
+
+          <%if @projet.siteweb%>
+            <p class="mb-3"><span class="attr">Site web : </span>
+                <span class="word">
+                  <a href="https://<%= @projet.siteweb.remove('https://')%>"><%= @projet.siteweb%></a>
+                </span>
+            </p>
+          <%end%>
 
           <%if @projet.files.attached?%>
             <%@projet.files.each do|file|%> 

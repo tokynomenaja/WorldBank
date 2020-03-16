@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 	  	resources :projets
 	  	resources :users
       resources :publications
+
     end
  # 	resources :secteur
  # 	resources :pft

@@ -8,14 +8,14 @@
    
 Secteur.destroy_all
 
-      c1 = Secteur.create!(title: "INDUSTRIE EXTRACTIVE")
-      c2 = Secteur.create!(title: "COMMERCE")   
-      c3 = Secteur.create!(title: "INFRASTRUCTURES")
+      c1 = Secteur.create!(title: "INDUSTRIE EXTRACTIVE", image_url: "secteur/extractive.jpg")
+      c2 = Secteur.create!(title: "COMMERCE", image_url: "secteur/commerce.jpg")   
+      c3 = Secteur.create!(title: "INFRASTRUCTURES", image_url: "secteur/infrastructure.jpg")
       c4 = Secteur.create!(title: "TOURISME")   
       c5 = Secteur.create!(title: "ENTREPREUNARIAT")
-      c7 = Secteur.create!(title: "AGROBUSINESS")
-      c8 = Secteur.create!(title: "PROMOTION DES INVESTISSEMENTS")
-      c9 = Secteur.create!(title: "FINANCES")
+      c7 = Secteur.create!(title: "AGROBUSINESS", image_url: "secteur/agribusinness.jpg")
+      c8 = Secteur.create!(title: "PROMOTION DES INVESTISSEMENTS", image_url: "secteur/promotion.jpg")
+      c9 = Secteur.create!(title: "FINANCES", image_url: "secteur/finance.jpg")
       c10 = Secteur.create!(title: "ENERGIE")
 
 puts "Secteur créée"
@@ -288,8 +288,7 @@ puts "Beneficiaire créé"
                 Igaprojet.create!(projet_id: 1 , iga_id: 13)
 
 
-                Secteurprojet.create(projet_id: 1 , secteur_id: 10)
-                Secteurprojet.create(projet_id: 1 , secteur_id: 11)
+                Secteurprojet.create!(projet_id: 1 , secteur_id: 3)
 
 puts "projet1"
  
@@ -328,9 +327,9 @@ puts "projet1"
                 Igaprojet.create!(projet_id: 2 , iga_id: 11)
 
 
-                Secteurprojet.create(projet_id: 2 , secteur_id: 9)
-                Secteurprojet.create(projet_id: 2 , secteur_id: 10)
-                Secteurprojet.create(projet_id: 2 , secteur_id: 11)
+                Secteurprojet.create!(projet_id: 2 , secteur_id: 8)
+                Secteurprojet.create!(projet_id: 2 , secteur_id: 9)
+               
 
 
 puts "projet2"
@@ -360,12 +359,10 @@ puts "projet2"
                  Coordination de projet, guidage des investissements agricoles et appui aux politiques publiques
                   ",
                
-               partenaire_d_implementaton: "
-              - Projet PIC
-              - Ministère de l’Agriculture,de l’Elevage et de la Pêche
+               partenaire_d_implementaton: "Projet PIC Ministère de l’Agriculture, de l’Elévage et de la Pêche
                   " ,
-               debut_du_projet: " 2015",
-                fin: "2021", bailleur_id: 2)
+               debut_du_projet: "02/02/2015",
+                fin: "02/03/2021", bailleur_id: 2)
 
                 @pro3.ptf = Ptf.find(13)
                 @pro3.appui = Appui.find(2)
@@ -388,9 +385,9 @@ puts "projet2"
                 Igaprojet.create!(projet_id: 3 , iga_id: 13)
 
 
-                Secteurprojet.create(projet_id: 3 , secteur_id: 10)
-                Secteurprojet.create(projet_id: 3 , secteur_id: 4)
-                 Secteurprojet.create(projet_id: 3 , secteur_id: 3)
+                Secteurprojet.create!(projet_id: 3 , secteur_id: 9)
+                Secteurprojet.create!(projet_id: 3 , secteur_id: 4)
+                 Secteurprojet.create!(projet_id: 3 , secteur_id: 3)
 
 
 
@@ -433,8 +430,8 @@ puts "projet3"
                              Igaprojet.create!(projet_id: 4 , iga_id: 6)                 
                              Igaprojet.create!(projet_id: 4 , iga_id: 7)
 
-                             Secteurprojet.create(projet_id: 4 , secteur_id: 5)                
-                             Secteurprojet.create(projet_id: 4 , secteur_id: 10)
+                             Secteurprojet.create!(projet_id: 4 , secteur_id: 5)                
+                             Secteurprojet.create!(projet_id: 4 , secteur_id: 9)
 
 
  puts "projet4"
@@ -471,6 +468,6 @@ SecteurFiliere.destroy_all
 
 User.destroy_all
   User.create!(first_name: "Admin", last_name: "Admin", email: "admin@gmail.com",phone: "0342145678",is_admin: nil, is_consultant: false, is_super_admin: true,password: "azerty",password_confirmation: "azerty")
-  User.create!(first_name: "Bailleur", last_name: "bailleur",email: "bailleur@gmail.com", phone: "0342145645",is_admin: true, is_consultant: false, is_super_admin: false,password: "azerty",password_confirmation: "azerty")
+  User.create!(first_name: "Bailleur", last_name: "bailleur",email: "bailleur@gmail.com", phone: "0342145645",is_admin: false, is_consultant: false, is_super_admin: false,password: "azerty",password_confirmation: "azerty")
   User.create!(first_name: "Consultant", last_name: "consultant",email: "consultant@gmail.com", phone: "0342845678",is_admin: nil, is_consultant: true, is_super_admin: false,password: "azerty",password_confirmation: "azerty")
 
