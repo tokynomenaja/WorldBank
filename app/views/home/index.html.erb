@@ -1,5 +1,11 @@
 <header class="aci59a-0 eyAIuG sticky-limit">
-    <div class="sc-1gnwgfb-2 hVIPFV">
+    <div class="sc-1gnwgfb-2 hVIPFV pict">
+      <style type="text/css">
+        .pict {
+            background-image: url('/secteur/accueil.jpg');
+        }
+
+      </style>  
     </div>
   </header>
   <% if current_user %> 
@@ -428,33 +434,31 @@
                   </div>  
                 <%end%>
               <%end%>
-                   Nombre des projets : <%= Projet.where(validation: true).count%><br>
-                   Nombre de PTF total : <%= Ptf.count%><br>
-                   Argent investit total : <%= @montant_total%> millions USD<br>
-                   Nombre des secteurs covert : <%= Secteur.all.count%>
+        </div>
+                  <div style="margin-top: 20%;font-size: 20px;margin-left: 11%;">
+                    <ul class="list-group list-group-flush">
+                      <li class="">Nombre des projets total : <%= Projet.where(validation: true).count%></li>
+                      <li class="">Nombre de PTF total : <%= Ptf.count%></li>
+                      <li class="">Argent investit total : <%= @montant_total%> millions USD</li>
+                      <li class="">Nombre des secteurs couvert : <%= Secteur.all.count%></li>
+                    </ul>
+                  </div>
               </div>
               </div>
             </div>
-        </div>
       <% else %>
       <div class="qjc24y-0 jMLWRH col-md-7 pt-5 text-justify" >
-       <p>
-        La Plateforme Multi-Bailleurs pour le Secteur Privé, la Finance et l’Industrie Extractive est chargée, à
-        un niveau technique, de la coordination des projets relatifs au développement du secteur privé, de la
-        finance et de l’industrie extractive. La Plateforme veille également à la mise en œuvre des principes de
-        l’efficacité de l’aide dans les secteurs concernés.
-       </p>
-       <p>La plateforme permet de :</p>
-       <ul class="ml-4">
-         <li class="mb-4 puce">Améliorer la coordination des interventions des PTF grâce au suivi et à la diffusion de
-          l’information, ainsi que l’accès rapide des principales parties prenantes à l’information
-          pertinente ;</li>
-          <li  class="mb-4 puce">Améliorer l&#39;efficacité et la qualité de la prise de décision dans le développement des secteurs
-            concernés en mettant à disposition une expertise de qualité ;</li>
-          <li class="mb-4 puce">
-            Assurer un meilleur alignement des PTF aux politiques nationales.
-          </li>
-       </ul>
+        <div class="col-md-8" style="margin-top: 20%;font-size: 20px;margin-left: 11%;">
+          
+          <div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Nombre des projets total : <%= Projet.where(validation: true).count%></li>
+              <li class="list-group-item">Nombre de PTF total : <%= Ptf.count%></li>
+              <li class="list-group-item">Argent investit total : <%= @montant_total%> millions USD</li>
+              <li class="list-group-item">Nombre des secteurs couvert : <%= Secteur.all.count%></li>
+            </ul>
+          </div>
+        </div>
       </div>
     <% end %>
       <div class="qjc24y-0 jMLWRH col-md-5">

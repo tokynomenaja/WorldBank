@@ -16,5 +16,11 @@ class ProjetsController < ApplicationController
   
     def show
       @projet = Projet.find(params[:id])
+      respond_to do |format|
+        format.html
+        format.pdf { 
+          render :pdf => "show", :layout => 'pdf.html'
+        }
+      end
     end  
   end

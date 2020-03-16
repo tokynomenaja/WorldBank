@@ -5,7 +5,7 @@ class SuperAdmin::UsersController < ApplicationController
 
 	def index
 		@users = User.where(is_admin: true).or(User.where(is_consultant: true))
-		@users_en_attente = User.where(is_consultant: false,is_super_admin: false,is_admin: nil)	
+		@users_en_attente = User.where(is_consultant: false,is_super_admin: false,is_admin: false)	
 	end
 
 	def show

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     	namespace :admin do
 	  	resources :projets
 	  	resources :users
+      resources :publication
     end
  # 	resources :secteur
  # 	resources :pft
