@@ -89,7 +89,7 @@
               <p><span class="attr">Régions : </span></p>
           <%end%>
           <div class="mb-3">
-              <%@projet.zoneprojets .each do|zp|%>
+              <%@projet.zoneprojets.each do|zp|%>
                 <% if zp == @projet.zoneprojets.last%>
                   <span><%=zp.zone.title %></span>
                 <%else%>
@@ -109,7 +109,7 @@
               <p><span class="attr">Bénéficiaires : </span></p>
           <%end%>
           <div class="mb-3">
-              <%@projet.benefprojets .each do|ben|%>
+              <%@projet.benefprojets.each do|ben|%>
                   <%if ben = @projet.benefprojets.last%>
                     <span><%=ben.beneficiaire.title %></span>
                   <% else %>

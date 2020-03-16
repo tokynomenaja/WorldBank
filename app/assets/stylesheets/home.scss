@@ -7,7 +7,6 @@
     background: transparent url('/chev.png') no-repeat;
     background-position: 4.5rem center;
     border-style: none;
-    height: 5rem;
     line-height: 5rem;
     z-index: 9999;
 }
@@ -32,8 +31,14 @@
   font-size: 0.7rem;
 }
 
-//DRopdown search
-
+.compteur{
+  font-size: 1.2rem;
+}
+.compt-item{height: 100px;width: 300px;}
+.compt-item:hover{box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;}
+.centrage{line-height: 4rem; font-size: 2rem;}
+.background{background-color: #52c39b;}
+.text-color{color: #52c39b;background-color: #31333b;}
 .multiselect{
 	width: 200px;
 }
@@ -58,7 +63,6 @@
 	 background-color: #1e90ff;
 }
 
-//ptf
 
 #ptf_id {
   display: none;
@@ -72,8 +76,6 @@
 }
 
 
-//filiere
-
 
 #filiere_id {
   display: none;
@@ -86,7 +88,6 @@
    background-color: #1e90ff;
 }
 
-//zone
 
 #zone_id {
   display: none;
@@ -98,8 +99,6 @@
 #zone_id label:hover {
    background-color: #1e90ff;
 }
-
-//appui
 
 #appui_id {
   display: none;
