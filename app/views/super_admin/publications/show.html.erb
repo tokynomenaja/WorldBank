@@ -1,0 +1,19 @@
+
+
+
+<div class="sans-head" >
+	<div class="titre" style="text-align: center;">
+		<h3>Liste des documents associés :</h3>
+	</div><br>
+	
+	<div class="col-sm-6 mb-3">
+		
+		<h5 class= "attr"><%=@pub.title%></h5>
+		<p><%=@pub.description%></p>
+		<%if @pub.files.attached?%>
+		<%@pub.files.all.each do|file|%> 
+		<p><%= link_to file.filename, rails_blob_path(file, disposition: "attachement")%></p>
+		<%end%>
+		<%end%>
+	</div>
+</div>

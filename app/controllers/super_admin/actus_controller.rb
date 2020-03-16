@@ -3,7 +3,7 @@ class SuperAdmin::ActusController < ApplicationController
 
   def create
       @user = User.where(is_super_admin: true)
-  	 	@actu = Actu.create!(title: params[:title], user_id: @user.id)
+  	 	@actu = Actu.create!(title: params[:title], user_id: current_user.id)
 
 	    	if @actu.save
 	    		@actu.files.attach(params[:files])
@@ -15,10 +15,23 @@ class SuperAdmin::ActusController < ApplicationController
 
   end
 
-  def edit
+ def show
+    @actu = Actu.find(params[:id])
+  end
+
+  def update
+    @actu = Actu.find(params[:id])
+    @actu.update(validation: true)
+    redirect_to super_admin_projets_path
   end
 
   def index
     @actus = Actu.all
   end
+  def destroy
+    @actu = Actu.find(params[:id])
+    @actu.destroy
+    redirect_to super_admin_actus_path
+  end
+  
 end

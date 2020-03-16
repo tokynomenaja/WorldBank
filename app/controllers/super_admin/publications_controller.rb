@@ -19,4 +19,8 @@ class SuperAdmin::PublicationsController < ApplicationController
 	def index
 		@pubs = Publication.all 
 	end
+	def show
+		@pub = Publication.find(params[:id])
+		
+	end
 end

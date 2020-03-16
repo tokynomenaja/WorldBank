@@ -1,4 +1,5 @@
 class ActusController < ApplicationController
+   before_action :authenticate_user!
 
   def index
   	@actu = Actu.all	
