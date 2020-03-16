@@ -435,31 +435,52 @@
                 <%end%>
               <%end%>
         </div>
-                  <div style="margin-top: 20%;font-size: 20px;margin-left: 11%;">
-                    <ul class="list-group list-group-flush">
-                      <li class="">Nombre des projets total : <%= Projet.where(validation: true).count%></li>
-                      <li class="">Nombre de PTF total : <%= Ptf.count%></li>
-                      <li class="">Argent investit total : <%= @montant_total%> millions USD</li>
-                      <li class="">Nombre des secteurs couvert : <%= Secteur.all.count%></li>
-                    </ul>
-                  </div>
-              </div>
+            <div class="compteur mt-5">
+              <div class="d-flex  text-center justify-content-center flex-wrap">
+                <div class="m-2 text-white background compt-item border">
+                  <p class="border-bottom p-2">Nombre total des projets :</p>
+                  <p class="centrage"> <%= Projet.where(validation: true).count%></p>
+                </div>
+                <div class="m-2 bg-dark compt-item border text-color">
+                  <p class="border-bottom p-2">Nombre total de PTF :</p>
+                  <p class="centrage"><%= Ptf.count%></p>
+                </div>
+                <div class="m-2 bg-dark compt-item border text-color">
+                  <p class="border-bottom p-2">Argent total investi : </p>
+                  <p class="centrage"><%= @montant_total %> millions d'USD</p>
+                </div>
+                <div class="m-2 text-white background compt-item border">
+                  <p class="border-bottom p-2">Nombre de secteurs couverts : </p>
+                  <p class="centrage"><%= Secteur.all.count%></p>
+                </div> 
               </div>
             </div>
-      <% else %>
-      <div class="qjc24y-0 jMLWRH col-md-7 pt-5 text-justify" >
-        <div class="col-md-8" style="margin-top: 20%;font-size: 20px;margin-left: 11%;">
-          
-          <div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Nombre des projets total : <%= Projet.where(validation: true).count%></li>
-              <li class="list-group-item">Nombre de PTF total : <%= Ptf.count%></li>
-              <li class="list-group-item">Argent investit total : <%= @montant_total%> millions USD</li>
-              <li class="list-group-item">Nombre des secteurs couvert : <%= Secteur.all.count%></li>
-            </ul>
           </div>
         </div>
       </div>
+      <% else %>
+        <div class="qjc24y-0 jMLWRH col-md-7 pt-5 text-justify" >
+          <div class="compteur mt-5">
+            <div class="d-flex  text-center justify-content-center flex-wrap">
+              <div class="m-2 text-white background compt-item border">
+                <p class="border-bottom p-2">Nombre total des projets :</p>
+                <p class="centrage"> <%= Projet.where(validation: true).count%></p>
+              </div>
+              <div class="m-2 bg-dark compt-item border text-color">
+                <p class="border-bottom p-2">Nombre total de PTF :</p>
+                <p class="centrage"><%= Ptf.count%></p>
+              </div>
+              <div class="m-2 bg-dark compt-item border text-color">
+                <p class="border-bottom p-2">Argent total investi : </p>
+                <p class="centrage"><%= @montant_total %> millions d'USD</p>
+              </div>
+              <div class="m-2 text-white background compt-item border">
+                <p class="border-bottom p-2">Nombre de secteurs couverts : </p>
+                <p class="centrage"><%= Secteur.all.count%></p>
+              </div> 
+            </div>
+          </div>
+        </div>
     <% end %>
     <div class="qjc24y-0 jMLWRH col-md-5">
       <div class="vx2fp9-1 coQzZm">
