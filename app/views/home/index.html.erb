@@ -191,16 +191,18 @@
           </h3>
         </header>
       </div>
-      <div class="filter-drop range-content mx-auto rounded eouleG" id="range-content">
+      <div class="filter-drop range-content mx-auto rounded eouleG pt-4" id="range-content">
         <div class="middle mx-auto mt-2 mb-4">
-          <div class="multi-range-slider">
-            <div class="p-3 text-center">
-              Entre
-              <output id="output-left">0</output><span> millions et </span>
-              <output id="output-right">+</output><span> millions de USD</span>
+           <div class="p-3 text-center">
+              <output id= "showMontant">montant en millions de USD</output>
+              <output id="outputleft" style="display: none;"></output><span style="display: none;" id="otl">montant en millions de USD </span>
+              <output id="outputright" style="display: none;"></output><span style="display: none;" id="otr"></span>
+              <span id="valeurMontant">
+              </span>
             </div>
-            <input type="range"  id="input-left" min="0" max="5" step="1" value="0">
-            <input type="range"  id="input-right" min="0" max="5" step="1" value="0">
+          <div class="multi-range-slider">
+            <input type="range" id="input-left" min="0" max="5" step="1" value="0">
+            <input type="range" id="input-right" min="0" max="5" step="1" value="5">
             <input type="hidden" name="montant[]" id="il">
             <input type="hidden" name="montant[]" id="ir">
             <div class="slider">
