@@ -187,15 +187,7 @@ Zone.destroy_all
       z16 = Zone.create!(title:"Sofia")
       z4 = Zone.create!(title:"Vakinakaratra")
       z8 = Zone.create!(title:"Vatovavy-Fitovinany")
-
-
-
-
-
-
 puts "zone créée"
-
-
 
 Appui.destroy_all
       a1 = Appui.create!(title:"Prêt")
