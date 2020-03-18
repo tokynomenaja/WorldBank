@@ -102,21 +102,8 @@ function valueRight(){
     }
 };
 
-
-
-
 inputRight.addEventListener('input', valueRight)
 inputLeft.addEventListener('input', valueLeft)
-
-//FIN RANGE
-
-var drop = document.getElementById("range-drop")
-function showHide(){
-    var content = document.getElementById("range-content")
-        content.classList.toggle('toggleclass')
-}
-showHide()
-drop.addEventListener("click", showHide)
 
 // PERIODE 
 
@@ -151,103 +138,4 @@ setRightValue();
 inputYearLeft.addEventListener("input", setLeftYearValue);
 inputYearRight.addEventListener("input", setRightYearValue);
 
-var dropYear = document.getElementById("year-drop")
-function showHideYear(){
-    var content = document.getElementById("range-year-content")
-        content.classList.toggle('toggleclass')
-}
-showHideYear()
-dropYear.addEventListener("click", showHideYear)
-
 // FIN PERIODE
-
-var ptf = document.getElementById("ptf-listener")
-function showPtfCheckboxes(){
-    var ptfContent = document.getElementById("ptf-check")
-        ptfContent.classList.toggle('toggleclass')
-}
-showPtfCheckboxes()
-ptf.addEventListener("click", showPtfCheckboxes)
-
-var appui = document.getElementById("appui-listener")
-function showAppuiCheckboxes(){
-    var appuiContent = document.getElementById("appui-check")
-        appuiContent.classList.toggle('toggleclass')
-}
-showAppuiCheckboxes()
-appui.addEventListener("click", showAppuiCheckboxes)
-
-var sector = document.getElementById("check");
-function showCheckboxes(){
-    var contentSector = document.getElementById("scontent")
-        contentSector.classList.toggle('toggleclass')
-}
-showCheckboxes()
-sector.addEventListener("click", showCheckboxes)
-
-var filiere = document.getElementById("filiere-listener")
-function showFiliereCheckboxes(){
-    var filiereContent = document.getElementById("filiere-check")
-        filiereContent.classList.toggle('toggleclass')
-}
-showFiliereCheckboxes()
-filiere.addEventListener("click", showFiliereCheckboxes)
-
-
-var iga = document.getElementById("iga-listener")
-function showIgaCheckboxes(){
-    var igaContent = document.getElementById("iga-check")
-        igaContent.classList.toggle('toggleclass')
-}
-showIgaCheckboxes()
-iga.addEventListener("click", showIgaCheckboxes)
-
-
-
-var zone = document.getElementById("zone-listener")
-function showZoneCheckboxes(){
-    var zoneContent = document.getElementById("zone-check")
-        zoneContent.classList.toggle('toggleclass')
-}
-showZoneCheckboxes()
-zone.addEventListener("click", showZoneCheckboxes)
-
-var beneficiaire = document.getElementById("beneficiaire-listener")
-function showBeneficiaireCheckboxes(){
-    var beneficiaireContent = document.getElementById("beneficiaire-check")
-        beneficiaireContent.classList.toggle('toggleclass')
-}
-showBeneficiaireCheckboxes()
-beneficiaire.addEventListener("click", showBeneficiaireCheckboxes)
-
-var forme = document.getElementById("forme-listener")
-function showFormeCheckboxes(){
-    var formeContent = document.getElementById("forme-check")
-        formeContent.classList.toggle('toggleclass')
-}
-showFormeCheckboxes()
-forme.addEventListener("click", showFormeCheckboxes)
-
-
-//REMOVE DROP
-
-// var reset = ['ptf-check','scontent', 'appui-check', 'filiere-check"', 'zone-check', 'range-year-content', 'range-content']
-// function closed(event){
-//     console.log(event.target)
-//     for (var i = 0; i < reset.length; i++) {
-//         var tagId = document.getElementById(reset[i])
-//         console.log(tagId)
-//         if ( event.target =! tagId && event.target.parentNode != tagId) {
-//             tagId.classList.add('toggleclass')
-//         }
-//     }
-// }
-// window.addEventListener('click', closed)
-
-
-// function exPle(event){
-//     var test = document.getElementById('zone-check')
-
-// }
-// window.addEventListener('click', exPle)
-

@@ -52,17 +52,15 @@
 		</tr>
 		</thead>
 		<tbody>
-			<% @users_en_attente.each do |ba|%>
+			<% @users_en_attente.each do |u|%>
 		<tr>
-			<th scope="row"><%=ba.id%></th>
-			<td><%=ba.email%></td>
-			
-
-			<%= form_for ba, url: super_admin_user_path(ba.id), method: :put do |f| %>
-				<td><%= f.submit 'valider', name: 'valider', value: 'Bailleur', class: 'btn btn-success'%></td>
-				<td><%= f.submit 'valider', name: 'valider', value: 'Consultant', class: 'btn btn-primary'%></td>			
+			<th scope="row"><%=u.id%></th>
+			<td><%=u.email%></td>
+			<%= form_for u, url: super_admin_user_path(u.id), method: :put do |f| %>
+				<td><%= f.submit 'valider', name: 'valider', value: 'Bailleur'%></td>
+				<td><%= f.submit 'valider', name: 'valider', value: 'Consultant'%></td>			
 			<%end%>
-			<td><a href="/super_admin/users/<%=ba.id%>" class="btn btn-warning">Voir</a></td>
+			<td><a href="/super_admin/users/<%=u.id%>" class="btn btn-warning">Voir</a></td>
 		</tr>
 			<%end%>
 		</tbody>
