@@ -9,6 +9,7 @@
 	<div class="col-sm-6 mb-3">
 		
 		<h5 class= "attr"><%=@pub.title%></h5>
+		
 		<p><%=@pub.description%></p>
 		<%if @pub.files.attached?%>
 		<%@pub.files.all.each do|file|%> 

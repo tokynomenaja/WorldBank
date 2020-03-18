@@ -193,6 +193,17 @@ function showFiliereCheckboxes(){
 showFiliereCheckboxes()
 filiere.addEventListener("click", showFiliereCheckboxes)
 
+
+var iga = document.getElementById("iga-listener")
+function showIgaCheckboxes(){
+    var igaContent = document.getElementById("iga-check")
+        igaContent.classList.toggle('toggleclass')
+}
+showIgaCheckboxes()
+iga.addEventListener("click", showIgaCheckboxes)
+
+
+
 var zone = document.getElementById("zone-listener")
 function showZoneCheckboxes(){
     var zoneContent = document.getElementById("zone-check")

@@ -160,11 +160,14 @@ end
               
             else
             @params_iga = params[:search_iga]
-            @iga = Igaprojet.all.where(iga_id: params[:search_iga])
-            @iga_1 = Iga.find(params[:search_iga]).title.to_s
+            @params_iga.each do |g|
+            @iga = Igaprojet.all.where(iga_id: g.to_i)
+            @iga_1 = Iga.all.find(g.to_i).title
+
         end
       end
     end
+  end
   #recherche controller secteur
 
       if params[:search_secteur]
