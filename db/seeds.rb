@@ -197,35 +197,6 @@ Appui.destroy_all
       a5 = Appui.create!(title:"Participation aux risques") 
 puts "Appui créé"
 
-
-Beneficiaire.destroy_all
-       b1 = Beneficiaire.create!(title:"Douane")
-       b2 = Beneficiaire.create!(title:"Ministère
-                                  Operateurs Miniers")
-       b3 = Beneficiaire.create!(title:"Producteurs Ménages Ruraux")            
-                                                                         
-       b4 = Beneficiaire.create!(title:"Micro-entreprises Rurales                     
-                                  Jeunes")
-       b5 = Beneficiaire.create!(title:"Petites Industries Rurales
-                                  Secteur-Privé")
-       b6 = Beneficiaire.create!(title:"Producteurs")
-                                  
-       b7 = Beneficiaire.create!(title:"Citoyens Touristes
-                                  Secteur-Privé")
-                                 
-       b8 = Beneficiaire.create!(title:"Institutions de micro-finance")
-       b9 = Beneficiaire.create!(title:"Agriculteurs")
-       b10 = Beneficiaire.create!(title:"Commerçants")
-       b11 = Beneficiaire.create!(title:"Investisseur en agro-industrie")
-       b12 = Beneficiaire.create!(title:"Citoyens")
-       b13 = Beneficiaire.create!(title: "Secteur-Privé")
-       b14 = Beneficiaire.create!(title:"Investisseur privé")
-       b15 = Beneficiaire.create(title:"Femmes et Jeunes Entrepreneurs")
-       b16 = Beneficiaire.create(title:"Structures Gouvernementales")
-       b17 = Beneficiaire.create(title:"EDBM")
-       b18 = Beneficiaire.create(title:"Structure intermédiaire")
-puts "Beneficiaire créé"
-
 Unite.destroy_all
           Unite.create!(nom: "USD")
           Unite.create!(nom: "EURO")
@@ -239,25 +210,102 @@ Tarif.destroy_all
       Tarif.create(reference: "UAC", valeur: 4863.04, unite_id: 4)
 puts "tarifs créés"
 
-SecteurFiliere.destroy_all
+Forme.destroy_all
+        Forme.create(title:"Appui à l’entreprenariat")
+        Forme.create(title:"Appui au développement des chaines de valeur")
+        Forme.create(title:"Appui au financement du secteur privé")
+        Forme.create(title:"Renforcement de capacités")
+        Forme.create(title:"Etudes, Analyses et/ou Enquêtes")
+        Forme.create(title:"Assistance technique")
+        Forme.create(title:"Equipement")
+        Forme.create(title:"Infrastructure")
 
-  SecteurFiliere.create!(secteur_id: 6, filiere_id: 1)
-  SecteurFiliere.create!(secteur_id: 6, filiere_id: 2)
-  SecteurFiliere.create!(secteur_id: 6, filiere_id: 3)
-  SecteurFiliere.create!(secteur_id: 6, filiere_id: 4)
-  SecteurFiliere.create!(secteur_id: 6, filiere_id: 5)
-  SecteurFiliere.create!(secteur_id: 6, filiere_id: 6)
-  SecteurFiliere.create!(secteur_id: 7, filiere_id: 22)
-  SecteurFiliere.create!(secteur_id: 7, filiere_id: 23)
-  SecteurFiliere.create!(secteur_id: 7, filiere_id: 24)
-  SecteurFiliere.create!(secteur_id: 2, filiere_id: 28)
-  SecteurFiliere.create!(secteur_id: 2, filiere_id: 21)
-  SecteurFiliere.create!(secteur_id: 2, filiere_id: 29)
+        Forme.create(title:"Appui au DPP")
+        Forme.create(title:"Appui au cadre PPP")
+        Forme.create(title:"Soutien à la promotion des investissements privés")
+        Forme.create(title:"Promotion du respect des droits de l'enfant dans les investissements")
 
+        Forme.create(title:"Communication et information")
+        Forme.create(title:" Promotion des Exportations")
+        Forme.create(title:"Amélioration de l'offre")
+        Forme.create(title:"Appui au secteur privé")
+        Forme.create(title:"Etude")
+        Forme.create(title:"Appui institutionnel")
+        Forme.create(title:"Promotion du commerce")
+        Forme.create(title:"Facilitation du commerce")
+        Forme.create(title:"Renforcement de capacités")
+
+        Forme.create(title:"Infrastructures énergétiques")
+        Forme.create(title:"Infrastructures agricoles")
+        Forme.create(title:"Planification Territoriale")
+        Forme.create(title:"Infrastructure portuaire")
+        Forme.create(title:"Infrastructures routières")
+        Forme.create(title:"Appui aux Associations nationales de fournisseurs d'eau privés")
+
+        Forme.create(title:" Facilitation de l'accès aux financements des PME")
+        Forme.create(title:"Appui à l'accès aux microfinances")
+        Forme.create(title:"Garantie de prêt partiel")
+        Forme.create(title:"Appui au développement de la finance inclusive")
+
+        Forme.create(title:"Appui au secteur électricité")
+
+Formesecteur.destroy_all
+
+  Formesecteur.create!(secteur_id: 1, forme_id: 1 )
+  Formesecteur.create!(secteur_id: 1, forme_id: 2)   
+  Formesecteur.create!(secteur_id: 1, forme_id: 3)
+  Formesecteur.create!(secteur_id: 1, forme_id: 4)
+  Formesecteur.create!(secteur_id: 1, forme_id: 5)
+
+  Formesecteur.create!(secteur_id: 4, forme_id: 1)
+  Formesecteur.create!(secteur_id: 4, forme_id: 2)
+  Formesecteur.create!(secteur_id: 4, forme_id: 3)
+  Formesecteur.create!(secteur_id: 4, forme_id: 4)
+  Formesecteur.create!(secteur_id: 4, forme_id: 5)
+
+  Formesecteur.create!(secteur_id: 6, forme_id: 1)
+  Formesecteur.create!(secteur_id: 6, forme_id: 2)
+  Formesecteur.create!(secteur_id: 6, forme_id: 3)
+  Formesecteur.create!(secteur_id: 6, forme_id: 4)
+  Formesecteur.create!(secteur_id: 6, forme_id: 5)
+
+  Formesecteur.create!(secteur_id: 2, forme_id: 13)
+  Formesecteur.create!(secteur_id: 2, forme_id: 14) 
+  Formesecteur.create!(secteur_id: 2, forme_id: 15)
+  Formesecteur.create!(secteur_id: 2, forme_id: 16)
+  Formesecteur.create!(secteur_id: 2, forme_id: 17) 
+  Formesecteur.create!(secteur_id: 2, forme_id: 18)
+  Formesecteur.create!(secteur_id: 2, forme_id: 19) 
+  Formesecteur.create!(secteur_id: 2, forme_id: 20)
+  Formesecteur.create!(secteur_id: 2, forme_id: 21) 
+  Formesecteur.create!(secteur_id: 2, forme_id: 22)
+
+  Formesecteur.create!(secteur_id: 3, forme_id: 23)
+  Formesecteur.create!(secteur_id: 3, forme_id: 24)
+  Formesecteur.create!(secteur_id: 3, forme_id: 25)
+  Formesecteur.create!(secteur_id: 3, forme_id: 26)
+  Formesecteur.create!(secteur_id: 3, forme_id: 27)
+  Formesecteur.create!(secteur_id: 3, forme_id: 28)
+
+  Formesecteur.create!(secteur_id: 7, forme_id: 3)
+  Formesecteur.create!(secteur_id: 7, forme_id: 5)
+  Formesecteur.create!(secteur_id: 7, forme_id: 9)
+  Formesecteur.create!(secteur_id: 7, forme_id: 10)
+  Formesecteur.create!(secteur_id: 7, forme_id: 11)
+  Formesecteur.create!(secteur_id: 7, forme_id: 12)
+
+  Formesecteur.create!(secteur_id: 8, forme_id: 28)
+  Formesecteur.create!(secteur_id: 8, forme_id: 29)
+  Formesecteur.create!(secteur_id: 8, forme_id: 30)
+  Formesecteur.create!(secteur_id: 8, forme_id: 31)
+
+  Formesecteur.create!(secteur_id: 9, forme_id: 32)
 
 
 User.destroy_all
   User.create!(first_name: "Admin", last_name: "Admin", email: "admin@gmail.com",phone: "0342145678",is_admin: nil, is_consultant: false, is_super_admin: true,password: "azerty",password_confirmation: "azerty")
   User.create!(first_name: "Bailleur", last_name: "bailleur",email: "bailleur@gmail.com", phone: "0342145645",is_admin: false, is_consultant: false, is_super_admin: false,password: "azerty",password_confirmation: "azerty")
   User.create!(first_name: "Consultant", last_name: "consultant",email: "consultant@gmail.com", phone: "0342845678",is_admin: nil, is_consultant: true, is_super_admin: false,password: "azerty",password_confirmation: "azerty")
+
+
 

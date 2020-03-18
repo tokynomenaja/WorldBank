@@ -212,6 +212,23 @@ function showZoneCheckboxes(){
 showZoneCheckboxes()
 zone.addEventListener("click", showZoneCheckboxes)
 
+var beneficiaire = document.getElementById("beneficiaire-listener")
+function showBeneficiaireCheckboxes(){
+    var beneficiaireContent = document.getElementById("beneficiaire-check")
+        beneficiaireContent.classList.toggle('toggleclass')
+}
+showBeneficiaireCheckboxes()
+beneficiaire.addEventListener("click", showBeneficiaireCheckboxes)
+
+var forme = document.getElementById("forme-listener")
+function showFormeCheckboxes(){
+    var formeContent = document.getElementById("forme-check")
+        formeContent.classList.toggle('toggleclass')
+}
+showFormeCheckboxes()
+forme.addEventListener("click", showFormeCheckboxes)
+
+
 //REMOVE DROP
 
 // var reset = ['ptf-check','scontent', 'appui-check', 'filiere-check"', 'zone-check', 'range-year-content', 'range-content']

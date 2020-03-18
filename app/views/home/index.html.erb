@@ -126,6 +126,29 @@
         <%end%>
       </div>
     </div> 
+
+    <div class="fdk8rh-3 feYJJO" id="forme-listener">
+      <header class="fdk8rh-0 kYNMFW">
+        <h3 class="fdk8rh-1 eouleG">
+          <div class= "fdk8rh-1 eouleG large select">
+            Forme d'appui
+          </div>
+        </h3>
+      </header>
+    </div>
+    <div class="forme-content filter-drop" id="forme-check">
+      <div class="mx-auto p-2 rounded">
+        <%Forme.all.order(:title).each do |f|%>
+        <div class="fdk8rh-1 eouleG">
+          <label class="d-flex align-items-center">
+            <%= check_box_tag("search_filiere[]",f.id) %>
+            <%= f.title%>
+          </label>
+        </div>
+        <%end%>
+      </div>
+    </div>
+
     <div class="fdk8rh-3 feYJJO" id="filiere-listener">
       <header class="fdk8rh-0 kYNMFW">
         <h3 class="fdk8rh-1 eouleG">
@@ -176,7 +199,7 @@
       <header class="fdk8rh-0 kYNMFW">
         <h3 class="fdk8rh-1 eouleG">
           <div class= "fdk8rh-1 eouleG large select">
-            Zone
+            Région
           </div>
         </h3>
       </header>
@@ -193,12 +216,28 @@
         </div> 
       </div>
     </div>
-    <div class="fdk8rh-3 feYJJO">
+
+      <div class="fdk8rh-3 feYJJO" id="beneficiaire-listener">
       <header class="fdk8rh-0 kYNMFW">
         <h3 class="fdk8rh-1 eouleG">
-          <%= select_tag 'search_ben' , options_for_select(Beneficiaire.all.order(:title).collect{ |c| [c.title,c.id]}),:include_blank => "Bénéficiaire",class: "select fdk8rh-1 eouleG large" %></h3>
-        </header>
+          <div class= "fdk8rh-1 eouleG large select">
+            Beneficiaire
+          </div>
+        </h3>
+      </header>
+      <div class="beneficiaire-content  filter-drop" id="beneficiaire-check">
+        <div class="mx-auto p-2 rounded">
+          <%Beneficiaire.all.each do |b|%>
+          <div class="fdk8rh-1 eouleG">
+            <label class="d-flex align-items-center">
+              <%= check_box_tag("search_ben[]",b.id) %>
+              <%= b.title%>
+            </label>
+          </div>
+          <%end%>
+        </div> 
       </div>
+    </div>
 
       <div class="fdk8rh-3 feYJJO" id="range-drop">
         <header class="fdk8rh-0 kYNMFW">
@@ -333,7 +372,10 @@
                 <%end%>
 
                 <% if @ben_1 != ""%>
+                <%@params_ben.each do |b|%>
+                <%@ben_1 = Beneficiaire.all.find(b.to_i).title%>
                 <p class="text-muted mb-1"><span>Bénéficiaire &nbsp;:&nbsp; </span> <%= @ben_1 %></p>
+                <%end%>
                 <%end%>
 
                 <% if @appui_1 != ""%>
@@ -418,7 +460,7 @@
 
                 <%if @appui%>
                 <% @appui.each do |ip| %>  
-                <% if ip.projet.validation == true%>
+                <% if ip.validation == true%>
                 <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                   <%= link_to "#{ip.nom_du_projet}", projet_path(ip.id), target: 'blank', class: 'text-muted reshover' %>
                 </div>        

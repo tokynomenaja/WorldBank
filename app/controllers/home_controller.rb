@@ -144,12 +144,14 @@ end
                redirect_to(root_path)
               
               else
-                @parameter = params[:search_ben]
+                @params_ben = params[:search_ben]
+                @params_ben.each do |b|
                 @ben = Benefprojet.all.where(beneficiaire_id: params[:search_ben])   
-                @ben_1 = Beneficiaire.find(params[:search_ben]).title.to_s            
+                @ben_1 = Beneficiaire.all.find(b.to_i).title           
           end
         end  
       end
+    end
 
   #recherche controller IGA
 

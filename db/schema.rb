@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_15_171145) do
+ActiveRecord::Schema.define(version: 2020_03_18_110429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,27 @@ ActiveRecord::Schema.define(version: 2020_03_15_171145) do
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "forme_d_appuis", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "formes", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "formesecteurs", force: :cascade do |t|
+    t.bigint "forme_id"
+    t.bigint "secteur_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["forme_id"], name: "index_formesecteurs_on_forme_id"
+    t.index ["secteur_id"], name: "index_formesecteurs_on_secteur_id"
   end
 
   create_table "igaprojets", force: :cascade do |t|

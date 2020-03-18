@@ -1,0 +1,9 @@
+class CreateFormes < ActiveRecord::Migration[6.0]
+  def change
+    create_table :formes do |t|
+      t.string :title
+
+      t.timestamps
+    end
+  end
+end
