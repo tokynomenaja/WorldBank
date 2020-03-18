@@ -21,7 +21,7 @@
 			</a>
 			<div class="mt-2">
 				<div class="card card-body">
-					<%=cktext_area_tag :objectif_generale_du_projet%>
+					<textarea name="objectif_generale_du_projet" rows="10" required></textarea>
 				</div>
 			</div>
 		</div>
@@ -31,38 +31,7 @@
 			</a>
 			<div class="mt-2">
 				<div class="card card-body">
-				<%=cktext_area_tag :aspsp%>
-				</div>
-			</div>
-		</div>
-		<div class="container">
-			<div class="d-flex justify-content-between mb-3">
-				<div class="col-md-4 pl-0">
-					<h6 class="table">Début</h6>
-					  <div class="ui calendar" id="example7">
-					    <div class="ui input left icon w-100">
-					      <i class="time icon"></i>
-							<input type="text" name="debut_du_projet" class="form-control" placeholder="MM/YY" required="true">
-					    </div>
-					  </div>
-				</div>
-				<div class="col-md-4">
-					<h6 class="table">Fin</h6>
-				    <div class="ui calendar" id="example">
-					    <div class="ui input left icon">
-					      <i class="time icon"></i>
-					      <input type="text" name="fin" class="form-control" placeholder="MM/YY" required="true">
-					    </div>
-					</div>
-				</div>
-				<div class="col-md-4 pr-0">
-					<h6 class="table">Montant pour le secteur :</h6>
-					<% Secteur.all.each do |s|%>
-						<div class="form-control pr-0" id="montant<%=s.id%>" style="display: none;">
-							<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title%>" class="border-0">
-							<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset"%>
-						</div>
-					<%end%>
+					<textarea name="aspsp" rows="10" required></textarea>
 				</div>
 			</div>
 		</div>
@@ -99,14 +68,37 @@
 					</div>
 				</div>
 				</div>
-			<h6 class="table">Montant pour le secteur :</h6>
-				<% Secteur.all.each do |s|%>
-					<div class="form-control" id="montant<%=s.id%>" style="display: none;">
-						<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title%>" class="border-0">
-						<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "border-left unit dropdown-toggle pl-2"%>
+		</div>
+		<div class="container">
+			<div class="d-flex justify-content-between mb-3">
+				<div class="col-md-4 pl-0">
+					<h6 class="table">Début</h6>
+					  <div class="ui calendar" id="example7">
+					    <div class="ui input left icon w-100">
+					      <i class="time icon"></i>
+							<input type="text" name="debut_du_projet" class="form-control" placeholder="MM/YY" required="true">
+					    </div>
+					  </div>
+				</div>
+				<div class="col-md-4">
+					<h6 class="table">Fin</h6>
+				    <div class="ui calendar" id="example">
+					    <div class="ui input left icon">
+					      <i class="time icon"></i>
+					      <input type="text" name="fin" class="form-control" placeholder="MM/YY" required="true">
+					    </div>
 					</div>
-
-				<%end%>
+				</div>
+				<div class="col-md-4 pr-0">
+					<h6 class="table">Montant pour le secteur :</h6>
+					<% Secteur.all.each do |s|%>
+						<div class="form-control pr-0" id="montant<%=s.id%>" style="display: none;">
+							<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title%>" class="border-0">
+							<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset"%>
+						</div>
+					<%end%>
+				</div>
+			</div>
 		</div>
 
 
@@ -299,7 +291,7 @@
 			
 		</div>
 		<div class="container mt-4">
-			<%= submit_tag :creer, :name => "creer", :value => "Enregistrer", :class => "btn btn-secondary"%>
+			<%= submit_tag :creer, :name => "creer", :value => "Enregistrer", :class => "btn btn-secondary", :onclick => "validCheck()"%>
 			<%= submit_tag :creer, :name => "creer", :value => "Publier", :class => "sc-eerKOB cfnPHQ"%>
 			<!-- <input type="submit" name="creer" value="Enregistrer" class="btn btn-secondary">
 			<input type="submit" name="creer" value="Publier" class="sc-eerKOB cfnPHQ"> -->
@@ -314,4 +306,25 @@
     $('#example').calendar({
       type: 'month'
     });
+	function validCheck(){
+
+			<%ids = [] %>
+			<% Secteur.all.each do |s|%>
+				<% ids << s.id%>
+				var s<%= s.id%> = document.getElementById("s<%= s.id%>");
+			<%end%>
+				var check = false;
+			<% Secteur.all.each do |s|%>
+				s<%= s.id%>.required = false;
+				if(s<%= s.id%>.checked == true){
+					check = true;
+				}
+			<%end%>
+				if(check == false){
+					s<%= ids[rand(0..ids.length-1)]%>.required = true;
+				}
+				console.log('*********************');
+				console.log(check);
+		}
+
 </script>
