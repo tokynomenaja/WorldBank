@@ -155,7 +155,7 @@
 							<% end %>
 						</div>
 						<div class="mt-2">
-					<button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#atr"> Autre</button><br>
+							<button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#atr"> Autre</button><br>
 							
 						</div>
 					<div class="collapse" id="atr">
@@ -163,14 +163,18 @@
 							<div class="row">
 								
 									<div class="col-md-5" style="text-align: center;">
-										<h6>Ajout de nouveau bénéficiaire</h6>
+										<h6>Ajout d'un nouveau bénéficiaire</h6>
 								    	<input type="text" name="newben" size=15 placeholder="nouveau bénéficiaire" class="form-control" id="inp"><br>	
 								    	<input type="button" class="sc-eerKOB cfnPHQ" value="Ajouter" id="ajout">			
 									</div>
 									
 
 									<div class="col-md-7">
-										<h6 style="text-align: center;">Le(s) nouveau(x) bénéficiaire(s) </h6>
+										<% if @ben.length == 1 || @ben.length == 0%>
+											<h6 style="text-align: center;">Le nouveau bénéficiaire doit être coché</h6>
+										<%else%>
+											<h6 style="text-align: center;">Les nouveaux bénéficiaires doivent être cochés</h6>
+										<%end%>
 										<% 10.times do |b|%>
 									    	<div id="check<%= b%>" style="display: block;">
 												<p id="p<%= b%>" style="display: none;">

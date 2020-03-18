@@ -13,10 +13,10 @@ Secteur.destroy_all
       c3 = Secteur.create!(title: "INFRASTRUCTURES", image_url: "secteur/infrastructure.jpg")
       c4 = Secteur.create!(title: "TOURISME")   
       c5 = Secteur.create!(title: "ENTREPREUNARIAT")
-      c7 = Secteur.create!(title: "AGROBUSINESS", image_url: "secteur/agribusinness.jpg")
-      c8 = Secteur.create!(title: "PROMOTION DES INVESTISSEMENTS", image_url: "secteur/promotion.jpg")
-      c9 = Secteur.create!(title: "FINANCES", image_url: "secteur/finance.jpg")
-      c10 = Secteur.create!(title: "ENERGIE")
+      c6 = Secteur.create!(title: "AGROBUSINESS", image_url: "secteur/agribusinness.jpg")
+      c7 = Secteur.create!(title: "PROMOTION DES INVESTISSEMENTS", image_url: "secteur/promotion.jpg")
+      c8 = Secteur.create!(title: "FINANCES", image_url: "secteur/finance.jpg")
+      c9 = Secteur.create!(title: "ENERGIE")
 
 puts "Secteur créée"
 
@@ -96,6 +96,7 @@ Ptf.destroy_all
       c12 = Ptf.create!(title: "PNUD", lien: 'https://www.mg.undp.org/', image_url: "logo/pnud1.jpg")
       c13 = Ptf.create!(title: "FIDA", lien: 'https://www.ifad.org/en/web/operations/country/id/madagascar', image_url: "logo/FIDA.jpg")
       c14 = Ptf.create!(title: "CNUCED", lien: 'https://unctad.org/en/Pages/Home.aspx', image_url: "logo/cnuced11.jpg")
+      c14 = Ptf.create!(title: "WBG", lien: 'https://www.worldbank.org/', image_url: "logo/cnuced11.jpg")
 
 puts "Ptf Créé"
 
@@ -140,26 +141,38 @@ Filiere.destroy_all
       c38 = Filiere.create!(title: "Fond de garantie")
       c39 = Filiere.create!(title: "Microfinance")
       c40 = Filiere.create!(title: "Grandes mines")
+      c41 = Filiere.create!(title: "Mines artisanales")
+      c42 = Filiere.create!(title: "Raphia")
      
- puts "Filiere créée"    
+ puts "Filière créée"    
 
 Iga.destroy_all
-      c1 = Iga.create!(title: "Ministère de l’Energie, de l’Eau et des Hydrocarbures")
-      c2 = Iga.create!(title: "Ministère de l'Economie et des Finances")
-      c3 = Iga.create!(title: "MICA (Ministère de l’Industrie, du Commerce et de l’Artisanat )")
-      c4 = Iga.create!(title: "Ministère de l’Enseignement Supérieur et de la Recherche Scientifique ")
-      c5 = Iga.create!(title: "Ministère de l’Agriculture, de l’Elevage et de la Pêche" )
-      c6 = Iga.create!(title: "Ministère de l'Economie et des Finances Ministère de l'Aménagement du Territoire,
-                      de l Habitat et des Travaux Publics")
-      c7 = Iga.create!(title: "Ministère de la Communication et de la Culture" )
-      c8 = Iga.create!(title: "Ministère du Tourisme des Transports et de la Météorologie")
-      c9 = Iga.create!(title: "Office National du Tourisme de Madagascar")
-      c10 =Iga.create!(title: "Ministère de l Environnement" )
-      c11 = Iga.create!(title: "MAEP")
-      c12 = Iga.create!(title: "EDBM")
-      c13 = Iga.create(title: "M2PATE")
-      c14 = Iga.create(title: "MIDSP")
-
+      Iga.create!(title: "Ministère de la Défense Nationale")
+      Iga.create!(title: "Ministère des Affaires étrangères")
+      Iga.create!(title: "Garde des Sceaux, Ministre de la Justice")
+      Iga.create!(title: "Ministère de l’Économie et des Finances")
+      Iga.create!(title: "Ministère de l’Intérieur et de la Décentralisation")
+      Iga.create!(title: "Ministère de la Sécurité Publique")
+      Iga.create!(title: "Ministère de l’Aménagement du Territoire, de l’Habitat et des Travaux Publics")
+      Iga.create!(title: "Ministère de l’Éducation Nationale et de l’Enseignement Technique et Professionnel")
+      Iga.create!(title: "Ministère de la Santé Publique")
+      Iga.create!(title: "Ministère de l’Agriculture, de l’Élevage et de la Pêche")
+      Iga.create!(title: "Ministère de l’Énergie, de l’Eau et des Hydrocarbures")
+      Iga.create!(title: "Ministère des Mines et des Ressources Stratégiques")
+      Iga.create!(title: "Ministère des Transports, du Tourisme et de la Météorologie")
+      Iga.create!(title: "Ministère du Travail, de l’Emploi, de la Fonction Publique et des Lois Sociales")
+      Iga.create!(title: "Ministère de l’Environnement et du Développement Durable")
+      Iga.create!(title: "Ministère des Postes, des Télécommunications et du Développement Numérique")
+      Iga.create!(title: "Ministère de la Population, de la Protection Sociale et de la Promotion de la Femme")
+      Iga.create!(title: "Ministère de la Jeunesse et des Sports")
+      Iga.create!(title: "Ministère de la Communication et de la Culture")
+      Iga.create!(title: "Ministère de l’Industrie, du Commerce et de l’Artisanat")
+      Iga.create!(title: "Ministère de l’Enseignement Supérieur et de la Recherche Scientifique")
+      Iga.create!(title: "Ministère auprès de la Présidence en Charge des Projets Présidentiels de l'Aménagement du Territoire et de l'Équipement")
+      Iga.create!(title: "Economic Development Board of Madagascar")
+      Iga.create!(title: "Office National du Tourisme de Madagascar")
+      Iga.create!(title: "Comité Public Privé en charge de la modernisation de la formation dans le secteur du tourisme")
+      Iga.create!(title: "Confédération du Tourisme")
 
 puts "iga créé"
 
@@ -172,7 +185,7 @@ Zone.destroy_all
       z17 = Zone.create!(title:"Androy")
       z18 = Zone.create!(title:"Anosy")
       z19 = Zone.create!(title:"Atsimo Andrefana")
-      z6 = Zone.create!(title:"Atsimo Antsinana")                   
+      z6 = Zone.create!(title:"Atsimo Atsinanana")                   
       z12 = Zone.create!(title:"Atsinanana")
       z13 = Zone.create!(title:"Betsiboka")
       z14 = Zone.create!(title:"Boeny")
@@ -185,7 +198,7 @@ Zone.destroy_all
       z20 = Zone.create!(title:"Menabe")
       z22 = Zone.create!(title:"Sava")
       z16 = Zone.create!(title:"Sofia")
-      z4 = Zone.create!(title:"Vakinakaratra")
+      z4 = Zone.create!(title:"Vakinankaratra")
       z8 = Zone.create!(title:"Vatovavy-Fitovinany")
 puts "zone créée"
 
@@ -199,31 +212,21 @@ puts "Appui créé"
 
 
 Beneficiaire.destroy_all
-       b1 = Beneficiaire.create!(title:"Douane")
-       b2 = Beneficiaire.create!(title:"Ministère
-                                  Operateurs Miniers")
-       b3 = Beneficiaire.create!(title:"Producteurs Ménages Ruraux")            
-                                                                         
-       b4 = Beneficiaire.create!(title:"Micro-entreprises Rurales                     
-                                  Jeunes")
-       b5 = Beneficiaire.create!(title:"Petites Industries Rurales
-                                  Secteur-Privé")
-       b6 = Beneficiaire.create!(title:"Producteurs")
-                                  
-       b7 = Beneficiaire.create!(title:"Citoyens Touristes
-                                  Secteur-Privé")
-                                 
-       b8 = Beneficiaire.create!(title:"Institutions de micro-finance")
-       b9 = Beneficiaire.create!(title:"Agriculteurs")
-       b10 = Beneficiaire.create!(title:"Commerçants")
-       b11 = Beneficiaire.create!(title:"Investisseur en agro-industrie")
-       b12 = Beneficiaire.create!(title:"Citoyens")
-       b13 = Beneficiaire.create!(title: "Secteur-Privé")
-       b14 = Beneficiaire.create!(title:"Investisseur privé")
-       b15 = Beneficiaire.create(title:"Femmes et Jeunes Entrepreneurs")
-       b16 = Beneficiaire.create(title:"Structures Gouvernementales")
-       b17 = Beneficiaire.create(title:"EDBM")
-       b18 = Beneficiaire.create(title:"Structure intermédiaire")
+       Beneficiaire.create!(title: "Producteurs")
+       Beneficiaire.create!(title: "Intermédiaires")
+       Beneficiaire.create!(title: "Secteur Privé")
+       Beneficiaire.create!(title: "Citoyens")
+       Beneficiaire.create!(title: "Commerçants")
+       Beneficiaire.create!(title: "Investisseurs")
+       Beneficiaire.create!(title: "PME et Micro-Entreprises")
+       Beneficiaire.create!(title: "Jeunes")
+       Beneficiaire.create!(title: "Femmes")
+       Beneficiaire.create!(title: "Population rurale")
+       Beneficiaire.create!(title: "Ministères/Administration/Agences Publiques")
+       Beneficiaire.create!(title: "Groupements professionnels et Associations")
+       Beneficiaire.create!(title: "Chambres de commerce et d’industrie")
+       Beneficiaire.create!(title: "Instituts/Centre de formation/Universités")
+       Beneficiaire.create!(title: "Banques et Institutions financières")
 puts "Beneficiaire créé"
 
 Unite.destroy_all
@@ -247,17 +250,60 @@ SecteurFiliere.destroy_all
   SecteurFiliere.create!(secteur_id: 6, filiere_id: 4)
   SecteurFiliere.create!(secteur_id: 6, filiere_id: 5)
   SecteurFiliere.create!(secteur_id: 6, filiere_id: 6)
+  SecteurFiliere.create!(secteur_id: 6, filiere_id: 7)
+  SecteurFiliere.create!(secteur_id: 6, filiere_id: 8)
+  SecteurFiliere.create!(secteur_id: 6, filiere_id: 9)
+  SecteurFiliere.create!(secteur_id: 6, filiere_id: 10)
+  SecteurFiliere.create!(secteur_id: 6, filiere_id: 11)
+  SecteurFiliere.create!(secteur_id: 6, filiere_id: 12)
+  SecteurFiliere.create!(secteur_id: 6, filiere_id: 13)
+  SecteurFiliere.create!(secteur_id: 6, filiere_id: 14)
+  SecteurFiliere.create!(secteur_id: 6, filiere_id: 15)
+  SecteurFiliere.create!(secteur_id: 6, filiere_id: 16)
+  SecteurFiliere.create!(secteur_id: 6, filiere_id: 17)
+  SecteurFiliere.create!(secteur_id: 6, filiere_id: 18)
+  SecteurFiliere.create!(secteur_id: 6, filiere_id: 19)
+  SecteurFiliere.create!(secteur_id: 6, filiere_id: 20)
+  SecteurFiliere.create!(secteur_id: 6, filiere_id: 21)
+
   SecteurFiliere.create!(secteur_id: 7, filiere_id: 22)
   SecteurFiliere.create!(secteur_id: 7, filiere_id: 23)
   SecteurFiliere.create!(secteur_id: 7, filiere_id: 24)
+  SecteurFiliere.create!(secteur_id: 7, filiere_id: 25)
+  SecteurFiliere.create!(secteur_id: 7, filiere_id: 26)
+  SecteurFiliere.create!(secteur_id: 7, filiere_id: 27)
+  SecteurFiliere.create!(secteur_id: 7, filiere_id: 28)
+
   SecteurFiliere.create!(secteur_id: 2, filiere_id: 28)
-  SecteurFiliere.create!(secteur_id: 2, filiere_id: 21)
+  SecteurFiliere.create!(secteur_id: 2, filiere_id: 42)
   SecteurFiliere.create!(secteur_id: 2, filiere_id: 29)
+  SecteurFiliere.create!(secteur_id: 2, filiere_id: 25)
+  SecteurFiliere.create!(secteur_id: 2, filiere_id: 30)
+  SecteurFiliere.create!(secteur_id: 2, filiere_id: 4)
+  SecteurFiliere.create!(secteur_id: 2, filiere_id: 13)
+  SecteurFiliere.create!(secteur_id: 2, filiere_id: 12)
+  SecteurFiliere.create!(secteur_id: 2, filiere_id: 17)
+
+  SecteurFiliere.create!(secteur_id: 3, filiere_id: 31)
+  SecteurFiliere.create!(secteur_id: 3, filiere_id: 25)
+  SecteurFiliere.create!(secteur_id: 3, filiere_id: 32)
+  SecteurFiliere.create!(secteur_id: 3, filiere_id: 33)
+  SecteurFiliere.create!(secteur_id: 3, filiere_id: 34)
+  SecteurFiliere.create!(secteur_id: 3, filiere_id: 35)
+  SecteurFiliere.create!(secteur_id: 3, filiere_id: 36)
+
+  SecteurFiliere.create!(secteur_id: 8, filiere_id: 37)
+  SecteurFiliere.create!(secteur_id: 8, filiere_id: 38)
+  SecteurFiliere.create!(secteur_id: 8, filiere_id: 39)
+
+  SecteurFiliere.create!(secteur_id: 1, filiere_id: 40)
+  SecteurFiliere.create!(secteur_id: 1, filiere_id: 41)
+
 
 
 
 User.destroy_all
   User.create!(first_name: "Admin", last_name: "Admin", email: "admin@gmail.com",phone: "0342145678",is_admin: nil, is_consultant: false, is_super_admin: true,password: "azerty",password_confirmation: "azerty")
-  User.create!(first_name: "Bailleur", last_name: "bailleur",email: "bailleur@gmail.com", phone: "0342145645",is_admin: false, is_consultant: false, is_super_admin: false,password: "azerty",password_confirmation: "azerty")
+  User.create!(first_name: "Bailleur", last_name: "bailleur",email: "bailleur@gmail.com", phone: "0342145645",is_admin: nil, is_consultant: false, is_super_admin: false,password: "azerty",password_confirmation: "azerty")
   User.create!(first_name: "Consultant", last_name: "consultant",email: "consultant@gmail.com", phone: "0342845678",is_admin: nil, is_consultant: true, is_super_admin: false,password: "azerty",password_confirmation: "azerty")
 
