@@ -43,18 +43,28 @@
 <header class="sc-10fmshx-0 dCsOFK">
   <div class="bt96d2-13 dwLDtk search">
     <%= form_tag(root_path, :method => "get", class: 'sc-1ejeabr-19 gQwHOW') do %>
-    <div placeholder="Email" class="sc-emmjRN hxQqtY">
-      <div class="styles__Wrapper-zznoga-0 UxSKW">
-        <%= search_field_tag :search, params[:search], placeholder: "Rechercher", class: "sc-jzgbtB bwwcKt" %>
-      </div>
-    </div>
-    <% if current_user %> 
-    <% if current_user.is_consultant == true || current_user.is_consultant == false || current_user.is_super_admin == true || current_user.is_admin == true%>
-    <button tabindex="0" type="submit" variant="primary" class="sc-eerKOB cfnPHQ bold sear"><span>Rechercher</span></button>
-    <%end%>
-    <%else%>
-    <a href="<%= new_user_session_path%>" class="sc-eerKOB cfnPHQ bold sear"><span>Rechercher</span></a>
-    <%end%>   
+      <div class="d-flex justify-content-between bg-white align-items-center form-control pr-0">
+          <%= search_field_tag :search, params[:search], placeholder: "Rechercher", class: "reset-search-input"%>
+          <% if current_user %> 
+            <% if current_user.is_consultant == true || current_user.is_consultant == false || current_user.is_super_admin == true || current_user.is_admin == true%>
+              <button tabindex="0" type="submit" variant="primary" class="reset-search-input-default">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="border-left pr-1 pl-2 icon-search" viewBox="-1 0 136 136.21852" height="30px" width="35px">
+                  <g id="surface1">
+                  <path d="M 93.148438 80.832031 C 109.5 57.742188 104.03125 25.769531 80.941406 9.421875 C 57.851562 -6.925781 25.878906 -1.460938 9.53125 21.632812 C -6.816406 44.722656 -1.351562 76.691406 21.742188 93.039062 C 38.222656 104.707031 60.011719 105.605469 77.394531 95.339844 L 115.164062 132.882812 C 119.242188 137.175781 126.027344 137.347656 130.320312 133.269531 C 134.613281 129.195312 134.785156 122.410156 130.710938 118.117188 C 130.582031 117.980469 130.457031 117.855469 130.320312 117.726562 Z M 51.308594 84.332031 C 33.0625 84.335938 18.269531 69.554688 18.257812 51.308594 C 18.253906 33.0625 33.035156 18.269531 51.285156 18.261719 C 69.507812 18.253906 84.292969 33.011719 84.328125 51.234375 C 84.359375 69.484375 69.585938 84.300781 51.332031 84.332031 C 51.324219 84.332031 51.320312 84.332031 51.308594 84.332031 Z M 51.308594 84.332031 " style=" stroke:none;fill-rule:nonzero;fill:#52c39b;fill-opacity:1;"/>
+                  </g>
+                </svg>
+              </button>
+            <%end%>
+          <%else%>
+            <a href="<%= new_user_session_path%>">
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="border-left pr-2 pl-2 icon-search" viewBox="-1 0 136 136.21852" height="30px" width="35px">
+                <g id="surface1">
+                <path d="M 93.148438 80.832031 C 109.5 57.742188 104.03125 25.769531 80.941406 9.421875 C 57.851562 -6.925781 25.878906 -1.460938 9.53125 21.632812 C -6.816406 44.722656 -1.351562 76.691406 21.742188 93.039062 C 38.222656 104.707031 60.011719 105.605469 77.394531 95.339844 L 115.164062 132.882812 C 119.242188 137.175781 126.027344 137.347656 130.320312 133.269531 C 134.613281 129.195312 134.785156 122.410156 130.710938 118.117188 C 130.582031 117.980469 130.457031 117.855469 130.320312 117.726562 Z M 51.308594 84.332031 C 33.0625 84.335938 18.269531 69.554688 18.257812 51.308594 C 18.253906 33.0625 33.035156 18.269531 51.285156 18.261719 C 69.507812 18.253906 84.292969 33.011719 84.328125 51.234375 C 84.359375 69.484375 69.585938 84.300781 51.332031 84.332031 C 51.324219 84.332031 51.320312 84.332031 51.308594 84.332031 Z M 51.308594 84.332031 " style=" stroke:none;fill-rule:nonzero;fill:#52c39b;fill-opacity:1;"/>
+                </g>
+              </svg>
+            </a>
+          <%end%> 
+      </div>  
     <%end%>
   </div>
 </header>
@@ -62,18 +72,18 @@
 <nav class="z0fved-5 gOGYTl">
   <div class="z0fved-3 kBhqKR">
     <div class="z0fved-1 jfmoVU">
-      <div class="fdk8rh-3 feYJJO" title="Partenaire Technique et Financier" id="ptf-listener">
+      <div class="fdk8rh-3 feYJJO" title="Partenaire Technique et Financier">
         <header class="fdk8rh-0 kYNMFW">
          <%= form_tag(root_path, :method => "get", class: 'navbar-form navbar-left') do %> 
          <h3  class= "fdk8rh-1 eouleG">
-           <div class= "fdk8rh-1 eouleG large select">
+           <div class= "fdk8rh-1 eouleG large select" id="ptf-listener">
             PTF
           </div>
         </h3>
       </header>
     </div>
     <div class="ptf-content filter-drop">
-      <div class="mx-auto p-2 rounded" id="ptf-check">
+      <div class="mx-auto p-2 rounded toggleclass" id="ptf-check">
         <%Ptf.all.order(:title).each do |p|%>
         <div class="fdk8rh-1 eouleG">
           <label class="d-flex align-items-center">
@@ -94,7 +104,7 @@
       </header>
     </div>
     <div class="secteur-content filter-drop">
-      <div class="mx-auto p-2 rounded" id="scontent">
+      <div class="mx-auto p-2 rounded toggleclass" id="scontent">
         <%Secteur.all.order(:title).each do |s|%>
         <div class="fdk8rh-1 eouleG">
           <label class="d-flex align-items-center">
@@ -115,7 +125,7 @@
       </header>
     </div>
     <div class="appui-content filter-drop">
-      <div class="mx-auto p-2 rounded" id="appui-check">
+      <div class="mx-auto p-2 rounded toggleclass" id="appui-check">
         <%Appui.all.order(:title).each do |a|%>
         <div class="fdk8rh-1 eouleG">                
           <label class="d-flex align-items-center">
@@ -135,7 +145,7 @@
         </h3>
       </header>
     </div>
-    <div class="filiere-content filter-drop" id="filiere-check">
+    <div class="filiere-content filter-drop toggleclass" id="filiere-check">
       <div class="mx-auto p-2 rounded">
         <%Filiere.all.order(:title).each do |f|%>
         <div class="fdk8rh-1 eouleG">
@@ -148,7 +158,7 @@
       </div>
     </div>
 
-    <div class="fdk8rh-3 feYJJO" title="Institutions Gouvernementales Associées">
+    <div class="fdk8rh-3 feYJJO" title="Institutions Gouvernementales Associées" id="iga-listener">
       <header class="fdk8rh-0 kYNMFW">
         <h3 class="fdk8rh-1 eouleG">
           <%= select_tag 'search_iga' , options_for_select(Iga.all.order(:title).collect{ |c| [c.title,c.id]}), :include_blank => "Iga", class: "select fdk8rh-1 eouleG largepopover__title large"  %>
@@ -164,7 +174,7 @@
           </div>
         </h3>
       </header>
-      <div class="filiere-content zone-content filter-drop" id="zone-check">
+      <div class="filiere-content zone-content filter-drop toggleclass" id="zone-check">
         <div class="mx-auto p-2 rounded">
           <%Zone.all.each do |z|%>
           <div class="fdk8rh-1 eouleG">
@@ -177,7 +187,7 @@
         </div> 
       </div>
     </div>
-    <div class="fdk8rh-3 feYJJO">
+    <div class="fdk8rh-3 feYJJO" id="beneficiaire-listener">
       <header class="fdk8rh-0 kYNMFW">
         <h3 class="fdk8rh-1 eouleG">
           <%= select_tag 'search_ben' , options_for_select(Beneficiaire.all.order(:title).collect{ |c| [c.title,c.id]}),:include_blank => "Bénéficiaire",class: "select fdk8rh-1 eouleG large" %></h3>
@@ -191,7 +201,7 @@
           </h3>
         </header>
       </div>
-      <div class="filter-drop range-content mx-auto rounded eouleG pt-4" id="range-content">
+      <div class="filter-drop range-content mx-auto rounded eouleG pt-4 toggleclass" id="range-content">
         <div class="middle mx-auto mt-2 mb-4">
            <div class="p-3 text-center">
               <output id= "showMontant">montant en millions de USD</output>
@@ -229,7 +239,7 @@
           </h3>
         </header>
       </div>  
-      <div class="filter-drop range-year-content mx-auto rounded eouleG" id="range-year-content">
+      <div class="filter-drop range-year-content mx-auto rounded eouleG toggleclass" id="range-year-content">
         <div class="middle mx-auto mt-2 mb-4">
           <div class="multi-range-slider">
             <div class="p-3 text-center">
@@ -440,19 +450,19 @@
             <div class="compteur mt-5">
               <div class="d-flex  text-center justify-content-center flex-wrap">
                 <div class="m-2 text-white background compt-item border">
-                  <p class="border-bottom p-2">Nombre total des projets :</p>
+                  <p class="border-bottom pt-2 pb-2">Nombre total des projets :</p>
                   <p class="centrage"> <%= Projet.where(validation: true).count%></p>
                 </div>
                 <div class="m-2 bg-dark compt-item border text-color">
-                  <p class="border-bottom p-2">Nombre total de PTF :</p>
+                  <p class="border-bottom pt-2 pb-2">Nombre total de PTF :</p>
                   <p class="centrage"><%= Ptf.count%></p>
                 </div>
                 <div class="m-2 bg-dark compt-item border text-color">
-                  <p class="border-bottom p-2">Argent total investi : </p>
+                  <p class="border-bottom pt-2 pb-2">Argent total investi : </p>
                   <p class="centrage"><%= @montant_total %> millions d'USD</p>
                 </div>
                 <div class="m-2 text-white background compt-item border">
-                  <p class="border-bottom p-2">Nombre de secteurs couverts : </p>
+                  <p class="border-bottom pt-2 pb-2">Nombre de secteurs couverts : </p>
                   <p class="centrage"><%= Secteur.all.count%></p>
                 </div> 
               </div>
@@ -465,19 +475,19 @@
           <div class="compteur mt-5">
             <div class="d-flex  text-center justify-content-center flex-wrap">
               <div class="m-2 text-white background compt-item border">
-                <p class="border-bottom p-2">Nombre total des projets :</p>
+                <p class="border-bottom pt-2 pb-2">Nombre total des projets :</p>
                 <p class="centrage"> <%= Projet.where(validation: true).count%></p>
               </div>
               <div class="m-2 bg-dark compt-item border text-color">
-                <p class="border-bottom p-2">Nombre total de PTF :</p>
+                <p class="border-bottom pt-2 pb-2">Nombre total de PTF :</p>
                 <p class="centrage"><%= Ptf.count%></p>
               </div>
               <div class="m-2 bg-dark compt-item border text-color">
-                <p class="border-bottom p-2">Argent total investi : </p>
+                <p class="border-bottom pt-2 pb-2">Argent total investi : </p>
                 <p class="centrage"><%= @montant_total %> millions d'USD</p>
               </div>
               <div class="m-2 text-white background compt-item border">
-                <p class="border-bottom p-2">Nombre de secteurs couverts : </p>
+                <p class="border-bottom pt-2 pb-2">Nombre de secteurs couverts : </p>
                 <p class="centrage"><%= Secteur.all.count%></p>
               </div> 
             </div>

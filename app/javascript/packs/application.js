@@ -16,3 +16,103 @@ require("jquery")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+$(document).ready(function(){
+	$("#ptf-listener").click(function(e){
+		$("#ptf-check").toggleClass("toggleclass")
+
+		$("#scontent").addClass("toggleclass")
+		$("#appui-check").addClass("toggleclass")
+		$("#filiere-check").addClass("toggleclass")
+		$("#zone-check").addClass("toggleclass")
+		$("#range-year-content").addClass("toggleclass")
+		$("#range-content").addClass("toggleclass")
+	})
+
+	$("#check").click(function(e){
+		$("#scontent").toggleClass("toggleclass")
+
+		$("#ptf-check").addClass("toggleclass")
+		$("#appui-check").addClass("toggleclass")
+		$("#filiere-check").addClass("toggleclass")
+		$("#zone-check").addClass("toggleclass")
+		$("#range-year-content").addClass("toggleclass")
+		$("#range-content").addClass("toggleclass")
+	})
+
+	$("#appui-listener").click(function(e){
+		$("#appui-check").toggleClass("toggleclass")
+
+		$("#scontent").addClass("toggleclass")
+		$("#ptf-check").addClass("toggleclass")
+		$("#filiere-check").addClass("toggleclass")
+		$("#zone-check").addClass("toggleclass")
+		$("#range-year-content").addClass("toggleclass")
+		$("#range-content").addClass("toggleclass")
+	})
+
+	$("#filiere-listener").click(function(e){
+		$("#filiere-check").toggleClass("toggleclass")
+
+		$("#scontent").addClass("toggleclass")
+		$("#appui-check").addClass("toggleclass")
+		$("#ptf-check").addClass("toggleclass")
+		$("#zone-check").addClass("toggleclass")
+		$("#range-year-content").addClass("toggleclass")
+		$("#range-content").addClass("toggleclass")
+	})
+
+	$("#zone-listener").click(function(e){
+		$("#zone-check").toggleClass("toggleclass")
+
+		$("#ptf-check").addClass("toggleclass")
+		$("#appui-check").addClass("toggleclass")
+		$("#filiere-check").addClass("toggleclass")
+		$("#scontent").addClass("toggleclass")
+		$("#range-year-content").addClass("toggleclass")
+		$("#range-content").addClass("toggleclass")
+	})
+
+	$("#range-drop").click(function(e){
+		$("#range-content").toggleClass("toggleclass")
+
+		$("#scontent").addClass("toggleclass")
+		$("#ptf-check").addClass("toggleclass")
+		$("#filiere-check").addClass("toggleclass")
+		$("#zone-check").addClass("toggleclass")
+		$("#range-year-content").addClass("toggleclass")
+		$("#appui-check").addClass("toggleclass")
+	})
+
+	$("#year-drop").click(function(e){
+		$("#range-year-content").toggleClass("toggleclass")
+
+		$("#ptf-check").addClass("toggleclass")
+		$("#appui-check").addClass("toggleclass")
+		$("#filiere-check").addClass("toggleclass")
+		$("#scontent").addClass("toggleclass")
+		$("#zone-check").addClass("toggleclass")
+		$("#range-content").addClass("toggleclass")
+	})
+
+	$("#beneficiaire-listener").click(function(e){
+		$("#beneficiaire-content").toggleClass("toggleclass")
+
+		$("#scontent").addClass("toggleclass")
+		$("#ptf-check").addClass("toggleclass")
+		$("#filiere-check").addClass("toggleclass")
+		$("#zone-check").addClass("toggleclass")
+		$("#range-year-content").addClass("toggleclass")
+		$("#range-content").addClass("toggleclass")
+	})
+
+	$("#iga-listener").click(function(e){
+		$("#iga-content").toggleClass("toggleclass")
+
+		$("#scontent").addClass("toggleclass")
+		$("#ptf-check").addClass("toggleclass")
+		$("#filiere-check").addClass("toggleclass")
+		$("#zone-check").addClass("toggleclass")
+		$("#range-year-content").addClass("toggleclass")
+		$("#range-content").addClass("toggleclass")
+	})
+});
