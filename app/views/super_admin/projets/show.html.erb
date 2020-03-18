@@ -83,6 +83,22 @@
       </div>
       <div class="row pt-4 pb-4">
         <div class="col-md-6 list">
+
+          <% if  @projet.igaprojets.count == 1%>
+            <p><span class="attr">Institution Gouvernementale Associée : </span></p>
+          <%else%>
+            <p><span class="attr">Institutions Gouvernementales Associées : </span></p>
+          <%end%>
+          <div class="mb-3">
+              <%@projet.igaprojets .each do|g|%>
+                  <%if g == @projet.igaprojets.last%>
+                    <span><%=g.iga.title %></span>
+                  <% else %>
+                    <span><%=g.iga.title %>, </span>
+                  <% end %>
+              <% end %>
+          </div>
+
           <% if  @projet.zoneprojets.count == 1%>
               <p><span class="attr">Région : </span></p>
           <%else%>
@@ -110,7 +126,7 @@
           <%end%>
           <div class="mb-3">
               <%@projet.benefprojets.each do|ben|%>
-                  <%if ben = @projet.benefprojets.last%>
+                  <%if ben == @projet.benefprojets.last%>
                     <span><%=ben.beneficiaire.title %></span>
                   <% else %>
                     <span><%=ben.beneficiaire.title %>, </span>

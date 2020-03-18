@@ -109,7 +109,7 @@
       <header class="fdk8rh-0 kYNMFW">
         <h3 class="fdk8rh-1 eouleG">
           <div class= "fdk8rh-1 eouleG large select">
-            Appui
+           Nature d'appui
           </div>
         </h3>
       </header>
@@ -148,13 +148,29 @@
       </div>
     </div>
 
-    <div class="fdk8rh-3 feYJJO" title="Institutions Gouvernementales Associées">
+      <div class="fdk8rh-3 feYJJO" id="iga-listener">
       <header class="fdk8rh-0 kYNMFW">
         <h3 class="fdk8rh-1 eouleG">
-          <%= select_tag 'search_iga' , options_for_select(Iga.all.order(:title).collect{ |c| [c.title,c.id]}), :include_blank => "Iga", class: "select fdk8rh-1 eouleG largepopover__title large"  %>
+          <div class= "fdk8rh-1 eouleG large select">
+            Iga
+          </div>
         </h3>
       </header>
     </div>
+    <div class="iga-content filter-drop" id="iga-check">
+      <div class="mx-auto p-2 rounded">
+        <%Iga.all.order(:title).each do |f|%>
+        <div class="fdk8rh-1 eouleG">
+          <label class="d-flex align-items-center">
+            <%= check_box_tag("search_iga[]",f.id) %>
+            <%= f.title%>
+          </label>
+        </div>
+        <%end%>
+      </div>
+    </div>
+    
+
 
     <div class="fdk8rh-3 feYJJO" id="zone-listener">
       <header class="fdk8rh-0 kYNMFW">
@@ -310,8 +326,8 @@
                 <%end%>
 
                 <%if @iga_1 != ""%>
-                <%@params_iga.each do |i|%>
-                <%@iga_1 = Iga.all.find(i.to_i).title%>
+                <%@params_iga.each do |g|%>
+                <%@iga_1 = Iga.all.find(g.to_i).title%>
                 <p class="text-muted mb-1"><span>IGA &nbsp;:&nbsp; </span> <%= @iga_1 %></p>
                 <%end%>
                 <%end%>
@@ -331,6 +347,7 @@
             </div>
             <div class="col-sm-7 pl-2">
               <div>
+
                 <%if @results %>
                 <%@results.each do | result|%>
                 <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
@@ -400,10 +417,10 @@
                 <%end%>
 
                 <%if @appui%>
-                <% @appui.each do |a| %>  
-                <% if a.projet.validation == true%>
+                <% @appui.each do |ip| %>  
+                <% if ip.projet.validation == true%>
                 <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <%= link_to "#{a.nom_du_projet}", projet_path(a.id), target: 'blank', class: 'text-muted reshover' %>
+                  <%= link_to "#{ip.nom_du_projet}", projet_path(ip.id), target: 'blank', class: 'text-muted reshover' %>
                 </div>        
                 <%end%>
                 <%end%>
@@ -411,16 +428,6 @@
 
                 <%if @ben%>
                 <% @ben.each do |b| %>  
-                <% if b.projet.validation == true%>
-                <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <%= link_to "#{b.projet.nom_du_projet}", projet_path(b.projet.id), target: 'blank', class: 'text-muted reshover' %>
-                </div>
-                <%end%>     
-                <%end%>
-                <%end%>
-
-                <%if @iga%>
-                <% @iga.each do |b| %>  
                 <% if b.projet.validation == true%>
                 <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                   <%= link_to "#{b.projet.nom_du_projet}", projet_path(b.projet.id), target: 'blank', class: 'text-muted reshover' %>

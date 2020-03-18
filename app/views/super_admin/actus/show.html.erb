@@ -1,13 +1,16 @@
 
 <div class="container sans-head">
 		<div class="titre" style="text-align: center;">
-		   <h3>Liste des documents associés :</h3>
+		   <h3><%=@actu.title%></h3>
 	   </div><br>
 	<h3>Liste des documents associés :</h3>
 	<%if @actu.files.attached?%>
 		<%@actu.files.all.each do|file|%> 
 			<p><%= link_to file.filename, rails_blob_path(file, disposition: "attachement"), class: "attr" %></p>
 		<%end%>
-	
 	<%end%>
+ <div class="text-right">
+      <a href="<%=  edit_super_admin_actu_path(@actu.id)%>" class="sc-eerKOB cfnPHQ bold sear">Modifier</a>
+      <a href="<%= super_admin_actu_path(@actu.id)%>" class="btn btn-danger"  data-confirm="Voulez-vous supprimer ce actualités?"> supprimer</a>
+    </div>
 </div>
