@@ -1,11 +1,5 @@
 <header class="aci59a-0 eyAIuG sticky-limit">
   <div class="sc-1gnwgfb-2 hVIPFV pict">
-    <style type="text/css">
-        .pict {
-            background-image: url('/secteur/accueil.jpg');
-        }
-
-      </style> 
   </div>
 </header>
 <% if current_user %> 
@@ -146,15 +140,13 @@
         </h3>
       </header>
     </div>
-    <div class="forme-content filter-drop" id="forme-check">
+    <div class="forme-content filter-drop toggleclass" id="forme-check">
       <div class="mx-auto p-2 rounded">
         <%Forme.all.order(:title).each do |f|%>
-        <div class="fdk8rh-1 eouleG">
-          <label class="d-flex align-items-center">
-            <%= check_box_tag("search_filiere[]",f.id) %>
+          <label for="" class=" fdk8rh-1 eouleG d-flex align-items-center">
+            <%= check_box_tag("search_filiere[]", f.id, false, id: :"search_filiere_#{f.id}") %>
             <%= f.title%>
           </label>
-        </div>
         <%end%>
       </div>
     </div>
@@ -191,7 +183,7 @@
         </h3>
       </header>
     </div>
-    <div class="iga-content filter-drop" id="iga-check">
+    <div class="iga-content filter-drop toggleclass" id="iga-check">
       <div class="mx-auto p-2 rounded">
         <%Iga.all.order(:title).each do |f|%>
         <div class="fdk8rh-1 eouleG">
@@ -204,8 +196,6 @@
       </div>
     </div>
     
-
-
     <div class="fdk8rh-3 feYJJO" id="zone-listener">
       <header class="fdk8rh-0 kYNMFW">
         <h3 class="fdk8rh-1 eouleG">
@@ -236,7 +226,7 @@
           </div>
         </h3>
       </header>
-      <div class="beneficiaire-content  filter-drop" id="beneficiaire-check">
+      <div class="beneficiaire-content  filter-drop toggleclass" id="beneficiaire-check">
         <div class="mx-auto p-2 rounded">
           <%Beneficiaire.all.each do |b|%>
           <div class="fdk8rh-1 eouleG">
