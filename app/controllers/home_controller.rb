@@ -2,6 +2,7 @@ class HomeController < ApplicationController
       
 def index
        @project = Projet.order(:id).page(params[:page]).per(3)
+       @forme_1 = ""
        @ptf_1 = ""
        @montant_1 = ""
        @appui_1 = ""
@@ -115,6 +116,23 @@ end
            @params_filiere.each do |f|
            @filiere = Filiereprojet.all.where(filiere_id: params[:search_filiere])
            @filiere_1 = Filiere.all.find(f.to_i).title
+       end
+      end
+    end  
+  end
+
+    if params[:search_forme]
+      if params[:search_forme] && params[:search_forme] != ""
+        if params[:search_forme]== 1
+          redirect_to(root_path)
+        
+          else
+           @params_forme = params[:search_forme]
+           @params_forme.each do |fo|
+           @forme = Formeprojet.all.where(forme_id: params[:search_forme])
+           @forme_1 = Forme.all.find(fo.to_i).title
+          
+
        end
       end
     end  

@@ -108,7 +108,7 @@
         <%Secteur.all.order(:title).each do |s|%>
         <div class="fdk8rh-1 eouleG">
           <label class="d-flex align-items-center">
-            <%= check_box_tag("search_secteur[]",s.id) %>
+            <%= check_box_tag("search_secteur[]",s.id, false, id: :"s#{s.id}", :onclick => "checkSecteur(#{s.id})")%>
             <%= s.title%>
           </label>
         </div>
@@ -148,16 +148,36 @@
     </div>
     <div class="forme-content filter-drop" id="forme-check">
       <div class="mx-auto p-2 rounded">
-        <%Forme.all.order(:title).each do |f|%>
-        <div class="fdk8rh-1 eouleG">
-          <label class="d-flex align-items-center">
-            <%= check_box_tag("search_filiere[]",f.id) %>
-            <%= f.title%>
-          </label>
-        </div>
-        <%end%>
+        <%Secteur.all.each do |s|%>
+          <%s.formesecteurs.each do |fs|%>
+              <div class="fdk8rh-1 eouleG" style="display: none" id="forme<%= fs.id%>">
+                <label class="d-flex align-items-center">
+                  <%= check_box_tag("search_forme[]",  fs.forme.id, false, id: :"fs#{fs.forme.id}")%>
+                  <%= fs.forme.title%>
+                </label>
+              </div>
+            <%end%>
+          <%end%>
       </div>
     </div>
+    <script>
+
+            function checkSecteur(x) {
+              <% Secteur.all.each do |s| %>
+               if( x == <%= s.id %>){
+                <% s.formesecteurs.each do |fs| %>
+                  var checkBox = document.getElementById('s'+x);
+                  var forme = document.getElementById('forme'+<%= fs.id %>);
+                  if (checkBox.checked == true){
+                    forme.style.display = "block";
+                  } else {
+                     forme.style.display = "none";
+                  }
+                <% end %>
+                }
+              <% end %>
+             }
+            </script>
 
     <div class="fdk8rh-3 feYJJO" id="filiere-listener">
       <header class="fdk8rh-0 kYNMFW">
@@ -396,6 +416,13 @@
                 <%end%>
                 <%end%>
 
+                 <% if @forme_1 != ""%>
+                <%@params_forme.each do |i|%>
+                <%@forme_1 = Forme.all.find(i.to_i).title%>
+                <p class="text-muted mb-1"><span> Forme d'appui &nbsp;:&nbsp; </span> <%= @forme_1 %></p>
+                <%end%>
+                <%end%>
+
               </div>
             </div>
             <div class="col-sm-7 pl-2">
@@ -439,6 +466,20 @@
                 <% if res.projet.validation == true%>
                 <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                   <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
+                </div>
+                <%end%>
+                <%end%>
+                <%end%>
+                <%end%>
+
+
+                <%if @params_forme%>
+                <%@params_forme.each do |fo|%>
+                <%@forme = Formeprojet.all.where(forme_id: fo.to_i)%>
+                <% @forme.each do |rs| %>  
+                <% if rs.projet.validation == true%>
+                <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                  <%= link_to "#{rs.projet.nom_du_projet}", projet_path(rs.projet.id), target: 'blank', class: 'text-muted reshover' %>
                 </div>
                 <%end%>
                 <%end%>
