@@ -27,7 +27,8 @@
 			</a>
 			<div class="mt-2">
 				<div class="card card-body">
-					<textarea name="objectif_generale_du_projet" rows="10" required></textarea>
+					<textarea name="objectif_generale_du_projet" rows="10" id="comment_body" onkeyup="checkWordLen(this);" required></textarea>
+					<span id="charlimit"><strong class="words-left">200 mots maximum</strong></span>
 				</div>
 			</div>
 		</div>
@@ -106,22 +107,6 @@
 				</div>
 			</div>
 		</div>
-
-
-			<script type="text/javascript">
-				function check(x){
-					var m = document.getElementById('montant'+x);
-					if(m.style.display == "block"){
-						m.style.display = "none";
-						m.classList.remove('d-flex');
-					}else{
-						m.style.display = "block";
-						m.classList.add('d-flex');
-					}
-				}
-
-			</script>
-
 			<div class="container mb-2 mt-2">
 			<a class="table">
 				Filières
@@ -170,11 +155,7 @@
 									
 
 									<div class="col-md-7">
-										<% if @ben.length == 1 || @ben.length == 0%>
 											<h6 style="text-align: center;">Le nouveau bénéficiaire doit être coché</h6>
-										<%else%>
-											<h6 style="text-align: center;">Les nouveaux bénéficiaires doivent être cochés</h6>
-										<%end%>
 										<% 10.times do |b|%>
 									    	<div id="check<%= b%>" style="display: block;">
 												<p id="p<%= b%>" style="display: none;">
