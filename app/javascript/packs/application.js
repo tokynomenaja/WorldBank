@@ -26,6 +26,9 @@ $(document).ready(function(){
 		$("#zone-check").addClass("toggleclass")
 		$("#range-year-content").addClass("toggleclass")
 		$("#range-content").addClass("toggleclass")
+		$("#forme-check").addClass("toggleclass")
+		$("#iga-check").addClass("toggleclass")
+		$("#beneficiaire-check").addClass("toggleclass")
 	})
 
 	$("#check").click(function(e){
@@ -37,6 +40,9 @@ $(document).ready(function(){
 		$("#zone-check").addClass("toggleclass")
 		$("#range-year-content").addClass("toggleclass")
 		$("#range-content").addClass("toggleclass")
+		$("#forme-check").addClass("toggleclass")
+		$("#iga-check").addClass("toggleclass")
+		$("#beneficiaire-check").addClass("toggleclass")
 	})
 
 	$("#appui-listener").click(function(e){
@@ -48,6 +54,9 @@ $(document).ready(function(){
 		$("#zone-check").addClass("toggleclass")
 		$("#range-year-content").addClass("toggleclass")
 		$("#range-content").addClass("toggleclass")
+		$("#forme-check").addClass("toggleclass")
+		$("#iga-check").addClass("toggleclass")
+		$("#beneficiaire-check").addClass("toggleclass")
 	})
 
 	$("#filiere-listener").click(function(e){
@@ -59,6 +68,9 @@ $(document).ready(function(){
 		$("#zone-check").addClass("toggleclass")
 		$("#range-year-content").addClass("toggleclass")
 		$("#range-content").addClass("toggleclass")
+		$("#forme-check").addClass("toggleclass")
+		$("#iga-check").addClass("toggleclass")
+		$("#beneficiaire-check").addClass("toggleclass")
 	})
 
 	$("#zone-listener").click(function(e){
@@ -70,6 +82,9 @@ $(document).ready(function(){
 		$("#scontent").addClass("toggleclass")
 		$("#range-year-content").addClass("toggleclass")
 		$("#range-content").addClass("toggleclass")
+		$("#forme-check").addClass("toggleclass")
+		$("#iga-check").addClass("toggleclass")
+		$("#beneficiaire-check").addClass("toggleclass")
 	})
 
 	$("#range-drop").click(function(e){
@@ -81,6 +96,9 @@ $(document).ready(function(){
 		$("#zone-check").addClass("toggleclass")
 		$("#range-year-content").addClass("toggleclass")
 		$("#appui-check").addClass("toggleclass")
+		$("#forme-check").addClass("toggleclass")
+		$("#iga-check").addClass("toggleclass")
+		$("#beneficiaire-check").addClass("toggleclass")
 	})
 
 	$("#year-drop").click(function(e){
@@ -92,6 +110,9 @@ $(document).ready(function(){
 		$("#scontent").addClass("toggleclass")
 		$("#zone-check").addClass("toggleclass")
 		$("#range-content").addClass("toggleclass")
+		$("#forme-check").addClass("toggleclass")
+		$("#iga-check").addClass("toggleclass")
+		$("#beneficiaire-check").addClass("toggleclass")
 	})
 
 	$("#beneficiaire-listener").click(function(e){
@@ -103,10 +124,13 @@ $(document).ready(function(){
 		$("#zone-check").addClass("toggleclass")
 		$("#range-year-content").addClass("toggleclass")
 		$("#range-content").addClass("toggleclass")
+		$("#forme-check").addClass("toggleclass")
+		$("#iga-check").addClass("toggleclass")
+		$("#beneficiaire-check").addClass("toggleclass")
 	})
 
 	$("#iga-listener").click(function(e){
-		$("#iga-content").toggleClass("toggleclass")
+		$("#iga-check").toggleClass("toggleclass")
 
 		$("#scontent").addClass("toggleclass")
 		$("#ptf-check").addClass("toggleclass")
@@ -114,6 +138,34 @@ $(document).ready(function(){
 		$("#zone-check").addClass("toggleclass")
 		$("#range-year-content").addClass("toggleclass")
 		$("#range-content").addClass("toggleclass")
+		$("#forme-check").addClass("toggleclass")
+		$("#beneficiaire-check").addClass("toggleclass")
+	})
+
+	$("#forme-listener").click(function(e){
+		$("#forme-check").toggleClass("toggleclass")
+
+		$("#scontent").addClass("toggleclass")
+		$("#ptf-check").addClass("toggleclass")
+		$("#appui-check").addClass("toggleclass")
+		$("#filiere-check").addClass("toggleclass")
+		$("#zone-check").addClass("toggleclass")
+		$("#range-year-content").addClass("toggleclass")
+		$("#range-content").addClass("toggleclass")
+		$("#iga-check").addClass("toggleclass")
+		$("#beneficiaire-check").addClass("toggleclass")
+	})
+
+	$("#beneficiaire-listener").click(function(e){
+		$("#beneficiaire-check").toggleClass("toggleclass")
+
+		$("#scontent").addClass("toggleclass")
+		$("#ptf-check").addClass("toggleclass")
+		$("#filiere-check").addClass("toggleclass")
+		$("#zone-check").addClass("toggleclass")
+		$("#range-year-content").addClass("toggleclass")
+		$("#range-content").addClass("toggleclass")
+		$("#iga-check").addClass("toggleclass")
 	})
 
 	var wordLen = 150;
@@ -135,4 +187,5 @@ $(document).ready(function(){
 			}).prepend('<i class="fa fa-exclamation-triangle"></i>');
 		}
 	});
+
 });
