@@ -15,8 +15,8 @@ class Admin::ProjetsController < ApplicationController
                 appui_id: params[:appui],
                 objectif_generale_du_projet: params[:objectif_generale_du_projet],
                 aspsp: params[:aspsp],comment: params[:comment],
-                debut_du_projet: params[:debut_du_projet],
-                fin: params[:fin], siteweb: params[:site],
+                debut_du_projet: params[:debut_du_projet].to_date,
+                fin: params[:fin].to_date, siteweb: params[:site],
                 bailleur_id: current_user.id)
 
                 if params[:creer] == 'Enregistrer'
