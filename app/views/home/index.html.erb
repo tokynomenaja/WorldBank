@@ -69,19 +69,19 @@
       <div class="fdk8rh-3 feYJJO" title="Partenaire Technique et Financier">
         <header class="fdk8rh-0 kYNMFW">
          <%= form_tag(root_path, :method => "get", class: 'navbar-form navbar-left') do %> 
-         <h3  class= "fdk8rh-1 eouleG">
-           <div class= "fdk8rh-1 eouleG large select" id="ptf-listener">
-            PTF
-          </div>
-        </h3>
+          <h3  class= "fdk8rh-1 eouleG">
+            <div class= "fdk8rh-1 eouleG large select" id="ptf-listener">
+              PTF
+            </div>
+          </h3>
       </header>
     </div>
-    <div class="ptf-content filter-drop">
+    <div class="ptf-content filter-drop drop-height">
       <div class="mx-auto p-2 rounded toggleclass" id="ptf-check">
         <%Ptf.all.order(:title).each do |p|%>
         <div class="fdk8rh-1 eouleG">
           <label class="d-flex align-items-center">
-            <%= check_box_tag("ptf_id[]",p.id) %>
+            <%= check_box_tag("ptf_id[]",p.id ,false, id: :"ptf#{p.id}") %>
             <%= p.title%>   
           </label>
         </div>
@@ -97,7 +97,7 @@
         </h3>
       </header>
     </div>
-    <div class="secteur-content filter-drop">
+    <div class="secteur-content drop-height filter-drop">
       <div class="mx-auto p-2 rounded toggleclass" id="scontent">
         <%Secteur.all.order(:title).each do |s|%>
         <div class="fdk8rh-1 eouleG">
@@ -118,7 +118,7 @@
         </h3>
       </header>
     </div>
-    <div class="appui-content filter-drop">
+    <div class="appui-content drop-height filter-drop">
       <div class="mx-auto p-2 rounded toggleclass" id="appui-check">
         <%Appui.all.order(:title).each do |a|%>
         <div class="fdk8rh-1 eouleG">                
@@ -140,7 +140,7 @@
         </h3>
       </header>
     </div>
-    <div class="forme-content filter-drop toggleclass" id="forme-check">
+    <div class="forme-content filter-drop drop-height toggleclass" id="forme-check">
       <div class="mx-auto p-2 rounded">
         <%Secteur.all.each do |s|%>
           <%s.formesecteurs.each do |fs|%>
@@ -182,7 +182,7 @@
         </h3>
       </header>
     </div>
-    <div class="filiere-content filter-drop toggleclass" id="filiere-check">
+    <div class="filiere-content filter-drop drop-height toggleclass" id="filiere-check">
       <div class="mx-auto p-2 rounded">
         <%Filiere.all.order(:title).each do |f|%>
         <div class="fdk8rh-1 eouleG">
@@ -205,7 +205,7 @@
         </h3>
       </header>
     </div>
-    <div class="iga-content filter-drop toggleclass" id="iga-check">
+    <div class="iga-content filter-drop drop-height toggleclass" id="iga-check">
       <div class="mx-auto p-2 rounded">
         <%Iga.all.order(:title).each do |f|%>
         <div class="fdk8rh-1 eouleG">
@@ -226,7 +226,7 @@
           </div>
         </h3>
       </header>
-      <div class="filiere-content zone-content filter-drop toggleclass" id="zone-check">
+      <div class="filiere-content drop-height zone-content filter-drop toggleclass" id="zone-check">
         <div class="mx-auto p-2 rounded">
           <%Zone.all.each do |z|%>
           <div class="fdk8rh-1 eouleG">
@@ -248,7 +248,7 @@
           </div>
         </h3>
       </header>
-      <div class="beneficiaire-content  filter-drop toggleclass" id="beneficiaire-check">
+      <div class="beneficiaire-content drop-height filter-drop toggleclass" id="beneficiaire-check">
         <div class="mx-auto p-2 rounded">
           <%Beneficiaire.all.each do |b|%>
           <div class="fdk8rh-1 eouleG">
@@ -269,7 +269,7 @@
           </h3>
         </header>
       </div>
-      <div class="filter-drop range-content mx-auto rounded eouleG pt-4 toggleclass" id="range-content">
+      <div class="filter-drop drop-height range-content mx-auto rounded eouleG pt-4 toggleclass" id="range-content">
         <div class="middle mx-auto mt-2 mb-4">
            <div class="p-3 text-center">
               <output id= "showMontant">montant en millions de USD</output>
@@ -307,7 +307,7 @@
           </h3>
         </header>
       </div>  
-      <div class="filter-drop range-year-content mx-auto rounded eouleG toggleclass" id="range-year-content">
+      <div class="filter-drop drop-height range-year-content mx-auto rounded eouleG toggleclass" id="range-year-content">
         <div class="middle mx-auto mt-2 mb-4">
           <div class="multi-range-slider">
             <div class="p-3 text-center">
