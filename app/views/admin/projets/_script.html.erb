@@ -1,0 +1,100 @@
+<script type="text/javascript">
+
+	//Required secteur
+	function validCheck(){
+
+			<%ids = [] %>
+			<% Secteur.all.each do |s|%>
+				<% ids << s.id%>
+				var s<%= s.id%> = document.getElementById("s<%= s.id%>");
+			<%end%>
+				var check = false;
+			<% Secteur.all.each do |s|%>
+				s<%= s.id%>.required = false;
+				if(s<%= s.id%>.checked == true){
+					check = true;
+				}	
+			<%end%>
+				if(check == false){
+					s<%= ids[rand(0..ids.length-1)]%>.required = true;
+				}
+				console.log('*********************');
+				console.log(check);
+		}
+
+	//Autres bénéficiaires
+	function ajoutBen(){
+			<% 10.times do |x|%>			
+				var hid<%= x%> = document.getElementById('valben<%= x%>');
+				var p<%= x%> = document.getElementById('p<%= x%>');
+			<%end%>
+			var val = document.getElementById('inp').value;
+			if(hid0.value == "" && val != ""){
+
+				p0.style.display = "block";
+				document.getElementById('s0').innerHTML = val;
+				hid0.value = val;
+			}
+			<% for y in 1..9%>
+			else if (hid<%= y%>.value == '' && val != "") {
+				p<%= y%>.style.display = "block";
+				document.getElementById('s<%=y%><%=y%>').innerHTML = document.getElementById('inp').value;
+				hid<%=y%>.value = document.getElementById('inp').value;
+			}
+			<%end%>
+		}
+		document.getElementById("ajout").addEventListener('click',function ()
+			{
+			    ajoutBen();
+			   }  ); 
+
+	
+//Montant par secteur et Filiere par secteur
+	function check(x){
+	    var m = document.getElementById('montant'+x);
+	    if(m.style.display == "block"){
+	        m.style.display = "none";
+	        m.classList.remove('d-flex');
+	    }else{
+	        m.style.display = "block";
+	        m.classList.add('d-flex');
+	    }
+
+		<%SecteurFiliere.all.each do |sf|%>
+			var sf = document.getElementById('fl'+<%= sf.id%>);
+			sf.style.display = "none";
+		<%end%>
+
+	    <%Secteur.all.each do |s|%>
+	        if(x == <%= s.id%>){
+	            <%s.secteur_filieres.each do |sf|%>
+	                var f = document.getElementById('fil'+<%= sf.id%>);
+	                if(f.style.display == "block"){
+	                    f.style.display = "none";
+	                }else{
+	                    f.style.display = "block";
+	                }
+	            <%end%>
+	        }
+	    <%end%>
+
+	    <%Formesecteur.all.each do |fs|%>
+			var fs = document.getElementById('forme'+<%= fs.id%>);
+			fs.style.display = "none";
+		<%end%>
+
+	    <%Secteur.all.each do |s|%>
+	        if(x == <%= s.id%>){
+	            <%s.formesecteurs.each do |fs|%>
+	                var fs = document.getElementById('form'+<%= fs.id%>);
+	                if(fs.style.display == "block"){
+	                    fs.style.display = "none";
+	                }else{
+	                    fs.style.display = "block";
+	                }
+	            <%end%>
+	        }
+	    <%end%>
+	}
+
+</script>

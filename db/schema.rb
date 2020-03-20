@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_18_130654) do
+ActiveRecord::Schema.define(version: 2020_03_19_140143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -172,6 +172,22 @@ ActiveRecord::Schema.define(version: 2020_03_18_130654) do
     t.index ["iga_id"], name: "index_organismes_on_iga_id"
     t.index ["ptf_id"], name: "index_organismes_on_ptf_id"
     t.index ["user_id"], name: "index_organismes_on_user_id"
+  end
+
+  create_table "partenaireprojets", force: :cascade do |t|
+    t.bigint "partenaire_id"
+    t.bigint "projet_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["partenaire_id"], name: "index_partenaireprojets_on_partenaire_id"
+    t.index ["projet_id"], name: "index_partenaireprojets_on_projet_id"
+  end
+
+  create_table "partenaires", force: :cascade do |t|
+    t.text "plateforme"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "pemprojets", force: :cascade do |t|

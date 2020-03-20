@@ -34,6 +34,9 @@ class Projet < ApplicationRecord
 
         has_many :formeprojets
         has_many :formes, through: :formeprojets
+
+        has_many :partenaireprojets
+        has_many :partenaires, through: :partenaireprojets
     
         
         has_many_attached :files

@@ -141,15 +141,4 @@ inputYearRight.addEventListener("input", setRightYearValue);
 // FIN PERIODE
 
 
-//Montant par secteur
-function check(x){
-    var m = document.getElementById('montant'+x);
-    if(m.style.display == "block"){
-        m.style.display = "none";
-        m.classList.remove('d-flex');
-    }else{
-        m.style.display = "block";
-        m.classList.add('d-flex');
-    }
-}
 

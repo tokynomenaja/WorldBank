@@ -14,8 +14,7 @@ class Admin::ProjetsController < ApplicationController
                 ptf_id: params[:ptf],
                 appui_id: params[:appui],
                 objectif_generale_du_projet: params[:objectif_generale_du_projet],
-                aspsp: params[:aspsp],
-                partenaire_d_implementaton: params[:partenaire_d_implementaton],comment: params[:comment],
+                aspsp: params[:aspsp],comment: params[:comment],
                 debut_du_projet: params[:debut_du_projet],
                 fin: params[:fin], siteweb: params[:site],
                 bailleur_id: current_user.id)
@@ -52,10 +51,45 @@ class Admin::ProjetsController < ApplicationController
                 @secteur_ids.each do |x|
                   Secteurprojet.create(projet_id: @project.id , secteur_id: x.to_i)
                 end
+
                   @filiere_ids = params[:filiere_ids]
                 @filiere_ids.each do |x|
                   Filiereprojet.create(projet_id: @project.id , filiere_id: x.to_i)
                 end
+
+                  @forme_ids = params[:forme_ids]
+                @forme_ids.each do |x|
+                  Formeprojet.create(projet_id: @project.id , forme_id: x.to_i)
+                end
+
+                for x in 1..2
+                  if params[:"partONG#{x}"]
+                    @partenaire = Partenaire.create(plateforme: "ONG", description: params[:"desc_partONG#{x}"])
+                    Partenaireprojet.create(projet_id: @project.id , partenaire_id: @partenaire.id)
+                  end
+                  if params[:"partASS#{x}"]
+                    @partenaire = Partenaire.create(plateforme: "Associations", description: params[:"desc_partASS#{x}"])
+                    Partenaireprojet.create(projet_id: @project.id , partenaire_id: @partenaire.id)
+                  end
+
+                  if params[:"partPRI#{x}"]
+                    @partenaire = Partenaire.create(plateforme: "Secteurs Privés", description: params[:"desc_partPRI#{x}"])
+                    Partenaireprojet.create(projet_id: @project.id , partenaire_id: @partenaire.id)
+                  end
+
+                  if params[:"partCOM#{x}"]
+                    @partenaire = Partenaire.create(plateforme: "Chambres de Commerce", description: params[:"desc_partCOM#{x}"])
+                    Partenaireprojet.create(projet_id: @project.id , partenaire_id: @partenaire.id)
+                  end
+
+                  if params[:"partAUTRE#{x}"]
+                    @partenaire = Partenaire.create(plateforme: params[:"plat_partAUTRE#{x}"], description: params[:"desc_partAUTRE#{x}"])
+                    Partenaireprojet.create(projet_id: @project.id , partenaire_id: @partenaire.id)
+                  end
+
+                end
+                  
+
                   @iga_ids = params[:iga_ids]
                 @iga_ids.each do |i|
                   Igaprojet.create(projet_id: @project.id , iga_id: i.to_i) 

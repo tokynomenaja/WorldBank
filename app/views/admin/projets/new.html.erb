@@ -13,12 +13,6 @@
 					</div>
 					<input type="text" name="nom_du_projet" id="nom" placeholder="Nom du projet" class="form-control" required="true">
 				</div>
-				<div class="col-6">
-					<div>
-						<label for="nom" class="mr-2 table">Partenaire d'implémentation </label>
-					</div>
-					<input type="text" name="partenaire_d_implementaton" id="nom" placeholder="ONG / Secteur Privé / Chambre de commerce / Association / ..." class="form-control">
-				</div>
 			</div>
 		</div>
 		<div class="container mb-2">
@@ -56,6 +50,60 @@
 				</div>
 					
 			</div>
+		</div>
+
+
+		<div class="container mb-2">
+			<a class="table">
+				Partenaires d'implémentations
+			</a>
+				<div class="mt-2">
+				<div class="card card-body">
+					<div class="row" style="text-align: right;" >
+						<% for x in 1..2%>
+							<div class="col-md-6">
+								<label for="partONG">ONG</label>
+								<input type="checkbox" name="partONG<%= x %>">
+								<input type="text" name="desc_partONG<%= x %>" placeholder="préciser">
+							</div>
+						<% end %>
+
+						<% for x in 1..2%>
+							<div class="col-md-6">
+								<label for="partASS">Associations</label>
+								<input type="checkbox" name="partASS<%= x %>">
+								<input type="text" name="desc_partASS<%= x %>" placeholder="préciser">
+							</div>
+						<% end %>
+
+						<% for x in 1..2%>
+							<div class="col-md-6">
+								<label for="partCOM">Chambres de commerce</label>
+								<input type="checkbox" name="partCOM<%= x %>">
+								<input type="text" name="desc_partCOM<%= x %>" placeholder="préciser">
+							</div>
+						<% end %>
+
+						<% for x in 1..2%>
+							<div class="col-md-6">
+								<label for="partPRI">Secteur Privé</label>
+								<input type="checkbox" name="partPRI<%= x %>">
+								<input type="text" name="desc_partPRI<%= x %>" placeholder="préciser">
+							</div>
+						<% end %>
+						<% for x in 1..2%>
+							<div class="col-md-6">
+								<input type="text" name="plat_partAUTRE<%= x%>" placeholder="Autres">
+								<input type="checkbox" name="partAUTRE<%= x %>">
+								<input type="text" name="desc_partAUTRE<%= x %>" placeholder="préciser">
+							</div>
+						<% end %>
+
+
+					
+					</div>
+				</div>
+				</div>
 		</div>
 
 
@@ -114,11 +162,41 @@
 				<div class="mt-2">
 				<div class="card card-body">
 					<div class="row">
-						<% Filiere.all.order(:title).each do |c| %>
-							<div class="col-md-4">
-								<%= check_box_tag("filiere_ids[]",c.id)%>
-								<%= c.title%>
+						<%Secteur.all.each do |s|%>
+							<%s.secteur_filieres.each do |sf|%>
+							<div class="col-md-4" style="display: none" id="fil<%= sf.id%>">
+								<%= check_box_tag("filiere_ids[]", sf.filiere.id,)%>
+								<%= sf.filiere.title%>
 							</div>
+							<div class="col-md-4" style="display: block" id="fl<%= sf.id%>">
+								<%= check_box_tag("filiere_ids[]", sf.filiere.id,)%>
+								<%= sf.filiere.title%>
+							</div>
+						<% end %>
+						<% end %>
+					</div>
+				</div>
+				</div>
+			</div>
+
+			<div class="container mb-2 mt-2">
+			<a class="table">
+				Forme d'appui
+			</a>
+				<div class="mt-2">
+				<div class="card card-body">
+					<div class="row">
+						<%Secteur.all.each do |s|%>
+							<%s.formesecteurs.each do |fs|%>
+							<div class="col-md-4" style="display: none" id="form<%= fs.id%>">
+								<%= check_box_tag("forme_ids[]", fs.forme.id,)%>
+								<%= fs.forme.title%>
+							</div>
+							<div class="col-md-4" style="display: block" id="forme<%= fs.id%>">
+								<%= check_box_tag("forme_ids[]", fs.forme.id,)%>
+								<%= fs.forme.title%>
+							</div>
+						<% end %>
 						<% end %>
 					</div>
 				</div>
@@ -183,32 +261,6 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript">
-		function ajoutBen(){
-			<% 10.times do |x|%>			
-				var hid<%= x%> = document.getElementById('valben<%= x%>');
-				var p<%= x%> = document.getElementById('p<%= x%>');
-			<%end%>
-			var val = document.getElementById('inp').value;
-			if(hid0.value == "" && val != ""){
-
-				p0.style.display = "block";
-				document.getElementById('s0').innerHTML = val;
-				hid0.value = val;
-			}
-			<% for y in 1..9%>
-			else if (hid<%= y%>.value == '' && val != "") {
-				p<%= y%>.style.display = "block";
-				document.getElementById('s<%=y%><%=y%>').innerHTML = document.getElementById('inp').value;
-				hid<%=y%>.value = document.getElementById('inp').value;
-			}
-			<%end%>
-		}
-		document.getElementById("ajout").addEventListener('click',function ()
-			{
-			    ajoutBen();
-			   }  ); 
-	</script>
 
 			
 		<div class="container mb-2">
@@ -282,31 +334,9 @@
 			
 		</div>
 		<div class="container mt-4">
-			<%= submit_tag :creer, :name => "creer", :value => "Enregistrer", :class => "btn btn-secondary", :onclick => "validCheck()"%>
-			<%= submit_tag :creer, :name => "creer", :value => "Publier", :class => "sc-eerKOB cfnPHQ"%>
+			<%= submit_tag :Enregistrer, :name => "creer", :value => "Enregistrer", :class => "btn btn-secondary", :onclick => "validCheck()"%>
+			<%= submit_tag :Publier, :name => "creer", :value => "Publier", :class => "sc-eerKOB cfnPHQ", :onclick => "validCheck()"%>
 		</div>
 	<% end %>
 </div>
-<script type="text/javascript">
-	function validCheck(){
-
-			<%ids = [] %>
-			<% Secteur.all.each do |s|%>
-				<% ids << s.id%>
-				var s<%= s.id%> = document.getElementById("s<%= s.id%>");
-			<%end%>
-				var check = false;
-			<% Secteur.all.each do |s|%>
-				s<%= s.id%>.required = false;
-				if(s<%= s.id%>.checked == true){
-					check = true;
-				}
-			<%end%>
-				if(check == false){
-					s<%= ids[rand(0..ids.length-1)]%>.required = true;
-				}
-				console.log('*********************');
-				console.log(check);
-		}
-
-</script>
+<%= render partial: "/admin/projets/script.html.erb"%>

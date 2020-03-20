@@ -46,9 +46,22 @@
             </span>
           </p>
        
-      <p><span class="attr">Forme d'appui : </span>
-        <span class="word"><%= @projet.appui.title%></span>
-      </p>
+          <% if  @projet.formeprojets.count == 1%>
+              <p><span class="attr">Forme d'appui : </span>
+          <%else%>
+              <p><span class="attr">Formes d'appui : </span>
+          <%end%>
+          <span class="word">
+              <%@projet.formeprojets .each do|fop|%>
+                <% if fop == @projet.formeprojets.last%>
+                  <span><%=fop.forme.title %></span>
+                <% else %>
+                  <span><%=fop.forme.title %>, </span>
+                <% end %>
+              <% end %>
+            
+          </span>
+          </p>
 
           <% if  @projet.filiereprojets.count == 1%>
               <p><span class="attr">Filière : </span>
@@ -114,9 +127,20 @@
               <% end %>
           </div>
           
-          <p><span class="attr">Partenaire d'implémentation : </span>
-          <p class="mb-3"><%= @projet.partenaire_d_implementaton %></p>
-          </p>
+          <% if  @projet.partenaireprojets.count == 1%>
+              <p><span class="attr">Partenaire d'implémentation : </span></p>
+          <%else%>
+              <p><span class="attr">Partenaires d'implémentations : </span></p>
+          <%end%>
+          <div class="mb-3">
+              <%@projet.partenaireprojets .each do|pap|%>
+                <% if pap == @projet.partenaireprojets.last%>
+                  <span><%=pap.partenaire.plateforme %></span>
+                <%else%>
+                  <span><%=pap.partenaire.plateforme %>, </span>
+                <% end %>
+              <% end %>
+          </div>
 
 
           <% if  @projet.benefprojets.count == 1%>

@@ -46,9 +46,22 @@
             </span>
           </p>
        
-      <p><span class="attr">Forme d'appui : </span>
-        <span class="word"><%= @projet.appui.title%></span>
-      </p>
+          <% if  @projet.formeprojets.count == 1%>
+              <p><span class="attr">Forme d'appui : </span>
+          <%else%>
+              <p><span class="attr">Formes d'appui : </span>
+          <%end%>
+          <span class="word">
+              <%@projet.formeprojets .each do|fop|%>
+                <% if fop == @projet.formeprojets.last%>
+                  <span><%=fop.forme.title %></span>
+                <% else %>
+                  <span><%=fop.forme.title %>, </span>
+                <% end %>
+              <% end %>
+            
+          </span>
+          </p>
 
           <% if  @projet.filiereprojets.count == 1%>
               <p><span class="attr">Filière : </span>
@@ -114,9 +127,20 @@
               <% end %>
           </div>
           
-          <p><span class="attr">Partenaire d'implémentation : </span>
-          <p class="mb-3"><%= @projet.partenaire_d_implementaton %></p>
-          </p>
+          <% if  @projet.partenaireprojets.count == 1%>
+              <p><span class="attr">Partenaire d'implémentation : </span></p>
+          <%else%>
+              <p><span class="attr">Partenaires d'implémentations : </span></p>
+          <%end%>
+          <div class="mb-3">
+              <%@projet.partenaireprojets .each do|pap|%>
+                <% if pap == @projet.partenaireprojets.last%>
+                  <span><%=pap.partenaire.plateforme %></span>
+                <%else%>
+                  <span><%=pap.partenaire.plateforme %>, </span>
+                <% end %>
+              <% end %>
+          </div>
 
 
           <% if  @projet.benefprojets.count == 1%>
@@ -144,9 +168,9 @@
         <div class="col-md-6 list">
           <p class="mb-3"><span class="attr">Nature de l'appui : </span><%=@projet.appui.title%></p>
           <p class="mb-3"><span class="attr">Début : </span><%=@projet.debut_du_projet%> &nbsp;&nbsp;&nbsp;&nbsp;<span class="attr">Fin : </span><%=@projet.fin%></p>
-          <p class="mb-3"><span class="attr">Alignement aux priorités du plan Emergence de Madagascar : </span><p></span><% @projet.pemprojets.each do |p|%>
-                <p> <%=p.pem.title%></p>
-            <%end%></p>
+          <p class="mb-3"><span class="attr">Alignement aux priorités du plan Emergence de Madagascar : </span><% @projet.pemprojets.each do |p|%>
+                <p><%=p.pem.title%></p>
+            <%end%>
 
           <%if @projet.siteweb%>
             <p class="mb-3"><span class="attr">Site web : </span>
@@ -157,8 +181,9 @@
           <%end%>
 
           <%if @projet.files.attached?%>
+            <p><span class="attr">Fichier : </span>
             <%@projet.files.each do|file|%> 
-            <p><span class="attr">Fichier : </span><%= link_to file.filename, rails_blob_path(file, disposition: "attachement") %></p>
+              <%= link_to file.filename, rails_blob_path(file, disposition: "attachement") %></p>
             <%end%>
         <%end%>
        
