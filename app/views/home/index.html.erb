@@ -140,6 +140,7 @@
         </h3>
       </header>
     </div>
+
     <div class="forme-content filter-drop toggleclass" id="forme-check">
       <div class="mx-auto p-2 rounded">
         <%Secteur.all.each do |s|%>
@@ -150,28 +151,16 @@
                   <%= fs.forme.title%>
                 </label>
               </div>
+              <div class="fdk8rh-1 eouleG" style="display: block" id="form<%= fs.id%>">
+                <label class="d-flex align-items-center">
+                  <%= check_box_tag("search_forme[]",  fs.forme.id, false, id: :"fs#{fs.forme.id}")%>
+                  <%= fs.forme.title%>
+                </label>
+              </div>
             <%end%>
           <%end%>
       </div>
     </div>
-    <script>
-
-            function checkSecteur(x) {
-              <% Secteur.all.each do |s| %>
-               if( x == <%= s.id %>){
-                <% s.formesecteurs.each do |fs| %>
-                  var checkBox = document.getElementById('s'+x);
-                  var forme = document.getElementById('forme'+<%= fs.id %>);
-                  if (checkBox.checked == true){
-                    forme.style.display = "block";
-                  } else {
-                     forme.style.display = "none";
-                  }
-                <% end %>
-                }
-              <% end %>
-             }
-            </script>
 
     <div class="fdk8rh-3 feYJJO" id="filiere-listener">
       <header class="fdk8rh-0 kYNMFW">
@@ -184,14 +173,22 @@
     </div>
     <div class="filiere-content filter-drop toggleclass" id="filiere-check">
       <div class="mx-auto p-2 rounded">
-        <%Filiere.all.order(:title).each do |f|%>
-        <div class="fdk8rh-1 eouleG">
-          <label class="d-flex align-items-center">
-            <%= check_box_tag("search_filiere[]",f.id) %>
-            <%= f.title%>
-          </label>
-        </div>
-        <%end%>
+        <%Secteur.all.each do |s|%>
+          <%s.secteur_filieres.each do |sf|%>
+              <div class="fdk8rh-1 eouleG" style="display: none" id="filiere<%= sf.id%>">
+                <label class="d-flex align-items-center">
+                  <%= check_box_tag("search_filiere[]",  sf.filiere.id, false, id: :"sf#{sf.filiere.id}")%>
+                  <%= sf.filiere.title%>
+                </label>
+              </div>
+              <div class="fdk8rh-1 eouleG" style="display: block" id="fil<%= sf.id%>">
+                <label class="d-flex align-items-center">
+                  <%= check_box_tag("search_filiere[]",  sf.filiere.id, false, id: :"sf#{sf.filiere.id}")%>
+                  <%= sf.filiere.title%>
+                </label>
+              </div>
+            <%end%>
+          <%end%>
       </div>
     </div>
 
@@ -315,8 +312,8 @@
               <output id="rangevalueleftyear">2008</output><span> et </span>
               <output id="rangevaluerightyear">2030</output>
             </div>
-            <input type="range" name="fin[]" id="input-year-left" min="2008" max="2030"  onchange="rangevalueleftyear.value=value">
-            <input type="range" name="fin[]" id="input-year-right" min="2008" max="2030"  onchange="rangevaluerightyear.value=value">
+            <input type="range" name="fin[]" id="input-year-left" min="2008" max="2030"  value="2008"  onchange="rangevalueleftyear.value=value">
+            <input type="range" name="fin[]" id="input-year-right" min="2008" max="2030"  value="2030" onchange="rangevaluerightyear.value=value">
             <div class="y-slider">
               <div class="y-track"></div>
               <div class="y-range"></div>
@@ -691,3 +688,4 @@
 </header>
 </div>
 <%= render "/layouts/footer.html.erb" %>
+<%= render partial: "/home/script.html.erb"%>

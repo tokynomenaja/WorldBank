@@ -30,7 +30,7 @@ end
 
 def update
     @actu = Actu.find(params[:id])
-    if @actu.update(title: params[:id], user_id: current_user.id)
+    if @actu.update(title: params[:title], user_id: current_user.id)
      redirect_to super_admin_actus_path
    end
 end

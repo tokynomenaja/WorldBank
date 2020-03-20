@@ -10,7 +10,7 @@
 		<%end%>
 	<%end%>
  <div class="text-right">
-      <a href="<%=  edit_super_admin_actu_path(@actu.id)%>" class="sc-eerKOB cfnPHQ bold sear">Modifier</a>
-      <a href="<%= super_admin_actu_path(@actu.id)%>" class="btn btn-danger"  data-confirm="Voulez-vous supprimer ce actualités?"> supprimer</a>
+      <a href="<%=  edit_super_admin_actu_path(@actu.id)%>" class="sc-eerKOB cfnPHQ bold sear" >Modifier</a>
+      <a href="<%= super_admin_actu_path(@actu.id)%>" class="btn btn-danger"  data-method="delete" data-confirm="Voulez-vous supprimer ce actualités?"> supprimer</a>
     </div>
 </div>

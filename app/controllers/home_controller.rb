@@ -85,6 +85,9 @@ end
   if params[:fin]
     puts params[:fin]
      if params[:fin] && params[:fin] != ""
+      if params[:fin][0]== "2008" && params[:fin][1] == "2030"
+        
+      else
         if params[:fin]== 1
       redirect_to(root_path)
     
@@ -100,6 +103,7 @@ end
             
           end
          end
+       end
       end 
     end 
   end
