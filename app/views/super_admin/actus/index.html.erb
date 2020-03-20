@@ -1,16 +1,9 @@
 
-
-<div class=" container d-flex flex-wrap sans-head">
-			<% @actus.each do |p|%>
-				<div class="col-sm-6 mb-3">
-					<div class="card">
-						<div class="card-body">
-						<h5 class="card-title"><%= p.title %></h5>
-						</div>
-						<div class="card-body">
-						<h5 > <a href="<%= super_admin_actu_path(p.id)%>"> VOIR</a></h5>		
-						</div>
-					</div>
-				</div>
-			<%end%>
-	</div>
+	<div class="card" style="width: 18rem;">
+				<% @actus.each do |p|%>
+		 	 <div class="card-body">
+			    <h5 class="card-title"><%= p.title %></h5>
+			    <a href="<%= super_admin_actu_path(p.id)%>" class="btn btn-primary">VOIR</a>
+		  </div>
+		  <%end%>
+</div>

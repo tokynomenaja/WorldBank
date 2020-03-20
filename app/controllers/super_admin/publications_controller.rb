@@ -12,10 +12,24 @@ class SuperAdmin::PublicationsController < ApplicationController
 	            render :new
 
 	        end  
+	end
+	def edit
+	   @pub = Publication.find(params[:id]) 	
 	end    
 	def update
+	 @pub = Publication.find(params[:id])
+
+    if @pub.update(title: params[:title], description: params[:description],user_id: current_user.id)
+       redirect_to super_admin_publications_path
+	   end
 		
 	end 
+	def destroy
+	  @pub = Publication.find(params[:id])
+	  @pub.destroy
+	  redirect_to super_admin_publications_path
+		
+	end
 	def index
 		@pubs = Publication.all 
 	end
