@@ -1,3 +1,6 @@
 class Montant < ApplicationRecord
-	has_many :projets
+	belongs_to :projet
+	belongs_to :unite
+	belongs_to :secteur
+
 end

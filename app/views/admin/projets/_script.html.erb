@@ -97,4 +97,66 @@
 	    <%end%>
 	}
 
+
+	function partONG(x){
+		var p1 = document.getElementById('partONG'+x);
+		var d1 = document.getElementById('descpartONG'+x);
+		if(p1.checked == true){
+			d1.type = "text";
+		}else{
+			d1.type = "hidden";
+		}
+	}
+
+	function partASS(x){
+		var p2 = document.getElementById('partASS'+x);
+		var d2 = document.getElementById('descpartASS'+x);
+		if(p2.checked == true){
+			d2.type = "text";
+		}else{
+			d2.type = "hidden";
+		}
+	}
+
+	function partCOM(x){
+		var p3 = document.getElementById('partCOM'+x);
+		var d3 = document.getElementById('descpartCOM'+x);
+		if(p3.checked == true){
+			d3.type = "text";
+		}else{
+			d3.type = "hidden";
+		}
+	}
+
+	function partPRI(x){
+		var p4 = document.getElementById('partPRI'+x);
+		var d4 = document.getElementById('descpartPRI'+x);
+		if(p4.checked == true){
+			d4.type = "text";
+		}else{
+			d4.type = "hidden";
+		}
+	}
+
+
+	function partAUTRE(x){
+		var p5 = document.getElementById('partAUTRE'+x);
+		var d5 = document.getElementById('descpartAUTRE'+x);
+		if(p5.checked == true){
+			d5.type = "text";
+		}else{
+			d5.type = "hidden";
+		}
+	}
+
+
+
+	function paste(x){
+		var limit = document.getElementById('charLimit');
+		if(x.length > 150){
+			window.alert('okkkk');
+			limit.style.background = "red";
+		}
+	}
+
 </script>

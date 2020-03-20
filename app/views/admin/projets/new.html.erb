@@ -22,7 +22,7 @@
 			<div class="mt-2">
 				<div class="card card-body">
 					<textarea name="objectif_generale_du_projet" rows="10" id="comment_body" onkeyup="checkWordLen(this);" required></textarea>
-					<span id="charlimit"><strong class="words-left">200 mots maximum</strong></span>
+					<span id="charlimit"><strong class="words-left">150 mots maximum</strong></span>
 				</div>
 			</div>
 		</div>
@@ -32,7 +32,7 @@
 			</a>
 			<div class="mt-2">
 				<div class="card card-body">
-					<textarea name="aspsp" rows="10" required></textarea>
+					<textarea name="aspsp" rows="10" required id="aspsp"></textarea>
 				</div>
 			</div>
 		</div>
@@ -59,43 +59,43 @@
 			</a>
 				<div class="mt-2">
 				<div class="card card-body">
-					<div class="row" style="text-align: right;" >
+					<div class="row">
 						<% for x in 1..2%>
 							<div class="col-md-6">
+								<input type="checkbox" name="partONG<%= x %>" id="partONG<%= x %>" onclick="partONG(<%= x%>);">
 								<label for="partONG">ONG</label>
-								<input type="checkbox" name="partONG<%= x %>">
-								<input type="text" name="desc_partONG<%= x %>" placeholder="préciser">
+								<input type="hidden" name="desc_partONG<%= x %>" placeholder="A préciser" id="descpartONG<%= x %>">
 							</div>
 						<% end %>
 
 						<% for x in 1..2%>
 							<div class="col-md-6">
-								<label for="partASS">Associations</label>
-								<input type="checkbox" name="partASS<%= x %>">
-								<input type="text" name="desc_partASS<%= x %>" placeholder="préciser">
+								<input type="checkbox" name="partASS<%= x %>" id="partASS<%= x%>" onclick="partASS(<%= x%>);">
+								<label for="partASS">Association</label>
+								<input type="hidden" name="desc_partASS<%= x %>" placeholder="A préciser" id="descpartASS<%= x %>">
 							</div>
 						<% end %>
 
 						<% for x in 1..2%>
 							<div class="col-md-6">
-								<label for="partCOM">Chambres de commerce</label>
-								<input type="checkbox" name="partCOM<%= x %>">
-								<input type="text" name="desc_partCOM<%= x %>" placeholder="préciser">
+								<input type="checkbox" name="partCOM<%= x %>" id="partCOM<%= x%>" onclick="partCOM(<%= x%>);">
+								<label for="partCOM">Chambre de commerce</label>
+								<input type="hidden" name="desc_partCOM<%= x %>" placeholder="A préciser" id="descpartCOM<%= x %>">
 							</div>
 						<% end %>
 
 						<% for x in 1..2%>
 							<div class="col-md-6">
+								<input type="checkbox" name="partPRI<%= x %>" id="partPRI<%= x%>" onclick="partPRI(<%= x%>);">
 								<label for="partPRI">Secteur Privé</label>
-								<input type="checkbox" name="partPRI<%= x %>">
-								<input type="text" name="desc_partPRI<%= x %>" placeholder="préciser">
+								<input type="hidden" name="desc_partPRI<%= x %>" placeholder="A préciser" id="descpartPRI<%= x %>">
 							</div>
 						<% end %>
 						<% for x in 1..2%>
 							<div class="col-md-6">
+								<input type="checkbox" name="partAUTRE<%= x %>" id="partAUTRE<%= x%>" onclick="partAUTRE(<%= x%>);">
 								<input type="text" name="plat_partAUTRE<%= x%>" placeholder="Autres">
-								<input type="checkbox" name="partAUTRE<%= x %>">
-								<input type="text" name="desc_partAUTRE<%= x %>" placeholder="préciser">
+								<input type="hidden" name="desc_partAUTRE<%= x %>" placeholder="A préciser" id="descpartAUTRE<%= x %>">
 							</div>
 						<% end %>
 
@@ -127,14 +127,6 @@
 		<div class="container">
 			<div class="d-flex justify-content-between mb-3">
 				<div class="col-md-4 pl-0">
-					<h6 class="table">Début</h6>
-					<input type="text" id="selectionDebut" placeholder="mm/aaaa" class="form-control" required="true">
-				</div>
-				<div class="col-md-4">
-					<h6 class="table">Fin</h6>
-					<input type="text" name="fin" id="selectionFin" class="form-control" placeholder="mm/aaaa" required="true">
-				</div>
-				<div class="col-md-4 pr-0">
 					<h6 class="table">Montant pour le secteur :</h6>
 					<% Secteur.all.each do |s|%>
 						<div class="form-control pr-0" id="montant<%=s.id%>" style="display: none;">
@@ -142,6 +134,14 @@
 							<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset"%>
 						</div>
 					<%end%>
+				</div>
+				<div class="col-md-4">
+					<h6 class="table">Début</h6>
+					<input type="text" id="selectionDebut" placeholder="mm/aaaa" class="form-control" required="true">
+				</div>
+				<div class="col-md-4 pr-0">			
+					<h6 class="table">Fin</h6>
+					<input type="text" name="fin" id="selectionFin" class="form-control" placeholder="mm/aaaa" required="true">
 				</div>
 			</div>
 		</div>
@@ -178,11 +178,11 @@
 					<div class="row">
 						<%Secteur.all.each do |s|%>
 							<%s.formesecteurs.each do |fs|%>
-							<div class="col-md-4" style="display: none" id="form<%= fs.id%>">
+							<div class="col-md-6" style="display: none" id="form<%= fs.id%>">
 								<%= check_box_tag("forme_ids[]", fs.forme.id,)%>
 								<%= fs.forme.title%>
 							</div>
-							<div class="col-md-4" style="display: block" id="forme<%= fs.id%>">
+							<div class="col-md-6" style="display: block" id="forme<%= fs.id%>">
 								<%= check_box_tag("forme_ids[]", fs.forme.id,)%>
 								<%= fs.forme.title%>
 							</div>
@@ -201,7 +201,7 @@
 					<div class="card card-body">
 						<div class="row">
 							<% Beneficiaire.all.order(:title).each do |c| %>
-								<div class="col-md-4">
+								<div class="col-md-6">
 									<%= check_box_tag("beneficiaire_ids[]",c.id) %>
 									<%= c.title%>
 								</div>
