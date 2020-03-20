@@ -1,0 +1,45 @@
+  <script>
+
+  //FIliere et Forme d'appui par secteur
+  function checkSecteur(x) {
+  <%Formesecteur.all.each do |f|%>
+    var form = document.getElementById('form'+<%= f.id%>);
+    form.style.display = "none";
+
+  <%end%>
+  <% Secteur.all.each do |s| %>
+   if( x == <%= s.id %>){
+      <% s.formesecteurs.each do |fs| %>
+        var checkBox = document.getElementById('s'+x);
+        var forme = document.getElementById('forme'+<%= fs.id %>);
+        if (checkBox.checked == true){
+          forme.style.display = "block";
+        } else {
+           forme.style.display = "none";
+        }
+    <% end %>
+  }
+  <% end %>
+
+
+  <%SecteurFiliere.all.each do |f|%>
+    var form = document.getElementById('fil'+<%= f.id%>);
+    form.style.display = "none";
+
+  <%end%>
+  <% Secteur.all.each do |s| %>
+   if( x == <%= s.id %>){
+      <% s.secteur_filieres.each do |fs| %>
+        var checkBox = document.getElementById('s'+x);
+        var forme = document.getElementById('filiere'+<%= fs.id %>);
+        if (checkBox.checked == true){
+          forme.style.display = "block";
+        } else {
+           forme.style.display = "none";
+        }
+    <% end %>
+  }
+  <% end %>
+
+  }
+</script>

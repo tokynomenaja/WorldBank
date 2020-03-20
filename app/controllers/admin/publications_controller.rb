@@ -4,7 +4,7 @@ class Admin::PublicationsController < ApplicationController
 		@pubs = Publication.where(user_id: current_user.id)
 	end
 	def create
-			@pub = Publication.create!(title: params[:title], user_id: current_user.id)
+			@pub = Publication.create!(title: params[:title], description: params[:description], user_id: current_user.id)
 
 	    	if @pub.save
 	    		@pub.files.attach(params[:files])
@@ -14,5 +14,21 @@ class Admin::PublicationsController < ApplicationController
 
 	        end  
 
+	end
+	def edit
+		@pub = Publication.find(params[:id])
+	end
+	def update
+    @pub = Actu.find(params[:id])
+
+    if @pub.update(title: params[:title], description: params[:description],user_id: current_user.id)
+       redirect_to admin_publications_path
+	   end
+	end
+
+	def destroy
+	  @pub = Publication.find(params[:id])
+	  @pub.destroy
+	  redirect_to admin_publications_path
 	end
 end
