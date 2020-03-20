@@ -1,0 +1,27 @@
+<%= form_tag url_for(action: 'update'),method:'put', class:'form', multipart: true do%>
+
+	<div class="container sans-head">
+			<div class=" row mb-2">
+				<div class="col-6">
+					<div>
+						<label for="nom" class="mr-2 table">Titre </label>
+					</div>
+					<input type="text" name="title" id="nom" placeholder="title" class="form-control" required="true" value="<%=@pub.title%>">
+				</div>
+				<div class="col-6">
+					<div>
+						<label for="nom" class="mr-2 table">Titre </label>
+					</div>
+					<input type="text" name="description" id="nom" placeholder="description" class="form-control" required="true" value="<%=@pub.description%>">
+				</div>
+			</div>
+		</div>
+
+	<div class="container mb-2 mt-4">
+			<span class="mr-2 table">Documents :</span>
+	
+			<p><%= file_field_tag :files, name: "files[]", required: true, multiple: true %></p> <br>
+			<p><input type="submit" name="cree" value="Publier" class="sc-eerKOB cfnPHQ"></p>
+		
+	</div>		
+<%end%>
