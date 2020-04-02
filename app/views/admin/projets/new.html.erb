@@ -3,8 +3,8 @@
       
     </div>
 </header>
-<div class="mt-4 mb-4">
-	<%= form_tag url_for(action: 'create'),method:'post', class:'form', multipart: true do%>
+<%= form_tag url_for(action: 'create'),method:'post', class:'form', multipart: true do%>
+	<div class="mt-4 mb-4">
 		<div class="container">
 			<div class=" row mb-2">
 				<div class="col-6">
@@ -21,7 +21,7 @@
 			</a>
 			<div class="mt-2">
 				<div class="card card-body">
-					<textarea name="objectif_generale_du_projet" rows="10" id="comment_body" onkeyup="checkWordLen(this);" required></textarea>
+					<textarea name="objectif_generale_du_projet" rows="10" id="comment_body" class="form-control p-2" onkeyup="checkWordLen(this);" required></textarea>
 					<span id="charlimit"><strong class="words-left">150 mots maximum</strong></span>
 				</div>
 			</div>
@@ -32,7 +32,7 @@
 			</a>
 			<div class="mt-2">
 				<div class="card card-body">
-					<textarea name="aspsp" rows="10" required id="aspsp"></textarea>
+					<textarea name="aspsp" rows="10" required id="aspsp" class="form-control p-2"></textarea>
 				</div>
 			</div>
 		</div>
@@ -64,37 +64,37 @@
 							<div class="col-md-6">
 								<input type="checkbox" name="partONG<%= x %>" id="partONG<%= x %>" onclick="partONG(<%= x%>);">
 								<label for="partONG">ONG</label>
-								<input type="hidden" name="desc_partONG<%= x %>" placeholder="A préciser" id="descpartONG<%= x %>">
+								<input type="hidden" name="desc_partONG<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control" id="descpartONG<%= x %>">
 							</div>
 						<% end %>
 
 						<% for x in 1..2%>
 							<div class="col-md-6">
 								<input type="checkbox" name="partASS<%= x %>" id="partASS<%= x%>" onclick="partASS(<%= x%>);">
-								<label for="partASS">Association</label>
-								<input type="hidden" name="desc_partASS<%= x %>" placeholder="A préciser" id="descpartASS<%= x %>">
+								<label for="partASS<%= x%>">Association</label>
+								<input type="hidden" name="desc_partASS<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control" id="descpartASS<%= x %>">
 							</div>
 						<% end %>
 
 						<% for x in 1..2%>
 							<div class="col-md-6">
 								<input type="checkbox" name="partCOM<%= x %>" id="partCOM<%= x%>" onclick="partCOM(<%= x%>);">
-								<label for="partCOM">Chambre de commerce</label>
-								<input type="hidden" name="desc_partCOM<%= x %>" placeholder="A préciser" id="descpartCOM<%= x %>">
+								<label for="partCOM<%= x%>">Chambre de commerce</label>
+								<input type="hidden" name="desc_partCOM<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control" id="descpartCOM<%= x %>">
 							</div>
 						<% end %>
 
 						<% for x in 1..2%>
 							<div class="col-md-6">
 								<input type="checkbox" name="partPRI<%= x %>" id="partPRI<%= x%>" onclick="partPRI(<%= x%>);">
-								<label for="partPRI">Secteur Privé</label>
-								<input type="hidden" name="desc_partPRI<%= x %>" placeholder="A préciser" id="descpartPRI<%= x %>">
+								<label for="partPRI<%= x%>">Secteur Privé</label>
+								<input type="hidden" name="desc_partPRI<%= x %>" class="pl-2 pr-2 form-control" placeholder="A préciser" id="descpartPRI<%= x %>">
 							</div>
 						<% end %>
 						<% for x in 1..2%>
-							<div class="col-md-6">
+							<div class="col-md-6 d-flex align-items-center">
 								<input type="checkbox" name="partAUTRE<%= x %>" id="partAUTRE<%= x%>" onclick="partAUTRE(<%= x%>);">
-								<input type="text" name="plat_partAUTRE<%= x%>" placeholder="Autres">
+								<input type="text" name="plat_partAUTRE<%= x%>" placeholder="Autres" class="ml-2 pl-2 pr-2 form-control">
 								<input type="hidden" name="desc_partAUTRE<%= x %>" placeholder="A préciser" id="descpartAUTRE<%= x %>">
 							</div>
 						<% end %>
@@ -214,36 +214,32 @@
 					<div class="collapse" id="atr">
 						<div class="container">
 							<div class="row">
-								
-									<div class="col-md-5" style="text-align: center;">
-										<h6>Ajout d'un nouveau bénéficiaire</h6>
-								    	<input type="text" name="newben" size=15 placeholder="nouveau bénéficiaire" class="form-control" id="inp"><br>	
-								    	<input type="button" class="sc-eerKOB cfnPHQ" value="Ajouter" id="ajout">			
-									</div>
-									
-
-									<div class="col-md-7">
-											<h6 style="text-align: center;">Le nouveau bénéficiaire doit être coché</h6>
-										<% 10.times do |b|%>
-									    	<div id="check<%= b%>" style="display: block;">
-												<p id="p<%= b%>" style="display: none;">
-													<%= check_box_tag("checkben#{b}", :id => "c#{b}") %>
-													<span id="s<%= b%>"></span>	
-													<span id="s1<%= b%>"></span>	
-													<span id="s2<%= b%>"></span>	
-													<span id="s3<%= b%>"></span>	
-													<span id="s4<%= b%>"></span>	
-													<span id="s5<%= b%>"></span>	
-													<span id="s6<%= b%>"></span>	
-													<span id="s7<%= b%>"></span>	
-													<span id="s8<%= b%>"></span>	
-													<span id="s9<%= b%>"></span>	
-													<input type="hidden" name="valben<%= b%>" id="valben<%= b%>">	
-												</p>								
-											</div>
-									    <%end%>
-									</div>
-								
+								<div class="col-md-5" style="text-align: center;">
+									<h6>Ajout d'un nouveau bénéficiaire</h6>
+							    	<input type="text" name="newben" size=15 placeholder="nouveau bénéficiaire" class="form-control" id="inp"><br>	
+							    	<input type="button" class="sc-eerKOB cfnPHQ" value="Ajouter" id="ajout">			
+								</div>
+								<div class="col-md-7">
+										<h6 style="text-align: center;">Le nouveau bénéficiaire doit être coché</h6>
+									<% 10.times do |b|%>
+								    	<div id="check<%= b%>" style="display: block;">
+											<p id="p<%= b%>" style="display: none;">
+												<%= check_box_tag("checkben#{b}", :id => "c#{b}") %>
+												<span id="s<%= b%>"></span>	
+												<span id="s1<%= b%>"></span>	
+												<span id="s2<%= b%>"></span>	
+												<span id="s3<%= b%>"></span>	
+												<span id="s4<%= b%>"></span>	
+												<span id="s5<%= b%>"></span>	
+												<span id="s6<%= b%>"></span>	
+												<span id="s7<%= b%>"></span>	
+												<span id="s8<%= b%>"></span>	
+												<span id="s9<%= b%>"></span>	
+												<input type="hidden" name="valben<%= b%>" id="valben<%= b%>">	
+											</p>								
+										</div>
+								    <%end%>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -262,7 +258,7 @@
 					<div class="row">
 						<% Iga.all.order(:title).each do |c| %>
 							<div class="col-md-12">
-								<%= check_box_tag("iga_ids[]",c.id) %>
+								<%= check_box_tag("iga_ids[]",c.id, false) %>
 								<%= c.title%>
 							</div>
 						<% end %>
@@ -303,7 +299,7 @@
 					<div class="row">
 						<% Zone.all.each do |c| %>
 							<div class="col-md-4">
-								<%= check_box_tag("zone_ids[]",c.id) %>
+								<%= check_box_tag("zone_ids[]", c.id, false, id: :"") %>
 								<%= c.title%>
 							</div>
 						<% end %>
@@ -320,13 +316,13 @@
 		</div>
 		<div class="container mb-2 mt-4">
 			<label for="comment">Commentaire :</label>
-			<textarea name="comment" class="form-control"  rows="5" placeholder="Commentaire qui s'adresse à l'administrateur"></textarea>
+			<textarea name="comment" class="form-control p-2"  rows="5" placeholder="Commentaire qui s'adresse à l'administrateur"></textarea>
 			
 		</div>
 		<div class="container mt-4">
 			<%= submit_tag :Enregistrer, :name => "creer", :value => "Enregistrer", :class => "btn btn-secondary", :onclick => "validCheck()"%>
 			<%= submit_tag :Publier, :name => "creer", :value => "Publier", :class => "sc-eerKOB cfnPHQ", :onclick => "validCheck()"%>
 		</div>
-	<% end %>
-</div>
+	</div>
+<% end %>
 <%= render partial: "/admin/projets/script.html.erb"%>

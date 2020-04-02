@@ -34,38 +34,50 @@
 		</table>
 	<% end %>
 </div>
-<div class="container">
-	<h4>Listes de demandes en attente de validation</h4>
+
+
+<div class="container text-c">
 	<%if @users_en_attente.count == 0%>
 		<div class="text-center text-muted mt-4 mb-4">
 			Aucun pour le moment
 		</div>
 	<% else %>
-	<table class="table table-bordered table-dark">
-		<thead>
-		<tr>
-			<th scope="col">Id</th>
-			<th scope="col">Email</th> 
-			<th scope="col">Valider en tant que</th>
-			<th scope="col">Valider en tant que</th>
-			<th scope="col">Action </th>
-		</tr>
-		</thead>
-		<tbody>
-			<% @users_en_attente.each do |u|%>
-		<tr>
-			<th scope="row"><%=u.id%></th>
-			<td><%=u.email%></td>
-			<%= form_for u, url: super_admin_user_path(u.id), method: :put do |f| %>
-				<td><%= f.submit 'Bailleur', name: 'valider', value: 'Bailleur'%></td>
-				<td><%= f.submit 'Consultant', name: 'valider', value: 'Consultant'%></td>			
-			<%end%>
-			<td><a href="/super_admin/users/<%=u.id%>" class="btn btn-warning">Voir</a></td>
-		</tr>
-			<%end%>
-		</tbody>
-	</table>
-<%end%>
+		<div class="d-flex justify-content-center align-items-center table-dark">
+			<div class="col-1 text-center same">
+				id
+			</div>
+			<div class="col-4 text-center same">
+				email
+			</div>
+			<div class="col-4 text-center same">
+				<div class="w-100 d-flex justify-content-around h-100 align-items-center"> 
+					Valider en tant que
+				</div>
+			</div>
+			<div class="col-3 text-center same">
+				Action
+			</div>
+		</div>
+		<% @users_en_attente.each do |u|%>
+			<div class="d-flex justify-content-center align-items-center table-dark">
+				<div class="col-1 text-center same">
+					<%=u.id%>
+				</div>
+				<div class="col-4 text-center same">
+					<%=u.email%>
+				</div>
+				<div class="col-4 text-center same">
+					<div class="w-100 d-flex justify-content-around h-100 align-items-center"> 
+						<%= form_for u, url: super_admin_user_path(u.id), method: :put do |f| %>
+							<%= f.submit 'Bailleur', name: 'valider', value: 'Bailleur', class: 'btn btn-success'%>
+							<%= f.submit 'Consultant', name: 'valider', value: 'Consultant', class: 'btn btn-success'%>
+						<%end%>
+					</div>
+				</div>
+				<div class="col-3 text-center same">
+					<a href="/super_admin/users/<%=u.id%>" class="btn btn-warning">Voir</a>
+				</div>
+			</div>
+		<%end%>
+	<% end %>
 </div>
-
-

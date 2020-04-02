@@ -16,8 +16,25 @@ require("jquery")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+function Refresh() {
+	alert("alefa")
+    //vérification du cookie
+    if(document.cookie == ""){ // s'il n'existe pas on le créé 
+        var date = new Date();
+        date.setTime(date.getTime()+(30*1000));
+        var expires = "; expires="+date.toGMTString();
+ 
+        document.cookie = "rafraichir=non;"+expires+"; path=/"; //http://stackoverflow.com/questions/7879810/make-a-cookie-expire-in-30-seconds
+        setTimeout(function(){ location.reload(true); }, 3000); //https://developer.mozilla.org/fr/docs/Web/API/WindowTimers/setTimeout + https://developer.mozilla.org/en-US/docs/Web/API/Location/reload on actualise la page
+    }
+         
+}
+
+
 $(document).on('turbolinks:load', function() {
-$("#ptf-listener").click(function(e){
+
+
+	$("#ptf-listener").click(function(e){
 		$("#ptf-check").toggleClass("toggleclass")
 
 		$("#scontent").addClass("toggleclass")
