@@ -148,6 +148,13 @@ class Admin::ProjetsController < ApplicationController
       @fils << fp.filiere
     end
 
+
+    @formprojets = Formeprojet.where(projet_id: @projet.id)
+    @forms = []
+    @formprojets.each do |fop|
+      @forms << fop.forme
+    end
+
     @beneficiaireprojets = Benefprojet.where(projet_id: @projet.id)
     @bens = []
     @beneficiaireprojets.each do |bp|
@@ -200,7 +207,7 @@ class Admin::ProjetsController < ApplicationController
 
      @projet.formeprojets.destroy_all
     params[:forme_ids].each do |forme_id|
-        Formeprojet.create(projet_id: @projet.id, filiere_id: forme_id.to_i)
+        Formeprojet.create(projet_id: @projet.id, forme_id: forme_id.to_i)
     end
 
 
