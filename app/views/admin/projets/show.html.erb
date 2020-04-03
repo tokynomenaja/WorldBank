@@ -172,7 +172,7 @@
                 <p><%=p.pem.title%></p>
             <%end%>
 
-          <%if @projet.siteweb%>
+          <%if @projet.siteweb == " "%>
             <p class="mb-3"><span class="attr">Site web : </span>
                 <span class="word">
                   <a href="https://<%= @projet.siteweb.remove('https://')%>"><%= @projet.siteweb%></a>

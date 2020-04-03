@@ -96,9 +96,20 @@
               <% end %>
           </div>
           
-          <p><span class="attr">Partenaire d'implémentation : </span>
-          <p class="mb-3"><%= @projet.partenaire_d_implementaton %></p>
-          </p>
+           <% if  @projet.partenaireprojets.count == 1%>
+              <p><span class="attr">Partenaire d'implémentation : </span></p>
+          <%else%>
+              <p><span class="attr">Partenaires d'implémentations : </span></p>
+          <%end%>
+          <div class="mb-3">
+              <%@projet.partenaireprojets .each do|pap|%>
+                <% if pap == @projet.partenaireprojets.last%>
+                  <span><%=pap.partenaire.plateforme %></span>
+                <%else%>
+                  <span><%=pap.partenaire.plateforme %>, </span>
+                <% end %>
+              <% end %>
+          </div>
 
 
           <% if  @projet.benefprojets.count == 1%>
@@ -130,7 +141,7 @@
                 <p> <%=p.pem.title%></p>
             <%end%></p>
 
-          <%if @projet.siteweb%>
+          <%if @projet.siteweb == " "%>
             <p class="mb-3"><span class="attr">Site web : </span>
                 <span class="word">
                   <a href="https://<%= @projet.siteweb.remove('https://')%>"><%= @projet.siteweb%></a>

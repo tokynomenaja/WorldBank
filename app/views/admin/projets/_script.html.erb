@@ -60,6 +60,8 @@
 	        m.classList.add('d-flex');
 	    }
 
+	    //secteur par filiere
+
 		<%SecteurFiliere.all.each do |sf|%>
 			var sf = document.getElementById('fl'+<%= sf.id%>);
 			sf.style.display = "none";
@@ -69,8 +71,10 @@
 	        if(x == <%= s.id%>){
 	            <%s.secteur_filieres.each do |sf|%>
 	                var f = document.getElementById('fil'+<%= sf.id%>);
+	                var idfil = document.getElementById('idfil'+<%= sf.id%>);
 	                if(f.style.display == "block"){
 	                    f.style.display = "none";
+	                    idfil.checked = false;
 	                }else{
 	                    f.style.display = "block";
 	                }
@@ -78,6 +82,7 @@
 	        }
 	    <%end%>
 
+//Forme d'appui par secteur
 	    <%Formesecteur.all.each do |fs|%>
 			var fs = document.getElementById('forme'+<%= fs.id%>);
 			fs.style.display = "none";
@@ -87,8 +92,10 @@
 	        if(x == <%= s.id%>){
 	            <%s.formesecteurs.each do |fs|%>
 	                var fs = document.getElementById('form'+<%= fs.id%>);
+	                var idform = document.getElementById('idform'+<%= fs.id%>);
 	                if(fs.style.display == "block"){
 	                    fs.style.display = "none";
+	                    idform.checked = false;
 	                }else{
 	                    fs.style.display = "block";
 	                }

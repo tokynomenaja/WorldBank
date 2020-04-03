@@ -171,7 +171,10 @@ class Admin::ProjetsController < ApplicationController
   def update
     @projet = Projet.find(params[:id])
     if @projet.update(nom_du_projet: params[:nom_du_projet], 
-     debut_du_projet: params[:debut_du_projet], objectif_generale_du_projet: params[:objectif_generale_du_projet],aspsp: params[:aspsp],partenaire_d_implementaton: params[:partenaire_d_implementaton],fin: params[:fin], appui_id: params[:appui], ptf_id: params[:ptf], 
+     debut_du_projet: params[:debut_du_projet].to_date,
+      objectif_generale_du_projet: params[:objectif_generale_du_projet],
+     aspsp: params[:aspsp],fin: params[:fin].to_date, 
+     appui_id: params[:appui], ptf_id: params[:ptf], 
      bailleur_id: current_user.id)
 
     if params[:modifier] == 'Publier' || params[:modifier] == 'Re-publier'
@@ -191,11 +194,15 @@ class Admin::ProjetsController < ApplicationController
 
 
     @projet.filiereprojets.destroy_all
-    for x in 0..Filiere.all.count-1
-      if params[:"filiere_#{x}"]
-        Filiereprojet.create(projet_id: @projet.id, filiere_id: params[:"filiere_#{x}"])
-      end
+    params[:filiere_ids].each do |filiere_id|
+        Filiereprojet.create(projet_id: @projet.id, filiere_id: filiere_id.to_i)
     end
+
+     @projet.formeprojets.destroy_all
+    params[:forme_ids].each do |forme_id|
+        Formeprojet.create(projet_id: @projet.id, filiere_id: forme_id.to_i)
+    end
+
 
 
     @projet.benefprojets.destroy_all

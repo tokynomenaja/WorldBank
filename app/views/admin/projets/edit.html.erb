@@ -131,19 +131,6 @@
 
 						<%end%>
 			<div>
-			<script type="text/javascript">
-				function check(x){
-					var m = document.getElementById('montant'+x);
-					if(m.style.display == "block"){
-						m.style.display = "none";
-						m.classList.remove('d-flex');
-					}else{
-						m.style.display = "block";
-						m.classList.add('d-flex');
-					}
-				}
-
-			</script>
 
 			<div class="container mb-2 MT-2">
 				<a class="table">
@@ -152,22 +139,117 @@
 				<div class="mt-2">
 					<div class="card card-body">
 						<div class="row">
-							<% Filiere.all.order(:title).each_with_index do |c,x| %>
-								<div class="col-md-4">
-									<% if @fils%>
-								 		<% if @fils.include? c %>
-											<%= check_box_tag("filiere_#{x}",c.id, checked: true) %>
-										<%else%>
-											<%= check_box_tag("filiere_#{x}",c.id) %>
-										<%end%>
+							<%Secteur.all.each do |s|%>
+							<%@fil_ex = false%>
+							<%s.secteur_filieres.each do |sf|%>
+
+								<% if @fils%>
+									<% if @fils.include? sf.filiere%>
+										<%@fil_ex = true%>
 									<%end%>
-									<%= c.title%>
+								<%end%>
+							<%end%>
+							<%s.secteur_filieres.each do |sf|%>
+							<%if @fil_ex == true%>
+								<% if @fils%>
+								<% if @fils.include? sf.filiere%>
+									<div class="col-md-4" style="display: block" id="fil<%= sf.id%>">
+										<%= check_box_tag("filiere_ids[]", sf.filiere.id,true, id: :"idfil#{sf.id}")%>
+										<%= sf.filiere.title%>
+									</div>
+								<%else%>
+									<div class="col-md-4" style="display: block" id="fil<%= sf.id%>">
+										<%= check_box_tag("filiere_ids[]", sf.filiere.id,false,id: :"idfil#{sf.id}")%>
+										<%= sf.filiere.title%>
+									</div>
+								<% end %>
+								<% end %>
+							<%else%>
+								<% if @fils%>
+								<% if @fils.include? sf.filiere%>
+									<div class="col-md-4" style="display: block" id="fil<%= sf.id%>">
+										<%= check_box_tag("filiere_ids[]", sf.filiere.id,true, id: :"idfil#{sf.id}")%>
+										<%= sf.filiere.title%>
+									</div>
+								<%else%>
+									<div class="col-md-4" style="display: none" id="fil<%= sf.id%>">
+										<%= check_box_tag("filiere_ids[]", sf.filiere.id,false,id: :"idfil#{sf.id}")%>
+										<%= sf.filiere.title%>
+									</div>
+								<% end %>
+								<% end %>
+							<%end%>
+							
+								<div class="col-md-4" style="display: none" id="fl<%= sf.id%>">
+									<%= check_box_tag("filiere_ids[]", sf.filiere.id,false,id: :"idfil#{sf.id}")%>
+									<%= sf.filiere.title%>
 								</div>
+							<% end %>
 							<% end %>
 						</div>
 					</div>
 				</div>
 			</div>
+
+			<div class="container mb-2 MT-2">
+				<a class="table">
+					Formes d'appui
+				</a>
+				<div class="mt-2">
+					<div class="card card-body">
+						<div class="row">
+							<%Secteur.all.each do |s|%>
+							<%@form_ex = false%>
+							<%s.formesecteurs.each do |fs|%>
+
+								<% if @forms%>
+									<% if @forms.include? fs.forme%>
+										<%@form_ex = true%>
+									<%end%>
+								<%end%>
+							<%end%>
+							<%s.formesecteurs.each do |fs|%>
+							<%if @form_ex == true%>
+								<% if @forms%>
+								<% if @forms.include? fs.forme%>
+									<div class="col-md-4" style="display: block" id="form<%= fs.id%>">
+										<%= check_box_tag("forme_ids[]", fs.forme.id,true, id: :"idform#{fs.id}")%>
+										<%= fs.forme.title%>
+									</div>
+								<%else%>
+									<div class="col-md-4" style="display: block" id="form<%= fs.id%>">
+										<%= check_box_tag("forme_ids[]", fs.forme.id,false,id: :"idform#{fs.id}")%>
+										<%= fs.form.title%>
+									</div>
+								<% end %>
+								<% end %>
+							<%else%>
+								<% if @forms%>
+								<% if @forms.include? fs.forme%>
+									<div class="col-md-4" style="display: block" id="form<%= fs.id%>">
+										<%= check_box_tag("forme_ids[]", fs.forme.id,true, id: :"idform#{fs.id}")%>
+										<%= fs.forme.title%>
+									</div>
+								<%else%>
+									<div class="col-md-4" style="display: block" id="form<%= fs.id%>">
+										<%= check_box_tag("forme_ids[]", fs.forme.id,false,id: :"idform#{fs.id}")%>
+										<%= fs.forme.title%>
+									</div>
+								<% end %>
+								<% end %>
+							<%end%>
+							
+								<div class="col-md-4" style="display: none" id="form<%= fs.id%>">
+										<%= check_box_tag("forme_ids[]", fs.forme.id,false,id: :"idform#{fs.id}")%>
+										<%= fs.forme.title%>
+									</div>
+							<% end %>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+
 
 			<div class="container mb-2">
 				<a class="table">
@@ -177,7 +259,7 @@
 					<div class="card card-body">
 						<div class="row">
 							<% Beneficiaire.all.order(:title).each_with_index do |c,x| %>
-								<div class="col-md-4">
+								<div class="col-md-6">
 									<% if @bens%>
 							 			<% if @bens.include? c %>
 
@@ -254,3 +336,4 @@
 			</div>		
 	<% end %>
 </div>
+<%= render partial: "/admin/projets/script.html.erb"%>

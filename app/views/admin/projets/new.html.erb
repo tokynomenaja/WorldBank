@@ -138,10 +138,12 @@
 				<div class="col-md-4">
 					<h6 class="table">Début</h6>
 					<input type="text" id="selectionDebut" placeholder="mm/aaaa" class="form-control" required="true">
+					<input type="hidden" id="selectionDebutValue" placeholder="mm/aaaa" class="form-control" required="true" name="debut_du_projet">
 				</div>
 				<div class="col-md-4 pr-0">			
 					<h6 class="table">Fin</h6>
-					<input type="text" name="fin" id="selectionFin" class="form-control" placeholder="mm/aaaa" required="true">
+					<input type="text" class="form-control" placeholder="mm/aaaa" required="true" id="selectionFin">
+					<input type="hidden" name="fin" id="selectionFinValue" class="form-control" placeholder="mm/aaaa" required="true" name="fin">
 				</div>
 			</div>
 		</div>
@@ -155,11 +157,11 @@
 						<%Secteur.all.each do |s|%>
 							<%s.secteur_filieres.each do |sf|%>
 							<div class="col-md-4" style="display: none" id="fil<%= sf.id%>">
-								<%= check_box_tag("filiere_ids[]", sf.filiere.id,)%>
+								<%= check_box_tag("filiere_ids[]", sf.filiere.id)%>
 								<%= sf.filiere.title%>
 							</div>
 							<div class="col-md-4" style="display: block" id="fl<%= sf.id%>">
-								<%= check_box_tag("filiere_ids[]", sf.filiere.id,)%>
+								<%= check_box_tag("filiere_ids[]", sf.filiere.id)%>
 								<%= sf.filiere.title%>
 							</div>
 						<% end %>
@@ -316,7 +318,7 @@
 			
 		</div>
 		<div class="container mb-2 mt-4">
-			<p><span>Site web :</span><input type="text" name="site" class="form-control"></p>
+			<p><span>Site web :</span><input type="text" name="site" class="form- control"></p>
 		</div>
 		<div class="container mb-2 mt-4">
 			<label for="comment">Commentaire :</label>
