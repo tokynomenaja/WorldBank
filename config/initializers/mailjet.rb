@@ -4,4 +4,5 @@ Mailjet.configure do |config|
   config.secret_key = ENV['mailjet_secret_key']
   config.default_from = 'tsirinirina21@gmail.com'
   config.api_version = "v3.1"
+
 end
