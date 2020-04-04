@@ -25,6 +25,9 @@ class Admin::PublicationsController < ApplicationController
        redirect_to admin_publications_path
 	   end
 	end
+	def show
+		@pub = Publication.find(params[:id])
+	end
 
 	def destroy
 	  @pub = Publication.find(params[:id])

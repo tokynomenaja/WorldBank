@@ -1,18 +1,18 @@
 
 
-<div class=" container d-flex flex-wrap sans-head">
-		<%if @actu%>
-		<% @actu.each do |p|%>
-				<div class="col-sm-6 mb-3 ">
-					<div class="card">
-						<div>
-						 <p class="attr"><%= p.title %></p>
-						</div>
-					</div>
+<div class="container sans-head ">
+	<div class="row ">
+		<% @actu.each do |a|%>
+			<div class="col-md-4 card" style="margin: 2%;">
+				
+				<div class="card-body">
+			 	 	<div class="card-title">
+				    <h5 ><%= a.title %></h5>
+				    </div>
+				    <a href="<%= actu_path(a.id)%>" class="btn btn-primary">VOIR</a>
+
 				</div>
-			<%end%>
-		
-		<%else%>
-			<span>Pas d'actulités en ceux moment</span>
-		<%end%>
+			</div>
+		<%end%>	
 	</div>
+</div>

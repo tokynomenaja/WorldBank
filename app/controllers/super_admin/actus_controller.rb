@@ -12,8 +12,12 @@ class SuperAdmin::ActusController < ApplicationController
      else
        render :new
 
-     end  
+     end 
 
+
+ end
+ def new
+  @actus = Actu.all
  end
 
 def index

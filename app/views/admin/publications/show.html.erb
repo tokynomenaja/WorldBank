@@ -1,11 +1,12 @@
 
-<div class="container sans-head card">
-	<h3>Liste des documents associés :</h3>
+<div class="container sans-head ">
+	   <h3 style="text-align: center;">Liste des documents associés :</h3>
+	<h5><%=@pub.title%></h5>
+
 	<%if @pub.files.attached?%>
 		<%@pub.files.all.each do|file|%> 
 			<p><%= link_to file.filename, rails_blob_path(file, disposition: "attachement"), class: "attr" %></p>
 		<%end%>
-	
 	<%end%>
 	 <div class="text-right">
       <a href="<%=  edit_admin_publication_path(@pub.id)%>" class="sc-eerKOB cfnPHQ bold sear" >Modifier</a>
