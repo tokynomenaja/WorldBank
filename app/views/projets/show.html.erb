@@ -172,7 +172,7 @@
                 <p> <%=p.pem.title%></p>
             <%end%></p>
 
-          <%if @projet.siteweb%>
+          <%if @projet.siteweb == " "%>
             <p class="mb-3"><span class="attr">Site web : </span>
                 <span class="word">
                   <a href="https://<%= @projet.siteweb.remove('https://')%>"><%= @projet.siteweb%></a>
@@ -189,5 +189,5 @@
         </div>
     </div>
     <div class="text-right">
-      <%= link_to "Télécharger", projet_path(format: :pdf), :class => "sc-eerKOB cfnPHQ bold sear"%>
+      <%= link_to "Télécharger", projet_path(format: :pdf), :class => "sc-eerKOB cfnPHQ bold sear",  target: 'blank'%>
     </div>

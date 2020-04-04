@@ -8,8 +8,12 @@ class User < ApplicationRecord
    has_many :publications, foreign_key: 'bailleur_id'
    has_many :publications, foreign_key: 'user_id'
 
-   after_create :update_admin
+   after_create :update_admin, :welcome_send
 
+    def welcome_send
+      UserMailer.welcome_email(self).deliver_now
+    end
+    
 	  def update_admin
 	  	@user = User.last
 	    if @user.is_admin == true

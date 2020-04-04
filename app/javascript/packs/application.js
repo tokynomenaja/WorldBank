@@ -328,7 +328,10 @@ $(document).on('turbolinks:load', function() {
 	    topOffset: 28,
 	    onMonthSelect: function(mi, m, y) {
 	      mi = padToTwo(mi);
+	      var debut = parseInt(mi) + 1;
 	      $("#selectionDebut").val(m + " " + y);
+	      $("#selectionDebutValue").val(debut + "/" + y);
+
 	    }
 	  });
 	});
@@ -338,7 +341,9 @@ $(document).on('turbolinks:load', function() {
 	    topOffset: 28,
 	    onMonthSelect: function(mi, m, y) {
 	      mi = padToTwo(mi);
+	      var fin = parseInt(mi) + 1;
 	      $("#selectionFin").val(m + " " + y);
+	      $("#selectionFinValue").val(fin + "/" + y);
 	    }
 	  });
 	});

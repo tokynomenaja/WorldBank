@@ -40,6 +40,7 @@
           <%@organism << i%>
 
         <%end%>
+
         <select class="form-control" name="organisme">
           <% @organism.each do |o|%>
             <option value="<%= o.title%>"><%= o.title%></option>

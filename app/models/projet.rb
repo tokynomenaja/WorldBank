@@ -43,5 +43,11 @@ class Projet < ApplicationRecord
         has_one_attached :picture
        
 
+        after_create :create_project_send
+
+        # This method calls the order_email method from user_mailer, passing the order as an argument
+        def create_project_send
+            UserMailer.create_project_email(self).deliver_now
+        end
 
 end
