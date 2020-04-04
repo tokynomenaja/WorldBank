@@ -21,11 +21,15 @@
 		    	<%=@user.last_name%></p>
 		    <p><span>Email :</span>
 		    	<%=@user.email%></p>
+		    <%if @user.organisme%>
 		    	<%if @user.organisme.ptf%>
 		    		PTF : <%=@user.organisme.ptf.title%></p>
 		    	<%else%>
 		    		IGA : <%=@user.organisme.iga.title%></p>
 		    	<%end%>
+		    <%else%>
+		    	<p>Autres</p>
+		    <%end%>
 		    <%if @user.is_admin == true%>
 		    	<p><span class="btn btn-success">Bailleur</span></p>
 		    <% elsif  @user.is_consultant == true%>

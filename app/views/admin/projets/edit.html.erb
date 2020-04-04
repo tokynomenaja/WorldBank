@@ -212,12 +212,12 @@
 							<%if @form_ex == true%>
 								<% if @forms%>
 								<% if @forms.include? fs.forme%>
-									<div class="col-md-4" style="display: block" id="form<%= fs.id%>">
+									<div class="col-md-6" style="display: block" id="form<%= fs.id%>">
 										<%= check_box_tag("forme_ids[]", fs.forme.id,true, id: :"idform#{fs.id}")%>
 										<%= fs.forme.title%>
 									</div>
 								<%else%>
-									<div class="col-md-4" style="display: block" id="form<%= fs.id%>">
+									<div class="col-md-6" style="display: block" id="form<%= fs.id%>">
 										<%= check_box_tag("forme_ids[]", fs.forme.id,false,id: :"idform#{fs.id}")%>
 										<%= fs.forme.title%>
 									</div>
@@ -226,12 +226,12 @@
 							<%else%>
 								<% if @forms%>
 								<% if @forms.include? fs.forme%>
-									<div class="col-md-4" style="display: block" id="form<%= fs.id%>">
+									<div class="col-md-6" style="display: block" id="form<%= fs.id%>">
 										<%= check_box_tag("forme_ids[]", fs.forme.id,true, id: :"idform#{fs.id}")%>
 										<%= fs.forme.title%>
 									</div>
 								<%else%>
-									<div class="col-md-4" style="display: block" id="form<%= fs.id%>">
+									<div class="col-md-6" style="display: none" id="form<%= fs.id%>">
 										<%= check_box_tag("forme_ids[]", fs.forme.id,false,id: :"idform#{fs.id}")%>
 										<%= fs.forme.title%>
 									</div>
@@ -239,7 +239,7 @@
 								<% end %>
 							<%end%>
 							
-								<div class="col-md-4" style="display: none" id="form<%= fs.id%>">
+								<div class="col-md-6" style="display: none" id="forme<%= fs.id%>">
 										<%= check_box_tag("forme_ids[]", fs.forme.id,false,id: :"idform#{fs.id}")%>
 										<%= fs.forme.title%>
 									</div>
