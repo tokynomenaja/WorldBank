@@ -1,26 +1,92 @@
 
+<div class="row sans-head">
+  <div class="column1 ">
+  	<h3 class="mb-2">Toutes les actualités</h3>
+    <% @actus.each do |a|%>
+			<div class="col-  " style="margin: 10px; border-style: none;">
+				<div class="card-body">
+			 	 	<div class="card-title">
+				    <span><%= a.title %></span>
+				    </div>
+				    <a href="<%= super_admin_actu_path(a.id)%>" class="sc-eerKOB cfnPHQ">VOIR</a>
 
-<%= form_tag url_for(action: 'create'),method:'post', class:'form', multipart: true do%>
-<div style="margin-left: 35%;">
-
-	<div class="container sans-head">
-			<h3>Creer un nouveau actualité</h3><br>
-			<div class=" row mb-2">
-				<div class="col-6">
-					<div>
-						<label for="nom" class="mr-2 table">Titre </label>
-					</div>
-					<input type="text" name="title" id="nom" placeholder="title" class="form-control" required="true">
 				</div>
 			</div>
-		</div>
+		<%end%>	
+  </div>
+  <div class="line"></div>
+  <div class="column" style="" >
+   <%= form_tag url_for(action: 'create'),method:'post', class:'form', multipart: true do%>
+	<div  class="sans-head vatany" >
+		<h3>Creer une actualité</h3><br>
+		<div class="" style="margin-top: -2%;">
+				<div class=" row mb-2 text-left">
+					<div class="col- ">
+						<div>
+							<label for="nom" class="mr-2 table">Titre </label>
+						</div>
+						<input type="text" name="title" id="nom" placeholder="title" class="form-control" required="true">
+					</div>
+				</div>
+			</div>
 
-	<div class="container mb-2 mt-4">
-			<span class="mr-2 table">Documents :</span>
-	
-			<p><%= file_field_tag :files, name: "files[]", required: true, multiple: true %></p> <br>
-			<p><input type="submit" name="cree" value="Publier" class="sc-eerKOB cfnPHQ"></p>
+		<div class="cont mb-2 mt-4 text-left " >
+				<span class="mr-2 table">Documents :</span>
 		
-	</div>	
+				<p><%= file_field_tag :files, name: "files[]", required: true, multiple: true %></p> <br>
+				<p><input type="submit" name="cree" value="Publier" class="sc-eerKOB cfnPHQ"></p>
+		</div>	
 	</div>	
 <%end%>
+  </div>
+</div>
+<style type="text/css">
+	
+/* Create two equal columns that floats next to each other */
+.column {
+
+  float: left;
+  margin-top: -5.5%;
+  width: 50%;
+  padding: 4%;
+  justify-content: center;
+  height: 100%; /* Should be removed. Only for demonstration */
+  
+}
+.column1 {
+
+  margin: 2%;
+  float: left;
+  width: 40%;
+  padding: 4%;
+  justify-content: center;
+  height: 100%; /* Should be removed. Only for demonstration */
+}
+
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.row{
+	margin-left: 10%;
+	margin-top: 20px;
+}
+.line{
+ border-left: 1px solid black;	
+ margin-top: 5%;
+ margin-right: 3%;
+}
+.cont{
+width: 100%;
+padding-right: 15px;
+margin-right: auto;
+margin-left: 10%;
+
+}
+.vatany{
+	margin-right: 8%;
+}
+</style>

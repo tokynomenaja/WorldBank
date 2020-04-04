@@ -1,17 +1,20 @@
 
-
-
-<div class=" container d-flex flex-wrap sans-head">
-	
-			<% @pubs.each do |p|%>
-				<div class="col-sm-6 mb-3">
-					<div class="card">
-						<div class="card-body">
-						<h5 class="card-title"><%= p.title %></h5>
-						<p class="card-text"><%= p.description %></p>
-						<p><a href="<%=publication_path(p.id)%>"> Voir </a></p>
+<div class="container sans-head">
+	<div class="row">
+		<% @pubs.each do |p|%>
+			<div class="col-md-4 card" style="margin: 2%;">
+				
+				<div class="card-body">
+					 	 	<div class="card-title">
+						    <h5 ><%= p.title %></h5>
+						    </div>
+						<div class="card-text">
+							<p class="card-text"><%= p.description %></p>
 						</div>
-					</div>
+						    <a href="<%= publication_path(p.id)%>" class="btn btn-primary">VOIR</a>
 				</div>
-			<%end%>
+			</div>
+      <%end%>
 	</div>
+</div>
+

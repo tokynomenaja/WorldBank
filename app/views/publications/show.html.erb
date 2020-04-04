@@ -5,13 +5,15 @@
 	<div class="titre" style="text-align: center;">
 	<h3>Liste des documents associés :</h3>
    </div><br>
-	<div class="col-sm-6 mb-3">
-	<h5><%=@pub.title%></h5>
-	<%if @pub.files.attached?%>
-		<%@pub.files.all.each do|file|%> 
-			<p><%= link_to file.filename, rails_blob_path(file, disposition: "attachement"), class: "attr" %></p>
+   <div class="row mb-4">
+		<div class="col-sm-6 mb-3" style="margin: 2%;">
+			<h5><%=@pub.title%></h5>
+			<p><%=@pub.description%></p>
+			<%if @pub.files.attached?%>
+				<%@pub.files.all.each do|file|%> 
+					<p><%= link_to file.filename, rails_blob_path(file, disposition: "attachement"), class: "attr" %></p>
+			<%end%>
 		<%end%>
-	
-	<%end%>
+		</div>
 	  </div>
 	</div>

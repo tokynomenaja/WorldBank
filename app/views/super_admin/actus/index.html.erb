@@ -1,9 +1,17 @@
 
-	<div class="card" style="width: 18rem;">
-				<% @actus.each do |p|%>
-		 	 <div class="card-body">
-			    <h5 class="card-title"><%= p.title %></h5>
-			    <a href="<%= super_admin_actu_path(p.id)%>" class="btn btn-primary">VOIR</a>
-		  </div>
-		  <%end%>
+<div class="container sans-head">
+	<div class="row">
+		<% @actus.each do |a|%>
+			<div class="col-md-4 card " style="margin: 2%;">
+				
+				<div class="card-body">
+			 	 	<div class="card-title">
+				    <h5 ><%= a.title %></h5>
+				    </div>
+				    <a href="<%= super_admin_actu_path(a.id)%>" class="btn btn-primary">VOIR</a>
+
+				</div>
+			</div>
+		<%end%>	
+	</div>
 </div>
