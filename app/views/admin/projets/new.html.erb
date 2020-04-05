@@ -154,7 +154,7 @@
 				<div class="mt-2">
 				<div class="card card-body">
 					<div class="row">
-						<%Secteur.all.each do |s|%>
+						<%Secteur.order(:title).all.each do |s|%>
 							<%s.secteur_filieres.each do |sf|%>
 							<div class="col-md-4" style="display: none" id="fil<%= sf.id%>">
 								<%= check_box_tag("filiere_ids[]", sf.filiere.id)%>

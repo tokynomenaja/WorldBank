@@ -50,7 +50,18 @@
 
 	
 //Montant par secteur et Filiere par secteur
+
+	var filieres = []
 	function check(x){
+
+		 var checkSecteur = document.getElementById('s'+x)
+		 if(checkSecteur.checked == true){
+		 	filieres.remove(x);
+		 }
+		 else{
+		 	filieres.push(x);
+		 }
+		 
 	    var m = document.getElementById('montant'+x);
 	    if(m.style.display == "block"){
 	        m.style.display = "none";

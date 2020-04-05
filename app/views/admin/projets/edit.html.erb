@@ -37,20 +37,6 @@
 				</div>
 			</div>
 
-
-			<div class="container">
-				<div class="d-flex justify-content-between mb-3">
-					<div>
-						<h6 class="table">Début</h6>
-						<input type="date" name="debut_du_projet" class="form-control" value="<%= @projet.debut_du_projet%>">
-					</div>
-					<div>
-						<h6 class="table">Fin</h6>
-						<input type="date" name="fin" class="form-control" value="<%= @projet.fin%>">
-					</div>
-				</div>
-			</div>
-
 			<div class="container">
 				<div class=" row mb-2">
 					<div class="col-6">
@@ -82,36 +68,40 @@
 				</div>
 			</div>
 
-			<div class="container mb-2">
-				<a class="table">
-					Secteurs
-				</a>
+		<div class="container mb-2">
+			<a class="table">
+				Secteurs
+			</a>
 				<div class="mt-2">
-					<div class="card card-body">
-						<div class="row">
-							<% Secteur.all.order(:title).each_with_index do |c,x| %>
+				<div class="card card-body">
+					<div class="row">
+						<% Secteur.all.order(:title).each_with_index do |c,x| %>
 								<div class="col-md-4">
-
 									<% if @sects %> 
 							 			<% if @sects.include? c %>
+
 											<%= check_box_tag("secteur_#{x}", c.id,true, id: :"s#{c.id}",:onclick => "check(#{c.id})") %>
 										<%else%>
 											<%= check_box_tag("secteur_#{x}", c.id,false, id: :"s#{c.id}",:onclick => "check(#{c.id})") %>
 										<%end%>
-									<%end%>
 									<%= c.title%>
+									<%end%>
 								</div> 
 							<% end %>
-						</div>
 					</div>
 				</div>
+				</div>
+		</div>
+		<div class="container">
+			<div class="d-flex justify-content-between mb-3">
+				<div class="col-md-4 pl-0">
 					<h6 class="table">Montant pour le secteur :</h6>
-						<% Secteur.all.each do |s|%>
+					<% Secteur.all.each do |s|%>
 							<% if @sects %> 
 						 		<% if @sects.include? s %>
-									<div class="form-control" id="montant<%=s.id%>" style="display: block;">
+									<div class="form-control pr-0" id="montant<%=s.id%>" style="display: block;">
 										<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title%>" value="<%= s.montants.find_by(projet_id: @projet.id).price%>" class="border-0">
-										<select name="unite_id<%= s.id%>" class="border-left unit dropdown-toggle pl-2">
+										<select name="unite_id<%= s.id%>" class="text-center border-left unit pl-2 btn-reset">
 											<% Unite.all.each do |u|%>
 												<%if u == s.montants.find_by(projet_id: @projet.id).unite %>
 													<option value="<%= s.montants.find_by(projet_id: @projet.id).unite.id%>" selected><%= u.nom%></option>
@@ -122,17 +112,30 @@
 										</select>
 									</div>
 								<%else%>
-									<div class="form-control" id="montant<%=s.id%>" style="display: none;">
+									<div class="form-control pr-0" id="montant<%=s.id%>" style="display: none;">
 										<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title%>" class="border-0">
-										<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "border-left unit dropdown-toggle pl-2"%>
+										<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset"%>
 									</div>
 								<%end%>
 							<%end%>
 
 						<%end%>
-			<div>
+				</div>
+				<div class="col-md-4">
+					<h6 class="table">Début</h6>
+					<input type="text" id="selectionDebut" placeholder="mm/aaaa" class="form-control" required="true" value="<%= @projet.debut_du_projet.year%>">
+					<input type="hidden" id="selectionDebutValue" placeholder="mm/aaaa" class="form-control" required="true" name="debut_du_projet">
+				</div>
+				<div class="col-md-4 pr-0">			
+					<h6 class="table">Fin</h6>
+					<input type="text" class="form-control" placeholder="mm/aaaa" required="true" id="selectionFin" value="<%= @projet.fin.year%>">
+					<input type="hidden" name="fin" id="selectionFinValue" class="form-control" placeholder="mm/aaaa" required="true" name="fin">
+				</div>
+			</div>
+		</div>
 
-			<div class="container mb-2 MT-2">
+
+			<div class="container mb-2 mt-2">
 				<a class="table">
 					Filières
 				</a>
@@ -191,7 +194,8 @@
 				</div>
 			</div>
 
-			<div class="container mb-2 MT-2">
+
+			<div class="container mb-2 mt-2">
 				<a class="table">
 					Formes d'appui
 				</a>
@@ -240,9 +244,9 @@
 							<%end%>
 							
 								<div class="col-md-6" style="display: none" id="forme<%= fs.id%>">
-										<%= check_box_tag("forme_ids[]", fs.forme.id,false,id: :"idform#{fs.id}")%>
-										<%= fs.forme.title%>
-									</div>
+									<%= check_box_tag("forme_ids[]", fs.forme.id,false,id: :"idform#{fs.id}")%>
+									<%= fs.forme.title%>
+								</div>
 							<% end %>
 							<% end %>
 						</div>
