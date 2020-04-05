@@ -156,11 +156,11 @@
 					<div class="row">
 						<%Secteur.order(:title).all.each do |s|%>
 							<%s.secteur_filieres.each do |sf|%>
-							<div class="col-md-4" style="display: none" id="fil<%= sf.id%>">
+							<div class="col-md-4" style="display: none" id="fil<%= sf.filiere.id%>">
 								<%= check_box_tag("filiere_ids[]", sf.filiere.id)%>
 								<%= sf.filiere.title%>
 							</div>
-							<div class="col-md-4" style="display: block" id="fl<%= sf.id%>">
+							<div class="col-md-4" style="display: block" id="fl<%= sf.filiere.id%>">
 								<%= check_box_tag("filiere_ids[]", sf.filiere.id)%>
 								<%= sf.filiere.title%>
 							</div>

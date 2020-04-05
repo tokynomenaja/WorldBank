@@ -51,17 +51,8 @@
 	
 //Montant par secteur et Filiere par secteur
 
-	var filieres = []
 	function check(x){
 
-		 var checkSecteur = document.getElementById('s'+x)
-		 if(checkSecteur.checked == true){
-		 	filieres.remove(x);
-		 }
-		 else{
-		 	filieres.push(x);
-		 }
-		 
 	    var m = document.getElementById('montant'+x);
 	    if(m.style.display == "block"){
 	        m.style.display = "none";
@@ -74,18 +65,19 @@
 	    //secteur par filiere
 
 		<%SecteurFiliere.all.each do |sf|%>
-			var sf = document.getElementById('fl'+<%= sf.id%>);
+			var sf = document.getElementById('fl'+<%= sf.filiere.id%>);
 			sf.style.display = "none";
 		<%end%>
 
 	    <%Secteur.all.each do |s|%>
 	        if(x == <%= s.id%>){
 	            <%s.secteur_filieres.each do |sf|%>
-	                var f = document.getElementById('fil'+<%= sf.id%>);
+	                var f = document.getElementById('fil'+<%= sf.filiere.id%>);
+	                console.log(f.style.display);
 	                var idfil = document.getElementById('idfil'+<%= sf.id%>);
 	                if(f.style.display == "block"){
 	                    f.style.display = "none";
-	                    idfil.checked = false;
+	                    console.log(f.style.display);
 	                }else{
 	                    f.style.display = "block";
 	                }

@@ -71,4 +71,5 @@ gem 'better_errors'
 gem 'wicked_pdf'
 gem 'mailjet'
 gem 'dotenv-rails'
-gem "wkhtmltopdf-heroku", group: :production
+gem 'wkhtmltopdf-binary',       group: [:development]
+gem 'wkhtmltopdf-binary-edge',  group: [:production, :staging]
