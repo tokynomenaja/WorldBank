@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: worldbank_production
+  database: worldbank
   username: worldbank
-  password: <%= ENV['WORLDBANK_DATABASE_PASSWORD'] %>
+  password: worldbank2020
