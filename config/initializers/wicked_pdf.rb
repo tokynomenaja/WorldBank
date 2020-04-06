@@ -24,17 +24,11 @@
 # 	wkhtmltopdf_path = "/usr/local/bin/wkhtmltopdf"            
 # 	 end
 # }
+if Rails.env.production?
+  wkhtmltopdf_path = "#{Rails.root}/bin/wkhtmltopdf-amd64"
+else
+  wkhtmltopdf_path = '/usr/local/bin/wkhtmltopdf'            
+end
 
-if Rails.env == "development"
-  WickedPdf.config = {
-    :wkhtmltopdf => '/usr/local/bin/wkhtmltopdf',
-    :exe_path => '/usr/local/bin/wkhtmltopdf'
-  }
- end
+WickedPdf.config = { exe_path: wkhtmltopdf_path, wkhtmltopdf: wkhtmltopdf_path }
 
-if Rails.env == "production"
-  WickedPdf.config = {
-    :wkhtmltopdf => "#{Rails.root}/bin/wkhtmltopdf-amd64",
-    :exe_path => "#{Rails.root}/bin/wkhtmltopdf-amd64"
-  }
- end
