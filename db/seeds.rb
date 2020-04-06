@@ -245,7 +245,6 @@ Forme.destroy_all
         Forme.create(title:"Appui à l’entreprenariat")
         Forme.create(title:"Appui au développement des chaines de valeur")
         Forme.create(title:"Appui au financement du secteur privé")
-        Forme.create(title:"Renforcement de capacités")
         Forme.create(title:"Etudes, Analyses et/ou Enquêtes")
         Forme.create(title:"Assistance technique")
         Forme.create(title:"Equipement")

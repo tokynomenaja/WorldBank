@@ -142,21 +142,19 @@
     </div>
     <div class="forme-content filter-drop drop-height toggleclass" id="forme-check">
       <div class="mx-auto p-2 rounded">
-        <%Secteur.all.each do |s|%>
-          <%s.formesecteurs.each do |fs|%>
-              <div class="fdk8rh-1 eouleG" style="display: none" id="forme<%= fs.id%>">
+        <%Forme.order(:title).all.each do |form|%>
+              <div class="fdk8rh-1 eouleG" style="display: none" id="forme<%= form.id%>">
                 <label class="d-flex align-items-center">
-                  <%= check_box_tag("search_forme[]",  fs.forme.id, false, id: :"fs#{fs.forme.id}")%>
-                  <%= fs.forme.title%>
+                  <%= check_box_tag("search_forme[]",  form.id, false, id: :"fs#{form.id}")%>
+                  <%= form.title%>
                 </label>
               </div>
-              <div class="fdk8rh-1 eouleG" style="display: block" id="form<%= fs.id%>">
+              <div class="fdk8rh-1 eouleG" style="display: block" id="form<%= form.id%>">
                 <label class="d-flex align-items-center">
-                  <%= check_box_tag("search_forme[]",  fs.forme.id, false, id: :"fs#{fs.forme.id}")%>
-                  <%= fs.forme.title%>
+                  <%= check_box_tag("search_forme[]",  form.id, false, id: :"fs#{form.id}")%>
+                  <%= form.title%>
                 </label>
               </div>
-            <%end%>
           <%end%>
       </div>
     </div>
@@ -172,21 +170,19 @@
     </div>
     <div class="filiere-content filter-drop drop-height toggleclass" id="filiere-check">
       <div class="mx-auto p-2 rounded">
-        <%Secteur.all.each do |s|%>
-          <%s.secteur_filieres.each do |sf|%>
-              <div class="fdk8rh-1 eouleG" style="display: none" id="filiere<%= sf.id%>">
+          <%Filiere.order(:title).all.each do |fili|%>
+              <div class="fdk8rh-1 eouleG" style="display: none" id="filiere<%= fili.id%>">
                 <label class="d-flex align-items-center">
-                  <%= check_box_tag("search_filiere[]",  sf.filiere.id, false, id: :"sf#{sf.filiere.id}")%>
-                  <%= sf.filiere.title%>
+                  <%= check_box_tag("search_filiere[]",  fili.id, false, id: :"sf#{fili.id}")%>
+                  <%= fili.title%>
                 </label>
               </div>
-              <div class="fdk8rh-1 eouleG" style="display: block" id="fil<%= sf.id%>">
+              <div class="fdk8rh-1 eouleG" style="display: block" id="fil<%= fili.id%>">
                 <label class="d-flex align-items-center">
-                  <%= check_box_tag("search_filiere[]",  sf.filiere.id, false, id: :"sf#{sf.filiere.id}")%>
-                  <%= sf.filiere.title%>
+                  <%= check_box_tag("search_filiere[]",  fili.id, false, id: :"sf#{fili.id}")%>
+                  <%= fili.title%>
                 </label>
               </div>
-            <%end%>
           <%end%>
       </div>
     </div>

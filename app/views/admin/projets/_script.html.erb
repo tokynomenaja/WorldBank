@@ -73,11 +73,10 @@
 	        if(x == <%= s.id%>){
 	            <%s.secteur_filieres.each do |sf|%>
 	                var f = document.getElementById('fil'+<%= sf.filiere.id%>);
-	                console.log(f.style.display);
 	                var idfil = document.getElementById('idfil'+<%= sf.id%>);
 	                if(f.style.display == "block"){
 	                    f.style.display = "none";
-	                    console.log(f.style.display);
+	                    idfil.checked = false;
 	                }else{
 	                    f.style.display = "block";
 	                }
@@ -87,14 +86,14 @@
 
 //Forme d'appui par secteur
 	    <%Formesecteur.all.each do |fs|%>
-			var fs = document.getElementById('forme'+<%= fs.id%>);
+			var fs = document.getElementById('forme'+<%= fs.forme.id%>);
 			fs.style.display = "none";
 		<%end%>
 
 	    <%Secteur.all.each do |s|%>
 	        if(x == <%= s.id%>){
 	            <%s.formesecteurs.each do |fs|%>
-	                var fs = document.getElementById('form'+<%= fs.id%>);
+	                var fs = document.getElementById('form'+<%= fs.forme.id%>);
 	                var idform = document.getElementById('idform'+<%= fs.id%>);
 	                if(fs.style.display == "block"){
 	                    fs.style.display = "none";

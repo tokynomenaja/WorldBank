@@ -156,12 +156,12 @@
 							<%if @fil_ex == true%>
 								<% if @fils%>
 								<% if @fils.include? sf.filiere%>
-									<div class="col-md-4" style="display: block" id="fil<%= sf.id%>">
+									<div class="col-md-4" style="display: block" id="fil<%= sf.filiere.id%>">
 										<%= check_box_tag("filiere_ids[]", sf.filiere.id,true, id: :"idfil#{sf.id}")%>
 										<%= sf.filiere.title%>
 									</div>
 								<%else%>
-									<div class="col-md-4" style="display: block" id="fil<%= sf.id%>">
+									<div class="col-md-4" style="display: block" id="fil<%= sf.filiere.id%>">
 										<%= check_box_tag("filiere_ids[]", sf.filiere.id,false,id: :"idfil#{sf.id}")%>
 										<%= sf.filiere.title%>
 									</div>
@@ -170,12 +170,12 @@
 							<%else%>
 								<% if @fils%>
 								<% if @fils.include? sf.filiere%>
-									<div class="col-md-4" style="display: block" id="fil<%= sf.id%>">
+									<div class="col-md-4" style="display: block" id="fil<%= sf.filiere.id%>">
 										<%= check_box_tag("filiere_ids[]", sf.filiere.id,true, id: :"idfil#{sf.id}")%>
 										<%= sf.filiere.title%>
 									</div>
 								<%else%>
-									<div class="col-md-4" style="display: none" id="fil<%= sf.id%>">
+									<div class="col-md-4" style="display: none" id="fil<%= sf.filiere.id%>">
 										<%= check_box_tag("filiere_ids[]", sf.filiere.id,false,id: :"idfil#{sf.id}")%>
 										<%= sf.filiere.title%>
 									</div>
@@ -183,7 +183,7 @@
 								<% end %>
 							<%end%>
 							
-								<div class="col-md-4" style="display: none" id="fl<%= sf.id%>">
+								<div class="col-md-4" style="display: none" id="fl<%= sf.filiere.id%>">
 									<%= check_box_tag("filiere_ids[]", sf.filiere.id,false,id: :"idfil#{sf.id}")%>
 									<%= sf.filiere.title%>
 								</div>
