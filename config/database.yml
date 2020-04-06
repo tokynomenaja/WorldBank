@@ -83,4 +83,4 @@ production:
   <<: *default
   database: worldbank_bdd
   username: worldbank
-  password: worldbank2020
+  password: <%= ENV['DB_PASS'] %>
