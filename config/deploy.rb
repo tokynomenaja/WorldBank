@@ -39,7 +39,7 @@ lock "~> 3.12.1"
 # set :ssh_options, verify_host_key: :secure
 
 set :application, "worldbank"
-set :repo_url, "https://github.com/tokynomenaja/WorldBank.git"
+set :repo_url, "git@github.com:tokynomenaja/WorldBank.git"
 
 # Deploy to the user's home directory
 set :deploy_to, "/home/root/#{fetch :application}"
