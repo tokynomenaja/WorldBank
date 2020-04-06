@@ -34,7 +34,7 @@
         var checkBox = document.getElementById('s'+x);
         var forme = document.getElementById('filiere'+<%= fs.filiere.id %>);
 
-        if (checkBox.checked == true && <%fs.filiere%> != ""){
+        if (checkBox.checked == true){
           forme.style.display = "block";
         } else {
            forme.style.display = "none";
