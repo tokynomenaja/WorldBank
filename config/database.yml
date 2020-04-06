@@ -20,6 +20,7 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
 
 development:
   <<: *default
@@ -79,4 +80,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  url: <%= ENV['DATABASE_URL'] %>
+  <<: *default
+  database: worldbank
+  username: worldbank
+  password: worldbank2020
