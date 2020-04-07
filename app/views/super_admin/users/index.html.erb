@@ -48,27 +48,27 @@
       </div>
       <div class="modal-body">
                 <p><span>Nom :</span>
-		    	<%=@u.first_name%></p>
+		    	<%=@user.first_name%></p>
 		    <p><span>Prénom :</span>
-		    	<%=@u.last_name%></p>
+		    	<%=@user.last_name%></p>
 		    <p><span>Email :</span>
-		    	<%=@u.email%></p>
-		    <%if @u.organisme%>
-		    	<%if @u.organisme.ptf%>
-		    		PTF : <%=@u.organisme.ptf.title%></p>
+		    	<%=@user.email%></p>
+		    <%if @user.organisme%>
+		    	<%if @user.organisme.ptf%>
+		    		PTF : <%=@user.organisme.ptf.title%></p>
 		    	<%else%>
-		    		IGA : <%=@u.organisme.iga.title%></p>
+		    		IGA : <%=@user.organisme.iga.title%></p>
 		    	<%end%>
 		    <%else%>
 		    	<p>Autres</p>
 		    <%end%>
 		</p> 
-        	<%if @u.is_admin == true%>
+        	<%if @user.is_admin == true%>
 		    	<p><span class="btn btn-info">Bailleur</span></p>
-		    <% elsif  @u.is_consultant == true%>
+		    <% elsif  @user.is_consultant == true%>
 		    	<p><span class="btn btn-primary">Consultant</span></p>
 		    <%else%>
-				<%= form_for @user, url: super_admin_user_path(@u.id), method: :put do |f| %>
+				<%= form_for @user, url: super_admin_user_path(ser.id), method: :put do |f| %>
 	 
 					<p>Valider en tant que : <input type="submit" name="valider" value="Bailleur"> 
 					 <input type="submit" name="valider" value="Consultant"></p>

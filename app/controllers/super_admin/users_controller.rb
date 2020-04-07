@@ -8,10 +8,11 @@ class SuperAdmin::UsersController < ApplicationController
 		@users_en_attente = User.where(is_consultant: false,is_super_admin: false,is_admin: nil)
 
 		@users.each do |u|
+			@user = u
 			u.messages.each do |m|
 				@message_id = m.id
 			end
-		end	
+		end
 	end
 
 	def show
