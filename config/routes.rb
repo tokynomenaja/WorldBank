@@ -17,12 +17,11 @@ Rails.application.routes.draw do
 
  	  namespace :super_admin do
       resources :publications
-	    resources :users   
+	    resources :users 
 	    resources :projets
       resources :actus
-
   	end
-  
+    
    root to: 'home#index'
    devise_for :users
    resources :projets
