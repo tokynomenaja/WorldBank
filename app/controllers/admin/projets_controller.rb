@@ -52,14 +52,18 @@ class Admin::ProjetsController < ApplicationController
                   Secteurprojet.create(projet_id: @project.id , secteur_id: x.to_i)
                 end
 
+                if params[:filiere_ids]
                   @filiere_ids = params[:filiere_ids]
                 @filiere_ids.each do |x|
                   Filiereprojet.create(projet_id: @project.id , filiere_id: x.to_i)
                 end
+                end
 
+                if params[:forme_ids]
                   @forme_ids = params[:forme_ids]
                 @forme_ids.each do |x|
                   Formeprojet.create(projet_id: @project.id , forme_id: x.to_i)
+                end
                 end
 
                 for x in 1..2
@@ -89,15 +93,20 @@ class Admin::ProjetsController < ApplicationController
 
                 end
                   
-
+                if params[:iga_ids]
+                  
                   @iga_ids = params[:iga_ids]
                 @iga_ids.each do |i|
                   Igaprojet.create(projet_id: @project.id , iga_id: i.to_i) 
                 end
+                end
 
+
+                if params[:zone_ids]
                   @zone_ids = params[:zone_ids]
                 @zone_ids.each do |z|
                   Zoneprojet.create(projet_id: @project.id , zone_id: z.to_i)
+                end
                 end
 
                 10.times do |x|
@@ -106,20 +115,24 @@ class Admin::ProjetsController < ApplicationController
                     Benefprojet.create(projet_id: @project.id , beneficiaire_id: @ben.id)
                   end
                 end
+                if params[:beneficiaire_ids]
                   @beneficiaire_ids = params[:beneficiaire_ids]
                 @beneficiaire_ids.each do |b|
                   Benefprojet.create(projet_id: @project.id , beneficiaire_id: b.to_i)
                 end
+                end
 
+                if params[:pem_ids]
                 @pem_ids = params[:pem_ids]
                 @pem_ids.each do |p|
-                Pemprojet.create(projet_id: @project.id , pem_id: p.to_i)
+                  Pemprojet.create(projet_id: @project.id , pem_id: p.to_i)
+                end
                 end
 
           if @project.save
             @project.files.attach(params[:files])
             @project.picture.attach(params[:picture])
-            redirect_to admin_projets_path
+            redirect_to admin_projets_path, success: "Projet créé avec succès, Un email de validation de projet est envoyé sur votre email!!!"
           else
             render :new
 
@@ -193,9 +206,28 @@ class Admin::ProjetsController < ApplicationController
     @projet.montants.destroy_all
 
     for x in 0..Secteur.all.count
+
+      case params[:"unite_id#{x}"]
+        when "1"
+          @montant = params[:"montant#{x}"]
+          @convert_usd = @montant
+        when "2"
+          @montant = params[:"montant#{x}"]
+          @uac = Tarif.where(unite_id:  2, reference: "UAC").last.valeur
+          @convert_uac = @montant.to_i / @uac
+          @usd = Tarif.where(unite_id:  1, reference: "UAC").last.valeur
+          @convert_usd = @convert_uac * @usd
+        when "3"
+          @montant = params[:"montant#{x}"]
+          @convert_uac = @montant.to_i
+          @usd = Tarif.where(unite_id:  1, reference: "UAC").last.valeur
+          @convert_usd = @convert_uac * @usd
+
+      end
       if params[:"secteur_#{x}"]
         Secteurprojet.create(projet_id: @projet.id, secteur_id: params[:"secteur_#{x}"])
-        Montant.create(price: params[:"montant#{params[:"secteur_#{x}"]}"],secteur_id: params[:"secteur_#{x}"], projet_id: @projet.id, unite_id: params[:"unite_id#{params[:"secteur_#{x}"]}"])
+        # Montant.create(price: params[:"montant#{params[:"secteur_#{x}"]}"],secteur_id: params[:"secteur_#{x}"], projet_id: @projet.id, unite_id: params[:"unite_id#{params[:"secteur_#{x}"]}"])
+        Montant.create(price: @convert_usd.to_i,secteur_id: params[:"secteur_#{x}"], projet_id: @projet.id, unite_id: 1)
       end
     end
 
@@ -233,7 +265,7 @@ class Admin::ProjetsController < ApplicationController
         Zoneprojet.create(projet_id: @projet.id, zone_id: params[:"zone_#{x}"])
       end
     end
-    redirect_to  admin_projet_path
+    redirect_to  admin_projet_path, success: "Modification terminée"
   else
     puts 'erreur'*10
     render :edit     

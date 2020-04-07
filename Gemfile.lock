@@ -309,6 +309,8 @@ GEM
     thread_safe (0.3.6)
     thread_safe (0.3.6-java)
     tilt (2.0.10)
+    toastr-rails (1.0.3)
+      railties (>= 3.1.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -383,6 +385,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   table_print
+  toastr-rails
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)
