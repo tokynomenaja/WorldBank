@@ -12,6 +12,7 @@ class SuperAdmin::UsersController < ApplicationController
 				@message_id = m.id
 			end
 		end	
+
 	end
 
 	def show

@@ -1,13 +1,14 @@
 
-<div class="container sans-head">
-	
-	<div class="row">
-		<div class="col-md-4">
-			
-		</div>
-		<div class="text login">
-			<h1 style="color:black;background-color: #20c997;">BAILLEUR INFORMATION</h1>
-		    <p><span>Nom :</span>
+<div class="card mb-3 sans-head" style="max-width: 540px; margin-left: 35%; width: 40%;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+   <p class="sc-1gnwgfb-2 hVIPFV pict"></p>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">BAILLEUR INFORMATION</h5>
+        <p class="card-text">
+        <p><span>Nom :</span>
 		    	<%=@user.first_name%></p>
 		    <p><span>Prénom :</span>
 		    	<%=@user.last_name%></p>
@@ -22,7 +23,9 @@
 		    <%else%>
 		    	<p>Autres</p>
 		    <%end%>
-		    <%if @user.is_admin == true%>
+		</p>
+        <p class="card-text"><small class="text-muted">    
+        	<%if @user.is_admin == true%>
 		    	<p><span class="btn btn-info">Bailleur</span></p>
 		    <% elsif  @user.is_consultant == true%>
 		    	<p><span class="btn btn-primary">Consultant</span></p>
@@ -31,18 +34,11 @@
 	 
 					<p>Valider en tant que : <input type="submit" name="valider" value="Bailleur"> 
 					 <input type="submit" name="valider" value="Consultant"></p>
-
 				<%end%>
 			<%end%>
-		</div>
-		<div class="col-md-4">
-			
-		</div>
-	</div>
-
+		</small></p>
+      </div>
+    </div>
+  </div>
 </div>
-<style type="text/css">
-	span{
-		font-size: 20px;
-	}
-</style>
+
