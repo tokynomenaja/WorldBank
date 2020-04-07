@@ -50,7 +50,9 @@
 
 	
 //Montant par secteur et Filiere par secteur
+
 	function check(x){
+
 	    var m = document.getElementById('montant'+x);
 	    if(m.style.display == "block"){
 	        m.style.display = "none";
@@ -62,15 +64,15 @@
 
 	    //secteur par filiere
 
-		<%SecteurFiliere.all.each do |sf|%>
-			var sf = document.getElementById('fl'+<%= sf.id%>);
-			sf.style.display = "none";
+	    <%SecteurFiliere.all.each do |sf|%>
+			var f = document.getElementById('fl'+<%= sf.filiere.id%>);
+			f.style.display = "none";
 		<%end%>
 
 	    <%Secteur.all.each do |s|%>
 	        if(x == <%= s.id%>){
 	            <%s.secteur_filieres.each do |sf|%>
-	                var f = document.getElementById('fil'+<%= sf.id%>);
+	                var f = document.getElementById('fil'+<%= sf.filiere.id%>);
 	                var idfil = document.getElementById('idfil'+<%= sf.id%>);
 	                if(f.style.display == "block"){
 	                    f.style.display = "none";
@@ -82,16 +84,17 @@
 	        }
 	    <%end%>
 
+
 //Forme d'appui par secteur
 	    <%Formesecteur.all.each do |fs|%>
-			var fs = document.getElementById('forme'+<%= fs.id%>);
+			var fs = document.getElementById('forme'+<%= fs.forme.id%>);
 			fs.style.display = "none";
 		<%end%>
 
 	    <%Secteur.all.each do |s|%>
 	        if(x == <%= s.id%>){
 	            <%s.formesecteurs.each do |fs|%>
-	                var fs = document.getElementById('form'+<%= fs.id%>);
+	                var fs = document.getElementById('form'+<%= fs.forme.id%>);
 	                var idform = document.getElementById('idform'+<%= fs.id%>);
 	                if(fs.style.display == "block"){
 	                    fs.style.display = "none";

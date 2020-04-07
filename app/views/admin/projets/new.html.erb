@@ -153,19 +153,18 @@
 				<div class="mt-2">
 				<div class="card card-body">
 					<div class="row">
-						<%Secteur.all.each do |s|%>
-							<%s.secteur_filieres.each do |sf|%>
-							<div class="col-md-4" style="display: none" id="fil<%= sf.id%>">
-								<%= check_box_tag("filiere_ids[]", sf.filiere.id)%>
-								<%= sf.filiere.title%>
+						<%Filiere.order(:title).all.each do |fili|%>
+							<div class="col-md-4" style="display: none" id="fil<%= fili.id%>">
+								<%= check_box_tag("filiere_ids[]", fili.id)%>
+								<%= fili.title%>
 							</div>
-							<div class="col-md-4" style="display: block" id="fl<%= sf.id%>">
-								<%= check_box_tag("filiere_ids[]", sf.filiere.id)%>
-								<%= sf.filiere.title%>
+							<div class="col-md-4" style="display: block" id="fl<%= fili.id%>">
+								<%= check_box_tag("filiere_ids[]", fili.id)%>
+								<%= fili.title%>
 							</div>
-						<% end %>
 						<% end %>
 					</div>
+
 				</div>
 				</div>
 			</div>
@@ -177,17 +176,15 @@
 				<div class="mt-2">
 				<div class="card card-body">
 					<div class="row">
-						<%Secteur.all.each do |s|%>
-							<%s.formesecteurs.each do |fs|%>
-							<div class="col-md-6" style="display: none" id="form<%= fs.id%>">
-								<%= check_box_tag("forme_ids[]", fs.forme.id,)%>
-								<%= fs.forme.title%>
+						<%Forme.order(:title).all.each do |form|%>
+							<div class="col-md-6" style="display: none" id="form<%= form.id%>">
+								<%= check_box_tag("forme_ids[]", form.id,)%>
+								<%= form.title%>
 							</div>
-							<div class="col-md-6" style="display: block" id="forme<%= fs.id%>">
-								<%= check_box_tag("forme_ids[]", fs.forme.id,)%>
-								<%= fs.forme.title%>
+							<div class="col-md-6" style="display: block" id="forme<%= form.id%>">
+								<%= check_box_tag("forme_ids[]", form.id,)%>
+								<%= form.title%>
 							</div>
-						<% end %>
 						<% end %>
 					</div>
 				</div>

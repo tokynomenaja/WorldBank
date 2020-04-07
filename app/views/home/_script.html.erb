@@ -4,7 +4,7 @@
   //FIliere et Forme d'appui par secteur
   function checkSecteur(x) {
   <%Formesecteur.all.each do |f|%>
-    var form = document.getElementById('form'+<%= f.id%>);
+    var form = document.getElementById('form'+<%= f.forme.id%>);
     form.style.display = "none";
 
   <%end%>
@@ -12,7 +12,7 @@
    if( x == <%= s.id %>){
       <% s.formesecteurs.each do |fs| %>
         var checkBox = document.getElementById('s'+x);
-        var forme = document.getElementById('forme'+<%= fs.id %>);
+        var forme = document.getElementById('forme'+<%= fs.forme.id %>);
         if (checkBox.checked == true){
           forme.style.display = "block";
         } else {
@@ -24,7 +24,7 @@
 
 
   <%SecteurFiliere.all.each do |f|%>
-    var form = document.getElementById('fil'+<%= f.id%>);
+    var form = document.getElementById('fil'+<%= f.filiere.id%>);
     form.style.display = "none";
 
   <%end%>
@@ -32,7 +32,8 @@
    if( x == <%= s.id %>){
       <% s.secteur_filieres.each do |fs| %>
         var checkBox = document.getElementById('s'+x);
-        var forme = document.getElementById('filiere'+<%= fs.id %>);
+        var forme = document.getElementById('filiere'+<%= fs.filiere.id %>);
+
         if (checkBox.checked == true){
           forme.style.display = "block";
         } else {
