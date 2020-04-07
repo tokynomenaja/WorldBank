@@ -79,7 +79,6 @@ login
 next{width: 60px !important;height: 60px !important;}
 .carousel-control-prev-icon{width: 50px !important;height: 50px !important;}
 .text-t span{text-transform: inherit !important;}
-.image-c{width: 135px;}
 /* nav drop */
 .dropdwn{position: relative;}
 .dropdwn:hover .droppos {display: block;}
@@ -531,5 +530,20 @@ a.position:hover{color: #ffffff;text-decoration: none;}
 
 /*FIN RANGE*/
 
-
+/*logo*/
+.image-c1{width: 11.5rem;}
+.image-c2{width: 3.3rem;}
+.image-c3{width: 13.5rem;}
+.image-c4{width: 5.2rem;}
+.image-c5{width: 8rem;}
+.image-c6{width: 3.5rem;}
+.image-c7{width: 8rem;}
+.image-c8{width: 4.5rem;}
+.image-c9{width: 4.5rem;}
+.image-c10{width: 6.5rem;}
+.image-c11{width: 3rem;}
+.image-c12{width: 7.6rem;}
+.image-c13{width: 5.7rem;}
+.image-c14{width: 2.8rem;}
+.image-c15{display: none;}
 
