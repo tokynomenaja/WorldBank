@@ -7,6 +7,7 @@ class User < ApplicationRecord
    has_many :actus, foreign_key: 'user_id'
    has_many :publications, foreign_key: 'bailleur_id'
    has_many :publications, foreign_key: 'user_id'
+   has_many :messages, foreign_key: 'sender_id'
 
    after_create :update_admin, :welcome_send
 
