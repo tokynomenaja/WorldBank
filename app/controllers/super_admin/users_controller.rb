@@ -12,12 +12,7 @@ class SuperAdmin::UsersController < ApplicationController
 			u.messages.each do |m|
 				@message_id = m.id
 			end
-<<<<<<< HEAD
 		end	
-
-=======
-		end
->>>>>>> Rianadev
 	end
 
 	def show
