@@ -1,20 +1,17 @@
-
-<div class="container sans-head">
-	<div class="row">
+<div class="sans-head">
+	<div class="row justify-content-center w-100">
 		<% @pubs.each do |p|%>
-			<div class="col-md-4 card" style="margin: 2%;">
-				
+			<div class="col-md-3 card mx-1 mb-2 position-relative">
 				<div class="card-body">
 					 	 	<div class="card-title">
-						    <h5 ><%= p.title %></h5>
+						    <h5 class="primary-color"><%= p.title %></h5>
 						    </div>
 						<div class="card-text">
-							<p class="card-text"><%= p.description %></p>
+							<p class="card-text text-muted mb-5 truncate-pub"><%= p.description %></p>
 						</div>
-						    <a href="<%= publication_path(p.id)%>" class="btn btn-primary">VOIR</a>
+						<p class="mt-3 position-absolute more-info-pub"><a href="<%= publication_path(p.id)%>" class="btn-forgot underline">Voir</a></p>
 				</div>
 			</div>
       <%end%>
 	</div>
 </div>
-

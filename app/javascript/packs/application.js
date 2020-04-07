@@ -16,20 +16,6 @@ require("jquery")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-function Refresh() {
-	alert("alefa")
-    //vérification du cookie
-    if(document.cookie == ""){ // s'il n'existe pas on le créé 
-        var date = new Date();
-        date.setTime(date.getTime()+(30*1000));
-        var expires = "; expires="+date.toGMTString();
- 
-        document.cookie = "rafraichir=non;"+expires+"; path=/"; //http://stackoverflow.com/questions/7879810/make-a-cookie-expire-in-30-seconds
-        setTimeout(function(){ location.reload(true); }, 3000); //https://developer.mozilla.org/fr/docs/Web/API/WindowTimers/setTimeout + https://developer.mozilla.org/en-US/docs/Web/API/Location/reload on actualise la page
-    }
-         
-}
-
 
 $(document).on('turbolinks:load', function() {
 
@@ -324,7 +310,7 @@ $(document).on('turbolinks:load', function() {
 
 	$(function() {
 	  $("#selectionDebut").monthly({
-	    years: [2020, 2021, 2022, 2023, 2024, 2025, 2026, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036],
+	    years: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036],
 	    topOffset: 28,
 	    onMonthSelect: function(mi, m, y) {
 	      mi = padToTwo(mi);
@@ -337,7 +323,7 @@ $(document).on('turbolinks:load', function() {
 	});
 	$(function() {
 	  $("#selectionFin").monthly({
-	    years: [2020, 2021, 2022, 2023, 2024, 2025, 2026, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036],
+	    years: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036],
 	    topOffset: 28,
 	    onMonthSelect: function(mi, m, y) {
 	      mi = padToTwo(mi);
@@ -351,5 +337,16 @@ $(document).on('turbolinks:load', function() {
 
 // resumé filtre
 
+	$(".truncate-pub").each(function(){
+		var content = $(this).text()
+		if (content.length > 200) {
+			var newContent = content.substr(0, 200)
+			$(this).text(newContent)
+			$(this).append('...')
+		}
+	})
 
+  $("#simulateur").click(function(){
+    $("#document").trigger("click");
+  });
 })
