@@ -346,11 +346,8 @@ $(document).on('turbolinks:load', function() {
 		}
 	})
 
-<<<<<<< HEAD
   $("#simulateur").click(function(){
     $("#document").trigger("click");
   });
 })
-=======
-})
->>>>>>> f1e0e87e0b3cf022b811ce6e37e574936613810d
+
