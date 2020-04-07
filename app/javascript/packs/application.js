@@ -129,7 +129,7 @@ $(document).on('turbolinks:load', function() {
 		$("#range-content").addClass("toggleclass")
 		$("#forme-check").addClass("toggleclass")
 		$("#iga-check").addClass("toggleclass")
-		$("#beneficiaire-check").addClass("toggleclass")
+		$("#appui-check").addClass("toggleclass")
 	})
 
 	$("#iga-listener").click(function(e){
@@ -143,6 +143,7 @@ $(document).on('turbolinks:load', function() {
 		$("#range-content").addClass("toggleclass")
 		$("#forme-check").addClass("toggleclass")
 		$("#beneficiaire-check").addClass("toggleclass")
+		$("#appui-check").addClass("toggleclass")
 	})
 
 	$("#forme-listener").click(function(e){
