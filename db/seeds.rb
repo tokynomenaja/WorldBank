@@ -245,6 +245,7 @@ Forme.destroy_all
         Forme.create(title:"Appui à l’entreprenariat")
         Forme.create(title:"Appui au développement des chaines de valeur")
         Forme.create(title:"Appui au financement du secteur privé")
+        Forme.create(title:"Renforcement de capacités")
         Forme.create(title:"Etudes, Analyses et/ou Enquêtes")
         Forme.create(title:"Assistance technique")
         Forme.create(title:"Equipement")
@@ -263,7 +264,7 @@ Forme.destroy_all
         Forme.create(title:"Appui institutionnel")
         Forme.create(title:"Promotion du commerce")
         Forme.create(title:"Facilitation du commerce")
-        Forme.create(title:"Renforcement de capacités")
+        
 
         Forme.create(title:"Infrastructures énergétiques")
         Forme.create(title:"Infrastructures agricoles")
@@ -341,22 +342,31 @@ Forme.destroy_all
 
   Formesecteur.destroy_all
 
-  Formesecteur.create!(secteur_id: 1, forme_id: 1 )
+  Formesecteur.create!(secteur_id: 1, forme_id: 1)
   Formesecteur.create!(secteur_id: 1, forme_id: 2)   
   Formesecteur.create!(secteur_id: 1, forme_id: 3)
   Formesecteur.create!(secteur_id: 1, forme_id: 4)
   Formesecteur.create!(secteur_id: 1, forme_id: 5)
+  Formesecteur.create!(secteur_id: 1, forme_id: 6)
+  Formesecteur.create!(secteur_id: 1, forme_id: 7)
+  Formesecteur.create!(secteur_id: 1, forme_id: 8)
   Formesecteur.create!(secteur_id: 4, forme_id: 1)
   Formesecteur.create!(secteur_id: 4, forme_id: 2)
   Formesecteur.create!(secteur_id: 4, forme_id: 3)
   Formesecteur.create!(secteur_id: 4, forme_id: 4)
   Formesecteur.create!(secteur_id: 4, forme_id: 5)
+  Formesecteur.create!(secteur_id: 4, forme_id: 6)
+  Formesecteur.create!(secteur_id: 4, forme_id: 7)
+  Formesecteur.create!(secteur_id: 4, forme_id: 8)
 
   Formesecteur.create!(secteur_id: 6, forme_id: 1)
   Formesecteur.create!(secteur_id: 6, forme_id: 2)
   Formesecteur.create!(secteur_id: 6, forme_id: 3)
   Formesecteur.create!(secteur_id: 6, forme_id: 4)
   Formesecteur.create!(secteur_id: 6, forme_id: 5)
+  Formesecteur.create!(secteur_id: 6, forme_id: 6)
+  Formesecteur.create!(secteur_id: 6, forme_id: 7)
+  Formesecteur.create!(secteur_id: 6, forme_id: 8)
 
   Formesecteur.create!(secteur_id: 2, forme_id: 13)
   Formesecteur.create!(secteur_id: 2, forme_id: 14) 
@@ -367,14 +377,14 @@ Forme.destroy_all
   Formesecteur.create!(secteur_id: 2, forme_id: 19) 
   Formesecteur.create!(secteur_id: 2, forme_id: 20)
   Formesecteur.create!(secteur_id: 2, forme_id: 21) 
-  Formesecteur.create!(secteur_id: 2, forme_id: 22)
+  Formesecteur.create!(secteur_id: 2, forme_id: 4)
 
+  Formesecteur.create!(secteur_id: 3, forme_id: 22)
   Formesecteur.create!(secteur_id: 3, forme_id: 23)
   Formesecteur.create!(secteur_id: 3, forme_id: 24)
   Formesecteur.create!(secteur_id: 3, forme_id: 25)
   Formesecteur.create!(secteur_id: 3, forme_id: 26)
   Formesecteur.create!(secteur_id: 3, forme_id: 27)
-  Formesecteur.create!(secteur_id: 3, forme_id: 28)
 
   Formesecteur.create!(secteur_id: 7, forme_id: 3)
   Formesecteur.create!(secteur_id: 7, forme_id: 5)
@@ -383,12 +393,12 @@ Forme.destroy_all
   Formesecteur.create!(secteur_id: 7, forme_id: 11)
   Formesecteur.create!(secteur_id: 7, forme_id: 12)
 
+  Formesecteur.create!(secteur_id: 8, forme_id: 27)
   Formesecteur.create!(secteur_id: 8, forme_id: 28)
   Formesecteur.create!(secteur_id: 8, forme_id: 29)
   Formesecteur.create!(secteur_id: 8, forme_id: 30)
-  Formesecteur.create!(secteur_id: 8, forme_id: 31)
 
-  Formesecteur.create!(secteur_id: 9, forme_id: 32)
+  Formesecteur.create!(secteur_id: 9, forme_id: 31)
 
   puts "Formes par secteur créés"
 

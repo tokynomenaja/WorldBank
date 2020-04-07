@@ -64,9 +64,9 @@
 
 	    //secteur par filiere
 
-		<%SecteurFiliere.all.each do |sf|%>
-			var sf = document.getElementById('fl'+<%= sf.filiere.id%>);
-			sf.style.display = "none";
+	    <%SecteurFiliere.all.each do |sf|%>
+			var f = document.getElementById('fl'+<%= sf.filiere.id%>);
+			f.style.display = "none";
 		<%end%>
 
 	    <%Secteur.all.each do |s|%>
@@ -83,6 +83,7 @@
 	            <%end%>
 	        }
 	    <%end%>
+
 
 //Forme d'appui par secteur
 	    <%Formesecteur.all.each do |fs|%>
