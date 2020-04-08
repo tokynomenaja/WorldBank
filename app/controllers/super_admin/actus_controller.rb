@@ -17,11 +17,11 @@ class SuperAdmin::ActusController < ApplicationController
 
  end
  def new
-  @actus = Actu.all
+  @actus = Actu.order(:id).page(params[:page]).per(9)
  end
 
 def index
-  @actus = Actu.all
+  @actus = Actu.order(:id).page(params[:page]).per(9)
 end
 
  def show

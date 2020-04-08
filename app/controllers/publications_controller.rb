@@ -1,7 +1,7 @@
 class PublicationsController < ApplicationController
   before_action :authenticate_user!
   def index
-  	@pubs = Publication.all
+  	@pubs = Publication.order(:id).page(params[:page]).per(9)
   end
 
   def new

@@ -162,7 +162,7 @@ next{width: 60px !important;height: 60px !important;}
   template{display:none;} [hidden]{display:none;} 
   abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted;} 
   html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{min-width:0;min-height:0;margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
-  article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;} ,ul{list-style:none;}
+  article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;} ul{list-style:none;}
   blockquote,q{quotes:none;}
   blockquote::before,blockquote::after,q::before,q::after{content:'';content:none;} 
   table{border-collapse:collapse;border-spacing:0;} 
@@ -411,7 +411,7 @@ a.position:hover{color: #ffffff;text-decoration: none;}
 }
 .beneficiaire-content{width: 23rem;}
 .iga-content{right: 13rem;width: 50rem;}
-.range-year-content{width: 20rem;right:7rem;}
+.range-year-content{width: 13rem;right:7rem;}
 .forme-content{left: 20.9rem;}
 .secteur-content{left: 7rem;}
 .ptf-content{left: 0rem; min-width:7rem;}
@@ -420,9 +420,6 @@ a.position:hover{color: #ffffff;text-decoration: none;}
 .zone-content{left:0 !important;width: 15rem;}
 .drop-height{max-height: 15rem;overflow: auto;}
  #scontent{width: 15rem;}
- #range-content{width: 17rem;right: 13.9rem;}
-
-
 
 
   .range-y-content{

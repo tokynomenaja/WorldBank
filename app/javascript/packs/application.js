@@ -346,6 +346,14 @@ $(document).on('turbolinks:load', function() {
 			$(this).append('...')
 		}
 	})
+	$(".truncate-actu").each(function(){
+		var content = $(this).text()
+		if (content.length > 200) {
+			var newContent = content.substr(0, 200)
+			$(this).text(newContent)
+			$(this).append('...')
+		}
+	})
 
   $("#simulateur").click(function(){
     $("#document").trigger("click");
