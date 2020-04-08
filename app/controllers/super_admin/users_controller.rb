@@ -15,7 +15,6 @@ class SuperAdmin::UsersController < ApplicationController
 		end	
 		end
 
-	end
 
 	def show
 		@user = User.find(params[:id])
