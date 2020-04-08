@@ -2,7 +2,7 @@ class ActusController < ApplicationController
    before_action :authenticate_user!
 
   def index
-  	@actu = Actu.all	
+  	@actu = Actu.order(:id).page(params[:page]).per(9)
   end
 
   def new

@@ -1,3 +1,47 @@
+<div class="container-actu mx-auto row mb-5 sans-head">
+	<div class="col-md-4 border-right">
+		<h5 class="mb-4 text-center">Creer une actualité</h5>
+		<%= form_tag url_for(action: 'create'),method:'post', class:'form', multipart: true do%>
+			<div class="mb-4">
+				<label for="nom" class="mr-2 table">Titre </label>
+				<input type="text" name="title" id="nom" placeholder="Titre" class="form-control" required="true">
+			</div>
+			<div class="mb-4">				
+				<span class="mr-2 table">Documents :</span>
+				<%= file_field_tag :files, name: "files[]", required: true, multiple: true, class: 'toggleclass', id: :'document' %>
+				<span class="btn btn-secondary" id="simulateur">Ajouter des fichiers</span>
+			</div>
+			<div class="mb-4">
+				<input type="submit" name="cree" value="Publier" class="btn btn-bg-primary rounded-0 text-white btn-lg btn-block">
+			</div>
+		<%end%>
+	</div>
+	<div class="col-md">
+		<h5 class="mb-4 text-center">Toutes les actualités</h5>
+	    <% @actus.each do |a|%>
+		    <div class="row align-items-center no-gutters border-bottom border-right pb-2 pt-2">
+			    <div class="col-md-11 truncate-actu">
+			    	<%= a.title %>
+			    </div>
+			    <div class="col-md-1 text-center">
+			    	<a href="<%= super_admin_actu_path(a.id)%>" class="table">Voir</a>
+			    </div>
+		    </div>
+		<%end%>	
+		<div class="text-center mt-4">
+			<%= paginate @actus %>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<!-- 
 
 <div class="row sans-head">
   <div class="column1 ">
@@ -90,3 +134,4 @@ margin-left: 10%;
 	margin-right: 8%;
 }
 </style>
+ -->

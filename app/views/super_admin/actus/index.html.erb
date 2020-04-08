@@ -1,17 +1,20 @@
-
-<div class="container sans-head">
-	<div class="row">
+<div class="container sans-head mb-5">
+	<div class="row justify-content-center">
 		<% @actus.each do |a|%>
-			<div class="col-md-4 card " style="margin: 2%;">
-				
+			<div class="col-md-3 mb-2 card mx-1 position-relative">
 				<div class="card-body">
-			 	 	<div class="card-title">
-				    <h5 ><%= a.title %></h5>
+			 	 	<div class="card-title table">
+				    	<h6>Actualité <%= a.id %></h6>
 				    </div>
-				    <a href="<%= super_admin_actu_path(a.id)%>" class="btn btn-primary">VOIR</a>
-
+					<div class="card-text">
+						<p class="card-text text-muted mb-5 truncate-pub"><%= a.title %></p>
+					</div>
+				    <p class="mt-3 position-absolute more-info-pub"><a href="<%= super_admin_actu_path(a.id)%>" class="btn-forgot underline">Voir</a></p>
 				</div>
 			</div>
 		<%end%>	
+	</div>
+	<div class="text-center">
+		<%= paginate @actus %>
 	</div>
 </div>

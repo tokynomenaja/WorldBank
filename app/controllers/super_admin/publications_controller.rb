@@ -31,7 +31,7 @@ class SuperAdmin::PublicationsController < ApplicationController
 		
 	end
 	def index
-		@pubs = Publication.all 
+		@pubs = Publication.order(:id).page(params[:page]).per(9)
 	end
 	def show
 		@pub = Publication.find(params[:id])

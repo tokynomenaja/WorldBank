@@ -410,7 +410,7 @@ a.position:hover{color: #ffffff;text-decoration: none;}
 }
 .beneficiaire-content{width: 23rem;}
 .iga-content{right: 13rem;width: 50rem;}
-.range-year-content{width: 20rem;right:7rem;}
+.range-year-content{width: 13rem;right:7rem;}
 .forme-content{left: 20.9rem;}
 .secteur-content{left: 7rem;}
 .ptf-content{left: 0rem; min-width:7rem;}
@@ -419,7 +419,7 @@ a.position:hover{color: #ffffff;text-decoration: none;}
 .zone-content{left:0 !important;width: 15rem;}
 .drop-height{max-height: 15rem;overflow: auto;}
  #scontent{width: 15rem;}
- #range-content{width: 24rem;right: 13.9rem;}
+ #range-content{width: 15rem;right: 13.9rem;}
 
 
 
