@@ -236,9 +236,9 @@ Unite.destroy_all
  puts "Unités créées"
 
 Tarif.destroy_all
-      Tarif.create(reference: "UAC", valeur: 1.39373, unite_id: 1)
-      Tarif.create(reference: "UAC", valeur: 1.21910, unite_id: 2)
-      Tarif.create(reference: "UAC", valeur: 4863.04, unite_id: 4)
+      Tarif.create(reference: "UAC", valeur: 1.39373,utilise: true, unite_id: 1)
+      Tarif.create(reference: "UAC", valeur: 1.21910,utilise: true, unite_id: 2)
+      Tarif.create(reference: "UAC", valeur: 4863.04,utilise: true, unite_id: 4)
 puts "tarifs créés"
 
 Forme.destroy_all

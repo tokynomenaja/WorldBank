@@ -272,6 +272,7 @@ ActiveRecord::Schema.define(version: 2020_03_19_140143) do
     t.string "reference"
     t.float "valeur"
     t.bigint "unite_id"
+    t.boolean "utilise", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["unite_id"], name: "index_tarifs_on_unite_id"

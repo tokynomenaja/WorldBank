@@ -38,43 +38,41 @@
 		</tbody>
 		</table>
 	<%end%>
-	</div>
+</div>
 
-
-
-
-<div class="modal fade" id="mod<%= @users[-1].id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<%for x in 0..@users.length-1%>
+<div class="modal fade" id="mod<%= @users["#{x}".to_i].id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">bailleur information</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Information du visiteur</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
                 <p><span>Nom :</span>
-		    	<%=@users[-1].first_name%></p>
+		    	<%=@users["#{x}".to_i].first_name%></p>
 		    <p><span>Prénom :</span>
-		    	<%=@users[-1].last_name%></p>
+		    	<%=@users["#{x}".to_i].last_name%></p>
 		    <p><span>Email :</span>
-		    	<%=@users[-1].email%></p>
-		    <%if @users[-1].organisme%>
-		    	<%if @users[-1].organisme.ptf%>
-		    		PTF : <%=@users[-1].organisme.ptf.title%></p>
+		    	<%=@users["#{x}".to_i].email%></p>
+		    <%if @users["#{x}".to_i].organisme%>
+		    	<%if @users["#{x}".to_i].organisme.ptf%>
+		    		PTF : <%=@users["#{x}".to_i].organisme.ptf.title%></p>
 		    	<%else%>
-		    		IGA : <%=@users[-1].organisme.iga.title%></p>
+		    		IGA : <%=@users["#{x}".to_i].organisme.iga.title%></p>
 		    	<%end%>
 		    <%else%>
 		    	<p>Autres</p>
 		    <%end%>
 		</p> 
-        	<%if @users[-1].is_admin == true%>
+        	<%if @users["#{x}".to_i].is_admin == true%>
 		    	<p><span class="btn btn-info">Bailleur</span></p>
-		    <% elsif  @users[-1].is_consultant == true%>
+		    <% elsif  @users["#{x}".to_i].is_consultant == true%>
 		    	<p><span class="btn btn-primary">Consultant</span></p>
 		    <%else%>
-				<%= form_for @users[-1], url: super_admin_user_path(@users[-1].id), method: :put do |f| %>
+				<%= form_for @users["#{x}".to_i], url: super_admin_user_path(@users["#{x}".to_i].id), method: :put do |f| %>
 	 
 					<p>Valider en tant que : <input type="submit" name="valider" value="Bailleur"> 
 					 <input type="submit" name="valider" value="Consultant"></p>
@@ -85,92 +83,7 @@
     </div>
   </div>
 </div>
-
-<div class="modal fade" id="mod<%= @users[-2].id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">bailleur information</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-                <p><span>Nom :</span>
-		    	<%=@users[-2].first_name%></p>
-		    <p><span>Prénom :</span>
-		    	<%=@users[-2].last_name%></p>
-		    <p><span>Email :</span>
-		    	<%=@users[-2].email%></p>
-		    <%if @users[-2].organisme%>
-		    	<%if @users[-2].organisme.ptf%>
-		    		PTF : <%=@users[-2].organisme.ptf.title%></p>
-		    	<%else%>
-		    		IGA : <%=@users[-2].organisme.iga.title%></p>
-		    	<%end%>
-		    <%else%>
-		    	<p>Autres</p>
-		    <%end%>
-		</p> 
-        	<%if @users[-2].is_admin == true%>
-		    	<p><span class="btn btn-info">Bailleur</span></p>
-		    <% elsif  @users[-2].is_consultant == true%>
-		    	<p><span class="btn btn-primary">Consultant</span></p>
-		    <%else%>
-				<%= form_for @users[-2], url: super_admin_user_path(@users[-2].id), method: :put do |f| %>
-	 
-					<p>Valider en tant que : <input type="submit" name="valider" value="Bailleur"> 
-					 <input type="submit" name="valider" value="Consultant"></p>
-				<%end%>
-			<%end%>
-		</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="mod<%= @users[0].id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">bailleur information</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-                <p><span>Nom :</span>
-		    	<%=@users[0].first_name%></p>
-		    <p><span>Prénom :</span>
-		    	<%=@users[0].last_name%></p>
-		    <p><span>Email :</span>
-		    	<%=@users[0].email%></p>
-		    <%if @users[0].organisme%>
-		    	<%if @users[0].organisme.ptf%>
-		    		PTF : <%=@users[0].organisme.ptf.title%></p>
-		    	<%else%>
-		    		IGA : <%=@users[0].organisme.iga.title%></p>
-		    	<%end%>
-		    <%else%>
-		    	<p>Autres</p>
-		    <%end%>
-		</p> 
-        	<%if @users[0].is_admin == true%>
-		    	<p><span class="btn btn-info">Bailleur</span></p>
-		    <% elsif  @users[0].is_consultant == true%>
-		    	<p><span class="btn btn-primary">Consultant</span></p>
-		    <%else%>
-				<%= form_for @users[0], url: super_admin_user_path(@users[0].id), method: :put do |f| %>
-	 
-					<p>Valider en tant que : <input type="submit" name="valider" value="Bailleur"> 
-					 <input type="submit" name="valider" value="Consultant"></p>
-				<%end%>
-			<%end%>
-		</p>
-      </div>
-    </div>
-  </div>
-</div>
+<%end%>
 
 <div class="container text-c">
 	<%if @users_en_attente.count == 0%>
@@ -197,24 +110,64 @@
 		<% @users_en_attente.each do |u|%>
 			<div class="d-flex justify-content-center align-items-center table-dark">
 				<div class="col-1 text-center same">
-					<%=@u.id%>
+					<%=u.id%>
 				</div>
 				<div class="col-4 text-center same">
-					<%=@u.email%>
+					<%=u.email%>
 				</div>
 				<div class="col-4 text-center same">
 					<div class="w-100 d-flex justify-content-around h-100 align-items-center"> 
-						<%= form_for u, url: super_admin_user_path(@u.id), method: :put do |f| %>
+						<%= form_for u, url: super_admin_user_path(u.id), method: :put do |f| %>
 							<%= f.submit 'Bailleur', name: 'valider', value: 'Bailleur', class: 'btn btn-success'%>
-							<%= f.submit 'Consultant', name: 'valider', value: 'Consultant', class: 'btn btn-success'%>
+							<%= f.submit 'Consultant', name: 'valider', value: 'Consultant', class: 'btn btn-primary'%>
 						<%end%>
 					</div>
 				</div>
 				<div class="col-3 text-center same">
-					<a href="/super_admin/users/<%=@u.id%>" class="btn btn-warning " data-toggle="modal" data-target="#exampleModalLong">voir</a>
+					<a href="#" class="btn btn-info" data-toggle="modal" data-target="#mod<%= u.id%>">Voir</a>
 
 				</div>
 			</div>
 		<%end%>
 	<% end %>
 </div>
+
+<%for x in 0..@users_en_attente.length-1%>
+<div class="modal fade" id="mod<%= @users_en_attente["#{x}".to_i].id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Information du visiteur</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+                <p><span>Nom :</span>
+		    	<%=@users_en_attente["#{x}".to_i].first_name%></p>
+		    <p><span>Prénom :</span>
+		    	<%=@users_en_attente["#{x}".to_i].last_name%></p>
+		    <p><span>Email :</span>
+		    	<%=@users_en_attente["#{x}".to_i].email%></p>
+		    <%if @users_en_attente["#{x}".to_i].organisme%>
+		    	<%if @users_en_attente["#{x}".to_i].organisme.ptf%>
+		    		PTF : <%=@users_en_attente["#{x}".to_i].organisme.ptf.title%></p>
+		    	<%else%>
+		    		IGA : <%=@users_en_attente["#{x}".to_i].organisme.iga.title%></p>
+		    	<%end%>
+		    <%else%>
+		    	<p>Autres</p>
+		    <%end%>
+		</p> 
+        	
+				<%= form_for @users["#{x}".to_i], url: super_admin_user_path(@users_en_attente["#{x}".to_i].id), method: :put do |f| %>
+	 
+					<p>Valider en tant que : <input type="submit" name="valider" value="Bailleur" class="btn-success"> 
+					 <input type="submit" name="valider" value="Consultant" class="btn-primary"></p>
+				<%end%>
+		</p>
+      </div>
+    </div>
+  </div>
+</div>
+<%end%>

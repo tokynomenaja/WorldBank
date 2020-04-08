@@ -1,26 +1,33 @@
-
 <%if @projets.count == 0 %>
-	<div class=" container sans-head">
-			<div class="text-center text-muted mt-4 mb-4">
-				<p>Rien à valider !!</p>
-			</div>
+	<div class="container sans-head mb-5">
+		<div class="text-center text-muted mt-4 mb-4">
+			<p> Rien à valider !!</p>
+		</div>
+	</div>
+
 <%else%>
-	<div class="sans-head">
+
+<div class="container sans-head mb-5">
 	<div class="text-center text-muted mt-4 mb-4 ">
 		<p> Projets en attente de validation !!</p>
 	</div>
-	<div class=" container d-flex flex-wrap">
-			<% @projets.each do |p|%>
-				<div class="col-sm-6 mb-3">
-					<div class="card">
-						<div class="card-body">
-						<h5 class="card-title"><%= p.nom_du_projet %></h5>
-						<p class="card-text"><%= raw p.objectif_generale_du_projet.truncate(100) %></p>
-						<a href="<%= super_admin_projet_path(p.id)%>" class="btn btn-primary">Voir</a>
-						</div>
+	<div class="row justify-content-center">
+		<% @projets.each do |p|%>
+			<div class="col-md-3 mb-2 card mx-1 position-relative">
+				<div class="card-body">
+			 	 	<div class="card-title table">
+				    	<h6><%= p.nom_du_projet %></h6>
+				    </div>
+					<div class="card-text">
+						<p class="card-text text-muted mb-5 truncate-pub"><%= raw p.objectif_generale_du_projet.truncate(100) %></p>
 					</div>
+				    <p class="mt-3 position-absolute more-info-pub"><a href="<%= super_admin_projet_path(p.id)%>" class="btn-forgot underline">Voir</a></p>
 				</div>
-			<%end%>
+			</div>
+		<%end%>	
 	</div>
+	<div class="text-center">
+		<%= paginate @projets %>
+	</div>
+</div>
 <%end%>
-	</div>

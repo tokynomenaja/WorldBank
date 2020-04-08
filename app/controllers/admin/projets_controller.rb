@@ -3,7 +3,7 @@ class Admin::ProjetsController < ApplicationController
     before_action :check_if_admin
 
     def index
-      @projets = Projet.where(bailleur_id: current_user.id)
+      @projets = Projet.where(bailleur_id: current_user.id).order(:id).page(params[:page]).per(9)
     end
 
     def new

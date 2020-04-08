@@ -4,9 +4,19 @@ class SuperAdmin::TarifsController < ApplicationController
   end
 
   def edit
+    @tarif = Tarif.find(params[:id])
   end
 
   def update
+      @tarif = Tarif.find(params[:id])
+      if @tarif.update(reference: params[:reference], valeur: params[:valeur], unite_id: params[:unite])
+
+     
+        redirect_to edit_super_admin_tarif_path, success: "Taux de change modifié!!"
+      else
+        render :new
+
+      end  
   end
 
   def new
@@ -14,16 +24,23 @@ class SuperAdmin::TarifsController < ApplicationController
   end
 
   def create
-
-	  	@user = User.where(is_super_admin: true)
 	  	@tarif = Tarif.create!(reference: params[:reference], valeur: params[:valeur], unite_id: params[:unite])
+        if params[:cree] == 'A utiliser'
+          @tarif.update(utilise: true)
 
-		   if @tarif.save
-		    redirect_to super_admin_tarifs_path, success: "Tarif créé!!"
+        end
+		  if @tarif.save
+		    redirect_to new_super_admin_tarif_path, success: "Taux de change créé!!"
 		  else
 		    render :new
 
 		  end  
+  end
+
+  def destroy
+    @tarif = Tarif.find(params[:id])
+      @tarif.destroy
+    redirect_to super_admin_tarifs_path, danger:"Taux supprimé"
   end
 
 end

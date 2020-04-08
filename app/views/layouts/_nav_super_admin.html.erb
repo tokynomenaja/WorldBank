@@ -15,7 +15,8 @@ window.__INITIAL_STATE__ = {"form":{},"routing":{"location":null},"notifications
             <span class="q0xs59-6 q0xs59-7 fwuAZd"><div>Publications</div></span>
             <div class="droppos dropublication">
               <a href="<%=new_super_admin_publication_path%>"><p class="dropdwn-content border-bottom mb-0 p-3">Créer une publication</p></a>
-              <a href="<%=super_admin_publications_path%>"><p class="dropdwn-content mb-0 p-3">Toutes Publications</p></a>
+              <a href="<%=super_admin_publications_path%>"><p class="dropdwn-content mb-0 p-3">Mes Publications</p></a>
+               <a href="<%=publications_path%>"><p class="dropdwn-content mb-0 p-3">Toutes les publications</p></a>
             </div>
           </div>
            <div class="q0xs59-20 jhSsMU sans-hover beamerTrigger dropdwn">
@@ -28,8 +29,12 @@ window.__INITIAL_STATE__ = {"form":{},"routing":{"location":null},"notifications
           <div class="q0xs59-20 jhSsMU beamerTrigger">
             <a href="<%= super_admin_users_path%>" class="q0xs59-6 q0xs59-7 fwuAZd"><div>Visiteurs</div></a>
           </div>
-          <div class="q0xs59-20 jhSsMU beamerTrigger">
-            <a href="<%= super_admin_projets_path%>" class="q0xs59-6 q0xs59-7 fwuAZd"><div>Projets</div></a>
+          <div class="q0xs59-20 jhSsMU sans-hover beamerTrigger dropdwn">
+            <span class="q0xs59-6 q0xs59-7 fwuAZd"><div>Projets</div></span>
+            <div class="droppos dropublication">
+              <a href="<%= super_admin_projets_path%>"><p class="dropdwn-content border-bottom mb-0 p-3">Tous les projets</p></a>
+              <a href="<%= new_super_admin_tarif_path%>"><p class="dropdwn-content mb-0 p-3">Cours de change</p></a>
+            </div>
           </div>
         </nav>
         <%if current_user%>
