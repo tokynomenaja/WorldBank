@@ -24,7 +24,16 @@
       </div>
       <div class="col-md-6">
          <label for="organisme">Organisme</label>
-        <input type="text" name="organisme" placeholder="<%= current_user.organisme%>" class="form-control" readonly>
+          <%if current_user.organisme%>
+            <%if current_user.organisme.ptf%>
+               <input type="text" name="organisme" placeholder="<%=current_user.organisme.ptf.title%>" class="form-control" readonly>
+            <%else%>
+              <input type="text" name="organisme" placeholder="<%=current_user.organisme.iga.title%>" class="form-control" readonly>
+            <%end%>
+        <%else%>
+          <input type="text" name="organisme" placeholder="Autre" class="form-control" readonly>
+        <%end%>
+        
       </div>
     </div>
 
