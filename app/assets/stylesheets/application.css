@@ -403,6 +403,7 @@ a.position:hover{color: #ffffff;text-decoration: none;}
 .range-content{
   width: 30%;
   right:20rem;
+
 }
 .beneficiaire-content{width: 23rem;}
 .iga-content{right: 13rem;width: 50rem;}
@@ -410,12 +411,13 @@ a.position:hover{color: #ffffff;text-decoration: none;}
 .forme-content{left: 20.9rem;}
 .secteur-content{left: 7rem;}
 .ptf-content{left: 0rem; min-width:7rem;}
-.appui-content{left: 13.9rem;}
+.appui-content{left: 14.9rem;}
 .filiere-content{left: 27.9rem;width: 13rem;}
 .zone-content{left:0 !important;width: 15rem;}
 .drop-height{max-height: 15rem;overflow: auto;}
  #scontent{width: 15rem;}
- #range-content{width: 24rem;right: 13.9rem;}
+ #range-content{width: 17rem;right: 13.9rem;}
+
 
 
 

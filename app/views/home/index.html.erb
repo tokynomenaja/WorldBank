@@ -121,7 +121,7 @@
     <div class="appui-content drop-height filter-drop">
       <div class="mx-auto p-2 rounded toggleclass" id="appui-check">
         <%Appui.all.order(:title).each do |a|%>
-        <div class="fdk8rh-1 eouleG">                
+        <div class="fdk8rh-1 eouleGf">                
           <label class="d-flex align-items-center">
             <%= check_box_tag("appui_id[]",a.id) %>
             <%= a.title%>
@@ -133,8 +133,8 @@
 
     <div class="fdk8rh-3 feYJJO" id="forme-listener">
       <header class="fdk8rh-0 kYNMFW">
-        <h3 class="fdk8rh-1 eouleG">
-          <div class= "fdk8rh-1 eouleG large select">
+        <h3 class="fdk8rh-1 eouleG text-left">
+          <div class= "fdk8rh-1  text-left large select">
             Forme d'appui
           </div>
         </h3>
@@ -261,9 +261,9 @@
           </h3>
         </header>
       </div>
-      <div class="filter-drop drop-height range-content mx-auto rounded eouleG pt-4 toggleclass" id="range-content">
+      <div class=" filter-drop drop-height range-year-content mx-auto  eouleG " id="range-content">
         <div class="middle mx-auto mt-2 mb-4">
-           <div class="p-3 text-center">
+           <div class=" text-center">
               <output id= "showMontant">montant en millions de USD</output>
               <output id="outputleft" style="display: none;"></output><span style="display: none;" id="otl">montant en millions de USD </span>
               <output id="outputright" style="display: none;"></output><span style="display: none;" id="otr"></span>
@@ -302,7 +302,7 @@
       <div class="filter-drop drop-height range-year-content mx-auto rounded eouleG toggleclass" id="range-year-content">
         <div class="middle mx-auto mt-2 mb-4">
           <div class="multi-range-slider">
-            <div class="p-3 text-center">
+            <div class=" text-center">
               Entre l'année 
               <output id="rangevalueleftyear">2008</output><span> et </span>
               <output id="rangevaluerightyear">2030</output>
