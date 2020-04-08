@@ -1,6 +1,5 @@
 <header class="aci59a-0 eyAIuG sticky-limit">
     <div class="sc-1gnwgfb-2 hVIPFV">
-      
     </div>
 </header>
 <%= form_tag url_for(action: 'create'),method:'post', class:'form', multipart: true do%>
@@ -298,7 +297,7 @@
 					<div class="row">
 						<% Zone.all.each do |c| %>
 							<div class="col-md-4">
-								<%= check_box_tag("zone_ids[]", c.id, false, id: :"") %>
+								<%= check_box_tag("zone_ids[]", c.id, false) %>
 								<%= c.title%>
 							</div>
 						<% end %>
@@ -306,15 +305,15 @@
 				</div>
 			</div>
 		</div>
-		<div class="container mb-2 mt-4">
-			Documents du projet : <%= file_field_tag :files,name:"files[]", multiple: true%>
-			
+		<div class="container mt-4">
+			<%= file_field_tag :files,name:"files[]", multiple: true, id: :"document", class: 'toggleclass'%>
+			<span class="table">Documents du projet : </span><span class="btn btn-secondary" id="simulateur">Choisir</span>
 		</div>
-		<div class="container mb-2 mt-4">
-			<p><span>Site web :</span><input type="text" name="site" class="form- control"></p>
+		<div class="container mt-4">
+			<p><span class="table">Site web :</span><input type="text" name="site" class="form-control" placeholder="votre lien"></p>
 		</div>
-		<div class="container mb-2 mt-4">
-			<label for="comment">Commentaire :</label>
+		<div class="container mt-4">
+			<label for="comment" class="table">Commentaire :</label>
 			<textarea name="comment" class="form-control p-2"  rows="5" placeholder="Commentaire qui s'adresse à l'administrateur"></textarea>
 			
 		</div>

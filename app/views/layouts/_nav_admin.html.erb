@@ -17,12 +17,13 @@
               <a href="<%= new_admin_publication_path%>"><p class="dropdwn-content border-bottom mb-0 p-3">Créer une publication</p></a>
             </div>
           </div>
-           <div class="q0xs59-20 jhSsMU beamerTrigger">
-            <a href="<%= admin_projets_path%>" class="q0xs59-6 q0xs59-7 fwuAZd"><div>Mes projets</div></a>
-          </div> 
-          <div class="q0xs59-20 jhSsMU beamerTrigger">
-            <a href="<%= new_admin_projet_path%>" class="q0xs59-6 q0xs59-7 fwuAZd"><div>Créer un projet</div></a>
-         
+          <div class="q0xs59-20 jhSsMU beamerTrigger dropdwn">
+            <span class="q0xs59-6 q0xs59-7 fwuAZd">Projets</span>
+              <div class="droppos dropublication">
+                <a href="<%= new_admin_projet_path%>"><p class="dropdwn-content mb-0 p-3">Créer un projet</p></a>
+                <a href="<%= admin_projets_path%>"><p class="dropdwn-content mb-0 p-3">Mes projets</p></a>
+              </div>
+          </div>
         </nav>
         <%if current_user%>
           <div class="q0xs59-20 jhSsMU beamerTrigger">

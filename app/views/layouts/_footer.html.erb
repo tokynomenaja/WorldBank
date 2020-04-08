@@ -30,14 +30,12 @@
     </div>
   </div>
 </footer>
-<!-- <section>
-  <div class="">
-    <div class="d-flex mb-5">
+<section>
+  <div class="bg-white">
+    <div class="d-flex align-items-center mb-4">
       <%Ptf.all.order(:title).each do |p|%>
-
-        <a href="https://<%= p.lien.remove('https://')%>" class="image-c" target="_blank"><img src="<%= p.image_url%>" alt=""></a>
-
+        <a href="https://<%= p.lien.remove('https://')%>" class="mx-2" target="_blank"><img src="<%= p.image_url%>" class="image-c<%=p.id%>" alt=""></a>
       <%end%>
     </div>
   </div>
-</section> -->
+</section> 

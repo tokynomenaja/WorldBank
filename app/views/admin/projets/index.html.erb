@@ -1,28 +1,33 @@
-<div class="d-flex flex-wrap sans-head container">
-<% @projets.each do |p|%>
-	<div class="col-sm-4 mb-3">
-		<div class="card">
-			<div class="card-body">
-				<h5 class="card-title"><%= p.nom_du_projet %></h5>
-				<p class="card-text"><%= raw p.objectif_generale_du_projet.truncate(150)%></p>
-				<p>
-					<%if p.picture.attached?%>
-						<%= image_tag p.picture, alt: 'picture', width: '200', height: '200', class:"card-img-circle"%>
-					<%else%>
-						<img class="card-img-top" width="200" height="200" src="/maki.jpg" alt="Card image cap">
-					<%end%>
-				</p><br>
-				<p><a href="<%= admin_projet_path(p.id)%>" class="btn btn-primary">Voir</a>
-					<%if p.validation == false%>
-						<span class="btn btn-warning">En attente de validation</span>	
-					<%elsif p.validation == nil%>
-						<span class="btn btn-danger">Non publié<span>
-					<%else%>
-						<span class="btn btn-success">Publié<span>
-					<%end%>
-				</p>	
+<div class="sans-head container">
+	<div class="d-flex justify-content-center flex-wrap">
+		<% @projets.each do |p|%>
+			<div class="col-sm-4 mb-3">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title"><%= p.nom_du_projet %></h5>
+						<p class="card-text"><%= raw p.objectif_generale_du_projet.truncate(150)%></p>
+						<p>
+							<%if p.picture.attached?%>
+								<%= image_tag p.picture, alt: 'picture', width: '200', height: '200', class:"card-img-circle"%>
+							<%else%>
+								<img class="card-img-top" width="200" height="200" src="/maki.jpg" alt="Card image cap">
+							<%end%>
+						</p><br>
+						<p><a href="<%= admin_projet_path(p.id)%>" class="btn btn-secondary">Voir</a>
+							<%if p.validation == false%>
+								<span class="btn btn-warning">En attente de validation</span>	
+							<%elsif p.validation == nil%>
+								<span class="btn btn-danger text-white">Non publié<span>
+							<%else%>
+								<span class="btn btn-bg-primary text-white">Publié<span>
+							<%end%>
+						</p>	
+					</div>
+				</div>
 			</div>
-		</div>
+		<%end%>
 	</div>
-<%end%>
+	<div>
+		<a href="<%= new_admin_projet_path%>" class="btn btn-bg-primary rounded-0 text-white btn-lg btn-block">Créer un projet</a>
+	</div>
 </div>
