@@ -110,9 +110,9 @@
         </div> 
       </div>
       <div class="fdk8rh-3 feYJJO" id="appui-listener">
-        <header class="fdk8rh-0 kYNMFW">
+        <header class="fdk8rh-0 kYNMFW pl-1 pr-0">
           <h3 class="fdk8rh-1 eouleG">
-            <div class= "fdk8rh-1 eouleG large select">
+            <div class= "fdk8rh-1 eouleG large select-nature-forme">
              Nature d'appui
             </div>
           </h3>
@@ -132,9 +132,9 @@
       </div> 
 
       <div class="fdk8rh-3 feYJJO" id="forme-listener">
-        <header class="fdk8rh-0 kYNMFW">
+        <header class="fdk8rh-0 kYNMFW pl-1 pr-0">
           <h3 class="fdk8rh-1 eouleG">
-            <div class= "fdk8rh-1 eouleG large select">
+            <div class= "fdk8rh-1 eouleG large select-nature-forme">
               Forme d'appui
             </div>
           </h3>
@@ -218,6 +218,7 @@
             </div>
           </h3>
         </header>
+      </div>
         <div class="filiere-content drop-height zone-content filter-drop toggleclass" id="zone-check">
           <div class="mx-auto p-2 rounded">
             <%Zone.all.each do |z|%>
@@ -230,7 +231,6 @@
             <%end%>
           </div> 
         </div>
-      </div>
 
       <div class="fdk8rh-3 feYJJO" id="beneficiaire-listener">
         <header class="fdk8rh-0 kYNMFW">
@@ -240,6 +240,7 @@
             </div>
           </h3>
         </header>
+      </div>
         <div class="beneficiaire-content drop-height filter-drop toggleclass" id="beneficiaire-check">
           <div class="mx-auto p-2 rounded">
             <%Beneficiaire.all.each do |b|%>
@@ -252,7 +253,6 @@
             <%end%>
           </div> 
         </div>
-      </div>
 
         <div class="fdk8rh-3 feYJJO" id="range-drop">
           <header class="fdk8rh-0 kYNMFW">
@@ -302,7 +302,7 @@
         <div class="filter-drop drop-height range-year-content mx-auto rounded eouleG toggleclass" id="range-year-content">
           <div class="middle mx-auto mb-4">
             <div class="multi-range-slider">
-              <div class="p-3 text-center">
+              <div class="pt-2 pb-3 text-center">
                 Entre l'année 
                 <output id="rangevalueleftyear">2008</output><span> et </span>
                 <output id="rangevaluerightyear">2030</output>

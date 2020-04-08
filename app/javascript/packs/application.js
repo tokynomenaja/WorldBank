@@ -118,20 +118,6 @@ $(document).on('turbolinks:load', function() {
 		$("#beneficiaire-check").addClass("toggleclass")
 	})
 
-	$("#beneficiaire-listener").click(function(e){
-		$("#beneficiaire-content").toggleClass("toggleclass")
-
-		$("#scontent").addClass("toggleclass")
-		$("#ptf-check").addClass("toggleclass")
-		$("#filiere-check").addClass("toggleclass")
-		$("#zone-check").addClass("toggleclass")
-		$("#range-year-content").addClass("toggleclass")
-		$("#range-content").addClass("toggleclass")
-		$("#forme-check").addClass("toggleclass")
-		$("#iga-check").addClass("toggleclass")
-		$("#appui-check").addClass("toggleclass")
-	})
-
 	$("#iga-listener").click(function(e){
 		$("#iga-check").toggleClass("toggleclass")
 
@@ -163,6 +149,8 @@ $(document).on('turbolinks:load', function() {
 	$("#beneficiaire-listener").click(function(e){
 		$("#beneficiaire-check").toggleClass("toggleclass")
 
+		$("#appui-check").addClass("toggleclass")
+		$("#forme-check").addClass("toggleclass")
 		$("#scontent").addClass("toggleclass")
 		$("#ptf-check").addClass("toggleclass")
 		$("#filiere-check").addClass("toggleclass")
@@ -358,5 +346,6 @@ $(document).on('turbolinks:load', function() {
   $("#simulateur").click(function(){
     $("#document").trigger("click");
   });
+
 })
 
