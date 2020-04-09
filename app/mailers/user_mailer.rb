@@ -8,7 +8,7 @@ class UserMailer < ApplicationMailer
 	    @url  = 'https://world-bank-secteur-prive.herokuapp.com/users/sign_in' 
 
 	    # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-	    mail(to: @user.email, subject: 'Email de validation de compte !') 
+	    mail(to: @user.email, subject: 'Email de validation de compte ') 
 	end
 
 	def create_project_email(project)
@@ -23,7 +23,7 @@ class UserMailer < ApplicationMailer
 	    @url  = "https://world-bank-secteur-prive.herokuapp.com/admin/projets/#{@id}"
 
 	    # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-	    mail(to: @user.email, subject: 'Email de validation de projet !') 
+	    mail(to: @user.email, subject: 'Email de validation de projet ') 
 	end
 
 end

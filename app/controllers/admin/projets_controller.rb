@@ -132,7 +132,7 @@ class Admin::ProjetsController < ApplicationController
           if @project.save
             @project.files.attach(params[:files])
             @project.picture.attach(params[:picture])
-            redirect_to admin_projets_path, success: "Projet créé avec succès, Un email de validation de projet est envoyé sur votre email!!!"
+            redirect_to admin_projets_path, success: "Projet créer avec succès, un email de validations vous a été envoyé, veuille consulter votre boite de reception"
           else
             render :new
 
