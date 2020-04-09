@@ -8,7 +8,7 @@ class Admin::PublicationsController < ApplicationController
 
 	    	if @pub.save
 	    		@pub.files.attach(params[:files])
-	            redirect_to publications_path
+	            redirect_to publications_path, success: "Publication créée"
 	        else
 	            render :new
 
@@ -22,7 +22,7 @@ class Admin::PublicationsController < ApplicationController
     @pub = Actu.find(params[:id])
 
     if @pub.update(title: params[:title], description: params[:description],user_id: current_user.id)
-       redirect_to admin_publications_path
+       redirect_to admin_publications_path, success: "Modification terminée"
 	   end
 	end
 	def show

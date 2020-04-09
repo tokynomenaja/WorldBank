@@ -1,5 +1,5 @@
 <div class="container sans-head">
-	<h4	>Listes des comptes validés</h4>
+	<h4>Comptes validés</h4>
 	<%if @users.count == 0%>
 		<div class="text-center text-muted mt-4 mb-4">
 			Aucun pour le moment
@@ -14,7 +14,7 @@
 				<a href="/contacts/" style="color: #52c39b;">Tous les messages<span class="badge badge-light"><%= Message.all.count%></span></a>
 			</th>
 			<th scope="col">Action</th>
-			<th scope="col">Organisme</th>
+			<th scope="col">Rôle</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -24,7 +24,7 @@
 			<td><%=b.email%></td>
 			<td>Message <span class="badge badge-light"><%= b.messages.count%></span></td>
 			<td><a href="#" class="btn btn-info" data-toggle="modal" data-target="#mod<%= b.id%>">Voir</a>
-			<a href="/super_admin/users/<%=b.id%>" data-method= "delete" class="btn btn-danger" data-confirm="Voulez-vous retirer cet utilisateur ?">Retirer</a></td>
+			<a href="<%= super_admin_user_path(b.id)%>" class="btn btn-danger" data-method="delete" data-confirm="Voulez-vous retirer cet utilisateur ?" >Retirer</a></td>
 			<td>
 				<%if b.is_admin == true%>
 					<span class="btn btn-success">Bailleur</span>
@@ -45,7 +45,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Information du visiteur</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Information de compte</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -64,7 +64,7 @@
 		    		IGA : <%=@users["#{x}".to_i].organisme.iga.title%></p>
 		    	<%end%>
 		    <%else%>
-		    	<p>Organisme : Autre</p>
+		    	<p>Organisme : "Autre"</p>
 		    <%end%>
 		</p> 
         	<%if @users["#{x}".to_i].is_admin == true%>
@@ -86,7 +86,7 @@
 <%end%>
 
 <div class="container text-c">
-	<h4	>Listes des comptes en attente de validation</h4>
+	<h4	>Comptes en attente de validation</h4>
 	<%if @users_en_attente.count == 0%>
 		<div class="text-center text-muted mt-4 mb-4">
 			Aucun pour le moment
@@ -138,7 +138,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Information du visiteur</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Information de compte</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -157,11 +157,11 @@
 		    		IGA : <%=@users_en_attente["#{x}".to_i].organisme.iga.title%></p>
 		    	<%end%>
 		    <%else%>
-		    	<p>Autres</p>
+		    	<p> Organisme : "Autre"</p>
 		    <%end%>
 		</p> 
         	
-				<%= form_for @users["#{x}".to_i], url: super_admin_user_path(@users_en_attente["#{x}".to_i].id), method: :put do |f| %>
+				<%= form_for @users_en_attente["#{x}".to_i], url: super_admin_user_path(@users_en_attente["#{x}".to_i].id), method: :put do |f| %>
 	 
 					<p>Valider en tant que : <input type="submit" name="valider" value="Bailleur" class="btn-success"> 
 					 <input type="submit" name="valider" value="Consultant" class="btn-primary"></p>
@@ -172,3 +172,4 @@
   </div>
 </div>
 <%end%>
+<%= render partial: "/super_admin/confirm.html.erb"%>

@@ -1,4 +1,3 @@
-
 class SuperAdmin::PublicationsController < ApplicationController
 	before_action :authenticate_user!
 
@@ -7,7 +6,7 @@ class SuperAdmin::PublicationsController < ApplicationController
 
 	    	if @pub.save
 	    		@pub.files.attach(params[:files])
-	            redirect_to publications_path
+	            redirect_to publications_path, success: "Publication créée avec succès"
 	        else
 	            render :new
 
@@ -17,11 +16,11 @@ class SuperAdmin::PublicationsController < ApplicationController
 	   @pub = Publication.find(params[:id]) 	
 	end    
 	def update
-	 @pub = Publication.find(params[:id])
+		@pub = Publication.find(params[:id])
 
-    if @pub.update(title: params[:title], description: params[:description],user_id: current_user.id)
-       redirect_to super_admin_publications_path
-	   end
+    	if @pub.update(title: params[:title], description: params[:description],user_id: current_user.id)
+       		redirect_to super_admin_publications_path, success: "Modification terminéé"
+	   	end
 		
 	end 
 	def destroy

@@ -11,8 +11,11 @@ class SuperAdmin::TarifsController < ApplicationController
       @tarif = Tarif.find(params[:id])
       if @tarif.update(reference: params[:reference], valeur: params[:valeur], unite_id: params[:unite])
 
-     
-        redirect_to edit_super_admin_tarif_path, success: "Taux de change modifié!!"
+        if params[:cree] == 'À utiliser'
+          @tarif.update(utilise: true)
+
+        end
+        redirect_to edit_super_admin_tarif_path(@tarif.id), success: "Taux de change modifié!!"
       else
         render :new
 

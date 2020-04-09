@@ -46,7 +46,11 @@ class SuperAdmin::UsersController < ApplicationController
 
  	def destroy
  		@user = User.find(params[:id])
+ 		@messages = Message.where(sender_id: @user.id)
+ 		@projets = Projet.where(bailleur_id: @user.id)
+ 		@publications = Publication.where(user_id: @user.id)
  		@user.destroy
+ 		
  		redirect_to super_admin_users_path
  	end
 

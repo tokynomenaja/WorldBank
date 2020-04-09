@@ -16,7 +16,9 @@
 		</div>
 	 	<div class="text-left mt-4">
 	      <a href="<%=  edit_admin_publication_path(@pub.id)%>" class="sc-eerKOB cfnPHQ bold sear" >Modifier</a>
-	      <a href="<%= admin_publication_path(@pub.id)%>" class="btn btn-danger"  data-method="delete" data-confirm="Voulez-vous supprimer ce publication?"> supprimer</a>
+	      <a href="<%= admin_publication_path(@pub.id)%>" class="btn btn-danger"  data-method="delete" data-confirm="Voulez-vous supprimer cette publication?"> Supprimer</a>
 	    </div>
 	</div>
 </div>
+<%= render partial: "/super_admin/confirm.html.erb"%>
+

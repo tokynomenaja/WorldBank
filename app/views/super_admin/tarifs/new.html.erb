@@ -11,11 +11,11 @@
 				<input type="text" name="valeur" id="nom" placeholder="1.456" class="form-control" required="true">
 			</div>
 			<div class="mb-4">				
-				<%= select_tag 'unite', options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "form-control"%>
+				<%= select_tag 'unite', options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "form-control", required: true%>
 			</div>
 			<div class="mb-4">
 				<input type="submit" name="cree" value="Enregistrer" class="btn btn-bg-primary rounded-0 text-white btn-block">
-				<input type="submit" name="cree" value="A utiliser" class="btn btn-bg-primary rounded-0 text-white btn-block">
+				<input type="submit" name="cree" value="À utiliser" class="btn btn-bg-primary rounded-0 text-white btn-block">
 			</div>
 		<%end%>
 	</div>

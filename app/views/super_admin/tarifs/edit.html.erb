@@ -1,7 +1,7 @@
 <div class="container-actu mx-auto row mb-5 sans-head">
 	<div class="col-md-4 border-right">
 		<h5 class="mb-4 text-center">Modifier le taux de change n° <%= @tarif.id%></h5>
-		<%= form_tag url_for(action: 'create'),method:'post', class:'form', multipart: true do%>
+		<%= form_tag url_for(action: 'update'),method:'put', class:'form', multipart: true do%>
 			<div class="mb-4">
 				<label for="nom" class="mr-2 table">Unité de référence </label>
 				<input type="text" name="reference" id="nom" value="<%= @tarif.reference%>" class="form-control" required="true">
@@ -22,7 +22,12 @@
 						</select>
 			</div>
 			<div class="mb-4">
-				<input type="submit" name="cree" value="Changer" class="btn btn-bg-primary rounded-0 text-white btn-lg btn-block">
+				<% if @tarif.utilise == true%>
+					<input type="submit" name="cree" value="Changer" class="btn btn-bg-primary rounded-0 text-white btn-lg btn-block">
+				<%else%>
+					<input type="submit" name="cree" value="À utiliser" class="btn btn-bg-primary rounded-0 text-white btn-lg btn-block">
+					<input type="submit" name="cree" value="Changer" class="btn btn-bg-primary rounded-0 text-white btn-lg btn-block">
+				<%end%>
 			</div>
 		<%end%>
 	</div>
@@ -42,9 +47,8 @@
 			    	<div class="col-md-11 truncate-actu">
 		    	<% if t.utilise == true%>
 				    	Cours de changer à utiliser de l'année <%= t.created_at.year%>
-				    
-			    <%else%>
-			    	
+				<%else%>
+			    	<a href="<%= edit_super_admin_tarif_path(t.id)%>" class="btn btn-success">A utiliser</a>
 			    <%end%>
 			    	<a href="<%= super_admin_tarif_path(t.id)%>" class="btn btn-danger" data-method="delete" data-confirm="Voulez-vous enlever ce taux ?">Suprrimer</a>
 			    </div>

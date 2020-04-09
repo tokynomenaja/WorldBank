@@ -59,7 +59,7 @@ Pem.destroy_all
       z15 = Pem.create!(title:"PRIORITÉ 15 : Doter le pays des infrastructures de standing international",engagement_id: 7)
       z16 = Pem.create!(title:"PRIORITÉ 16 : Doter le pays d'infrastructures de transports cohérents à l'émergence",engagement_id: 7)
       z17 = Pem.create!(title:"PRIORITÉ 17 : Promouvoir l'accès au sport et l'épanouissement de la jeunesse",engagement_id: 8)
-      z18 = Pem.create!(title:"PRIORITÉ 18 : Promouvoir la culture pour asseoir l'identité culturelle Malagasyengagement_id:",engagement_id: 8)
+      z18 = Pem.create!(title:"PRIORITÉ 18 : Promouvoir la culture pour asseoir l'identité culturelle Malagasy",engagement_id: 8)
       z19 = Pem.create!(title:"PRIORITÉ 19 : Renforcer l'Identité Nationale",engagement_id: 8)
       z20 = Pem.create!(title:"PRIORITÉ 20 : Densifier le tissu industriel par l'industrialisation régionale par la mise en place de Zones d'Émergence Industrielles",engagement_id: 10)
       z21 = Pem.create!(title:"PRIORITÉ 21 : Développer l'esprit entrepreneurial et d'innovation",engagement_id: 10)

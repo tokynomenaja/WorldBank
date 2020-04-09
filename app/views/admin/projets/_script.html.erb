@@ -18,146 +18,200 @@
 				if(check == false){
 					s<%= ids[rand(0..ids.length-1)]%>.required = true;
 				}
-				console.log('*********************');
-				console.log(check);
-		}
+
+	}
 
 	//Autres bénéficiaires
 	function ajoutBen(){
-			<% 10.times do |x|%>			
-				var hid<%= x%> = document.getElementById('valben<%= x%>');
-				var p<%= x%> = document.getElementById('p<%= x%>');
-			<%end%>
-			var val = document.getElementById('inp').value;
-			if(hid0.value == "" && val != ""){
+		<% 10.times do |x|%>			
+			var hid<%= x%> = document.getElementById('valben<%= x%>');
+			var p<%= x%> = document.getElementById('p<%= x%>');
+		<%end%>
+		var val = document.getElementById('inp').value;
+		if(hid0.value == "" && val != ""){
 
-				p0.style.display = "block";
-				document.getElementById('s0').innerHTML = val;
-				hid0.value = val;
-			}
-			<% for y in 1..9%>
-			else if (hid<%= y%>.value == '' && val != "") {
-				p<%= y%>.style.display = "block";
-				document.getElementById('s<%=y%><%=y%>').innerHTML = document.getElementById('inp').value;
-				hid<%=y%>.value = document.getElementById('inp').value;
-			}
-			<%end%>
+			p0.style.display = "block";
+			document.getElementById('s0').innerHTML = val;
+			hid0.value = val;
 		}
-		document.getElementById("ajout").addEventListener('click',function ()
-			{
-			    ajoutBen();
-			   }  ); 
+		<% for y in 1..9%>
+		else if (hid<%= y%>.value == '' && val != "") {
+			p<%= y%>.style.display = "block";
+			document.getElementById('s<%=y%><%=y%>').innerHTML = document.getElementById('inp').value;
+			hid<%=y%>.value = document.getElementById('inp').value;
+		}
+		<%end%>
+	}
+	document.getElementById("ajout").addEventListener('click',function () {
+		ajoutBen();
+	}  ); 
 
-	
+	function saveMontant(inp) {
+		var nbr = inp.value;
+		var NombreSaisi = "";
+
+		// Enlevez les virgules
+		for (var i = 0; i < nbr.length; i++) {
+			if (nbr[i] != ","){
+				NombreSaisi+= nbr[i];
+			}
+		}
+		inp.value = NombreSaisi;
+	}
+
+	function InputMontantPicker(inp) {
+		var nbr = inp.value;
+
+			var NombreSaisi = "";
+
+			// Enlevez les virgules
+			for (var i = 0; i < nbr.length; i++) {
+				if (nbr[i] != ","){
+					NombreSaisi+= nbr[i];
+				}
+			}
+
+			if (NombreSaisi.length < 4) {
+				inp.value = NombreSaisi
+			}
+			if (NombreSaisi.length == 4) {
+				inp.value = NombreSaisi[0] + "," + NombreSaisi[1] + NombreSaisi[2] + NombreSaisi[3];
+			}
+			if (NombreSaisi.length == 5) {
+				inp.value = NombreSaisi[0] + NombreSaisi[1] + "," + NombreSaisi[2] + NombreSaisi[3] + NombreSaisi[4];
+			}
+			if (NombreSaisi.length == 6) {
+				inp.value = NombreSaisi[0] + NombreSaisi[1] + NombreSaisi[2] + "," + NombreSaisi[3] + NombreSaisi[4] + NombreSaisi[5];
+			}
+			if (NombreSaisi.length == 7) {
+				inp.value = NombreSaisi[0] + "," + NombreSaisi[1] + NombreSaisi[2] + NombreSaisi[3] + "," + NombreSaisi[4] + NombreSaisi[5] + NombreSaisi[6];
+			}
+			if (NombreSaisi.length == 8) {
+				inp.value = NombreSaisi[0] + NombreSaisi[1] + ","  + NombreSaisi[2] + NombreSaisi[3] + NombreSaisi[4] + "," + NombreSaisi[5] + NombreSaisi[6] + NombreSaisi[7];
+			}
+			if (NombreSaisi.length == 9) {
+				inp.value = NombreSaisi[0] + NombreSaisi[1] + NombreSaisi[2] + "," + NombreSaisi[3] + NombreSaisi[4] + NombreSaisi[5] + "," + NombreSaisi[6] + NombreSaisi[7] + NombreSaisi[8];
+			}
+			if (NombreSaisi.length == 10) {
+				inp.value = NombreSaisi[0] + "," + NombreSaisi[1] + NombreSaisi[2] + NombreSaisi[3] + "," + NombreSaisi[4] + NombreSaisi[5] + NombreSaisi[6]+ "," + NombreSaisi[7] + NombreSaisi[8] + NombreSaisi[9];
+			}
+			if (NombreSaisi.length == 11) {
+				inp.value = NombreSaisi[0] + NombreSaisi[1] + ","  + NombreSaisi[2] + NombreSaisi[3] + NombreSaisi[4] + "," + NombreSaisi[5] + NombreSaisi[6] + NombreSaisi[7] + "," + NombreSaisi[8] + NombreSaisi[9] + NombreSaisi[10];
+			}
+			if (NombreSaisi.length >= 12) {
+				inp.value = NombreSaisi[0] + NombreSaisi[1] + NombreSaisi[2] + "," + NombreSaisi[3] + NombreSaisi[4] + NombreSaisi[5] + "," + NombreSaisi[6] + NombreSaisi[7] + NombreSaisi[8] + "," + NombreSaisi[9] + NombreSaisi[10] + NombreSaisi[11];
+			}
+
+	}	
 
 	function check(x){
 
-	//Montant par secteur et Filiere par secteur
+		//Montant par secteur et Filiere par secteur
 
-	    var m = document.getElementById('montant'+x);
-	    if(m.style.display == "block"){
-	        m.style.display = "none";
-	        m.classList.remove('d-flex');
-	    }else{
-	        m.style.display = "block";
-	        m.classList.add('d-flex');
-	    }
+		    var m = document.getElementById('montant'+x);
+		    if(m.style.display == "block"){
+		        m.style.display = "none";
+		        m.classList.remove('d-flex');
+		    }else{
+		        m.style.display = "block";
+		        m.classList.add('d-flex');
+		    }
 
-	//secteur par filiere
+		//secteur par filiere
 
 
-		var secteurChoisi = false;
-	    <%Secteur.all.each do |s|%>
-			var s<%= s.id %> = document.getElementById('s<%= s.id %>')
+			var secteurChoisi = false;
+		    <%Secteur.all.each do |s|%>
+				var s<%= s.id %> = document.getElementById('s<%= s.id %>')
 
-			// Si un sécteur est coché, il y a donc un ou plusieurs sécteurs choisi
-			if (s<%= s.id %>.checked == true) { 
-				secteurChoisi = true;
-			}
+				// Si un sécteur est coché, il y a donc un ou plusieurs sécteurs choisi
+				if (s<%= s.id %>.checked == true) { 
+					secteurChoisi = true;
+				}
 
-			// Si l'utilisateur click le sécteur 'x':
-	        if(x == <%= s.id%>){
-	        	// Chercher toutes les filières qui correspondent au secteur X
-	            <%s.secteur_filieres.each do |sf|%>
-	                var f = document.getElementById('fil'+<%= sf.filiere.id%>);
-	                if (document.getElementById('idfil'+<%= sf.id%>) != null) {
-	                	var idfil = document.getElementById('idfil'+<%= sf.id%>);
-	                }
-	                // si le secteur X est décoché, décocher et cacher toutes les filières qui correspondent à X
-	                if(f.style.display == "block"){
-	                    f.style.display = "none";
-	                    if (idfil != null) {
-	                    	idfil.checked = false;
-	                    }
-	                // si le secteur X est coché, afficher toutes les filières qui correspondent à X
-	                }else{
-	                    f.style.display = "block";
-	                }
-	            <%end%>
-	        }
-	    <%end%>
+				// Si l'utilisateur click le sécteur 'x':
+		        if(x == <%= s.id%>){
+		        	// Chercher toutes les filières qui correspondent au secteur X
+		            <%s.secteur_filieres.each do |sf|%>
+		                var f = document.getElementById('fil'+<%= sf.filiere.id%>);
+		                if (document.getElementById('idfil'+<%= sf.id%>) != null) {
+		                	var idfil = document.getElementById('idfil'+<%= sf.id%>);
+		                }
+		                // si le secteur X est décoché, décocher et cacher toutes les filières qui correspondent à X
+		                if(f.style.display == "block"){
+		                    f.style.display = "none";
+		                    if (idfil != null) {
+		                    	idfil.checked = false;
+		                    }
+		                // si le secteur X est coché, afficher toutes les filières qui correspondent à X
+		                }else{
+		                    f.style.display = "block";
+		                }
+		            <%end%>
+		        }
+		    <%end%>
 
-	//Forme d'appui par secteur
-	    <%Formesecteur.all.each do |fs|%>
-			var fs = document.getElementById('forme'+<%= fs.forme.id%>);
-			fs.style.display = "none";
-		<%end%>
-
-	    <%Secteur.all.each do |s|%>
-	    	// Si l'utilisateur click le sécteur 'x':
-	        if(x == <%= s.id%>){
-	        	// Chercher toutes les formes d'appui qui correspondent au secteur X
-	            <%s.formesecteurs.each do |fs|%>
-	                var fs = document.getElementById('form'+<%= fs.forme.id%>);
-	                if (document.getElementById('idform'+<%= fs.id%>) != null) {
-	                	var idform = document.getElementById('idform'+<%= fs.id%>);
-	                }
-	                // si le secteur X est décoché, décocher et cacher toutes les formes d'appui qui correspondent à X
-	                if(fs.style.display == "block"){
-	                    fs.style.display = "none";
-	                    if (idform != null) {
-	                    	idform.checked = false;
-	                    }
-	                // si le secteur X est coché, afficher toutes les formes d'appui qui correspondent à X
-	                }else{
-	                    fs.style.display = "block";
-	                }
-	            <%end%>
-	        }
-	    <%end%>
-
-	  	// Si un ou plusieurs secteur(s) sont cochés
-	    if (secteurChoisi == true) {
-	    	// ne pas afficher toutes les filières
-	    	<%Filiere.order(:title).all.each do |fili|%>
-				var fl = document.getElementById('fl'+<%= fili.id%>);
-				fl.style.display = "none";
+		//Forme d'appui par secteur
+		    <%Formesecteur.all.each do |fs|%>
+				var fs = document.getElementById('forme'+<%= fs.forme.id%>);
+				fs.style.display = "none";
 			<%end%>
 
-	    	// ne pas afficher toutes les formes
-			<%Forme.order(:title).all.each do |form|%>
-			var forme = document.getElementById('forme'+<%= form.id%>);
-				forme.style.display = "none";
-			<%end%>
+		    <%Secteur.all.each do |s|%>
+		    	// Si l'utilisateur click le sécteur 'x':
+		        if(x == <%= s.id%>){
+		        	// Chercher toutes les formes d'appui qui correspondent au secteur X
+		            <%s.formesecteurs.each do |fs|%>
+		                var fs = document.getElementById('form'+<%= fs.forme.id%>);
+		                if (document.getElementById('idform'+<%= fs.id%>) != null) {
+		                	var idform = document.getElementById('idform'+<%= fs.id%>);
+		                }
+		                // si le secteur X est décoché, décocher et cacher toutes les formes d'appui qui correspondent à X
+		                if(fs.style.display == "block"){
+		                    fs.style.display = "none";
+		                    if (idform != null) {
+		                    	idform.checked = false;
+		                    }
+		                // si le secteur X est coché, afficher toutes les formes d'appui qui correspondent à X
+		                }else{
+		                    fs.style.display = "block";
+		                }
+		            <%end%>
+		        }
+		    <%end%>
 
-		// Si aucun sécteur n'est coché
-	    }else{
-	    	// Affiche toutes les filieres
-		    <%Filiere.order(:title).all.each do |fili|%>
-				var fl = document.getElementById('fl'+<%= fili.id%>);
-				var fil = document.getElementById('fil'+<%= fili.id%>);
-				fl.style.display = "block";
-				fil.style.display = "none";
-			<%end%>
+		  	// Si un ou plusieurs secteur(s) sont cochés
+		    if (secteurChoisi == true) {
+		    	// ne pas afficher toutes les filières
+		    	<%Filiere.order(:title).all.each do |fili|%>
+					var fl = document.getElementById('fl'+<%= fili.id%>);
+					fl.style.display = "none";
+				<%end%>
 
-			// Afficher tous les formes
-			<%Forme.order(:title).all.each do |form|%>
-			var forme = document.getElementById('forme'+<%= form.id%>);
-			var form = document.getElementById('form'+<%= form.id%>);
-				forme.style.display = "block";
-				form.style.display = "none";
-			<%end%>
-	    }
+		    	// ne pas afficher toutes les formes
+				<%Forme.order(:title).all.each do |form|%>
+				var forme = document.getElementById('forme'+<%= form.id%>);
+					forme.style.display = "none";
+				<%end%>
+
+			// Si aucun sécteur n'est coché
+		    }else{
+		    	// Affiche toutes les filieres
+			    <%Filiere.order(:title).all.each do |fili|%>
+					var fl = document.getElementById('fl'+<%= fili.id%>);
+					var fil = document.getElementById('fil'+<%= fili.id%>);
+					fl.style.display = "block";
+					fil.style.display = "none";
+				<%end%>
+
+				// Afficher tous les formes
+				<%Forme.order(:title).all.each do |form|%>
+				var forme = document.getElementById('forme'+<%= form.id%>);
+				var form = document.getElementById('form'+<%= form.id%>);
+					forme.style.display = "block";
+					form.style.display = "none";
+				<%end%>
+		    }
 
 	}
 

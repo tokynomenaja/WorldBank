@@ -534,7 +534,7 @@
                 </div>
                 <div class="m-2 bg-dark compt-item border text-color">
                   <p class="border-bottom pt-2 pb-2">Montant total des projets: </p>
-                  <p class="centrage"><%= @montant_total %> d'USD</p>
+                  <p class="centrage"><%= @montant_total %> USD</p>
                 </div>
                 <div class="m-2 text-white background compt-item border">
                   <p class="border-bottom pt-2 pb-2">Nombre de secteurs couverts : </p>
@@ -559,7 +559,7 @@
               </div>
               <div class="m-2 bg-dark compt-item border text-color">
                 <p class="border-bottom pt-2 pb-2">Montant total des projets : </p>
-                <p class="centrage"><%= @montant_total %> d'USD</p>
+                <p class="centrage"><%= @montant_total %> USD</p>
               </div>
               <div class="m-2 text-white background compt-item border">
                 <p class="border-bottom pt-2 pb-2">Nombre de secteurs couverts : </p>
@@ -575,25 +575,25 @@
           <div class="map" id="map">
             <div class="map__img">
               <% if current_user %> 
-              <% if current_user.is_consultant == true || current_user.is_consultant == false || current_user.is_super_admin == true || current_user.is_admin == true%>
-              <% Zone.all.each do |zone| %>
-              <a class="region r-<%= zone.id %>">
-                <div data-toggle="modal" data-target="#exampleModalLong<%= zone.id %>">
-                  <div><%= zone.title%></div>
-                  <div>
-                    <div class="rond mx-auto text-center"><%= zone.projets.where(validation: true).count%></div>
+                <% if current_user.is_consultant == true || current_user.is_consultant == false || current_user.is_super_admin == true || current_user.is_admin == true%>
+                <% Zone.all.each do |zone| %>
+                <a class="region r-<%= zone.id %>">
+                  <div data-toggle="modal" data-target="#exampleModalLong<%= zone.id %>">
+                    <div><%= zone.title%></div>
+                    <div>
+                      <div class="rond mx-auto text-center"><%= zone.projets.where(validation: true).count%></div>
+                    </div>
                   </div>
-                </div>
-              </a>
-              <% end %>
-              <% end %>
+                </a>
+                <% end %>
+                <% end %>
               <% else %>
               <% Zone.all.each do |zone| %>
               <a class="region r-<%= zone.id %>" href="<%= new_user_session_path%>">
                 <div>
                   <div><%= zone.title%></div>
                   <div>
-                    <div class="rond mx-auto text-center"><%= zone.projets.where(validation: true).count%></div>
+                    <div class="rond mx-auto text-center">0</div>
                   </div>
                 </div>
               </a>

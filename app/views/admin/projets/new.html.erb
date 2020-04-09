@@ -20,7 +20,7 @@
 			</a>
 			<div class="mt-2">
 				<div class="card card-body">
-					<textarea name="objectif_generale_du_projet" rows="10" id="comment_body" class="form-control p-2" onkeyup="checkWordLen(this);" required></textarea>
+					<textarea name="objectif_generale_du_projet" rows="10" id="comment_body" class="form-control p-2" required></textarea>
 					<p id="charlimit"><span class="words-left">150 mots maximum</span></p>
 				</div>
 			</div>
@@ -54,7 +54,7 @@
 
 		<div class="container mb-2">
 			<a class="table">
-				Partenaires d'implémentations
+				Partenaire d'implémentation
 			</a>
 				<div class="mt-2">
 				<div class="card card-body">
@@ -128,7 +128,7 @@
 					<h6 class="table">Montant pour le secteur :</h6>
 					<% Secteur.all.each do |s|%>
 						<div class="form-control pr-0" id="montant<%=s.id%>" style="display: none;">
-							<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title%>" class="border-0">
+							<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title%>" class="border-0" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)">
 							<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset"%>
 						</div>
 					<%end%>

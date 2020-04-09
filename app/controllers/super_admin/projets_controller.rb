@@ -4,6 +4,7 @@ class SuperAdmin::ProjetsController < ApplicationController
 
   def index
   	@projets = Projet.where(validation: false).order(:id).page(params[:page]).per(9)
+    @projets_valides = Projet.where(validation: true).order(:id).page(params[:page]).per(9)
   end
 
   def show
@@ -13,7 +14,7 @@ class SuperAdmin::ProjetsController < ApplicationController
   def update
   	@projet = Projet.find(params[:id])
    	@projet.update(validation: true)
-   	redirect_to super_admin_projets_path
+   	redirect_to super_admin_projets_path, success: "Projet validé"
   end
 
   def destroy
