@@ -69,6 +69,7 @@ gem 'devise'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'better_errors'
 gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 gem 'mailjet'
 gem 'dotenv-rails'
 

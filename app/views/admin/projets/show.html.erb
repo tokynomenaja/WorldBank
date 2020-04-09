@@ -16,7 +16,7 @@
 </header>
   <div class="logo">
     <div class="pic">
-      <div class="imge-rep d-flex align-items-center">
+      <div class="imge-rep d-flex align-items-center justify-content-center">
         <%if @projet.ptf.image_url%>
           <img src="/<%= @projet.ptf.image_url%>">
         <%end%>
@@ -168,10 +168,12 @@
         <div class="col-md-6 list">
           <p class="mb-3"><span class="attr">Nature de l'appui : </span><%=@projet.appui.title%></p>
           <p class="mb-3"><span class="attr">Début : </span><%=@projet.debut_du_projet.year%> &nbsp;&nbsp;&nbsp;&nbsp;<span class="attr">Fin : </span><%=@projet.fin.year%></p>
-          <p class="mb-3"><span class="attr">Alignement aux priorités du plan Emergence de Madagascar : </span><% @projet.pemprojets.each do |p|%>
-                <p><%=p.pem.title%></p>
-            <%end%>
-
+          <p><span class="attr">Alignement aux priorités du plan Emergence de Madagascar : </span></p>
+            <div class="mb-3">
+              <% @projet.pemprojets.each do |p|%>
+                  <p><%=p.pem.title%></p>
+              <%end%>
+            </div>
           <%if @projet.siteweb == " "%>
             <p class="mb-3"><span class="attr">Site web : </span>
                 <span class="word">
