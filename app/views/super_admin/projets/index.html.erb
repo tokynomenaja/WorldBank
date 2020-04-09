@@ -1,7 +1,10 @@
+	<div class="container sans-head">
+		<h3 class="text-center">Touts les projets</h3>
+	</div>
 <%if @projets.count == 0 %>
 	<div class="container sans-head mb-5">
 		<div class="text-center text-muted mt-4 mb-4">
-			<p> Rien à valider !!</p>
+			<p> Rien à valider </p>
 		</div>
 	</div>
 
@@ -9,7 +12,7 @@
 
 <div class="container sans-head mb-5">
 	<div class="text-center text-muted mt-4 mb-4 ">
-		<p> Projets en attente de validation !!</p>
+		<p> Projets en attente de validation </p>
 	</div>
 	<div class="row justify-content-center">
 		<% @projets.each do |p|%>
