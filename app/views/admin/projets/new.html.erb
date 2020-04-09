@@ -3,7 +3,7 @@
     </div>
 </header>
 <%= form_tag url_for(action: 'create'),method:'post', class:'form', multipart: true do%>
-	<div class="mt-4 mb-4">
+	<div class="mt-4 mb-4" onmouseover ="verificationDate()">
 		<div class="container">
 			<div class=" row mb-2">
 				<div class="col-6">
@@ -104,7 +104,6 @@
 				</div>
 				</div>
 		</div>
-
 
 		<div class="container mb-2">
 			<a class="table">
