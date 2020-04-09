@@ -64,7 +64,7 @@
 		    		IGA : <%=@users["#{x}".to_i].organisme.iga.title%></p>
 		    	<%end%>
 		    <%else%>
-		    	<p>Autres</p>
+		    	<p>Organisme : Autre</p>
 		    <%end%>
 		</p> 
         	<%if @users["#{x}".to_i].is_admin == true%>
@@ -86,6 +86,7 @@
 <%end%>
 
 <div class="container text-c">
+	<h4	>Listes des comptes en attente de validation</h4>
 	<%if @users_en_attente.count == 0%>
 		<div class="text-center text-muted mt-4 mb-4">
 			Aucun pour le moment
@@ -93,18 +94,18 @@
 	<% else %>
 		<div class="d-flex justify-content-center align-items-center table-dark">
 			<div class="col-1 text-center same">
-				id
+				<p>Id</p>
 			</div>
 			<div class="col-4 text-center same">
-				email
+				<p>Email</p>
 			</div>
 			<div class="col-4 text-center same">
 				<div class="w-100 d-flex justify-content-around h-100 align-items-center"> 
-					Valider en tant que
+					<p>Valider en tant que</p>
 				</div>
 			</div>
 			<div class="col-3 text-center same">
-				Action
+				<p>Action</p>
 			</div>
 		</div>
 		<% @users_en_attente.each do |u|%>

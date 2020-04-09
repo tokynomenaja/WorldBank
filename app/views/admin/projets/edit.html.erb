@@ -125,12 +125,12 @@
 				<div class="col-md-4">
 					<h6 class="table">Début</h6>
 					<input type="text" id="selectionDebut" placeholder="mm/aaaa" class="form-control" required="true" value="<%= @projet.debut_du_projet.year%>">
-					<input type="hidden" id="selectionDebutValue" placeholder="mm/aaaa" class="form-control" required="true" name="debut_du_projet">
+					<input type="hidden" id="selectionDebutValue" placeholder="mm/aaaa" class="form-control" required="true" name="debut_du_projet" value="<%= @projet.debut_du_projet%>">
 				</div>
 				<div class="col-md-4 pr-0">			
 					<h6 class="table">Fin</h6>
 					<input type="text" class="form-control" placeholder="mm/aaaa" required="true" id="selectionFin" value="<%= @projet.fin.year%>">
-					<input type="hidden" name="fin" id="selectionFinValue" class="form-control" placeholder="mm/aaaa" required="true" name="fin">
+					<input type="hidden" name="fin" id="selectionFinValue" class="form-control" placeholder="mm/aaaa" required="true" name="fin" value="<%= @projet.fin%>">
 				</div>
 			</div>
 		</div>
