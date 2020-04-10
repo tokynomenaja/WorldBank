@@ -6,10 +6,11 @@
 				<label for="nom" class="mr-2 table">Titre </label>
 				<input type="text" name="title" id="nom" placeholder="Titre" class="form-control" required="true">
 			</div>
-			<div class="mb-4">				
+			<div class="mb-4">
+							
 				<span class="mr-2 table">Documents :</span>
 				<%= file_field_tag :files, name: "files[]", required: true, multiple: true, class: 'toggleclass', id: :'document' %>
-				<span class="btn btn-secondary" id="simulateur">Ajouter des fichiers</span>
+				<span class="btn btn-secondary" id="simulateur" >Ajouter des fichiers </span>
 			</div>
 			<div class="mb-4">
 				<input type="submit" name="cree" value="Publier" class="btn btn-bg-primary rounded-0 text-white btn-lg btn-block">
