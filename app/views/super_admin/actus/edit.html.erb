@@ -1,22 +1,18 @@
 
 <%= form_tag url_for(action: 'update'),method:'put', class:'form', multipart: true do%>
-
 	<div class="container sans-head">
-			<div class=" row mb-2">
-				<div class="col-6">
-					<div>
-						<label for="nom" class="mr-2 table">Titre </label>
-					</div>
-					<input type="text" name="title" id="nom" placeholder="title" class="form-control" required="true" value="<%=@actu.title%>">
-				</div>
-			</div>
+		<div>
+			<label for="nom" class="mr-2 table">Titre </label>
+			<input type="text" name="title" id="nom" placeholder="title" class="form-control" required="true" value="<%=@actu.title%>">
 		</div>
-        
+	</div>
+
 	<div class="container mb-2 mt-4">
-			<span class="mr-2 table">Documents :</span>
-			
-			<p><%= file_field_tag :files, name: "files[]", required: true, multiple: true %></p> <br>
-			<p><input type="submit" name="cree" value="Publier" class="sc-eerKOB cfnPHQ"></p>
-		
+		<span class="mr-2 table">Documents :</span>
+		<%= file_field_tag :files, name: "files[]", required: true, multiple: true, class: 'toggleclass', id: :'document'  %>
+		<span class="btn btn-secondary" id="simulateur">Ajouter des fichiers</span>
 	</div>		
+	<div class="container mt-4">
+		<input type="submit" name="cree" value="Publier" class="btn btn-bg-primary rounded-0 text-white btn-lg btn-block">
+	</div>
 <%end%>
