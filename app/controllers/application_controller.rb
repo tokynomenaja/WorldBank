@@ -15,16 +15,12 @@ class ApplicationController < ActionController::Base
 		if Ptf.find_by(title: @organism)
 			@ptf = Ptf.find_by(title: @organism)
 			Organisme.create(user_id: User.last.id, ptf_id: @ptf.id)
-			puts "*" * 100
 			puts @ptf
-			puts "*" * 100
 		end
 		if Iga.find_by(title: @organism)
 			@iga = Iga.find_by(title: @organism)
 			Organisme.create(user_id: User.last.id, iga_id: @iga.id)
-			puts "*" * 100
 			puts @iga
-			puts "*" * 100
 		end
 
 	end
