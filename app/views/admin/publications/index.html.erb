@@ -1,10 +1,10 @@
 <div class="container sans-head">
-	<div class="row justify-content-center">
-		<div>
-		<h3 style="color: #52c39b;">Mes publications</h3>
+		<div class="mb-4">
+		<h3 style="color: #52c39b; text-align: center;">Mes publications</h3>
 		</div>
+	<div class="row justify-content-center">
 		<% @pubs.each do |p|%>
-			<div class="col-md-4 card mx-1 position-relative">
+			<div class="col-md-4 card mx-1 position-relative ">
 				<div class="card-body">
 					 	 	<div class="card-title">
 						    <h5 class="primary-color"><%= p.title %></h5>
