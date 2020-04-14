@@ -102,7 +102,7 @@
 							<% if @sects %> 
 						 		<% if @sects.include? s %>
 						 			<% if @montants%>
-						 			<% if @montants.include? s%>
+						 			<% if @montants.include? s.montants%>
 
 									<div class="form-control pr-0" id="montant<%=s.id%>" style="display: block;">
 										<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title%>" value="<%= s.montants.find_by(projet_id: @projet.id).price%>" class="border-0" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)">
@@ -135,12 +135,12 @@
 				</div>
 				<div class="col-md-4">
 					<h6 class="table">Début</h6>
-					<input type="text" id="selectionDebut" value="<%= @projet.debut_du_projet.year%>" class="form-control" required="true" >
+					<input type="text" id="selectionDebut" value="<%= @projet.debut_du_projet%>" class="form-control" required="true" >
 					<input type="hidden" id="selectionDebutValue" value="<%= @projet.debut_du_projet%>" class="form-control" required="true" name="debut_du_projet">
 				</div>
 				<div class="col-md-4 pr-0">			
 					<h6 class="table">Fin</h6>
-					<input type="text" class="form-control" value="<%= @projet.fin.year%>" required="true" id="selectionFin">
+					<input type="text" class="form-control" value="<%= @projet.fin%>" required="true" id="selectionFin">
 					<input type="hidden" name="fin" id="selectionFinValue" class="form-control" value="<%= @projet.fin%>" required="true" name="fin">
 				</div>
 			</div>
