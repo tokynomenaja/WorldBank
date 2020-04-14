@@ -131,7 +131,6 @@ class Admin::ProjetsController < ApplicationController
 
           if @project.save
             @project.files.attach(params[:files])
-            @project.picture.attach(params[:picture])
             redirect_to admin_projets_path, success: "Projet créé avec succès. Un email de validation vous a été envoyé, veuillez consulter votre boite de reception"
           else
             render :new
@@ -189,6 +188,12 @@ class Admin::ProjetsController < ApplicationController
     @zones = []
     @zoneprojets.each do |zp|
       @zones << zp.zone
+    end
+
+    @pemprojets = Pemprojet.where(projet_id: @projet.id)
+    @pems = []
+    @pemprojets.each do |ppro|
+      @pems << ppro.pem
     end
 
   end
@@ -275,6 +280,14 @@ class Admin::ProjetsController < ApplicationController
         Zoneprojet.create(projet_id: @projet.id, zone_id: params[:"zone_#{x}"])
       end
     end
+
+    @projet.pemprojets.destroy_all
+    for x in 0..Pem.all.count-1
+      if params[:"pem_#{x}"]
+        Pemprojet.create(projet_id: @projet.id, pem_id: params[:"pem_#{x}"])
+      end
+    end
+
     redirect_to  admin_projet_path, success: "Modification terminée"
   else
     render :edit     

@@ -319,6 +319,37 @@
 					</div>
 				</div>
 			</div>
+			<div class="container mb-2">
+				<a class="table">
+					Alignement aux priorités du Plan Emergence de Madagascar
+				</a>
+				<div class="mt-2">
+					<div class="card card-body">
+						<div class="row">
+							<% Engagement.all.order(:id).each_with_index do |c,x| %>
+								<div class="col-md-12">
+									<p class="mt-2 mb-0">
+										<%= c.title%> 
+									</p>
+									<%c.pems.each do |p|%>
+										<div class="ml-4">
+											<% if @pems%>
+										 		<% if @pems.include? p %>
+													<%=check_box_tag("pem_#{x}",p.id,checked: true) %> 
+													<%= p.title %>
+												<%else%>
+													<%=check_box_tag("pem_#{x}",p.id) %> 
+													<%= p.title %>
+												<%end%>
+											<%end%>
+										</div>
+									<%end%>
+								</div>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
 
 			<div class="container mb-2">
 				<a class="table">

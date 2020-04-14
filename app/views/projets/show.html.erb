@@ -186,7 +186,7 @@
             <p class="mb-3"><span class="attr">Début : </span><%=@projet.debut_du_projet.year%> &nbsp;&nbsp;&nbsp;&nbsp;
             <span class="attr">Fin : </span><%=@projet.fin.year%></p>
           <%end%>
-          <%if @projet.pemprojets.count > 1%>
+          <%if @projet.pemprojets.count >= 1%>
           <p><span class="attr">Alignement aux priorités du plan Emergence de Madagascar : </span></p>
             <div class="mb-3">
               <% @projet.pemprojets.each do |p|%>
