@@ -6,7 +6,7 @@ class SuperAdmin::PublicationsController < ApplicationController
 
 	    	if @pub.save
 	    		@pub.files.attach(params[:files])
-	            redirect_to publications_path, success: "Publication créée avec succès"
+	            redirect_to super_admin_publications_path, success: "Publication créée avec succès"
 	        else
 	            render :new
 
@@ -18,9 +18,11 @@ class SuperAdmin::PublicationsController < ApplicationController
 	def update
 		@pub = Publication.find(params[:id])
 
-    	if @pub.update(title: params[:title], description: params[:description],user_id: current_user.id)
-       		redirect_to super_admin_publications_path, success: "Modification terminéé"
-	   	end
+	    	if @pub.update(title: params[:title], description: params[:description],files: params[:files],user_id: current_user.id)
+	       		redirect_to super_admin_publication_path, success: "Modification terminéé"
+		   	end
+
+		end
 		
 	end 
 	def destroy
@@ -30,7 +32,7 @@ class SuperAdmin::PublicationsController < ApplicationController
 		
 	end
 	def index
-		@pubs = Publication.order(:id).page(params[:page]).per(9)
+		@pubs = Publication.where(user_id: current_user.id).order(id: :desc).page(params[:page]).per(9)
 	end
 	def show
 		@pub = Publication.find(params[:id])

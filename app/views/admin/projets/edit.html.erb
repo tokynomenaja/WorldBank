@@ -100,8 +100,11 @@
 					<% Secteur.all.each do |s|%>
 							<% if @sects %> 
 						 		<% if @sects.include? s %>
+						 			<% if @montants%>
+						 			<% if @montants.include? s%>
+
 									<div class="form-control pr-0" id="montant<%=s.id%>" style="display: block;">
-										<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title%>" value="<%= s.montants.find_by(projet_id: @projet.id).price%>" class="border-0">
+										<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title%>" value="<%= s.montants.find_by(projet_id: @projet.id).price%>" class="border-0" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)">
 										<select name="unite_id<%= s.id%>" class="text-center border-left unit pl-2 btn-reset">
 											<% Unite.all.each do |u|%>
 												<%if u == s.montants.find_by(projet_id: @projet.id).unite %>
@@ -112,9 +115,16 @@
 											<%end%>
 										</select>
 									</div>
+									<%else%>
+										<div class="form-control pr-0" id="montant<%=s.id%>" style="display: none;">
+										<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title%>" class="border-0" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)">
+										<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset"%>
+										</div>
+									<%end%>
+									<%end%>
 								<%else%>
 									<div class="form-control pr-0" id="montant<%=s.id%>" style="display: none;">
-										<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title%>" class="border-0">
+										<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title%>" class="border-0" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)">
 										<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset"%>
 									</div>
 								<%end%>
