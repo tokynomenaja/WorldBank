@@ -12,6 +12,7 @@ def index
        @secteur_1 = ""
        @filiere_1 = ""
        @fin_1 = ""
+       @results = ""
 
   #recherche controller globale(titre du projet)
 

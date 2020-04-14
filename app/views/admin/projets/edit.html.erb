@@ -3,8 +3,8 @@
       
     </div>
 </header>
-<div class="mt-4 mb-4">
-	<%= form_tag url_for(action: 'update'),method:'put', class:'form', multipart: true do%>
+<%= form_tag url_for(action: 'update'),method:'put', class:'form', multipart: true do%>
+	<div class="mt-4 mb-4" onmouseover ="verificationDate()">
 		<div class="container">
 			<div class="row mb-2">
 				<div class="col-6">
@@ -135,13 +135,13 @@
 				</div>
 				<div class="col-md-4">
 					<h6 class="table">Début</h6>
-					<input type="text" id="selectionDebut" placeholder="mm/aaaa" class="form-control" required="true" value="<%= @projet.debut_du_projet.year%>">
-					<input type="hidden" id="selectionDebutValue" placeholder="mm/aaaa" class="form-control" required="true" name="debut_du_projet" value="<%= @projet.debut_du_projet%>">
+					<input type="text" id="selectionDebut" placeholder="mm/aaaa" class="form-control" required="true" >
+					<input type="hidden" id="selectionDebutValue" placeholder="mm/aaaa" class="form-control" required="true" name="debut_du_projet">
 				</div>
 				<div class="col-md-4 pr-0">			
 					<h6 class="table">Fin</h6>
-					<input type="text" class="form-control" placeholder="mm/aaaa" required="true" id="selectionFin" value="<%= @projet.fin.year%>">
-					<input type="hidden" name="fin" id="selectionFinValue" class="form-control" placeholder="mm/aaaa" required="true" name="fin" value="<%= @projet.fin%>">
+					<input type="text" class="form-control" placeholder="mm/aaaa" required="true" id="selectionFin">
+					<input type="hidden" name="fin" id="selectionFinValue" class="form-control" placeholder="mm/aaaa" required="true" name="fin">
 				</div>
 			</div>
 		</div>
@@ -353,6 +353,6 @@
 				<%end%>
 				<a href="<%= admin_projet_path(@projet.id)%>" class="btn btn-secondary">Annuler la modification</a>
 			</div>		
-	<% end %>
-</div>
+	</div>
+<% end %>
 <%= render partial: "/admin/projets/script.html.erb"%>
