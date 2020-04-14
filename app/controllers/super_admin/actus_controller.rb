@@ -17,6 +17,7 @@ class SuperAdmin::ActusController < ApplicationController
 
   def new
     @actus = Actu.new
+    @actus = Actu.all
   end
 
   def index

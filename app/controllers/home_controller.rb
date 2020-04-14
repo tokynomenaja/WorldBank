@@ -44,11 +44,11 @@ def index
 
       if params[:montant]
          if params[:montant] && params[:montant] != ""
+     
           if params[:montant] == 1
-            redirect_to(root_path)
-    
+            redirect_to(root_path)   
         else  
-         @params_montant = params[:montant] 
+                @params_montant = params[:montant] 
                 @pro = Projet.all.where(validation: true)
                 @m1 = params[:montant][0].to_i
                 @m2 = params[:montant][1].to_i
@@ -60,7 +60,7 @@ def index
                   end
                 end
               end
-     
+      
     end 
   end
 end

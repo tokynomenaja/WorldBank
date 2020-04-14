@@ -24,7 +24,7 @@ class SuperAdmin::PublicationsController < ApplicationController
 
 		end
 		
-	end 
+	
 	def destroy
 	  @pub = Publication.find(params[:id])
 	  @pub.destroy
