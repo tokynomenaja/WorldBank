@@ -16,6 +16,7 @@ class SuperAdmin::ActusController < ApplicationController
   end
 
   def new
+
     @actus = Actu.where(user_id: current_user.id).order(id: :desc).page(params[:page]).per(9)
     @actu = Actu.new
   end

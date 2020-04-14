@@ -24,9 +24,7 @@ class SuperAdmin::PublicationsController < ApplicationController
 	       		redirect_to super_admin_publication_path, success: "Modification terminéé"
 		   	end
 
-		
 	end 
-
 	def destroy
 	  @pub = Publication.find(params[:id])
 	  @pub.destroy

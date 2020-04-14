@@ -273,8 +273,8 @@
             <div class="multi-range-slider">
               <input type="range" id="input-left" min="0" max="5" step="1" value="0">
               <input type="range" id="input-right" min="0" max="5" step="1" value="5">
-              <input type="hidden" name="montant[]" id="il">
-              <input type="hidden" name="montant[]" id="ir">
+              <input type="hidden" name="montant[]" id="il" >
+              <input type="hidden" name="montant[]" id="ir" >
               <div class="slider">
                 <div class="track"></div>
                 <div class="range"></div>
@@ -518,6 +518,13 @@
                 <% @d.each do |f| %>  
                   <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                     <%= link_to "#{f.nom_du_projet}", projet_path(f.id), target: 'blank', class: 'text-muted reshover' %>
+                  </div>  
+                <%end%>
+              <%end%>
+               <%if @r%>
+                <% @r.each do |r| %>  
+                  <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                    <%= link_to "#{r.nom_du_projet}", projet_path(r.id), target: 'blank', class: 'text-muted reshover' %>
                   </div>  
                 <%end%>
               <%end%>
