@@ -1,2 +1,32 @@
-<h1>SuperAdmin::Tarifs#index</h1>
-<p>Find me in app/views/super_admin/tarifs/index.html.erb</p>
+<div class="container-actu mx-auto row mb-5 sans-head">
+	<div class="col-md">
+		<h5 class="mb-4 text-center">Taux de change</h5>
+	    <% @tarifs.each do |t|%>
+		    <div class="row align-items-center no-gutters border-bottom pb-2 pt-2">
+			    <div class="col-md-11 truncate-actu">
+			    	<%= t.reference %> 
+			    </div>
+			     <div class="col-md-11 truncate-actu">
+			    	<%= t.valeur %> 
+			    </div>
+			     <div class="col-md-11 truncate-actu">
+			    	<%= t.unite.nom %> 
+			    </div>
+			    	<div class="col-md-11 truncate-actu">
+		    	<% if t.utilise == true%>
+				    	Cours de changer à utiliser de l'année <%= t.created_at.year%>
+				<%else%>
+			    	<a href="<%= edit_super_admin_tarif_path(t.id)%>" class="btn btn-success">A utiliser</a>
+			    <%end%>
+			    	<a href="<%= super_admin_tarif_path(t.id)%>" class="btn btn-danger" data-method="delete" data-confirm="Voulez-vous enlever ce taux ?">Suprrimer</a>
+			    </div>
+			    <div class="col-md-1 text-center">
+			    	<a href="<%= edit_super_admin_tarif_path(t.id)%>" class="table">Changer</a>
+			    </div>
+		    </div>
+		<%end%>	
+	</div>
+	<div class="text-center">
+		<%= paginate @tarifs %>
+	</div>
+</div>

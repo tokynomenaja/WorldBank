@@ -191,6 +191,10 @@
         </div>
     </div>
     <div class="text-right">
-      <a href="<%= super_admin_projet_path(@projet.id)%>" class="sc-eerKOB cfnPHQ bold sear" data-method="put">Valider</a>
-      <a href="<%= super_admin_projet_path(@projet.id)%>" class="btn btn-danger" data-confirm="Voulez-vous refusez ce projet ?">Annuler</a>
+      <%if @projet.validation != true%>
+        <a href="<%= super_admin_projet_path(@projet.id)%>" class="sc-eerKOB cfnPHQ bold sear" data-method="put">Valider</a>
+        <a href="<%= super_admin_projet_path(@projet.id)%>" class="btn btn-danger" data-confirm="Voulez-vous refusez ce projet ?">Annuler</a>
+      <%else%>
+        <span class="sc-eerKOB cfnPHQ bold sear">Projet validé</span>
+      <%end%>
     </div>

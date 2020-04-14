@@ -1,10 +1,12 @@
 class SuperAdmin::TarifsController < ApplicationController
 	before_action :authenticate_user!
   def index
+    @tarifs = Tarif.all.order(id: :desc).page(params[:page]).per(9)
   end
 
   def edit
     @tarif = Tarif.find(params[:id])
+    @tarifs = Tarif.all.order(id: :desc).page(params[:page]).per(9)
   end
 
   def update
@@ -24,6 +26,7 @@ class SuperAdmin::TarifsController < ApplicationController
 
   def new
   	@tarif = Tarif.new
+    @tarifs = Tarif.all.order(id: :desc).page(params[:page]).per(9)
   end
 
   def create

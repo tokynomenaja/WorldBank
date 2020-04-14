@@ -12,9 +12,11 @@ class SuperAdmin::PublicationsController < ApplicationController
 
 	        end  
 	end
+
 	def edit
 	   @pub = Publication.find(params[:id]) 	
-	end    
+	end 
+
 	def update
 		@pub = Publication.find(params[:id])
 
@@ -22,18 +24,20 @@ class SuperAdmin::PublicationsController < ApplicationController
 	       		redirect_to super_admin_publication_path, success: "Modification terminéé"
 		   	end
 
-		end
 		
 	end 
+
 	def destroy
 	  @pub = Publication.find(params[:id])
 	  @pub.destroy
 	  redirect_to super_admin_publications_path
 		
 	end
+
 	def index
 		@pubs = Publication.where(user_id: current_user.id).order(id: :desc).page(params[:page]).per(9)
 	end
+	
 	def show
 		@pub = Publication.find(params[:id])
 		

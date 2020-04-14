@@ -6,7 +6,7 @@ class SuperAdmin::ActusController < ApplicationController
 
       if @actu.save
        @actu.files.attach(params[:files])
-       redirect_to super_admin_actus_path, success: "Actualité créée avec succès"
+       redirect_to new_super_admin_actu_path, success: "Actualité créée avec succès"
      else
        render :new
 
@@ -16,7 +16,8 @@ class SuperAdmin::ActusController < ApplicationController
   end
 
   def new
-    @actus = Actu.new
+    @actus = Actu.where(user_id: current_user.id).order(id: :desc).page(params[:page]).per(9)
+    @actu = Actu.new
   end
 
   def index
@@ -29,6 +30,7 @@ class SuperAdmin::ActusController < ApplicationController
 
   def edit
     @actu = Actu.find(params[:id])
+    @actus = Actu.where(user_id: current_user.id).order(id: :desc).page(params[:page]).per(9)
   end
 
   def update

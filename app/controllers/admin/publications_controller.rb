@@ -20,11 +20,11 @@ class Admin::PublicationsController < ApplicationController
 	end
 
 	def update
-    @pub = Publication.find(params[:id])
+	    @pub = Publication.find(params[:id])
 
-    if @pub.update(title: params[:title], description: params[:description],files: params[:files], user_id: current_user.id)
-       redirect_to admin_publication_path, success: "Modification terminée"
-	   end
+	    if @pub.update(title: params[:title], description: params[:description],files: params[:files], user_id: current_user.id)
+	       redirect_to admin_publication_path, success: "Modification terminée"
+	   	end
 	end
 	
 	def show

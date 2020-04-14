@@ -33,7 +33,7 @@
 	</div>
 	<div class="col-md">
 		<h5 class="mb-4 text-center">Taux de change</h5>
-	    <% Tarif.all.order(id: :desc).each do |t|%>
+	    <% @tarifs.each do |t|%>
 		    <div class="row align-items-center no-gutters border-bottom pb-2 pt-2">
 			    <div class="col-md-11 truncate-actu">
 			    	<%= t.reference %> 
@@ -58,4 +58,8 @@
 		    </div>
 		<%end%>	
 	</div>
+	<div class="text-center">
+		<%= paginate @tarifs %>
+	</div>
 </div>
+<%= render partial: "/super_admin/confirm.html.erb"%>

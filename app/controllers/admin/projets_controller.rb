@@ -142,7 +142,7 @@ class Admin::ProjetsController < ApplicationController
   def show
     @projet = Projet.find(params[:id])
     if params[:creer] == 'Publier'
-      @project.update(validation: false)
+      @projet.update(validation: false)
 
     end
   end
@@ -239,13 +239,17 @@ class Admin::ProjetsController < ApplicationController
 
 
     @projet.filiereprojets.destroy_all
+    if params[:filiere_ids]
     params[:filiere_ids].each do |filiere_id|
         Filiereprojet.create(projet_id: @projet.id, filiere_id: filiere_id.to_i)
     end
+    end
 
      @projet.formeprojets.destroy_all
+    if params[:forme_ids]
     params[:forme_ids].each do |forme_id|
         Formeprojet.create(projet_id: @projet.id, forme_id: forme_id.to_i)
+    end
     end
 
 
@@ -273,7 +277,6 @@ class Admin::ProjetsController < ApplicationController
     end
     redirect_to  admin_projet_path, success: "Modification terminée"
   else
-    puts 'erreur'*10
     render :edit     
   end
 end

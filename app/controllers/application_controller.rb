@@ -15,12 +15,10 @@ class ApplicationController < ActionController::Base
 		if Ptf.find_by(title: @organism)
 			@ptf = Ptf.find_by(title: @organism)
 			Organisme.create(user_id: User.last.id, ptf_id: @ptf.id)
-			puts @ptf
 		end
 		if Iga.find_by(title: @organism)
 			@iga = Iga.find_by(title: @organism)
 			Organisme.create(user_id: User.last.id, iga_id: @iga.id)
-			puts @iga
 		end
 
 	end
