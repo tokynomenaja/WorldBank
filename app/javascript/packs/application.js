@@ -347,5 +347,13 @@ $(document).on('turbolinks:load', function() {
     $("#document").trigger("click");
   });
 
+  $('#document').change(function(e){
+   var files = [];
+	for (var i = 0; i < $(this)[0].files.length; i++) {
+	    files.push($(this)[0].files[i].name);
+	}
+	$(this).next('#simulateur').html(files.join(', '));
+});
+
 })
 

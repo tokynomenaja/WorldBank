@@ -9,8 +9,11 @@
 
 	<div class="container mb-2 mt-4">
 		<span class="mr-2 table">Documents :</span>
-		<%= file_field_tag :files, name: "files[]", required: true, multiple: true, class: 'toggleclass', id: :'document'  %>
+		<%= file_field_tag :files, name: "files[]", multiple: true, class: 'toggleclass', id: :'document'  %>
 		<span class="btn btn-secondary" id="simulateur">Ajouter des fichiers</span>
+		<%for i in 0..@actu.files.length-1%>
+			<span class="btn btn-secondary"><%= @actu.files[i].blob.filename%></span>
+		<%end%>
 	</div>		
 	<div class="container mt-4">
 		<input type="submit" name="cree" value="Publier" class="btn btn-bg-primary rounded-0 text-white btn-lg btn-block">

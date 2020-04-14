@@ -13,8 +13,11 @@
 		</div>
 
 		<div class="mb-2 mt-4">
-			<%= file_field_tag :files, name: "files[]", required: true, multiple: true, id: :"document", class: 'toggleclass' %>
-			<span class="btn btn-secondary" id="simulateur">Ajouter des fichiers liés au publication</span>
+			<%= file_field_tag :files, name: "files[]", multiple: true, id: :"document", class: 'toggleclass' %>
+			<span class="btn btn-secondary" id="simulateur">Ajouter des fichiers liés à cette publication</span>
+			<%for i in 0..@pub.files.length-1%>
+				<span class="btn btn-secondary"><%= @pub.files[i].blob.filename%></span>
+			<%end%>
 		</div>	
 		<div>
 			<input type="submit" name="cree" value="Publier" class="sc-eerKOB cfnPHQ">

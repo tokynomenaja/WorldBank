@@ -151,9 +151,14 @@ class Admin::ProjetsController < ApplicationController
     @projet = Projet.find(params[:id])
     @secteurprojets = Secteurprojet.where(projet_id: @projet.id)
     @sects = []
+    @montants = []
     @secteurprojets.each do |sp|
       @sects << sp.secteur
+      @sects.each do |s|
+        @montants << s.montants
+      end
     end
+ 
 
     @filiereprojets = Filiereprojet.where(projet_id: @projet.id)
     @fils = []
@@ -196,6 +201,7 @@ class Admin::ProjetsController < ApplicationController
      aspsp: params[:aspsp],fin: params[:fin].to_date, 
      appui_id: params[:appui], ptf_id: params[:ptf], 
      bailleur_id: current_user.id)
+
 
     if params[:modifier] == 'Publier' || params[:modifier] == 'Re-publier'
       @projet.update(validation: false)

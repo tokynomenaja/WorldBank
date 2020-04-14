@@ -534,7 +534,7 @@
                 </div>
                 <div class="m-2 bg-dark compt-item border text-color">
                   <p class="border-bottom pt-2 pb-2">Montant total des projets: </p>
-                  <p class="centrage"><%= @montant_total %> USD</p>
+                  <p class="centrage"><%= number_to_human(@montant_total) %> USD</p>
                 </div>
                 <div class="m-2 text-white background compt-item border">
                   <p class="border-bottom pt-2 pb-2">Nombre de secteurs couverts : </p>
@@ -559,7 +559,7 @@
               </div>
               <div class="m-2 bg-dark compt-item border text-color">
                 <p class="border-bottom pt-2 pb-2">Montant total des projets : </p>
-                <p class="centrage"><%= @montant_total %> USD</p>
+                <p class="centrage"><%= number_to_human(@montant_total) %> USD</p>
               </div>
               <div class="m-2 text-white background compt-item border">
                 <p class="border-bottom pt-2 pb-2">Nombre de secteurs couverts : </p>

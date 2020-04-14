@@ -160,7 +160,7 @@
 
           <% @projet.montants.each do |m|%>
             <p><span class="attr">Montant  pour le secteur <%= m.secteur.title.downcase%> :</span>
-                <p class="mb-3"><%= m.price %> <%= m.unite.nom%></p>
+                <p class="mb-3"><%=  number_with_delimiter(m.price) %> <%= m.unite.nom%></p>
             </p>
 
           <%end%>
