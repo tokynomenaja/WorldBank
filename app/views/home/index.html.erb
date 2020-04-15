@@ -335,10 +335,10 @@
   <div class="sc-11unfkk-2 fxFQyp">
     <header class="">
       <div class="qjc24y-1 hlIrlm row no-gutters align-items-start">
-        <% if current_user %> 
+         <% if current_user && @forme_1 != "" || @ptf_1 != "" || @appui_1 != "" || @zone_1 != "" || @ben_1 != "" || @iga_1 != "" || @secteur_1 != "" || @filiere_1 != "" || @results != "" || @montant_1 != "" || @fin_1 != ""%>  
         <div class="qjc24y-0 jMLWRH col-md-7" >
           <div class="height border-bottom mb-2">
-            <h1 class="vx2fp9-3 ehdisu h-font text-left">Resultats de la recherche</h1>
+            <h1 class="vx2fp9-3 ehdisu h-font text-left">Résultats de la recherche</h1>
           </div>
           <div class="row no-gutters">
             <div class="col-sm-5">
@@ -348,13 +348,6 @@
                 <%@params_ptf.each do |i|%>
                 <%@ptf_1 = Ptf.all.find(i.to_i).title%>
                 <p class="text-muted mb-1"><span>PTF &nbsp;:&nbsp; </span> <%= @ptf_1%></p>
-                <%end%>
-                <%end%>
-
-                <% if @montant_1 != "" %>
-                <%@params_montant.each do |m|%>
-                <%@montant_1 = Montant.all.find(m.to_i).price%>
-                <p class="text-muted mb-1"><span>Montant &nbsp;:&nbsp; </span> <%= @montant_1 %></p>
                 <%end%>
                 <%end%>
 
@@ -412,7 +405,7 @@
             <div class="col-sm-7 pl-2">
               <div>
 
-                <%if @results %>
+                <%if @results != "" %>
                 <%@results.each do | result|%>
                 <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                   <%= link_to "#{result.nom_du_projet}" , projet_path(result.id), target: 'blank', class: 'text-muted reshover' %>
