@@ -55,7 +55,7 @@ def index
                 @r = []
                 @pro.each do |pro|
                   pro.montants.each do |m|
-                  if m.price >= @m1 && m.price <= @m2
+                  if m.price >= @m1 && m.price <= @m2  
                     @r << pro
                   end
                 end

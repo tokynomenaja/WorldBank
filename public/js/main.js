@@ -48,7 +48,7 @@ function valueLeft(){
         else {
         outputLeft.innerHTML = values[this.value];
         showMontant.innerHTML = "plus de " + outputLeft.value + " millions d'usd";
-        ir.value = "max";
+        ir.value = "200";
         il.value = outputleft.value;
         }
     }
@@ -90,7 +90,7 @@ function valueRight(){
             outputRight.innerHTML = values[this.value];
         showMontant.innerHTML = "plus de " + outputLeft.value+ " millions d'usd";
         il.value = outputLeft.value;
-        ir.value = "max";
+        ir.value = "200";
         }
         else {
             outputRight.innerHTML = values[this.value];
