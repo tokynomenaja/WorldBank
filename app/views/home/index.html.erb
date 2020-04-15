@@ -530,24 +530,7 @@
               <%end%>
         </div>
             <div class="compteur mt-5">
-              <div class="d-flex  text-center justify-content-center flex-wrap">
-                <div class="m-2 text-white background compt-item border">
-                  <p class="border-bottom pt-2 pb-2">Nombre total des projets :</p>
-                  <p class="centrage"> <%= Projet.where(validation: true).count%></p>
-                </div>
-                <div class="m-2 bg-dark compt-item border text-color">
-                  <p class="border-bottom pt-2 pb-2">Nombre total de PTF :</p>
-                  <p class="centrage"><%= Ptf.count%></p>
-                </div>
-                <div class="m-2 bg-dark compt-item border text-color">
-                  <p class="border-bottom pt-2 pb-2">Montant total des projets: </p>
-                  <p class="centrage"><%= number_to_human(@montant_total) %> USD</p>
-                </div>
-                <div class="m-2 text-white background compt-item border">
-                  <p class="border-bottom pt-2 pb-2">Nombre de secteurs couverts : </p>
-                  <p class="centrage"><%= Secteur.all.count%></p>
-                </div> 
-              </div>
+
             </div>
           </div>
         </div>

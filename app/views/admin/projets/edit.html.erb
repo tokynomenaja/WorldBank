@@ -44,7 +44,7 @@
 					<div class="col-6">
 						<h6 class="table">Partenaire Technique Financier</h6>
 						<select name="ptf" class="form-control">
-							<%Ptf.all.each do |p|%>
+							<%Ptf.all.order(:title).each do |p|%>
 								<%if p == @projet.ptf%>
 									<option value="<%= @projet.ptf.id%>" selected><%= @projet.ptf.title%></option>
 								<%else%>
@@ -56,7 +56,7 @@
 					<div class="col-6">
 						<h6 class="table">Nature de l'appui</h6>
 						<select name="appui" class="form-control">
-							<%Appui.all.each do |a|%>
+							<%Appui.all.order(:title).each do |a|%>
 								<%if a == @projet.appui%>
 									<option value="<%= @projet.appui.id%>" selected><%= @projet.appui.title%></option>
 								<%else%>
@@ -102,7 +102,7 @@
 							<% if @sects %> 
 						 		<% if @sects.include? s %>
 						 			<% if @montants%>
-						 			<% if @montants.include? s%>
+						 			<% if @montants.include? s.montants%>
 
 									<div class="form-control pr-0" id="montant<%=s.id%>" style="display: block;">
 										<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title%>" value="<%= s.montants.find_by(projet_id: @projet.id).price%>" class="border-0" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)">
@@ -135,13 +135,13 @@
 				</div>
 				<div class="col-md-4">
 					<h6 class="table">Début</h6>
-					<input type="text" id="selectionDebut" placeholder="mm/aaaa" class="form-control" required="true" >
-					<input type="hidden" id="selectionDebutValue" placeholder="mm/aaaa" class="form-control" required="true" name="debut_du_projet">
+					<input type="text" id="selectionDebut" value="<%= @projet.debut_du_projet%>" class="form-control" required="true" >
+					<input type="hidden" id="selectionDebutValue" value="<%= @projet.debut_du_projet%>" class="form-control" required="true" name="debut_du_projet">
 				</div>
 				<div class="col-md-4 pr-0">			
 					<h6 class="table">Fin</h6>
-					<input type="text" class="form-control" placeholder="mm/aaaa" required="true" id="selectionFin">
-					<input type="hidden" name="fin" id="selectionFinValue" class="form-control" placeholder="mm/aaaa" required="true" name="fin">
+					<input type="text" class="form-control" value="<%= @projet.fin%>" required="true" id="selectionFin">
+					<input type="hidden" name="fin" id="selectionFinValue" class="form-control" value="<%= @projet.fin%>" required="true" name="fin">
 				</div>
 			</div>
 		</div>
@@ -313,6 +313,37 @@
 								 		<%end%>
 								 	<%end%>
 								 	<%= c.title%>
+								</div>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container mb-2">
+				<a class="table">
+					Alignement aux priorités du Plan Emergence de Madagascar
+				</a>
+				<div class="mt-2">
+					<div class="card card-body">
+						<div class="row">
+							<% Engagement.all.order(:id).each_with_index do |c,x| %>
+								<div class="col-md-12">
+									<p class="mt-2 mb-0">
+										<%= c.title%> 
+									</p>
+									<%c.pems.each do |p|%>
+										<div class="ml-4">
+											<% if @pems%>
+										 		<% if @pems.include? p %>
+													<%=check_box_tag("pem_#{x}",p.id,checked: true) %> 
+													<%= p.title %>
+												<%else%>
+													<%=check_box_tag("pem_#{x}",p.id) %> 
+													<%= p.title %>
+												<%end%>
+											<%end%>
+										</div>
+									<%end%>
 								</div>
 							<% end %>
 						</div>
