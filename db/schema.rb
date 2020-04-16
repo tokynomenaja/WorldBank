@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_10_180101) do
+ActiveRecord::Schema.define(version: 2020_04_16_090613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -221,6 +221,7 @@ ActiveRecord::Schema.define(version: 2020_04_10_180101) do
     t.bigint "bailleur_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "revalid", default: false
     t.index ["appui_id"], name: "index_projets_on_appui_id"
     t.index ["bailleur_id"], name: "index_projets_on_bailleur_id"
     t.index ["ptf_id"], name: "index_projets_on_ptf_id"
