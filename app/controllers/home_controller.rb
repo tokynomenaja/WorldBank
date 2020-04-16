@@ -12,6 +12,7 @@ def index
        @secteur_1 = ""
        @filiere_1 = ""
        @fin_1 = ""
+       @results = ""
 
   #recherche controller globale(titre du projet)
 
@@ -33,8 +34,8 @@ def index
             else  
              @params_ptf = params[:ptf_id]
                @params_ptf.each do |p|
-             @ptf = Projet.all.where(ptf_id: params[:ptf_id], validation: true)
-          @ptf_1 = Ptf.all.find(p.to_i).title 
+              @ptf = Projet.all.where(ptf_id: params[:ptf_id], validation: true)
+              @ptf_1 = Ptf.all.find(p.to_i).title 
         end 
       end 
     end
@@ -48,7 +49,7 @@ def index
             redirect_to(root_path)
     
         else  
-         @params_montant = params[:montant] 
+         @params_montant = params[:montant]
                 @pro = Projet.all.where(validation: true)
                 @m1 = params[:montant][0].to_i
                 @m2 = params[:montant][1].to_i
@@ -58,10 +59,14 @@ def index
                   if m.price >= @m1 && m.price <= @m2  
                     @r << pro
                     @montant_1 = Montant.where(projet_id: pro.id)
+<<<<<<< HEAD
 
+=======
+>>>>>>> ae3cb53616f5f8cbe63765bafd1923ee3ead69ac
                   end
                 end
               end
+
      
     end 
   end
@@ -102,7 +107,7 @@ end
          @fin.each do |f|
           if f.fin.year >= @d1 && f.fin.year <= @d2
             @d << f
-            
+            @fin_1 = Projet.where(fin: f)
           end
          end
        end
