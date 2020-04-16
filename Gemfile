@@ -72,4 +72,5 @@ gem 'wicked_pdf'
 # gem 'wkhtmltopdf-binary'
 gem 'mailjet'
 gem 'dotenv-rails'
+# gem 'caxlsx_rails'
 

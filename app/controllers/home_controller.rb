@@ -14,15 +14,18 @@ def index
        @fin_1 = ""
        @results = ""
 
+      
+
   #recherche controller globale(titre du projet)
 
       if params[:search]
         if params[:search] == 1
             redirect_to(root_path)
         else  
+          @projets = []
           @parameter = params[:search].downcase  
           @req = Projet.where(validation: true)
-          @results = @req.where("lower(nom_du_projet) LIKE :search", search: "%#{@parameter}%")  
+          @results = @req.where("lower(nom_du_projet) LIKE :search", search: "%#{@parameter}%")
         end  
     end 
   #recherhe controller ptf
@@ -219,4 +222,9 @@ end
 
     end
   end
+
+    respond_to do |format|
+        format.xlsx 
+        format.html
+    end
 end
