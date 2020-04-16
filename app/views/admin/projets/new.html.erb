@@ -61,49 +61,67 @@
 				<div class="card card-body">
 					<div class="row">
 						<% for x in 1..2%>
-							<div class="col-md-6">
-								<input type="checkbox" name="partONG<%= x %>" id="partONG<%= x %>" onclick="partONG(<%= x%>);">
-								<label for="partONG">ONG</label>
-								<input type="hidden" name="desc_partONG<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control" id="descpartONG<%= x %>">
+							<div class="col-md-6 row">
+								<div class="col">
+									<input type="checkbox" name="partONG<%= x %>" id="partONG<%= x %>" onclick="partONG(<%= x%>);">
+									<label for="partONG">ONG</label>
+								</div>
+								<div class="col">
+									<input type="hidden" name="desc_partONG<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartONG<%= x %>">
+								</div>
 							</div>
 						<% end %>
 
 						<% for x in 1..2%>
-							<div class="col-md-6">
-								<input type="checkbox" name="partASS<%= x %>" id="partASS<%= x%>" onclick="partASS(<%= x%>);">
-								<label for="partASS<%= x%>">Association</label>
-								<input type="hidden" name="desc_partASS<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control" id="descpartASS<%= x %>">
+							<div class="col-md-6 row">
+								<div class="col">
+									<input type="checkbox" name="partASS<%= x %>" id="partASS<%= x%>" onclick="partASS(<%= x%>);">
+									<label for="partASS<%= x%>">Association</label>
+								</div>
+								<div class="col">
+									<input type="hidden" name="desc_partASS<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartASS<%= x %>">
+								</div>
 							</div>
 						<% end %>
 
 						<% for x in 1..2%>
-							<div class="col-md-6">
-								<input type="checkbox" name="partCOM<%= x %>" id="partCOM<%= x%>" onclick="partCOM(<%= x%>);">
-								<label for="partCOM<%= x%>">Chambre de commerce</label>
-								<input type="hidden" name="desc_partCOM<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control" id="descpartCOM<%= x %>">
+							<div class="col-md-6 row">
+								<div class="col">
+									<input type="checkbox" name="partCOM<%= x %>" id="partCOM<%= x%>" onclick="partCOM(<%= x%>);">
+									<label for="partCOM<%= x%>">Chambre de commerce</label>
+								</div>
+								<div class="col">
+									<input type="hidden" name="desc_partCOM<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartCOM<%= x %>">
+								</div>
 							</div>
 						<% end %>
 
 						<% for x in 1..2%>
-							<div class="col-md-6">
-								<input type="checkbox" name="partPRI<%= x %>" id="partPRI<%= x%>" onclick="partPRI(<%= x%>);">
-								<label for="partPRI<%= x%>">Secteur Privé</label>
-								<input type="hidden" name="desc_partPRI<%= x %>" class="pl-2 pr-2 form-control" placeholder="A préciser" id="descpartPRI<%= x %>">
+							<div class="col-md-6 row">
+								<div class="col">
+									<input type="checkbox" name="partPRI<%= x %>" id="partPRI<%= x%>" onclick="partPRI(<%= x%>);">
+									<label for="partPRI<%= x%>">Secteur Privé</label>
+								</div>
+								<div class="col">
+									<input type="hidden" name="desc_partPRI<%= x %>" class="pl-2 pr-2 form-control pi-custom" placeholder="A préciser" id="descpartPRI<%= x %>">
+								</div>
+
 							</div>
 						<% end %>
 						<% for x in 1..2%>
-							<div class="col-md-6 d-flex align-items-center">
-								<input type="checkbox" name="partAUTRE<%= x %>" id="partAUTRE<%= x%>" onclick="partAUTRE(<%= x%>);">
-								<input type="text" name="plat_partAUTRE<%= x%>" placeholder="Autres" class="ml-2 pl-2 pr-2 form-control">
-								<input type="hidden" name="desc_partAUTRE<%= x %>" placeholder="A préciser" class="l-2 pr-2 form-control ml-2" id="descpartAUTRE<%= x %>">
+							<div class="col-md-6 row">
+								<div class="col d-flex align-items-center ">
+									<input type="checkbox" name="partAUTRE<%= x %>" id="partAUTRE<%= x%>" onclick="partAUTRE(<%= x%>);">
+									<input type="text" name="plat_partAUTRE<%= x%>" placeholder="Autres" class="ml-2 pl-2 pr-2 form-control pi-custom">
+								</div>
+								<div class="col">
+									<input type="hidden" name="desc_partAUTRE<%= x %>" placeholder="A préciser" class="l-2 pr-2 form-control ml-2 pi-custom" id="descpartAUTRE<%= x %>">
+								</div>
 							</div>
 						<% end %>
-
-
-					
 					</div>
 				</div>
-				</div>
+			</div>
 		</div>
 
 		<div class="container mb-2">
@@ -123,7 +141,7 @@
 				</div>
 				</div>
 		</div>
-		<div class="container">
+		<section class="container">
 			<div class="d-flex justify-content-between mb-3">
 				<div class="col-md-4 pl-0">
 					<h6 class="table">Montant pour le secteur :</h6>
@@ -134,7 +152,7 @@
 						</div>
 					<%end%>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-4 za">
 					<h6 class="table">Début</h6>
 					<input type="text" id="selectionDebut" placeholder="mm/aaaa" class="form-control" required="true">
 					<input type="hidden" id="selectionDebutValue" placeholder="mm/aaaa" class="form-control" required="true" name="debut_du_projet">
@@ -145,7 +163,7 @@
 					<input type="hidden" name="fin" id="selectionFinValue" class="form-control" placeholder="mm/aaaa" required="true" name="fin">
 				</div>
 			</div>
-		</div>
+		</section>
 			<div class="container mb-2 mt-2">
 			<a class="table">
 				Filières
