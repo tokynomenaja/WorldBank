@@ -62,10 +62,6 @@ def index
                   if m.price >= @m1 && m.price <= @m2  
                     @r << pro
                     @montant_1 = Montant.where(projet_id: pro.id)
-<<<<<<< HEAD
-
-=======
->>>>>>> ae3cb53616f5f8cbe63765bafd1923ee3ead69ac
                   end
                 end
               end
