@@ -57,6 +57,8 @@ def index
                   pro.montants.each do |m|
                   if m.price >= @m1 && m.price <= @m2  
                     @r << pro
+                    @montant_1 = Montant.where(projet_id: pro.id)
+
                   end
                 end
               end
