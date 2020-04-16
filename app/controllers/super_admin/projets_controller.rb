@@ -3,7 +3,8 @@ class SuperAdmin::ProjetsController < ApplicationController
     before_action :check_if_super_admin
 
   def index
-  	@projets = Projet.where(validation: false).order(:id).page(params[:page]).per(9)
+  	@projets = Projet.where(validation: false, revalid: false).order(:id).page(params[:page]).per(9)
+    @projets_revalid = Projet.where(revalid: true).order(:id).page(params[:page]).per(9)
     @projets_valides = Projet.where(validation: true).order(:id).page(params[:page]).per(9)
   end
 

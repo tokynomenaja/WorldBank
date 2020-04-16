@@ -208,9 +208,10 @@ class Admin::ProjetsController < ApplicationController
      bailleur_id: current_user.id)
 
 
-    if params[:modifier] == 'Publier' || params[:modifier] == 'Re-publier'
+    if params[:modifier] == 'Publier' 
       @projet.update(validation: false)
-
+    elsif params[:modifier] == 'Re-publier'
+      @projet.update(validation: false, revalid: true)
     end
 
     @projet.secteurprojets.destroy_all
