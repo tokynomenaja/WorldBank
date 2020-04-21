@@ -51,7 +51,12 @@ class Admin::ProjetsController < ApplicationController
                 @secteur_ids.each do |x|
                   Secteurprojet.create(projet_id: @project.id , secteur_id: x.to_i)
                 end
-
+                  10.times do |x|
+                  if params[:"checkfili#{x}"] && params[:newfili] != ""
+                    @fili = Filiere.create(title: params[:"valfili#{x}"])
+                      Filiereprojet.create(projet_id: @project.id , filiere_id: @fili.id)
+                  end
+                end
                 if params[:filiere_ids]
                   @filiere_ids = params[:filiere_ids]
                 @filiere_ids.each do |x|
@@ -245,10 +250,10 @@ class Admin::ProjetsController < ApplicationController
 
 
     @projet.filiereprojets.destroy_all
-    if params[:filiere_ids]
-    params[:filiere_ids].each do |filiere_id|
-        Filiereprojet.create(projet_id: @projet.id, filiere_id: filiere_id.to_i)
-    end
+      for x in 0..Filiere.all.count-1
+      if params[:"filiere_#{x}"]
+        Filiereprojet.create(projet_id: @projet.id, filiere_id: params[:"filiere_#{x}"])
+      end
     end
 
      @projet.formeprojets.destroy_all
@@ -298,7 +303,7 @@ end
 def destroy
   @projet = Projet.find(params[:id])
   @projet.destroy
-  redirect_to admin_projets_path
+  redirect_to admin_projets_path, success: "suppression terminée"
 end
 
 private

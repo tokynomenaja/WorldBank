@@ -108,6 +108,7 @@
 
 							</div>
 						<% end %>
+
 						<% for x in 1..2%>
 							<div class="col-md-6 row">
 								<div class="col d-flex align-items-center ">
@@ -152,13 +153,18 @@
 						</div>
 					<%end%>
 				</div>
+<<<<<<< HEAD
 				<div class="col-md-4 za">
 					<h6 class="table">Début</h6>
+=======
+				<div class="col-md-4">
+					<h6 class="table">Début de projet</h6>
+>>>>>>> patrick9
 					<input type="text" id="selectionDebut" placeholder="mm/aaaa" class="form-control" required="true">
 					<input type="hidden" id="selectionDebutValue" placeholder="mm/aaaa" class="form-control" required="true" name="debut_du_projet">
 				</div>
 				<div class="col-md-4 pr-0">			
-					<h6 class="table">Fin</h6>
+					<h6 class="table">Fin de projet</h6>
 					<input type="text" class="form-control" placeholder="mm/aaaa" required="true" id="selectionFin">
 					<input type="hidden" name="fin" id="selectionFinValue" class="form-control" placeholder="mm/aaaa" required="true" name="fin">
 				</div>
@@ -166,7 +172,7 @@
 		</section>
 			<div class="container mb-2 mt-2">
 			<a class="table">
-				Filières
+				Filières associée
 			</a>
 				<div class="mt-2">
 				<div class="card card-body">
@@ -182,7 +188,41 @@
 							</div>
 						<% end %>
 					</div>
-
+					   <div class="mt-2">
+								<button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#fl"> Autre</button><br>	
+							</div>
+						<div class="collapse" id="fl">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-5" style="text-align: center;">
+									<h6>Ajout d'un nouveau filière</h6>
+							    	<input type="text" name="newben" size=15 placeholder="nouveau filiere" class="form-control" id="fla"><br>	
+							    	<input type="button" class="sc-eerKOB cfnPHQ" value="Ajouter" id="add">			
+								</div>
+								<div class="col-md-7">
+										<h6 style="text-align: center;">Le nouveau filière doit être coché</h6>
+									<% 10.times do |f|%>
+								    	<div id="check<%= f%>" style="display: block;">
+											<p id="a<%= f%>" style="display: none;">
+												<%= check_box_tag("checkfili#{f}", :id => "c#{f}") %>
+												<span id="s<%= f%>"></span>	
+												<span id="s1<%= f%>"></span>	
+												<span id="s2<%= f%>"></span>	
+												<span id="s3<%= f%>"></span>	
+												<span id="s4<%= f%>"></span>	
+												<span id="s5<%= f%>"></span>	
+												<span id="s6<%= f%>"></span>	
+												<span id="s7<%= f%>"></span>	
+												<span id="s8<%= f%>"></span>	
+												<span id="s9<%= f%>"></span>	
+												<input type="hidden" name="valfili<%= f%>" id="valfili<%= f%>">	
+											</p>								
+										</div>
+								    <%end%>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 				</div>
 			</div>
