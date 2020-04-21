@@ -181,7 +181,13 @@
                   <label class="d-flex align-items-center">
                     <%= check_box_tag("search_filiere[]",  fili.id, false, id: :"sf#{fili.id}")%>
                     <%= fili.title%>
+                     
                   </label>
+                </div>
+                <div class="fdk8rh-1 eouleG" style="display: none" id="nul">
+                  <label class="d-flex align-items-center">
+                    <p>Aucun filière associé</p>
+                  </label>  
                 </div>
             <%end%>
         </div>

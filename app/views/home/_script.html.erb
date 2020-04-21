@@ -42,6 +42,21 @@
     <% end %>
   }
   <% end %>
+  <%Secteur.all.each do |s|%>
+  if (x == 0) {
+    <%s.secteur_filieres.each do |ns| %>
+      var checkBox = document.getElementById('s'+ x);
+      var former = document.getElementById('nul');
+      if (checkBox.checked == true) {
+        former.style.display = "block";
+      }else{
+        former.style.display = "none";
+      }
+      <%end%>
+  }
+  <%end%>
+
 
   }
+
 </script>

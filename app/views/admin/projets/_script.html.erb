@@ -46,6 +46,32 @@
 		ajoutBen();
 	}  ); 
 
+//Autre filière associée
+	function ajoutfili(){
+		<% 10.times do |x|%>			
+			var hid<%= x%> = document.getElementById('valfili<%= x%>');
+			var p<%= x%> = document.getElementById('a<%= x%>');
+		<%end%>
+		var val = document.getElementById('fla').value;
+		if(hid0.value == "" && val != ""){
+
+			p0.style.display = "block";
+			document.getElementById('s0').innerHTML = val;
+			hid0.value = val;
+		}
+		<% for y in 1..9%>
+		else if (hid<%= y%>.value == '' && val != "") {
+			p<%= y%>.style.display = "block";
+			document.getElementById('s<%=y%><%=y%>').innerHTML = document.getElementById('fla').value;
+			hid<%=y%>.value = document.getElementById('fla').value;
+		}
+		<%end%>
+	}
+	document.getElementById("add").addEventListener('click',function () {
+		ajoutfili();
+	}  ); 
+
+
 	function saveMontant(inp) {
 		var nbr = inp.value;
 		var NombreSaisi = "";

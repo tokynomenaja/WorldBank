@@ -69,9 +69,9 @@
 
           <%if @projet.filiereprojets.count > 0%>
             <% if  @projet.filiereprojets.count == 1%>
-                <p><span class="attr">Filière : </span>
+                <p><span class="attr"> Filière associée : </span>
             <%elsif @projet.filiereprojets.count > 1%>
-                <p><span class="attr">Filières : </span>
+                <p><span class="attr">Filière associée : </span>
             <%end%>
             <span class="word">
                 <%@projet.filiereprojets .each do|fp|%>
@@ -183,8 +183,8 @@
         <div class="col-md-6 list">
           <p class="mb-3"><span class="attr">Nature de l'appui : </span><%=@projet.appui.title%></p>
           <%if @projet.debut_du_projet && @projet.fin%>
-            <p class="mb-3"><span class="attr">Début : </span><%=@projet.debut_du_projet.year%> &nbsp;&nbsp;&nbsp;&nbsp;
-            <span class="attr">Fin : </span><%=@projet.fin.year%></p>
+            <p class="mb-3"><span class="attr">Début de projet : </span><%=@projet.debut_du_projet.year%> &nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="attr">Fin de projet: </span><%=@projet.fin.year%></p>
           <%end%>
           <%if @projet.pemprojets.count >= 1%>
           <p><span class="attr">Alignement aux priorités du plan Emergence de Madagascar : </span></p>
@@ -214,5 +214,6 @@
     </div>
     <div class="text-right">
       <a href="<%= edit_admin_projet_path(@projet.id)%>" class="sc-eerKOB cfnPHQ bold sear">Modifier</a>
+      <a href="<%= admin_projet_path(@projet.id)%>" class="btn btn-danger" data-method="delete" data-confirm="voulez-vous vraiment le supprimer?"> Supprimer</a>
       <a href="<%= admin_projets_path%>" class="btn btn-danger">Retour</a>
     </div>
