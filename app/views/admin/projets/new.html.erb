@@ -41,11 +41,11 @@
 			<div class=" row mb-2">
 				<div class="col-6">
 					<h6 class="table">Partenaire Technique Financier</h6>
-					<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
+					<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control", required: true%>
 				</div>
 				<div class="col-6">
 					<h6 class="table">Nature de l'appui</h6>
-					<%= select_tag 'appui', options_for_select(Appui.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
+					<%= select_tag 'appui', options_for_select(Appui.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control", required: true%>
 					
 				</div>
 					
@@ -179,7 +179,7 @@
 					<div class="row">
 						<%Filiere.order(:title).all.each do |fili|%>
 							<div class="col-md-4" style="display: none" id="fil<%= fili.id%>">
-								<%= check_box_tag("filiere_ids[]", fili.id)%>
+								<%= check_box_tag("filiere_ids[]", fili.id,false, id: :"filCheck#{fili.id}")%>
 								<%= fili.title%>
 							</div>
 							<div class="col-md-4" style="display: block" id="fl<%= fili.id%>">
@@ -236,11 +236,11 @@
 					<div class="row">
 						<%Forme.order(:title).all.each do |form|%>
 							<div class="col-md-6" style="display: none" id="form<%= form.id%>">
-								<%= check_box_tag("forme_ids[]", form.id,)%>
+								<%= check_box_tag("forme_ids[]", form.id,false,id: :"formCheck#{form.id}")%>
 								<%= form.title%>
 							</div>
 							<div class="col-md-6" style="display: block" id="forme<%= form.id%>">
-								<%= check_box_tag("forme_ids[]", form.id,)%>
+								<%= check_box_tag("forme_ids[]", form.id)%>
 								<%= form.title%>
 							</div>
 						<% end %>

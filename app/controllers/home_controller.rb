@@ -223,8 +223,4 @@ end
     end
   end
 
-    respond_to do |format|
-        format.xlsx 
-        format.html
-    end
 end

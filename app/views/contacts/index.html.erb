@@ -7,7 +7,11 @@
 		       <label>Message :</label>
 				<%= m.content%>
 				<p>Envoyé le <%= m.created_at%> par 
-					<a href="https://<%= m.sender.email%>" style="color: #52c39b;" target="_blank"><%= m.sender.email%></a>
+					<%if m.sender%>
+						<a href="https://<%= m.sender.email%>" style="color: #52c39b;" target="_blank"><%= m.sender.email%></a>
+					<%else%>
+						<a href="https://<%= m.email%>" style="color: #52c39b;" target="_blank"><%= m.email%></a>
+					<%end%>
 				</p>
 		      </div>
 		    </div>

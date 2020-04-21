@@ -6,15 +6,21 @@
   xmlns:html="http://www.w3.org/TR/REC-html40">
   <Worksheet ss:Name="Sheet1">
     <Table>
+
+      <%if @ptf%>
       <Row>
         <Cell><Data ss:Type="String">ID</Data></Cell>
         <Cell><Data ss:Type="String">Titre</Data></Cell>
       </Row>
-      <%@res.each do |p|%>
+
+      <%@ptf.each do |p|%>
+      <% if p.validation == true%>
         <Row>
           <Cell><Data ss:Type="Number"><%= p.id%></Data></Cell>
           <Cell><Data ss:Type="String"><%= p.nom_du_projet%></Data></Cell>
         </Row>
+      <%end%>
+      <%end%>
       <%end%>
     </Table>
   </Worksheet>

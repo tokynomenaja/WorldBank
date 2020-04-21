@@ -24,6 +24,7 @@ class SuperAdmin::ProjetsController < ApplicationController
   	redirect_to super_admin_projets_path
   end
 
+  private
   def check_if_super_admin
       if current_user.is_super_admin == false
         redirect_to root_path
