@@ -17,7 +17,7 @@
       </div>
       <div class="col-md-6">
         <%= f.label :last_name, "Prénoms" %>
-        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class:'form-control', placeholder: 'Prénom' %>
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class:'form-control', placeholder: 'Prénoms' %>
       </div>
     </div>
 
@@ -30,7 +30,7 @@
         <%= f.label :Organisme, "Organisme"%>
 
         <%@organism = []%>
-        <% Ptf.all.each do |p|%>
+        <% Ptf.all.order(:title).each do |p|%>
 
           <%@organism << p%>
 
@@ -41,18 +41,24 @@
 
         <%end%>
 
-        <select class="form-control" name="organisme">
+        <select class="form-control" name="organisme" id="selectBox" onchange="changeFunc()">
+          <option value="none" selected disabled hidden>Sélectionner</option>
+          <option value="autre">Autre</option>
           <% @organism.each do |o|%>
             <option value="<%= o.title%>"><%= o.title%></option>
           <%end%>
         </select>
+
+      </div>
+      <div class="col-md-6" style="top: 15px;left: 50%;">
+        <input type="hidden" name="nom" id="AutreOrganisme" placeholder="A préciser" class="form-control">
       </div>
     </div>
 
 
     <div class="field mb-2">
       <%= f.label :email, "Email" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'form-control', placeholder:'Adresse email' %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'form-control', placeholder:'Email' %>
     </div>
 
     <div class="field mb-2">
@@ -71,3 +77,18 @@
   <% end %>
   <%= render "devise/shared/links" %>
 </div>
+
+<script type="text/javascript">
+    function changeFunc(){
+      var selectBox = document.getElementById("selectBox");
+      var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+      var autre = document.getElementById("AutreOrganisme");
+      var changeDiv = document.getElementById("changeDiv");
+      if(selectedValue == "autre"){
+        autre.type = "text";
+        autre.required = true;
+      }else{
+        autre.type = "hidden";
+      }
+    }
+</script>

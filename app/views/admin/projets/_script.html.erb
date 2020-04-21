@@ -119,7 +119,7 @@
 
 		//secteur par filiere
 
-
+				
 			var secteurChoisi = false;
 		    <%Secteur.all.each do |s|%>
 				var s<%= s.id %> = document.getElementById('s<%= s.id %>')
@@ -139,8 +139,8 @@
 		                }
 		                // si le secteur X est décoché, décocher et cacher toutes les filières qui correspondent à X
 		                if(f.style.display == "block"){
-		                    f.style.display = "none";
 		                    if (idfil != null) {
+		                		f.style.display = "none";
 		                    	idfil.checked = false;
 		                    }
 		                // si le secteur X est coché, afficher toutes les filières qui correspondent à X
@@ -151,7 +151,39 @@
 		        }
 		    <%end%>
 
+		    // Cacher d'abord tout les filières
+		    <% Filiere.all.each do |fili| %>
+		    	document.getElementById('fil'+<%= fili.id%>).style.display = "none";
+		    <% end %>
+
+			// Afficher tous les filières qui correspondent aux sécteurs cochés
+			<%Filiere.order(:title).all.each do |fili|%>
+				<% fili.secteur_filieres.each do |sf| %>
+					var secteur_de_fili = document.getElementById('s<%= sf.secteur.id %>');
+					if (secteur_de_fili.checked == true ) {
+						document.getElementById('fil'+<%= fili.id%>).style.display = "block";
+					}
+				<% end %>
+			<% end %>
+
+			// décoché les filières si les sécteurs correspondants sont décochés
+			<%Filiere.order(:title).all.each do |fili|%>
+				var filCheck<%= fili.id %> = document.getElementById('filCheck<%= fili.id %>');
+				var unSecteurCoche = false;
+				<% fili.secteur_filieres.all.each do |sf| %>
+					if (document.getElementById('s<%= sf.secteur.id %>').checked == true) {
+						unSecteurCoche = true;
+					}
+				<% end %>
+				if (unSecteurCoche == false) {
+					filCheck<%= fili.id %>.checked = false;
+				}
+			<% end %>
+
+
 		//Forme d'appui par secteur
+
+
 		    <%Formesecteur.all.each do |fs|%>
 				var fs = document.getElementById('forme'+<%= fs.forme.id%>);
 				fs.style.display = "none";
@@ -168,8 +200,8 @@
 		                }
 		                // si le secteur X est décoché, décocher et cacher toutes les formes d'appui qui correspondent à X
 		                if(fs.style.display == "block"){
-		                    fs.style.display = "none";
 		                    if (idform != null) {
+		                    	fs.style.display = "none";
 		                    	idform.checked = false;
 		                    }
 		                // si le secteur X est coché, afficher toutes les formes d'appui qui correspondent à X
@@ -179,6 +211,36 @@
 		            <%end%>
 		        }
 		    <%end%>
+
+		    // Cacher d'abord tout les formes d'appui
+		    <% Forme.all.each do |f| %>
+		    	document.getElementById('form'+<%= f.id%>).style.display = "none";
+		    <% end %>
+
+			// Afficher tous les formes d'appui qui correspondent aux sécteurs cochés
+			<%Forme.order(:title).all.each do |form|%>
+				<% form.formesecteurs.each do |fs| %>
+					var secteur_de_form = document.getElementById('s<%= fs.secteur.id %>');
+					if (secteur_de_form.checked == true ) {
+						document.getElementById('form'+<%= form.id%>).style.display = "block";
+					}
+				<% end %>
+			<% end %>
+
+			// décoché les formes d'apui si les sécteurs correspondants sont décochés
+			<%Forme.order(:title).all.each do |form|%>
+				var formCheck<%= form.id %> = document.getElementById('formCheck<%= form.id %>');
+				var unSecteurCoche = false;
+				<% form.formesecteurs.all.each do |fs| %>
+					if (document.getElementById('s<%= fs.secteur.id %>').checked == true ) {
+						unSecteurCoche = true;
+					}
+				<% end %>
+				if (unSecteurCoche == false) {
+					formCheck<%= form.id %>.checked = false;
+				}
+			<% end %>
+
 
 		  	// Si un ou plusieurs secteur(s) sont cochés
 		    if (secteurChoisi == true) {
@@ -195,7 +257,7 @@
 				<%end%>
 
 			// Si aucun sécteur n'est coché
-		    }else{
+		    } else{
 		    	// Affiche toutes les filieres
 			    <%Filiere.order(:title).all.each do |fili|%>
 					var fl = document.getElementById('fl'+<%= fili.id%>);
@@ -212,7 +274,6 @@
 					form.style.display = "none";
 				<%end%>
 		    }
-
 	}
 
 

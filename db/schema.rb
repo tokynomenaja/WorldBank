@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_16_090613) do
+ActiveRecord::Schema.define(version: 2020_04_21_171321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -147,6 +147,8 @@ ActiveRecord::Schema.define(version: 2020_04_16_090613) do
     t.bigint "admin_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email"
+    t.string "phone"
     t.index ["admin_id"], name: "index_messages_on_admin_id"
     t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
@@ -169,6 +171,7 @@ ActiveRecord::Schema.define(version: 2020_04_16_090613) do
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "nom"
     t.index ["iga_id"], name: "index_organismes_on_iga_id"
     t.index ["ptf_id"], name: "index_organismes_on_ptf_id"
     t.index ["user_id"], name: "index_organismes_on_user_id"

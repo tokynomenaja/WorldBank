@@ -1,3 +1,4 @@
+<%if current_user%>
 <header class="aci59a-0 eyAIuG haute sticky-limit">
     <div class="sc-1gnwgfb-2 stom">
     </div>
@@ -8,30 +9,19 @@
   <%= form_tag url_for(action: 'create'), method:'post', class:'form' do%>
     <div class="field mb-2 row">
       <div class="col-md-6">
-        <label for="first_name">Nom</label>
-        <input type="text" name="first_name" placeholder="<%= current_user.first_name%>" class="form-control" readonly>
-      </div> 
-      <div class="col-md-6">
-        <label for="last_name">Prénom</label>
-        <input type="text" name="last_name" placeholder="<%= current_user.last_name%>" class="form-control" readonly>
-      </div>
-    </div>
-
-    <div class="field mb-2 row">
-      <div class="col-md-6">
         <label for="phone">Téléphone</label>
         <input type="text" name="phone" placeholder="<%= current_user.phone%>" class="form-control" readonly>
       </div>
       <div class="col-md-6">
          <label for="organisme">Organisme</label>
           <%if current_user.organisme%>
-            <%if current_user.organisme.ptf%>
+            <%if current_user.organisme.ptf != nil%>
                <input type="text" name="organisme" placeholder="<%=current_user.organisme.ptf.title%>" class="form-control" readonly>
-            <%else%>
+            <%elsif current_user.organisme.iga != nil%>
               <input type="text" name="organisme" placeholder="<%=current_user.organisme.iga.title%>" class="form-control" readonly>
-            <%end%>
-        <%else%>
-          <input type="text" name="organisme" placeholder="Autre" class="form-control" readonly>
+            <%else%>
+            <input type="text" name="organisme" placeholder="<%= current_user.organisme.nom%>" class="form-control" readonly>
+          <%end%>
         <%end%>
         
       </div>
@@ -55,3 +45,82 @@
   <% end %>
 
 </div>
+<%else%>
+<header class="aci59a-0 eyAIuG haute sticky-limit">
+    <div class="sc-1gnwgfb-2 stom">
+    </div>
+       <!-- <div class="head-te"><marquee behavior="" direction="">La communauté internationale réaffirme son soutien aux pays les plus pauvres</marquee></div> -->
+  </header>
+<div class="mx-auto sign-up p-4">
+  <h2 class="text-center">Contactez - nous</h2>
+  <%= form_tag url_for(action: 'create'), method:'post', class:'form' do%>
+
+    <div class="field mb-2 row">
+      <div class="col-md-6">
+        <label for="phone">Téléphone</label>
+        <input type="text" name="phone" placeholder="Téléphone" class="form-control">
+      </div>
+      <div class="col-md-6">
+         <label for="organisme">Organisme</label>
+            <%@organism = []%>
+            <% Ptf.all.order(:title).each do |p|%>
+
+              <%@organism << p%>
+
+            <%end%>
+            <% Iga.all.each do |i|%>
+
+              <%@organism << i%>
+
+            <%end%>
+
+            <select class="form-control" name="organisme" id="selectBox" onchange="changeFunc()">
+              <option value="none" selected disabled hidden>Sélectionner</option>
+              <option value="autre">Autre</option>
+              <% @organism.each do |o|%>
+                <option value="<%= o.title%>"><%= o.title%></option>
+              <%end%>
+            </select>
+        
+      </div>
+      <div class="col-md-6" style="top: 15px;left: 50%;">
+        <input type="hidden" name="nom" id="AutreOrganisme" placeholder="A préciser" class="form-control">
+      </div>
+    </div>
+
+
+    <div class="field mb-2">
+       <label for="email">Email</label>
+        <input type="email" name="email" placeholder="Email" class="form-control" >
+    </div>
+
+
+    <div class="field mb-2">
+        <label for="message">Message</label>
+        <textarea name="message" placeholder="Laisser votre message" class="form-control" rows="5" id="message" required="true"></textarea>
+    </div>
+
+    <div class="actions mb-2">
+      <%= submit_tag "Envoyer", class:'sc-eerKOB cfnPHQ mt-3' %>
+    </div>
+  <% end %>
+
+</div>
+
+<%end%>
+
+
+<script type="text/javascript">
+    function changeFunc(){
+      var selectBox = document.getElementById("selectBox");
+      var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+      var autre = document.getElementById("AutreOrganisme");
+      var changeDiv = document.getElementById("changeDiv");
+      if(selectedValue == "autre"){
+        autre.type = "text";
+        autre.required = true;
+      }else{
+        autre.type = "hidden";
+      }
+    }
+</script>

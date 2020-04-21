@@ -11,14 +11,21 @@ class ApplicationController < ActionController::Base
 
 	def add_organism
 		@organism = params[:organisme]
+		@nom = params[:nom]
 
-		if Ptf.find_by(title: @organism)
-			@ptf = Ptf.find_by(title: @organism)
-			Organisme.create(user_id: User.last.id, ptf_id: @ptf.id)
-		end
-		if Iga.find_by(title: @organism)
-			@iga = Iga.find_by(title: @organism)
-			Organisme.create(user_id: User.last.id, iga_id: @iga.id)
+		if Ptf.find_by(title: @organism) || Iga.find_by(title: @organism)
+			if Ptf.find_by(title: @organism)
+				@ptf = Ptf.find_by(title: @organism)
+				Organisme.create(user_id: User.last.id, ptf_id: @ptf.id)
+			end
+			if Iga.find_by(title: @organism)
+				@iga = Iga.find_by(title: @organism)
+				Organisme.create(user_id: User.last.id, iga_id: @iga.id)
+			end
+		else
+			if @nom
+				Organisme.create(user_id: User.last.id, nom: @nom)
+			end
 		end
 
 	end
