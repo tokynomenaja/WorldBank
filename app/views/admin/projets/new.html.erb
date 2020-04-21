@@ -32,7 +32,7 @@
 			<div class="mt-2">
 				<div class="card card-body">
 					<textarea name="aspsp" rows="10" required id="aspsp" class="form-control p-2"></textarea>
-					<p id="charlimit"><span class="words-left2">300 mots maximum</span></p>
+					<p id="charlimit2"><span class="words-left2">300 mots maximum</span></p>
 				</div>
 			</div>
 		</div>
@@ -153,13 +153,9 @@
 						</div>
 					<%end%>
 				</div>
-<<<<<<< HEAD
-				<div class="col-md-4 za">
-					<h6 class="table">Début</h6>
-=======
+
 				<div class="col-md-4">
 					<h6 class="table">Début de projet</h6>
->>>>>>> patrick9
 					<input type="text" id="selectionDebut" placeholder="mm/aaaa" class="form-control" required="true">
 					<input type="hidden" id="selectionDebutValue" placeholder="mm/aaaa" class="form-control" required="true" name="debut_du_projet">
 				</div>
@@ -382,3 +378,5 @@
 	</div>
 <% end %>
 <%= render partial: "/admin/projets/script.html.erb"%>
+
+<%= render partial: "/super_admin/confirm.html.erb"%>
