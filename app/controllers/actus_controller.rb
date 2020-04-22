@@ -3,7 +3,7 @@ class ActusController < ApplicationController
    before_action :check_if_account_validate
 
   def index
-  	@actus = Actu.all.order(id: :desc).page(params[:page]).per(9)
+  	@actus = Actu.all.order(date_publication: :desc).page(params[:page]).per(9)
   end
 
   def new
