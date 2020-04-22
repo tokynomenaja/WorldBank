@@ -4,7 +4,7 @@ class SuperAdmin::ProjetsController < ApplicationController
 
   def index
   	@projets = Projet.where(validation: false, revalid: false).order(:id).page(params[:page]).per(9)
-    @projets_revalid = Projet.where(revalid: true).order(:id).page(params[:page]).per(9)
+    @projets_revalid = Projet.where(revalid: true, validation: false).order(:id).page(params[:page]).per(9)
     @projets_valides = Projet.where(validation: true).order(:id).page(params[:page]).per(9)
   end
 
