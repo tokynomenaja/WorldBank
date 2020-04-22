@@ -23,7 +23,7 @@ window.__INITIAL_STATE__ = {"form":{},"routing":{"location":null},"notifications
             <span class="q0xs59-6 q0xs59-7 fwuAZd"><div>Actualités</div></span>
             <div class="droppos dropublication">
               <a href="<%=new_super_admin_actu_path%>"><p class="dropdwn-content border-bottom mb-0 p-3">Créer une actualité</p></a>
-              <a href="<%=super_admin_actus_path%>"><p class="dropdwn-content mb-0 p-3">Actualités</p></a>
+              <a href="<%=super_admin_actus_path%>"><p class="dropdwn-content mb-0 p-3">Toutes les actualités</p></a>
             </div>
           </div>
           <div class="q0xs59-20 jhSsMU beamerTrigger">
@@ -55,5 +55,38 @@ window.__INITIAL_STATE__ = {"form":{},"routing":{"location":null},"notifications
       </div>
     </nav>
 
+    <nav class="responsive-nav">
+      <div class="pt-2 pb-2 d-flex align-items-center justify-content-between">
+          <div><a class="" href="<%= root_path %>"><%= image_tag "/smb.png" ,class:"sc-10fmshx-2 dFNvVh ml-2"%></a></div>
+          <div class="text-white burger mr-3" id="burger">&#9776;</div>
+      </div>
+      <nav id="responsive-nav" class="toggleclass">
+        <div id="pub-item">
+          <a class="text-white"><div class="border-top border-bottom p-3 navbar-elem">Publications</div></a>
+        </div>
+        <div class="toggleclass btn-bg-primary" id="pub-list">
+          <a href="<%=publications_path%>" class="text-white"><p class="dropdwn-content mb-0 p-3">Toutes les publications</p></a>
+          <a href="<%=super_admin_publications_path%>" class="text-white"><p class="dropdwn-content mb-0 p-3">Mes publications</p></a>
+          <a href="<%=new_super_admin_publication_path%>" class="text-white"><p class="dropdwn-content border-bottom mb-0 p-3">Créer une publication</p></a>
+        </div>
+
+        <div id="actus-item">
+          <a class="text-white"><div class="border-top border-bottom p-3 navbar-elem">Actualités</div></a>
+        </div>
+        <div class="toggleclass btn-bg-primary" id="actus-list">
+          <a href="<%=new_super_admin_actu_path%>" class="text-white"><p class="dropdwn-content mb-0 p-3">Créer une actualité</p></a>
+          <a href="<%=super_admin_actus_path%>" class="text-white"><p class="dropdwn-content border-bottom mb-0 p-3">Toutes les actualités</p></a>
+        </div>
+        <a href="<%= super_admin_users_path%>" class="text-white"><div class="border-top border-bottom p-3 navbar-elem">Visiteurs</div></a>
+        <div id="projet-item">
+          <a class="text-white"><div class="border-top border-bottom p-3 navbar-elem">Projets</div></a>
+        </div>
+        <div class="toggleclass btn-bg-primary" id="projet-list">
+          <a href="<%= super_admin_projets_path%>" class="text-white"><p class="dropdwn-content mb-0 p-3">Tous les projets</p></a>
+          <a href="<%= new_super_admin_tarif_path%>" class="text-white"><p class="dropdwn-content border-bottom mb-0 p-3">Cours de change</p></a>
+        </div>
+        <%=link_to 'Se deconnecter', destroy_user_session_path, method: :delete, class: 'fwuAZd text-white border-bottom p-3 navbar-elem'%>
+      </nav>
+    </nav>
 
  
