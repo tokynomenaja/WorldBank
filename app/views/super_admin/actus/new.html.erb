@@ -7,6 +7,10 @@
 				<input type="text" name="title" id="nom" placeholder="Titre" class="form-control" required="true">
 			</div>
 			<div class="mb-4">
+				<label for="date" class="mr-2 table">Date de publication</label>
+				<input type="date" name="date_publication" id="date" class="form-control" required="true">
+			</div>
+			<div class="mb-4">
 							
 				<span class="mr-2 ">Documents :</span>
 				<%= file_field_tag :files, name: "files[]", required: true, multiple: true,  id: :"document", class: 'toggleclass' %>

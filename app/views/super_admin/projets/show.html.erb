@@ -173,12 +173,18 @@
             </div>
           <%end%>
 
-          <% @projet.montants.each do |m|%>
-            <p><span class="attr">Montant  pour le secteur <%= m.secteur.title.downcase%> :</span>
-                <p class="mb-3"><%=  number_with_delimiter(m.price) %> <%= m.unite.nom%></p>
-            </p>
-
+          <% if  @projet.secteurprojets.count > 0%>
+          <%if  @projet.secteurprojets.count == 1%>
+              <p><span class="attr">Montant  pour le secteur : </span>
+          <%elsif @projet.secteurprojets.count > 1%>
+              <p><span class="attr">Montant  pour les secteurs : </span>
           <%end%>
+          <% @projet.montants.each do |m|%>
+                <p class="mb-3"><%= m.secteur.title.titleize%> | <%=  number_with_delimiter(m.price) %> | <%= m.unite.nom%></p>
+          <%end%>
+          </p>
+          <%end%>
+
         </div>
         <div class="col-md-6 list">
           <p class="mb-3"><span class="attr">Nature de l'appui : </span><%=@projet.appui.title%></p>
@@ -213,8 +219,11 @@
         </div>
     </div>
     <div class="text-right">
-      <%if @projet.validation != true%>
+      <%if @projet.validation != true && @projet.revalid != true%>
         <a href="<%= super_admin_projet_path(@projet.id)%>" class="sc-eerKOB cfnPHQ bold sear" data-method="put">Valider</a>
+        <a href="<%= super_admin_projet_path(@projet.id)%>" class="btn btn-danger" data-confirm="Voulez-vous refusez ce projet ?">Annuler</a>
+      <%elsif @projet.revalid == true %>
+        <a href="<%= super_admin_projet_path(@projet.id)%>" class="sc-eerKOB cfnPHQ bold sear" data-method="put">Revalider</a>
         <a href="<%= super_admin_projet_path(@projet.id)%>" class="btn btn-danger" data-confirm="Voulez-vous refusez ce projet ?">Annuler</a>
       <%else%>
         <span class="sc-eerKOB cfnPHQ bold sear">Projet validé</span>

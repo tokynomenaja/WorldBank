@@ -2,7 +2,7 @@ class SuperAdmin::ActusController < ApplicationController
   before_action :authenticate_user!
 
   def create
-      @actu = Actu.create!(title: params[:title], user_id: current_user.id)
+      @actu = Actu.create!(title: params[:title], date_publication: params[:date_publication], user_id: current_user.id)
 
       if @actu.save
        @actu.files.attach(params[:files])
@@ -17,12 +17,12 @@ class SuperAdmin::ActusController < ApplicationController
 
   def new
 
-    @actus = Actu.where(user_id: current_user.id).order(id: :desc).page(params[:page]).per(9)
+    @actus = Actu.where(user_id: current_user.id).order(date_publication: :desc).page(params[:page]).per(9)
     @actu = Actu.new
   end
 
   def index
-    @actus = Actu.where(user_id: current_user.id).order(id: :desc).page(params[:page]).per(9)
+    @actus = Actu.where(user_id: current_user.id).order(date_publication: :desc).page(params[:page]).per(9)
   end
 
   def show
@@ -31,7 +31,7 @@ class SuperAdmin::ActusController < ApplicationController
 
   def edit
     @actu = Actu.find(params[:id])
-    @actus = Actu.where(user_id: current_user.id).order(id: :desc).page(params[:page]).per(9)
+    @actus = Actu.where(user_id: current_user.id).order(date_publication: :desc).page(params[:page]).per(9)
   end
 
   def update
