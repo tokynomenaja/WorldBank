@@ -183,12 +183,13 @@
                      
                   </label>
                 </div>
-                <div class="fdk8rh-1 eouleG" style="display: none" id="nul">
-                  <label class="d-flex align-items-center">
-                    <p>Aucun filière associé</p>
-                  </label>  
-                </div>
+
             <%end%>
+            <div class="fdk8rh-1 eouleG" style="display: block;" id="nul"  >
+                  <label class="d-flex align-items-center">
+                    <p >Aucun filière associée</p>
+                  </label>  
+              </div>
         </div>
       </div>
 
@@ -416,8 +417,11 @@
                 <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                   <%= link_to "#{result.nom_du_projet}" , projet_path(result.id), target: 'blank', class: 'text-muted reshover' %>
                 </div>
+            
+                 
                 <%end%>
                 <%end%>
+          
 
                 <%if @params_zone%>
                 <%@params_zone.each do |z|%>
@@ -428,6 +432,7 @@
                   <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
                 </div>
                 <%end%>
+                 
                 <%end%>
                 <%end%>
                 <%end%>
@@ -467,6 +472,7 @@
                 <%end%>
                 <%end%>
                 <%end%>
+                
                 <%end%>
                 
                 <%if @params_secteur%>
@@ -479,7 +485,7 @@
                 </div>
                 <%end%>   
                 <%end%> 
-                <%end%>  
+                <%end%> 
                 <%end%>
                 
 
@@ -488,11 +494,12 @@
                 <% if p.validation == true%>
                 <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                   <%= link_to "#{p.nom_du_projet}", projet_path(p.id), target: 'blank', class: 'text-muted reshover' %>
-                </div>        
+                </div>
+                      
+                <%end%> 
                 <%end%>
                 <%end%>
-                <%end%>
-
+  
                 <%if @appui%>
                 <% @appui.each do |ip| %>  
                 <% if ip.validation == true%>
