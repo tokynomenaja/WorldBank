@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-      
+   before_action :notifAdmin   
 def index
        @project = Projet.order(:id).page(params[:page]).per(3)
        @forme_1 = ""
@@ -220,6 +220,22 @@ end
         @montant_total += m.price.to_i
       end
 
+    end
+  end
+
+  private
+  def notifAdmin
+    if current_user
+      if current_user.is_super_admin == true
+        @projets = Projet.where(validation: false, revalid: false).order(:id).page(params[:page]).per(9)
+        @projets_revalid = Projet.where(revalid: true, validation: false).order(:id).page(params[:page]).per(9)
+        @projets_valides = Projet.where(validation: true).order(:id).page(params[:page]).per(9)
+        flash.now[:success] = "#{@projets.count} projets sont en cours d’attente de validation, #{@projets_revalid.count} projets sont en cours d’attente de revalidation et #{Message.all.count} des messages ont été reçus"
+        flash.delete(:notice)
+      elsif current_user.is_admin == nil && current_user.is_consultant == false && current_user.is_super_admin == false
+        flash.now[:success] = "Votre compte est en attente de validation"
+        flash.delete(:notice)
+      end
     end
   end
 

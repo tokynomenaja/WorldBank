@@ -10,10 +10,22 @@ class ContactsController < ApplicationController
     if current_user
     	@admin = User.find_by(is_super_admin: true)
     	@message = Message.create!(content: params[:message], sender_id: current_user.id, admin_id: @admin.id)
-    	redirect_to root_path, success: "Message envoyé"
+    	redirect_to root_path, success: "Message envoyé à l'administrateur du site"
     else
-      @message = Message.create!(content: params[:message], email: params[:email], phone: params[:phone])
-      redirect_to root_path, success: "Message envoyé"
+      @emails = []
+      @users = User.all
+      @users.each do |u|
+        @emails << u.email
+      end
+
+      if @emails.include? params[:email]
+        @user = User.find_by(email: params[:email])
+        @message = Message.create!(content: params[:message], sender_id: @user.id, email: params[:email], phone: params[:phone])
+        redirect_to root_path, success: "Message envoyé à l'administrateur du site"
+      else
+        @message = Message.create!(content: params[:message], email: params[:email], phone: params[:phone])
+        redirect_to root_path, success: "Message envoyé à l'administrateur du site"
+      end
     end
 
   end
