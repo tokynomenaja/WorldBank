@@ -140,21 +140,24 @@
         </header>
       </div>
       <div class="forme-content filter-drop drop-height toggleclass" id="forme-check">
-        <div class="mx-auto p-2 rounded">
+        <div class="mx-auto p-2 rounded" style="display: block;" id="formexist">
           <%Forme.order(:title).all.each do |form|%>
-                <div class="fdk8rh-1 eouleG" style="display: none" id="forme<%= form.id%>">
+                <div class="fdk8rh-1 eouleG" style="display: none" id="form<%= form.id%>">
                   <label class="d-flex align-items-center">
-                    <%= check_box_tag("search_forme[]",  form.id, false, id: :"fs#{form.id}")%>
+                    <%= check_box_tag("search_forme[]",  form.id, false, id: :"formCheck#{form.id}")%>
                     <%= form.title%>
                   </label>
                 </div>
-                <div class="fdk8rh-1 eouleG" style="display: block" id="form<%= form.id%>">
+                <div class="fdk8rh-1 eouleG" style="display: block" id="forme<%= form.id%>">
                   <label class="d-flex align-items-center">
-                    <%= check_box_tag("search_forme[]",  form.id, false, id: :"fs#{form.id}")%>
+                    <%= check_box_tag("search_forme[]",  form.id)%>
                     <%= form.title%>
                   </label>
                 </div>
             <%end%>
+        </div>
+        <div class="mx-auto p-2 rounded fdk8rh-1 eouleG" style="display: none;" id="formnotexist">
+          <label class="d-flex align-items-center" id="noform"></label>
         </div>
       </div>
 
@@ -168,27 +171,24 @@
         </header>
       </div>
       <div class="filiere-content filter-drop drop-height toggleclass" id="filiere-check">
-        <div class="mx-auto p-2 rounded">
+        <div class="mx-auto p-2 rounded" style="display: block;" id="filexist">
             <%Filiere.order(:title).all.each do |fili|%>
-                <div class="fdk8rh-1 eouleG" style="display: none" id="filiere<%= fili.id%>">
+                <div class="fdk8rh-1 eouleG" style="display: none" id="fil<%= fili.id%>">
                   <label class="d-flex align-items-center">
-                    <%= check_box_tag("search_filiere[]",  fili.id, false, id: :"sf#{fili.id}")%>
+                    <%= check_box_tag("search_filiere[]",  fili.id, false, id: :"filCheck#{fili.id}")%>
                     <%= fili.title%>
                   </label>
                 </div>
-                <div class="fdk8rh-1 eouleG" style="display: block" id="fil<%= fili.id%>">
+                <div class="fdk8rh-1 eouleG" style="display: block" id="fl<%= fili.id%>">
                   <label class="d-flex align-items-center">
-                    <%= check_box_tag("search_filiere[]",  fili.id, false, id: :"sf#{fili.id}")%>
+                    <%= check_box_tag("search_filiere[]",  fili.id)%>
                     <%= fili.title%>
-                     
                   </label>
-                </div>
-                <div class="fdk8rh-1 eouleG" style="display: none" id="nul">
-                  <label class="d-flex align-items-center">
-                    <p>Aucun filière associé</p>
-                  </label>  
                 </div>
             <%end%>
+        </div>
+        <div class="mx-auto p-2 rounded fdk8rh-1 eouleG" style="display: none;" id="filnotexist">
+          <label class="d-flex align-items-center" id="nofil"></label>
         </div>
       </div>
 

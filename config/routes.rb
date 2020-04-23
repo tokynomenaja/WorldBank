@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
  
-
     resources :actus
     resources :apropos
     resources :contacts
@@ -22,6 +21,7 @@ Rails.application.routes.draw do
 	    resources :projets
       resources :actus
       resources :tarifs
+      resources :contacts
   	end
     
    root to: 'home#index'

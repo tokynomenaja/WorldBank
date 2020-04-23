@@ -1,0 +1,2 @@
+module SuperAdmin::ContactsHelper
+end

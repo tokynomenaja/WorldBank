@@ -144,7 +144,8 @@
 		    }
 
 		//secteur par filiere
-
+			var filAsso = true;
+			var formAsso = true
 				
 			var secteurChoisi = false;
 		    <%Secteur.all.each do |s|%>
@@ -153,6 +154,14 @@
 				// Si un sécteur est coché, il y a donc un ou plusieurs sécteurs choisi
 				if (s<%= s.id %>.checked == true) { 
 					secteurChoisi = true;
+					<%if s.secteur_filieres.count > 0 %>
+						filAsso = false;
+					<%end%>
+					<%if s.formesecteurs.count > 0 %>
+						formAsso = false;
+					<%end%>
+
+
 				}
 
 				// Si l'utilisateur click le sécteur 'x':
@@ -176,6 +185,15 @@
 		            <%end%>
 		        }
 		    <%end%>
+
+
+		    if(filAsso == true){
+		    	document.getElementById('filAsso').innerHTML = "Aucune filière associée";
+		    }else{
+		    	document.getElementById('filAsso').innerHTML = "Filière associée";
+		    }
+
+
 
 		    // Cacher d'abord tout les filières
 		    <% Filiere.all.each do |fili| %>
@@ -238,6 +256,15 @@
 		        }
 		    <%end%>
 
+		    if(formAsso == true){
+		    	var formAssodiv = document.getElementById('formAssodiv');
+		    	document.getElementById('formAsso').innerHTML = "Aucune forme d'appui associée";
+		    	formAssodiv.style.display = "none";
+
+		    }else{
+		    	document.getElementById('formAsso').innerHTML = "Forme d'appui";
+		    }
+
 		    // Cacher d'abord tout les formes d'appui
 		    <% Forme.all.each do |f| %>
 		    	document.getElementById('form'+<%= f.id%>).style.display = "none";
@@ -299,7 +326,10 @@
 					forme.style.display = "block";
 					form.style.display = "none";
 				<%end%>
+		    document.getElementById('filAsso').innerHTML = "Filières associées";
+		    document.getElementById('formAsso').innerHTML = "Formes d'appuis";
 		    }
+
 	}
 
 

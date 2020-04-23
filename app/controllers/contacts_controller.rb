@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
 
-      after_action :add_organism
+    after_action :add_organism
  
   def index
     @messages = Message.all

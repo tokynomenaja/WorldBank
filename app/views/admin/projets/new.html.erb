@@ -167,8 +167,8 @@
 			</div>
 		</section>
 			<div class="container mb-2 mt-2">
-			<a class="table">
-				Filières associée
+			<a class="table" id="filAsso">
+				Filières associées
 			</a>
 				<div class="mt-2">
 				<div class="card card-body">
@@ -191,12 +191,12 @@
 						<div class="container">
 							<div class="row">
 								<div class="col-md-5" style="text-align: center;">
-									<h6>Ajout d'un nouveau filière</h6>
-							    	<input type="text" name="newben" size=15 placeholder="nouveau filiere" class="form-control" id="fla"><br>	
+									<h6>Ajout d'une autre filière</h6>
+							    	<input type="text" name="newben" size=15 placeholder="nouvelle filiere" class="form-control" id="fla"><br>	
 							    	<input type="button" class="sc-eerKOB cfnPHQ" value="Ajouter" id="add">			
 								</div>
 								<div class="col-md-7">
-										<h6 style="text-align: center;">Le nouveau filière doit être coché</h6>
+										<h6 style="text-align: center;">La nouvelle filière doit être cochée</h6>
 									<% 10.times do |f|%>
 								    	<div id="check<%= f%>" style="display: block;">
 											<p id="a<%= f%>" style="display: none;">
@@ -224,11 +224,11 @@
 			</div>
 
 			<div class="container mb-2 mt-2">
-			<a class="table">
+			<a class="table" id="formAsso">
 				Forme d'appui
 			</a>
 				<div class="mt-2">
-				<div class="card card-body">
+				<div class="card card-body" id="formAssodiv" style="display: block;">
 					<div class="row">
 						<%Forme.order(:title).all.each do |form|%>
 							<div class="col-md-6" style="display: none" id="form<%= form.id%>">

@@ -1,6 +1,6 @@
 <div class="container sans-head">
 		<div class="mb-4">
-		<h3 style="color: #52c39b; text-align: center;">Mes publications</h3>
+		<h3 style="color: dark; text-align: center;">Mes publications</h3>
 		</div>
 	<div class="row justify-content-center">
 		<% @pubs.each do |p|%>
@@ -12,7 +12,7 @@
 						<div class="card-text">
 							<p class="card-text text-muted mb-5 truncate-pub"><%= p.description %></p>
 						</div>
-						<p class="mt-3 position-absolute more-info-pub"><a href="<%= admin_publication_path(p.id)%>" class="btn-forgot underline">Voir</a></p>
+						<p class="mt-3 position-absolute more-info-pub"><a href="<%= admin_publication_path(p.id)%>" class="sc-eerKOB cfnPHQ" style="color: white;">Voir</a></p>
 				</div>
 			</div>
       <%end%>
