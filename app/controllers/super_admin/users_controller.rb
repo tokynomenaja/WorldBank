@@ -8,7 +8,6 @@ class SuperAdmin::UsersController < ApplicationController
 		@users_en_attente = User.where(is_consultant: false,is_super_admin: false,is_admin: nil)
 		
 		@users.each do |u|
-			@u = u
 			u.messages.each do |m|
 				@message_id = m.id
 			end
@@ -51,7 +50,7 @@ class SuperAdmin::UsersController < ApplicationController
  		@publications = Publication.where(user_id: @user.id)
  		@user.destroy
  		
- 		redirect_to super_admin_users_path
+ 		redirect_to super_admin_users_path, success: "Utilisateur supprimé"
  	end
 
  	private 
