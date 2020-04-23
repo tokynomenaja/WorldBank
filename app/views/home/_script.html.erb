@@ -23,37 +23,24 @@
 
   <%SecteurFiliere.all.each do |f|%>
     var form = document.getElementById('fil'+<%= f.filiere.id%>);
+
     form.style.display = "none";
   <%end%>
+
+
   <% Secteur.all.each do |s| %>
    if( x == <%= s.id %>){
       <% s.secteur_filieres.each do |fs| %>
         var checkBox = document.getElementById('s'+x);
         var forme = document.getElementById('filiere'+<%= fs.filiere.id %>);
-
         if (checkBox.checked == true){
           forme.style.display = "block";
+
         } else {
            forme.style.display = "none";
         }
     <% end %>
   }
-  <% end %>
-  <%Secteur.all.each do |s|%>
-  if (x == 0) {
-    <%s.secteur_filieres.each do |ns| %>
-      var checkBox = document.getElementById('s'+ x);
-      var former = document.getElementById('nul');
-      if (checkBox.checked == true) {
-        former.style.display = "block";
-      }else{
-        former.style.display = "none";
-      }
-      <%end%>
-  }
   <%end%>
-
-
-  }
-
+}
 </script>
