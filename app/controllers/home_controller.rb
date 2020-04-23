@@ -13,7 +13,6 @@ def index
        @filiere_1 = ""
        @fin_1 = ""
        @results = ""
-
       
 
   #recherche controller globale(titre du projet)
@@ -29,7 +28,7 @@ def index
         end  
     end 
   #recherhe controller ptf
-
+ 
       if params[:ptf_id]
         if params[:ptf_id] && params[:ptf_id] != "" 
           if params[:ptf_id] == 1
@@ -39,10 +38,10 @@ def index
                @params_ptf.each do |p|
               @ptf = Projet.all.where(ptf_id: params[:ptf_id], validation: true)
               @ptf_1 = Ptf.all.find(p.to_i).title 
+          end
         end 
       end 
     end
-  end
   
   #recherche controller Montant
 
