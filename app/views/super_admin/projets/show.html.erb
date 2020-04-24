@@ -147,9 +147,9 @@
             <div class="mb-3">
                 <%@projet.partenaireprojets .each do|pap|%>
                   <% if pap == @projet.partenaireprojets.last%>
-                    <span><%=pap.partenaire.plateforme %></span>
+                    <span><%=pap.partenaire.description %></span>
                   <%else%>
-                    <span><%=pap.partenaire.plateforme %>, </span>
+                    <span><%=pap.partenaire.description %>, </span>
                   <% end %>
                 <% end %>
             </div>
@@ -219,13 +219,26 @@
         </div>
     </div>
     <div class="text-right">
-      <%if @projet.validation != true && @projet.revalid != true%>
+      <%if @projet.validation != true && @projet.revalid != true && @projet.rejet == nil%>
+        <%= form_for @projet, url: super_admin_projet_path(@projet.id), method: :put do |f| %>
         <a href="<%= super_admin_projet_path(@projet.id)%>" class="sc-eerKOB cfnPHQ bold sear" data-method="put">Valider</a>
-        <a href="<%= super_admin_projet_path(@projet.id)%>" class="btn btn-danger" data-confirm="Voulez-vous refusez ce projet ?">Annuler</a>
+   
+          <input type="submit" name="rejeter" value="Rejeter" class="btn btn-danger">
+        <%end%>
       <%elsif @projet.revalid == true %>
+          <%= form_for @projet, url: super_admin_projet_path(@projet.id), method: :put do |f| %>
         <a href="<%= super_admin_projet_path(@projet.id)%>" class="sc-eerKOB cfnPHQ bold sear" data-method="put">Revalider</a>
-        <a href="<%= super_admin_projet_path(@projet.id)%>" class="btn btn-danger" data-confirm="Voulez-vous refusez ce projet ?">Annuler</a>
+   
+          <input type="submit" name="rejeter" value="Rejeter" class="btn btn-danger">
+          <%end%>
+      <%elsif @projet.rejet == true %>
+        <a href="<%= super_admin_projet_path(@projet.id)%>" class="sc-eerKOB cfnPHQ bold sear" data-method="put">Valider</a>
+        <a href="<%= super_admin_projets_path%>" class="btn btn-danger">Retour</a>
+
       <%else%>
+        <%= form_for @projet, url: super_admin_projet_path(@projet.id), method: :put do |f| %>
         <span class="sc-eerKOB cfnPHQ bold sear">Projet validé</span>
+         <input type="submit" name="rejeter" value="Rejeter" class="btn btn-danger">
+      <%end%>
       <%end%>
     </div>

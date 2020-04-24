@@ -10,10 +10,12 @@
 						<p>							
 						<%if p.validation == false && p.revalid == false%>
 								<span class="badge badge-info">En attente de validation</span>	
-							<%elsif p.validation == nil%>
+							<%elsif p.validation == nil && p.rejet == false%>
 								<span class="badge badge-warning">Non publié<span>
 							<%elsif p.revalid == true%>
-								<span class="badge badge-dark">En attente de revalidation</span>	
+								<span class="badge badge-dark">En attente de revalidation</span>
+							<%elsif p.rejet == true%>
+								<span class="badge badge-danger">Rejeté</span>	
 						<%else%>
 							<span class=" badge badge-primary badgetext-white">Publié<span>
 						<%end%>

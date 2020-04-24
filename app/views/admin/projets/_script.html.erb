@@ -31,13 +31,13 @@
 		if(hid0.value == "" && val != ""){
 
 			p0.style.display = "block";
-			document.getElementById('s0').innerHTML = val;
+			document.getElementById('ben0').innerHTML = val;
 			hid0.value = val;
 		}
 		<% for y in 1..9%>
 		else if (hid<%= y%>.value == '' && val != "") {
 			p<%= y%>.style.display = "block";
-			document.getElementById('s<%=y%><%=y%>').innerHTML = document.getElementById('inp').value;
+			document.getElementById('ben<%=y%><%=y%>').innerHTML = document.getElementById('inp').value;
 			hid<%=y%>.value = document.getElementById('inp').value;
 		}
 		<%end%>
@@ -69,6 +69,34 @@
 	}
 	document.getElementById("add").addEventListener('click',function () {
 		ajoutfili();
+	}  ); 
+
+
+
+
+//Autre IGA
+	function ajoutiga(){
+		<% 10.times do |x|%>			
+			var hid<%= x%> = document.getElementById('valiga<%= x%>');
+			var p<%= x%> = document.getElementById('pi<%= x%>');
+		<%end%>
+		var val = document.getElementById('inpiga').value;
+		if(hid0.value == "" && val != ""){
+
+			p0.style.display = "block";
+			document.getElementById('igaspan0').innerHTML = val;
+			hid0.value = val;
+		}
+		<% for y in 1..9%>
+		else if (hid<%= y%>.value == '' && val != "") {
+			p<%= y%>.style.display = "block";
+			document.getElementById('igaspan<%=y%><%=y%>').innerHTML = document.getElementById('inpiga').value;
+			hid<%=y%>.value = document.getElementById('inpiga').value;
+		}
+		<%end%>
+	}
+	document.getElementById("ajoutIga").addEventListener('click',function () {
+		ajoutiga();
 	}  ); 
 
 
