@@ -104,9 +104,15 @@ class Admin::ProjetsController < ApplicationController
                   end
 
                 end
-                  
-                if params[:iga_ids]
-                  
+                 
+
+                10.times do |x|
+                  if params[:"checkiga#{x}"] && params[:newiga] != ""
+                    @iga = Iga.create(title: params[:"valiga#{x}"])
+                    Igaprojet.create(projet_id: @project.id , iga_id: @iga.id)
+                  end
+                end 
+                if params[:iga_ids] 
                   @iga_ids = params[:iga_ids]
                 @iga_ids.each do |i|
                   Igaprojet.create(projet_id: @project.id , iga_id: i.to_i) 

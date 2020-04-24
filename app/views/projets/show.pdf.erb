@@ -159,9 +159,9 @@
             <div class="mb-3">
                 <%@projet.partenaireprojets .each do|pap|%>
                   <% if pap == @projet.partenaireprojets.last%>
-                    <span><%=pap.partenaire.plateforme %></span>
+                    <span><%=pap.partenaire.description %></span>
                   <%else%>
-                    <span><%=pap.partenaire.plateforme %>, </span>
+                    <span><%=pap.partenaire.description %>, </span>
                   <% end %>
                 <% end %>
             </div>

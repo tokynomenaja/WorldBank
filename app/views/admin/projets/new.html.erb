@@ -67,7 +67,7 @@
 									<label for="partONG">ONG</label>
 								</div>
 								<div class="col">
-									<input type="hidden" name="desc_partONG<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartONG<%= x %>">
+									<input type="hidden" name="desc_partONG<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartONG<%= x %>" required="true">
 								</div>
 							</div>
 						<% end %>
@@ -79,7 +79,7 @@
 									<label for="partASS<%= x%>">Association</label>
 								</div>
 								<div class="col">
-									<input type="hidden" name="desc_partASS<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartASS<%= x %>">
+									<input type="hidden" name="desc_partASS<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartASS<%= x %>" required="true">
 								</div>
 							</div>
 						<% end %>
@@ -91,7 +91,7 @@
 									<label for="partCOM<%= x%>">Chambre de commerce</label>
 								</div>
 								<div class="col">
-									<input type="hidden" name="desc_partCOM<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartCOM<%= x %>">
+									<input type="hidden" name="desc_partCOM<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartCOM<%= x %>" required="true">
 								</div>
 							</div>
 						<% end %>
@@ -103,7 +103,7 @@
 									<label for="partPRI<%= x%>">Secteur Privé</label>
 								</div>
 								<div class="col">
-									<input type="hidden" name="desc_partPRI<%= x %>" class="pl-2 pr-2 form-control pi-custom" placeholder="A préciser" id="descpartPRI<%= x %>">
+									<input type="hidden" name="desc_partPRI<%= x %>" class="pl-2 pr-2 form-control pi-custom" placeholder="A préciser" id="descpartPRI<%= x %>" required="true">
 								</div>
 
 							</div>
@@ -111,12 +111,12 @@
 
 						<% for x in 1..2%>
 							<div class="col-md-6 row">
-								<div class="col d-flex align-items-center ">
+								<div class="col">
 									<input type="checkbox" name="partAUTRE<%= x %>" id="partAUTRE<%= x%>" onclick="partAUTRE(<%= x%>);">
-									<input type="text" name="plat_partAUTRE<%= x%>" placeholder="Autres" class="ml-2 pl-2 pr-2 form-control pi-custom">
+									<label for="partAUTRE<%= x%>">Autre</label>
 								</div>
 								<div class="col">
-									<input type="hidden" name="desc_partAUTRE<%= x %>" placeholder="A préciser" class="l-2 pr-2 form-control ml-2 pi-custom" id="descpartAUTRE<%= x %>">
+									<input type="hidden" name="desc_partAUTRE<%= x %>" placeholder="A préciser" class="l-2 pr-2 form-control ml-2 pi-custom" id="descpartAUTRE<%= x %>" required="true">
 								</div>
 							</div>
 						<% end %>
@@ -192,7 +192,7 @@
 							<div class="row">
 								<div class="col-md-5" style="text-align: center;">
 									<h6>Ajout d'une autre filière</h6>
-							    	<input type="text" name="newben" size=15 placeholder="nouvelle filiere" class="form-control" id="fla"><br>	
+							    	<input type="text" name="newfili" size=15 placeholder="nouvelle filiere" class="form-control" id="fla"><br>	
 							    	<input type="button" class="sc-eerKOB cfnPHQ" value="Ajouter" id="add">			
 								</div>
 								<div class="col-md-7">
@@ -277,16 +277,16 @@
 								    	<div id="check<%= b%>" style="display: block;">
 											<p id="p<%= b%>" style="display: none;">
 												<%= check_box_tag("checkben#{b}", :id => "c#{b}") %>
-												<span id="s<%= b%>"></span>	
-												<span id="s1<%= b%>"></span>	
-												<span id="s2<%= b%>"></span>	
-												<span id="s3<%= b%>"></span>	
-												<span id="s4<%= b%>"></span>	
-												<span id="s5<%= b%>"></span>	
-												<span id="s6<%= b%>"></span>	
-												<span id="s7<%= b%>"></span>	
-												<span id="s8<%= b%>"></span>	
-												<span id="s9<%= b%>"></span>	
+												<span id="ben<%= b%>"></span>	
+												<span id="ben1<%= b%>"></span>	
+												<span id="ben2<%= b%>"></span>	
+												<span id="ben3<%= b%>"></span>	
+												<span id="ben4<%= b%>"></span>	
+												<span id="ben5<%= b%>"></span>	
+												<span id="ben6<%= b%>"></span>	
+												<span id="ben7<%= b%>"></span>	
+												<span id="ben8<%= b%>"></span>	
+												<span id="ben9<%= b%>"></span>	
 												<input type="hidden" name="valben<%= b%>" id="valben<%= b%>">	
 											</p>								
 										</div>
@@ -315,6 +315,44 @@
 							</div>
 						<% end %>
 					</div>
+
+					<div class="mt-2">
+							<button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#iga"> Autre</button><br>
+							
+						</div>
+					<div class="collapse" id="iga">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-5" style="text-align: center;">
+									<h6>Ajout d'une autre IGA</h6>
+							    	<input type="text" name="newiga" size=15 placeholder="autre IGA" class="form-control" id="inpiga"><br>	
+							    	<input type="button" class="sc-eerKOB cfnPHQ" value="Ajouter" id="ajoutIga">			
+								</div>
+								<div class="col-md-7">
+										<h6 style="text-align: center;">La nouvelle IGA doit être cochée</h6>
+									<% 10.times do |i|%>
+								    	<div id="check<%= i%>" style="display: block;">
+											<p id="pi<%= i%>" style="display: none;">
+												<%= check_box_tag("checkiga#{i}", :id => "c#{i}") %>
+												<span id="igaspan<%= i%>"></span>	
+												<span id="igaspan1<%= i%>"></span>	
+												<span id="igaspan2<%= i%>"></span>	
+												<span id="igaspan3<%= i%>"></span>	
+												<span id="igaspan4<%= i%>"></span>	
+												<span id="igaspan5<%= i%>"></span>	
+												<span id="igaspan6<%= i%>"></span>	
+												<span id="igaspan7<%= i%>"></span>	
+												<span id="igaspan8<%= i%>"></span>	
+												<span id="igaspan9<%= i%>"></span>	
+												<input type="hidden" name="valiga<%= i%>" id="valiga<%= i%>">	
+											</p>								
+										</div>
+								    <%end%>
+								</div>
+							</div>
+						</div>
+					</div>
+
 				</div>
 			</div>
 		</div>

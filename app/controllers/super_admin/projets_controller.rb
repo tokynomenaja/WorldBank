@@ -6,6 +6,7 @@ class SuperAdmin::ProjetsController < ApplicationController
   	@projets = Projet.where(validation: false, revalid: false).order(:id).page(params[:page]).per(9)
     @projets_revalid = Projet.where(revalid: true, validation: false).order(:id).page(params[:page]).per(9)
     @projets_valides = Projet.where(validation: true).order(:id).page(params[:page]).per(9)
+    @projets_rejets = Projet.where(rejet: true, validation: nil).order(:id).page(params[:page]).per(9)
   end
 
   def show
@@ -15,6 +16,9 @@ class SuperAdmin::ProjetsController < ApplicationController
   def update
   	@projet = Projet.find(params[:id])
    	@projet.update(validation: true)
+     if rejetparam == 'Rejeter'
+      @projet.update(rejet: true, validation: nil)
+    end
    	redirect_to super_admin_projets_path, success: "Projet validé"
   end
 
@@ -29,5 +33,10 @@ class SuperAdmin::ProjetsController < ApplicationController
       if current_user.is_super_admin == false
         redirect_to root_path
       end
+  end
+
+  def rejetparam
+
+    params[:rejeter]
   end
 end

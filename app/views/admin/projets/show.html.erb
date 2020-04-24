@@ -147,9 +147,9 @@
             <div class="mb-3">
                 <%@projet.partenaireprojets .each do|pap|%>
                   <% if pap == @projet.partenaireprojets.last%>
-                    <span><%=pap.partenaire.plateforme %></span>
+                    <span><%=pap.partenaire.description %></span>
                   <%else%>
-                    <span><%=pap.partenaire.plateforme %>, </span>
+                    <span><%=pap.partenaire.description %>, </span>
                   <% end %>
                 <% end %>
             </div>
@@ -220,6 +220,8 @@
     </div>
     <div class="text-right">
       <a href="<%= edit_admin_projet_path(@projet.id)%>" class="sc-eerKOB cfnPHQ bold sear">Modifier</a>
-      <a href="<%= admin_projet_path(@projet.id)%>" class="btn btn-danger" data-method="delete" data-confirm="voulez-vous vraiment le supprimer?"> Supprimer</a>
+      <a href="<%= admin_projet_path(@projet.id)%>" class="btn btn-danger" data-method="delete" data-confirm="Voulez-vous supprimer ce projet ?"> Supprimer</a>
       <a href="<%= admin_projets_path%>" class="btn btn-danger">Retour</a>
     </div>
+
+<%= render partial: "/super_admin/confirm.html.erb"%>
