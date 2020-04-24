@@ -105,7 +105,9 @@ end
          @fin.each do |f|
           if f.fin.year >= @d1 && f.fin.year <= @d2
             @d << f
-            @fin_1 = Projet.where(fin: f)
+            @fin_1= @d1
+            @fin_1= @d2
+
           end
          end
        end
