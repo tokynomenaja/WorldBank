@@ -347,7 +347,7 @@
             
           </div>
           <div class="row no-gutters">
-            <div class="col-sm-5">
+            <div class="col-sm-4">
               <div class="filter pt-2 pb-2">
                 
                 <%if @ptf_1 != ""%>
@@ -408,16 +408,20 @@
 
               </div>
             </div>
-            <div class="col-sm-7 pl-2">
+            <div class="col-sm-8 pl-2">
               <div>
 
                 <%if @results != ""%>
                 <%if @results.count != 0%>
                 <%@results.each do | result|%>
-                <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <%= link_to "#{result.nom_du_projet}" , projet_path(result.id), target: 'blank', class: 'text-muted reshover' %>
+                <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
+                  <div class="col-8">
+                    <%= link_to "#{result.nom_du_projet}" , projet_path(result.id), target: 'blank', class: 'text-muted reshover' %>
+                  </div>
+                  <div class="col-4 text-center">
+                    <span class="table">PTF: <%= result.ptf.title %></span>
+                  </div>
                 </div>
-            
                 <%end%>
                  <%else%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
@@ -433,8 +437,13 @@
                 <%if @zone.count != 0%>
                 <% @zone.each do |res| %> 
                 <% if res.projet.validation == true%>
-                <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
+                <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
+                  <div class="col-8">
+                    <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
+                  </div>
+                  <div class="col-4 text-center">
+                    <span class="table">PTF: <%= res.projet.ptf.title %></span>
+                  </div>
                 </div>
                 <%end%>
                 <%end%>
@@ -450,9 +459,14 @@
                 <%if @iga.count != 0%>
                 <% @iga.each do |res| %>  
                 <% if res.projet.validation == true%>
-                <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <%= link_to "#{res.projet.nom_du_projet}",  projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
-                </div>          
+                  <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
+                    <div class="col-8">
+                    <%= link_to "#{res.projet.nom_du_projet}",  projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
+                    </div>
+                    <div class="col-4 text-center">
+                      <span class="table">PTF: <%= res.projet.ptf.title %></span>
+                    </div>
+                  </div>        
                 <%end%>
                 <%end%>
                 <%else%>
@@ -468,9 +482,14 @@
                 <%if @filiere.count != 0%>
                 <% @filiere.each do |res| %>  
                 <% if res.projet.validation == true%>
-                <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
-                </div>
+                  <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
+                    <div class="col-8">
+                    <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
+                    </div>
+                    <div class="col-4 text-center">
+                      <span class="table">PTF: <%= res.projet.ptf.title %></span>
+                    </div>
+                  </div>  
                 <%end%>
                 <%end%>
                 <%else%>
@@ -488,9 +507,14 @@
                 <% if @forme.count != 0%>
                 <% @forme.each do |rs| %>  
                 <% if rs.projet.validation == true%>
-                <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <%= link_to "#{rs.projet.nom_du_projet}", projet_path(rs.projet.id), target: 'blank', class: 'text-muted reshover' %>
-                </div>
+                  <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
+                    <div class="col-8">
+                      <%= link_to "#{rs.projet.nom_du_projet}", projet_path(rs.projet.id), target: 'blank', class: 'text-muted reshover' %>
+                    </div>
+                    <div class="col-4 text-center">
+                      <span class="table">PTF: <%= rs.projet.ptf.title %></span>
+                    </div>
+                  </div>  
                 <%end%>
                 <%end%>
                 <%else%>
@@ -507,9 +531,14 @@
                 <%if @secteur.count != 0%>
                 <%@secteur.each do |res|%>              
                 <% if res.projet.validation == true%>
-                <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
-                </div>
+                  <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
+                    <div class="col-8">
+                      <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
+                    </div>
+                    <div class="col-4 text-center">
+                      <span class="table">PTF: <%= res.projet.ptf.title %></span>
+                    </div>
+                  </div>  
                 <%end%>   
                 <%end%> 
                   <%else%>
@@ -523,10 +552,15 @@
                 <%if @ptf%>
                 <%if @ptf.count != 0%>
                 <% @ptf.each do |p| %>  
-                <% if p.validation == true%>
-                <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <%= link_to "#{p.nom_du_projet}", projet_path(p.id), target: 'blank', class: 'text-muted reshover' %>
-                </div>     
+                <% if p.validation == true%> 
+                  <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
+                    <div class="col-8">
+                      <%= link_to "#{p.nom_du_projet}", projet_path(p.id), target: 'blank', class: 'text-muted reshover' %>
+                    </div>
+                    <div class="col-4 text-center">
+                      <span class="table">PTF: <%= p.ptf.title %></span>
+                    </div>
+                  </div>     
                 <%end%> 
                 <%end%>
                 <%else%>
@@ -540,10 +574,15 @@
                 <%if @appui%>
                 <%if @appui.count != 0%>
                 <% @appui.each do |ip| %>  
-                <% if ip.validation == true%>
-                <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <%= link_to "#{ip.nom_du_projet}", projet_path(ip.id), target: 'blank', class: 'text-muted reshover' %>
-                </div>  
+                <% if ip.validation == true%> 
+                  <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
+                    <div class="col-8">
+                      <%= link_to "#{ip.nom_du_projet}", projet_path(ip.id), target: 'blank', class: 'text-muted reshover' %>
+                    </div>
+                    <div class="col-4 text-center">
+                      <span class="table">PTF: <%= ip.ptf.title %></span>
+                    </div>
+                  </div>  
                 <%end%>
                 <%end%>
                   <%else%>
@@ -557,9 +596,14 @@
                 <%if @ben.count != 0%>
                 <% @ben.each do |b| %>  
                 <% if b.projet.validation == true%>
-                <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <%= link_to "#{b.projet.nom_du_projet}", projet_path(b.projet.id), target: 'blank', class: 'text-muted reshover' %>
-                </div>
+                  <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
+                    <div class="col-8">
+                      <%= link_to "#{b.projet.nom_du_projet}", projet_path(b.projet.id), target: 'blank', class: 'text-muted reshover' %>
+                    </div>
+                    <div class="col-4 text-center">
+                      <span class="table">PTF: <%= b.projet.ptf.title %></span>
+                    </div>
+                  </div>  
                 <%end%>     
                 <%end%>
                   <%else%>
@@ -572,9 +616,14 @@
                 <%if @d%>
                 <%if @d.count != 0%>
                 <% @d.each do |f| %>  
-                  <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                    <%= link_to "#{f.nom_du_projet}", projet_path(f.id), target: 'blank', class: 'text-muted reshover' %>
-                  </div>  
+                  <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
+                    <div class="col-8">
+                      <%= link_to "#{f.nom_du_projet}", projet_path(f.id), target: 'blank', class: 'text-muted reshover' %>
+                    </div>
+                    <div class="col-4 text-center">
+                      <span class="table">PTF: <%= f.ptf.title %></span>
+                    </div>
+                  </div>
                 <%end%>
                 <%else%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
