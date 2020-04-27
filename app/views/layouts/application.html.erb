@@ -29,18 +29,14 @@
   </style>
     
   <body class="body" id="body" onload="Refresh()">
-
     <% unless flash.empty? %>
       <% flash.each do |message_type, message| %>
-        <div class="alert alert-info alert-dismissible btn btn-default">
+        <div class="alert flash-left alert-info alert-dismissible btn btn-default">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
           <%=message%>    
         </div>
       <% end %>
     <%end%>
-
-     
- 
     <% if current_user%>
       <% if current_user.is_admin == true%>
         <%= render "layouts/nav_admin.html.erb" %>

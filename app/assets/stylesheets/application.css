@@ -406,7 +406,7 @@ a.position:hover{color: #ffffff;text-decoration: none;}
   }
 .range-content{
   width: 30%;
-  right:20rem;
+  right:14rem;
 
 }
 .beneficiaire-content{width: 23rem;right: 5.1rem;}
@@ -528,6 +528,10 @@ a.position:hover{color: #ffffff;text-decoration: none;}
  }
 
 /*FIN RANGE*/
+
+/*flash*/
+.flash-left{left: 0 !important;right: unset !important;z-index: 1 !important;top: 4rem !important;}
+
 
 /*logo*/
 .image-c1{width: 11.5rem;}
