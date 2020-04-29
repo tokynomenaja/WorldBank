@@ -4,7 +4,7 @@ def index
        @project = Projet.order(:id).page(params[:page]).per(3)
        @forme_1 = ""
        @ptf_1 = ""
-       @montant_1 = ""
+       @montant_11 = ""
        @appui_1 = ""
        @zone_1 = ""
        @ben_1 = ""
@@ -57,18 +57,20 @@ def index
                 @m2 = params[:montant][1].to_i
                 @r = []
                 @pro.each do |pro|
-                  pro.montants.each do |m|
-                  if m.price >= @m1 && m.price <= @m2  
+                pro.montants.each do |m|
+                if m.price >= @m1 && m.price <= @m2  
                     @r << pro
-                    @montant_1 = Montant.where(projet_id: pro.id)
-                  end
+                    @montant_11 = @m1
+                    @montant_11 = @m2
                 end
               end
+            end
 
      
     end 
   end
 end
+
   #recherche controller  appui
 
       if params[:appui_id]  

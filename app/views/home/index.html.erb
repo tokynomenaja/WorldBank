@@ -409,9 +409,12 @@
 
                 <%if @fin_1 != ""%>
                   <p class="text-muted mb-1"><span>fin de projet: &nbsp;:&nbsp; </span> <%= @d1%>-<%=@d2%></p>
-                  <%else%>
-                       <p class="text-muted mb-1"><span>fin de projet: &nbsp;:&nbsp; </span> <%= @d1%>-<%=@d2%></p>
                 <%end%>
+                
+                 <%if @montant_11 != ""%>
+                  <p class="text-muted mb-1"><span>montant de projet entre: &nbsp;:&nbsp; </span> <%= @m1%>-<%=@m2%> million USD</p>
+                <%end%>
+
            
               </div>
             </div>
@@ -630,15 +633,32 @@
               <%end%>
               <%end%>
 
+              <%if @r%>
+              <%if @r.count != 0%>
+              <%@r.each do |m|%>
+                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
+                    <div class="col-8">
+                      <%= link_to "#{m.nom_du_projet}", projet_path(m.id), target: 'blank', class: 'text-muted reshover' %>
+                    </div>
+                    <div class="col-4 text-center">
+                      <span class="table">PTF: <%= m.ptf.title %></span>
+                    </div>
+                  </div>
+              <%end%>
+               <%else%>
+                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                  <p class= 'text-muted '> La recherche ne correspand a aucun resultat</p>  
+                </div>
+              <%end%>
+              <%end%>
 
-              
             </div>
             <div class="compteur mt-5">
             </div>
           </div>
         </div>
       </div>
-      <% else %>
+
         <div class="qjc24y-0 jMLWRH col-md-7 pt-5 text-justify" >
           <div class="compteur mt-5">
             <div class="d-flex  text-center justify-content-center flex-wrap">
