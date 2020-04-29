@@ -581,3 +581,26 @@ a.position:hover{color: #ffffff;text-decoration: none;}
    .search{width:auto;top: 50%;}
    .dwLDtk .sc-1ejeabr-19,.dwLDtk .sc-1ejeabr-25{margin-top: 0;}
 }
+
+   
+     .left {
+       overflow-y: scroll;
+       height: 30vh;
+     }
+     .active-user {
+       border-radius: 3px;
+       padding-left: 0.5rem;
+       /*font-weight: 900;*/
+       margin-right: 0.5rem;
+       .online-icon {
+         border-radius: 50%;
+         width: 0.5rem;
+         height: 0.5rem;
+       }
+     }
+     .left::-webkit-scrollbar {
+      width: 0.3rem;
+    }
+    .left::-webkit-scrollbar-thumb {
+      background: #fff3; 
+    }

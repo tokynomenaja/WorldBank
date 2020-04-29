@@ -73,6 +73,34 @@
 
 
 
+//Autre Forme
+	function ajoutform(){
+		<% 10.times do |x|%>			
+			var hid<%= x%> = document.getElementById('valform<%= x%>');
+			var p<%= x%> = document.getElementById('pForm<%= x%>');
+		<%end%>
+		var val = document.getElementById('fo').value;
+		if(hid0.value == "" && val != ""){
+
+			p0.style.display = "block";
+			document.getElementById('f0').innerHTML = val;
+			hid0.value = val;
+		}
+		<% for y in 1..9%>
+		else if (hid<%= y%>.value == '' && val != "") {
+			p<%= y%>.style.display = "block";
+			document.getElementById('f<%=y%><%=y%>').innerHTML = document.getElementById('fo').value;
+			hid<%=y%>.value = document.getElementById('fo').value;
+		}
+		<%end%>
+	}
+	document.getElementById("addForm").addEventListener('click',function () {
+		ajoutform();
+	}  ); 
+
+
+
+
 
 //Autre IGA
 	function ajoutiga(){
@@ -218,7 +246,7 @@
 		    if(filAsso == true){
 		    	document.getElementById('filAsso').innerHTML = "Aucune filière associée";
 		    }else{
-		    	document.getElementById('filAsso').innerHTML = "Filière associée";
+		    	document.getElementById('filAsso').innerHTML = "Filières associées";
 		    }
 
 
@@ -262,6 +290,7 @@
 			<%end%>
 
 		    <%Secteur.all.each do |s|%>
+		    
 		    	// Si l'utilisateur click le sécteur 'x':
 		        if(x == <%= s.id%>){
 		        	// Chercher toutes les formes d'appui qui correspondent au secteur X
@@ -285,12 +314,10 @@
 		    <%end%>
 
 		    if(formAsso == true){
-		    	var formAssodiv = document.getElementById('formAssodiv');
 		    	document.getElementById('formAsso').innerHTML = "Aucune forme d'appui associée";
-		    	formAssodiv.style.display = "none";
 
 		    }else{
-		    	document.getElementById('formAsso').innerHTML = "Forme d'appui";
+		    	document.getElementById('formAsso').innerHTML = "Formes d'appuis";
 		    }
 
 		    // Cacher d'abord tout les formes d'appui
