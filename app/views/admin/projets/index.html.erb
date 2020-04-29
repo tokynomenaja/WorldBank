@@ -7,16 +7,16 @@
 			<div class="col-sm-4 mb-3">
 				<div class="card">
 					<div class="card-body">
-						<p>							
-						<%if p.validation == false && p.revalid == false%>
-								<span class="badge badge-info">En attente de validation</span>	
-							<%elsif p.validation == nil && p.rejet == false%>
-								<span class="badge badge-warning">Non publié<span>
-							<%elsif p.revalid == true%>
-								<span class="badge badge-dark">En attente de revalidation</span>
-							<%elsif p.rejet == true%>
-								<span class="badge badge-danger">Rejeté</span>	
-						<%else%>
+						<p>											
+						<%if p.validation == false%>
+							<span class="badge badge-info">En attente de validation</span>	
+						<%elsif p.validation == nil%>
+							<span class="badge badge-warning">Non publié<span>
+						<%elsif p.revalid == true%>
+							<span class="badge badge-dark">En attente de revalidation</span>
+						<%elsif p.rejet == true%>
+							<span class="badge badge-danger">Rejeté</span>	
+						<%elsif p.validation == true%>
 							<span class=" badge badge-primary badgetext-white">Publié<span>
 						<%end%>
 						</p>

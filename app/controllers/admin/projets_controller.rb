@@ -71,6 +71,12 @@ class Admin::ProjetsController < ApplicationController
                 end
                 end
 
+                10.times do |x|
+                  if params[:"checkform#{x}"] && params[:newform] != ""
+                    @form = Forme.create(title: params[:"valform#{x}"])
+                      Formeprojet.create(projet_id: @project.id , forme_id: @form.id)
+                  end
+                end
                 if params[:forme_ids]
                   @forme_ids = params[:forme_ids]
                 @forme_ids.each do |x|

@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+	protect_from_forgery with: :exception
 	add_flash_types :success, :danger
 	before_action :configure_devise_parameters, if: :devise_controller?
 	after_action :add_organism, if: :devise_controller?

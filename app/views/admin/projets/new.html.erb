@@ -153,7 +153,6 @@
 						</div>
 					<%end%>
 				</div>
-
 				<div class="col-md-4">
 					<h6 class="table">Début de projet</h6>
 					<input type="text" id="selectionDebut" placeholder="mm/aaaa" class="form-control" required="true">
@@ -192,7 +191,7 @@
 							<div class="row">
 								<div class="col-md-5" style="text-align: center;">
 									<h6>Ajout d'une autre filière</h6>
-							    	<input type="text" name="newfili" size=15 placeholder="nouvelle filiere" class="form-control" id="fla"><br>	
+							    	<input type="text" name="newfili" size=15 placeholder="Autre filière" class="form-control" id="fla"><br>	
 							    	<input type="button" class="sc-eerKOB cfnPHQ" value="Ajouter" id="add">			
 								</div>
 								<div class="col-md-7">
@@ -222,13 +221,12 @@
 				</div>
 				</div>
 			</div>
-
 			<div class="container mb-2 mt-2">
 			<a class="table" id="formAsso">
-				Forme d'appui
+				Formes d'appuis
 			</a>
 				<div class="mt-2">
-				<div class="card card-body" id="formAssodiv" style="display: block;">
+				<div class="card card-body">
 					<div class="row">
 						<%Forme.order(:title).all.each do |form|%>
 							<div class="col-md-6" style="display: none" id="form<%= form.id%>">
@@ -241,6 +239,42 @@
 							</div>
 						<% end %>
 					</div>
+
+					<div class="mt-2">
+								<button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#fap"> Autre</button><br>	
+							</div>
+						<div class="collapse" id="fap">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-5" style="text-align: center;">
+									<h6>Ajout d'une autre forme d'appui</h6>
+							    	<input type="text" name="newform" size=15 placeholder="Autre forme d'appui" class="form-control" id="fo"><br>	
+							    	<input type="button" class="sc-eerKOB cfnPHQ" value="Ajouter" id="addForm">			
+								</div>
+								<div class="col-md-7">
+										<h6 style="text-align: center;">La nouvelle forme d'appui doit être cochée</h6>
+									<% 10.times do |form|%>
+								    	<div id="check<%= form%>" style="display: block;">
+											<p id="pForm<%= form%>" style="display: none;">
+												<%= check_box_tag("checkform#{form}", :id => "c#{form}") %>
+												<span id="f<%= form%>"></span>	
+												<span id="f<%= form%>"></span>	
+												<span id="f2<%= form%>"></span>	
+												<span id="f3<%= form%>"></span>	
+												<span id="f4<%= form%>"></span>	
+												<span id="f5<%= form%>"></span>	
+												<span id="f6<%= form%>"></span>	
+												<span id="f7<%= form%>"></span>	
+												<span id="f8<%= form%>"></span>	
+												<span id="f9<%= form%>"></span>	
+												<input type="hidden" name="valform<%= form%>" id="valform<%= form%>">	
+											</p>								
+										</div>
+								    <%end%>
+								</div>
+							</div>
+						</div>
+						</div>
 				</div>
 				</div>
 			</div>
@@ -268,7 +302,7 @@
 							<div class="row">
 								<div class="col-md-5" style="text-align: center;">
 									<h6>Ajout d'un nouveau bénéficiaire</h6>
-							    	<input type="text" name="newben" size=15 placeholder="nouveau bénéficiaire" class="form-control" id="inp"><br>	
+							    	<input type="text" name="newben" size=15 placeholder="Autre bénéficiaire" class="form-control" id="inp"><br>	
 							    	<input type="button" class="sc-eerKOB cfnPHQ" value="Ajouter" id="ajout">			
 								</div>
 								<div class="col-md-7">
@@ -352,7 +386,6 @@
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -418,3 +451,4 @@
 <%= render partial: "/admin/projets/script.html.erb"%>
 
 <%= render partial: "/super_admin/confirm.html.erb"%>
+

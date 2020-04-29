@@ -25,7 +25,8 @@ Rails.application.routes.draw do
   	end
     
    root to: 'home#index'
-   devise_for :users
+   devise_for :users, :controllers => { :sessions => "sessions" }
+   get 'users/index'
    resources :projets
    get '/search' => 'projets#search', :as => 'search_projet'
 
