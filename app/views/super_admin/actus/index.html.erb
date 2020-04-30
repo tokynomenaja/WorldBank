@@ -1,6 +1,6 @@
 <div class="container sans-head mb-5">
 	<div class="mb-4 text-center">
-		<h3 style="color: dark">Toutes les actualités</h3>
+		<h3 class="table">Toutes les actualités</h3>
 	</div>
 	<div class="row justify-content-center">
 		<% @actus.each do |a|%>
@@ -12,7 +12,7 @@
 					<div class="card-text">
 						<p class="card-text text-muted mb-5 truncate-pub"><%= a.title %></p>
 					</div>
-				    <p class="mt-3 position-absolute more-info-pub"><a href="<%= super_admin_actu_path(a.id)%>" class="sc-eerKOB cfnPHQ" style="color: white;">Voir</a></p>
+				    <p class="mt-3 position-absolute more-info-pub"><a href="<%= super_admin_actu_path(a.id)%>" class="table">Voir</a></p>
 				</div>
 			</div>
 		<%end%>	

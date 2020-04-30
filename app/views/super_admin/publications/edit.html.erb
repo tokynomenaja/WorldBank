@@ -1,6 +1,6 @@
 <%= form_tag url_for(action: 'update'), method:'patch', class:'form', multipart: true do%>
 	<div class="container sans-head border rounded p-4">
-		<h5 class="text-center">Modifier cette publication</h5>
+		<h5 class="text-center table">Modifier cette publication</h5>
 		<div class="mb-2">
 			<label for="nom" class="table">Titre </label>
 			<input type="text" name="title" id="nom" placeholder="title" class="form-control" value="<%= @pub.title%>" required="true">

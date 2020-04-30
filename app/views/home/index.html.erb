@@ -426,7 +426,7 @@
                     <%= link_to "#{result.nom_du_projet}" , projet_path(result.id), target: 'blank', class: 'text-muted reshover' %>
                   </div>
                   <div class="col-4 text-center">
-                    <span class="table">PTF: <%= result.ptf.title %></span>
+                    <span class="table"><%= result.bailleur.first_name %></span>
                   </div>
                 </div>
                 <%end%>
@@ -447,7 +447,7 @@
                     <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
                   </div>
                   <div class="col-4 text-center">
-                    <span class="table">PTF: <%= res.projet.ptf.title %></span>
+                    <span class="table"><%= res.projet.bailleur.first_name %></span>
                   </div>
                 </div>
                 <%end%>
@@ -469,7 +469,7 @@
                     <%= link_to "#{res.projet.nom_du_projet}",  projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                     <div class="col-4 text-center">
-                      <span class="table">PTF: <%= res.projet.ptf.title %></span>
+                      <span class="table"><%= res.projet.bailleur.first_name %></span>
                     </div>
                   </div>        
                 <%end%>
@@ -490,7 +490,7 @@
                     <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                     <div class="col-4 text-center">
-                      <span class="table">PTF: <%= res.projet.ptf.title %></span>
+                      <span class="table"><%= res.projet.bailleur.first_name %></span>
                     </div>
                   </div>  
                 <%end%>
@@ -512,7 +512,7 @@
                       <%= link_to "#{rs.projet.nom_du_projet}", projet_path(rs.projet.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                     <div class="col-4 text-center">
-                      <span class="table">PTF: <%= rs.projet.ptf.title %></span>
+                      <span class="table"><%= rs.projet.bailleur.first_name %></span>
                     </div>
                   </div>  
                 <%end%>
@@ -534,7 +534,7 @@
                       <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                     <div class="col-4 text-center">
-                      <span class="table">PTF: <%= res.projet.ptf.title %></span>
+                      <span class="table"><%= res.projet.bailleur.first_name %></span>
                     </div>
                   </div>  
                 <%end%>   
@@ -556,7 +556,7 @@
                       <%= link_to "#{p.nom_du_projet}", projet_path(p.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                     <div class="col-4 text-center">
-                      <span class="table">PTF: <%= p.ptf.title %></span>
+                      <span class="table"><%= p.bailleur.first_name %></span>
                     </div>
                   </div>     
                 <%end%> 
@@ -578,7 +578,7 @@
                       <%= link_to "#{ip.nom_du_projet}", projet_path(ip.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                     <div class="col-4 text-center">
-                      <span class="table">PTF: <%= ip.ptf.title %></span>
+                      <span class="table"><%= ip.bailleur.first_name %></span>
                     </div>
                   </div>  
                 <%end%>
@@ -599,7 +599,7 @@
                       <%= link_to "#{b.projet.nom_du_projet}", projet_path(b.projet.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                     <div class="col-4 text-center">
-                      <span class="table">PTF: <%= b.projet.ptf.title %></span>
+                      <span class="table"><%= b.projet.bailleur.first_name %></span>
                     </div>
                   </div>  
                 <%end%>     
@@ -619,7 +619,7 @@
                       <%= link_to "#{f.nom_du_projet}", projet_path(f.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                     <div class="col-4 text-center">
-                      <span class="table">PTF: <%= f.ptf.title %></span>
+                      <span class="table"><%= f.bailleur.first_name %></span>
                     </div>
                   </div>
                 <%end%>

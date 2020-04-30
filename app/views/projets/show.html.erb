@@ -35,12 +35,12 @@
             <%elsif @projet.secteurprojets.count > 1%>
                 <p><span class="attr">Secteurs : </span>
             <%end%>
-              <span class="word">
+              <span class="word text-wrap">
                 <%@projet.secteurprojets .each do|sp|%>
                     <% if sp == @projet.secteurprojets.last%>
-                      <span><%=sp.secteur.title %></span>
+                      <%=sp.secteur.title %>
                     <% else %>
-                      <span><%=sp.secteur.title %>, </span>
+                      <%=sp.secteur.title %>, 
                     <% end %>
                 <% end %>
                 
@@ -54,12 +54,12 @@
             <%elsif @projet.formeprojets.count > 1%>
                 <p><span class="attr">Formes d'appui : </span>
             <%end%>
-            <span class="word">
+            <span class="word text-wrap">
                 <%@projet.formeprojets .each do|fop|%>
                   <% if fop == @projet.formeprojets.last%>
-                    <span><%=fop.forme.title %></span>
+                    <%=fop.forme.title %>
                   <% else %>
-                    <span><%=fop.forme.title %>, </span>
+                    <%=fop.forme.title %>, 
                   <% end %>
                 <% end %>
               
@@ -73,12 +73,12 @@
             <%elsif @projet.filiereprojets.count > 1%>
                 <p><span class="attr">Filières : </span>
             <%end%>
-            <span class="word">
+            <span class="word text-wrap">
                 <%@projet.filiereprojets .each do|fp|%>
                   <% if fp == @projet.filiereprojets.last%>
-                    <span><%=fp.filiere.title %></span>
+                    <span><%=fp.filiere.title %>
                   <% else %>
-                    <span><%=fp.filiere.title %>, </span>
+                    <span><%=fp.filiere.title %>, 
                   <% end %>
                 <% end %>
               
