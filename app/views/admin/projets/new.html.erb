@@ -108,6 +108,7 @@
 
 							</div>
 						<% end %>
+						<% for x in 1..2%>
 						<div class="col-md-6 row">
 							<div class="col">
 								<input type="checkbox" name="partAUTRE<%= x %>" id="partAUTRE<%= x%>" onclick="partAUTRE(<%= x%>);">
@@ -117,6 +118,7 @@
 								<input type="hidden" name="desc_partAUTRE<%= x %>" placeholder="A préciser" class="l-2 pr-2 form-control ml-2 pi-custom" id="descpartAUTRE<%= x %>" required="true">
 							</div>
 						</div>
+						<%end%>
 					</div>
 				</div>
 			</div>
