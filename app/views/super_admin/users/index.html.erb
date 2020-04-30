@@ -11,7 +11,7 @@
 			<th scope="col">Id</th>
 			<th scope="col">Email</th>
 			<th scope="col">
-				<a href="<%= super_admin_contacts_path%>" style="color: white;" class="btn btn-success btn-xs">Tous les messages<span class="badge badge-light ml-2"><%= Message.all.count%></span></a>
+				<a href="<%= super_admin_contacts_path%>" class="table mb-0">Tous les messages<span class="badge badge-light ml-2"><%= Message.all.count%></span></a>
 			</th>
 			<th scope="col">Action</th>
 			<th scope="col">Rôle</th>
@@ -23,8 +23,12 @@
 			<th scope="row"><%=b.id%></th>
 			<td><%=b.email%></td>
 			<td>Message <span class="badge badge-light ml-2"><%= b.messages.count%> </span></td>
-			<td><a href="#" class="btn btn-info" data-toggle="modal" data-target="#mod<%= b.id%>">Voir</a>
-			<a href="<%= super_admin_user_path(b.id)%>" class="btn btn-danger" data-method="delete" data-confirm="Voulez-vous retirer cet utilisateur ?" >Retirer</a></td>
+			<td>
+				<div class="d-flex justify-content-around">
+					<a href="#" class="badge btn-bg-primary text-white" data-toggle="modal" data-target="#mod<%= b.id%>">Voir</a>
+					<a href="<%= super_admin_user_path(b.id)%>" class="badge badge-danger" data-method="delete" data-confirm="Voulez-vous retirer cet utilisateur ?" >Retirer</a>
+				</div>
+			</td>
 			<td>
 				<%if b.is_admin == true%>
 					<span>Bailleur</span>
@@ -93,7 +97,7 @@
 			Aucun pour le moment
 		</div>
 	<% else %>
-		<div class="d-flex justify-content-center align-items-center table-dark">
+		<div class="d-flex justify-content-center align-items-center table-dark table mb-0">
 			<div class="col-1 text-center same">
 				<p>Id</p>
 			</div>
@@ -110,7 +114,7 @@
 			</div>
 		</div>
 		<% @users_en_attente.order(id: :desc).each do |u|%>
-			<div class="d-flex justify-content-center align-items-center table-dark">
+			<div class="d-flex justify-content-center align-items-center table-dark table mb-0">
 				<div class="col-1 text-center same">
 					<%=u.id%>
 				</div>
@@ -120,15 +124,16 @@
 				<div class="col-4 text-center same">
 					<div class="w-100 d-flex justify-content-around h-100 align-items-center"> 
 						<%= form_for u, url: super_admin_user_path(u.id), method: :put do |f| %>
-							<%= f.submit 'Bailleur', name: 'valider', value: 'Bailleur', class: 'btn btn-success'%>
+							<%= f.submit 'Bailleur', name: 'valider', value: 'Bailleur', class: 'btn btn-success btn-bg-primary'%>
 							<%= f.submit 'Consultant', name: 'valider', value: 'Consultant', class: 'btn btn-primary'%>
 						<%end%>
 					</div>
 				</div>
 				<div class="col-3 text-center same">
-					<a href="#" class="btn btn-info" data-toggle="modal" data-target="#mod<%= u.id%>">Voir</a>
-					<a href="<%= super_admin_user_path(u.id)%>" class="btn btn-danger" data-method="delete" data-confirm="Voulez-vous retirer cet utilisateur ?" >Retirer</a></td>
-
+					<div class="d-flex justify-content-around pt-4">
+						<a href="#" class="badge btn-bg-primary text-white" data-toggle="modal" data-target="#mod<%= u.id%>">Voir</a>
+						<a href="<%= super_admin_user_path(u.id)%>" class="badge badge-danger" data-method="delete" data-confirm="Voulez-vous retirer cet utilisateur ?" >Retirer</a>
+					</div>
 				</div>
 			</div>
 		<%end%>
@@ -166,8 +171,8 @@
         	
 				<%= form_for @users_en_attente["#{x}".to_i], url: super_admin_user_path(@users_en_attente["#{x}".to_i].id), method: :put do |f| %>
 	 
-					<p>Valider en tant que : <input type="submit" name="valider" value="Bailleur" class="btn-success"> 
-					 <input type="submit" name="valider" value="Consultant" class="btn-primary"></p>
+					<p>Valider en tant que : <input type="submit" name="valider" value="Bailleur" class="btn btn-success btn-bg-primary"> 
+					 <input type="submit" name="valider" value="Consultant" class="btn btn-primary"></p>
 				<%end%>
 		</p>
       </div>

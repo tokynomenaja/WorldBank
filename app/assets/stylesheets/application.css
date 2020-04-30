@@ -549,6 +549,12 @@ a.position:hover{color: #ffffff;text-decoration: none;}
 .image-c13{width: 5.7rem;}
 .image-c14{width: 2.8rem;}
 .image-c15{display: none;}
+
+/*projet*/
+.card-height{height: 13rem;}
+.card-foot{right: 1.5rem; left: 1.5rem;bottom: 1rem;}
+/*projets*/
+
 @media screen and (min-width: 1140px){
   .responsive-nav{display: none;}
 }

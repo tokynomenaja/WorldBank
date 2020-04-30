@@ -38,12 +38,11 @@
               <span class="word">
                 <%@projet.secteurprojets .each do|sp|%>
                     <% if sp == @projet.secteurprojets.last%>
-                      <span><%=sp.secteur.title %></span>
+                      <%=sp.secteur.title %>
                     <% else %>
-                      <span><%=sp.secteur.title %>, </span>
+                      <%=sp.secteur.title %>, 
                     <% end %>
                 <% end %>
-                
               </span>
             </p>
           <%end%>
@@ -57,9 +56,9 @@
             <span class="word">
                 <%@projet.formeprojets .each do|fop|%>
                   <% if fop == @projet.formeprojets.last%>
-                    <span><%=fop.forme.title %></span>
+                    <%=fop.forme.title %>
                   <% else %>
-                    <span><%=fop.forme.title %>, </span>
+                    <%=fop.forme.title %>, 
                   <% end %>
                 <% end %>
               
@@ -76,9 +75,9 @@
             <span class="word">
                 <%@projet.filiereprojets .each do|fp|%>
                   <% if fp == @projet.filiereprojets.last%>
-                    <span><%=fp.filiere.title %></span>
+                    <%=fp.filiere.title %>
                   <% else %>
-                    <span><%=fp.filiere.title %>, </span>
+                    <%=fp.filiere.title %>, 
                   <% end %>
                 <% end %>
               
@@ -88,7 +87,7 @@
       </div>
     </div>
   </div>
-  <div class="show-cont pt-4 pb-4">
+  <div class="show-cont pb-4">
     <div class="objectif mx-auto">
       <h2 class="text-left color">Objectif général du projet</h2>
       <div class="mt-2 pt-2">
