@@ -45,28 +45,31 @@ def index
   
   #recherche controller Montant
 
-      if params[:montant]
-         if params[:montant] && params[:montant] != ""
-          if params[:montant] == 1
-            redirect_to(root_path)
-    
-        else  
-         @params_montant = params[:montant]
-                @pro = Projet.all.where(validation: true)
-                @m1 = params[:montant][0].to_i
-                @m2 = params[:montant][1].to_i
-                @r = []
-                @pro.each do |pro|
-                pro.montants.each do |m|
-                if m.price >= @m1 && m.price <= @m2  
-                    @r << pro
-                    @montant_11 = @m1
-                    @montant_11 = @m2
+     if params[:montant]
+       if params[:montant] && params[:montant] != ""
+        if params[:montant][0]== "" && params[:montant][1] == ""
+          
+        else
+          if params[:montant]== 1
+          redirect_to(root_path)
+          else  
+           @params_montant = params[:montant]
+                  @pro = Projet.all.where(validation: true)
+                  @m1 = params[:montant][0].to_i
+                  @m2 = params[:montant][1].to_i
+                  @r = []
+                  @pro.each do |pro|
+                  pro.montants.each do |m|
+                  if m.price >= @m1 && m.price <= @m2  
+                      @r << pro
+                      @montant_11 = @m1
+                      @montant_11 = @m2
+                  end
                 end
               end
-            end
 
      
+    end 
     end 
   end
 end
