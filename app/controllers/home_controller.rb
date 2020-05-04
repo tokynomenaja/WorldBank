@@ -47,6 +47,8 @@ def index
 
       if params[:montant]
          if params[:montant] && params[:montant] != ""
+                if params[:montant][0] == "0" && params[:montant][1] == "0"
+
           if params[:montant] == 1
             redirect_to(root_path)
     
@@ -69,6 +71,7 @@ def index
      
     end 
   end
+end
 end
 
   #recherche controller  appui

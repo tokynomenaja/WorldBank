@@ -341,7 +341,7 @@
   <div class="sc-11unfkk-2 fxFQyp">
     <header class="">
       <div class="qjc24y-1 hlIrlm row no-gutters align-items-start">
-         <% if current_user && @forme_1 != "" || @ptf_1 != "" || @appui_1 != "" || @zone_1 != "" || @ben_1 != "" || @iga_1 != "" || @secteur_1 != "" || @filiere_1 != "" || @results != "" || @montant_1 != "" || @fin_1 != ""%>  
+         <% if current_user && @forme_1 != "" || @ptf_1 != "" || @appui_1 != "" || @zone_1 != "" || @ben_1 != "" || @iga_1 != "" || @secteur_1 != "" || @filiere_1 != "" || @results != "" || @montant_11 != "" || @fin_1 != ""%>  
         <div class="qjc24y-0 jMLWRH col-md-7" >
           <div class="height border-bottom mb-2">
             <h1 class="vx2fp9-3 ehdisu h-font text-left">Résultats de la recherche</h1>
@@ -645,10 +645,10 @@
                     </div>
                   </div>
               <%end%>
-               <%else%>
+                 <%else%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                   <p class= 'text-muted '> La recherche ne correspand a aucun resultat</p>  
-                </div>
+                </div>  
               <%end%>
               <%end%>
 
@@ -659,6 +659,7 @@
         </div>
       </div>
 
+      <% else %>
         <div class="qjc24y-0 jMLWRH col-md-7 pt-5 text-justify" >
           <div class="compteur mt-5">
             <div class="d-flex  text-center justify-content-center flex-wrap">
@@ -681,7 +682,7 @@
             </div>
           </div>
         </div>
-    <% end %>
+    <%end%>
     <div class="qjc24y-0 jMLWRH col-md-5">
       <div class="vx2fp9-1 coQzZm">
         <section>
