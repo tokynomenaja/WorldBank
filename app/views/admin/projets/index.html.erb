@@ -7,33 +7,20 @@
 			<div class="col-sm-4 mb-3">
 				<div class="card card-height position-relative">
 					<div class="card-body">
-						<p>											
-						<%if p.validation == false%>
-							<span class="badge badge-info">En attente de validation</span>	
-						<%elsif p.validation == nil%>
-							<span class="badge badge-warning">Non publié<span>
-						<%elsif p.revalid == true%>
-							<span class="badge badge-dark">En attente de revalidation</span>
-						<%elsif p.rejet == true%>
-							<span class="badge badge-danger">Rejeté</span>	
-						<%elsif p.validation == true%>
-							<span class=" badge badge-primary badgetext-white">Publié<span>
-						<%end%>
-						</p>
 						<h5 class="card-title"><%= p.nom_du_projet.truncate(40) %></h5>
 						<p class="card-text"><%= raw p.objectif_generale_du_projet.truncate(100)%></p>
 						<div class="row align-items-center mt-2 position-absolute card-foot">
 							<a href="<%= admin_projet_path(p.id)%>" class="col table mb-0">Voir</a>
-							<p class="col text-right mr-3">							
-							<%if p.validation == false && p.revalid == false%>
-									<span class="badge badge-info">En attente de validation</span>	
-								<%elsif p.validation == nil && p.rejet == false%>
-									<span class="badge badge-warning">Non publié<span>
-								<%elsif p.revalid == true%>
-									<span class="badge badge-dark">En attente de revalidation</span>
-								<%elsif p.rejet == true%>
-									<span class="badge badge-danger">Rejeté</span>	
-							<%else%>
+							<p class="text-right mr-3">							
+							<%if p.validation == false%>
+								<span class="badge badge-info">En attente de validation</span>	
+							<%elsif p.validation == nil && p.rejet == false%>
+								<span class="badge badge-warning">Non publié<span>
+							<%elsif p.revalid == true && p.validation == false%>
+								<span class="badge badge-dark">En attente de revalidation</span>
+							<%elsif p.rejet == true && p.validation == nil%>
+								<span class="badge badge-danger">Rejeté</span>	
+							<%elsif p.validation == true%>
 								<span class=" badge badge-primary btn-bg-primary">Publié<span>
 							<%end%>
 							</p>

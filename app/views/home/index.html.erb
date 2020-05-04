@@ -543,26 +543,27 @@
                 
                 <%if @secteur%>
                 <%if @secteur.count != 0%>
-                <%@secteur.each do |res|%>              
-                <% if res.projet.validation == true%> 
+                <% @secteur.each do |b| %>  
+                <% if b.projet.validation == true%>
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
                     <div class="col-8">
-                      <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
+                      <%= link_to "#{b.projet.nom_du_projet}", projet_path(b.projet.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                     <div class="col-4 text-center">
-                      <span class="table"><%= res.projet.bailleur.first_name %></span>
+                      <span class="table"><%= b.projet.bailleur.first_name %></span>
                     </div>
-                <%else%>
-                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                      <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
-                    </div>
-                <%end%>
-                <%end%> 
+                  </div>
                 <%else%>
                   <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                     <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
-                  </div>
-                <%end%> 
+                  </div>  
+                <%end%>     
+                <%end%>
+                  <%else%>
+                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                  <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
+                </div>
+                <%end%>
                 <%end%>
                
                 
@@ -669,7 +670,7 @@
                       <%= link_to "#{m.nom_du_projet}", projet_path(m.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                     <div class="col-4 text-center">
-                      <span class="table">PTF: <%= m.ptf.title %></span>
+                     <span class="table"><%= f.bailleur.first_name %></span>
                     </div>
                   </div>
               <%end%>
