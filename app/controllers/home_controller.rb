@@ -45,6 +45,7 @@ def index
   
   #recherche controller Montant
 
+
      if params[:montant]
        if params[:montant] && params[:montant] != ""
         if params[:montant][0]== "" && params[:montant][1] == ""
@@ -65,13 +66,15 @@ def index
                       @montant_11 = @m1
                       @montant_11 = @m2
                   end
+
                 end
-              end
+           
 
      
     end 
     end 
   end
+end
 end
 
   #recherche controller  appui
