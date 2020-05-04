@@ -224,7 +224,7 @@
    
           <input type="submit" name="rejeter" value="Rejeter" class="btn btn-danger">
         <%end%>
-      <%elsif @projet.revalid == true && @projet.validation == nil%>
+      <%elsif @projet.revalid == true && @projet.validation == false%>
           <%= form_for @projet, url: super_admin_projet_path(@projet.id), method: :put do |f| %>
         <a href="<%= super_admin_projet_path(@projet.id)%>" class="sc-eerKOB cfnPHQ bold sear" data-method="put">Revalider</a>
    

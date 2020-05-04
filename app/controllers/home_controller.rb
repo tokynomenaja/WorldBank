@@ -62,7 +62,7 @@ def index
                   @pro.each do |pro|
                   pro.montants.each do |m|
                   if m.price >= @m1 && m.price <= @m2  
-                      @r << pro
+                      @r << m.projets
                       @montant_11 = @m1
                       @montant_11 = @m2
                   end

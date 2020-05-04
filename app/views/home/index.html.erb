@@ -419,7 +419,7 @@
               <div>
 
                 <%if @results != ""%>
-                <%if @results != 0%>
+                <%if @results.count != 0%>
                 <%@results.each do | result|%>
                 <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
                   <div class="col-8">
@@ -440,7 +440,7 @@
 
                 <%if @zone%>
                 <%if @zone.count != 0%>
-                <% @zone.each do |res| %> 
+                <% @zone.select(:projet_id).distinct.each do |res| %> 
                 <% if res.projet.validation == true%>
                 <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
                   <div class="col-8">
@@ -466,7 +466,7 @@
 
                 <%if @iga%> 
                 <%if @iga.count != 0%>
-                <% @iga.each do |res| %>  
+                <% @iga.select(:projet_id).distinct.each do |res| %>  
                 <% if res.projet.validation == true%>
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
                     <div class="col-8">
@@ -491,7 +491,7 @@
 
                 <%if @filiere%>
                 <%if @filiere.count != 0%>
-                <% @filiere.each do |res| %>  
+                <% @filiere.select(:projet_id).distinct.each do |res| %>  
                 <% if res.projet.validation == true%>
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
                     <div class="col-8">
@@ -517,7 +517,7 @@
 
                 <%if @forme%>
                 <% if @forme.count != 0%>
-                <% @forme.each do |rs| %>  
+                <% @forme.select(:projet_id).distinct.each do |rs| %>  
                 <% if rs.projet.validation == true%>
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
                     <div class="col-8">
@@ -543,7 +543,7 @@
                 
                 <%if @secteur%>
                 <%if @secteur.count != 0%>
-                <% @secteur.each do |b| %>  
+                <% @secteur.select(:projet_id).distinct.each do |b| %>  
                 <% if b.projet.validation == true%>
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
                     <div class="col-8">
@@ -620,7 +620,7 @@
 
                 <%if @ben%>
                 <%if @ben.count != 0%>
-                <% @ben.each do |b| %>  
+                <% @ben.select(:projet_id).distinct.each do |b| %>  
                 <% if b.projet.validation == true%>
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
                     <div class="col-8">
