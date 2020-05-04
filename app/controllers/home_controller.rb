@@ -93,7 +93,6 @@ end
   #recherche controller  appui
 
   if params[:fin]
-    puts params[:fin]
      if params[:fin] && params[:fin] != ""
       if params[:fin][0]== "2008" && params[:fin][1] == "2030"
         
@@ -213,7 +212,7 @@ end
               else
               @params_secteur = params[:search_secteur]
               @params_secteur.each do |i|
-              @secteur = Secteurprojet.all.where(secteur_id: i.to_i)
+              @secteur = Secteurprojet.all.where(secteur_id: params[:search_secteur])
               @secteur_1 = Secteur.all.find(i.to_i).title
               end
           end
