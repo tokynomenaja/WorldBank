@@ -405,11 +405,11 @@
                 <%end%>
 
                 <%if @fin_1 != ""%>
-                  <p class="text-muted mb-1"><span>fin de projet: &nbsp;:&nbsp; </span> <%= @d1%>-<%=@d2%></p>
+                  <p class="text-muted mb-1"><span>fin projet entre : </span> <%= @d1%>-<%=@d2%></p>
                 <%end%>
                 
                  <%if @montant_11 != ""%>
-                  <p class="text-muted mb-1"><span>montant de projet entre: &nbsp;:&nbsp; </span> <%= @m1%>-<%=@m2%> millions USD</p>
+                  <p class="text-muted mb-1"><span>montant de projet entre : &nbsp;&nbsp;&nbsp;&nbsp; </span> <%= @m1%> -  <%=@m2%> millions USD</p>
                 <%end%>
 
            
@@ -644,7 +644,7 @@
                 <%end%>
 
                 <%if @d%>
-                <%if @d.count != 0%>
+                <%if @d.length != 0%>
                 <% @d.each do |f| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
                     <div class="col-8">
@@ -664,15 +664,18 @@
 
               <%if @r%>
               <%if @r.count != 0%>
-              <%@r.each do |m|%>
+              <%@r.select(:projet_id).distinct.each do |m|%>
+                <% if m.projet.validation == true%> 
                    <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
                     <div class="col-8">
-                      <%= link_to "#{m.nom_du_projet}", projet_path(m.id), target: 'blank', class: 'text-muted reshover' %>
+                      <%= link_to "#{m.projet.nom_du_projet}", projet_path(m.projet.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                     <div class="col-4 text-center">
-                     <span class="table"><%= m.bailleur.first_name %></span>
+                     <span class="table"><%= m.projet.bailleur.first_name %></span>
                     </div>
                   </div>
+
+                <%end%>
               <%end%>
                  <%else%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">

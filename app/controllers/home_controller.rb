@@ -48,8 +48,8 @@ def index
 
      if params[:montant]
        if params[:montant] && params[:montant] != ""
-        if params[:montant][0]== "" && params[:montant][1] == ""
-          
+        
+        if params[:montant][0]== "" && params[:montant][1] == ""  
         else
           if params[:montant]== 1
           redirect_to(root_path)
@@ -58,24 +58,18 @@ def index
                   @pro = Projet.all.where(validation: true)
                   @m1 = params[:montant][0].to_i
                   @m2 = params[:montant][1].to_i
-                  @r = []
                   @pro.each do |pro|
-                  pro.montants.each do |m|
-                  if m.price >= @m1 && m.price <= @m2  
-                      @r << pro
+                      @r = Montant.all.where(:price => (@m1..@m2))
                       @montant_11 = @m1
                       @montant_11 = @m2
-                  end
-
-                end
            
 
      
-    end 
-    end 
+                  end 
+          end 
+      end
+    end
   end
-end
-end
 
   #recherche controller  appui
 
@@ -112,10 +106,10 @@ end
          @fin.each do |f|
           if f.fin.year >= @d1 && f.fin.year <= @d2
             @d << f
-            @fin_1= @d1
-            @fin_1= @d2
 
           end
+            @fin_1= @d1
+            @fin_1= @d2
          end
        end
       end 
