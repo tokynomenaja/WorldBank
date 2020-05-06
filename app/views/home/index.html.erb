@@ -670,29 +670,22 @@
                       <%= link_to "#{m.nom_du_projet}", projet_path(m.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                     <div class="col-4 text-center">
-                     <span class="table"><%= f.bailleur.first_name %></span>
+                     <span class="table"><%= m.bailleur.first_name %></span>
                     </div>
                   </div>
               <%end%>
                  <%else%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-<<<<<<< HEAD
                   <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
                 </div>
-=======
-                  <p class= 'text-muted '> La recherche ne correspand a aucun resultat</p>  
-                </div>  
->>>>>>> patrick13
               <%end%>
               <%end%>
-
             </div>
             <div class="compteur mt-5">
             </div>
           </div>
         </div>
       </div>
-    <% else %>
 
       <% else %>
         <div class="qjc24y-0 jMLWRH col-md-7 pt-5 text-justify" >
