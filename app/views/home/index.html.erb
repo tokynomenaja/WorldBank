@@ -342,7 +342,6 @@
         <div class="qjc24y-0 jMLWRH col-md-7" >
           <div class="height border-bottom mb-2">
             <h1 class="vx2fp9-3 ehdisu h-font text-left">Résultats de la recherche</h1>
-            
           </div>
           <div class="row no-gutters">
             <div class="col-sm-4">
@@ -430,6 +429,9 @@
                   </div>
                 </div>
                 <%end%>
+                  <div class="text-center mt-2">
+                    <%= paginate @results %>
+                  </div>
                  <%else%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                   <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  

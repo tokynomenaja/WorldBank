@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
    before_action :notifAdmin   
 def index
-       @project = Projet.order(:id).page(params[:page]).per(3)
+       @project = Projet.order(:id).page(params[:page]).per(9)
        @forme_1 = ""
        @ptf_1 = ""
        @montant_11 = ""
@@ -24,7 +24,7 @@ def index
           @projets = []
           @parameter = params[:search].downcase  
           @req = Projet.where(validation: true)
-          @results = @req.where("lower(nom_du_projet) LIKE :search", search: "%#{@parameter}%")
+          @results = @req.where("lower(nom_du_projet) LIKE :search", search: "%#{@parameter}%").order(:id).page(params[:page]).per(1)
         end  
     end 
   #recherhe controller ptf
