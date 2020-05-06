@@ -383,16 +383,25 @@ $("#pub-item").click(function(e){
 	$("#pub-list").toggleClass("toggleclass")
 	$("#projet-list").addClass("toggleclass")
 	$("#actus-list").addClass("toggleclass")
+	$("#under-list").addClass("toggleclass")
 });
 $("#projet-item").click(function(e){
 	$("#projet-list").toggleClass("toggleclass")
 	$("#pub-list").addClass("toggleclass")
 	$("#pub-list").addClass("toggleclass")
+	$("#under-list").addClass("toggleclass")
 });
 $("#actus-item").click(function(e){
 	$("#actus-list").toggleClass("toggleclass")
 	$("#pub-list").addClass("toggleclass")
 	$("#projet-list").addClass("toggleclass")
+	$("#under-list").addClass("toggleclass")
+});
+$("#user-item").click(function(e){
+	$("#user-list").toggleClass("toggleclass")
+	$("#pub-list").addClass("toggleclass")
+	$("#projet-list").addClass("toggleclass")
+	$("#actus-list").addClass("toggleclass")
 });
 
 })
