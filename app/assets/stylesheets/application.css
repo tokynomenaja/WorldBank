@@ -392,7 +392,9 @@ a.position:hover{color: #ffffff;text-decoration: none;}
 .cust{width: 30% !important;}
 .footer-img{display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center;}
 .wbg-w{width: 50%;}
-
+.bg-message{background: #ecf0f7;}
+.btn-right{background-color: transparent;border: 0;text-align: right;}
+.dropvisiteur{width: 16rem !important}
 /*RANGE*/
   .toggleclass{
     display: none !important;

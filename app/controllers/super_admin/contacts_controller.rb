@@ -1,7 +1,7 @@
 class SuperAdmin::ContactsController < ApplicationController
 	before_action :authenticate_user!
   def index
-    @messages = Message.all
+    @messages = Message.all.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def show

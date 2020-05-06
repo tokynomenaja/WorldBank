@@ -409,7 +409,7 @@
                 <%end%>
                 
                  <%if @montant_11 != ""%>
-                  <p class="text-muted mb-1"><span>montant de projet entre : &nbsp;&nbsp;&nbsp;&nbsp; </span> <%= @m1%> -  <%=@m2%> millions USD</p>
+                  <p class="text-muted mb-1"><span>montant de projet entre: &nbsp;:&nbsp; </span> <%= @m1%>-<%=@m2%> USD</p>
                 <%end%>
 
            
@@ -671,11 +671,7 @@
                       <%= link_to "#{m.projet.nom_du_projet}", projet_path(m.projet.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                     <div class="col-4 text-center">
-<<<<<<< HEAD
-                     <span class="table"><%= m.bailleur.first_name %></span>
-=======
                      <span class="table"><%= m.projet.bailleur.first_name %></span>
->>>>>>> c05b53a9ad6bf84aaa15273f08c8c4abf8343f09
                     </div>
                   </div>
 
