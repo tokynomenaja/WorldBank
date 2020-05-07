@@ -12,13 +12,13 @@
 						<div class="row align-items-center mt-2 position-absolute card-foot">
 							<a href="<%= admin_projet_path(p.id)%>" class="col table mb-0">Voir</a>
 							<p class="text-right mr-3">							
-							<%if p.validation == false%>
+							<%if p.validation == false && p.validation == false && p.rejet == nil%>
 								<span class="badge badge-info">En attente de validation</span>	
-							<%elsif p.validation == nil && p.rejet == false%>
+							<%elsif p.validation == nil && p.rejet == nil && p.revalid == false%>
 								<span class="badge badge-warning">Non publié<span>
-							<%elsif p.revalid == true && p.validation == false%>
+							<%elsif p.revalid == true && p.validation == false && p.rejet == nil%>
 								<span class="badge badge-dark">En attente de revalidation</span>
-							<%elsif p.rejet == true && p.validation == nil%>
+							<%elsif p.rejet == true && p.validation == nil && p.revalid == false%>
 								<span class="badge badge-danger">Rejeté</span>	
 							<%elsif p.validation == true%>
 								<span class=" badge badge-primary btn-bg-primary">Publié<span>

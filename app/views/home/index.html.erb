@@ -543,7 +543,7 @@
                 
                 <%if @secteur%>
                 <%if @secteur.count != 0%>
-                <% @secteur.select(:projet_id).distinct.each do |b| %>  
+                <% @secteur.select(:projet_id).distinct.each do |b| %> 
                 <% if b.projet.validation == true%>
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
                     <div class="col-8">

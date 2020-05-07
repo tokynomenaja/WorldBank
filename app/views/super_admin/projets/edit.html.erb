@@ -453,13 +453,9 @@
 			</div>
 
 			<div class="container mt-4">
-				<%if @projet.validation == nil || @projet.validation == false%>
-					<input type="submit" name="modifier" value="Enregistrer la modification" class="btn btn-secondary">
-					<input type="submit" name="modifier" value="Publier" class="sc-eerKOB cfnPHQ">
-				<%else%>
-					<input type="submit" name="modifier" value="Re-publier" class="sc-eerKOB cfnPHQ">
-				<%end%>
-				<a href="<%= admin_projet_path(@projet.id)%>" class="btn btn-danger">Annuler la modification</a>
+				<input type="submit" name="modifier" value="Enregistrer la modification" class="btn btn-secondary">
+				
+				<a href="<%= super_admin_projet_path(@projet.id)%>" class="btn btn-danger">Annuler la modification</a>
 			</div>		
 	</div>
 <% end %>

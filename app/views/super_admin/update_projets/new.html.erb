@@ -3,7 +3,7 @@
       
     </div>
 </header>
-<%= form_tag url_for(action: 'update'),method:'put', class:'form', multipart: true do%>
+<%= form_tag url_for(action: 'create'),method:'post', class:'form', multipart: true do%>
 	<div class="mt-4 mb-4" onmouseover ="verificationDate()">
 		<div class="container">
 			<div class="row mb-2">
@@ -453,13 +453,9 @@
 			</div>
 
 			<div class="container mt-4">
-				<%if @projet.validation == nil || @projet.validation == false%>
-					<input type="submit" name="modifier" value="Enregistrer la modification" class="btn btn-secondary">
-					<input type="submit" name="modifier" value="Publier" class="sc-eerKOB cfnPHQ">
-				<%else%>
-					<input type="submit" name="modifier" value="Re-publier" class="sc-eerKOB cfnPHQ">
-				<%end%>
-				<a href="<%= admin_projet_path(@projet.id)%>" class="btn btn-danger">Annuler la modification</a>
+				<input type="submit" name="modifier" value="Enregistrer la modification" class="btn btn-secondary">
+				
+				<a href="<%= super_admin_projet_path(@projet.id)%>" class="btn btn-secondary">Annuler la modification</a>
 			</div>		
 	</div>
 <% end %>
