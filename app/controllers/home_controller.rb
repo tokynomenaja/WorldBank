@@ -60,12 +60,10 @@ def index
                   @m2 = params[:montant][1].to_i
                   @pro.each do |pro|
                       @r = Montant.all.where(:price => (@m1..@m2))
-                      @montant_11 = @m1
-                      @montant_11 = @m2
-           
-
      
                   end 
+                      @montant_11 = @m1
+                      @montant_11 = @m2
           end 
       end
     end
@@ -108,10 +106,10 @@ def index
             @d << f
 
           end
+       end
             @fin_1= @d1
             @fin_1= @d2
          end
-       end
       end 
     end 
   end
