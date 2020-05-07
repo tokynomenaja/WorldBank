@@ -368,14 +368,14 @@ end
 def destroy
   @projet = Projet.find(params[:id])
   @projet.destroy
-  @projet.pemprojets.destroy_all
-  @projet.zoneprojets.destroy_all
-  @projet.igaprojets.destroy_all
-  @projet.benefprojets.destroy_all
-  @projet.filiereprojets.destroy_all
-  @projet.formeprojets.destroy_all
   @projet.secteurprojets.destroy_all
   @projet.montants.destroy_all
+  @projet.filiereprojets.destroy_all
+  @projet.formeprojets.destroy_all
+  @projet.benefprojets.destroy_all
+  @projet.igaprojets.destroy_all
+  @projet.pemprojets.destroy_all
+  @projet.zoneprojets.destroy_all
   redirect_to admin_projets_path, success: "Suppression terminée"
 end
 
