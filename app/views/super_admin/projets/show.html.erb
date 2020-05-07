@@ -224,23 +224,26 @@
      
           <input type="submit" name="rejeter" value="Rejeter" class="btn btn-danger">
           <a href="<%= edit_super_admin_projet_path(@projet.id)%>" data-method="get" class="sc-eerKOB cfnPHQ bold sear">Modifier</a>
+          <a href="<%= super_admin_projets_path%>" class="btn btn-secondary">Retour</a>
         <%end%>
       <%elsif @projet.revalid == true && @projet.validation == false && @projet.rejet == nil%>
           <%= form_for @projet, url: super_admin_projet_path(@projet.id), method: :put do |f| %>
           <input type="submit" name="rejeter" value="Revalider" class="sc-eerKOB cfnPHQ bold sear">
      
             <input type="submit" name="rejeter" value="Rejeter" class="btn btn-danger">
+            <a href="<%= super_admin_projets_path%>" class="btn btn-secondary">Retour</a>
           <%end%>
       <%elsif @projet.rejet == true && @projet.validation == nil && @projet.revalid == false%>
         <%= form_for @projet, url: super_admin_projet_path(@projet.id), method: :put do |f| %>
           <input type="submit" name="rejeter" value="Valider" class="sc-eerKOB cfnPHQ bold sear">
-          <a href="<%= super_admin_projets_path%>" class="btn btn-danger">Retour</a>
+          <a href="<%= super_admin_projets_path%>" class="btn btn-secondary">Retour</a>
         <%end%>
 
       <%else%>
         <%= form_for @projet, url: super_admin_projet_path(@projet.id), method: :put do |f| %>
           <span class="badge badge-primary btn-bg-primary">Projet validé</span>
           <span><input type="submit" name="rejeter" value="Rejeter" class="btn btn-danger"></span>
+          <a href="<%= super_admin_projets_path%>" class="btn btn-secondary">Retour</a>
         <%end%>
       <%end%>
     </div>
