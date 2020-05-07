@@ -1,11 +1,10 @@
-class Projet < ApplicationRecord
-        validates :objectif_generale_du_projet, presence: true
+class UpdateProjet < ApplicationRecord
+		validates :objectif_generale_du_projet, presence: true
         validates :aspsp, presence: true
-
-        has_one :update_projet
         
-        belongs_to :bailleur, optional: true, class_name: 'User'
+        belongs_to :admin, optional: true, class_name: 'User'
         belongs_to :ptf, optional: true
+        belongs_to :projet
         belongs_to :appui, optional: true
         has_many :montants
 # relation de table entre projet et secteur a travers benefprojet
@@ -40,16 +39,4 @@ class Projet < ApplicationRecord
         has_many :partenaireprojets
         has_many :partenaires, through: :partenaireprojets
     
-        
-        has_many_attached :files
-        has_one_attached :picture
-       
-
-        after_create :create_project_send
-
-        # This method calls the order_email method from user_mailer, passing the order as an argument
-        def create_project_send
-            UserMailer.create_project_email(self).deliver_now
-        end
-
 end

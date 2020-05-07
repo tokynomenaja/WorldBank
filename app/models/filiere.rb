@@ -4,4 +4,7 @@ class Filiere < ApplicationRecord
 
 	has_many :secteur_filieres
 	has_many :secteurs, through: :secteur_filieres
+
+	has_many :filiereprojets
+	has_many :update_projets, through: :filiereprojets
 end

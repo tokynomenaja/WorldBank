@@ -3,7 +3,7 @@
       
     </div>
 </header>
-<%= form_tag url_for(action: 'update'),method:'put', class:'form', multipart: true do%>
+<%= form_tag url_for(action: 'create'),method:'post', class:'form', multipart: true do%>
 	<div class="mt-4 mb-4" onmouseover ="verificationDate()">
 		<div class="container">
 			<div class="row mb-2">
@@ -103,28 +103,29 @@
 						 		<% if @sects.include? s %>
 						 			<% if @montants%>
 							 			<% if @montants.include? s.montants%>
-									<div class="form-control pr-0 " id="montant<%=s.id%>" style="display: block;">
-										<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title.downcase%>" value="<%= s.montants.find_by(projet_id: @projet.id).price%>" class="border-0" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)">
-									
-										<select name="unite_id<%= s.id%>" class="text-center border-left unit pl-2 btn-reset">
-											<% Unite.all.each do |u|%>
-												<%if u == s.montants.find_by(projet_id: @projet.id).unite %>
-													<option value="<%= s.montants.find_by(projet_id: @projet.id).unite.id%>" selected><%= u.nom%></option>
-												<%else%>
-													<option value="<%= u.id%>"><%= u.nom%></option>
-												<%end%>
-											<%end%>
-										</select>
-										
-									</div>
-									<%else%>
-										<div class="form-control pr-0" id="montant<%=s.id%>" style="display: none;">
-										<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title%>" class="border-0" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)">
-										<div style="padding-left: 12rem;">
-										<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset " %>
-										</div>
-										</div>
-									<%end%>
+
+											<div class="form-control pr-0 " id="montant<%=s.id%>" style="display: block;">
+												<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title%>" value="<%= s.montants.find_by(projet_id: @projet.id).price%>" class="border-0" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)">
+												<div style="margin-top: -1.5rem; margin-left: 12.5rem;">
+												<select name="unite_id<%= s.id%>" class="text-center border-left unit pl-2 btn-reset">
+													<% Unite.all.each do |u|%>
+														<%if u == s.montants.find_by(projet_id: @projet.id).unite %>
+															<option value="<%= s.montants.find_by(projet_id: @projet.id).unite.id%>" selected><%= u.nom%></option>
+														<%else%>
+															<option value="<%= u.id%>"><%= u.nom%></option>
+														<%end%>
+													<%end%>
+												</select>
+												</div>
+											</div>
+										<%else%>
+											<div class="form-control pr-0" id="montant<%=s.id%>" style="display: none; padding-top:2rem; ">
+												<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title%>" class="border-0" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)">
+												<div style="padding-left: 12rem;">
+													<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset " %>
+												</div>
+											</div>
+										<%end%>
 									<%end%>
 								<%else%>
 									<div class="form-control pr-0" id="montant<%=s.id%>" style="display: none; margin-top: 2rem;">
@@ -452,13 +453,9 @@
 			</div>
 
 			<div class="container mt-4">
-				<%if @projet.validation == nil || @projet.validation == false%>
-					<input type="submit" name="modifier" value="Enregistrer la modification" class="btn btn-secondary">
-					<input type="submit" name="modifier" value="Publier" class="sc-eerKOB cfnPHQ">
-				<%else%>
-					<input type="submit" name="modifier" value="Re-publier" class="sc-eerKOB cfnPHQ">
-				<%end%>
-				<a href="<%= admin_projet_path(@projet.id)%>" class="btn btn-danger">Annuler la modification</a>
+				<input type="submit" name="modifier" value="Enregistrer la modification" class="btn btn-secondary">
+				
+				<a href="<%= super_admin_projet_path(@projet.id)%>" class="btn btn-secondary">Annuler la modification</a>
 			</div>		
 	</div>
 <% end %>
