@@ -89,7 +89,122 @@ class SuperAdmin::ProjetsController < ApplicationController
         objectif_generale_du_projet: params[:objectif_generale_du_projet],
        aspsp: params[:aspsp],fin: params[:fin].to_date, 
        appui_id: params[:appui], ptf_id: params[:ptf], projet_id: @projet.id)
-    else
+
+        @projetmodif.secteurprojets.destroy_all
+        @projetmodif.montants.destroy_all
+      for x in 0..Secteur.all.count
+
+        case params[:"unite_id#{x}"]
+          when "1"
+            @montant = params[:"montant#{x}"]
+            @convert_usd = @montant
+          when "2"
+            @montant = params[:"montant#{x}"]
+            @uac = Tarif.where(unite_id:  2, reference: "UAC").last.valeur
+            @convert_uac = @montant.to_i / @uac
+            @usd = Tarif.where(unite_id:  1, reference: "UAC").last.valeur
+            @convert_usd = @convert_uac * @usd
+          when "3"
+            @montant = params[:"montant#{x}"]
+            @convert_uac = @montant.to_i
+            @usd = Tarif.where(unite_id:  1, reference: "UAC").last.valeur
+            @convert_usd = @convert_uac * @usd
+
+          when "4"
+            @montant = params[:"montant#{x}"]
+            @uac = Tarif.where(unite_id:  4, reference: "UAC").last.valeur
+            @convert_uac = @montant.to_i / @uac
+            @usd = Tarif.where(unite_id:  1, reference: "UAC").last.valeur
+            @convert_usd = @convert_uac * @usd
+
+        end
+        if params[:"secteur_#{x}"]
+          Secteurprojet.create(update_projet_id: @projetmodif.id, secteur_id: params[:"secteur_#{x}"])
+          # Montant.create(price: params[:"montant#{params[:"secteur_#{x}"]}"],secteur_id: params[:"secteur_#{x}"], projet_id: @projet.id, unite_id: params[:"unite_id#{params[:"secteur_#{x}"]}"])
+          Montant.create(price: @convert_usd.to_i,secteur_id: params[:"secteur_#{x}"], update_projet_id: @projetmodif.id, unite_id: 1)
+        end
+      end
+
+      @projetmodif.filiereprojets.destroy_all
+      10.times do |x|
+        if params[:"checkfili#{x}"] && params[:newfili] != ""
+          @fili = Filiere.create(title: params[:"valfili#{x}"])
+          @sectfil_ids = params[:sectfil_ids]
+          @sectfil_ids.each do |y|
+            SecteurFiliere.create(filiere_id: @fili.id , secteur_id: y.to_i)
+          end
+            Filiereprojet.create(update_projet_id: @projetmodif.id , filiere_id: @fili.id)
+        end
+      end
+      if params[:filiere_ids]
+        @filiere_ids = params[:filiere_ids]
+        @filiere_ids.each do |x|
+          Filiereprojet.create(update_projet_id: @projetmodif.id , filiere_id: x.to_i)
+        end
+      end
+
+      @projetmodif.formeprojets.destroy_all
+      10.times do |x|
+        if params[:"checkform#{x}"] && params[:newform] != ""
+          @form = Forme.create(title: params[:"valform#{x}"])
+           @sectform_ids = params[:sectform_ids]
+          @sectform_ids.each do |y|
+            Formesecteur.create(forme_id: @form.id , secteur_id: y.to_i)
+          end
+            Formeprojet.create(update_projet_id: @projetmodif.id , forme_id: @form.id)
+        end
+      end
+      if params[:forme_ids]
+        params[:forme_ids].each do |forme_id|
+          Formeprojet.create(update_projet_id: @projetmodif.id, forme_id: forme_id.to_i)
+        end
+      end
+
+      @projetmodif.benefprojets.destroy_all
+     10.times do |x|
+        if params[:"checkben#{x}"] && params[:newben] != ""
+          @ben = Beneficiaire.create(title: params[:"valben#{x}"])
+          Benefprojet.create(update_projet_id: @projetmodif.id , beneficiaire_id: @ben.id)
+        end
+      end
+      for x in 0..Beneficiaire.all.count-1
+        if params[:"beneficiaire_#{x}"]
+          Benefprojet.create(update_projet_id: @projetmodif.id, beneficiaire_id: params[:"beneficiaire_#{x}"])
+        end
+      end
+
+      @projetmodif.igaprojets.destroy_all
+      10.times do |x|
+        if params[:"checkiga#{x}"] && params[:newiga] != ""
+          @iga = Iga.create(title: params[:"valiga#{x}"])
+          Igaprojet.create(update_projet_id: @projetmodif.id , iga_id: @iga.id)
+        end
+      end 
+      for x in 0..Iga.all.count-1
+        if params[:"iga_#{x}"]
+          Igaprojet.create(update_projet_id: @projetmodif.id, iga_id: params[:"iga_#{x}"])
+        end
+      end
+
+
+      @projetmodif.zoneprojets.destroy_all
+      for x in 0..Zone.all.count-1
+        if params[:"zone_#{x}"]
+          Zoneprojet.create(update_projet_id: @projetmodif.id, zone_id: params[:"zone_#{x}"])
+        end
+      end
+
+      @projetmodif.pemprojets.destroy_all
+      for x in 0..Pem.all.count-1
+        if params[:"pem_#{x}"]
+          Pemprojet.create(update_projet_id: @projetmodif.id, pem_id: params[:"pem_#{x}"])
+        end
+      end
+    
+
+        redirect_to  super_admin_update_projets_path, success: "Modification terminée"
+
+    elsif UpdateProjet.find_by(projet_id: @projet.id) != nil
 
         @projetmodif = UpdateProjet.where(projet_id: @projet.id)
         @projetmodif.update(nom_du_projet: params[:nom_du_projet], 
@@ -97,9 +212,9 @@ class SuperAdmin::ProjetsController < ApplicationController
         objectif_generale_du_projet: params[:objectif_generale_du_projet],
        aspsp: params[:aspsp],fin: params[:fin].to_date, 
        appui_id: params[:appui], ptf_id: params[:ptf], projet_id: @projet.id)
-  
-      end
-      @projetmodif.each do |p|
+
+
+        @projetmodif.each do |p|
         p.secteurprojets.destroy_all
         p.montants.destroy_all
       for x in 0..Secteur.all.count
@@ -139,8 +254,9 @@ class SuperAdmin::ProjetsController < ApplicationController
       10.times do |x|
         if params[:"checkfili#{x}"] && params[:newfili] != ""
           @fili = Filiere.create(title: params[:"valfili#{x}"])
-          for y in 0..9
-            SecteurFiliere.create(secteur_id: y, filiere_id: @fili.id)
+           @sectfil_ids = params[:sectfil_ids]
+          @sectfil_ids.each do |y|
+            SecteurFiliere.create(filiere_id: @fili.id , secteur_id: y.to_i)
           end
             Filiereprojet.create(update_projet_id: p.id , filiere_id: @fili.id)
         end
@@ -156,8 +272,9 @@ class SuperAdmin::ProjetsController < ApplicationController
       10.times do |x|
         if params[:"checkform#{x}"] && params[:newform] != ""
           @form = Forme.create(title: params[:"valform#{x}"])
-          for y in 0..9
-            Formesecteur.create(secteur_id: y, forme_id: @form.id)
+           @sectform_ids = params[:sectform_ids]
+          @sectform_ids.each do |y|
+            Formesecteur.create(forme_id: @form.id , secteur_id: y.to_i)
           end
             Formeprojet.create(update_projet_id: p.id , forme_id: @form.id)
         end
@@ -209,7 +326,10 @@ class SuperAdmin::ProjetsController < ApplicationController
         end
       end
       end
-        redirect_to  super_admin_projets_path, success: "Modification terminée"
+        redirect_to  super_admin_update_projets_path, success: "Modification terminée"
+  
+    end
+      
     
   end
   

@@ -193,5 +193,9 @@
         </div>
     </div>
     <div class="text-right">
-     <a href="<%= super_admin_projets_path%>" class="btn btn-danger">Retour</a>
+     <a href="<%= edit_super_admin_update_projet_path(@projet.id)%>" data-method="get" class="sc-eerKOB cfnPHQ bold sear">Modifier</a>
+      <a href="<%= super_admin_update_projet_path(@projet.id)%>" class="btn btn-danger" data-method="delete" data-confirm="Voulez-vous supprimer ce projet modifié ?"> Supprimer</a>
+     <a href="<%= super_admin_projets_path%>" class="btn btn-secondary">Retour</a>
     </div>
+
+<%= render partial: "/super_admin/confirm.html.erb"%>

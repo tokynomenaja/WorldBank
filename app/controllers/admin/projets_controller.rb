@@ -61,9 +61,11 @@ class Admin::ProjetsController < ApplicationController
                   10.times do |x|
                   if params[:"checkfili#{x}"] && params[:newfili] != ""
                     @fili = Filiere.create(title: params[:"valfili#{x}"])
-                    for y in 0..9
-                      SecteurFiliere.create(secteur_id: y, filiere_id: @fili.id)
-                    end
+                      # SecteurFiliere.create(secteur_id: params[:secteur].to_i, filiere_id: @fili.id)
+                       @sectfil_ids = params[:sectfil_ids]
+                        @sectfil_ids.each do |y|
+                          SecteurFiliere.create(filiere_id: @fili.id , secteur_id: y.to_i)
+                        end
                       Filiereprojet.create(projet_id: @project.id , filiere_id: @fili.id)
                   end
                 end
@@ -77,9 +79,10 @@ class Admin::ProjetsController < ApplicationController
                 10.times do |x|
                   if params[:"checkform#{x}"] && params[:newform] != ""
                     @form = Forme.create(title: params[:"valform#{x}"])
-                     for y in 0..9
-                      Formesecteur.create(secteur_id: y, forme_id: @form.id)
-                      end
+                     @sectform_ids = params[:sectform_ids]
+                        @sectform_ids.each do |y|
+                          Formesecteur.create(forme_id: @form.id , secteur_id: y.to_i)
+                        end
                       Formeprojet.create(projet_id: @project.id , forme_id: @form.id)
                   end
                 end
@@ -285,9 +288,10 @@ class Admin::ProjetsController < ApplicationController
     10.times do |x|
       if params[:"checkfili#{x}"] && params[:newfili] != ""
         @fili = Filiere.create(title: params[:"valfili#{x}"])
-          for y in 0..9
-            SecteurFiliere.create(secteur_id: y, filiere_id: @filiere.id)
-          end
+           @sectfil_ids = params[:sectfil_ids]
+              @sectfil_ids.each do |y|
+                SecteurFiliere.create(filiere_id: @fili.id , secteur_id: y.to_i)
+              end
           Filiereprojet.create(projet_id: @projet.id , filiere_id: @fili.id)
       end
     end
@@ -303,9 +307,10 @@ class Admin::ProjetsController < ApplicationController
     10.times do |x|
       if params[:"checkform#{x}"] && params[:newform] != ""
         @form = Forme.create(title: params[:"valform#{x}"])
-        for y in 0..9
-          Formesecteur.create(secteur_id: y, forme_id: @form.id)
-        end
+         @sectform_ids = params[:sectform_ids]
+          @sectform_ids.each do |y|
+            Formesecteur.create(forme_id: @form.id , secteur_id: y.to_i)
+          end
           Formeprojet.create(projet_id: @projet.id , forme_id: @form.id)
       end
     end
@@ -367,7 +372,6 @@ end
 
 def destroy
   @projet = Projet.find(params[:id])
-  @projet.destroy
   @projet.secteurprojets.destroy_all
   @projet.montants.destroy_all
   @projet.filiereprojets.destroy_all
@@ -376,6 +380,7 @@ def destroy
   @projet.igaprojets.destroy_all
   @projet.pemprojets.destroy_all
   @projet.zoneprojets.destroy_all
+  @projet.destroy
   redirect_to admin_projets_path, success: "Suppression terminée"
 end
 

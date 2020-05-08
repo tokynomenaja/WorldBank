@@ -103,8 +103,7 @@
 						 		<% if @sects.include? s %>
 						 			<% if @montants%>
 							 			<% if @montants.include? s.montants%>
-
-										<div class="form-control pr-0 " id="montant<%=s.id%>" style="display: block;">
+									<div class="form-control pr-0 " id="montant<%=s.id%>" style="display: block;">
 										<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title.downcase%>" value="<%= s.montants.find_by(projet_id: @projet.id).price%>" class="border-0" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)">
 									
 										<select name="unite_id<%= s.id%>" class="text-center border-left unit pl-2 btn-reset">
@@ -208,6 +207,15 @@
 									    <%end%>
 									</div>
 								</div>
+								<br>
+								<a class="table">Cochez le secteur associé à la nouvelle filière </a>
+							    <div class="row">
+								 <% Secteur.all.order(:title).each do |c| %>
+									<div class="col-md-4">
+										<%= check_box_tag("sectfil_ids[]",c.id, false, id: :"s#{c.id}")%>
+										<%= c.title%>
+									</div> 
+								<% end %>
 							</div>
 						</div>
 					</div>
@@ -270,6 +278,15 @@
 									    <%end%>
 									</div>
 								</div>
+								<br>
+								<a class="table">Cochez le secteur associé à la nouvelle forme d'appui </a>
+							    <div class="row">
+								 <% Secteur.all.order(:title).each do |c| %>
+									<div class="col-md-4">
+										<%= check_box_tag("sectform_ids[]",c.id, false, id: :"s#{c.id}")%>
+										<%= c.title%>
+									</div> 
+								<% end %>
 							</div>
 						</div>
 					</div>
@@ -453,9 +470,10 @@
 			</div>
 
 			<div class="container mt-4">
-				<input type="submit" name="modifier" value="Enregistrer la modification" class="btn btn-secondary">
 				
-				<a href="<%= super_admin_projet_path(@projet.id)%>" class="btn btn-danger">Annuler la modification</a>
+					<input type="submit" name="modifier" value="Enregistrer la modification" class="btn btn-secondary">
+			
+				<a href="<%= super_admin_update_projet_path(@projet.id)%>" class="btn btn-danger">Annuler la modification</a>
 			</div>		
 	</div>
 <% end %>

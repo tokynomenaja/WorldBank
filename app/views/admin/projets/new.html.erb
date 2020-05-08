@@ -214,7 +214,17 @@
 										</div>
 								    <%end%>
 								</div>
-							</div>
+							</div><br>
+								<a class="table">Cochez le secteur associé à la nouvelle filière </a>
+							    <div class="row">
+								 <% Secteur.all.order(:title).each do |c| %>
+									<div class="col-md-4">
+										<%= check_box_tag("sectfil_ids[]",c.id, false, id: :"s#{c.id}")%>
+										<%= c.title%>
+									</div> 
+								<% end %>
+							    	
+							    </div>
 						</div>
 					</div>
 				</div>
@@ -272,6 +282,17 @@
 								    <%end%>
 								</div>
 							</div>
+							<br>
+								<a class="table">Cochez le secteur associé à la nouvelle forme d'appui </a>
+							    <div class="row">
+								 <% Secteur.all.order(:title).each do |c| %>
+									<div class="col-md-4">
+										<%= check_box_tag("sectform_ids[]",c.id, false, id: :"s#{c.id}")%>
+										<%= c.title%>
+									</div> 
+								<% end %>
+							    	
+							    </div>
 						</div>
 						</div>
 				</div>
