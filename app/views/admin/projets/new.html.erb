@@ -262,21 +262,21 @@
 								</div>
 								<div class="col-md-7">
 										<h6 style="text-align: center;">La nouvelle forme d'appui doit être cochée</h6>
-									<% 10.times do |form|%>
-								    	<div id="check<%= form%>" style="display: block;">
-											<p id="pForm<%= form%>" style="display: none;">
-												<%= check_box_tag("checkform#{form}", :id => "c#{form}") %>
-												<span id="f<%= form%>"></span>	
-												<span id="f<%= form%>"></span>	
-												<span id="f2<%= form%>"></span>	
-												<span id="f3<%= form%>"></span>	
-												<span id="f4<%= form%>"></span>	
-												<span id="f5<%= form%>"></span>	
-												<span id="f6<%= form%>"></span>	
-												<span id="f7<%= form%>"></span>	
-												<span id="f8<%= form%>"></span>	
-												<span id="f9<%= form%>"></span>	
-												<input type="hidden" name="valform<%= form%>" id="valform<%= form%>">	
+									<% 10.times do |a|%>
+								    	<div id="check<%= a%>" style="display: block;">
+											<p id="app<%= a%>" style="display: none;">
+												<%= check_box_tag("checkben#{a}", :id => "c#{a}") %>
+												<span id="appui<%= a%>"></span>	
+												<span id="appui1<%= a%>"></span>	
+												<span id="appui2<%= a%>"></span>	
+												<span id="appui3<%= a%>"></span>	
+												<span id="appui4<%= a%>"></span>	
+												<span id="appui5<%= a%>"></span>	
+												<span id="appui6<%= a%>"></span>	
+												<span id="appui7<%= a%>"></span>	
+												<span id="appui8<%= a%>"></span>	
+												<span id="appui9<%= a%>"></span>	
+												<input type="hidden" name="valform<%= a%>" id="valform<%= a%>">	
 											</p>								
 										</div>
 								    <%end%>

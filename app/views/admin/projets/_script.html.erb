@@ -77,19 +77,19 @@
 	function ajoutform(){
 		<% 10.times do |x|%>			
 			var hid<%= x%> = document.getElementById('valform<%= x%>');
-			var p<%= x%> = document.getElementById('pForm<%= x%>');
+			var p<%= x%> = document.getElementById('app<%= x%>');
 		<%end%>
 		var val = document.getElementById('fo').value;
 		if(hid0.value == "" && val != ""){
 
 			p0.style.display = "block";
-			document.getElementById('f0').innerHTML = val;
+			document.getElementById('appui0').innerHTML = val;
 			hid0.value = val;
 		}
 		<% for y in 1..9%>
 		else if (hid<%= y%>.value == '' && val != "") {
 			p<%= y%>.style.display = "block";
-			document.getElementById('f<%=y%><%=y%>').innerHTML = document.getElementById('fo').value;
+			document.getElementById('appui<%=y%><%=y%>').innerHTML = document.getElementById('fo').value;
 			hid<%=y%>.value = document.getElementById('fo').value;
 		}
 		<%end%>

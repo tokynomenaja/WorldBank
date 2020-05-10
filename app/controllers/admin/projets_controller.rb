@@ -62,10 +62,12 @@ class Admin::ProjetsController < ApplicationController
                   if params[:"checkfili#{x}"] && params[:newfili] != ""
                     @fili = Filiere.create(title: params[:"valfili#{x}"])
                       # SecteurFiliere.create(secteur_id: params[:secteur].to_i, filiere_id: @fili.id)
+                      if params[:sectfil_ids]
                        @sectfil_ids = params[:sectfil_ids]
                         @sectfil_ids.each do |y|
                           SecteurFiliere.create(filiere_id: @fili.id , secteur_id: y.to_i)
                         end
+                      end
                       Filiereprojet.create(projet_id: @project.id , filiere_id: @fili.id)
                   end
                 end
@@ -79,10 +81,12 @@ class Admin::ProjetsController < ApplicationController
                 10.times do |x|
                   if params[:"checkform#{x}"] && params[:newform] != ""
                     @form = Forme.create(title: params[:"valform#{x}"])
-                     @sectform_ids = params[:sectform_ids]
-                        @sectform_ids.each do |y|
-                          Formesecteur.create(forme_id: @form.id , secteur_id: y.to_i)
-                        end
+                      if params[:sectform_ids]
+                       @sectform_ids = params[:sectform_ids]
+                          @sectform_ids.each do |y|
+                            Formesecteur.create(forme_id: @form.id , secteur_id: y.to_i)
+                          end
+                      end
                       Formeprojet.create(projet_id: @project.id , forme_id: @form.id)
                   end
                 end
@@ -288,10 +292,12 @@ class Admin::ProjetsController < ApplicationController
     10.times do |x|
       if params[:"checkfili#{x}"] && params[:newfili] != ""
         @fili = Filiere.create(title: params[:"valfili#{x}"])
+          if params[:sectfil_ids]
            @sectfil_ids = params[:sectfil_ids]
               @sectfil_ids.each do |y|
                 SecteurFiliere.create(filiere_id: @fili.id , secteur_id: y.to_i)
               end
+          end
           Filiereprojet.create(projet_id: @projet.id , filiere_id: @fili.id)
       end
     end
@@ -307,10 +313,12 @@ class Admin::ProjetsController < ApplicationController
     10.times do |x|
       if params[:"checkform#{x}"] && params[:newform] != ""
         @form = Forme.create(title: params[:"valform#{x}"])
+        if params[:sectform_ids]
          @sectform_ids = params[:sectform_ids]
           @sectform_ids.each do |y|
             Formesecteur.create(forme_id: @form.id , secteur_id: y.to_i)
           end
+        end
           Formeprojet.create(projet_id: @projet.id , forme_id: @form.id)
       end
     end

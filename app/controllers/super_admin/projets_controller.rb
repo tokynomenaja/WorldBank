@@ -129,9 +129,11 @@ class SuperAdmin::ProjetsController < ApplicationController
       10.times do |x|
         if params[:"checkfili#{x}"] && params[:newfili] != ""
           @fili = Filiere.create(title: params[:"valfili#{x}"])
+          if params[:sectfil_ids]
           @sectfil_ids = params[:sectfil_ids]
           @sectfil_ids.each do |y|
             SecteurFiliere.create(filiere_id: @fili.id , secteur_id: y.to_i)
+          end
           end
             Filiereprojet.create(update_projet_id: @projetmodif.id , filiere_id: @fili.id)
         end
@@ -147,9 +149,11 @@ class SuperAdmin::ProjetsController < ApplicationController
       10.times do |x|
         if params[:"checkform#{x}"] && params[:newform] != ""
           @form = Forme.create(title: params[:"valform#{x}"])
+          if params[:sectform_ids]
            @sectform_ids = params[:sectform_ids]
           @sectform_ids.each do |y|
             Formesecteur.create(forme_id: @form.id , secteur_id: y.to_i)
+          end
           end
             Formeprojet.create(update_projet_id: @projetmodif.id , forme_id: @form.id)
         end
@@ -254,9 +258,11 @@ class SuperAdmin::ProjetsController < ApplicationController
       10.times do |x|
         if params[:"checkfili#{x}"] && params[:newfili] != ""
           @fili = Filiere.create(title: params[:"valfili#{x}"])
+          if params[:sectfil_ids]
            @sectfil_ids = params[:sectfil_ids]
           @sectfil_ids.each do |y|
             SecteurFiliere.create(filiere_id: @fili.id , secteur_id: y.to_i)
+          end
           end
             Filiereprojet.create(update_projet_id: p.id , filiere_id: @fili.id)
         end
@@ -272,9 +278,11 @@ class SuperAdmin::ProjetsController < ApplicationController
       10.times do |x|
         if params[:"checkform#{x}"] && params[:newform] != ""
           @form = Forme.create(title: params[:"valform#{x}"])
+          if params[:sectform_ids]
            @sectform_ids = params[:sectform_ids]
           @sectform_ids.each do |y|
             Formesecteur.create(forme_id: @form.id , secteur_id: y.to_i)
+          end
           end
             Formeprojet.create(update_projet_id: p.id , forme_id: @form.id)
         end
