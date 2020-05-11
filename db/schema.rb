@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_28_103302) do
+ActiveRecord::Schema.define(version: 2020_05_07_113459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,8 +62,10 @@ ActiveRecord::Schema.define(version: 2020_04_28_103302) do
     t.bigint "beneficiaire_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "update_projet_id"
     t.index ["beneficiaire_id"], name: "index_benefprojets_on_beneficiaire_id"
     t.index ["projet_id"], name: "index_benefprojets_on_projet_id"
+    t.index ["update_projet_id"], name: "index_benefprojets_on_update_projet_id"
   end
 
   create_table "ckeditor_assets", force: :cascade do |t|
@@ -87,8 +89,10 @@ ActiveRecord::Schema.define(version: 2020_04_28_103302) do
     t.bigint "filiere_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "update_projet_id"
     t.index ["filiere_id"], name: "index_filiereprojets_on_filiere_id"
     t.index ["projet_id"], name: "index_filiereprojets_on_projet_id"
+    t.index ["update_projet_id"], name: "index_filiereprojets_on_update_projet_id"
   end
 
   create_table "filieres", force: :cascade do |t|
@@ -108,8 +112,10 @@ ActiveRecord::Schema.define(version: 2020_04_28_103302) do
     t.bigint "projet_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "update_projet_id"
     t.index ["forme_id"], name: "index_formeprojets_on_forme_id"
     t.index ["projet_id"], name: "index_formeprojets_on_projet_id"
+    t.index ["update_projet_id"], name: "index_formeprojets_on_update_projet_id"
   end
 
   create_table "formes", force: :cascade do |t|
@@ -132,8 +138,10 @@ ActiveRecord::Schema.define(version: 2020_04_28_103302) do
     t.bigint "projet_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "update_projet_id"
     t.index ["iga_id"], name: "index_igaprojets_on_iga_id"
     t.index ["projet_id"], name: "index_igaprojets_on_projet_id"
+    t.index ["update_projet_id"], name: "index_igaprojets_on_update_projet_id"
   end
 
   create_table "igas", force: :cascade do |t|
@@ -162,9 +170,11 @@ ActiveRecord::Schema.define(version: 2020_04_28_103302) do
     t.bigint "secteur_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "update_projet_id"
     t.index ["projet_id"], name: "index_montants_on_projet_id"
     t.index ["secteur_id"], name: "index_montants_on_secteur_id"
     t.index ["unite_id"], name: "index_montants_on_unite_id"
+    t.index ["update_projet_id"], name: "index_montants_on_update_projet_id"
   end
 
   create_table "organismes", force: :cascade do |t|
@@ -200,8 +210,10 @@ ActiveRecord::Schema.define(version: 2020_04_28_103302) do
     t.bigint "projet_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "update_projet_id"
     t.index ["pem_id"], name: "index_pemprojets_on_pem_id"
     t.index ["projet_id"], name: "index_pemprojets_on_projet_id"
+    t.index ["update_projet_id"], name: "index_pemprojets_on_update_projet_id"
   end
 
   create_table "pems", force: :cascade do |t|
@@ -264,8 +276,10 @@ ActiveRecord::Schema.define(version: 2020_04_28_103302) do
     t.bigint "projet_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "update_projet_id"
     t.index ["projet_id"], name: "index_secteurprojets_on_projet_id"
     t.index ["secteur_id"], name: "index_secteurprojets_on_secteur_id"
+    t.index ["update_projet_id"], name: "index_secteurprojets_on_update_projet_id"
   end
 
   create_table "secteurs", force: :cascade do |t|
@@ -289,6 +303,27 @@ ActiveRecord::Schema.define(version: 2020_04_28_103302) do
     t.string "nom"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "update_projets", force: :cascade do |t|
+    t.string "nom_du_projet"
+    t.text "objectif_generale_du_projet"
+    t.text "aspsp"
+    t.date "debut_du_projet"
+    t.date "fin"
+    t.text "comment"
+    t.string "siteweb"
+    t.boolean "validation", default: false
+    t.bigint "appui_id"
+    t.bigint "ptf_id"
+    t.bigint "projet_id"
+    t.bigint "admin_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_id"], name: "index_update_projets_on_admin_id"
+    t.index ["appui_id"], name: "index_update_projets_on_appui_id"
+    t.index ["projet_id"], name: "index_update_projets_on_projet_id"
+    t.index ["ptf_id"], name: "index_update_projets_on_ptf_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -315,7 +350,9 @@ ActiveRecord::Schema.define(version: 2020_04_28_103302) do
     t.bigint "projet_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "update_projet_id"
     t.index ["projet_id"], name: "index_zoneprojets_on_projet_id"
+    t.index ["update_projet_id"], name: "index_zoneprojets_on_update_projet_id"
     t.index ["zone_id"], name: "index_zoneprojets_on_zone_id"
   end
 
@@ -326,4 +363,12 @@ ActiveRecord::Schema.define(version: 2020_04_28_103302) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "benefprojets", "update_projets"
+  add_foreign_key "filiereprojets", "update_projets"
+  add_foreign_key "formeprojets", "update_projets"
+  add_foreign_key "igaprojets", "update_projets"
+  add_foreign_key "montants", "update_projets"
+  add_foreign_key "pemprojets", "update_projets"
+  add_foreign_key "secteurprojets", "update_projets"
+  add_foreign_key "zoneprojets", "update_projets"
 end

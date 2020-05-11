@@ -1,21 +1,16 @@
 <%= javascript_pack_tag 'users' %>
 <div class="sans-head container">
-<div class="container-fluid full-page">
       <div class="row">
-        <div class="col-3">
-          
-        </div>
-        <div class="col-6 bg-dark">
+        <div class="col-6 bg-dark mx-auto rounded">
           <% if user_signed_in? %>
-            <p class="text-white mt-3">Connecté en tant que : <%= current_user.email %></p>
+            <p class="table mt-3">Connecté en tant que :<span class="text-white"> <%= current_user.email %></span></p>
           <% end %>
-          <h6 class="text-white my-3">Visiteurs non connectés:  <%= @users.where(is_signed_in: false).count%></h6>
-          <h6 class="text-white my-3">Visiteurs connectés:  <%= @users.where(is_signed_in: true).count-1%></h6>
-
-          <div class="left">
+          <h6 class="table my-2">Visiteurs non connectés: <span class="text-white"><%= @users.where(is_signed_in: false).count%></span></h6>
+          <h6 class="table my-2">Visiteurs connectés: <span class="text-white"><%= @users.where(is_signed_in: true).count-1%></span></h6>
+          <div class="pb-3">
             <% @users.each do |user| %>
               <% if user.email != current_user.email and user.is_signed_in%>
-                <p class="active-user bg-white" data-id="<%= user.id %>">
+                <p class="active-user bg-white p-2 rounded-0 border-bottom" data-id="<%= user.id %>">
                   <span class="online-icon d-inline-block bg-success"></span>
                   <span class="table"><%= user.email %></span>
                 </p>
@@ -24,5 +19,4 @@
           </div>
         </div>
       </div>
-    </div>
 </div>

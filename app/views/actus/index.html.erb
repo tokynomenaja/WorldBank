@@ -1,13 +1,13 @@
 <div class="container sans-head mb-5">
-	<div class="mb-4">
-		<h3 style="color: dark; text-align: center;">Toutes les actualités</h3>
+	<div class="mb-4 text-center">
+		<h3 class="table">Toutes les actualités</h3>
 	</div>
 	<div class="row justify-content-center">
 		<% @actus.each do |a|%>
 			<div class="col-md-3 mb-2 card mx-1 position-relative">
 				<div class="card-body">
 			 	 	<div class="card-title table">
-				    	<h6>Actualité publiée le <%= a.date_publication%></h6>
+				    	<h6>Actualité du <%= a.date_publication%></h6>
 				    </div>
 					<div class="card-text">
 						<p class="card-text text-muted mb-5 truncate-pub"><%= a.title %></p>
@@ -15,7 +15,7 @@
 				    <p class="mt-3 position-absolute more-info-pub"><a href="<%= actu_path(a.id)%>" class="table">Voir</a></p>
 				</div>
 			</div>
-        <%end%>
+		<%end%>	
 	</div>
 	<div class="text-center">
 		<%= paginate @actus %>

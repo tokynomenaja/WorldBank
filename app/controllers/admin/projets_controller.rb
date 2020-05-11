@@ -61,6 +61,13 @@ class Admin::ProjetsController < ApplicationController
                   10.times do |x|
                   if params[:"checkfili#{x}"] && params[:newfili] != ""
                     @fili = Filiere.create(title: params[:"valfili#{x}"])
+                      # SecteurFiliere.create(secteur_id: params[:secteur].to_i, filiere_id: @fili.id)
+                      if params[:sectfil_ids]
+                       @sectfil_ids = params[:sectfil_ids]
+                        @sectfil_ids.each do |y|
+                          SecteurFiliere.create(filiere_id: @fili.id , secteur_id: y.to_i)
+                        end
+                      end
                       Filiereprojet.create(projet_id: @project.id , filiere_id: @fili.id)
                   end
                 end
@@ -74,6 +81,12 @@ class Admin::ProjetsController < ApplicationController
                 10.times do |x|
                   if params[:"checkform#{x}"] && params[:newform] != ""
                     @form = Forme.create(title: params[:"valform#{x}"])
+                      if params[:sectform_ids]
+                       @sectform_ids = params[:sectform_ids]
+                          @sectform_ids.each do |y|
+                            Formesecteur.create(forme_id: @form.id , secteur_id: y.to_i)
+                          end
+                      end
                       Formeprojet.create(projet_id: @project.id , forme_id: @form.id)
                   end
                 end
@@ -276,22 +289,55 @@ class Admin::ProjetsController < ApplicationController
 
 
     @projet.filiereprojets.destroy_all
-      for x in 0..Filiere.all.count-1
-      if params[:"filiere_#{x}"]
-        Filiereprojet.create(projet_id: @projet.id, filiere_id: params[:"filiere_#{x}"])
+    10.times do |x|
+      if params[:"checkfili#{x}"] && params[:newfili] != ""
+        @fili = Filiere.create(title: params[:"valfili#{x}"])
+          if params[:sectfil_ids]
+           @sectfil_ids = params[:sectfil_ids]
+              @sectfil_ids.each do |y|
+                SecteurFiliere.create(filiere_id: @fili.id , secteur_id: y.to_i)
+              end
+          end
+          Filiereprojet.create(projet_id: @projet.id , filiere_id: @fili.id)
+      end
+    end
+    if params[:filiere_ids]
+      @filiere_ids = params[:filiere_ids]
+      @filiere_ids.each do |x|
+        Filiereprojet.create(projet_id: @projet.id , filiere_id: x.to_i)
       end
     end
 
-     @projet.formeprojets.destroy_all
+
+    @projet.formeprojets.destroy_all
+    10.times do |x|
+      if params[:"checkform#{x}"] && params[:newform] != ""
+        @form = Forme.create(title: params[:"valform#{x}"])
+        if params[:sectform_ids]
+         @sectform_ids = params[:sectform_ids]
+          @sectform_ids.each do |y|
+            Formesecteur.create(forme_id: @form.id , secteur_id: y.to_i)
+          end
+        end
+          Formeprojet.create(projet_id: @projet.id , forme_id: @form.id)
+      end
+    end
     if params[:forme_ids]
-    params[:forme_ids].each do |forme_id|
+      params[:forme_ids].each do |forme_id|
         Formeprojet.create(projet_id: @projet.id, forme_id: forme_id.to_i)
+      end
     end
-    end
+
 
 
 
     @projet.benefprojets.destroy_all
+   10.times do |x|
+      if params[:"checkben#{x}"] && params[:newben] != ""
+        @ben = Beneficiaire.create(title: params[:"valben#{x}"])
+        Benefprojet.create(projet_id: @projet.id , beneficiaire_id: @ben.id)
+      end
+    end
     for x in 0..Beneficiaire.all.count-1
       if params[:"beneficiaire_#{x}"]
         Benefprojet.create(projet_id: @projet.id, beneficiaire_id: params[:"beneficiaire_#{x}"])
@@ -299,6 +345,12 @@ class Admin::ProjetsController < ApplicationController
     end
 
     @projet.igaprojets.destroy_all
+    10.times do |x|
+      if params[:"checkiga#{x}"] && params[:newiga] != ""
+        @iga = Iga.create(title: params[:"valiga#{x}"])
+        Igaprojet.create(projet_id: @projet.id , iga_id: @iga.id)
+      end
+    end 
     for x in 0..Iga.all.count-1
       if params[:"iga_#{x}"]
         Igaprojet.create(projet_id: @projet.id, iga_id: params[:"iga_#{x}"])
@@ -328,8 +380,16 @@ end
 
 def destroy
   @projet = Projet.find(params[:id])
+  @projet.secteurprojets.destroy_all
+  @projet.montants.destroy_all
+  @projet.filiereprojets.destroy_all
+  @projet.formeprojets.destroy_all
+  @projet.benefprojets.destroy_all
+  @projet.igaprojets.destroy_all
+  @projet.pemprojets.destroy_all
+  @projet.zoneprojets.destroy_all
   @projet.destroy
-  redirect_to admin_projets_path, success: "suppression terminée"
+  redirect_to admin_projets_path, success: "Suppression terminée"
 end
 
 private

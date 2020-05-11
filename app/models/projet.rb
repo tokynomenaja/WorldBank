@@ -1,6 +1,8 @@
 class Projet < ApplicationRecord
         validates :objectif_generale_du_projet, presence: true
         validates :aspsp, presence: true
+
+        has_one :update_projet
         
         belongs_to :bailleur, optional: true, class_name: 'User'
         belongs_to :ptf, optional: true

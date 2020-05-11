@@ -98,15 +98,14 @@
 			<div class="d-flex justify-content-between mb-3">
 				<div class="col-md-4 pl-0">
 					<h6 class="table">Montant pour le secteur :</h6>
-					<% Secteur.all.each do |s|%>
+					<% Secteur.all.order(:title).each do |s|%>
 							<% if @sects %> 
 						 		<% if @sects.include? s %>
 						 			<% if @montants%>
-						 			<% if @montants.include? s.montants%>
-
+							 			<% if @montants.include? s.montants%>
 									<div class="form-control pr-0 " id="montant<%=s.id%>" style="display: block;">
-										<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title%>" value="<%= s.montants.find_by(projet_id: @projet.id).price%>" class="border-0" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)">
-										<div style="margin-top: -1.5rem; margin-left: 12.5rem;">
+										<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title.downcase%>" value="<%= s.montants.find_by(projet_id: @projet.id).price%>" class="border-0" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)">
+									
 										<select name="unite_id<%= s.id%>" class="text-center border-left unit pl-2 btn-reset">
 											<% Unite.all.each do |u|%>
 												<%if u == s.montants.find_by(projet_id: @projet.id).unite %>
@@ -116,20 +115,20 @@
 												<%end%>
 											<%end%>
 										</select>
-										</div>
+										
 									</div>
 									<%else%>
-										<div class="form-control pr-0" id="montant<%=s.id%>" style="display: none; padding-top:2rem; ">
-										<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title%>" class="border-0" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)">
-										<div style="padding-left: 12rem;">
+										<div class="form-control pr-0" id="montant<%=s.id%>" style="display: none;">
+										<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title.downcase%>" class="border-0" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)">
+										
 										<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset " %>
-										</div>
+										
 										</div>
 									<%end%>
 									<%end%>
 								<%else%>
-									<div class="form-control pr-0" id="montant<%=s.id%>" style="display: none; margin-top: 2rem;">
-										<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title%>" class="border-0" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)">
+									<div class="form-control pr-0" id="montant<%=s.id%>" style="display: none;">
+										<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title.downcase%>" class="border-0" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)">
 										<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset"%>
 									</div>
 								<%end%>
@@ -152,60 +151,73 @@
 
 
 			<div class="container mb-2 mt-2">
-				<a class="table">
-					Filières
+				<a class="table" id="filAsso">
+					Filières associées
 				</a>
 				<div class="mt-2">
 					<div class="card card-body">
 						<div class="row">
-							<% filis = @fils %>
-							<%Secteur.all.each do |s|%>
-								<%@fil_ex = false%>
-								<%s.secteur_filieres.each do |sf|%>
-
-									<% if filis%>
-										<% if filis.include? sf.filiere%>
-											<%@fil_ex = true%>
-										<%end%>
-									<%end%>
-								<%end%>
-								<%s.secteur_filieres.each do |sf|%>
-									<%if @fil_ex == true%>
-										<% if filis%>
-										<% if filis.include? sf.filiere%>
-											<div class="col-md-4" style="display: block" id="fil<%= sf.filiere.id%>">
-												<%= check_box_tag("filiere_ids[]", sf.filiere.id,true, id: :"idfil#{sf.id}")%>
-												<%= sf.filiere.title%>
-											</div>
-										<% filis.delete(sf.filiere) %>
-										<%else%>
-											<div class="col-md-4" style="display: block" id="fil<%= sf.filiere.id%>">
-												<%= check_box_tag("filiere_ids[]", sf.filiere.id,false,id: :"idfil#{sf.id}")%>
-												<%= sf.filiere.title%>
-											</div>
+							<%Filiere.order(:title).all.each do |fili|%>
+									<div class="col-md-4" style="display: none" id="fil<%= fili.id%>">
+										<%if @fils%>
+										<% if @fils.include? fili %>
+											<%= check_box_tag("filiere_ids[]", fili.id,true, id: :"filCheck#{fili.id}")%>
+										<% else %>
+											<%= check_box_tag("filiere_ids[]", fili.id,false, id: :"filCheck#{fili.id}")%>
 										<% end %>
 										<% end %>
-									<%else%>
-										<% if filis%>
-										<% if filis.include? sf.filiere%>
-											<div class="col-md-6" style="display: block" id="fil<%= sf.filiere.id%>">
-												<%= check_box_tag("filiere_ids[]", sf.filiere.id,true, id: :"idfil#{sf.id}")%>
-												<%= sf.filiere.title%>
-											</div>
-										<%else%>
-											<div class="col-md-6" style="display: none" id="fil<%= sf.filiere.id%>">
-												<%= check_box_tag("filiere_ids[]", sf.filiere.id,false,id: :"idfil#{sf.id}")%>
-												<%= sf.filiere.title%>
-											</div>
-										<% end %>
-										<% end %>
-									<%end%>
-									<div class="col-md-4" style="display: none" id="fl<%= sf.filiere.id%>">
-										<%= check_box_tag("filiere_ids[]", sf.filiere.id,false,id: :"idfil#{sf.id}")%>
-										<%= sf.filiere.title%>
+										<%= fili.title%>
 									</div>
-								<% end %>
+								<div class="col-md-4" style="display: block" id="fl<%= fili.id%>">
+									<%= check_box_tag("filiere_ids[]", fili.id)%>
+									<%= fili.title%>
+								</div>
 							<% end %>
+						</div>
+						<div class="mt-2">
+							<button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#fl"> Autre</button><br>	
+						</div>
+						<div class="collapse" id="fl">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-5" style="text-align: center;">
+										<h6>Ajout d'une autre filière</h6>
+								    	<input type="text" name="newfili" size=15 placeholder="Autre filière" class="form-control" id="fla"><br>	
+								    	<input type="button" class="sc-eerKOB cfnPHQ" value="Ajouter" id="add">			
+									</div>
+									<div class="col-md-7">
+										<h6 style="text-align: center;">La nouvelle filière doit être cochée</h6>
+										<% 10.times do |f|%>
+									    	<div id="check<%= f%>" style="display: block;">
+												<p id="a<%= f%>" style="display: none;">
+													<%= check_box_tag("checkfili#{f}", :id => "c#{f}") %>
+													<span id="s<%= f%>"></span>	
+													<span id="s1<%= f%>"></span>	
+													<span id="s2<%= f%>"></span>	
+													<span id="s3<%= f%>"></span>	
+													<span id="s4<%= f%>"></span>	
+													<span id="s5<%= f%>"></span>	
+													<span id="s6<%= f%>"></span>	
+													<span id="s7<%= f%>"></span>	
+													<span id="s8<%= f%>"></span>	
+													<span id="s9<%= f%>"></span>	
+													<input type="hidden" name="valfili<%= f%>" id="valfili<%= f%>">	
+												</p>								
+											</div>
+									    <%end%>
+									</div>
+								</div><br>
+								<a class="table">Cochez le secteur associé à la nouvelle filière </a>
+							    <div class="row">
+								 <% Secteur.all.order(:title).each do |c| %>
+									<div class="col-md-4">
+										<%= check_box_tag("sectfil_ids[]",c.id, false, id: :"s#{c.id}")%>
+										<%= c.title%>
+									</div> 
+								<% end %>
+							    	
+							    </div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -213,61 +225,71 @@
 
 
 			<div class="container mb-2 mt-2">
-				<a class="table">
-					Formes d'appui
+				<a class="table" id="formAsso">
+					Formes d'appuis
 				</a>
 				<div class="mt-2">
 					<div class="card card-body">
 						<div class="row">
-							<% foros = @forms %>
-							<%Secteur.all.each do |s|%>
-								<%@form_ex = false%>
-								<%s.formesecteurs.each do |fs|%>
-
-									<% if foros%>
-										<% if foros.include? fs.forme%>
-											<%@form_ex = true%>
-										<%end%>
-									<%end%>
-								<%end%>
-								<%s.formesecteurs.each do |fs|%>
-								<%if @form_ex == true%>
-									<% if foros%>
-									<% if foros.include? fs.forme%>
-										<div class="col-md-6" style="display: block" id="form<%= fs.forme.id%>">
-											<%= check_box_tag("forme_ids[]", fs.forme.id,true, id: :"idform#{fs.id}")%>
-											<%= fs.forme.title%>
-										</div>
-										<% foros.delete(fs.forme) %>
-									<%else%>
-										<div class="col-md-6" style="display: block" id="form<%= fs.forme.id%>">
-											<%= check_box_tag("forme_ids[]", fs.forme.id,false,id: :"idform#{fs.id}")%>
-											<%= fs.forme.title%>
-										</div>
+							<%Forme.order(:title).all.each do |form|%>
+								<div class="col-md-6" style="display: none" id="form<%= form.id%>">
+									<% if @forms.include? form %>
+										<%= check_box_tag("forme_ids[]", form.id,true,id: :"formCheck#{form.id}")%>
+									<% else %>
+										<%= check_box_tag("forme_ids[]", form.id,false,id: :"formCheck#{form.id}")%>
 									<% end %>
-									<% end %>
-								<%else%>
-									<% if foros%>
-									<% if foros.include? fs.forme%>
-										<div class="col-md-6" style="display: block" id="form<%= fs.forme.id%>">
-											<%= check_box_tag("forme_ids[]", fs.forme.id,true, id: :"idform#{fs.id}")%>
-											<%= fs.forme.title%>
-										</div>
-									<%else%>
-										<div class="col-md-6" style="display: none" id="form<%= fs.forme.id%>">
-											<%= check_box_tag("forme_ids[]", fs.forme.id,false,id: :"idform#{fs.id}")%>
-											<%= fs.forme.title%>
-										</div>
-									<% end %>
-									<% end %>
-								<%end%>
-								
-									<div class="col-md-6" style="display: none" id="forme<%= fs.forme.id%>">
-										<%= check_box_tag("forme_ids[]", fs.forme.id,false,id: :"idform#{fs.id}")%>
-										<%= fs.forme.title%>
-									</div>
-								<% end %>
+									<%= form.title%>
+								</div>
+								<div class="col-md-6" style="display: block" id="forme<%= form.id%>">
+									<%= check_box_tag("forme_ids[]", form.id)%>
+									<%= form.title%>
+								</div>
 							<% end %>
+						</div>
+						<div class="mt-2">
+							<button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#fap"> Autre</button><br>	
+						</div>
+						<div class="collapse" id="fap">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-5" style="text-align: center;">
+										<h6>Ajout d'une autre forme d'appui</h6>
+								    	<input type="text" name="newform" size=15 placeholder="Autre forme d'appui" class="form-control" id="fo"><br>	
+								    	<input type="button" class="sc-eerKOB cfnPHQ" value="Ajouter" id="addForm">			
+									</div>
+									<div class="col-md-7">
+											<h6 style="text-align: center;">La nouvelle forme d'appui doit être cochée</h6>
+										<% 10.times do |a|%>
+								    	<div id="check<%= a%>" style="display: block;">
+											<p id="app<%= a%>" style="display: none;">
+												<%= check_box_tag("checkben#{a}", :id => "c#{a}") %>
+												<span id="appui<%= a%>"></span>	
+												<span id="appui1<%= a%>"></span>	
+												<span id="appui2<%= a%>"></span>	
+												<span id="appui3<%= a%>"></span>	
+												<span id="appui4<%= a%>"></span>	
+												<span id="appui5<%= a%>"></span>	
+												<span id="appui6<%= a%>"></span>	
+												<span id="appui7<%= a%>"></span>	
+												<span id="appui8<%= a%>"></span>	
+												<span id="appui9<%= a%>"></span>	
+												<input type="hidden" name="valform<%= a%>" id="valform<%= a%>">	
+											</p>								
+										</div>
+								    <%end%>
+									</div>
+								</div><br>
+								<a class="table">Cochez le secteur associé à la nouvelle forme d'appui </a>
+							    <div class="row">
+								 <% Secteur.all.order(:title).each do |c| %>
+									<div class="col-md-4">
+										<%= check_box_tag("sectform_ids[]",c.id, false, id: :"s#{c.id}")%>
+										<%= c.title%>
+									</div> 
+								<% end %>
+							    	
+							    </div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -295,6 +317,41 @@
 								</div>
 							<% end %>
 						</div>
+						<div class="mt-2">
+							<button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#atr"> Autre</button><br>
+						</div>
+						<div class="collapse" id="atr">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-5" style="text-align: center;">
+										<h6>Ajout d'un nouveau bénéficiaire</h6>
+								    	<input type="text" name="newben" size=15 placeholder="Autre bénéficiaire" class="form-control" id="inp"><br>	
+								    	<input type="button" class="sc-eerKOB cfnPHQ" value="Ajouter" id="ajout">			
+									</div>
+									<div class="col-md-7">
+											<h6 style="text-align: center;">Le nouveau bénéficiaire doit être coché</h6>
+										<% 10.times do |b|%>
+									    	<div id="check<%= b%>" style="display: block;">
+												<p id="p<%= b%>" style="display: none;">
+													<%= check_box_tag("checkben#{b}", :id => "c#{b}") %>
+													<span id="ben<%= b%>"></span>	
+													<span id="ben1<%= b%>"></span>	
+													<span id="ben2<%= b%>"></span>	
+													<span id="ben3<%= b%>"></span>	
+													<span id="ben4<%= b%>"></span>	
+													<span id="ben5<%= b%>"></span>	
+													<span id="ben6<%= b%>"></span>	
+													<span id="ben7<%= b%>"></span>	
+													<span id="ben8<%= b%>"></span>	
+													<span id="ben9<%= b%>"></span>	
+													<input type="hidden" name="valben<%= b%>" id="valben<%= b%>">	
+												</p>								
+											</div>
+									    <%end%>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -319,6 +376,41 @@
 								 	<%= c.title%>
 								</div>
 							<% end %>
+						</div>
+						<div class="mt-2">
+							<button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#iga"> Autre</button><br>
+						</div>
+						<div class="collapse" id="iga">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-5" style="text-align: center;">
+										<h6>Ajout d'une autre IGA</h6>
+								    	<input type="text" name="newiga" size=15 placeholder="autre IGA" class="form-control" id="inpiga"><br>	
+								    	<input type="button" class="sc-eerKOB cfnPHQ" value="Ajouter" id="ajoutIga">			
+									</div>
+									<div class="col-md-7">
+											<h6 style="text-align: center;">La nouvelle IGA doit être cochée</h6>
+										<% 10.times do |i|%>
+									    	<div id="check<%= i%>" style="display: block;">
+												<p id="pi<%= i%>" style="display: none;">
+													<%= check_box_tag("checkiga#{i}", :id => "c#{i}") %>
+													<span id="igaspan<%= i%>"></span>	
+													<span id="igaspan1<%= i%>"></span>	
+													<span id="igaspan2<%= i%>"></span>	
+													<span id="igaspan3<%= i%>"></span>	
+													<span id="igaspan4<%= i%>"></span>	
+													<span id="igaspan5<%= i%>"></span>	
+													<span id="igaspan6<%= i%>"></span>	
+													<span id="igaspan7<%= i%>"></span>	
+													<span id="igaspan8<%= i%>"></span>	
+													<span id="igaspan9<%= i%>"></span>	
+													<input type="hidden" name="valiga<%= i%>" id="valiga<%= i%>">	
+												</p>								
+											</div>
+									    <%end%>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -362,7 +454,7 @@
 				<div class="mt-2">
 					<div class="card card-body">
 						<div class="row">
-							<% Zone.all.order(:title).each_with_index do |c,x| %>
+							<% Zone.all.each_with_index do |c,x| %>
 								<div class="col-md-4">
 									<% if @zones%>
 								 		<% if @zones.include? c %>
@@ -380,14 +472,14 @@
 			</div>
 
 			<div class="container mt-4">
-				<%if @projet.validation == nil && @projet.validation == false%>
+				<%if @projet.validation == nil || @projet.validation == false%>
 					<input type="submit" name="modifier" value="Enregistrer la modification" class="btn btn-secondary">
 					<input type="submit" name="modifier" value="Publier" class="sc-eerKOB cfnPHQ">
 				<%else%>
 					<input type="submit" name="modifier" value="Re-publier" class="sc-eerKOB cfnPHQ">
 				<%end%>
-				<a href="<%= admin_projet_path(@projet.id)%>" class="btn btn-secondary">Annuler la modification</a>
+				<a href="<%= admin_projet_path(@projet.id)%>" class="btn btn-danger">Annuler la modification</a>
 			</div>		
 	</div>
 <% end %>
-<%= render partial: "/admin/projets/script.html.erb"%>
+<%= render partial: "/admin/projets/script_edit.html.erb"%>

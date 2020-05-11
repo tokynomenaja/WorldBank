@@ -1,36 +1,48 @@
 <div class="container sans-head">
 	<div class="mb-4 text-center">
-		<h3 style="color: dark">Toutes les messages</h3>
+		<h3 class="table">Toutes les messages</h3>
 	</div>
-	<div class="row">
+	<div>
 		<%@messages.order(created_at: :desc).each do |m|%>
-		  <div class="col-sm-6">
-		    <div class="card">
-		      <div class="card-body">
-		       <label>Message :</label>
-				<%= m.content%> 
-				<%if m.read == nil%>
-					<span class="badge badge-danger">Non lu</span>
-				<%else%>
-					<span class="badge badge-success">Lu</span>
-				<%end%>
-				<p>Envoyé le <%= m.created_at%> par 
-					<%if m.sender%>
-						<a href="https://<%= m.sender.email%>" style="color: #52c39b;" target="_blank"><%= m.sender.email%></a>
-					<%else%>
-						<a href="https://<%= m.email%>" style="color: #52c39b;" target="_blank"><%= m.email%></a>
-					<%end%>
-				</p>
+			<%if m.read == nil%>
+		<div class="row align-items-center no-gutters bg-message pt-2 pb-2 pl-2 border-bottom">
+					<div class="unread col-9">
+				       <p class="font-weight-bolder">
+							<%if m.sender%>
+								<a href="https://<%= m.sender.email%>" target="_blank" class="table" id="user"><%= m.sender.email%></a>
+							<%else%>
+								<a href="https://<%= m.email%>" target="_blank" class="table" id="user"><%= m.email%></a>
+							<%end%>
+				       </p>
+				       <p class="text-muted pt-1 pb-1"><%= m.content%> </p>	
+					</div>
+			<%else%>
+		<div class="row align-items-center no-gutters pt-2 pb-2 pl-2 border-bottom">
+					<div class="col-9">
+				       <p>
+							<%if m.sender%>
+								<a href="https://<%= m.sender.email%>" target="_blank" class="table"><%= m.sender.email%></a>
+							<%else%>
+								<a href="https://<%= m.email%>" target="_blank" class="table"><%= m.email%></a>
+							<%end%>
+				       </p>
+				       <p class="text-muted pt-1 pb-1"><%= m.content%> </p>	
+					</div>
+			<%end%>
+				<div class="col-3 text-right pr-2">
 					<%= form_for m, url: super_admin_contact_path(m.id), method: :put do |f| %>
-					<%if m.read == nil%>
-					<p> <input type="submit" name="read" value="Marquer comme lu" class="btn btn-success"></p>
-					<%else%>
-					<p> <input type="submit" name="read" value="Marquer comme non lu" class="btn btn-danger"></p>
-					<%end%>
-					<%end%>
-		      </div>
-		    </div>
-		  </div>
+						<%if m.read == nil%>
+							<p> <input type="submit" name="read" value="Marquer comme lu" class="table btn-right" id="mark-as-read"></p>
+						<%else%>
+							<p><input type="submit" name="read" value="Marquer comme non lu" class="table btn-right" id="document"></p>
+						<%end%>
+					<%end%>	
+				</div>
+					<p>Envoyé le <%= m.created_at%></p>
+			</div>
 		<%end%>
+		<div class="mt-4 mb-2">
+			<%= paginate @messages %>
+		</div>
 	</div>
 </div>

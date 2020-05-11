@@ -145,9 +145,9 @@
 			<div class="d-flex justify-content-between mb-3">
 				<div class="col-md-4 pl-0">
 					<h6 class="table">Montant pour le secteur :</h6>
-					<% Secteur.all.each do |s|%>
+					<% Secteur.all.order(:title).each do |s|%>
 						<div class="form-control pr-0" id="montant<%=s.id%>" style="display: none;">
-							<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title%>" class="border-0" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)">
+							<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title.downcase %>" class="border-0" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)">
 							<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset"%>
 						</div>
 					<%end%>
@@ -214,7 +214,17 @@
 										</div>
 								    <%end%>
 								</div>
-							</div>
+							</div><br>
+								<a class="table">Cochez le secteur associé à la nouvelle filière </a>
+							    <div class="row">
+								 <% Secteur.all.order(:title).each do |c| %>
+									<div class="col-md-4">
+										<%= check_box_tag("sectfil_ids[]",c.id, false, id: :"s#{c.id}")%>
+										<%= c.title%>
+									</div> 
+								<% end %>
+							    	
+							    </div>
 						</div>
 					</div>
 				</div>
@@ -252,26 +262,37 @@
 								</div>
 								<div class="col-md-7">
 										<h6 style="text-align: center;">La nouvelle forme d'appui doit être cochée</h6>
-									<% 10.times do |form|%>
-								    	<div id="check<%= form%>" style="display: block;">
-											<p id="pForm<%= form%>" style="display: none;">
-												<%= check_box_tag("checkform#{form}", :id => "c#{form}") %>
-												<span id="f<%= form%>"></span>	
-												<span id="f<%= form%>"></span>	
-												<span id="f2<%= form%>"></span>	
-												<span id="f3<%= form%>"></span>	
-												<span id="f4<%= form%>"></span>	
-												<span id="f5<%= form%>"></span>	
-												<span id="f6<%= form%>"></span>	
-												<span id="f7<%= form%>"></span>	
-												<span id="f8<%= form%>"></span>	
-												<span id="f9<%= form%>"></span>	
-												<input type="hidden" name="valform<%= form%>" id="valform<%= form%>">	
+									<% 10.times do |a|%>
+								    	<div id="check<%= a%>" style="display: block;">
+											<p id="app<%= a%>" style="display: none;">
+												<%= check_box_tag("checkben#{a}", :id => "c#{a}") %>
+												<span id="appui<%= a%>"></span>	
+												<span id="appui1<%= a%>"></span>	
+												<span id="appui2<%= a%>"></span>	
+												<span id="appui3<%= a%>"></span>	
+												<span id="appui4<%= a%>"></span>	
+												<span id="appui5<%= a%>"></span>	
+												<span id="appui6<%= a%>"></span>	
+												<span id="appui7<%= a%>"></span>	
+												<span id="appui8<%= a%>"></span>	
+												<span id="appui9<%= a%>"></span>	
+												<input type="hidden" name="valform<%= a%>" id="valform<%= a%>">	
 											</p>								
 										</div>
 								    <%end%>
 								</div>
 							</div>
+							<br>
+								<a class="table">Cochez le secteur associé à la nouvelle forme d'appui </a>
+							    <div class="row">
+								 <% Secteur.all.order(:title).each do |c| %>
+									<div class="col-md-4">
+										<%= check_box_tag("sectform_ids[]",c.id, false, id: :"s#{c.id}")%>
+										<%= c.title%>
+									</div> 
+								<% end %>
+							    	
+							    </div>
 						</div>
 						</div>
 				</div>

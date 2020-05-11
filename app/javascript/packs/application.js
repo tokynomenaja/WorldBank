@@ -320,7 +320,7 @@ $(document).on('turbolinks:load', function() {
 
 	$(function() {
 	  $("#selectionDebut").monthly({
-	    years: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036],
+	    years: [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036],
 	    topOffset: 28,
 	    onMonthSelect: function(mi, m, y) {
 	      mi = padToTwo(mi);
@@ -333,7 +333,7 @@ $(document).on('turbolinks:load', function() {
 	});
 	$(function() {
 	  $("#selectionFin").monthly({
-	    years: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036],
+	    years: [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036],
 	    topOffset: 28,
 	    onMonthSelect: function(mi, m, y) {
 	      mi = padToTwo(mi);
@@ -383,16 +383,25 @@ $("#pub-item").click(function(e){
 	$("#pub-list").toggleClass("toggleclass")
 	$("#projet-list").addClass("toggleclass")
 	$("#actus-list").addClass("toggleclass")
+	$("#under-list").addClass("toggleclass")
 });
 $("#projet-item").click(function(e){
 	$("#projet-list").toggleClass("toggleclass")
 	$("#pub-list").addClass("toggleclass")
 	$("#pub-list").addClass("toggleclass")
+	$("#under-list").addClass("toggleclass")
 });
 $("#actus-item").click(function(e){
 	$("#actus-list").toggleClass("toggleclass")
 	$("#pub-list").addClass("toggleclass")
 	$("#projet-list").addClass("toggleclass")
+	$("#under-list").addClass("toggleclass")
+});
+$("#user-item").click(function(e){
+	$("#user-list").toggleClass("toggleclass")
+	$("#pub-list").addClass("toggleclass")
+	$("#projet-list").addClass("toggleclass")
+	$("#actus-list").addClass("toggleclass")
 });
 
 })

@@ -342,7 +342,6 @@
         <div class="qjc24y-0 jMLWRH col-md-7" >
           <div class="height border-bottom mb-2">
             <h1 class="vx2fp9-3 ehdisu h-font text-left">Résultats de la recherche</h1>
-            
           </div>
           <div class="row no-gutters">
             <div class="col-sm-4">
@@ -409,7 +408,7 @@
                 <%end%>
                 
                  <%if @montant_11 != ""%>
-                  <p class="text-muted mb-1"><span>montant de projet entre : &nbsp;&nbsp;&nbsp;&nbsp; </span> <%= @m1%> -  <%=@m2%> millions USD</p>
+                  <p class="text-muted mb-1"><span>montant de projet entre: &nbsp;:&nbsp; </span> <%= @m1%>-<%=@m2%> USD</p>
                 <%end%>
 
            
@@ -431,6 +430,9 @@
                   </div>
                 </div>
                 <%end%>
+                  <div class="text-center mt-2">
+                    <%= paginate @results %>
+                  </div>
                  <%else%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                   <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
@@ -546,7 +548,7 @@
                 
                 <%if @secteur%>
                 <%if @secteur.count != 0%>
-                <% @secteur.select(:projet_id).distinct.each do |b| %>  
+                <% @secteur.select(:projet_id).distinct.each do |b| %> 
                 <% if b.projet.validation == true%>
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
                     <div class="col-8">
@@ -556,10 +558,6 @@
                       <span class="table"><%= b.projet.bailleur.first_name %></span>
                     </div>
                   </div>
-                <%else%>
-                  <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                    <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
-                  </div>  
                 <%end%>     
                 <%end%>
                   <%else%>
@@ -674,9 +672,7 @@
                       <%= link_to "#{m.projet.nom_du_projet}", projet_path(m.projet.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                     <div class="col-4 text-center">
-
                      <span class="table"><%= m.projet.bailleur.first_name %></span>
-
                     </div>
                   </div>
 

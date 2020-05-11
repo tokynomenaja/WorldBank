@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
    before_action :notifAdmin   
 def index
-       @project = Projet.order(:id).page(params[:page]).per(3)
+       @project = Projet.order(id: :desc).page(params[:page]).per(9)
        @forme_1 = ""
        @ptf_1 = ""
        @montant_11 = ""
@@ -25,8 +25,8 @@ def index
           @projets = []
           @parameter = params[:search].downcase  
           @req = Projet.where(validation: true)
-          @results = @req.where("lower(nom_du_projet) LIKE :search", search: "%#{@parameter}%")
-          
+
+          @results = @req.where("lower(nom_du_projet) LIKE :search", search: "%#{@parameter}%").order(id: :desc).page(params[:page]).per(9)
     end 
   end
 
@@ -62,13 +62,11 @@ def index
                   @m1 = params[:montant][0].to_i
                   @m2 = params[:montant][1].to_i
                   @pro.each do |pro|
-                      @r = Montant.all.where(:price => (@m1..@m2))
-                      @montant_11 = @m1
-                      @montant_11 = @m2
-           
-
+                      @r = Montant.all.where(:price => (@m1..@m2),update_projet: nil)
      
                   end 
+                      @montant_11 = @m1
+                      @montant_11 = @m2
           end 
       end
     end
@@ -111,10 +109,10 @@ def index
             @d << f
 
           end
+       end
             @fin_1= @d1
             @fin_1= @d2
          end
-       end
       end 
     end 
   end
@@ -129,7 +127,7 @@ def index
           else
            @params_filiere = params[:search_filiere]
            @params_filiere.each do |f|
-           @filiere = Filiereprojet.all.where(filiere_id: params[:search_filiere])
+           @filiere = Filiereprojet.all.where(filiere_id: params[:search_filiere], update_projet: nil)
            @filiere_1 = Filiere.all.find(f.to_i).title
        end
       end
@@ -144,7 +142,7 @@ def index
           else
            @params_forme = params[:search_forme]
            @params_forme.each do |fo|
-           @forme = Formeprojet.all.where(forme_id: params[:search_forme])
+           @forme = Formeprojet.all.where(forme_id: params[:search_forme], update_projet: nil)
            @forme_1 = Forme.all.find(fo.to_i).title
           
 
@@ -163,7 +161,7 @@ def index
               else
                 @params_zone = params[:search_zone]
                 @params_zone.each do |z|
-                @zone = Zoneprojet.all.where(zone_id: params[:search_zone]) 
+                @zone = Zoneprojet.all.where(zone_id: params[:search_zone], update_projet: nil) 
                 @zone_1 = Zone.all.find(z.to_i).title             
           end
         end  
@@ -179,7 +177,8 @@ def index
               else
                 @params_ben = params[:search_ben]
                 @params_ben.each do |b|
-                @ben = Benefprojet.all.where(beneficiaire_id: params[:search_ben])  
+
+                @ben = Benefprojet.all.where(beneficiaire_id: params[:search_ben], update_projet: nil)   
                 @ben_1 = Beneficiaire.all.find(b.to_i).title           
           
         end  
@@ -197,7 +196,7 @@ def index
             else
             @params_iga = params[:search_iga]
             @params_iga.each do |g|
-            @iga = Igaprojet.all.where(iga_id: g.to_i)
+            @iga = Igaprojet.all.where(iga_id: g.to_i,update_projet: nil)
             @iga_1 = Iga.all.find(g.to_i).title
 
         end
@@ -213,7 +212,7 @@ def index
               else
               @params_secteur = params[:search_secteur]
               @params_secteur.each do |i|
-              @secteur = Secteurprojet.all.where(secteur_id: params[:search_secteur])
+              @secteur = Secteurprojet.all.where(secteur_id: params[:search_secteur], update_projet: nil)
               @secteur_1 = Secteur.all.find(i.to_i).title
               end
           end
