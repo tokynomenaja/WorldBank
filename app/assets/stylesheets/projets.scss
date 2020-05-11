@@ -55,29 +55,29 @@
 }
 .rond{ background: #fff; width: 25px;height: 25px; border-radius: 12px; line-height: 25px;} .rond:hover{border: solid rgb(126, 118, 118) 2px;font-weight: normal;}
 
-.r-1{display: none;}
-.r-2{top:12rem; right:2.5rem;}
-.r-3{bottom:14rem; right:7rem;}
-.r-4{top:15.3rem; right: 5.8rem;} 
-.r-5{top:9rem; right: 0.4rem;} 
-.r-6{bottom:0.5rem; left:5rem;} 
-.r-7{bottom:2rem; left:8.5rem;}
-.r-8{bottom:7rem; left:-1rem;} 
-.r-9{bottom:5.9rem; right: 5.6rem;} 
-.r-10{top:17rem; right: 2rem;} 
-.r-11{top:12.5rem; left:9rem;} 
-.r-12{top:9rem; left:7.3rem;}
-.r-13{top:16rem; left: 6rem;}
-.r-14{top:0.5rem; right: 2.5rem;} 
-.r-15{bottom:11.5rem; right: 8rem;} 
-.r-16{bottom: 9rem; left:6rem;} 
-.r-17{top:17.6rem; left:9rem;} 
-.r-18{top:13rem; left:1.5rem;} 
-.r-19{top:20rem; left:3rem;} 
-.r-20{top:3rem; right:1.2rem;} 
-.r-21{top:6rem; right:5.8rem;} 
-.r-22{top: 19.8rem; left:7.5rem;} 
-.r-23{bottom:13rem; right:3rem;} 
+.r-1{display: block;cursor: pointer;}
+.r-2{top:12rem; right:2.5rem;cursor: pointer;}
+.r-3{bottom:14rem; right:7rem;cursor: pointer;}
+.r-4{top:15.3rem; right: 5.8rem;cursor: pointer;} 
+.r-5{top:9rem; right: 0.4rem;cursor: pointer;} 
+.r-6{bottom:0.5rem; left:5rem;cursor: pointer;} 
+.r-7{bottom:2rem; left:8.5rem;cursor: pointer;}
+.r-8{bottom:7rem; left:-1rem;cursor: pointer;} 
+.r-9{bottom:5.9rem; right: 5.6rem;cursor: pointer;} 
+.r-10{top:17rem; right: 2rem;cursor: pointer;} 
+.r-11{top:12.5rem; left:9rem;cursor: pointer;} 
+.r-12{top:9rem; left:7.3rem;cursor: pointer;}
+.r-13{top:16rem; left: 6rem;cursor: pointer;}
+.r-14{top:0.5rem; right: 2.5rem;cursor: pointer;} 
+.r-15{bottom:11.5rem; right: 8rem;cursor: pointer;} 
+.r-16{bottom: 9rem; left:6rem;cursor: pointer;} 
+.r-17{top:17.6rem; left:9rem;cursor: pointer;} 
+.r-18{top:13rem; left:1.5rem;cursor: pointer;} 
+.r-19{top:20rem; left:3rem;cursor: pointer;} 
+.r-20{top:3rem; right:1.2rem;cursor: pointer;} 
+.r-21{top:6rem; right:5.8rem;cursor: pointer;} 
+.r-22{top: 19.8rem; left:7.5rem;cursor: pointer;} 
+.r-23{bottom:13rem; right:3rem;cursor: pointer;} 
 .h-font {font-size: 1.1rem;}
 
 .filter p span{font-family: welcomeweb,welcomeweb,sans-serif; color: #52c39b;font-size: 0.9rem; text-transform: uppercase;}
