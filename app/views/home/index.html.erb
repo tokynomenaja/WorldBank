@@ -417,6 +417,7 @@
             </div>
             <div class="col-sm-8 pl-2">
               <div>
+       
 
                 <%if @results != ""%>
                 <%if @results.count != 0%>
@@ -436,6 +437,8 @@
                 </div>
                 <%end%>
                 <%end%>
+
+                
           
 
                 <%if @zone%>
@@ -671,11 +674,9 @@
                       <%= link_to "#{m.projet.nom_du_projet}", projet_path(m.projet.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                     <div class="col-4 text-center">
-<<<<<<< HEAD
-                     <span class="table"><%= m.bailleur.first_name %></span>
-=======
+
                      <span class="table"><%= m.projet.bailleur.first_name %></span>
->>>>>>> c05b53a9ad6bf84aaa15273f08c8c4abf8343f09
+
                     </div>
                   </div>
 
