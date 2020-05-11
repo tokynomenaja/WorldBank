@@ -403,13 +403,18 @@
 		//Montant par secteur et Filiere par secteur
 
 		    var m = document.getElementById('montant'+x);
+		    var inputMontant = document.getElementById('inputMontant'+x);
+		    var unite = document.getElementById('unite'+x);
 		    if(m.style.display == "block"){
 		        m.style.display = "none";
 		        m.classList.remove('d-flex');
 		    }else{
 		        m.style.display = "block";
 		        m.classList.add('d-flex');
+		        inputMontant.required = true;
+		        unite.required = true;
 		    }
+
 
 		//secteur par filiere
 			var filAsso = true;

@@ -20,8 +20,7 @@ def index
       if params[:search]
         if params[:search] == 1
             redirect_to(root_path)
-        else  
-          @projets = []
+        else 
           @parameter = params[:search].downcase  
           @req = Projet.where(validation: true)
           @results = @req.where("lower(nom_du_projet) LIKE :search", search: "%#{@parameter}%").order(id: :desc).page(params[:page]).per(9)
