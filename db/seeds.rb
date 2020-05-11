@@ -376,16 +376,16 @@ Forme.destroy_all
   Formesecteur.create!(secteur_id: 2, forme_id: 18)
   Formesecteur.create!(secteur_id: 2, forme_id: 19) 
   Formesecteur.create!(secteur_id: 2, forme_id: 20)
-  Formesecteur.create!(secteur_id: 2, forme_id: 21) 
   Formesecteur.create!(secteur_id: 2, forme_id: 4)
+  Formesecteur.create!(secteur_id: 2, forme_id: 8)
 
+  Formesecteur.create!(secteur_id: 3, forme_id: 21)
   Formesecteur.create!(secteur_id: 3, forme_id: 22)
   Formesecteur.create!(secteur_id: 3, forme_id: 23)
   Formesecteur.create!(secteur_id: 3, forme_id: 24)
   Formesecteur.create!(secteur_id: 3, forme_id: 25)
   Formesecteur.create!(secteur_id: 3, forme_id: 26)
-  Formesecteur.create!(secteur_id: 3, forme_id: 27)
-
+ 
   Formesecteur.create!(secteur_id: 7, forme_id: 3)
   Formesecteur.create!(secteur_id: 7, forme_id: 5)
   Formesecteur.create!(secteur_id: 7, forme_id: 9)

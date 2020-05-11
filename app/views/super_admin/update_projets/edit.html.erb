@@ -119,17 +119,17 @@
 									</div>
 									<%else%>
 										<div class="form-control pr-0" id="montant<%=s.id%>" style="display: none;">
-										<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title.downcase%>" class="border-0" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)">
+										<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title.downcase%>" class="border-0" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%= s.id%>">
 										
-										<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset " %>
+										<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset ", id: :"unite#{s.id}"%>
 										
 										</div>
 									<%end%>
 									<%end%>
 								<%else%>
 									<div class="form-control pr-0" id="montant<%=s.id%>" style="display: none;">
-										<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title.downcase%>" class="border-0" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)">
-										<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset"%>
+										<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title.downcase%>" class="border-0" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%= s.id%>">
+										<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset", id: :"unite#{s.id}"%>
 									</div>
 								<%end%>
 							<%end%>
@@ -262,7 +262,7 @@
 										<% 10.times do |a|%>
 								    	<div id="check<%= a%>" style="display: block;">
 											<p id="app<%= a%>" style="display: none;">
-												<%= check_box_tag("checkben#{a}", :id => "c#{a}") %>
+												<%= check_box_tag("checkform#{a}", :id => "c#{a}") %>
 												<span id="appui<%= a%>"></span>	
 												<span id="appui1<%= a%>"></span>	
 												<span id="appui2<%= a%>"></span>	
