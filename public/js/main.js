@@ -44,13 +44,14 @@ function valueLeft(){
         outputLeft.innerHTML = values[this.value];
 
         showMontant.innerHTML = "montant en millions de USD";
+        il.value = 0;
         }
         else {
         outputLeft.innerHTML = values[this.value];
         showMontant.innerHTML = "plus de " + outputLeft.value + " millions d'usd";
         // ir.value = "max";
         ir.value = 1000000000;
-        il.value = outputleft.value * 1000000;
+        il.value = outputleft.value * 10000000;
         }
     }
     else{
@@ -77,6 +78,7 @@ function valueRight(){
         if (outputRight.value == "+") {
             outputRight.innerHTML = values[this.value];
         showMontant.innerHTML = "montant en millions de USD";
+        ir.value = 1000000000;
         }
         else {
             outputRight.innerHTML = values[this.value];
