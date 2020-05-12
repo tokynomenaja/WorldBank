@@ -425,7 +425,7 @@
                     <%= link_to "#{result.nom_du_projet}" , projet_path(result.id), target: 'blank', class: 'text-muted reshover' %>
                   </div>
                   <div class="col-4 text-center">
-                    <span class="table"><%= result.bailleur.first_name %></span>
+                    <span class="table"><%= result.projet.ptf.title %></span>
                   </div>
                 </div>
                 <%end%>
@@ -449,7 +449,7 @@
                     <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
                   </div>
                   <div class="col-4 text-center">
-                    <span class="table"><%= res.projet.bailleur.first_name %></span>
+                    <span class="table"><%= res.projet.ptf.title %></span>
                   </div>
                 </div>
                 <%else%>
@@ -475,7 +475,7 @@
                     <%= link_to "#{res.projet.nom_du_projet}",  projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                     <div class="col-4 text-center">
-                      <span class="table"><%= res.projet.bailleur.first_name %></span>
+                      <span class="table"><%= res.projet.ptf.title %></span>
                     </div>
                   </div>
                 <%else%>
@@ -500,7 +500,7 @@
                     <%= link_to "#{res.projet.nom_du_projet}", projet_path(res.projet.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                     <div class="col-4 text-center">
-                      <span class="table"><%= res.projet.bailleur.first_name %></span>
+                      <span class="table"><%= res.projet.ptf.title %></span>
                     </div>
                   </div> 
                 <%else%>
@@ -526,7 +526,7 @@
                       <%= link_to "#{rs.projet.nom_du_projet}", projet_path(rs.projet.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                     <div class="col-4 text-center">
-                      <span class="table"><%= rs.projet.bailleur.first_name %></span>
+                      <span class="table"><%= rs.projet.ptf.title %></span>
                     </div>
                   </div>
                 <%else%>
@@ -552,10 +552,10 @@
                       <%= link_to "#{b.projet.nom_du_projet}", projet_path(b.projet.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                     <div class="col-4 text-center">
-                      <span class="table"><%= b.projet.bailleur.first_name %></span>
+                      <span class="table"><%= b.projet.ptf.title %></span>
                     </div>
                   </div>
-                <%elsif b.projet.validation == nil%> 
+                <%else%> 
                      <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                       <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
                     </div>
@@ -578,7 +578,7 @@
                       <%= link_to "#{p.nom_du_projet}", projet_path(p.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                     <div class="col-4 text-center">
-                      <span class="table"><%= p.bailleur.first_name %></span>
+                      <span class="table"><%= p.ptf.title %></span>
                     </div>
                   </div>
                 <%else%>
@@ -604,7 +604,7 @@
                       <%= link_to "#{ip.nom_du_projet}", projet_path(ip.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                     <div class="col-4 text-center">
-                      <span class="table"><%= ip.bailleur.first_name %></span>
+                      <span class="table"><%= ip.ptf.title %></span>
                     </div>
                   </div>
                 <%else%>
@@ -629,7 +629,7 @@
                       <%= link_to "#{b.projet.nom_du_projet}", projet_path(b.projet.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                     <div class="col-4 text-center">
-                      <span class="table"><%= b.projet.bailleur.first_name %></span>
+                      <span class="table"><%= b.projet.ptf.title %></span>
                     </div>
                   </div>
                 <%else%>
@@ -653,7 +653,7 @@
                       <%= link_to "#{f.nom_du_projet}", projet_path(f.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                     <div class="col-4 text-center">
-                      <span class="table"><%= f.bailleur.first_name %></span>
+                      <span class="table"><%= f.ptf.title %></span>
                     </div>
                   </div>
                 <%end%>
@@ -673,7 +673,7 @@
                       <%= link_to "#{m.projet.nom_du_projet}", projet_path(m.projet.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                     <div class="col-4 text-center">
-                     <span class="table"><%= m.projet.bailleur.first_name %></span>
+                     <span class="table"><%= m.projet.ptf.title %></span>
                     </div>
                   </div>
 
