@@ -8,9 +8,9 @@
 </head>
 <body>
     <header class="aci59a-0 eyAIuG sticky-limit">
-    <div class="sc-1gnwgfb-2 hVIPFV pict">
+    <div class="sc-1gnwgfb-2 hVIPFV picc">
       <style type="text/css">
-        .pict {
+        .picc {
           <%if @projet.secteurprojets.count == 1%>
             <%@projet.secteurprojets.each do|sp|%>
               background-image: url('/<%=sp.secteur.image_url%>');
@@ -217,7 +217,7 @@
           <%end%>
 
           <%if @projet.files.attached?%>
-            <p><span class="attr">Fichier : </span>
+            <p><span class="attr">Fichiers : </span>
             <%@projet.files.each do|file|%> 
               <%= link_to file.filename, rails_blob_path(file, disposition: "attachement") %></p>
             <%end%>
