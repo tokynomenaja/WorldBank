@@ -13,7 +13,8 @@ def index
        @filiere_1 = ""
        @fin_1 = ""
        @results = ""
-      
+
+
 
   #recherche controller globale(titre du projet)
 
@@ -23,9 +24,11 @@ def index
         else 
           @parameter = params[:search].downcase  
           @req = Projet.where(validation: true)
+
           @results = @req.where("lower(nom_du_projet) LIKE :search", search: "%#{@parameter}%").order(id: :desc).page(params[:page]).per(9)
-        end  
     end 
+  end
+
   #recherhe controller ptf
  
       if params[:ptf_id]
@@ -166,19 +169,21 @@ def index
   #recherche controller beneficiaire
 
         if params[:search_ben]
-          if params[:search_ben] && params[:search_ben] != ""
+          if params[:search_ben] != "" && params[:search_ben] != ""
             if params[:search_ben]== 1
                redirect_to(root_path)
               
               else
                 @params_ben = params[:search_ben]
                 @params_ben.each do |b|
+
                 @ben = Benefprojet.all.where(beneficiaire_id: params[:search_ben], update_projet: nil)   
                 @ben_1 = Beneficiaire.all.find(b.to_i).title           
-          end
+          
         end  
       end
     end
+  end
 
   #recherche controller IGA
 
