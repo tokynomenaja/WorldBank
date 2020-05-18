@@ -168,7 +168,7 @@ class Admin::ProjetsController < ApplicationController
 
           if @project.save
             @project.files.attach(params[:files])
-            redirect_to admin_projets_path, success: "Projet créé avec succès. Un email de validation vous a été envoyé, veuillez consulter votre boite de reception"
+            redirect_to admin_projets_path, success: "Demande de création de fiche projet envoyée avec succès. Vous serez avertis par email lorsqu'elle aura été validée et publiée par l'administrateur"
           else
             render :new
 

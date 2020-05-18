@@ -18,6 +18,12 @@ class SuperAdmin::ContactsController < ApplicationController
   	redirect_to super_admin_contacts_path
   end
 
+def destroy
+  @message = Message.find(params[:id])
+  @message.destroy
+end
+
+
 
   private 
   def paramsMessage

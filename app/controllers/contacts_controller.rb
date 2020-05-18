@@ -9,7 +9,7 @@ class ContactsController < ApplicationController
   def create
     if current_user
     	@admin = User.find_by(is_super_admin: true)
-    	@message = Message.create!(content: params[:message], sender_id: current_user.id, admin_id: @admin.id)
+    	@message = Message.create!(content: params[:message], sender_id: current_user.id, admin_id: @admin.id,fonction: params[:fonction])
     	redirect_to root_path, success: "Message envoyé à l'administrateur du site"
     else
       @emails = []
@@ -20,10 +20,10 @@ class ContactsController < ApplicationController
 
       if @emails.include? params[:email]
         @user = User.find_by(email: params[:email])
-        @message = Message.create!(content: params[:message], sender_id: @user.id, email: params[:email], phone: params[:phone])
+        @message = Message.create!(content: params[:message], sender_id: @user.id, email: params[:email], phone: params[:phone], first_name: params[:first_name], last_name: params[:last_name], fonction: params[:fonction])
         redirect_to root_path, success: "Message envoyé à l'administrateur du site"
       else
-        @message = Message.create!(content: params[:message], email: params[:email], phone: params[:phone])
+        @message = Message.create!(content: params[:message], email: params[:email], phone: params[:phone], first_name: params[:first_name], last_name: params[:last_name], fonction: params[:fonction])
         redirect_to root_path, success: "Message envoyé à l'administrateur du site"
       end
     end
