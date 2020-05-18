@@ -9,24 +9,49 @@
 					<div class="unread col-9">
 				       <p class="font-weight-bolder">
 							<%if m.sender%>
-								<a href="https://<%= m.sender.email%>" target="_blank" class="table" id="user"><%= m.sender.email%></a>
+							<span><a href="https://<%= m.sender.email%>" target="_blank" class="table" id="user"><%= m.sender.email%></a></span>
+								 
+								
+							<span>Nom : <%= m.sender.first_name%></span>
+							<span>Prénoms : <%= m.sender.last_name%></span>
+							<span>Téléphone : <%= m.sender.phone%></span>
+							<span>Fonction : <%= m.fonction%></span>
+						
+
+								
 							<%else%>
 								<a href="https://<%= m.email%>" target="_blank" class="table" id="user"><%= m.email%></a>
-							<%end%>
-				       </p>
-				       <p class="text-muted pt-1 pb-1"><%= m.content%> </p>	
+								<p class="text-muted pt-1 pb-1">Nom : <%= m.first_name%></p>
+								<p class="text-muted pt-1 pb-1">Prénom : <%= m.last_name%></p>
+								<p class="text-muted pt-1 pb-1">Téléphone : <%= m.phone%></p>
+								<p class="text-muted pt-1 pb-1">Fonction : <%= m.fonction%></p>
+							<%end%>				      
+				       <p class="text-muted pt-1 pb-1">Message : <%= m.content%> </p>	
+				       </p>	
 					</div>
 			<%else%>
 		<div class="row align-items-center no-gutters pt-2 pb-2 pl-2 border-bottom">
 					<div class="col-9">
 				       <p>
 							<%if m.sender%>
-								<a href="https://<%= m.sender.email%>" target="_blank" class="table"><%= m.sender.email%></a>
+							<span><a href="https://<%= m.sender.email%>" target="_blank" class="table"><%= m.sender.email%></a></span>
+								 
+								
+							<span>Nom : <%= m.sender.first_name%></span>
+							<span>Prénoms : <%= m.sender.last_name%></span>
+							<span>Téléphone : <%= m.sender.phone%></span>
+							<span>Fonction : <%= m.fonction%></span>
+						
+
+								
 							<%else%>
 								<a href="https://<%= m.email%>" target="_blank" class="table"><%= m.email%></a>
-							<%end%>
-				       </p>
-				       <p class="text-muted pt-1 pb-1"><%= m.content%> </p>	
+								<p class="text-muted pt-1 pb-1">Nom : <%= m.first_name%></p>
+								<p class="text-muted pt-1 pb-1">Prénom : <%= m.last_name%></p>
+								<p class="text-muted pt-1 pb-1">Téléphone : <%= m.phone%></p>
+								<p class="text-muted pt-1 pb-1">Fonction : <%= m.fonction%></p>
+							<%end%>				      
+				       <p class="text-muted pt-1 pb-1">Message : <%= m.content%> </p>	
 					</div>
 			<%end%>
 				<div class="col-3 text-right pr-2">
@@ -37,6 +62,7 @@
 							<p><input type="submit" name="read" value="Marquer comme non lu" class="table btn-right" id="document"></p>
 						<%end%>
 					<%end%>	
+					 <a href="<%= super_admin_contact_path(m.id)%>" class="btn btn-danger"  data-method="delete" data-confirm="Voulez-vous supprimer ce message ?"> Supprimer</a>
 				</div>
 					<p>Envoyé le <%= m.created_at%></p>
 			</div>
@@ -46,3 +72,4 @@
 		</div>
 	</div>
 </div>
+<%= render partial: "/super_admin/confirm.html.erb"%>

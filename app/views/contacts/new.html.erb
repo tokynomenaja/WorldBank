@@ -8,9 +8,21 @@
   <h2 class="text-center">Contactez - nous</h2>
   <%= form_tag url_for(action: 'create'), method:'post', class:'form' do%>
     <div class="field mb-2 row">
+       <div class="col-md-6">
+        <label for="nom">Nom</label>
+        <input type="text" name="first_name" placeholder="<%= current_user.first_name%>" class="form-control" id="nom" readonly>
+      </div>
+      <div class="col-md-6">
+        <label for="prenom">Prénom</label>
+        <input type="text" name="last_name" placeholder="<%= current_user.last_name%>" class="form-control" id="prenom" readonly>
+      </div>
       <div class="col-md-6">
         <label for="phone">Téléphone</label>
-        <input type="text" name="phone" placeholder="<%= current_user.phone%>" class="form-control" readonly>
+        <input type="text" name="phone" placeholder="<%= current_user.phone%>" class="form-control" id="phone" readonly>
+      </div>
+      <div class="col-md-6">
+        <label for="fonction">Fonction</label>
+        <input type="text" name="fonction" placeholder="Fonction" class="form-control" id="fonction">
       </div>
       <div class="col-md-6">
          <label for="organisme">Organisme</label>
@@ -36,7 +48,7 @@
 
     <div class="field mb-2">
         <label for="message">Message</label>
-        <textarea name="message" placeholder="Laisser votre message" class="form-control" rows="5" id="message" required="true"></textarea>
+        <textarea name="message" placeholder="Laisser votre message" class="form-control p-2" rows="5" id="message" required="true"></textarea>
     </div>
 
     <div class="actions mb-2">
@@ -56,9 +68,22 @@
   <%= form_tag url_for(action: 'create'), method:'post', class:'form' do%>
 
     <div class="field mb-2 row">
+
+      <div class="col-md-6">
+        <label for="nom">Nom</label>
+        <input type="text" name="first_name" placeholder="Nom" class="form-control" id="nom" required="true">
+      </div>
+      <div class="col-md-6">
+        <label for="prenom">Prénom</label>
+        <input type="text" name="last_name" placeholder="Prénoms" class="form-control" id="prenom" required="true">
+      </div>
       <div class="col-md-6">
         <label for="phone">Téléphone</label>
-        <input type="text" name="phone" placeholder="Téléphone" class="form-control">
+        <input type="text" name="phone" placeholder="Téléphone" class="form-control" id="phone">
+      </div>
+      <div class="col-md-6">
+        <label for="fonction">Fonction</label>
+        <input type="text" name="fonction" placeholder="Fonction" class="form-control" id="fonction">
       </div>
       <div class="col-md-6">
          <label for="organisme">Organisme</label>
@@ -83,7 +108,7 @@
             </select>
         
       </div>
-      <div class="col-md-6" style="top: 15px;left: 50%;">
+      <div class="col-md-6" style="top: 24px;">
         <input type="hidden" name="nom" id="AutreOrganisme" placeholder="A préciser" class="form-control">
       </div>
     </div>
@@ -97,7 +122,7 @@
 
     <div class="field mb-2">
         <label for="message">Message</label>
-        <textarea name="message" placeholder="Laisser votre message" class="form-control" rows="5" id="message" required="true"></textarea>
+        <textarea name="message" placeholder="Laisser votre message" class="form-control p-2" rows="5" id="message" required="true"></textarea>
     </div>
 
     <div class="actions mb-2">
