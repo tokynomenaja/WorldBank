@@ -33,7 +33,7 @@
 				<%if b.is_admin == true%>
 					<span>Bailleur</span>
 				<%elsif b.is_consultant == true%>
-					<span>Consultant</span>
+					<span>Visiteur</span>
 				<%end%>
 				
 			</td>
@@ -75,12 +75,12 @@
         	<%if @users["#{x}".to_i].is_admin == true%>
 		    	<span>Bailleur</span>
 		    <% elsif  @users["#{x}".to_i].is_consultant == true%>
-		    	<span>Consultant</span>
+		    	<span>Visiteur</span>
 		    <%else%>
 				<%= form_for @users["#{x}".to_i], url: super_admin_user_path(@users["#{x}".to_i].id), method: :put do |f| %>
 	 
 					<p>Valider en tant que : <input type="submit" name="valider" value="Bailleur"> 
-					 <input type="submit" name="valider" value="Consultant"></p>
+					 <input type="submit" name="valider" value="Visiteur"></p>
 				<%end%>
 			<%end%>
 		</p>
@@ -125,7 +125,7 @@
 					<div class="w-100 d-flex justify-content-around h-100 align-items-center"> 
 						<%= form_for u, url: super_admin_user_path(u.id), method: :put do |f| %>
 							<%= f.submit 'Bailleur', name: 'valider', value: 'Bailleur', class: 'btn btn-success btn-bg-primary'%>
-							<%= f.submit 'Consultant', name: 'valider', value: 'Consultant', class: 'btn btn-primary'%>
+							<%= f.submit 'Consultant', name: 'valider', value: 'Visiteur', class: 'btn btn-primary'%>
 						<%end%>
 					</div>
 				</div>
@@ -172,7 +172,7 @@
 				<%= form_for @users_en_attente["#{x}".to_i], url: super_admin_user_path(@users_en_attente["#{x}".to_i].id), method: :put do |f| %>
 	 
 					<p>Valider en tant que : <input type="submit" name="valider" value="Bailleur" class="btn btn-success btn-bg-primary"> 
-					 <input type="submit" name="valider" value="Consultant" class="btn btn-primary"></p>
+					 <input type="submit" name="valider" value="Visiteur" class="btn btn-primary"></p>
 				<%end%>
 		</p>
       </div>

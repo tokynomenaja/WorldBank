@@ -29,7 +29,7 @@ class SuperAdmin::UsersController < ApplicationController
 
  	def update
  		@user = User.find(params[:id])
- 		if buttonparams == 'Consultant'
+ 		if buttonparams == 'Visiteur'
  			@user.update(is_consultant: true)
  		else
  			@user.update(is_admin: true)
