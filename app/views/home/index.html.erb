@@ -35,7 +35,11 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
+      <% if zone.id == 1%>
+        <h5 class="modal-title" id="exampleModalLongTitle">Projets Nationaux</h5>
+      <% else %>
         <h5 class="modal-title" id="exampleModalLongTitle">Projets dans la région <%= zone.title %></h5>
+      <% end %>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -755,6 +759,7 @@
         <section>
           <div class="map" id="map">
             <div class="map__img">
+              <%= image_tag "/minimada.png" ,class:"minimada position-absolute border"%>
               <% if current_user %> 
                 <% if current_user.is_consultant == true || current_user.is_consultant == false || current_user.is_super_admin == true || current_user.is_admin == true%>
                 <% Zone.all.each do |zone| %>
