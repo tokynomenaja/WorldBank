@@ -246,9 +246,9 @@ class Admin::ProjetsController < ApplicationController
 
 
     if params[:modifier] == 'Publier' 
-      @projet.update(validation: false)
+      @projet.update(validation: false, rejet: nil, revalid: false)
     elsif params[:modifier] == 'Re-publier'
-      @projet.update(validation: false, revalid: true)
+      @projet.update(validation: false, revalid: true, rejet: nil)
     end
 
     @projet.secteurprojets.destroy_all

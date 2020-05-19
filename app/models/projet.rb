@@ -1,4 +1,6 @@
 class Projet < ApplicationRecord
+
+
         validates :objectif_generale_du_projet, presence: true
         validates :aspsp, presence: true
 
@@ -46,6 +48,9 @@ class Projet < ApplicationRecord
        
 
         after_create :create_project_send
+        # after_update :email_validation
+        # after_update :email_rejet
+
 
         # This method calls the order_email method from user_mailer, passing the order as an argument
         def create_project_send

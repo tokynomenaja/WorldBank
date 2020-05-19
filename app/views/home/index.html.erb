@@ -338,7 +338,9 @@
   <div class="sc-11unfkk-2 fxFQyp">
     <header class="">
       <div class="qjc24y-1 hlIrlm row no-gutters align-items-start">
-         <% if current_user%><% if current_user.is_consultant == true || current_user.is_super_admin == true || current_user.is_admin == true && @forme_1 != "" || @ptf_1 != "" || @appui_1 != "" || @zone_1 != "" || @ben_1 != "" || @iga_1 != "" || @secteur_1 != "" || @filiere_1 != "" || @results != "" || @montant_11 != "" || @fin_1 != ""%>  
+         <% if current_user%>
+         <% if current_user.is_consultant == true || current_user.is_super_admin == true || current_user.is_admin == true %>
+         <%if @forme_1 != "" || @ptf_1 != "" || @appui_1 != "" || @zone_1 != "" || @ben_1 != "" || @iga_1 != "" || @secteur_1 != "" || @filiere_1 != "" || @results != "" || @montant_11 != "" || @fin_1 != ""%>  
         <div class="qjc24y-0 jMLWRH col-md-7" >
           <div class="height border-bottom mb-2">
             <h1 class="vx2fp9-3 ehdisu h-font text-left">Résultats de la recherche</h1>
@@ -404,11 +406,12 @@
                 <%end%>
 
                 <%if @fin_1 != ""%>
-                  <p class="text-muted mb-1"><span>projet entre : </span> <%= @d1%> et<%=@d2%></p>
+                  <p class="text-muted mb-1"><span> projet entre : </span> <%= @d1%> et <%=@d2%></p>
                 <%end%>
                 
                  <%if @montant_11 != ""%>
-                  <p class="text-muted mb-1"><span>montant de projet entre: &nbsp;:&nbsp; </span> <%= @m1%>-<%=@m2%> USD</p>
+                  <p class="text-muted mb-1"><span> montant de projet entre: &nbsp;:&nbsp; </span> </p>
+                  <p><%= number_to_human(@m1)%> - <%= number_to_human(@m2)%> | USD</p>
                 <%end%>
 
            
@@ -681,16 +684,20 @@
                     </div>
                   </div>
                   <%else%>
-                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                        <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
+                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                      <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
                     </div>
                 <%end%>
               <%end%>
-                 <%else%>
-                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
-                </div>
+              <%else%>
+                  <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                    <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
+                  </div>
               <%end%>
+              <%else%>
+                  <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                    <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
+                  </div>
               <%end%>
             </div>
             <div class="compteur mt-5">
@@ -721,6 +728,31 @@
             </div>
           </div>
         </div>
+      <%end%>
+      <%else%>
+        <div class="qjc24y-0 jMLWRH col-md-7 pt-5 text-justify" >
+          <div class="compteur mt-5">
+            <div class="d-flex  text-center justify-content-center flex-wrap">
+              <div class="m-2 text-white background compt-item border">
+                <p class="border-bottom pt-2 pb-2">Nombre total des projets :</p>
+                <p class="centrage"> <%= Projet.where(validation: true).count%></p>
+              </div>
+              <div class="m-2 bg-dark compt-item border text-color">
+                <p class="border-bottom pt-2 pb-2">Nombre total de PTF :</p>
+                <p class="centrage"><%= Ptf.count%></p>
+              </div>
+              <div class="m-2 bg-dark compt-item border text-color">
+                <p class="border-bottom pt-2 pb-2">Montant total des projets : </p>
+                <p class="centrage"><%= number_to_human(@montant_total) %> USD</p>
+              </div>
+              <div class="m-2 text-white background compt-item border">
+                <p class="border-bottom pt-2 pb-2">Nombre de secteurs couverts : </p>
+                <p class="centrage"><%= Secteur.all.count%></p>
+              </div> 
+            </div>
+          </div>
+        </div>
+
       <%end%>
 
       <% else %>
