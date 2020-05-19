@@ -96,7 +96,7 @@ Ptf.destroy_all
       c12 = Ptf.create!(title: "PNUD", lien: 'https://www.mg.undp.org/', image_url: "logo/pnud1.jpg")
       c13 = Ptf.create!(title: "FIDA", lien: 'https://www.ifad.org/en/web/operations/country/id/madagascar', image_url: "logo/FIDA.jpg")
       c14 = Ptf.create!(title: "CNUCED", lien: 'https://unctad.org/en/Pages/Home.aspx', image_url: "logo/cnuced11.jpg")
-      c14 = Ptf.create!(title: "WBG", lien: 'https://www.worldbank.org/', image_url: "logo/cnuced11.jpg")
+      c14 = Ptf.create!(title: "WBG", lien: 'https://www.worldbank.org/', image_url: "logoptf/wbg.jpeg")
 
 puts "Ptf Créé"
 
