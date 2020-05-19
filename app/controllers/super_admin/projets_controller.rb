@@ -74,12 +74,12 @@ class SuperAdmin::ProjetsController < ApplicationController
 
     if rejetparam == 'Valider' || rejetparam == 'Revalider'
       @projet.update(validation: true, rejet: nil, revalid: false)
-      redirect_to super_admin_projet_path, success: "Projet validé"
-     elsif rejetparam == 'Rejeter'
-      @projet.update(rejet: true, validation: nil, revalid: false)
-    
-    
-      redirect_to super_admin_projet_path, success: "Projet rejeté"
+        UserMailer.email_validation(@projet).deliver_now
+        redirect_to super_admin_projet_path, success: "Projet validé"
+    elsif rejetparam == 'Rejeter'
+      @projet.update(rejet: true, validation: nil, revalid: false)    
+        UserMailer.email_rejet(@projet).deliver_now
+        redirect_to super_admin_projet_path, success: "Projet rejeté"
 
     else
      
@@ -343,7 +343,7 @@ class SuperAdmin::ProjetsController < ApplicationController
   
 
       
-end
+  end
 
 
   def destroy
@@ -351,6 +351,8 @@ end
   	@projet.destroy
   	redirect_to super_admin_projets_path
   end
+
+
 
   private
   def check_if_super_admin
@@ -371,4 +373,17 @@ end
   #   @projet = Projet.find(params[:id])
   #   @projet.save
   # end
+
+  def email_validation
+    if self.validation == true
+        UserMailer.email_validation(self).deliver_now
+    end
+
+  end
+
+  def email_rejet
+      if self.rejet == true
+          UserMailer.email_rejet(self).deliver_now
+      end
+  end
 end

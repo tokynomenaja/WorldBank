@@ -472,7 +472,7 @@
 			</div>
 
 			<div class="container mt-4">
-				<%if @projet.validation == nil || @projet.validation == false%>
+				<%if @projet.validation == nil || @projet.validation == false && @projet.revalid == false && @projet.revalid == nil%>
 					<input type="submit" name="modifier" value="Enregistrer la modification" class="btn btn-secondary">
 					<input type="submit" name="modifier" value="Publier" class="sc-eerKOB cfnPHQ">
 				<%else%>
