@@ -51,7 +51,7 @@ function valueLeft(){
         showMontant.innerHTML = "plus de " + outputLeft.value + " millions d'usd";
         // ir.value = "max";
         ir.value = 1000000000;
-        il.value = outputleft.value * 10000000;
+        il.value = outputleft.value * 1000000;
         }
     }
     else{
