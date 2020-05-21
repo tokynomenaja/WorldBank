@@ -143,21 +143,24 @@
 		</div>
 		<section class="container">
 			<div class="d-flex justify-content-between mb-3">
-				<div class="col-md-4 pl-0">
+				<div class="col-md-8 pl-0">
 					<h6 class="table">Montant pour le secteur :</h6>
 					<% Secteur.all.order(:title).each do |s|%>
-						<div class="form-control pr-0" id="montant<%=s.id%>" style="display: none;">
-							<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title.downcase %>" class="border-0" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>">
-							<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset", id: :"unite#{s.id}"%>
+						<div class="no-gutters align-items-center" id="montant<%=s.id%>" style="display: none;">
+							<div class="col-5"><%= s.title.downcase %> : </div>
+							<div class="col-7 form-control pr-0">
+								<input type="text" name="montant<%= s.id%>" placeholder="Montant" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>">
+								<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset", id: :"unite#{s.id}"%>
+							</div>
 						</div>
 					<%end%>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-2">
 					<h6 class="table">Début de projet</h6>
 					<input type="text" id="selectionDebut" placeholder="mm/aaaa" class="form-control" required="true">
 					<input type="hidden" id="selectionDebutValue" placeholder="mm/aaaa" class="form-control" required="true" name="debut_du_projet">
 				</div>
-				<div class="col-md-4 pr-0">			
+				<div class="col-md-2 pr-0">			
 					<h6 class="table">Fin de projet</h6>
 					<input type="text" class="form-control" placeholder="mm/aaaa" required="true" id="selectionFin">
 					<input type="hidden" name="fin" id="selectionFinValue" class="form-control" placeholder="mm/aaaa" required="true" name="fin">
@@ -462,7 +465,7 @@
 			<textarea name="comment" class="form-control p-2"  rows="5" placeholder="Commentaire qui s'adresse à l'administrateur"></textarea>
 			
 		</div>
-		<div class="container mt-4">
+		<div class="container mt-4 mb-5">
 			<%= submit_tag :Enregistrer, :name => "creer", :value => "Enregistrer", :class => "btn btn-secondary", :onclick => "validCheck()"%>
 			<%= submit_tag :Publier, :name => "creer", :value => "Publier", :class => "sc-eerKOB cfnPHQ", :onclick => "validCheck()"%>
 		</div>
