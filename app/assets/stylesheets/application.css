@@ -71,6 +71,7 @@ body{background: #f9f9f9 !important;}
     font-family: welcomeweb;
 }
 .btn-bg-primary{background-color: #52c39b !important;}
+.bg-fiche{background-color: #52c39bcc !important;}
 .text-color-secondary{color: #52c39b !important;}
 /* 
 login
@@ -89,7 +90,7 @@ next{width: 60px !important;height: 60px !important;}
 .dropdwn-content:hover{background: #31333b;color: inherit;}
 .sans-hover:hover{background: inherit !important;}
 /* newp */
-.unit{cursor: pointer;width: 8.5rem;}
+.unit{cursor: pointer;width: 5.5rem;}
 .mt-cust{top: 0.3rem !important; min-width: 0rem !important;cursor: pointer;}
 .doc-relative{color: #52c39b; font-size: 1rem;}
 .more-info-pub{bottom: 1rem;}
