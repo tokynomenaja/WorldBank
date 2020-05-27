@@ -11,6 +11,7 @@ var ir = document.getElementById('ir');
 var il = document.getElementById('il');
 var showMontant = document.getElementById('showMontant');
 
+
 function setLeftValue(){
     var _this = inputLeft,
     min = parseInt(_this.min)

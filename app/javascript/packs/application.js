@@ -406,3 +406,6 @@ $("#user-item").click(function(e){
 
 })
 
+
+require("trix")
+require("@rails/actiontext")
