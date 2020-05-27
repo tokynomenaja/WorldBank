@@ -20,7 +20,9 @@
 			</a>
 			<div class="mt-2">
 				<div class="card card-body">
-					<textarea name="objectif_generale_du_projet" rows="10" id="comment_body" class="form-control p-2" required></textarea>
+				
+				<%=rich_text_area_tag :objectif_generale_du_projet, :required, rows: "30", id: "comment_body" %>
+
 					<p id="charlimit"><span class="words-left">150 mots maximum</span></p>
 				</div>
 			</div>
