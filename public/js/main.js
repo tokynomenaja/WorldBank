@@ -142,6 +142,3 @@ inputYearLeft.addEventListener("input", setLeftYearValue);
 inputYearRight.addEventListener("input", setRightYearValue);
 
 // FIN PERIODE
-
-
-
