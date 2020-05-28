@@ -4,22 +4,20 @@
   <title></title>
   <%= wicked_pdf_stylesheet_link_tag "application" %>
   <%= wicked_pdf_stylesheet_link_tag "bootstrap" %>
-  </head>
 </head>
 <body>
     <header class="aci59a-0 eyAIuG sticky-limit">
     <div class="sc-1gnwgfb-2 hVIPFV picc">
-      <style type="text/css">
+      <style>
         .picc {
           <%if @projet.secteurprojets.count == 1%>
             <%@projet.secteurprojets.each do|sp|%>
-              background-image: url('/<%=sp.secteur.image_url%>');
+              background: url('/<%=sp.secteur.image_url%>');
             <%end%>
           <%else%>
-            background-image: url('/secteur/accueil.jpg');
+            background: url('/secteur/accueil.jpg');
           <%end%>
         }
-
       </style>  
     </div>
 </header>
