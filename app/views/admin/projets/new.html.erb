@@ -21,9 +21,9 @@
 			<div class="mt-2">
 				<div class="card card-body">
 				
-				<%=rich_text_area_tag :objectif_generale_du_projet, :required, rows: "30", id: "comment_body" %>
+				<%=rich_text_area_tag :objectif_generale_du_projet, nil, id: "comment_body" %>
 
-					<p id="charlimit"><span class="words-left">150 mots maximum</span></p>
+					<p id="charlimit"><span class="words-left">150 mots maximums</span></p>
 				</div>
 			</div>
 		</div>
@@ -34,7 +34,7 @@
 			<div class="mt-2">
 				<div class="card card-body">
 					
-				    <%=rich_text_area_tag :aspsp, :required, rows: "30", id: "aspsp" %>
+				    <%=rich_text_area_tag :aspsp, nil, id: "aspsp" %>
 					<p id="charlimit2"><span class="words-left2">300 mots maximum</span></p>
 				</div>
 			</div>

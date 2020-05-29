@@ -9,12 +9,31 @@
           <h6 class="table my-2">Visiteurs connectés: <span class="text-white"><%= @users.where(is_signed_in: true).count-1%></span></h6>
           <div class="pb-3">
             <% @users.each do |user| %>
-              <% if user.email != current_user.email and user.is_signed_in%>
+            
                 <p class="active-user bg-white p-2 rounded-0 border-bottom" data-id="<%= user.id %>">
                   <span class="online-icon d-inline-block bg-success"></span>
-                  <span class="table"><%= user.email %></span>
+                  <span class="table"><%= user.email %></span><br>
+                 <%if user.last_sign_in_at%>
+                 <%if user.last_sign_in_at.to_date == Time.now.to_date%>
+                  <%if user.total_online_time != nil%>
+                  
+                    <span class="table">Aujourd'hui <%= user.last_sign_in_at.strftime("à %I:%M %p")%></span>
+                  
+                  <span> Durée de connexion : <%= Time.at((user.total_online_time) * 60).utc.strftime("%H:%M:%S")%></span>
+                  <%end%>
+                  <%else%>
+                    <%if user.total_online_time != nil%>
+                  
+                    <span class="table"><%= user.last_sign_in_at.strftime("Connecté le  %d/%m/%Y") %> <%= user.last_sign_in_at.strftime("à %I:%M %p")%></span>
+                  
+                    <span> Durée de connexion : <%= Time.at((user.total_online_time) * 60).utc.strftime("%H:%M:%S")%></span>
+                    <%end%>
+                  <%end%>
+                  <%end%>
+                
+                 
                 </p>
-              <% end %>
+         
             <% end %>
           </div>
         </div>
