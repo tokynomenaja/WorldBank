@@ -1,6 +1,5 @@
 <header class="aci59a-0 eyAIuG sticky-limit">
     <div class="sc-1gnwgfb-2 hVIPFV">
-      
     </div>
 </header>
 <%= form_tag url_for(action: 'update'),method:'put', class:'form', multipart: true do%>
@@ -92,19 +91,21 @@
 							<% end %>
 					</div>
 				</div>
-				</div>
+			</div>
 		</div>
 		<div class="container calendrier position-relative">
 			<div class="d-flex justify-content-between mb-3">
-				<div class="col-md-4 pl-0">
+				<div class="col-md-8 pl-0">
 					<h6 class="table">Montant pour le secteur :</h6>
 					<% Secteur.all.order(:title).each do |s|%>
 							<% if @sects %> 
 						 		<% if @sects.include? s %>
 						 			<% if @montants%>
 							 			<% if @montants.include? s.montants%>
-									<div class="form-control pr-0 " id="montant<%=s.id%>" style="display: block;">
-										<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title.downcase%>" value="<%= s.montants.find_by(projet_id: @projet.id).price%>" class="border-0" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" >
+									<div class="no-gutters align-items-center" id="montant<%=s.id%>" style="display: flex;">
+										<div class="col-5"><%= s.title.downcase %> : </div>
+										<div class="col-7 form-control pr-0">
+										<input type="text" name="montant<%= s.id%>" placeholder="Montant" value="<%= s.montants.find_by(projet_id: @projet.id).price%>" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" >
 									
 										<select name="unite_id<%= s.id%>" class="text-center border-left unit pl-2 btn-reset">
 											<% Unite.all.each do |u|%>
@@ -115,33 +116,39 @@
 												<%end%>
 											<%end%>
 										</select>
+										</div>
 										
 									</div>
 									<%else%>
-										<div class="form-control pr-0" id="montant<%=s.id%>" style="display: none;">
-										<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title.downcase%>" class="border-0" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>">
+									<div class="no-gutters align-items-center" id="montant<%=s.id%>" style="display: none;">
+										<div class="col-5"><%= s.title.downcase %> : </div>
+										<div class="col-7 form-control pr-0">
+										<input type="text" name="montant<%= s.id%>" placeholder="Montant" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>">
 										
-										<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset ", id: :"unite#{s.id}"%>
-										
+										<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset", id: :"unite#{s.id}"%>
 										</div>
+									</div>
 									<%end%>
 									<%end%>
 								<%else%>
-									<div class="form-control pr-0" id="montant<%=s.id%>" style="display: none;">
-										<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title.downcase%>" class="border-0" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>">
-										<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset", id: :"unite#{s.id}"%>
+									<div class="no-gutters align-items-center" id="montant<%=s.id%>" style="display: none;">
+										<div class="col-5"><%= s.title.downcase %> : </div>
+										<div class="col-7 form-control pr-0">
+											<input type="text" name="montant<%= s.id%>" placeholder="Montant" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>">
+											<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset", id: :"unite#{s.id}"%>
+										</div>
 									</div>
 								<%end%>
 							<%end%>
 
 						<%end%>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-2">
 					<h6 class="table">Début de projet</h6>
 					<input type="text" id="selectionDebut" value="<%= @projet.debut_du_projet%>" class="form-control" required="true" >
 					<input type="hidden" id="selectionDebutValue" value="<%= @projet.debut_du_projet%>" class="form-control" required="true" name="debut_du_projet">
 				</div>
-				<div class="col-md-4 pr-0">			
+				<div class="col-md-2 pr-0">			
 					<h6 class="table">Fin de projet</h6>
 					<input type="text" class="form-control" value="<%= @projet.fin%>" required="true" id="selectionFin">
 					<input type="hidden" name="fin" id="selectionFinValue" class="form-control" value="<%= @projet.fin%>" required="true" name="fin">
