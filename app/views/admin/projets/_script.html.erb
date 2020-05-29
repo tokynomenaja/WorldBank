@@ -464,9 +464,9 @@ $(document).on('ready page:load', function () {
 	function paste(x){
 		var limit = document.getElementById('charLimit');
 		var limit2 = document.getElementById('charLimit2');
-		if(x.length > 150){
+		if(x.length >= 150){
 			limit.style.background = "red";
-		}else if(x.length > 300){
+		}else if(x.length >= 300){
 			limit2.style.background = "red";
 		}
 	}
