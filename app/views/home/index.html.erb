@@ -525,7 +525,7 @@
                 
           
 
-                <%if @pro_zones && @r == nil && @d == nil%>
+                <%if @pro_zones && @r == nil && @d == nil %>
                 <%if @pro_zones.length != 0%>
                 <% @pro_zones.uniq.each do |res| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -544,10 +544,10 @@
                 <%end%>
                 <%end%>
              
-                <%if @pro_igas && @r == nil && @d == nil%>
+                <%if @pro_igas && @r == nil && @d == nil && @ziga == nil && @zigafi == nil && @igafor == nil && @igaben == nil && @igasect == nil && @igaap == nil%>
                 <%if @pro_igas.length != 0%>
                 <% @pro_igas.uniq.each do |res| %>  
-         
+          
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
                     <div class="col-8">
                     <%= link_to "#{res.nom_du_projet}", projet_path(res.id), target: 'blank', class: 'text-muted reshover' %>
@@ -585,7 +585,7 @@
                 <%end%>
 
 
-                <%if @pro_formes && @forme_projets == nil && @projets == nil && @pro_sectfils == nil && @ptf_forme == nil && @r == nil && @d == nil%>
+                <%if @pro_formes && @forme_projets == nil && @projets == nil && @pro_sectfils == nil && @ptf_forme == nil && @r == nil && @d == nil %>
                 <% if @pro_formes.length != 0%>
                 <% @pro_formes.uniq.each do |rs| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -684,7 +684,7 @@
                 <%end%>
                 <%end%>
 
-
+          
                 <%if @pro_sectfils%>
                 <%if @pro_sectfils.length != 0 %>
                 <% @pro_sectfils.uniq.each do |b|%>               
@@ -703,9 +703,8 @@
                 </div>
                 <%end%>
                 <%end%>
-               
-                
-                <%if @ptf && @pro_sects == nil && @ptf_fil == nil && @ptf_forme == nil && @r == nil && @d == nil%>
+
+                <%if @ptf && @pro_sects == nil && @ptf_fil == nil && @ptf_forme == nil && @r == nil && @d == nil && @ptf_iga == nil && @ptf_zone == nil%>
                 <%if @ptf.count != 0%>
                 <% @ptf.uniq.each do |p| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">

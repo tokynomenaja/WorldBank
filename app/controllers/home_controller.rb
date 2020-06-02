@@ -66,6 +66,50 @@ def index
     end
     end
     end
+ #recherche multiple iga et ptf
+    if params[:search_iga] && params[:ptf_id]
+    if params[:search_iga] != "" && params[:ptf_id] != ""
+    
+     @piga = params[:search_iga]
+     @ptfid = params[:ptf_id]
+     @ptf_iga = []
+        @piga.each do |s|
+        @ptfid.each do |f|
+        @pro = Projet.all.where(ptf_id: f.to_i, validation: true)
+        @pro.each do |p|
+        if p.igas.ids.include? s.to_i
+            @ptf_iga << p
+        end
+      end
+      end
+
+    end
+    end
+    end
+ 
+     #recherche region et IGA 
+
+ 
+     #recherche multiple zone et ptf
+    if params[:search_zone] && params[:ptf_id]
+    if params[:search_zone] != "" && params[:ptf_id] != ""
+    
+     @pzone = params[:search_zone]
+     @ptfid = params[:ptf_id]
+     @ptf_zone = []
+        @pzone.each do |s|
+        @ptfid.each do |f|
+        @pro = Projet.all.where(ptf_id: f.to_i, validation: true)
+        @pro.each do |p|
+        if p.zones.ids.include? s.to_i
+            @ptf_zone << p
+        end
+      end
+      end
+
+    end
+    end
+    end
 
     #recherche multiple forme et ptf
     if params[:search_forme] && params[:ptf_id]
@@ -108,6 +152,8 @@ def index
     end
     end
     end
+   
+
   
   #recherche controller Montant
 
@@ -521,6 +567,132 @@ def index
       end
     end
   end
+
+  #recherche IGA et Zone
+
+    if params[:search_iga] && params[:search_zone]
+      if params[:search_iga] != "" && params[:search_zone] != ""
+     @pro = Projet.all.where(validation: true)
+     @priga = params[:search_iga]
+     @przone = params[:search_zone]
+     @ziga = []
+        @priga.each do |s|
+        @przone.each do |f|
+     @pro.each do |p|
+        if (p.zones.ids.include? f.to_i) && (p.igas.ids.include? s.to_i)
+            @ziga << p
+        end
+      end
+      end
+
+    end
+    end
+end
+
+#recherche IGA et filiere
+
+  if params[:search_iga]   && params[:search_filiere] 
+      if params[:search_iga] != "" && params[:search_zone] != "" && params[:search_filiere] != ""
+     @pro = Projet.all.where(validation: true)
+     @priga = params[:search_iga]
+     @prfiliere = params[:search_filiere]
+     @zigafi = []
+        @priga.each do |s|
+      
+          @prfiliere.each do |fi|
+     @pro.each do |p|
+        if  (p.igas.ids.include? s.to_i) && (p.filieres.ids.include?fi.to_i)
+            @zigafi << p
+        end
+      end
+      end
+
+    end
+    end
+end
+#recherche IGA et forme
+  if params[:search_iga]   && params[:search_forme] 
+      if params[:search_iga] != ""  && params[:search_forme] != ""
+     @pro = Projet.all.where(validation: true)
+     @priga = params[:search_iga]
+     @prforme = params[:search_forme]
+     @igafor = []
+        @priga.each do |s|
+      
+          @prforme.each do |fi|
+     @pro.each do |p|
+        if  (p.igas.ids.include? s.to_i) && (p.formes.ids.include?fi.to_i)
+            @igafor << p
+        end
+      end
+      end
+
+    end
+    end
+end
+  # recherche IGA et Beneficiaire
+    if params[:search_iga]   && params[:search_ben] 
+      if params[:search_iga] != ""  && params[:search_ben] != ""
+     @pro = Projet.all.where(validation: true)
+     @priga = params[:search_iga]
+     @prben = params[:search_ben]
+     @igaben = []
+        @priga.each do |s|
+      
+          @prben.each do |fi|
+     @pro.each do |p|
+        if  (p.igas.ids.include? s.to_i) && (p.beneficiaires.ids.include?fi.to_i)
+            @igaben << p
+        end
+      end
+      end
+
+    end
+    end
+end
+
+# recherche IGA et secteur
+  if params[:search_iga]   && params[:search_secteur] 
+      if params[:search_iga] != ""  && params[:search_secteur] != ""
+     @pro = Projet.all.where(validation: true)
+     @priga = params[:search_iga]
+     @prsect = params[:search_secteur]
+     @igasect = []
+        @priga.each do |s|
+      
+          @prsect.each do |fi|
+     @pro.each do |p|
+        if  (p.igas.ids.include? s.to_i) && (p.secteurs.ids.include?fi.to_i)
+            @igasect << p
+        end
+      end
+      end
+
+    end
+    end
+end
+
+# recherche IGA et nature d'appui
+  if params[:search_iga]   && params[:appui_id] 
+      if params[:search_iga] != ""  && params[:appui_id] != ""
+     @priga = params[:search_iga]
+     @prap = params[:appui_id]
+     @igaap = []
+        @priga.each do |s|
+          @prap.each do |fi|
+                 @pro = Projet.all.where(appui_id: fi.to_i,validation: true)
+     @pro.each do |p|
+        if  p.igas.ids.include? s.to_i
+            @igaap << p
+        end
+      end
+      end
+
+    end
+    end
+end
+  
+
   #recherche controller secteur
 
       if params[:search_secteur]
@@ -626,6 +798,31 @@ def index
       end
       end
 
+  #Recherche Secteur et region
+
+ if params[:search_secteur]   && params[:search_zone] 
+      if params[:search_secteur] != ""  && params[:search_zone] != ""
+     @pro = Projet.all.where(validation: true)
+     @ssect = params[:search_secteur]
+     @szone = params[:search_zone]
+     @sszone = []
+        @ssect.each do |s|
+      
+          @szone.each do |fi|
+     @pro.each do |p|
+        if  (p.secteurs.ids.include? s.to_i) && (p.zones.ids.include?fi.to_i)
+            @sszone << p
+        end
+      end
+      end
+
+    end
+    end
+end
+
+
+
+
 
     @montant_total = 0
     Projet.all.where(validation: true).each do |p|
@@ -635,6 +832,9 @@ def index
 
     end
   end
+
+
+
 
   private
   def notifAdmin
@@ -654,3 +854,8 @@ def index
 
 
 end
+
+
+
+
+        

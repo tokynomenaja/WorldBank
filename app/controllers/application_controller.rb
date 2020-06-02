@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	def set_online_time
-		start_time = current_user.last_sign_in_at.to_time;
+		start_time = current_user.last_sign_in_at
 		end_time = Time.now;
 
 		  if(start_time && end_time)
