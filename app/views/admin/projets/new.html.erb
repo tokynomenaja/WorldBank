@@ -150,7 +150,7 @@
 					<h6 class="table">Montant pour le secteur :</h6>
 					<% Secteur.all.order(:title).each do |s|%>
 						<div class="no-gutters align-items-center" id="montant<%=s.id%>" style="display: none;">
-							<div class="col-5"><%= s.title.downcase %> : </div>
+							<div class="col-5"><%= s.title.upcase %> : </div>
 							<div class="col-7 form-control pr-0">
 								<input type="text" name="montant<%= s.id%>" placeholder="Montant" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>">
 								<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset", id: :"unite#{s.id}"%>
