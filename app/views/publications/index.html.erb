@@ -1,4 +1,9 @@
 <div class="sans-head mb-5">
+	<%if @pubs.count == 0 %>
+			<div class="text-center text-muted mt-1 mb-4">
+				<p> Aucune publication</p>
+			</div>
+		<%else%>
 	<div class="mb-4 text-center">
 		<h3 class="table">Toutes les publications</h3>
 		</div>
@@ -21,4 +26,5 @@
 	<div class="text-center">
 		<%= paginate @pubs %>
 	</div>
+<%end%>
 </div>

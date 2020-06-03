@@ -1,4 +1,9 @@
 <div class="container sans-head mb-5">
+	<%if @actus.count == 0 %>
+			<div class="text-center text-muted mt-1 mb-4">
+				<p> Aucune actualité</p>
+			</div>
+		<%else%>
 	<div class="mb-4 text-center">
 		<h3 class="table">Toutes les actualités</h3>
 	</div>
@@ -20,4 +25,6 @@
 	<div class="text-center">
 		<%= paginate @actus %>
 	</div>
+
+	<%end%>
 </div>

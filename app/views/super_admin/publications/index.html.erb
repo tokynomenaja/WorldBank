@@ -1,4 +1,9 @@
 <div class="sans-head">
+	<%if @pubs.count == 0 %>
+			<div class="text-center text-muted mt-1 mb-4">
+				<p> Aucune publication</p>
+			</div>
+		<%else%>
 	<div class="mb-4 text-center">
 		<h3 class="table">Mes publications</h3>
 		</div>
@@ -18,4 +23,5 @@
 			</div>
       <%end%>
 	</div>
+	<%end%>
 </div>

@@ -1,4 +1,9 @@
 <div class="container sans-head">
+		<%if @messages.count == 0 %>
+			<div class="text-center text-muted mt-1 mb-4">
+				<p> Aucun message reçu </p>
+			</div>
+		<%else%>	
 	<div class="mb-4 text-center">
 		<h3 class="table">Toutes les messages</h3>
 	</div>
@@ -69,5 +74,6 @@
 			<%= paginate @messages %>
 		</div>
 	</div>
+	<%end%>
 </div>
 <%= render partial: "/super_admin/confirm.html.erb"%>
