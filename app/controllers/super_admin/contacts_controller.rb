@@ -1,5 +1,6 @@
 class SuperAdmin::ContactsController < ApplicationController
 	before_action :authenticate_user!
+  before_action :check_if_super_admin
   def index
     @messages = Message.all.order(created_at: :desc).page(params[:page]).per(10)
   end
@@ -21,7 +22,14 @@ class SuperAdmin::ContactsController < ApplicationController
 def destroy
   @message = Message.find(params[:id])
   @message.destroy
+  redirect_to super_admin_contacts_path
 end
+
+def check_if_super_admin
+  if current_user.is_super_admin == false
+    redirect_to root_path, success: "Vous n'êtes pas administrateur"
+  end
+  end
 
 
 

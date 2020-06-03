@@ -9,33 +9,55 @@
           <h6 class="table my-2">Visiteurs connectés: <span class="text-white"><%= @users.where(is_signed_in: true).count-1%></span></h6>
           <div class="pb-3">
             <% @users.each do |user| %>
-            
+            <%if user.is_super_admin == false%>
+                 <%if user.current_sign_in_at%>
+                 <%if user.current_sign_in_at.to_date == Time.now.to_date%>
+                  <%if user.total_online_time != nil%>
                 <p class="active-user bg-white p-2 rounded-0 border-bottom" data-id="<%= user.id %>">
                   <span class="online-icon d-inline-block bg-success"></span>
-                  <span class="table"><%= user.email %></span><br>
-                 <%if user.last_sign_in_at%>
-                 <%if user.last_sign_in_at.to_date == Time.now.to_date%>
-                  <%if user.total_online_time != nil%>
+            
                   
-                    <span class="table">Aujourd'hui <%= user.last_sign_in_at.strftime("à %I:%M %p")%></span>
+                  <span class="table"><%= user.email %></span><br>
+                    <span class="table">Aujourd'hui <%= user.current_sign_in_at.strftime("à %I:%M %p")%></span>
                   
                   <span> Durée de connexion : <%= Time.at((user.total_online_time) * 60).utc.strftime("%H:%M:%S")%></span>
                   <%end%>
-                  <%else%>
-                    <%if user.total_online_time != nil%>
-                  
-                    <span class="table"><%= user.last_sign_in_at.strftime("Connecté le  %d/%m/%Y") %> <%= user.last_sign_in_at.strftime("à %I:%M %p")%></span>
-                  
-                    <span> Durée de connexion : <%= Time.at((user.total_online_time) * 60).utc.strftime("%H:%M:%S")%></span>
-                    <%end%>
                   <%end%>
-                  <%end%>
-                
-                 
-                </p>
-         
+                  <%end%>                
+                </p>        
             <% end %>
+            <% end %>
+        </div>
+        <div class="pb-3">
+          <span class="table">Les historiques de connexions selon la date ci - dessous</span><br>
+          <%= form_tag(users_index_path, :method => "get", class: 'gQwHOW') do %>
+          <input type="date" name="loggin_date" class="form-control">&nbsp;
+          <%= submit_tag "Voir", :class => "sc-eerKOB cfnPHQ", :name => nil%>
+          <%end%>
           </div>
         </div>
+        <%if @date%>
+        <div class="col-6">
+          <%if @res.length > 0%>
+          
+          <p class="text-center text-muted">Historiques de connexions le <%= params[:loggin_date].to_date.to_formatted_s(:long) %></p>
+          <%@res.uniq.each do |r|%>
+            <%if r.is_super_admin == false%>
+              <%if r.total_online_time != nil%>
+              <div class="text-center text-muted mt-4">
+                <p><%= r.email%> </p>
+                <p>Durée de connexion : <%= Time.at((r.total_online_time) * 60).utc.strftime("%H:%M:%S")%></p>
+                </div>
+              <%end%>
+            <%end%>
+            <%end%>
+          <%else%> 
+            <div class="text-center text-muted">
+              Aucun visiteur connecté le <%= params[:loggin_date].to_date.to_formatted_s(:long) %>
+            </div>
+          <%end%>
+        </div>
+        <%end%>
+
       </div>
 </div>
