@@ -79,4 +79,4 @@ en:
         delimiter: ''
         precision: 3
         significant: true
-        strip_insignificant_zeros: true         
+        strip_insignificant_zeros: true

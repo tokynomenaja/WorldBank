@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
  
-
     resources :actus
     resources :apropos
     resources :contacts
