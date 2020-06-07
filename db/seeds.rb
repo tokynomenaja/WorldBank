@@ -16,7 +16,7 @@ Secteur.destroy_all
       c6 = Secteur.create!(title: "AGROBUSINESS", image_url: "secteur/agribusinness.jpg")
       c7 = Secteur.create!(title: "PROMOTION DES INVESTISSEMENTS", image_url: "secteur/promotion.jpg")
       c8 = Secteur.create!(title: "FINANCES", image_url: "secteur/finance.jpg")
-      c9 = Secteur.create!(title: "ENERGIE")
+      c9 = Secteur.create!(title: "ENERGIE", image_url: "secteur/extractive.jpg")
 
 puts "Secteur créée"
 
@@ -82,21 +82,21 @@ puts "Pem créé"
 Ptf.destroy_all
 
 
-      c1  = Ptf.create!(title: "Helvetas", lien: 'https://www.helvetas.org/fr/madagascar', image_url: "logo/helvetas1.jpg")
-      c2  = Ptf.create!(title: "FMI", lien: 'https://www.imf.org/en/Countries/ResRep/MDG', image_url: "logo/imf1.jpg")
-      c3  = Ptf.create!(title: "IFC", lien: 'https://www.ifc.org/wps/wcm/connect/region__ext_content/IFC_External_Corporate_Site/Sub-Saharan+Africa', image_url: "logo/ifc1.jpg")
-      c4  = Ptf.create!(title: "UE", lien: 'https://eeas.europa.eu/delegations/madagascar_en', image_url: "logo/ue1.jpg")
-      c5  = Ptf.create!(title: "UNICEF", lien: 'https://www.unicef.org/madagascar/en', image_url: "logo/unicef1.jpg")
-      c6  = Ptf.create!(title: "GIZ", lien: 'https://www.giz.de/en/worldwide/322.html', image_url: "logo/giz11.jpg")
-      c7  = Ptf.create!(title: "AFD", lien: 'https://www.afd.fr/en/page-region-pays/madagascar', image_url: "logo/afd11.jpg")
-      c8  = Ptf.create!(title: "ONUDI", lien: 'https://www.unido.org/who-we-are-unido-worldwide-africa-offices/madagascar', image_url: "logo/onudi1.jpg")
-      c9  = Ptf.create!(title: "JICA", lien: 'https://www.jica.go.jp/madagascar/french/index.html', image_url: "logo/JICA.jpg")
-      c10 = Ptf.create!(title: "USAID", lien: 'https://www.usaid.gov/madagascar', image_url: "logo/USAID1.jpg")
-      c11 = Ptf.create!(title: "BAD", lien: 'https://www.afdb.org/en/countries/southern-africa/madagascar', image_url: "logo/BAD.jpg")
-      c12 = Ptf.create!(title: "PNUD", lien: 'https://www.mg.undp.org/', image_url: "logo/pnud1.jpg")
-      c13 = Ptf.create!(title: "FIDA", lien: 'https://www.ifad.org/en/web/operations/country/id/madagascar', image_url: "logo/FIDA.jpg")
-      c14 = Ptf.create!(title: "CNUCED", lien: 'https://unctad.org/en/Pages/Home.aspx', image_url: "logo/cnuced11.jpg")
-      c14 = Ptf.create!(title: "WBG", lien: 'https://www.worldbank.org/', image_url: "logoptf/wbg.jpeg")
+      c1  = Ptf.create!(title: "Helvetas", lien: 'https://www.helvetas.org/fr/madagascar', image_url: "logo/helvetas1.png")
+      c2  = Ptf.create!(title: "FMI", lien: 'https://www.imf.org/en/Countries/ResRep/MDG', image_url: "logo/imf1.png")
+      c3  = Ptf.create!(title: "IFC", lien: 'https://www.ifc.org/wps/wcm/connect/region__ext_content/IFC_External_Corporate_Site/Sub-Saharan+Africa', image_url: "logo/ifc1.png")
+      c4  = Ptf.create!(title: "UE", lien: 'https://eeas.europa.eu/delegations/madagascar_en', image_url: "logo/ue1.png")
+      c5  = Ptf.create!(title: "UNICEF", lien: 'https://www.unicef.org/madagascar/en', image_url: "logo/unicef1.png")
+      c6  = Ptf.create!(title: "GIZ", lien: 'https://www.giz.de/en/worldwide/322.html', image_url: "logo/giz11.png")
+      c7  = Ptf.create!(title: "AFD", lien: 'https://www.afd.fr/en/page-region-pays/madagascar', image_url: "logo/afd11.png")
+      c8  = Ptf.create!(title: "ONUDI", lien: 'https://www.unido.org/who-we-are-unido-worldwide-africa-offices/madagascar', image_url: "logo/onudi1.png")
+      c9  = Ptf.create!(title: "JICA", lien: 'https://www.jica.go.jp/madagascar/french/index.html', image_url: "logo/JICA.png")
+      c10 = Ptf.create!(title: "USAID", lien: 'https://www.usaid.gov/madagascar', image_url: "logo/USAID1.png")
+      c11 = Ptf.create!(title: "BAD", lien: 'https://www.afdb.org/en/countries/southern-africa/madagascar', image_url: "logo/BAD.png")
+      c12 = Ptf.create!(title: "PNUD", lien: 'https://www.mg.undp.org/', image_url: "logo/pnud1.png")
+      c13 = Ptf.create!(title: "FIDA", lien: 'https://www.ifad.org/en/web/operations/country/id/madagascar', image_url: "logo/FIDA.png")
+      c14 = Ptf.create!(title: "CNUCED", lien: 'https://unctad.org/en/Pages/Home.aspx', image_url: "logo/cnuced11.png")
+      c15 = Ptf.create!(title: "WBG", lien: 'https://www.worldbank.org/', image_url: "logo/wbg.png")
 
 puts "Ptf Créé"
 
@@ -177,7 +177,7 @@ Iga.destroy_all
 puts "iga créé"
 
 Zone.destroy_all
-      z24 = Zone.create(title:"National")
+      z24 = Zone.create(title:"Nationaux")
       z10 = Zone.create!(title:"Alaotra Mangoro")
       z5 = Zone.create!(title:"Amoron'i Mania")
       z1 = Zone.create!(title:"Analamanga")
