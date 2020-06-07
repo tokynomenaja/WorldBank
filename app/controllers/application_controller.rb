@@ -33,18 +33,17 @@ class ApplicationController < ActionController::Base
 	end
 
 	def set_online_time
-		session[:last_sign_in_at] = current_user.current_sign_in_at.to_time;
-		start_time = session[:last_sign_in_at] 
+		start_time = current_user.current_sign_in_at.to_time;
 		end_time = Time.now;
 
 		  if(start_time && end_time)
 		      minutes = time_diff(start_time, end_time)
 		      if(current_user.total_online_time || current_user.total_online_time == nil)
 		        minutes = minutes
-		      session[:total_online_time] = current_user.update_attribute(:total_online_time, minutes)
+		      current_user.update_attribute(:total_online_time, minutes)
 		  	else
 		  		minutes = current_user.total_online_time + minutes
-		      session[:total_online_time] = current_user.update_attribute(:total_online_time, minutes)
+		      current_user.update_attribute(:total_online_time, minutes)
 		  end 
 					
 			end
