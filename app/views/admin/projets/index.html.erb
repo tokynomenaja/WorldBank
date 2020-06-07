@@ -9,11 +9,11 @@
 	</div>
 	<div class="d-flex justify-content-center flex-wrap">
 		<% @projets.each do |p|%>
-			<div class="col-sm-4 mb-3">
+			<div class="col-md-4 mb-3">
 				<div class="card card-height position-relative">
 					<div class="card-body">
 						<h5 class="card-title"><%= p.nom_du_projet.truncate(40) %></h5>
-						<p class="card-text"><%= raw p.objectif_generale_du_projet.truncate(100)%></p>
+						<p class="card-text mt-3"><%= raw truncate(sanitize(p.objectif_generale_du_projet, tags: []), length: 100)%></p>
 						<div class="row align-items-center mt-2 position-absolute card-foot">
 							<a href="<%= admin_projet_path(p.id)%>" class="col table mb-0">Voir</a>
 							<p class="text-right mr-3">							
