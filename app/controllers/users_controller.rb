@@ -3,31 +3,11 @@ class UsersController < ApplicationController
   before_action :check_if_super_admin
   
   def index
-    @users = User.all
+    @users = User.where(is_super_admin: false)
     # @lasts = []
     @res = []
     @date = params[:loggin_date]
 
-    # @users.each do |u|
-    #   if u.last_sign_in_at != nil
-    #     @ulast1 = u.last_sign_in_at.to_date
-    #     @ulast = @ulast1.to_formatted_s(:db) 
-    #   if @ulast == @date
-    #     @res << u
-    #   end
-    #   end
-    # end
-
-    @users.each do |u|
-      u.visits.each do |v|
-        if v.updated_at != nil
-          if v.updated_at.to_date.to_formatted_s(:db) == @date
-            @res << u
-          end
-        end
-      end
-
-    end
    
   end
 

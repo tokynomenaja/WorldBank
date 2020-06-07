@@ -6,20 +6,17 @@
             <p class="table mt-3">Connecté en tant que :<span class="text-white"> <%= current_user.email %></span></p>
           <% end %>
           <h6 class="table my-2">Visiteurs non connectés: <span class="text-white"><%= @users.where(is_signed_in: false).count%></span></h6>
-          <h6 class="table my-2">Visiteurs connectés: <span class="text-white"><%= @users.where(is_signed_in: true).count-1%></span></h6>
+          <h6 class="table my-2">Visiteurs connectés: <span class="text-white"><%= @users.where(is_signed_in: true).count%></span></h6>
           <div class="pb-3">
             <% @users.each do |user| %>
-            <%if user.is_super_admin == false%>
+            <%if user.is_super_admin == false && user.is_signed_in == true%>
                  <%if user.current_sign_in_at%>
                  <%if user.current_sign_in_at.to_date == Time.now.to_date%>
                   <%if user.total_online_time != nil%>
                 <p class="active-user bg-white p-2 rounded-0 border-bottom" data-id="<%= user.id %>">
                   <span class="online-icon d-inline-block bg-success"></span>
-            
-                  
                   <span class="table"><%= user.email %></span><br>
-                    <span class="table">Aujourd'hui <%= user.current_sign_in_at.strftime("à %I:%M %p")%></span>
-                  
+                  <span class="table">Aujourd'hui <%= user.current_sign_in_at.strftime("à %I:%M %p")%></span>
                   <span> Durée de connexion : <%= Time.at((user.total_online_time) * 60).utc.strftime("%H:%M:%S")%></span>
                   <%end%>
                   <%end%>
@@ -37,26 +34,36 @@
           </div>
         </div>
         <%if @date%>
-        <div class="col-6">
-          <%if @res.length > 0%>
-          
-          <p class="text-center text-muted">Historiques de connexions le <%= params[:loggin_date].to_date.to_formatted_s(:long) %></p>
-          <%@res.uniq.each do |r|%>
-            <%if r.is_super_admin == false%>
-              <%if r.total_online_time != nil%>
-              <div class="text-center text-muted mt-4">
-                <p><%= r.email%> </p>
-                <p>Durée de connexion : <%= Time.at((r.total_online_time) * 60).utc.strftime("%H:%M:%S")%></p>
-                </div>
+          <div class="col-6">
+              <%@visits = Visit.where('Date(created_at) = ?', @date).where.not(user_id: 1)%>
+                <%if @visits%>
+                  <%if @visits.count != 0%>
+                    <p class="text-center text-muted">Historiques de connexions le <%= params[:loggin_date].to_date %></p>
+                    <%@visits.each do |v|%>
+                      <div>
+                          <p class="text-center text-muted"> Email :<%= v.user_email%></p>
+                          <p class="text-center text-muted">Heure de connexion : <%= v.created_at.to_s(:time)%></p>
+                          <%if v.user_total_online_time != nil%>
+                            <p class="text-center text-muted">Durée de connexion : <%= Time.at(((v.user_total_online_time)) * 60).utc.strftime("%H:%M:%S")%></p>
+                          <%end%>
+                          <%if v.user_organisme != nil%>
+                            <p class="text-center text-muted">Organisme : <%= v.user_organisme%></p>
+                          <%end%>
+                          <%if v.user_phone != nil%>
+                            <p class="text-center text-muted">Téléphone : <%= v.user_phone%></p>
+                          <%end%>
+                          <%if v.user_fonction != nil%>
+                            <p class="text-center text-muted">Fonction : <%= v.user_fonction%></p>
+                          <%end%>
+                        
+                      </div>
+                    <%end%>
+                <%else%>
+                  <p class="text-center text-muted">Aucun visiteur connecté</p>  
+                  <%end%>
               <%end%>
-            <%end%>
-            <%end%>
-          <%else%> 
-            <div class="text-center text-muted">
-              Aucun visiteur connecté le <%= params[:loggin_date].to_date.to_formatted_s(:long) %>
-            </div>
-          <%end%>
-        </div>
+          </div>
+     
         <%end%>
 
       </div>
