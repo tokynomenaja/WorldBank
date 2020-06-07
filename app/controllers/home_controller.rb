@@ -304,10 +304,32 @@ def index
       @aaa = []
          @aappui.each do |s|
          @azone.each do |f|
-         @pro = Projet.all.where(appui_id: f.to_i, validation: true)
+         @pro = Projet.all.where(appui_id: s.to_i, validation: true)
          @pro.each do |p|
-         if p.zones.ids.include? s.to_i
+         if p.zones.ids.include? f.to_i
              @aaa << p
+         end
+       end
+        end
+
+     end
+     end
+     end
+
+      #recherche controller  appui et forme
+
+    if params[:appui_id] && params[:search_forme]
+     if params[:appui_id] != "" && params[:search_forme] != ""
+      
+      @aappui = params[:appui_id]
+      @appforme = params[:search_forme]
+      @appui_formes = []
+         @aappui.each do |s|
+         @appforme.each do |f|
+         @pro = Projet.all.where(appui_id: s.to_i, validation: true)
+         @pro.each do |p|
+         if p.formes.ids.include? f.to_i
+             @appui_formes << p
          end
        end
         end
@@ -326,7 +348,7 @@ def index
         if params[:fin]== 1
       redirect_to(root_path)
     
-         else  
+         else
          @parameter = params[:fin]
          @fin = Projet.all.where(validation: true) 
          @d1 =  params[:fin][0].to_i
@@ -355,7 +377,7 @@ def index
             @params_bens = params[:search_ben]
             @params_appuis = params[:appui_id]
             if @parameter
-              if  @params_secteurs || @params_filieres || @params_igas || @params_formes || @params_ptfs ||@params_montants || @params_zones || @params_bens || @params_appuis
+              if  @params_secteurs || @params_filieres || @params_igas || @params_formes || @params_ptfs || @params_zones || @params_bens || @params_appuis
                   @fin = Projet.all.where(validation: true) 
                   @d1 =  params[:fin][0].to_i
                   @d2 =  params[:fin][1].to_i
@@ -449,7 +471,7 @@ def index
                   end 
                   end 
 
-                  if @params_montants               
+                  if @params_montants             
                     @fin.each do |f|
                       price_total = 0
                       f.montants.each do |m|
@@ -863,6 +885,7 @@ end
       end
       end
     end
+
   #Recherche Secteur et region
 
  if params[:search_secteur]   && params[:search_zone] == "" 
@@ -928,8 +951,6 @@ end
 
  if params[:ptf_id] && params[:search_secteur] && params[:appui_id] && params[:search_forme] && params[:search_filiere] &&
       params[:search_iga] && params[:search_zone] && params[:search_ben] 
-    if params[:ptf_id] && params[:search_secteur] && params[:appui_id] && params[:search_forme] && params[:search_filiere] &&
-      params[:search_iga] && params[:search_zone] && params[:search_ben] != ""
         @ptf = params[:ptf_id]
         @secteur = params[:search_secteur]
         @appui  = params[:appui_id]
@@ -939,6 +960,11 @@ end
         @zone = params[:search_zone]
         @ben = params[:search_ben]
         @tout = []
+        @m = []
+        @m1 = params[:montant][0].to_i
+        @m2 = params[:montant][1].to_i
+        @d1 = params[:fin][0].to_i
+        @d2 = params[:fin][1].to_i
 
           @secteur.each do |s|
           @forme.each do |f|
@@ -949,14 +975,18 @@ end
           @ptf.each do |pt|
           @appui.each do |ap|
           @pro = Projet.all.where(ptf_id: pt.to_i, appui_id: ap.to_i, validation: true)
-       @pro.each do |p|
+          @pro.each do |p|
+          price_total = 0
+            p.montants.each do |m|
+                price_total += m.price
+            end
           if  (p.secteurs.ids.include? s.to_i) && (p.formes.ids.include?f.to_i) &&
               (p.filieres.ids.include? fi.to_i) && (p.igas.ids.include? ig.to_i) &&
-              (p.zones.ids.include? z.to_i) && (p.beneficiaires.ids.include?ben.to_i)
+              (p.zones.ids.include? z.to_i) && (p.beneficiaires.ids.include?ben.to_i) && (price_total >= @m1 && price_total <= @m2) && (p.fin.year >= @d1 && p.fin.year <= @d2)
               @tout << p
         end
       end
-      end
+  
 
     end
     end
