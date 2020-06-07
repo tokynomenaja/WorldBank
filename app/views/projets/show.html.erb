@@ -1,5 +1,5 @@
 <header class="aci59a-0 eyAIuG sticky-limit">
-    <div class="sc-1gnwgfb-2 hVIPFV picc">
+    <div class="sc-1gnwgfb-2 hVIPFV picc position-relative">
       <style type="text/css">
         .picc{
           <%if @projet.secteurprojets.count == 1%>
@@ -11,30 +11,27 @@
           <%end%>
         }
       </style>  
+      <div class="position-absolute entete">
+        <h3 class="bg-fiche p-1 text-white"><%=@projet.nom_du_projet%></h3>
+      </div>
     </div>
 </header>
-   <div class="logo">
-    <div class="pic">
-      <div class="imge-rep d-flex align-items-center justify-content-center">
-        <%if @projet.ptf.image_url%>
-          <img src="/<%= @projet.ptf.image_url%>">
-        <%end%>
-      </div>
-    </div>
-    <div class="d-flex align-items-center h-text">
-      <div class="text-white pr-4">
-        <h3 class="bg-fiche p-1"><%=@projet.nom_du_projet%></h3>
-      </div>
-    </div>
-    <div class="asi"> 
-      <div class="aside">
+<div class="objectif mx-auto my-3 d-flex align-items-start">
+  <div class="logoPtf">
+    <%if @projet.ptf.image_url%>
+      <img src="/<%= @projet.ptf.image_url%>">
+    <%end%>
+  </div>
+  <div class="ml-4">
+    <div>
+      <div class="">
           <% if  @projet.secteurprojets.count > 0%>
             <%if  @projet.secteurprojets.count == 1%>
                 <p><span class="attr">Secteur : </span>
             <%elsif @projet.secteurprojets.count > 1%>
                 <p><span class="attr">Secteurs : </span>
             <%end%>
-              <span class="word text-wrap">
+              <span class="word">
                 <%@projet.secteurprojets .each do|sp|%>
                     <% if sp == @projet.secteurprojets.last%>
                       <%=sp.secteur.title %>
@@ -42,7 +39,6 @@
                       <%=sp.secteur.title %>, 
                     <% end %>
                 <% end %>
-                
               </span>
             </p>
           <%end%>
@@ -53,7 +49,7 @@
             <%elsif @projet.formeprojets.count > 1%>
                 <p><span class="attr">Formes d'appui : </span>
             <%end%>
-            <span class="word text-wrap">
+            <span class="word">
                 <%@projet.formeprojets .each do|fop|%>
                   <% if fop == @projet.formeprojets.last%>
                     <%=fop.forme.title %>
@@ -72,21 +68,21 @@
             <%elsif @projet.filiereprojets.count > 1%>
                 <p><span class="attr">Filières : </span>
             <%end%>
-            <span class="word text-wrap">
+            <span class="word">
                 <%@projet.filiereprojets .each do|fp|%>
                   <% if fp == @projet.filiereprojets.last%>
-                    <span><%=fp.filiere.title %>
+                    <%=fp.filiere.title %>
                   <% else %>
-                    <span><%=fp.filiere.title %>, 
+                    <%=fp.filiere.title %>, 
                   <% end %>
                 <% end %>
-              
             </span>
             </p>
           <%end%>
       </div>
     </div>
   </div>
+</div>
   <div class="show-cont pt-4 pb-4">
     <div class="objectif mx-auto">
       <h2 class="text-left color">Objectif général du projet</h2>

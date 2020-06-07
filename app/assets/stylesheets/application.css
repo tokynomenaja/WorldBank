@@ -72,7 +72,7 @@ body{background: #f9f9f9 !important;}
     font-family: welcomeweb;
 }
 .btn-bg-primary{background-color: #52c39b !important;}
-.bg-fiche{background-color: rgba(82, 195, 155, 0.8); !important;}
+.bg-fiche{background-color: rgba(82, 195, 155, 0.8) !important;line-height: 2.65rem;}
 .text-color-secondary{color: #52c39b !important;}
 /* 
 login
@@ -557,6 +557,7 @@ a.position:hover{color: #ffffff;text-decoration: none;}
 /*projet*/
 .card-height{height: 13rem;}
 .card-foot{right: 1.5rem; left: 1.5rem;bottom: 1rem;}
+.font-size{font-size: 0.9rem !important;}
 /*projets*/
 
 @media screen and (min-width: 1140px){
@@ -614,3 +615,13 @@ a.position:hover{color: #ffffff;text-decoration: none;}
     .left::-webkit-scrollbar-thumb {
       background: #fff3; 
     }
+
+ /*   show*/
+
+ .entete{bottom: 20px;left: 5%;right: 5%; }
+ .conteneur-entete{margin-left: 4rem;}
+ .logoPtf{width: 230px}
+ .h3{line-height: 2.65rem;}
+
+/*new*/
+.trix-content {height: 250px;overflow: auto;}
