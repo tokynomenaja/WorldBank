@@ -8,7 +8,7 @@
 				<p> Aucun projet validé </p>
 			</div>
 		<%else%>	
-	<div class="row">
+	<div class="row justify-content-center">
 			<% @projets_valides.each do |p|%>
 			<div class="col-md-4 mb-3">
 				<div class="card card-height position-relative">
@@ -42,7 +42,7 @@
 	</div>
 <%else%>
 	<div class="container mb-5">
-		<div class="row">
+		<div class="row justify-content-center">
 			<% @projets.each do |p|%>
 			<div class="col-md-4 mb-3">
 				<div class="card card-height position-relative">
@@ -77,7 +77,7 @@
 	</div>
 <%else%>
 	<div class="container mb-5">
-		<div class="row">
+		<div class="row justify-content-center">
 			<% @projets_revalid.each do |p|%>
 			<div class="col-md-4 mb-3">
 				<div class="card card-height position-relative">
@@ -113,7 +113,7 @@
 	</div>
 <%else%>
 	<div class="container mb-5">
-		<div class="row">
+		<div class="row align-items-center">
 			<% @projets_rejets.each do |p|%>
 			<div class="col-md-4 mb-3">
 				<div class="card card-height position-relative">
@@ -148,7 +148,7 @@
 	</div>
 <%else%>
 	<div class="container mb-5">
-		<div class="row">
+		<div class="row justify-content-center">
 			<% @updateProjets.each do |p|%>
 			<div class="col-md-4 mb-3">
 				<div class="card card-height position-relative">

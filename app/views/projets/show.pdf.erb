@@ -14,13 +14,13 @@
       </div>
     </div>
 </header>
-<div class="objectif mx-auto my-3 d-flex align-items-start">
-  <div class="logoPtf">
+<div class="objectif mx-auto my-3 row align-items-start">
+  <div class="logoPtf col">
     <%if @projet.ptf.image_url%>
       <%= wicked_pdf_image_tag "/#{@projet.ptf.image_url}" %>
     <%end%>
   </div>
-  <div class="ml-4">
+  <div class="ml-4 col-10">
     <div>
       <div class="">
           <% if  @projet.secteurprojets.count > 0%>
