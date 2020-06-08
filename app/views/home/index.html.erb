@@ -530,11 +530,9 @@
                     <%= link_to "#{res.nom_du_projet}", projet_path(res.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                     <div class="col-4 text-center">
-<<<<<<< HEAD
+
                       <span class="tablePrint"><%= res.ptf.title %></span>
-=======
-                      <span class="table"> <%= res.ptf.title %></span>
->>>>>>> patrick21
+
                     </div>
                   </div> 
                 <%end%>
@@ -548,6 +546,25 @@
                 <%if @ziga && @tout == nil%>
                 <%if @ziga.length != 0%>
                 <% @ziga.uniq.each do |res| %>  
+                  <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
+                    <div class="col-8">
+                    <%= link_to "#{res.nom_du_projet}", projet_path(res.id), target: 'blank', class: 'text-muted reshover' %>
+                    </div>
+                    <div class="col-4 text-center">
+                      <span class="table"><%= res.ptf.title %></span>
+                    </div>
+                  </div> 
+                <%end%>
+                <%else%>
+                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                  <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p> 
+                </div>
+                <%end%>
+                <%end%>
+
+                <%if @zigafi && @tout == nil%>
+                <%if @zigafi.length != 0%>
+                <% @zigafi.uniq.each do |res| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
                     <div class="col-8">
                     <%= link_to "#{res.nom_du_projet}", projet_path(res.id), target: 'blank', class: 'text-muted reshover' %>
@@ -584,7 +601,7 @@
                 <%end%>
                 <%end%>
              
-                <%if @pro_igas && @r == nil && @d == nil && @ziga == nil && @zigafi == nil && @igafor == nil && @igaben == nil && @igasect == nil && @igaa == nil && @sia == nil && @tout == nil%>
+                <%if @pro_igas && @r == nil && @d == nil && @ziga == nil && @zigafi == nil && @igafor == nil && @igaben == nil && @igasect == nil && @igaa == nil && @sia == nil && @tout == nil && @zigafi == nil%>
                 <%if @pro_igas.length != 0%>
                 <% @pro_igas.uniq.each do |res| %>  
           
@@ -623,6 +640,10 @@
                 </div>
                 <%end%>
                 <%end%>
+
+
+
+
 
 
                 <%if @pro_formes && @forme_projets == nil && @projets == nil && @pro_sectfils == nil && @ptf_forme == nil && @r == nil && @d == nil &&  @igafor == nil && @foben == nil && @tout == nil && @forme_filieres == nil && @appui_formes == nil%>
