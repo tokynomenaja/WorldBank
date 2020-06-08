@@ -33,7 +33,7 @@
   <body class="body" id="body" onload="Refresh()">
     <% unless flash.empty? %>
       <% flash.each do |message_type, message| %>
-        <div class="alert flash-left alert-info alert-dismissible btn btn-default">
+        <div class="alert flash-left alert-info alert-dismissible btn btn-default text-wrap">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
           <%=message%>    
         </div>
