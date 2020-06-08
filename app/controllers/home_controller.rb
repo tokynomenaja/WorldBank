@@ -660,7 +660,7 @@ end
 #recherche IGA et filiere
 
   if params[:search_iga]   && params[:search_filiere] 
-      if params[:search_iga] != "" && params[:search_zone] != "" && params[:search_filiere] != ""
+      if params[:search_iga] != "" && params[:search_filiere] != ""
      @pro = Projet.all.where(validation: true)
      @priga = params[:search_iga]
      @prfiliere = params[:search_filiere]
@@ -864,6 +864,28 @@ end
       end 
       end
       end
+
+       #recherche multiple zone, IGA et filiere
+    if params[:search_zone] && params[:search_iga] && params[:search_filiere] 
+        if params[:search_zone] && params[:search_iga] && params[:search_filiere] != ""
+      @pro = Projet.all.where(validation: true)
+     @pzone = params[:search_zone]
+     @piga = params[:search_iga]
+     @pfiliere = params[:search_filiere]
+     @zif = []
+        @pzone.each do |s|
+        @piga.each do |f|
+        @pfiliere.each do |fo|
+     @pro.each do |p|
+        if (p.zones.ids.include? s.to_i) && (p.igas.ids.include?f.to_i) && (p.filieres.ids.include?fo.to_i) 
+            @zif << p
+        end
+      end
+      end
+      end 
+      end
+      end
+    end
     #recherche multiple secteur, IGA et nature d'appui
     if params[:search_secteur] && params[:search_iga] && params[:appui_id] 
           if params[:search_secteur] && params[:search_iga] && params[:appui_id] != ""
@@ -939,6 +961,25 @@ end
      @pro.each do |p|
         if  (p.formes.ids.include? s.to_i) && (p.beneficiaires.ids.include?fi.to_i)
             @foben << p
+        end
+      end
+      end
+
+    end
+    end
+end
+#recherche multiple zone et beneficiaire
+ if params[:search_zone]   && params[:search_ben]  
+      if params[:search_zone] && params[:search_ben] != ""
+     @pro = Projet.all.where(validation: true)
+     @forme = params[:search_zone]
+     @benef = params[:search_ben]
+     @zoben = []
+        @forme.each do |s|
+        @benef.each do |fi|
+     @pro.each do |p|
+        if  (p.zones.ids.include? s.to_i) && (p.beneficiaires.ids.include?fi.to_i)
+            @zoben << p
         end
       end
       end
