@@ -137,7 +137,7 @@
 
 <div class="container mt-4 mb-5">
 	<div class="text-center text-muted mt-4 mb-4">
-		<h3 class="tablePrint"> Liste des projets modifiés à revalider</h3>
+		<h3 class="tablePrint"> Liste des projets modifiés par l'administrateur</h3>
 	</div>
 </div>
 <%if @updateProjets.count == 0 %>
@@ -156,7 +156,7 @@
 						<h5 class="card-title"><%= p.nom_du_projet.truncate(40) %></h5>
 						<p class="card-text"><%= raw truncate(sanitize(p.objectif_generale_du_projet, tags: []), length: 100)%></p>
 						<div class="row align-items-center mt-2 position-absolute card-foot">
-							<a href="<%= super_admin_projet_path(p.id)%>" class="col tablePrint mb-0">Voir</a>
+							<a href="<%= super_admin_update_projet_path(p.id)%>" class="col tablePrint mb-0">Voir</a>
 						</div>	
 					</div>
 				</div>
