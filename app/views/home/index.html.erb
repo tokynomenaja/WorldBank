@@ -530,7 +530,11 @@
                     <%= link_to "#{res.nom_du_projet}", projet_path(res.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                     <div class="col-4 text-center">
+<<<<<<< HEAD
                       <span class="tablePrint"><%= res.ptf.title %></span>
+=======
+                      <span class="table"> <%= res.ptf.title %></span>
+>>>>>>> patrick21
                     </div>
                   </div> 
                 <%end%>
@@ -560,26 +564,8 @@
                 <%end%>
                 <%end%>
 
-                <%if @zigafi && @tout == nil%>
-                <%if @zigafi.length != 0%>
-                <% @zigafi.uniq.each do |res| %>  
-                  <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
-                    <div class="col-8">
-                    <%= link_to "#{res.nom_du_projet}", projet_path(res.id), target: 'blank', class: 'text-muted reshover' %>
-                    </div>
-                    <div class="col-4 text-center">
-                      <span class="table"><%= res.ptf.title %></span>
-                    </div>
-                  </div> 
-                <%end%>
-                <%else%>
-                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p> 
-                </div>
-                <%end%>
-                <%end%>
 
-                <%if @sszone && @pro_zones == nil && @tout == nil%>
+                <%if @sszone && @pro_zones == nil && @tout == nil  && @zoben == nil%>
                 <%if @sszone.length != 0%>
                 <% @sszone.uniq.each do |res| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -619,7 +605,7 @@
                 <%end%>
                 <%end%>
 
-                <%if @pro_fils && @projets == nil && @forme_projets == nil && @pro_sectfils == nil && @ptf_fil == nil && @r == nil && @d == nil && @zfi == nil &&  @zigafi == nil && @fiben == nil && @tout == nil && @forme_filieres == nil && @pro_formes == nil%>
+                <%if @pro_fils && @projets == nil && @forme_projets == nil && @pro_sectfils == nil && @ptf_fil == nil && @r == nil && @d == nil &&  @zigafi == nil && @fiben == nil && @tout == nil && @forme_filieres == nil && @pro_formes == nil%>
                 <%if @pro_fils.length != 0%>
                 <% @pro_fils.uniq.each do |res| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -933,7 +919,7 @@
 
 
 
-                <%if @pro_bens && @r == nil && @d == nil && @tout == nil%>
+                <%if @pro_bens && @r == nil && @d == nil && @tout == nil && @zoben == nil%>
                 <%if @pro_bens.length != 0%>
                 <% @pro_bens.uniq.each do |res| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
