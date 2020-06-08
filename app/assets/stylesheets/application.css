@@ -558,7 +558,7 @@ a.position:hover{color: #ffffff;text-decoration: none;}
 .image-c2{width: 3.3rem;}
 .image-c3{width: 13.5rem;}
 .image-c4{width: 5.2rem;}
-.image-c5{width: 8rem;}
+.image-c5{width: 3.9rem;}
 .image-c6{width: 3.5rem;}
 .image-c7{width: 8rem;}
 .image-c8{width: 4.5rem;}
@@ -637,6 +637,7 @@ a.position:hover{color: #ffffff;text-decoration: none;}
  .entete{bottom: 20px;left: 5%;right: 5%; }
  .conteneur-entete{margin-left: 4rem;}
  .logoPtf{width: 230px}
+ .logoPtf img{width: 300px;}
  .h3{line-height: 2.65rem;}
 
 /*new*/
