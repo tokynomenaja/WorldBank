@@ -1,63 +1,90 @@
 <%= javascript_pack_tag 'users' %>
-<div class="sans-head container">
-      <div class="row">
-        <div class="col-6 bg-dark mx-auto rounded">
+<div class="sans-head mx-4">
+      <div class="row no-gutters">
+        <div class="col-md-4 border-right pr-2">
           <% if user_signed_in? %>
-            <p class="table mt-3">Connecté en tant que :<span class="text-white"> <%= current_user.email %></span></p>
+            <p class="tablePrint mt-3">Connecté en tant que :<span class="text-muted"> <%= current_user.email %></span></p>
           <% end %>
-          <h6 class="table my-2">Visiteurs non connectés: <span class="text-white"><%= @users.where(is_signed_in: false).count%></span></h6>
-          <h6 class="table my-2">Visiteurs connectés: <span class="text-white"><%= @users.where(is_signed_in: true).count%></span></h6>
-          <div class="pb-3">
-            <% @users.each do |user| %>
-            <%if user.is_super_admin == false && user.is_signed_in == true%>
+          <h6 class="tablePrint my-2">Visiteurs non connectés: <span class="text-muted"><%= @users.where(is_signed_in: false).count%></span></h6>
+          <h6 class="tablePrint my-2">Visiteurs connectés: <span class="text-muted"><%= @users.where(is_signed_in: true).count%></span></h6>
+          <% @users.each do |user| %>
+              <%if user.is_super_admin == false && user.is_signed_in == true%>
                  <%if user.current_sign_in_at%>
                  <%if user.current_sign_in_at.to_date == Time.now.to_date%>
                   <%if user.total_online_time != nil%>
-                <p class="active-user bg-white p-2 rounded-0 border-bottom" data-id="<%= user.id %>">
-                  <span class="online-icon d-inline-block bg-success"></span>
-                  <span class="table"><%= user.email %></span><br>
-                  <span class="table">Aujourd'hui <%= user.current_sign_in_at.strftime("à %I:%M %p")%></span>
-                  <span> Durée de connexion : <%= Time.at((user.total_online_time) * 60).utc.strftime("%H:%M:%S")%></span>
+            <div class="pb-3">
+                <div class="active-user bg-white p-2 rounded-0 border-bottom" data-id="<%= user.id %>">
+                  <!-- <span class="online-icon d-inline-block bg-success"></span> -->
+                  <span class="tablePrint"><%= user.email %></span>
+                  <div class="mt-2">
+                    <span class="text-muted mt-3">Aujourd'hui <%= user.current_sign_in_at.strftime("à %I:%M %p")%></span><br>
+                    <span class="text-muted"> Durée de connexion : <%= Time.at((user.total_online_time) * 60).utc.strftime("%H:%M:%S")%></span>
+                  </div>
                   <%end%>
                   <%end%>
                   <%end%>                
-                </p>        
-            <% end %>
-            <% end %>
-        </div>
-        <div class="pb-3">
-          <span class="table">Les historiques de connexions selon la date ci - dessous</span><br>
-          <%= form_tag(users_index_path, :method => "get", class: 'gQwHOW') do %>
-          <input type="date" name="loggin_date" class="form-control">&nbsp;
-          <%= submit_tag "Voir", :class => "sc-eerKOB cfnPHQ", :name => nil%>
-          <%end%>
+                </div>        
+            </div>
+              <% end %>
+          <% end %>
+        <div class="pb-">
+          <p class="tablePrint mb-2">Les historiques de connexions selon la date ci - dessous</p>
+          <%= form_tag(users_index_path, :method => "get", class: 'gQwHOW row no-gutters align-items-center') do %>
+          <div class="col-10 pr-2">
+            <input type="date" name="loggin_date" class="form-control" oninvalid="this.setCustomValidity('Merci de remplir ce champ')" required="true">
           </div>
+          <div class="col-2">
+            <%= submit_tag "Voir", :class => "sc-eerKOB cfnPHQ ", :name => nil%>
+          </div>
+          <%end%>
         </div>
+      </div>
         <%if @date%>
-          <div class="col-6">
+          <div class="col-md-8">
               <%@visits = Visit.where('Date(created_at) = ?', @date).where.not(user_id: 1)%>
                 <%if @visits%>
                   <%if @visits.count != 0%>
-                    <p class="text-center text-muted">Historiques de connexions le <%= params[:loggin_date].to_date %></p>
+                    <h4 class="text-center text-muted mb-4">Historiques de connexions le <%= params[:loggin_date].to_date %></h4>
+                  <table class="table table-striped">
+                    <thead class="text-muted font-weight-bolder">
+                      <tr>
+                        <th scope="col">Email</th>
+                        <th scope="col"><p class="text-center">Organisme</p></th>
+                        <th scope="col">Fonction</th>
+                        <th scope="col">Téléphone</th>
+                        <th scope="col">Heure de connexion</th>
+                        <th scope="col">Durée de connexion</th>
+                      </tr>
+                    </thead>
+                    <tbody>
                     <%@visits.each do |v|%>
-                      <div>
-                          <p class="text-center text-muted"> Email :<%= v.user_email%></p>
-                          <p class="text-center text-muted">Heure de connexion : <%= v.created_at.to_s(:time)%></p>
-                          <%if v.user_total_online_time != nil%>
-                            <p class="text-center text-muted">Durée de connexion : <%= Time.at(((v.user_total_online_time)) * 60).utc.strftime("%H:%M:%S")%></p>
-                          <%end%>
+                      <tr>
+                        <th scope="col"><span class="text-color-secondary"><%= v.user_email%></span></th>
+                        <th scope="col">
                           <%if v.user_organisme != nil%>
-                            <p class="text-center text-muted">Organisme : <%= v.user_organisme%></p>
+                            <p class="text-center"><%= v.user_organisme%></p>
                           <%end%>
-                          <%if v.user_phone != nil%>
-                            <p class="text-center text-muted">Téléphone : <%= v.user_phone%></p>
-                          <%end%>
+                        </th>
+                        <th scope="col">
                           <%if v.user_fonction != nil%>
-                            <p class="text-center text-muted">Fonction : <%= v.user_fonction%></p>
+                            <%= v.user_fonction%>
                           <%end%>
-                        
-                      </div>
+                        </th>
+                        <th scope="col">
+                          <%if v.user_phone != nil%>
+                            <%= v.user_phone%>
+                          <%end%>
+                        </th>
+                        <th scope="col"><%= v.created_at.to_s(:time)%></th>
+                        <th scope="col">
+                          <%if v.user_total_online_time != nil%>
+                            <%= Time.at(((v.user_total_online_time)) * 60).utc.strftime("%H:%M:%S")%>
+                          <%end%>
+                        </th>
+                      </tr>
                     <%end%>
+                    </tbody>
+                  </table>
                 <%else%>
                   <p class="text-center text-muted">Aucun visiteur connecté</p>  
                   <%end%>

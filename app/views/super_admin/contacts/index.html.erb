@@ -5,7 +5,7 @@
 			</div>
 		<%else%>	
 	<div class="mb-4 text-center">
-		<h3 class="table">Toutes les messages</h3>
+		<h3 class="tablePrint">Toutes les messages</h3>
 	</div>
 	<div>
 		<%@messages.order(created_at: :desc).each do |m|%>
@@ -14,7 +14,7 @@
 					<div class="unread col-9">
 				       <p class="">
 							<%if m.sender%>
-							<span>E-mail : <a href="https://<%= m.sender.email%>" target="_blank" class="table font-weight-bolder" id="user"><%= m.sender.email%></a></span>
+							<span>E-mail : <a href="https://<%= m.sender.email%>" target="_blank" class="tablePrint font-weight-bolder" id="user"><%= m.sender.email%></a></span>
 							<div>
 								<div>Nom : <%= m.sender.first_name%></div>
 								<div>Prénoms : <%= m.sender.last_name%></div>
@@ -22,7 +22,7 @@
 								<div>Fonction : <%= m.fonction%></div>
 							</div>
 							<%else%>
-								<span>E-mail : <a href="https://<%= m.email%>" target="_blank" class="table font-weight-bolder" id="user"><%= m.email%></a></span>
+								<span>E-mail : <a href="https://<%= m.email%>" target="_blank" class="tablePrint font-weight-bolder" id="user"><%= m.email%></a></span>
 								<div>
 									<div>Nom : <%= m.first_name%></div>
 									<div>Prénoms : <%= m.last_name%></div>
@@ -38,7 +38,7 @@
 					<div class="col-9">
 				       <p>
 							<%if m.sender%>
-							<span>E-mail : <a href="https://<%= m.sender.email%>" target="_blank" class="table"><%= m.sender.email%></a></span>
+							<span>E-mail : <a href="https://<%= m.sender.email%>" target="_blank" class="tablePrint"><%= m.sender.email%></a></span>
 							<div>
 								<div>Nom : <%= m.sender.first_name%></div>
 								<div>Prénoms : <%= m.sender.last_name%></div>
@@ -46,7 +46,7 @@
 								<div>Fonction : <%= m.fonction%></div>
 							</div>
 							<%else%>
-								<a href="https://<%= m.email%>" target="_blank" class="table"><%= m.email%></a>
+								<a href="https://<%= m.email%>" target="_blank" class="tablePrint"><%= m.email%></a>
 								<div>
 									<div>Nom : <%= m.first_name%></div>
 									<div>Prénoms : <%= m.last_name%></div>
@@ -60,9 +60,9 @@
 				<div class="col-3 text-right pr-2">
 					<%= form_for m, url: super_admin_contact_path(m.id), method: :put do |f| %>
 						<%if m.read == nil%>
-							<p> <input type="submit" name="read" value="Marquer comme lu" class="table btn-right" id="mark-as-read"></p>
+							<p> <input type="submit" name="read" value="Marquer comme lu" class="tablePrint btn-right" id="mark-as-read"></p>
 						<%else%>
-							<p><input type="submit" name="read" value="Marquer comme non lu" class="table btn-right" id="document"></p>
+							<p><input type="submit" name="read" value="Marquer comme non lu" class="tablePrint btn-right" id="document"></p>
 						<%end%>
 					<%end%>	
 					 <a href="<%= super_admin_contact_path(m.id)%>" class="btn btn-danger"  data-method="delete" data-confirm="Voulez-vous supprimer ce message ?"> Supprimer</a>

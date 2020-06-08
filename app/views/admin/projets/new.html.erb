@@ -8,14 +8,14 @@
 			<div class=" row mb-2">
 				<div class="col-6">
 					<div>
-						<label for="nom" class="mr-2 table">Nom du projet </label>
+						<label for="nom" class="mr-2 tablePrint">Nom du projet </label>
 					</div>
 					<input type="text" name="nom_du_projet" id="nom" placeholder="Nom du projet" class="form-control" required="true">
 				</div>
 			</div>
 		</div>
 		<div class="container mb-2">
-			<a class="table">
+			<a class="tablePrint">
 				Objectif général du projet
 			</a>
 			<div class="mt-2">
@@ -28,7 +28,7 @@
 			</div>
 		</div>
 		<div class="container mb-2">
-			<a class="table">
+			<a class="tablePrint">
 				Appui spécifique au secteur privé
 			</a>
 			<div class="mt-2">
@@ -43,11 +43,11 @@
 		<div class="container">
 			<div class=" row mb-2">
 				<div class="col-6">
-					<h6 class="table">Partenaire Technique Financier</h6>
+					<h6 class="tablePrint">Partenaire Technique Financier</h6>
 					<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control", required: true%>
 				</div>
 				<div class="col-6">
-					<h6 class="table">Nature de l'appui</h6>
+					<h6 class="tablePrint">Nature de l'appui</h6>
 					<%= select_tag 'appui', options_for_select(Appui.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control", required: true%>
 					
 				</div>
@@ -57,7 +57,7 @@
 
 
 		<div class="container mb-2">
-			<a class="table">
+			<a class="tablePrint">
 				Partenaire d'implémentation
 			</a>
 				<div class="mt-2">
@@ -128,7 +128,7 @@
 		</div>
 
 		<div class="container mb-2">
-			<a class="table">
+			<a class="tablePrint">
 				Secteurs
 			</a>
 				<div class="mt-2">
@@ -147,7 +147,7 @@
 		<section class="container">
 			<div class="d-flex justify-content-between mb-3">
 				<div class="col-md-8 pl-0">
-					<h6 class="table">Montant pour le secteur :</h6>
+					<h6 class="tablePrint">Montant pour le secteur :</h6>
 					<% Secteur.all.order(:title).each do |s|%>
 						<div class="no-gutters align-items-center" id="montant<%=s.id%>" style="display: none;">
 							<div class="col-5 font-size"><%= s.title.upcase %> : </div>
@@ -159,19 +159,19 @@
 					<%end%>
 				</div>
 				<div class="col-md-2">
-					<h6 class="table">Début de projet</h6>
+					<h6 class="tablePrint">Début de projet</h6>
 					<input type="text" id="selectionDebut" placeholder="mm/aaaa" class="form-control" required="true">
 					<input type="hidden" id="selectionDebutValue" placeholder="mm/aaaa" class="form-control" required="true" name="debut_du_projet">
 				</div>
 				<div class="col-md-2 pr-0">			
-					<h6 class="table">Fin de projet</h6>
+					<h6 class="tablePrint">Fin de projet</h6>
 					<input type="text" class="form-control" placeholder="mm/aaaa" required="true" id="selectionFin">
 					<input type="hidden" name="fin" id="selectionFinValue" class="form-control" placeholder="mm/aaaa" required="true" name="fin">
 				</div>
 			</div>
 		</section>
 			<div class="container mb-2 mt-2">
-			<a class="table" id="filAsso">
+			<a class="tablePrint" id="filAsso">
 				Filières associées
 			</a>
 				<div class="mt-2">
@@ -221,7 +221,7 @@
 								    <%end%>
 								</div>
 							</div><br>
-								<a class="table">Cochez le secteur associé à la nouvelle filière </a>
+								<a class="tablePrint">Cochez le secteur associé à la nouvelle filière </a>
 							    <div class="row">
 								 <% Secteur.all.order(:title).each do |c| %>
 									<div class="col-md-4">
@@ -237,7 +237,7 @@
 				</div>
 			</div>
 			<div class="container mb-2 mt-2">
-			<a class="table" id="formAsso">
+			<a class="tablePrint" id="formAsso">
 				Formes d'appuis
 			</a>
 				<div class="mt-2">
@@ -289,7 +289,7 @@
 								</div>
 							</div>
 							<br>
-								<a class="table">Cochez le secteur associé à la nouvelle forme d'appui </a>
+								<a class="tablePrint">Cochez le secteur associé à la nouvelle forme d'appui </a>
 							    <div class="row">
 								 <% Secteur.all.order(:title).each do |c| %>
 									<div class="col-md-4">
@@ -306,7 +306,7 @@
 			</div>
 
 			<div class="container mb-2">
-				<a class="table">
+				<a class="tablePrint">
 					Bénéficiaires
 				</a>
 				<div class="mt-2">
@@ -362,7 +362,7 @@
 
 			
 		<div class="container mb-2">
-			<a class="table">
+			<a class="tablePrint">
 				Institution Gouvernementale Associée
 			</a>
 			<div  class="mt-2">
@@ -416,7 +416,7 @@
 			</div>
 		</div>
 		<div class="container mb-2">
-			<a class="table">
+			<a class="tablePrint">
 				Alignement aux priorités du Plan Emergence de Madagascar
 			</a>
 				<div class="mt-2">
@@ -440,7 +440,7 @@
 				</div>
 			</div>
 		<div class="container mb-2">
-			<a class="table">
+			<a class="tablePrint">
 				Régions
 			</a>
 			<div class="mt-2">
@@ -461,10 +461,10 @@
 			<span class="btn btn-secondary text-wrap" id="simulateur">Choisissez des fichiers liés au projet</span>
 		</div>
 		<div class="container mt-4">
-			<p><span class="table">Site web :</span><input type="text" name="site" class="form-control" placeholder="votre lien"></p>
+			<p><span class="tablePrint">Site web :</span><input type="text" name="site" class="form-control" placeholder="votre lien"></p>
 		</div>
 		<div class="container mt-4">
-			<label for="comment" class="table">Commentaire :</label>
+			<label for="comment" class="tablePrint">Commentaire :</label>
 			<textarea name="comment" class="form-control p-2"  rows="5" placeholder="Commentaire qui s'adresse à l'administrateur"></textarea>
 			
 		</div>

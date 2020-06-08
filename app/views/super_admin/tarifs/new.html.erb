@@ -1,13 +1,13 @@
 <div class="container-actu mx-auto row mb-5 sans-head">
 	<div class="col-md-4 border-right">
-		<h5 class="mb-4 table text-center">Créer taux de change</h5>
+		<h5 class="mb-4 tablePrint text-center">Créer taux de change</h5>
 		<%= form_tag url_for(action: 'create'),method:'post', class:'form', multipart: true do%>
 			<div class="mb-4">
-				<label for="nom" class="mr-2 table">Unité de référence </label>
+				<label for="nom" class="mr-2 tablePrint">Unité de référence </label>
 				<input type="text" name="reference" id="nom" placeholder="UAC/EURO/USD/MGA" class="form-control" required="true">
 			</div>
 			<div class="mb-4">
-				<label for="nom" class="mr-2 table"> Valeur </label>
+				<label for="nom" class="mr-2 tablePrint"> Valeur </label>
 				<input type="text" name="valeur" id="nom" placeholder="1.456" class="form-control" required="true">
 			</div>
 			<div class="mb-4">				
@@ -20,7 +20,7 @@
 		<%end%>
 	</div>
 	<div class="col-md">
-		<h5 class="mb-4 table text-center">Taux de change</h5>
+		<h5 class="mb-4 tablePrint text-center">Taux de change</h5>
 	    <% @tarifs.each do |t|%>
 		    <div class="row align-items-center no-gutters border-bottom pb-2 pt-2">
 			    <div class="col-md-11 truncate-actu">
@@ -43,7 +43,7 @@
 			    	<!-- <a href="<%= super_admin_tarif_path(t.id)%>" class="btn btn-danger" data-method="delete" data-confirm="Voulez-vous enlever ce taux ?">Suprrimer</a> -->
 			    </div>
 			    <div class="col-md-1 text-center">
-			    	<a href="<%= edit_super_admin_tarif_path(t.id)%>" class="table">Changer</a>
+			    	<a href="<%= edit_super_admin_tarif_path(t.id)%>" class="tablePrint">Changer</a>
 			    </div>
 		    </div>
 		<%end%>	

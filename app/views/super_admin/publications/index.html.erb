@@ -5,7 +5,7 @@
 			</div>
 		<%else%>
 	<div class="mb-4 text-center">
-		<h3 class="table">Mes publications</h3>
+		<h3 class="tablePrint">Mes publications</h3>
 		</div>
 	<div class="row justify-content-center">
 		
@@ -18,7 +18,7 @@
 						<div class="card-text">
 							<p class="card-text text-muted mb-5 truncate-pub"><%= p.description %></p>
 						</div>
-						<p class="mt-3 position-absolute more-info-pub"><a href="<%= super_admin_publication_path(p.id)%>" class="table">Voir</a></p>
+						<p class="mt-3 position-absolute more-info-pub"><a href="<%= super_admin_publication_path(p.id)%>" class="tablePrint">Voir</a></p>
 				</div>
 			</div>
       <%end%>
