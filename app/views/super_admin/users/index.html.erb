@@ -1,17 +1,17 @@
 <div class="container sans-head">
-	<h4 class="table mb-2">Comptes validés</h4>
+	<h4 class="tablePrint mb-2">Comptes validés</h4>
 	<%if @users.count == 0%>
 		<div class="text-center text-muted mt-4 mb-4">
 			Aucun pour le moment
 		</div>
 	<% else %>
-		<table class="table table-bordered table-dark">
+		<table class="table tablePrint table-bordered table-dark">
 		<thead>
 			<tr> 
 			<th scope="col">Id</th>
 			<th scope="col">Email</th>
 			<th scope="col">
-				<a href="<%= super_admin_contacts_path%>" class="table mb-0">Tous les messages<span class="badge badge-light ml-2"><%= Message.all.count%></span></a>
+				<a href="<%= super_admin_contacts_path%>" class="tablePrint mb-0">Tous les messages<span class="badge badge-light ml-2"><%= Message.all.count%></span></a>
 			</th>
 			<th scope="col">Action</th>
 			<th scope="col">Rôle</th>
@@ -91,13 +91,13 @@
 <%end%>
 
 <div class="container text-c">
-	<h4	class="table mb-2">Comptes en attente de validation</h4>
+	<h4	class="tablePrint mb-2">Comptes en attente de validation</h4>
 	<%if @users_en_attente.count == 0%>
 		<div class="text-center text-muted mt-4 mb-4">
 			Aucun pour le moment
 		</div>
 	<% else %>
-		<div class="d-flex justify-content-center align-items-center table-dark table mb-0">
+		<div class="d-flex justify-content-center align-items-center table-dark tablePrint mb-0">
 			<div class="col-1 text-center same">
 				<p>Id</p>
 			</div>
@@ -114,7 +114,7 @@
 			</div>
 		</div>
 		<% @users_en_attente.order(id: :desc).each do |u|%>
-			<div class="d-flex justify-content-center align-items-center table-dark table mb-0">
+			<div class="d-flex justify-content-center align-items-center table-dark tablePrint mb-0">
 				<div class="col-1 text-center same">
 					<%=u.id%>
 				</div>

@@ -1,14 +1,14 @@
 <div class="container-actu mx-auto row mb-5 sans-head">
 	<div class="col-md-4 border-right">
-		<h5 class="mb-4 table text-center">Modifier cette actualité</h5>
+		<h5 class="mb-4 tablePrint text-center">Modifier cette actualité</h5>
 		<%= form_tag url_for(action: 'update'),method:'put', class:'form', multipart: true do%>
 			<div class="mb-4">
-				<label for="nom" class="mr-2 table">Titre </label>
+				<label for="nom" class="mr-2 tablePrint">Titre </label>
 				<input type="text" name="title" id="nom" placeholder="Titre" class="form-control" required="true" value="<%= @actu.title%>">
 			</div>
 			<div class="mb-4">
 							
-				<span class="mr-2 table">Documents :</span>
+				<span class="mr-2 tablePrint">Documents :</span>
 				<%= file_field_tag :files, name: "files[]", required: true, multiple: true, class: 'toggleclass', id: :'document' %>
 				<span class="btn btn-secondary" id="simulateur" >Modifier les fichiers </span>
 			</div>
@@ -31,7 +31,7 @@
 			    	<%= a.title %>
 			    </div>
 			    <div class="col-md-1 text-center">
-			    	<a href="<%= super_admin_actu_path(a.id)%>" class="table">Voir</a>
+			    	<a href="<%= super_admin_actu_path(a.id)%>" class="tablePrint">Voir</a>
 			    </div>
 		    </div>
 		<%end%>	

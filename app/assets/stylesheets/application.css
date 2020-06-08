@@ -78,7 +78,7 @@ body{background: #f9f9f9 !important;}
 login
 */
 .sans-head{margin-top: 6rem;}
-next{width: 60px !important;height: 60px !important;}
+.next{width: 60px !important;height: 60px !important;}
 .carousel-control-prev-icon{width: 50px !important;height: 50px !important;}
 .text-t span{text-transform: inherit !important;}
 /* nav drop */

@@ -9,14 +9,14 @@
 			<div class="row mb-2">
 				<div class="col-6">
 					<div>
-						<label for="nom" class="mr-2 table">Nom du projet </label>
+						<label for="nom" class="mr-2 tablePrint">Nom du projet </label>
 					</div>
 					<input type="text" name="nom_du_projet" id="nom"  value="<%= @projet.nom_du_projet%>" class="form-control">
 				</div>
 			</div>
 		</div>
 		<div class="container mb-2">
-			<a class="table">
+			<a class="tablePrint">
 				Objectif général du projet
 			</a>
 			<div class="mt-2">
@@ -27,7 +27,7 @@
 			</div>
 		</div>
 		<div class="container mb-2">
-			<a class="table">
+			<a class="tablePrint">
 				Appui spécifique au secteur privé
 			</a>
 			<div class="mt-2">
@@ -42,7 +42,7 @@
 			<div class="container">
 				<div class=" row mb-2">
 					<div class="col-6">
-						<h6 class="table">Partenaire Technique Financier</h6>
+						<h6 class="tablePrint">Partenaire Technique Financier</h6>
 						<select name="ptf" class="form-control">
 							<%Ptf.all.order(:title).each do |p|%>
 								<%if p == @projet.ptf%>
@@ -54,7 +54,7 @@
 						</select>
 					</div>
 					<div class="col-6">
-						<h6 class="table">Nature de l'appui</h6>
+						<h6 class="tablePrint">Nature de l'appui</h6>
 						<select name="appui" class="form-control">
 							<%Appui.all.order(:title).each do |a|%>
 								<%if a == @projet.appui%>
@@ -71,7 +71,7 @@
 			</div>
 
 		<div class="container mb-2">
-			<a class="table">
+			<a class="tablePrint">
 				Secteurs
 			</a>
 				<div class="mt-2">
@@ -97,7 +97,7 @@
 		<div class="container calendrier position-relative">
 			<div class="d-flex justify-content-between mb-3">
 				<div class="col-md-8 pl-0">
-					<h6 class="table">Montant pour le secteur :</h6>
+					<h6 class="tablePrint">Montant pour le secteur :</h6>
 					<% Secteur.all.order(:title).each do |s|%>
 							<% if @sects %> 
 						 		<% if @sects.include? s %>
@@ -145,12 +145,12 @@
 						<%end%>
 				</div>
 				<div class="col-md-2">
-					<h6 class="table">Début de projet</h6>
+					<h6 class="tablePrint">Début de projet</h6>
 					<input type="text" id="selectionDebut" value="<%= @projet.debut_du_projet%>" class="form-control" required="true" >
 					<input type="hidden" id="selectionDebutValue" value="<%= @projet.debut_du_projet%>" class="form-control" required="true" name="debut_du_projet">
 				</div>
 				<div class="col-md-2 pr-0">			
-					<h6 class="table">Fin de projet</h6>
+					<h6 class="tablePrint">Fin de projet</h6>
 					<input type="text" class="form-control" value="<%= @projet.fin%>" required="true" id="selectionFin">
 					<input type="hidden" name="fin" id="selectionFinValue" class="form-control" value="<%= @projet.fin%>" required="true" name="fin">
 				</div>
@@ -159,7 +159,7 @@
 
 
 			<div class="container mb-2 mt-2">
-				<a class="table" id="filAsso">
+				<a class="tablePrint" id="filAsso">
 					Filières associées
 				</a>
 				<div class="mt-2">
@@ -216,7 +216,7 @@
 									</div>
 								</div>
 								<br>
-								<a class="table">Cochez le secteur associé à la nouvelle filière </a>
+								<a class="tablePrint">Cochez le secteur associé à la nouvelle filière </a>
 							    <div class="row">
 								 <% Secteur.all.order(:title).each do |c| %>
 									<div class="col-md-4">
@@ -233,7 +233,7 @@
 
 
 			<div class="container mb-2 mt-2">
-				<a class="table" id="formAsso">
+				<a class="tablePrint" id="formAsso">
 					Formes d'appuis
 				</a>
 				<div class="mt-2">
@@ -288,7 +288,7 @@
 								</div>
 							</div>
 							<br>
-								<a class="table">Cochez le secteur associé à la nouvelle forme d'appui </a>
+								<a class="tablePrint">Cochez le secteur associé à la nouvelle forme d'appui </a>
 							    <div class="row">
 								 <% Secteur.all.order(:title).each do |c| %>
 									<div class="col-md-4">
@@ -306,7 +306,7 @@
 
 
 			<div class="container mb-2">
-				<a class="table">
+				<a class="tablePrint">
 					Bénéficiaires
 				</a>
 				<div class="mt-2">
@@ -366,7 +366,7 @@
 			</div>
 
 			<div class="container mb-2">
-				<a class="table">
+				<a class="tablePrint">
 					Institution Gouvernementale Associée
 				</a>
 				<div  class="mt-2">
@@ -425,7 +425,7 @@
 				</div>
 			</div>
 			<div class="container mb-2">
-				<a class="table">
+				<a class="tablePrint">
 					Alignement aux priorités du Plan Emergence de Madagascar
 				</a>
 				<div class="mt-2">
@@ -457,7 +457,7 @@
 			</div>
 
 			<div class="container mb-2">
-				<a class="table">
+				<a class="tablePrint">
 					Régions
 				</a>
 				<div class="mt-2">
