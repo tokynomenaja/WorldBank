@@ -31,7 +31,7 @@
           <p class="tablePrint mb-2">Les historiques de connexions selon la date ci - dessous</p>
           <%= form_tag(users_index_path, :method => "get", class: 'gQwHOW row no-gutters align-items-center') do %>
           <div class="col-10 pr-2">
-            <input type="date" name="loggin_date" class="form-control" oninvalid="this.setCustomValidity('Merci de remplir ce champ')" required="true">
+            <input type="date" name="loggin_date" class="form-control" required="true">
           </div>
           <div class="col-2">
             <%= submit_tag "Voir", :class => "sc-eerKOB cfnPHQ ", :name => nil%>
