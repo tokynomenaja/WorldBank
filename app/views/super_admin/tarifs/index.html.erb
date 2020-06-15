@@ -14,7 +14,7 @@
 			    </div>
 			    	<div class="col-md-11 truncate-actu">
 		    	<% if t.utilise == true%>
-				    	Cours de changer à utiliser de l'année <%= t.created_at.year%>
+				    	Cours de change de l'année <%= t.created_at.year%>
 				<%else%>
 			    	<a href="<%= edit_super_admin_tarif_path(t.id)%>" class="btn btn-success">A utiliser</a>
 			    <%end%>

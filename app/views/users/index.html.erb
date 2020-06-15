@@ -12,14 +12,14 @@
                  <%if user.current_sign_in_at%>
                  <%if user.current_sign_in_at.to_date == Time.now.to_date%>
                   <%if user.total_online_time != nil%>
-            <div class="pb-3">
-                <div class="active-user bg-white p-2 rounded-0 border-bottom" data-id="<%= user.id %>">
-                  <!-- <span class="online-icon d-inline-block bg-success"></span> -->
-                  <span class="tablePrint"><%= user.email %></span>
-                  <div class="mt-2">
-                    <span class="text-muted mt-3">Aujourd'hui <%= user.current_sign_in_at.strftime("à %I:%M %p")%></span><br>
-                    <span class="text-muted"> Durée de connexion : <%= Time.at((user.total_online_time) * 60).utc.strftime("%H:%M:%S")%></span>
-                  </div>
+                    <div class="pb-3">
+                      <div class="active-user bg-white p-2 rounded-0 border-bottom" data-id="<%= user.id %>">
+                        <!-- <span class="online-icon d-inline-block bg-success"></span> -->
+                        <span class="tablePrint"><%= user.email %></span>
+                        <div class="mt-2">
+                          <span class="text-muted mt-3">Aujourd'hui <%= user.current_sign_in_at.strftime("à %I:%M %p")%></span><br>
+                          <span class="text-muted"> Durée de connexion : <%= Time.at((user.total_online_time) * 60).utc.strftime("%H:%M:%S")%></span>
+                    </div>
                   <%end%>
                   <%end%>
                   <%end%>                
@@ -27,17 +27,17 @@
             </div>
               <% end %>
           <% end %>
-        <div class="pb-">
+        
           <p class="tablePrint mb-2">Les historiques de connexions selon la date ci - dessous</p>
           <%= form_tag(users_index_path, :method => "get", class: 'gQwHOW row no-gutters align-items-center') do %>
           <div class="col-10 pr-2">
-            <input type="date" name="loggin_date" class="form-control" oninvalid="this.setCustomValidity('Merci de remplir ce champ')" required="true">
+            <input type="date" name="loggin_date" class="form-control" required="true">
           </div>
           <div class="col-2">
             <%= submit_tag "Voir", :class => "sc-eerKOB cfnPHQ ", :name => nil%>
           </div>
           <%end%>
-        </div>
+     
       </div>
         <%if @date%>
           <div class="col-md-8">
@@ -79,6 +79,8 @@
                         <th scope="col">
                           <%if v.user_total_online_time != nil%>
                             <%= Time.at(((v.user_total_online_time)) * 60).utc.strftime("%H:%M:%S")%>
+                          <%else%>
+                            
                           <%end%>
                         </th>
                       </tr>

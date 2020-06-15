@@ -20,7 +20,9 @@
 			</a>
 			<div class="mt-2">
 				<div class="card card-body">
-				
+				<style type="text/css">
+					.trix-content {height: 250px;overflow: auto;}
+				</style>
 				<%=rich_text_area_tag :objectif_generale_du_projet, nil, id: "comment_body" %>
 
 					<p id="charlimit"><span class="words-left">150 mots maximum</span></p>
@@ -44,7 +46,20 @@
 			<div class=" row mb-2">
 				<div class="col-6">
 					<h6 class="tablePrint">Partenaire Technique Financier</h6>
-					<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control", required: true%>
+					<%if current_user.organisme%>
+						<%if current_user.organisme.ptf != nil%>
+							<%if current_user.organisme.ptf.title !=  "WBG"%>
+								<input type="text" name=""  placeholder="<%= current_user.organisme.ptf.title%>" class="form-control" readonly>
+							<%else%>
+							<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control", required: true%>
+							<%end%>
+						<%else%>
+							<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control", required: true%>
+						<%end%>
+					<%else%>
+						<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control", required: true%>	
+					<%end%>
+
 				</div>
 				<div class="col-6">
 					<h6 class="tablePrint">Nature de l'appui</h6>
@@ -165,8 +180,8 @@
 				</div>
 				<div class="col-md-2 pr-0">			
 					<h6 class="tablePrint">Fin de projet</h6>
-					<input type="text" class="form-control" placeholder="mm/aaaa" required="true" id="selectionFin">
-					<input type="hidden" name="fin" id="selectionFinValue" class="form-control" placeholder="mm/aaaa" required="true" name="fin">
+					<input type="text" class="form-control" placeholder="mm/aaaa" required="true" id="selectionFin" title="Fin ne doit pas être antérieure de début">
+					<input type="hidden" name="fin" id="selectionFinValue" class="form-control" placeholder="mm/aaaa" required="true">
 				</div>
 			</div>
 		</section>

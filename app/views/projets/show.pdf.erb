@@ -9,18 +9,34 @@
 <body>
     <header class="aci59a-0 eyAIuG sticky-limit">
     <div class="sc-1gnwgfb-2 hVIPFV picc position-relative">
+    <style type="text/css">     
+      .picc {
+        <%if @projet.secteurprojets.count == 1%>
+          <%@projet.secteurprojets.each do|sp|%>
+            <% if sp.secteur.title == "ENERGIE" %>
+              background-image: url('file://<%= Rails.root.join('public/secteur/energie.jpg') %>');
+            <%else%>
+              background-image: url('file://<%= Rails.root.join('public', "#{sp.secteur.image_url}") %>');
+            <%end%>
+          <%end%>
+        <%else%>
+          background-image: url('file://<%= Rails.root.join('public/secteur/accueil.jpg') %>');    
+        <%end%>
+        }
+    
+      </style>
       <div class="position-absolute entete">
         <h3 class="bg-fiche p-1 text-white"><%=@projet.nom_du_projet%></h3>
       </div>
     </div>
 </header>
-<div class="objectif mx-auto my-3 d-flex align-items-start">
-  <div class="logoPtf">
+<div class="objectif mx-auto my-3 row align-items-start">
+  <div class="logoPtf col">
     <%if @projet.ptf.image_url%>
       <%= wicked_pdf_image_tag "/#{@projet.ptf.image_url}" %>
     <%end%>
   </div>
-  <div class="ml-4">
+  <div class="ml-4 col-10">
     <div>
       <div class="">
           <% if  @projet.secteurprojets.count > 0%>
