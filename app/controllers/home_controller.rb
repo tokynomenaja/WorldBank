@@ -24,7 +24,6 @@ def index
         else 
           @parameter = params[:search].downcase  
           @req = Projet.where(validation: true)
-
           @results = @req.where("lower(nom_du_projet) LIKE :search", search: "%#{@parameter}%").order(id: :desc).page(params[:page]).per(9)
     end 
   end
@@ -40,6 +39,7 @@ def index
                @params_ptf.each do |p|
               @ptf = Projet.all.where(ptf_id: params[:ptf_id], validation: true)
               @ptf_1 = Ptf.all.find(p.to_i).title 
+
           end
         end 
       end 
