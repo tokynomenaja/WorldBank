@@ -15,9 +15,15 @@
           end
         end
           
-          Visit.create!(user_id: current_user.id, user_ip: current_user.current_sign_in_ip, user_organisme: organisme, user_phone: current_user.phone, user_fonction: current_user.fonction, user_last_sign_in_at: current_user.current_sign_in_at, user_email: current_user.email)
-          
-          
+          if Visit.last
+            if Visit.last.user_total_online_time == nil 
+              total_online_time = (Time.now - Visit.last.created_at.to_time) / 60
+              Visit.last.update(user_total_online_time: total_online_time)
+              Visit.create!(user_id: current_user.id, user_ip: current_user.current_sign_in_ip, user_organisme: organisme, user_phone: current_user.phone, user_fonction: current_user.fonction, user_last_sign_in_at: current_user.current_sign_in_at, user_email: current_user.email)
+            else
+              Visit.create!(user_id: current_user.id, user_ip: current_user.current_sign_in_ip, user_organisme: organisme, user_phone: current_user.phone, user_fonction: current_user.fonction, user_last_sign_in_at: current_user.current_sign_in_at, user_email: current_user.email)
+            end
+          end
 
         notify_pusher 'login'
       end

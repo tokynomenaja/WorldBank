@@ -44,6 +44,7 @@
               <%@visits = Visit.where('Date(created_at) = ?', @date).where.not(user_id: 1)%>
                 <%if @visits%>
                   <%if @visits.count != 0%>
+
                     <h4 class="text-center text-muted mb-4">Historiques de connexions le <%= params[:loggin_date].to_date %></h4>
                   <table class="table table-striped">
                     <thead class="text-muted font-weight-bolder">
@@ -58,6 +59,7 @@
                     </thead>
                     <tbody>
                     <%@visits.each do |v|%>
+                    <%if v.user_total_online_time != nil%>
                       <tr>
                         <th scope="col"><span class="text-color-secondary"><%= v.user_email%></span></th>
                         <th scope="col">
@@ -77,13 +79,14 @@
                         </th>
                         <th scope="col"><%= v.created_at.to_s(:time)%></th>
                         <th scope="col">
-                          <%if v.user_total_online_time != nil%>
+                          <%if v.user_total_online_time != nil && Time.at(((v.user_total_online_time)) * 60).utc.strftime("%H:%M:%S") <= "08:00:00"%>
                             <%= Time.at(((v.user_total_online_time)) * 60).utc.strftime("%H:%M:%S")%>
                           <%else%>
-                            
+                            00:00:00  
                           <%end%>
                         </th>
                       </tr>
+                    <%end%>
                     <%end%>
                     </tbody>
                   </table>

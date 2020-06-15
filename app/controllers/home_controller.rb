@@ -13,6 +13,7 @@ def index
        @filiere_1 = ""
        @fin_1 = ""
        @results = ""
+       @res = ""
 
 
 
@@ -29,6 +30,7 @@ def index
     end 
   end
 
+  #recherche controller globale(titre du projet)
   if params[:montant] && params[:fin]
     if params[:montant][0]== "" && params[:montant][1] == "" && params[:fin][0]== "2008" && params[:fin][1] == "2030"
        @res = Projet.where(validation: true)
