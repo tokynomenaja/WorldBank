@@ -538,7 +538,7 @@
                 <%end%>
                 <%else%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p> 
+                  <p class= 'text-muted '>La recherche ne correspond à aucun résultat</p> 
                 </div>
                 <%end%>
                 <%end%>
@@ -622,7 +622,8 @@
                 <%end%>
                 <%end%>
 
-                <%if @pro_fils && @projets == nil && @forme_projets == nil && @pro_sectfils == nil && @ptf_fil == nil && @r == nil && @d == nil &&  @zigafi == nil && @fiben == nil && @tout == nil && @forme_filieres == nil && @pro_formes == nil%>
+
+                <%if @pro_fils && @projets == nil && @forme_projets == nil && @pro_sectfils == nil  && @r == nil && @d == nil &&  @zigafi == nil && @fiben == nil && @tout == nil && @forme_filieres == nil && @pro_formes == nil && @ptf_fil == nil%>
                 <%if @pro_fils.length != 0%>
                 <% @pro_fils.uniq.each do |res| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -636,15 +637,10 @@
                 <%end%>
                 <%else%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p> 
+                  <p class= 'text-muted '>La recherche ne correspond à aucun résultat</p> 
                 </div>
                 <%end%>
                 <%end%>
-
-
-
-
-
 
                 <%if @pro_formes && @forme_projets == nil && @projets == nil && @pro_sectfils == nil && @ptf_forme == nil && @r == nil && @d == nil &&  @igafor == nil && @foben == nil && @tout == nil && @forme_filieres == nil && @appui_formes == nil%>
                 <% if @pro_formes.length != 0%>
@@ -660,7 +656,7 @@
                 <%end%>
                 <%else%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
+                  <p class= 'text-muted '>La recherche ne correspond à aucun résultat</p>  
                 </div>
                 <%end%>
                 <%end%>
@@ -736,7 +732,7 @@
                 <%end%>
                   <%else%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
+                  <p class= 'text-muted '>La recherche ne correspond à aucun résultat</p>  
                 </div>
                 <%end%>
                 <%end%>
@@ -761,8 +757,6 @@
                 <%end%>
                 <%end%>
 
-            
-           
             
                 <%if @pro_sectfils && @tout == nil%>
                 <%if @pro_sectfils.length != 0 %>
@@ -804,7 +798,7 @@
 
 
 
-                <%if @ptf && @pro_sects == nil && @ptf_fil == nil && @ptf_forme == nil && @r == nil && @d == nil && @ptf_iga == nil && @ptf_zone == nil && @pro_zones == nil && @tout == nil %>
+                <%if @ptf && @pro_sects == nil && @ptf_fil == nil && @ptf_forme == nil && @r == nil && @d == nil && @ptf_iga == nil && @ptf_zone == nil && @pro_zones == nil && @tout == nil && @asect == nil%>
                 <%if @ptf.count != 0%>
                 <% @ptf.uniq.each do |p| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -818,7 +812,7 @@
                 <%end%>
                 <%else%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p> 
+                  <p class= 'text-muted '>La recherche ne correspond à aucun résultat</p> 
                 </div> 
                 <%end%>
                 <%end%>
@@ -881,7 +875,7 @@
                 <%end%>
 
   
-                <%if @appui && @r == nil && @d == nil && @pro_sects == nil && @ptf == nil && @ptf_pro == nil && @aaa == nil  && @sia == nil && @tout == nil && @appui_formes == nil%>
+                <%if @appui && @r == nil && @d == nil && @pro_sects == nil && @ptf == nil && @ptf_pro == nil && @aaa == nil  && @sia == nil && @tout == nil && @appui_formes == nil && @asect == nil%>
                 <%if @appui.count != 0%>
                 <% @appui.each do |ip| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
