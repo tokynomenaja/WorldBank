@@ -137,8 +137,7 @@ login
   format('woff'),url('https://cdn.welcometothejungle.co/common/assets/fonts/welcomeweb-blackitalic.ttf')
   format('truetype');font-display:fallback;font-weight:700;font-style:italic;} 
   
-  html{line-height:1.15;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
-  body{margin:0;} h1{font-size:2em;margin:0.67em 0;} 
+  h1{font-size:2em;margin:0.67em 0;} 
   hr{box-sizing:content-box;height:0;overflow:visible;} 
   pre{font-family:monospace,monospace;font-size:1em;} 
   a{background-color:transparent;} 
@@ -316,8 +315,8 @@ login
 /* sc-component-id: bt96d2-12 */
 .uFupn{position:relative;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;overflow:hidden;margin-right:1.5rem;} .uFupn:last-child{margin-right:0;} .uFupn svg path{-webkit-transition:all .3s cubic-bezier(0.41,0.094,0.54,0.07);transition:all .3s cubic-bezier(0.41,0.094,0.54,0.07);} .uFupn:hover svg path{fill:#00c29a;}
 /* sc-component-id: bt96d2-13 */
-.dwLDtk{padding:0 0.8125rem;} .dwLDtk > p{color:#cfcfcf;font-weight:400;} .dwLDtk .sc-1ejeabr-19,.dwLDtk .sc-1ejeabr-25{max-width:100%;margin-top:1.5rem;}
-.search{width: 35%;top: 50%;right: 31%;}
+.dwLDtk{padding:0 0.8125rem;} .dwLDtk > p{color:#cfcfcf;font-weight:400;} .dwLDtk .sc-1ejeabr-19,.dwLDtk .sc-1ejeabr-25{width:30%;margin-top:1.5rem;margin: 0 auto;}
+.search{width: 100%;top: 50%;}
 /* sc-component-id: qjc24y-1 */
 .faObQW{position:relative;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;margin-left:-1.5rem;margin-right:-1.5rem;margin-bottom:calc(1.5rem * -2);} .faObQW > div,.faObQW > li{padding:1.5rem;padding-top:0;padding-bottom:calc(1.5rem * 2);}
 .faObQW > div,.faObQW > li{width:calc(100% / 3);-webkit-flex:0 0 auto;-ms-flex:0 0 auto;flex:0 0 auto;} .faObQW > div:nth-child(2n + 2),.faObQW > li:nth-child(2n + 2){width:33.333333333333336%;} .faObQW > div:nth-child(2n + 1),.faObQW > li:nth-child(2n + 1){width:33.333333333333336%;} 
@@ -362,8 +361,6 @@ a.position:hover{color: #ffffff;text-decoration: none;}
 .jfmoVU{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex:0 1 auto;-ms-flex:0 1 auto;flex:0 1 auto; width:100%}
 /* sc-component-id: z0fved-3 */
 .kBhqKR{position:relative;z-index:5;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;margin-left:auto;margin-right:auto;width:100%;max-width:77rem;height:3.75rem;background-color:#ffffff;border:1px solid #e6e6e6;box-shadow:0 3px 10px rgba(0,0,0,.08);border-radius:5px;}
-/* sc-component-id: z0fved-5 */
-.gOGYTl{position:-webkit-sticky;position:sticky;z-index:1;width:100%;margin-top:calc(3.75rem / -2);margin-bottom:calc(3.75rem / 2);} 
 /* sc-component-id: z0fved-6 */
 .hSVtUx{position:relative;-webkit-flex:1 1 auto;-ms-flex:1 1 auto;flex:1 1 auto;height:100%;}
 /* sc-component-id: z0fved-7 */
@@ -377,9 +374,6 @@ a.position:hover{color: #ffffff;text-decoration: none;}
 .bFlzSi .z0fved-13{opacity:1;} .bFlzSi svg{position:absolute;top:50%;left:50%;-webkit-transform:translate3d(-50%,-50%,0);-ms-transform:translate3d(-50%,-50%,0);transform:translate3d(-50%,-50%,0);opacity:0;} .bFlzSi svg path{fill:#97999d;}
 /* sc-component-id: z0fved-15 */
 .dcGOxh{display:block;position:absolute;height:2px;width:100%;background:#97999d;border-radius:6px;opacity:1;left:0;-webkit-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);-webkit-transition:all .3s cubic-bezier(0.41,0.094,0.54,0.07);transition:all .3s cubic-bezier(0.41,0.094,0.54,0.07);} .dcGOxh::before{position:absolute;top:50%;width:6px;height:6px;margin-top:-3px;margin-left:-3px;border-radius:50%;background-color:#97999d;-webkit-transition:all .3s cubic-bezier(0.41,0.094,0.54,0.07);transition:all .3s cubic-bezier(0.41,0.094,0.54,0.07);content:' ';} .dcGOxh:nth-child(1){top:0px;} .dcGOxh:nth-child(1)::before{left:20%;} .dcGOxh:nth-child(2),.dcGOxh:nth-child(3){top:9px;} .dcGOxh:nth-child(2)::before,.dcGOxh:nth-child(3)::before{left:50%;} .dcGOxh:nth-child(4){top:18px;} .dcGOxh:nth-child(4)::before{left:80%;}
-/* sc-component-id: hdl9e2-0 */
-.HXuyi{font-size:1.9375rem;font-weight:600;text-align:center;margin-top:1rem;} .HXuyi:first-child{margin-top:0;}
-/* sc-component-id: hdl9e2-2 */
 .kEKYjw{margin-bottom:3.125rem;z-index:10;text-align:center;}
 /* sc-component-id: hdl9e2-6 */
 .cZnRgl{position:relative;padding:4rem 0;background-color:#f9f9f9;} .aci59a-0 + .z0fved-5 + .cZnRgl{margin-top:-3.75rem;} .cZnRgl .sc-12bzhsi-3,.cZnRgl .hdl9e2-0,.cZnRgl .hdl9e2-4,.cZnRgl .sc-1ejeabr-12{color:#373942;} .cZnRgl .hdl9e2-1{color:#cfcfcf;}
@@ -576,14 +570,20 @@ a.position:hover{color: #ffffff;text-decoration: none;}
 .font-size{font-size: 0.9rem !important;}
 /*projets*/
 
-@media screen and (min-width: 1140px){
+@media screen and (min-width: 1220px){
   .responsive-nav{display: none;}
 }
-@media screen and (max-width: 1140px){
+@media screen and (min-width: 375px) and (max-width: 768px){
+  .burger{font-size: 3rem;cursor: pointer;}
+  .dFNvVh{display:block;width:50rem;height:auto;}
+  .search{width:400px;top: 50%;left: 0;right: 0;}
+}
+@media screen and (min-width: 768px) and (max-width: 1220px){
   .ghzkpM{display: none;}
   .responsive-nav{background-color:#31333b;z-index: 2;}
   .navbar-elem:hover{background-color: #52c39b;}
   .burger{font-size: 2rem;cursor: pointer;}
+  .dFNvVh{display:block;width:100%;height:auto;}
   .kBhqKR{height: auto;}
   .jfmoVU{display: block;}
   .feYJJO{border-bottom: 1px solid #dee2e6!important;}
@@ -605,10 +605,9 @@ a.position:hover{color: #ffffff;text-decoration: none;}
   .zone-content{left:41.9rem !important;width: auto;}
   .drop-height{max-height: 15rem;overflow: auto;}
    #scontent{width: auto;}
-   .search{width:auto;top: 50%;}
+   .search{width:100%;top: 50%;left: 0;right: 0;}
    .dwLDtk .sc-1ejeabr-19,.dwLDtk .sc-1ejeabr-25{margin-top: 0;}
 }
-
    
      .left {
        overflow-y: scroll;
@@ -639,5 +638,3 @@ a.position:hover{color: #ffffff;text-decoration: none;}
  .logoPtf{width: 230px}
  .logoPtf img{width: 300px;}
  .h3{line-height: 2.65rem;}
-
-/*new*/

@@ -1,4 +1,4 @@
-<div class="sans-head container">
+<div class="sans-head container-fluide">
 	<%if @projets.count == 0 %>
 			<div class="text-center text-muted mt-1 mb-4">
 				<p> Aucun projet créé</p>
@@ -9,7 +9,7 @@
 	</div>
 	<div class="d-flex justify-content-center flex-wrap">
 		<% @projets.each do |p|%>
-			<div class="col-md-4 mb-3">
+			<div class="col-md-12 col-lg-4 mb-3">
 				<div class="card card-height position-relative">
 					<div class="card-body">
 						<h5 class="card-title"><%= p.nom_du_projet.truncate(40) %></h5>
