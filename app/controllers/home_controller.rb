@@ -28,6 +28,12 @@ def index
     end 
   end
 
+  if params[:montant] && params[:fin]
+    if params[:montant][0]== "" && params[:montant][1] == "" && params[:fin][0]== "2008" && params[:fin][1] == "2030"
+       @res = Projet.where(validation: true)
+    end
+  end
+
   #recherhe controller ptf
  
       if params[:ptf_id]
