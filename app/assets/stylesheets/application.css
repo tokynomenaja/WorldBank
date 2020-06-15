@@ -14,7 +14,6 @@
  *= require_self
  //= require actiontext
  */
-
  html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6,label{margin:0 !important;padding:0 !important;}
  h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}
  ul{list-style:none}
@@ -95,7 +94,6 @@ login
 .mt-cust{top: 0.3rem !important; min-width: 0rem !important;cursor: pointer;}
 .doc-relative{color: #52c39b; font-size: 1rem;}
 .more-info-pub{bottom: 1rem;}
-  
 @font-face{
   font-family:welcomeweb;src:url('https://cdn.welcometothejungle.co/common/assets/fonts/welcomeweb-regular.woff2')
   format('woff2'),url('https://cdn.welcometothejungle.co/common/assets/fonts/welcomeweb-regular.woff') 
