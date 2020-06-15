@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_07_095614) do
+ActiveRecord::Schema.define(version: 2020_06_15_092256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -378,6 +378,7 @@ ActiveRecord::Schema.define(version: 2020_06_07_095614) do
     t.string "user_fonction"
     t.string "user_organisme"
     t.float "user_total_online_time"
+    t.boolean "is_signed_in"
   end
 
   create_table "zoneprojets", force: :cascade do |t|
