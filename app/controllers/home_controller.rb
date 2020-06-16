@@ -25,10 +25,10 @@ def index
         else 
           @parameter = params[:search].downcase  
           @req = Projet.where(validation: true)
-
           @results = @req.where("lower(nom_du_projet) LIKE :search", search: "%#{@parameter}%").order(id: :desc).page(params[:page]).per(9)
     end 
   end
+
 
   #recherche controller globale(titre du projet)
   if params[:montant] && params[:fin]
@@ -48,6 +48,7 @@ def index
                @params_ptf.each do |p|
               @ptf = Projet.all.where(ptf_id: params[:ptf_id], validation: true)
               @ptf_1 = Ptf.all.find(p.to_i).title 
+
           end
         end 
       end 
@@ -55,6 +56,7 @@ def index
 
 
     #recherche multiple secteur et ptf
+
     if params[:search_secteur] && params[:ptf_id] 
     if params[:search_secteur] != "" && params[:ptf_id] != ""
     
@@ -74,7 +76,10 @@ def index
     end
     end
     end
- #recherche multiple iga et ptf
+
+
+    #recherche multiple iga et ptf
+
     if params[:search_iga] && params[:ptf_id]
     if params[:search_iga] != "" && params[:ptf_id] != ""
     
@@ -99,6 +104,7 @@ def index
 
  
      #recherche multiple zone et ptf
+
     if params[:search_zone] && params[:ptf_id]
     if params[:search_zone] != "" && params[:ptf_id] != ""
     
@@ -120,6 +126,7 @@ def index
     end
 
     #recherche multiple forme et ptf
+
     if params[:search_forme] && params[:ptf_id]
     if params[:search_forme] != "" && params[:ptf_id] != ""
     
@@ -141,6 +148,7 @@ def index
     end
 
     #recherche multiple filiere et ptf
+
     if params[:search_filiere] && params[:ptf_id]
     if params[:search_filiere] != "" && params[:ptf_id] != ""
     
@@ -151,7 +159,7 @@ def index
         @ptfid.each do |f|
         @pro = Projet.all.where(ptf_id: f.to_i, validation: true)
         @pro.each do |p|
-        if p.filieres.ids.include? s.to_i
+        if p.filieres.ids.include? s.to_i 
             @ptf_fil << p
         end
       end
@@ -324,6 +332,30 @@ def index
      end
      end
 
+
+
+
+    #recherche controller  appui et secteur
+
+      if params[:appui_id] && params[:search_secteur]
+     if params[:appui_id] != "" && params[:search_secteur] != ""
+      
+      @aappui = params[:appui_id]
+      @azone = params[:search_secteur]
+      @asect = []
+         @aappui.each do |s|
+         @azone.each do |f|
+         @pro = Projet.all.where(appui_id: s.to_i, validation: true)
+         @pro.each do |p|
+         if p.secteurs.ids.include? f.to_i
+             @asect << p
+         end
+       end
+        end
+
+     end
+     end
+     end
       #recherche controller  appui et forme
 
     if params[:appui_id] && params[:search_forme]
@@ -570,6 +602,7 @@ def index
         end  
       end
     end
+
   #recherche controller  zone et filiere
 
      if params[:search_zone] && params[:search_filiere]
@@ -686,7 +719,9 @@ end
     end
     end
 end
+
 #recherche IGA et forme
+
   if params[:search_iga]   && params[:search_forme] 
       if params[:search_iga] != ""  && params[:search_forme] != ""
      @pro = Projet.all.where(validation: true)
@@ -706,7 +741,9 @@ end
     end
     end
 end
+
   # recherche IGA et Beneficiaire
+
     if params[:search_iga]   && params[:search_ben] 
       if params[:search_iga] != ""  && params[:search_ben] != ""
      @pro = Projet.all.where(validation: true)
@@ -714,9 +751,8 @@ end
      @prben = params[:search_ben]
      @igaben = []
         @priga.each do |s|
-      
-          @prben.each do |fi|
-     @pro.each do |p|
+        @prben.each do |fi|
+      @pro.each do |p|
         if  (p.igas.ids.include? s.to_i) && (p.beneficiaires.ids.include?fi.to_i)
             @igaben << p
         end
@@ -728,6 +764,7 @@ end
 end
 
 # recherche IGA et secteur
+
   if params[:search_iga]   && params[:search_secteur] 
       if params[:search_iga] != ""  && params[:search_secteur] != ""
      @pro = Projet.all.where(validation: true)
@@ -749,7 +786,8 @@ end
 end
 
      # recherche IGA et nature d'appui
-       if params[:search_iga]   && params[:appui_id] 
+
+       if params[:search_iga] && params[:appui_id] 
            if params[:search_iga] != ""  && params[:appui_id] != ""
           @prig = params[:search_iga]
           @pra = params[:appui_id]
@@ -795,6 +833,7 @@ end
 
 
     #recherche multiple secteur et filière
+
     if params[:search_secteur] && params[:search_filiere]  && params[:search_forme] == ""
      @pro = Projet.all.where(validation: true)
      @psect = params[:search_secteur]
@@ -813,6 +852,7 @@ end
     end
 
     #Recherche multiple secteurs et formes
+
     if params[:search_secteur] && params[:search_forme]  && params[:search_filiere] == ""
      @pro = Projet.all.where(validation: true)
      @psect = params[:search_secteur]
@@ -833,6 +873,7 @@ end
 
 
     #Recherche multiple filières et formes
+
     if params[:search_filiere] && params[:search_forme] && params[:search_secteur] == ""
      @pro = Projet.all.where(validation: true)
      @pfil = params[:search_filiere]
@@ -851,9 +892,61 @@ end
       end
       end
 
+ #Recherche multiple secteurs , appui , formes et ptf
+    if params[:search_secteur] && params[:search_forme] && params[:appui_id] && params[:ptf_id]
+     @psect = params[:search_secteur]
+     @pforme = params[:search_forme]
+     @pappui = params[:appui_id]
+     @pptf = params[:ptf_id]
+
+     @pro_sectptf = []
+
+        @psect.each do |s|
+        @pforme.each do |fo|
+        @pptf.each do |t|
+        @pappui.each do |ap|
+            @pro = Projet.all.where(appui_id: ap.to_i,validation: true)
+     @pro.each do |p|
+        if (p.secteurs.ids.include?s.to_i)  && (p.formes.ids.include?fo.to_i) && (p.ptf_id == t.to_i)
+            @pro_sectptf << p
+        end
+      end
+      end
+      end 
+      end
+      end
+    end
+
+  #Recherche multiple secteurs , appui , formes et ptf
+    if params[:search_iga] && params[:search_filiere] && params[:search_zone] && params[:ptf_id]
+     @piga = params[:search_iga]
+     @pfiliere = params[:search_filiere]
+     @pzone = params[:search_zone]
+     @pptf = params[:ptf_id]
+
+     @pro_igfizo = []
+
+        @piga.each do |s|
+        @pfiliere.each do |fo|
+        @pzone.each do |t|
+        @pptf.each do |ap|
+            @pro = Projet.all.where(ptf_id: ap.to_i,validation: true)
+     @pro.each do |p|
+        if (p.igas.ids.include?s.to_i)  && (p.filieres.ids.include?fo.to_i) && (p.zones == t.to_i)
+            @pro_igfizo << p
+        end
+      end
+      end
+      end 
+      end
+      end
+    end
+
+
 
 
     #Recherche multiple secteurs , filieres et formes
+
     if params[:search_secteur] && params[:search_forme] && params[:search_filiere]
      @pro = Projet.all.where(validation: true)
      @psect = params[:search_secteur]
@@ -874,15 +967,16 @@ end
       end
 
        #recherche multiple zone, IGA et filiere
+
     if params[:search_zone] && params[:search_iga] && params[:search_filiere] 
         if params[:search_zone] && params[:search_iga] && params[:search_filiere] != ""
-      @pro = Projet.all.where(validation: true)
+        @pro = Projet.all.where(validation: true)
      @pzone = params[:search_zone]
      @piga = params[:search_iga]
      @pfiliere = params[:search_filiere]
      @zif = []
         @pzone.each do |s|
-        @piga.each do |f|
+        @piga.each do  |f|
         @pfiliere.each do |fo|
      @pro.each do |p|
         if (p.zones.ids.include? s.to_i) && (p.igas.ids.include?f.to_i) && (p.filieres.ids.include?fo.to_i) 
@@ -894,7 +988,9 @@ end
       end
       end
     end
+
     #recherche multiple secteur, IGA et nature d'appui
+
     if params[:search_secteur] && params[:search_iga] && params[:appui_id] 
           if params[:search_secteur] && params[:search_iga] && params[:appui_id] != ""
          @pro = Projet.all.where(validation: true)
@@ -903,8 +999,8 @@ end
      @pappui = params[:appui_id]
      @sia = []
         @psect.each do |s|
-        @pappui.each do |f|
-        @piga.each do |fo|
+        @pappui.each do|f|
+        @piga.each do  |fo|
      @pro.each do |p|
         if (p.appui_id == f.to_i) && (p.secteurs.ids.include?s.to_i) && (p.igas.ids.include?fo.to_i) 
             @sia << p
@@ -938,6 +1034,7 @@ end
 end
 
 #recherche multiple filière et beneficiaire
+
  if params[:search_filiere]   && params[:search_ben]  
       if params[:search_filiere] && params[:search_ben] != ""
      @pro = Projet.all.where(validation: true)
@@ -958,6 +1055,7 @@ end
 end
 
 # recherche multiple forme et beneficiaire
+
  if params[:search_forme]   && params[:search_ben]  
       if params[:search_forme] && params[:search_ben] != ""
      @pro = Projet.all.where(validation: true)
@@ -976,7 +1074,10 @@ end
     end
     end
 end
+
+
 #recherche multiple zone et beneficiaire
+
  if params[:search_zone]   && params[:search_ben]  
       if params[:search_zone] && params[:search_ben] != ""
      @pro = Projet.all.where(validation: true)
