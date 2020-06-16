@@ -72,5 +72,31 @@
         </div>
         <a href="#" class="text-white"><div class="border-bottom p-3 navbar-elem">Nous contacter</div></a>
         <%=link_to 'Se déconnecter', destroy_user_session_path, method: :delete, class: 'fwuAZd text-white border-bottom p-3 navbar-elem'%>
+
+      <%= form_tag(root_path, :method => "get", class: 'sc-1ejeabr-19 gQwHOW text-white') do %>
+        <div class="d-flex justify-content-between bg-white align-items-center form-control pr-0 border-bottom m-3 px-2 py-0 navbar-elem">
+            <%= search_field_tag :search, params[:search], placeholder: "Rechercher", class: "reset-search-input"%>
+            <% if current_user %> 
+              <% if current_user.is_consultant == true || current_user.is_consultant == false || current_user.is_super_admin == true || current_user.is_admin == true%>
+                <button tabindex="0" type="submit" variant="primary" class="reset-search-input-default border-left px-1 pt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="icon-search" viewBox="-1 0 136 136.21852" height="30px" width="35px">
+                    <g id="surface1">
+                    <path d="M 93.148438 80.832031 C 109.5 57.742188 104.03125 25.769531 80.941406 9.421875 C 57.851562 -6.925781 25.878906 -1.460938 9.53125 21.632812 C -6.816406 44.722656 -1.351562 76.691406 21.742188 93.039062 C 38.222656 104.707031 60.011719 105.605469 77.394531 95.339844 L 115.164062 132.882812 C 119.242188 137.175781 126.027344 137.347656 130.320312 133.269531 C 134.613281 129.195312 134.785156 122.410156 130.710938 118.117188 C 130.582031 117.980469 130.457031 117.855469 130.320312 117.726562 Z M 51.308594 84.332031 C 33.0625 84.335938 18.269531 69.554688 18.257812 51.308594 C 18.253906 33.0625 33.035156 18.269531 51.285156 18.261719 C 69.507812 18.253906 84.292969 33.011719 84.328125 51.234375 C 84.359375 69.484375 69.585938 84.300781 51.332031 84.332031 C 51.324219 84.332031 51.320312 84.332031 51.308594 84.332031 Z M 51.308594 84.332031 " style=" stroke:none;fill-rule:nonzero;fill:#52c39b;fill-opacity:1;"/>
+                    </g>
+                  </svg>
+                </button>
+              <%end%>
+            <%else%>
+              <a href="<%= new_user_session_path%>" class="border-left px-1 pt-1">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="icon-search" viewBox="-1 0 136 136.21852" height="30px" width="35px">
+                  <g id="surface1">
+                  <path d="M 93.148438 80.832031 C 109.5 57.742188 104.03125 25.769531 80.941406 9.421875 C 57.851562 -6.925781 25.878906 -1.460938 9.53125 21.632812 C -6.816406 44.722656 -1.351562 76.691406 21.742188 93.039062 C 38.222656 104.707031 60.011719 105.605469 77.394531 95.339844 L 115.164062 132.882812 C 119.242188 137.175781 126.027344 137.347656 130.320312 133.269531 C 134.613281 129.195312 134.785156 122.410156 130.710938 118.117188 C 130.582031 117.980469 130.457031 117.855469 130.320312 117.726562 Z M 51.308594 84.332031 C 33.0625 84.335938 18.269531 69.554688 18.257812 51.308594 C 18.253906 33.0625 33.035156 18.269531 51.285156 18.261719 C 69.507812 18.253906 84.292969 33.011719 84.328125 51.234375 C 84.359375 69.484375 69.585938 84.300781 51.332031 84.332031 C 51.324219 84.332031 51.320312 84.332031 51.308594 84.332031 Z M 51.308594 84.332031 " style=" stroke:none;fill-rule:nonzero;fill:#52c39b;fill-opacity:1;"/>
+                  </g>
+                </svg>
+              </a>
+            <%end%> 
+        </div>  
+      <%end%>
+
       </nav>
     </nav>
