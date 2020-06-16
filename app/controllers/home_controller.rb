@@ -917,7 +917,7 @@ end
       end
     end
 
-  #Recherche multiple secteurs , appui , formes et ptf
+  #Recherche multiple iga , filiere , zone et ptf
     if params[:search_iga] && params[:search_filiere] && params[:search_zone] && params[:ptf_id]
      @piga = params[:search_iga]
      @pfiliere = params[:search_filiere]
@@ -932,7 +932,7 @@ end
         @pptf.each do |ap|
             @pro = Projet.all.where(ptf_id: ap.to_i,validation: true)
      @pro.each do |p|
-        if (p.igas.ids.include?s.to_i)  && (p.filieres.ids.include?fo.to_i) && (p.zones == t.to_i)
+        if (p.igas.ids.include?s.to_i)  && (p.filieres.ids.include?fo.to_i) && (p.zones.include?t.to_i)
             @pro_igfizo << p
         end
       end
