@@ -29,8 +29,7 @@ def index
     end 
   end
 
-<<<<<<< HEAD
-=======
+
   #recherche controller globale(titre du projet)
   if params[:montant] && params[:fin]
     if params[:montant][0]== "" && params[:montant][1] == "" && params[:fin][0]== "2008" && params[:fin][1] == "2030"
@@ -38,7 +37,6 @@ def index
     end
   end
 
->>>>>>> e129d872d6c7c981dbb210f5beaf0abe26fb4d6e
   #recherhe controller ptf
  
       if params[:ptf_id]
@@ -789,7 +787,7 @@ end
 
      # recherche IGA et nature d'appui
 
-       if params[:search_iga]   && params[:appui_id] 
+       if params[:search_iga] && params[:appui_id] 
            if params[:search_iga] != ""  && params[:appui_id] != ""
           @prig = params[:search_iga]
           @pra = params[:appui_id]
@@ -893,6 +891,57 @@ end
      
       end
       end
+
+ #Recherche multiple secteurs , appui , formes et ptf
+    if params[:search_secteur] && params[:search_forme] && params[:appui_id] && params[:ptf_id]
+     @psect = params[:search_secteur]
+     @pforme = params[:search_forme]
+     @pappui = params[:appui_id]
+     @pptf = params[:ptf_id]
+
+     @pro_sectptf = []
+
+        @psect.each do |s|
+        @pforme.each do |fo|
+        @pptf.each do |t|
+        @pappui.each do |ap|
+            @pro = Projet.all.where(appui_id: ap.to_i,validation: true)
+     @pro.each do |p|
+        if (p.secteurs.ids.include?s.to_i)  && (p.formes.ids.include?fo.to_i) && (p.ptf_id == t.to_i)
+            @pro_sectptf << p
+        end
+      end
+      end
+      end 
+      end
+      end
+    end
+
+  #Recherche multiple secteurs , appui , formes et ptf
+    if params[:search_iga] && params[:search_filiere] && params[:search_zone] && params[:ptf_id]
+     @piga = params[:search_iga]
+     @pfiliere = params[:search_filiere]
+     @pzone = params[:search_zone]
+     @pptf = params[:ptf_id]
+
+     @pro_igfizo = []
+
+        @piga.each do |s|
+        @pfiliere.each do |fo|
+        @pzone.each do |t|
+        @pptf.each do |ap|
+            @pro = Projet.all.where(ptf_id: ap.to_i,validation: true)
+     @pro.each do |p|
+        if (p.igas.ids.include?s.to_i)  && (p.filieres.ids.include?fo.to_i) && (p.zones == t.to_i)
+            @pro_igfizo << p
+        end
+      end
+      end
+      end 
+      end
+      end
+    end
+
 
 
 

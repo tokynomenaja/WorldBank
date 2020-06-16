@@ -522,7 +522,7 @@
                 <%end%>
                 <%end%>
 
-                <%if @res != "" && @r == nil && @d == nil && @pro_zones == nil && @pro_bens == nil && @pro_igas == nil && @pro_fils == nil && @pro_formes == nil && @appui == nil && @pro_sects == nil && @ptf == nil%>
+                <%if @res != "" && @r == nil && @d == nil && @pro_zones == nil && @pro_bens == nil && @pro_igas == nil && @pro_fils == nil && @pro_formes == nil && @appui == nil && @pro_sects == nil && @ptf == nil %>
                 <%if @res.count != 0%>
                 <%@res.each do | result|%>
                 <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -561,7 +561,7 @@
                 <%end%>
                 <%end%>
 
-                <%if @ziga && @tout == nil%>
+                <%if @ziga && @tout == nil && @pro_igfizo == nil%>
                 <%if @ziga.length != 0%>
                 <% @ziga.uniq.each do |res| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -580,7 +580,7 @@
                 <%end%>
                 <%end%>
 
-                <%if @zigafi && @tout == nil%>
+                <%if @zigafi && @tout == nil && @pro_igfizo == nil%>
                 <%if @zigafi.length != 0%>
                 <% @zigafi.uniq.each do |res| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -588,7 +588,27 @@
                     <%= link_to "#{res.nom_du_projet}", projet_path(res.id), target: 'blank', class: 'text-muted reshover' %>
                     </div>
                     <div class="col-4 text-center">
-                      <span class="table"><%= res.ptf.title %></span>
+                      <span class="tablePrint"><%= res.ptf.title %></span>
+                    </div>
+                  </div> 
+                <%end%>
+                <%else%>
+                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                  <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p> 
+                </div>
+                <%end%>
+                <%end%>
+
+
+                <%if @pro_igfizo && @tout == nil%>
+                <%if @pro_igfizo.length != 0%>
+                <% @pro_igfizo.uniq.each do |res| %>  
+                  <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
+                    <div class="col-8">
+                    <%= link_to "#{res.nom_du_projet}", projet_path(res.id), target: 'blank', class: 'text-muted reshover' %>
+                    </div>
+                    <div class="col-4 text-center">
+                      <span class="tablePrint"><%= res.ptf.title %></span>
                     </div>
                   </div> 
                 <%end%>
@@ -660,7 +680,7 @@
                 <%end%>
                 <%end%>
 
-                <%if @pro_formes && @forme_projets == nil && @projets == nil && @pro_sectfils == nil && @ptf_forme == nil && @r == nil && @d == nil &&  @igafor == nil && @foben == nil && @tout == nil && @forme_filieres == nil && @appui_formes == nil%>
+                <%if @pro_formes && @forme_projets == nil && @projets == nil && @pro_sectfils == nil && @ptf_forme == nil && @r == nil && @d == nil &&  @igafor == nil && @foben == nil && @tout == nil && @forme_filieres == nil && @appui_formes == nil && @pro_sectptf == nil%>
                 <% if @pro_formes.length != 0%>
                 <% @pro_formes.uniq.each do |rs| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -736,7 +756,7 @@
                 <%end%>
                 <%end%>
 
-                <%if @pro_sects && @filiere == nil && @forme == nil && @r == nil && @ptf_pro == nil && @ptf_fil == nil && @d == nil && @sszone == nil && @aaa == nil && @tout == nil && @pro_zones == nil%>
+                <%if @pro_sects && @filiere == nil && @forme == nil && @r == nil && @ptf_pro == nil && @ptf_fil == nil && @d == nil && @sszone == nil && @aaa == nil && @tout == nil && @pro_zones == nil && @pro_sectptf == nil%>
                 <%if @pro_sects.length != 0  %>
                 <% @pro_sects.uniq.each do |b|%>               
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -795,7 +815,26 @@
                 <%end%>
                 <%end%>
 
-                <%if @ptf_zone && @tout == nil%>
+                <%if @pro_sectptf && @tout == nil%>
+                <%if @pro_sectptf.length != 0 %>
+                <% @pro_sectptf.uniq.each do |b|%>               
+                  <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
+                    <div class="col-8">
+                      <%= link_to "#{b.nom_du_projet}", projet_path(b.id), target: 'blank', class: 'text-muted reshover' %>
+                    </div>
+                    <div class="col-4 text-center">
+                      <span class="tablePrint"><%= b.ptf.title %></span>
+                    </div>
+                  </div>
+                <%end%>
+                  <%else%>
+                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                  <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
+                </div>
+                <%end%>
+                <%end%>
+
+                <%if @ptf_zone && @tout == nil && @pro_igfizo == nil%>
                 <%if @ptf_zone.length != 0 %>
                 <% @ptf_zone.uniq.each do |b|%>               
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -816,7 +855,7 @@
 
 
 
-                <%if @ptf && @pro_sects == nil && @ptf_fil == nil && @ptf_forme == nil && @r == nil && @d == nil && @ptf_iga == nil && @ptf_zone == nil && @pro_zones == nil && @tout == nil && @asect == nil%>
+                <%if @ptf && @pro_sects == nil && @ptf_fil == nil && @ptf_forme == nil && @r == nil && @d == nil && @ptf_iga == nil && @ptf_zone == nil && @pro_zones == nil && @tout == nil && @asect == nil && @pro_sectptf == nil%>
                 <%if @ptf.count != 0%>
                 <% @ptf.uniq.each do |p| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -835,7 +874,7 @@
                 <%end%>
                 <%end%>
 
-                <%if @ptf_pro && @r == nil && @d == nil && @tout == nil%>
+                <%if @ptf_pro && @r == nil && @d == nil && @tout == nil && @pro_sectptf == nil%>
                 <%if @ptf_pro.length != 0%>
                 <% @ptf_pro.uniq.each do |p| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -854,7 +893,7 @@
                 <%end%>
                 <%end%>
 
-                <%if @ptf_fil && @r == nil && @d == nil && @tout == nil%>
+                <%if @ptf_fil && @r == nil && @d == nil && @tout == nil && @pro_igfizo == nil%>
                 <%if @ptf_fil.length != 0%>
                 <% @ptf_fil.uniq.each do |p| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -873,7 +912,7 @@
                 <%end%>
                 <%end%>
 
-                <%if @ptf_forme && @r == nil && @d == nil && @tout == nil%>
+                <%if @ptf_forme && @r == nil && @d == nil && @tout == nil && @pro_sectptf == nil%>
                 <%if @ptf_forme.length != 0%>
                 <% @ptf_forme.uniq.each do |p| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -893,7 +932,7 @@
                 <%end%>
 
   
-                <%if @appui && @r == nil && @d == nil && @pro_sects == nil && @ptf == nil && @ptf_pro == nil && @aaa == nil  && @sia == nil && @tout == nil && @appui_formes == nil && @asect == nil%>
+                <%if @appui && @r == nil && @d == nil && @pro_sects == nil && @ptf == nil && @ptf_pro == nil && @aaa == nil  && @sia == nil && @tout == nil && @appui_formes == nil && @asect == nil && @pro_sectptf == nil%>
                 <%if @appui.count != 0%>
                 <% @appui.each do |ip| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -912,7 +951,7 @@
                 <%end%>
                 <%end%>
 
-                <%if @appui_formes && @tout == nil%>
+                <%if @appui_formes && @tout == nil && @pro_sectptf == nil%>
                 <%if @appui_formes.count != 0%>
                 <% @appui_formes.each do |ip| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
