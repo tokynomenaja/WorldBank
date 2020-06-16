@@ -499,7 +499,7 @@
             <div class="col-sm-8 pl-2">
               <div>
        
-
+               <!-- Résultat de barre de recherche --> 
                 <%if @results != ""%>
                 <%if @results.count != 0%>
                 <%@results.each do | result|%>
@@ -522,6 +522,7 @@
                 <%end%>
                 <%end%>
 
+                <!-- Résultat de filtre en global --> 
                 <%if @res != "" && @r == nil && @d == nil && @pro_zones == nil && @pro_bens == nil && @pro_igas == nil && @pro_fils == nil && @pro_formes == nil && @appui == nil && @pro_sects == nil && @ptf == nil %>
                 <%if @res.count != 0%>
                 <%@res.each do | result|%>
@@ -542,6 +543,7 @@
                 <%end%>
                 <%end%>
 
+                <!-- Projet par Région --> 
                 <%if @pro_zones && @tout == nil && @ziga == nil && @aaa == nil%>
                 <%if @pro_zones.length != 0%>
                 <% @pro_zones.uniq.each do |res| %>  
@@ -561,6 +563,7 @@
                 <%end%>
                 <%end%>
 
+                <!-- Iga - Zone --> 
                 <%if @ziga && @tout == nil && @pro_igfizo == nil%>
                 <%if @ziga.length != 0%>
                 <% @ziga.uniq.each do |res| %>  
@@ -580,6 +583,7 @@
                 <%end%>
                 <%end%>
 
+                <!-- Iga - Filiere --> 
                 <%if @zigafi && @tout == nil && @pro_igfizo == nil%>
                 <%if @zigafi.length != 0%>
                 <% @zigafi.uniq.each do |res| %>  
@@ -599,7 +603,7 @@
                 <%end%>
                 <%end%>
 
-
+                <!-- Iga-Filiere-Zone-Ptf --> 
                 <%if @pro_igfizo && @tout == nil%>
                 <%if @pro_igfizo.length != 0%>
                 <% @pro_igfizo.uniq.each do |res| %>  
@@ -619,7 +623,7 @@
                 <%end%>
                 <%end%>
 
-
+                <!-- Secteur – Région -->
                 <%if @sszone && @pro_zones == nil && @tout == nil  && @zoben == nil%>
                 <%if @sszone.length != 0%>
                 <% @sszone.uniq.each do |res| %>  
@@ -638,7 +642,8 @@
                 </div>
                 <%end%>
                 <%end%>
-             
+                
+                <!-- Projet par iga -->
                 <%if @pro_igas && @r == nil && @d == nil && @ziga == nil && @zigafi == nil && @igafor == nil && @igaben == nil && @igasect == nil && @igaa == nil && @sia == nil && @tout == nil && @zigafi == nil%>
                 <%if @pro_igas.length != 0%>
                 <% @pro_igas.uniq.each do |res| %>  
@@ -660,7 +665,7 @@
                 <%end%>
                 <%end%>
 
-
+                <!-- Projet par Filière -->
                 <%if @pro_fils && @projets == nil && @forme_projets == nil && @pro_sectfils == nil  && @r == nil && @d == nil &&  @zigafi == nil && @fiben == nil && @tout == nil && @forme_filieres == nil && @pro_formes == nil && @ptf_fil == nil%>
                 <%if @pro_fils.length != 0%>
                 <% @pro_fils.uniq.each do |res| %>  
@@ -680,6 +685,7 @@
                 <%end%>
                 <%end%>
 
+                <!-- Projet par forme d'appui -->
                 <%if @pro_formes && @forme_projets == nil && @projets == nil && @pro_sectfils == nil && @ptf_forme == nil && @r == nil && @d == nil &&  @igafor == nil && @foben == nil && @tout == nil && @forme_filieres == nil && @appui_formes == nil && @pro_sectptf == nil%>
                 <% if @pro_formes.length != 0%>
                 <% @pro_formes.uniq.each do |rs| %>  
@@ -699,6 +705,7 @@
                 <%end%>
                 <%end%>
 
+                <!-- Secteur – Forme -->
                 <%if @forme_projets && @tout == nil%>
                 <%if @forme_projets.length != 0 %>
                 <% @forme_projets.uniq.each do |b|%>               
@@ -718,6 +725,7 @@
                 <%end%>
                 <%end%>
 
+                <!-- Secteur – Filiere -->
                 <%if @projets && @tout == nil%>
                 <%if @projets.length != 0 %>
                 <% @projets.uniq.each do |b|%>               
@@ -737,6 +745,8 @@
                 <%end%>
                 <%end%>
 
+
+                <!-- Recherche pour toutes les filtres -->
                 <%if @tout%>
                 <%if @tout.length != 0 %>
                 <% @tout.uniq.each do |b|%>               
@@ -756,6 +766,7 @@
                 <%end%>
                 <%end%>
 
+                <!-- Projet par secteurs -->
                 <%if @pro_sects && @filiere == nil && @forme == nil && @r == nil && @ptf_pro == nil && @ptf_fil == nil && @d == nil && @sszone == nil && @aaa == nil && @tout == nil && @pro_zones == nil && @pro_sectptf == nil%>
                 <%if @pro_sects.length != 0  %>
                 <% @pro_sects.uniq.each do |b|%>               
@@ -775,7 +786,7 @@
                 <%end%>
                 <%end%>
 
-
+                <!-- Forme - Filiere -->
                 <%if @forme_filieres && @tout == nil%>
                 <%if @forme_filieres.length != 0 %>
                 <% @forme_filieres.uniq.each do |b|%>               
@@ -795,7 +806,7 @@
                 <%end%>
                 <%end%>
 
-            
+                <!-- Secteur-Filieres-Formes -->
                 <%if @pro_sectfils && @tout == nil%>
                 <%if @pro_sectfils.length != 0 %>
                 <% @pro_sectfils.uniq.each do |b|%>               
@@ -815,6 +826,8 @@
                 <%end%>
                 <%end%>
 
+
+                <!-- Secteur-Appui-Forme-Ptf -->
                 <%if @pro_sectptf && @tout == nil%>
                 <%if @pro_sectptf.length != 0 %>
                 <% @pro_sectptf.uniq.each do |b|%>               
@@ -834,6 +847,7 @@
                 <%end%>
                 <%end%>
 
+                <!-- Ptf - Zone -->
                 <%if @ptf_zone && @tout == nil && @pro_igfizo == nil%>
                 <%if @ptf_zone.length != 0 %>
                 <% @ptf_zone.uniq.each do |b|%>               
@@ -854,7 +868,7 @@
                 <%end%>
 
 
-
+                <!-- Projet par PTF -->
                 <%if @ptf && @pro_sects == nil && @ptf_fil == nil && @ptf_forme == nil && @r == nil && @d == nil && @ptf_iga == nil && @ptf_zone == nil && @pro_zones == nil && @tout == nil && @asect == nil && @pro_sectptf == nil%>
                 <%if @ptf.count != 0%>
                 <% @ptf.uniq.each do |p| %>  
@@ -874,6 +888,7 @@
                 <%end%>
                 <%end%>
 
+                <!-- Ptf – Secteur   -->
                 <%if @ptf_pro && @r == nil && @d == nil && @tout == nil && @pro_sectptf == nil%>
                 <%if @ptf_pro.length != 0%>
                 <% @ptf_pro.uniq.each do |p| %>  
@@ -893,6 +908,7 @@
                 <%end%>
                 <%end%>
 
+                <!-- Ptf – Filiere  -->
                 <%if @ptf_fil && @r == nil && @d == nil && @tout == nil && @pro_igfizo == nil%>
                 <%if @ptf_fil.length != 0%>
                 <% @ptf_fil.uniq.each do |p| %>  
@@ -912,6 +928,7 @@
                 <%end%>
                 <%end%>
 
+                <!-- Ptf – Forme -->
                 <%if @ptf_forme && @r == nil && @d == nil && @tout == nil && @pro_sectptf == nil%>
                 <%if @ptf_forme.length != 0%>
                 <% @ptf_forme.uniq.each do |p| %>  
@@ -931,7 +948,7 @@
                 <%end%>
                 <%end%>
 
-  
+                <!-- Projet par nature d'appui -->
                 <%if @appui && @r == nil && @d == nil && @pro_sects == nil && @ptf == nil && @ptf_pro == nil && @aaa == nil  && @sia == nil && @tout == nil && @appui_formes == nil && @asect == nil && @pro_sectptf == nil%>
                 <%if @appui.count != 0%>
                 <% @appui.each do |ip| %>  
@@ -951,6 +968,7 @@
                 <%end%>
                 <%end%>
 
+                <!-- Appui – Forme -->
                 <%if @appui_formes && @tout == nil && @pro_sectptf == nil%>
                 <%if @appui_formes.count != 0%>
                 <% @appui_formes.each do |ip| %>  
@@ -970,6 +988,7 @@
                 <%end%>
                 <%end%>
 
+                <!-- Appui – Zone   -->
                 <%if @aaa && @tout == nil%>
                 <%if @aaa.count != 0%>
                 <% @aaa.each do |ip| %>  
@@ -990,7 +1009,7 @@
                 <%end%>
 
 
-
+                <!-- Projet par beneficiaire -->
                 <%if @pro_bens && @r == nil && @d == nil && @tout == nil && @zoben == nil%>
                 <%if @pro_bens.length != 0%>
                 <% @pro_bens.uniq.each do |res| %>  
@@ -1011,8 +1030,7 @@
                 <%end%>
 
 
-                
-
+                <!-- Projet par période -->
                 <%if @d && @tout == nil%>
                 <%if @d.length != 0%>
                 <% @d.each do |f| %>  
@@ -1032,6 +1050,7 @@
               <%end%>
               <%end%>
 
+              <!-- Projet par montant -->
               <%if @r && @d == nil && @tout == nil%>
               <%if @r.count != 0%>
               <%@r.uniq.each do |m|%>
