@@ -15,8 +15,8 @@
 						<h5 class="card-title"><%= p.nom_du_projet.truncate(40) %></h5>
 						<p class="card-text mt-3"><%= raw truncate(sanitize(p.objectif_generale_du_projet, tags: []), length: 100)%></p>
 						<div class="row align-items-center mt-2 position-absolute card-foot">
-							<a href="<%= admin_projet_path(p.id)%>" class="col tablePrint mb-0">Voir</a>
-							<p class="text-right mr-3">							
+							<p class="col-sm ml-3"><a href="<%= admin_projet_path(p.id)%>" class="tablePrint mb-0">Voir</a></p>
+							<p class="text-right mr-3 validation-projet">							
 							<%if p.validation == false && p.revalid == false && p.rejet == nil%>
 								<span class="badge badge-info">En attente de validation</span>	
 							<%elsif p.validation == nil && p.rejet == nil && p.revalid == false%>

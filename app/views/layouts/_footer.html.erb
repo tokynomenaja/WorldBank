@@ -1,7 +1,7 @@
 <footer class="bt96d2-0 foCkmu pt-2 pb-3 mt-4">
   <div class="sc-11unfkk-2 fxFQyp">
-    <div class="bt96d2-1 row align-items-start knxWdP">
-      <div class="bt96d2-2 cNrxHZ cust p-2 col-md-4 bg-white rounded">
+    <div class="bt96d2-1 row align-items-start">
+      <div class="bt96d2-2 cNrxHZ cust p-2 col-12 col-md-4 bg-white rounded">
         <div class="wbg-w mx-auto">
           <a class="bt96d2-3" href="https://www.worldbank.org/" target="_blank">
             <%= image_tag "/wbg.jpg"%>
@@ -13,7 +13,7 @@
           </a>
         </div>
       </div>
-      <div class="bt96d2-2 cNrxHZ col-md-8 pt-2 pb-3">
+      <div class="bt96d2-2 cNrxHZ col-12 col-md-8 pt-2 pb-3">
         <h4 class="bt96d2-6 bGYjCP">
           <span id="apropos">À propos</span>
         </h4>
@@ -32,9 +32,11 @@
 </footer>
 <section>
   <div class="bg-white">
-    <div class="d-flex align-items-center justify-content-around mb-4">
+    <div class="d-flex align-items-center justify-content-around mb-4 b-footer wrapping-footer">
       <%Ptf.all.order(:title).each do |p|%>
-        <a href="https://<%= p.lien.remove('https://')%>" class="mx-2" target="_blank"><img src="<%= p.image_url%>" class="image-c<%=p.id%>" alt=""></a>
+        <div class="b-footer-center mx-2">
+          <a href="https://<%= p.lien.remove('https://')%>" target="_blank"><img src="<%= p.image_url%>" class="image-c<%=p.id%>" alt=""></a>
+        </div>
       <%end%>
     </div>
   </div>

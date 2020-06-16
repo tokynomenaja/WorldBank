@@ -161,6 +161,17 @@ $(document).on('turbolinks:load', function() {
 		$("#range-content").addClass("toggleclass")
 		$("#iga-check").addClass("toggleclass")
 	})
+
+	$("#filter-btn-open").click(function(e){
+		$("#filter-display").toggleClass("toggleclass")
+	})
+	// $("#filter-btn-close").click(function(e){
+	// 	$("#filter-display").toggleClass("toggleclass")
+	// 	$("#filter-btn-open").show()
+	// 	$("#filter-btn-close").hide()
+	// })
+
+
 // validation compteur de mot objectif general
 	var wordLen = 150;
 	var len; // Maximum word length
