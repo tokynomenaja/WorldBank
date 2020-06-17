@@ -70,6 +70,7 @@ body{background: #f9f9f9 !important;}
     cursor: pointer;
     font-family: welcomeweb;
 }
+.pub-width{max-width: 100%;}
 .btn-bg-primary{background-color: #52c39b !important;}
 .bg-fiche{background-color: rgba(82, 195, 155, 0.8) !important;line-height: 2.65rem;}
 .text-color-secondary{color: #52c39b !important;}
@@ -600,7 +601,7 @@ background: #fff3;
  .logoPtf{width: 230px}
  .logoPtf img{width: 300px;}
  .h3{line-height: 2.65rem;}
-@media only screen and (max-width: 360px) {
+@media only screen and (max-width: 414px) {
   /*CONNEXION*/
 .login {max-width: 100% !important; padding: 8px !important; text-align: center !important; background-color: #FFFFFF !important;border: none !important;}
 .form-content{width: 100% !important;}
@@ -617,6 +618,7 @@ background: #fff3;
   .eyAIuG{height: 15rem;}
   .search{top: 25% !important;}
   .img-filter{width: 1.5rem;}
+  .hide-filter{display: none !important;}
   #filter-btn-close{display: none !important;}
   .filtre-margin-top{margin-top: 0.5rem;}
   .ghzkpM{display: none;}
@@ -646,7 +648,7 @@ background: #fff3;
   .zone-content{left:41.9rem !important;width: auto;}
   .drop-height{max-height: 15rem;overflow: auto;}
    #scontent{width: auto;}
-   .dwLDtk .sc-1ejeabr-19,.dwLDtk .sc-1ejeabr-25{margin-top: 0;}
+   .publication-head, .dwLDtk .sc-1ejeabr-19,.dwLDtk .sc-1ejeabr-25{margin-top: 0;}
    /*Filtre*/
   /*.gOGYTl{display: block; !important;}*/
   /*===========*/
@@ -658,12 +660,27 @@ background: #fff3;
   
 
   /*PROJETS*/
-  .card-height{height: 19rem}
+  .card-height{height: 14rem}
   .validation-projet{margin-left: 1rem !important;margin-top: 0.25rem !important;}
+  .card-text-md{display: none !important;}
+  .card-text-sm{display: block !important;}
+  #text-left-pers{text-align: left!important;}
+
+  /*new projet*/
+
+
+
+
   /*==============*/
+  /*PUBLICATION*/
+
+  /*ACTUS*/
+  .small-actus{display: none;}
+
+
 }
 
-@media screen and (min-width : 360px) and (max-width: 600px){
+@media screen and (min-width : 414px) and (max-width: 768px){
   .hVIPFV{background-size: contain;}
   .eyAIuG{height: 15rem;}
   .search{top: 25% !important;}
@@ -706,6 +723,7 @@ background: #fff3;
 
 @media screen and (min-width: 1140px){
   .responsive-nav{display: none;}
+  #filter-btn-open, #filter-btn-close{display: none !important;}
 }
 @media screen and (max-width: 1140px){
 

@@ -163,7 +163,7 @@ $(document).on('turbolinks:load', function() {
 	})
 
 	$("#filter-btn-open").click(function(e){
-		$("#filter-display").toggleClass("toggleclass")
+		$("#filter-display").toggleClass("hide-filter")
 	})
 	// $("#filter-btn-close").click(function(e){
 	// 	$("#filter-display").toggleClass("toggleclass")
