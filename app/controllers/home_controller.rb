@@ -134,7 +134,7 @@ def index
         @ptfid.each do |f|
         @pro = Projet.all.where(ptf_id: f.to_i, validation: true)
         @pro.each do |p|
-        if (p.filiere.ids.include? s.to_i) && (p.igas.include?i.to_i)
+        if (p.filieres.ids.include? s.to_i) && (p.igas.include?i.to_i)
             @pfi << p
         end
       end
@@ -1006,6 +1006,43 @@ end
       end
       end
     end
+
+
+    #Recherche multiple secteurs , appui , formes , ptf , iga ,filiere
+
+    if params[:search_secteur] && params[:search_forme] && params[:appui_id] &&
+       params[:ptf_id] && params[:search_filiere] && params[:search_iga]
+
+     @psect = params[:search_secteur]
+     @pforme = params[:search_forme]
+     @pappui = params[:appui_id]
+     @pptf = params[:ptf_id]
+     @iga = params[:search_iga]
+     @filiere = params[:search_filiere]
+
+     @pnifsf = []
+
+
+        @iga.each do |i|
+        @filiere.each do |f|
+        @psect.each do |s|
+        @pforme.each do |fo|
+        @pptf.each do |t|
+        @pappui.each do |ap|
+            @pro = Projet.all.where(appui_id: ap.to_i,ptf_id: t.to_i,validation: true)
+     @pro.each do |p|
+        if (p.secteurs.ids.include?s.to_i)  && (p.formes.ids.include?fo.to_i) && (p.igas.ids.include?i.to_i) &&
+            (p.filieres.ids.include?f.to_i)
+             @pnifsf << p
+        end
+      end
+      end
+      end 
+      end
+      end
+    end
+  end
+end
 
   #Recherche multiple iga , filiere , zone et ptf
 
