@@ -82,7 +82,7 @@
                           <%if v.user_total_online_time != nil && Time.at(((v.user_total_online_time)) * 60).utc.strftime("%H:%M:%S") <= "08:00:00"%>
                             <%= Time.at(((v.user_total_online_time)) * 60).utc.strftime("%H:%M:%S")%>
                           <%else%>
-                            00:00:00  
+                            08:00:00  
                           <%end%>
                         </th>
                       </tr>
