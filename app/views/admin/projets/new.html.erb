@@ -1,12 +1,12 @@
-<header class="aci59a-0 eyAIuG sticky-limit">
+<header class="aci59a-0 eyAIuG sticky-limit small-device-header">
     <div class="sc-1gnwgfb-2 hVIPFV">
     </div>
 </header>
 <%= form_tag url_for(action: 'create'),method:'post', class:'form', multipart: true do%>
 	<div class="mt-4 mb-4" onmouseover ="verificationDate()">
 		<div class="container">
-			<div class=" row mb-2">
-				<div class="col-6">
+			<div class="row mb-2">
+				<div class="col-12 col-md-6">
 					<div>
 						<label for="nom" class="mr-2 tablePrint">Nom du projet </label>
 					</div>
@@ -43,8 +43,8 @@
 		</div>
 
 		<div class="container">
-			<div class=" row mb-2">
-				<div class="col-6">
+			<div class="row mb-2">
+				<div class="col-12 col-md-6 mt-2">
 					<h6 class="tablePrint">Partenaire Technique Financier</h6>
 					<%if current_user.organisme%>
 						<%if current_user.organisme.ptf != nil%>
@@ -61,12 +61,11 @@
 					<%end%>
 
 				</div>
-				<div class="col-6">
+				<div class="col-12 col-md-6 mt-2">
 					<h6 class="tablePrint">Nature de l'appui</h6>
 					<%= select_tag 'appui', options_for_select(Appui.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control", required: true%>
 					
-				</div>
-					
+				</div>	
 			</div>
 		</div>
 
@@ -80,11 +79,11 @@
 					<div class="row">
 						<% for x in 1..1%>
 							<div class="col-md-12 row">
-								<div class="col">
+								<div class="col-12 col-md">
 									<input type="checkbox" name="partONG<%= x %>" id="partONG<%= x %>" onclick="partONG(<%= x%>);">
 									<label for="partONG">ONG</label>
 								</div>
-								<div class="col">
+								<div class="col-12 col-md">
 									<input type="hidden" name="desc_partONG<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartONG<%= x %>" required="true">
 								</div>
 							</div>
@@ -92,11 +91,11 @@
 
 						<% for x in 1..1%>
 							<div class="col-md-12 row">
-								<div class="col">
+								<div class="col-12 col-md">
 									<input type="checkbox" name="partASS<%= x %>" id="partASS<%= x%>" onclick="partASS(<%= x%>);">
 									<label for="partASS<%= x%>">Association</label>
 								</div>
-								<div class="col">
+								<div class="col-12 col-md">
 									<input type="hidden" name="desc_partASS<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartASS<%= x %>" required="true">
 								</div>
 							</div>
@@ -104,11 +103,11 @@
 
 						<% for x in 1..1%>
 							<div class="col-md-12 row">
-								<div class="col">
+								<div class="col-12 col-md">
 									<input type="checkbox" name="partCOM<%= x %>" id="partCOM<%= x%>" onclick="partCOM(<%= x%>);">
 									<label for="partCOM<%= x%>">Chambre de commerce</label>
 								</div>
-								<div class="col">
+								<div class="col-12 col-md">
 									<input type="hidden" name="desc_partCOM<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartCOM<%= x %>" required="true">
 								</div>
 							</div>
@@ -116,11 +115,11 @@
 
 						<% for x in 1..1%>
 							<div class="col-md-12 row">
-								<div class="col">
+								<div class="col-12 col-md">
 									<input type="checkbox" name="partPRI<%= x %>" id="partPRI<%= x%>" onclick="partPRI(<%= x%>);">
 									<label for="partPRI<%= x%>">Secteur Privé</label>
 								</div>
-								<div class="col">
+								<div class="col-12 col-md">
 									<input type="hidden" name="desc_partPRI<%= x %>" class="pl-2 pr-2 form-control pi-custom" placeholder="A préciser" id="descpartPRI<%= x %>" required="true">
 								</div>
 
@@ -128,11 +127,11 @@
 						<% end %>
 						<% for x in 1..1%>
 						<div class="col-md-12 row">
-							<div class="col">
+							<div class="col-12 col-md">
 								<input type="checkbox" name="partAUTRE<%= x %>" id="partAUTRE<%= x%>" onclick="partAUTRE(<%= x%>);">
 								<label for="partAUTRE<%= x%>">Autre</label>
 							</div>
-							<div class="col">
+							<div class="col-12 col-md">
 								<input type="hidden" name="desc_partAUTRE<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartAUTRE<%= x %>" required="true">
 							</div>
 						</div>
@@ -160,9 +159,9 @@
 				</div>
 		</div>
 		<section class="container">
-			<div class="d-flex justify-content-between mb-3">
-				<div class="col-md-8 pl-0">
-					<h6 class="tablePrint">Montant pour le secteur :</h6>
+			<div class="row justify-content-between mb-3">
+				<div class="col-12 col-md-8 pl-0 mt-2">
+					<h6 class="tablePrint ml-3">Montant pour le secteur :</h6>
 					<% Secteur.all.order(:title).each do |s|%>
 						<div class="no-gutters align-items-center" id="montant<%=s.id%>" style="display: none;">
 							<div class="col-5 font-size"><%= s.title.upcase %> : </div>
@@ -173,12 +172,12 @@
 						</div>
 					<%end%>
 				</div>
-				<div class="col-md-2">
+				<div class="col-12 col-md-2 mt-2">
 					<h6 class="tablePrint">Début de projet</h6>
 					<input type="text" id="selectionDebut" placeholder="mm/aaaa" class="form-control" required="true">
 					<input type="hidden" id="selectionDebutValue" placeholder="mm/aaaa" class="form-control" required="true" name="debut_du_projet">
 				</div>
-				<div class="col-md-2 pr-0">			
+				<div class="col-12 col-md-2 mt-2">			
 					<h6 class="tablePrint">Fin de projet</h6>
 					<input type="text" class="form-control" placeholder="mm/aaaa" required="true" id="selectionFin" title="Fin ne doit pas être antérieure de début">
 					<input type="hidden" name="fin" id="selectionFinValue" class="form-control" placeholder="mm/aaaa" required="true">

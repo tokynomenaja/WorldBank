@@ -9,7 +9,7 @@
 				<h5>Liste des documents associés :</h5>
 				<ol class="ml-4">
 					<%@pub.files.all.each do|file|%> 
-						<li class="mb-3 mt-3"><%= link_to file.filename, rails_blob_path(file, disposition: "attachement"), class: "doc-relative ml-2" %></li>
+						<li class="mb-3 mt-3"><%= link_to file.filename, rails_blob_path(file, disposition: "attachement"), class: "doc-relative ml-2 text-wrap text-break" %></li>
 					<%end%>
 				</ol>
 			<%end%>

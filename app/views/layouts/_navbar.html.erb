@@ -50,7 +50,7 @@
         <a href="/apropos" class="text-white"><div class="border-bottom p-3 navbar-elem">À propos</div></a>
         <a href="<%= new_contact_path%>" class="text-white"><div class="border-bottom p-3 navbar-elem">Nous contacter</div></a>
         <%if current_user%>
-          <%=link_to 'Se déconnecter', destroy_user_session_path, method: :delete, class: 'fwuAZd text-white'%>
+          <%=link_to 'Se déconnecter', destroy_user_session_path, method: :delete, class: 'fwuAZd text-white border-bottom p-3 navbar-elem'%>
         <%else%>
           <a href="/users/sign_in" class="text-white"><div class="border-bottom p-3 navbar-elem">Se connecter</div></a>
           <a href="/users/sign_up" class="text-white"><div class="border-bottom p-3 navbar-elem">S'inscrire</div></a>
