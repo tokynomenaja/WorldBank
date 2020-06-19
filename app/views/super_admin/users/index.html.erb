@@ -5,7 +5,7 @@
 			Aucun pour le moment
 		</div>
 	<% else %>
-		<table class="table tablePrint table-bordered table-dark">
+		<table class="table tablePrint table-bordered table-dark table-xl">
 		<thead>
 			<tr> 
 			<th scope="col">Id</th>
@@ -40,6 +40,22 @@
 			<%end%>
 		</tr>
 		</tbody>
+		</table>
+		<table class="table tablePrint table-bordered table-dark date-projet-small">
+			<thead>
+				<tr> 
+					<th scope="col">Id</th>
+					<th scope="col">Email</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @users.order(id: :desc).each do |b|%>
+					<tr>
+						<th scope="row"><%=b.id%></th>
+						<td class="w-100"><a href="<%= super_admin_user_path(b.id)%>" class="tablePrint"><%=b.email%></a></td>
+					</tr>
+				<%end%>
+			</tbody>
 		</table>
 	<%end%>
 </div>
@@ -97,46 +113,64 @@
 			Aucun pour le moment
 		</div>
 	<% else %>
-		<div class="d-flex justify-content-center align-items-center table-dark tablePrint mb-0">
-			<div class="col-1 text-center same">
-				<p>Id</p>
-			</div>
-			<div class="col-4 text-center same">
-				<p>Email</p>
-			</div>
-			<div class="col-4 text-center same">
-				<div class="w-100 d-flex justify-content-around h-100 align-items-center"> 
-					<p>Valider en tant que</p>
-				</div>
-			</div>
-			<div class="col-3 text-center same">
-				<p>Action</p>
-			</div>
-		</div>
-		<% @users_en_attente.order(id: :desc).each do |u|%>
+		<div class="table-xl w-100">
 			<div class="d-flex justify-content-center align-items-center table-dark tablePrint mb-0">
 				<div class="col-1 text-center same">
-					<%=u.id%>
+					<p>Id</p>
 				</div>
 				<div class="col-4 text-center same">
-					<%=u.email%>
+					<p>Email</p>
 				</div>
 				<div class="col-4 text-center same">
 					<div class="w-100 d-flex justify-content-around h-100 align-items-center"> 
-						<%= form_for u, url: super_admin_user_path(u.id), method: :put do |f| %>
-							<%= f.submit 'Bailleur', name: 'valider', value: 'Bailleur', class: 'btn btn-success btn-bg-primary'%>
-							<%= f.submit 'Consultant', name: 'valider', value: 'Visiteur', class: 'btn btn-primary'%>
-						<%end%>
+						<p>Valider en tant que</p>
 					</div>
 				</div>
 				<div class="col-3 text-center same">
-					<div class="d-flex justify-content-around pt-4">
-						<a href="#" class="badge btn-bg-primary text-white" data-toggle="modal" data-target="#mod<%= u.id%>">Voir</a>
-						<a href="<%= super_admin_user_path(u.id)%>" class="badge badge-danger" data-method="delete" data-confirm="Voulez-vous retirer cet utilisateur ?" >Retirer</a>
-					</div>
+					<p>Action</p>
 				</div>
 			</div>
-		<%end%>
+			<% @users_en_attente.order(id: :desc).each do |u|%>
+				<div class="d-flex justify-content-center align-items-center table-dark tablePrint mb-0">
+					<div class="col-1 text-center same">
+						<%=u.id%>
+					</div>
+					<div class="col-4 text-center same">
+						<%=u.email%>
+					</div>
+					<div class="col-4 text-center same">
+						<div class="w-100 d-flex justify-content-around h-100 align-items-center"> 
+							<%= form_for u, url: super_admin_user_path(u.id), method: :put do |f| %>
+								<%= f.submit 'Bailleur', name: 'valider', value: 'Bailleur', class: 'btn btn-success btn-bg-primary'%>
+								<%= f.submit 'Consultant', name: 'valider', value: 'Visiteur', class: 'btn btn-primary'%>
+							<%end%>
+						</div>
+					</div>
+					<div class="col-3 text-center same">
+						<div class="d-flex justify-content-around pt-4">
+							<a href="#" class="badge btn-bg-primary text-white" data-toggle="modal" data-target="#mod<%= u.id%>">Voir</a>
+							<a href="<%= super_admin_user_path(u.id)%>" class="badge badge-danger" data-method="delete" data-confirm="Voulez-vous retirer cet utilisateur ?" >Retirer</a>
+						</div>
+					</div>
+				</div>
+			<%end%>
+		</div>
+		<table class="table tablePrint table-bordered table-dark date-projet-small">
+			<thead>
+				<tr> 
+					<th scope="col">Id</th>
+					<th scope="col">Email</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @users_en_attente.order(id: :desc).each do |u|%>
+					<tr>
+						<th scope="row"><%=u.id%></th>
+						<td class="w-100"><a href="<%= super_admin_user_path(u.id)%>" class="tablePrint"><%=u.email%></a></td>
+					</tr>
+				<%end%>
+			</tbody>
+		</table>
 	<% end %>
 </div>
 

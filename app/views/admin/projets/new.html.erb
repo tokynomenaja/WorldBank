@@ -13,6 +13,16 @@
 					<input type="text" name="nom_du_projet" id="nom" placeholder="Nom du projet" class="form-control" required="true">
 				</div>
 			</div>
+			<div class="row date-projet-small">
+				<div class="col-12 col-md-2 mt-2">
+					<h6 class="tablePrint">Début de projet</h6>
+					<input type="text" id="selectionDebutSmall" placeholder="mm/aaaa" class="form-control">
+				</div>
+				<div class="col-12 col-md-2 mt-2 mb-1">			
+					<h6 class="tablePrint">Fin de projet</h6>
+					<input type="text" class="form-control" placeholder="mm/aaaa" id="selectionFinSmall" title="Fin ne doit pas être antérieure de début">
+				</div>
+			</div>
 		</div>
 		<div class="container mb-2">
 			<a class="tablePrint">
@@ -163,24 +173,24 @@
 				<div class="col-12 col-md-8 pl-0 mt-2">
 					<h6 class="tablePrint ml-3">Montant pour le secteur :</h6>
 					<% Secteur.all.order(:title).each do |s|%>
-						<div class="no-gutters align-items-center" id="montant<%=s.id%>" style="display: none;">
-							<div class="col-5 font-size"><%= s.title.upcase %> : </div>
-							<div class="col-7 form-control pr-0">
+						<div class="no-gutters align-items-center montant-padd" id="montant<%=s.id%>" style="display: none;">
+							<div class="col-12 col-md-5 font-size"><%= s.title.upcase %> : </div>
+							<div class="col-12 col-md-7 form-control pr-0">
 								<input type="text" name="montant<%= s.id%>" placeholder="Montant" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>">
 								<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset", id: :"unite#{s.id}"%>
 							</div>
 						</div>
 					<%end%>
 				</div>
-				<div class="col-12 col-md-2 mt-2">
+				<div class="col-12 col-md-2 mt-2 date-projet-xl">
 					<h6 class="tablePrint">Début de projet</h6>
-					<input type="text" id="selectionDebut" placeholder="mm/aaaa" class="form-control" required="true">
-					<input type="hidden" id="selectionDebutValue" placeholder="mm/aaaa" class="form-control" required="true" name="debut_du_projet">
+					<input type="text" id="selectionDebut" placeholder="mm/aaaa" class="form-control">
+					<input type="hidden" id="selectionDebutValue" placeholder="mm/aaaa" class="form-control" name="debut_du_projet">
 				</div>
-				<div class="col-12 col-md-2 mt-2">			
+				<div class="col-12 col-md-2 mt-2 date-projet-xl">			
 					<h6 class="tablePrint">Fin de projet</h6>
-					<input type="text" class="form-control" placeholder="mm/aaaa" required="true" id="selectionFin" title="Fin ne doit pas être antérieure de début">
-					<input type="hidden" name="fin" id="selectionFinValue" class="form-control" placeholder="mm/aaaa" required="true">
+					<input type="text" class="form-control" placeholder="mm/aaaa" id="selectionFin" title="Fin ne doit pas être antérieure de début">
+					<input type="hidden" name="fin" id="selectionFinValue" class="form-control" placeholder="mm/aaaa">
 				</div>
 			</div>
 		</section>
@@ -472,7 +482,7 @@
 		</div>
 		<div class="container mt-4">
 			<%= file_field_tag :files, name:"files[]", multiple: true, id: :"document", class: 'toggleclass'%>
-			<span class="btn btn-secondary text-wrap" id="simulateur">Choisissez des fichiers liés au projet</span>
+			<span class="btn btn-secondary text-wrap text-break" id="simulateur">Choisissez des fichiers liés au projet</span>
 		</div>
 		<div class="container mt-4">
 			<p><span class="tablePrint">Site web :</span><input type="text" name="site" class="form-control" placeholder="votre lien"></p>

@@ -594,6 +594,13 @@ width: 0.3rem;
 background: #fff3; 
 }
 
+/*projets*/
+.date-projet-small{display: none !important;}
+.date-projet-xl{display: block !important;}
+.table-xl{display: inline-table !important;}
+/*=====*/
+
+
  /*   show*/
 
  .entete{bottom: 20px;left: 5%;right: 5%; }
@@ -608,17 +615,17 @@ background: #fff3;
   /*====================*/
 
   /*INSCRIPTION*/
-.sign-up{width: 100%;}
-.margin-b2{margin-bottom: 0.5rem;}
+  .sign-up{width: 100%;}
+  .margin-b2{margin-bottom: 0.5rem;}
   /*==============*/
   .sans-head{margin-top: 2rem;}
   .sans-head-small{margin-top: 20px;}
-  .small-device-header{display: none;}
+  .small-device-header, .table-xl{display: none !important;}
+  .picc{background: #f9f9f9 !important;}
   .hVIPFV{background-size: contain;}
   .eyAIuG{height: 15rem;}
   .search{top: 25% !important;}
   .img-filter{width: 1.5rem;}
-  .hide-filter{display: none !important;}
   #filter-btn-close{display: none !important;}
   .filtre-margin-top{margin-top: 0.5rem;}
   .ghzkpM{display: none;}
@@ -649,7 +656,9 @@ background: #fff3;
   .drop-height{max-height: 15rem;overflow: auto;}
    #scontent{width: auto;}
    .publication-head, .dwLDtk .sc-1ejeabr-19,.dwLDtk .sc-1ejeabr-25{margin-top: 0;}
+   .mx-l-1{margin: 0 1rem;}
    /*Filtre*/
+   .gOGYTl{display: none !important;}
   /*.gOGYTl{display: block; !important;}*/
   /*===========*/
   .jMLWRH{margin-top: 2.5rem;}
@@ -667,16 +676,21 @@ background: #fff3;
   #text-left-pers{text-align: left!important;}
 
   /*new projet*/
-
-
-
+  .date-projet-small{display: block !important;}
+  .date-projet-xl{display: none !important;}
+  .montant-padd{padding: 0 1rem;}
+  .input-montant{width: 64%;}
+  .font-size {font-size: 0.8rem !important;}
+  /*show projet*/
+  .entete{top:0;left: 0;right: 0;bottom: 0;background-color: #53c59e !important;}
 
   /*==============*/
   /*PUBLICATION*/
 
   /*ACTUS*/
   .small-actus{display: none;}
-
+  /*Historique*/
+  .h5-historique{font-size: 20px; margin-top: 1rem !important;}
 
 }
 
