@@ -1,4 +1,4 @@
-<header class="aci59a-0 eyAIuG sticky-limit">
+<header class="aci59a-0 eyAIuG sticky-limit small-device-header">
     <div class="sc-1gnwgfb-2 hVIPFV">
     </div>
 </header>
@@ -6,11 +6,21 @@
 	<div class="mt-4 mb-4" onmouseover ="verificationDate()">
 		<div class="container">
 			<div class="row mb-2">
-				<div class="col-6">
+				<div class="col-12 col-md-6">
 					<div>
 						<label for="nom" class="mr-2 tablePrint">Nom du projet </label>
 					</div>
 					<input type="text" name="nom_du_projet" id="nom"  value="<%= @projet.nom_du_projet%>" class="form-control">
+				</div>
+			</div>
+			<div class="row date-projet-small">
+				<div class="col-12 col-md-2 mt-2">
+					<h6 class="tablePrint">Début de projet</h6>
+					<input type="text" id="selectionDebutSmall" value="<%= @projet.debut_du_projet%>" class="form-control" >
+				</div>
+				<div class="col-12 col-md-2 mt-2 mb-1">			
+					<h6 class="tablePrint">Fin de projet</h6>
+					<input type="text" class="form-control" value="<%= @projet.fin%>" id="selectionFinSmall" title="Fin ne doit pas être antérieure de début">
 				</div>
 			</div>
 		</div>
@@ -43,7 +53,7 @@
 
 			<div class="container">
 				<div class=" row mb-2">
-					<div class="col-6">
+					<div class="col-12 col-md-6 mt-2">
 						<h6 class="tablePrint">Partenaire Technique Financier</h6>
 						<select name="ptf" class="form-control">
 							<%Ptf.all.order(:title).each do |p|%>
@@ -55,7 +65,7 @@
 							<%end%>
 						</select>
 					</div>
-					<div class="col-6">
+					<div class="col-12 col-md-6 mt-2">
 						<h6 class="tablePrint">Nature de l'appui</h6>
 						<select name="appui" class="form-control">
 							<%Appui.all.order(:title).each do |a|%>
@@ -98,34 +108,34 @@
 		</div>
 		<div class="container calendrier position-relative">
 			<div class="d-flex justify-content-between mb-3">
-				<div class="col-md-8 pl-0">
-					<h6 class="tablePrint">Montant pour le secteur :</h6>
+				<div class="col-12 col-md-8 pl-0 mt-2">
+					<h6 class="tablePrint ml-2">Montant pour le secteur :</h6>
 					<% Secteur.all.order(:title).each do |s|%>
 							<% if @sects %> 
 						 		<% if @sects.include? s %>
 						 			<% if @montants%>
 							 			<% if @montants.include? s.montants%>
-									<div class="no-gutters align-items-center" id="montant<%=s.id%>" style="display: flex;">
-										<div class="col-5 font-size"><%= s.title.upcase %> : </div>
-										<div class="col-7 form-control pr-0">
-										<input type="text" name="montant<%= s.id%>" placeholder="Montant" value="<%= s.montants.find_by(projet_id: @projet.id).price%>" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" >
-									
-										<select name="unite_id<%= s.id%>" class="text-center border-left unit pl-2 btn-reset">
-											<% Unite.all.each do |u|%>
-												<%if u == s.montants.find_by(projet_id: @projet.id).unite %>
-													<option value="<%= s.montants.find_by(projet_id: @projet.id).unite.id%>" selected><%= u.nom%></option>
-												<%else%>
-													<option value="<%= u.id%>"><%= u.nom%></option>
+									<div class="no-gutters align-items-center montant-padd" id="montant<%=s.id%>" style="display: -ms-flexbox;display: flex;-ms-flex-wrap: wrap;flex-wrap: wrap;margin-right: -15px;margin-left: -15px;">
+										<div class="col-12 col-md-5 font-size"><%= s.title.upcase %> : </div>
+										<div class="col-12 col-md-7 form-control pr-0">
+											<input type="text" name="montant<%= s.id%>" placeholder="Montant" value="<%= s.montants.find_by(projet_id: @projet.id).price%>" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" >
+										
+											<select name="unite_id<%= s.id%>" class="text-center border-left unit pl-2 btn-reset">
+												<% Unite.all.each do |u|%>
+													<%if u == s.montants.find_by(projet_id: @projet.id).unite %>
+														<option value="<%= s.montants.find_by(projet_id: @projet.id).unite.id%>" selected><%= u.nom%></option>
+													<%else%>
+														<option value="<%= u.id%>"><%= u.nom%></option>
+													<%end%>
 												<%end%>
-											<%end%>
-										</select>
+											</select>
 										</div>
 										
 									</div>
 									<%else%>
-									<div class="no-gutters align-items-center" id="montant<%=s.id%>" style="display: none;">
-										<div class="col-5 font-size"><%= s.title.upcase %> : </div>
-										<div class="col-7 form-control pr-0">
+									<div class="no-gutters align-items-center montant-padd" id="montant<%=s.id%>" style="display: none;">
+										<div class="col-12 col-md-5 font-size"><%= s.title.upcase %> : </div>
+										<div class="col-12 col-md-7 form-control pr-0">
 										<input type="text" name="montant<%= s.id%>" placeholder="Montant" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>">
 										
 										<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset", id: :"unite#{s.id}"%>
@@ -134,9 +144,9 @@
 									<%end%>
 									<%end%>
 								<%else%>
-									<div class="no-gutters align-items-center" id="montant<%=s.id%>" style="display: none;">
-										<div class="col-5 font-size"><%= s.title.upcase %> : </div>
-										<div class="col-7 form-control pr-0">
+									<div class="no-gutters align-items-center montant-padd" id="montant<%=s.id%>" style="display: none;">
+										<div class="col-12 col-md-5 font-size"><%= s.title.upcase %> : </div>
+										<div class="col-12 col-md-7 form-control pr-0">
 											<input type="text" name="montant<%= s.id%>" placeholder="Montant" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>">
 											<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset", id: :"unite#{s.id}"%>
 										</div>
@@ -146,15 +156,15 @@
 
 						<%end%>
 				</div>
-				<div class="col-md-2">
+				<div class="col-12 col-md-2 mt-2 date-projet-xl">
 					<h6 class="tablePrint">Début de projet</h6>
-					<input type="text" id="selectionDebut" value="<%= @projet.debut_du_projet%>" class="form-control" required="true" >
-					<input type="hidden" id="selectionDebutValue" value="<%= @projet.debut_du_projet%>" class="form-control" required="true" name="debut_du_projet">
+					<input type="text" id="selectionDebut" value="<%= @projet.debut_du_projet%>" class="form-control" >
+					<input type="hidden" id="selectionDebutValue" value="<%= @projet.debut_du_projet%>" class="form-control" name="debut_du_projet">
 				</div>
-				<div class="col-md-2 pr-0">			
+				<div class="col-12 col-md-2 mt-2 date-projet-xl">			
 					<h6 class="tablePrint">Fin de projet</h6>
-					<input type="text" class="form-control" value="<%= @projet.fin%>" required="true" id="selectionFin" title="Fin ne doit pas être antérieure de début">
-					<input type="hidden" name="fin" id="selectionFinValue" class="form-control" value="<%= @projet.fin%>" required="true">
+					<input type="text" class="form-control" value="<%= @projet.fin%>" id="selectionFin" title="Fin ne doit pas être antérieure de début">
+					<input type="hidden" name="fin" id="selectionFinValue" class="form-control" value="<%= @projet.fin%>">
 				</div>
 			</div>
 		</div>

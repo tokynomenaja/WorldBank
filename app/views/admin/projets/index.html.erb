@@ -12,26 +12,46 @@
 			<div class="col-md-4 mb-3">
 				<div class="card card-height position-relative">
 					<div class="card-body">
-						<h5 class="card-title card-text-md"><%= p.nom_du_projet.truncate(40) %></h5>
-						<h5 class="card-title card-text-sm"><%= p.nom_du_projet.truncate(30) %></h5>
-						<p class="card-text card-text-md mt-3"><%= raw truncate(sanitize(p.objectif_generale_du_projet, tags: []), length: 100)%></p>
-						<p class="card-text card-text-sm mt-3"><%= raw truncate(sanitize(p.objectif_generale_du_projet, tags: []), length: 50)%></p>
-						<div class="row align-items-center mt-2 position-absolute card-foot">
-							<p class="col-4 ml-3"><a href="<%= admin_projet_path(p.id)%>" class="tablePrint mb-0">Voir</a></p>
-							<p class="col-8 text-right mr-3 validation-projet" id="text-left-pers">							
-							<%if p.validation == false && p.revalid == false && p.rejet == nil%>
-								<span class="badge badge-info">En attente de validation</span>	
-							<%elsif p.validation == nil && p.rejet == nil && p.revalid == false%>
-								<span class="badge badge-warning">Non publié<span>
-							<%elsif p.revalid == true && p.validation == false && p.rejet == nil%>
-								<span class="badge badge-dark">En attente de revalidation</span>
-							<%elsif p.rejet == true && p.validation == nil && p.revalid == false%>
-								<span class="badge badge-danger">Rejeté</span>	
-							<%elsif p.validation == true%>
-								<span class=" badge badge-primary btn-bg-primary">Publié<span>
-							<%end%>
-							</p>
-						</div>	
+						<h5 class="card-title card-text-md date-projet-xl"><%= p.nom_du_projet.truncate(40) %></h5>
+						<h5 class="card-title card-text-sm date-projet-small"><%= p.nom_du_projet.truncate(30) %></h5>
+						<p class="card-text card-text-md mt-3 date-projet-xl"><%= raw truncate(sanitize(p.objectif_generale_du_projet, tags: []), length: 100)%></p>
+						<p class="card-text card-text-sm mt-3 date-projet-small"><%= raw truncate(sanitize(p.objectif_generale_du_projet, tags: []), length: 50)%></p>
+						<div class="date-projet-small">
+							<div class="row align-items-center mt-2 position-absolute card-foot">
+								<p class="col-4 ml-3"><a href="<%= admin_projet_path(p.id)%>" class="tablePrint mb-0">Voir</a></p>
+								<p class="col-8 text-right mr-3 validation-projet" id="text-left-pers">							
+								<%if p.validation == false && p.revalid == false && p.rejet == nil%>
+									<span class="badge badge-info">En attente de validation</span>	
+								<%elsif p.validation == nil && p.rejet == nil && p.revalid == false%>
+									<span class="badge badge-warning">Non publié<span>
+								<%elsif p.revalid == true && p.validation == false && p.rejet == nil%>
+									<span class="badge badge-dark">En attente de revalidation</span>
+								<%elsif p.rejet == true && p.validation == nil && p.revalid == false%>
+									<span class="badge badge-danger">Rejeté</span>	
+								<%elsif p.validation == true%>
+									<span class=" badge badge-primary btn-bg-primary">Publié<span>
+								<%end%>
+								</p>
+							</div>
+						</div>
+						<div class="date-projet-xl">
+							<div class="d-flex align-items-center mt-2 position-absolute card-foot">
+								<p class="col-4 col-md-4"><a href="<%= admin_projet_path(p.id)%>" class="tablePrint mb-0">Voir</a></p>
+								<p class="col-8 col-md-8 text-right mr-3 validation-projet" id="text-left-pers">							
+								<%if p.validation == false && p.revalid == false && p.rejet == nil%>
+									<span class="badge badge-info">En attente de validation</span>	
+								<%elsif p.validation == nil && p.rejet == nil && p.revalid == false%>
+									<span class="badge badge-warning">Non publié<span>
+								<%elsif p.revalid == true && p.validation == false && p.rejet == nil%>
+									<span class="badge badge-dark">En attente de revalidation</span>
+								<%elsif p.rejet == true && p.validation == nil && p.revalid == false%>
+									<span class="badge badge-danger">Rejeté</span>	
+								<%elsif p.validation == true%>
+									<span class=" badge badge-primary btn-bg-primary">Publié<span>
+								<%end%>
+								</p>
+							</div>	
+						</div>
 					</div>
 				</div>
 			</div>

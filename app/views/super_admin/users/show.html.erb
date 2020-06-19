@@ -1,42 +1,36 @@
-<div class="card mb-3 sans-head" style="max-width: 540px; margin-left: 35%; width: 40%;">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-   <p class="sc-1gnwgfb-2 hVIPFV pict"></p>
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">BAILLEUR INFORMATION</h5>
-        <p class="card-text">
-        <p><span>Nom :</span>
-		    	<%=@user.first_name%></p>
-		    <p><span>Prénom :</span>
-		    	<%=@user.last_name%></p>
-		    <p><span>Email :</span>
-		    	<%=@user.email%></p>
-		    <%if @user.organisme%>
-		    	<%if @user.organisme.ptf%>
-		    		PTF : <%=@user.organisme.ptf.title%></p>
-		    	<%else%>
-		    		IGA : <%=@user.organisme.iga.title%></p>
-		    	<%end%>
-		    <%else%>
-		    	<p>Autres</p>
-		    <%end%>
-		</p>
-        <p class="card-text"><small class="text-muted">    
-        	<%if @user.is_admin == true%>
-		    	<p><span class="btn btn-info">Bailleur</span></p>
-		    <% elsif  @user.is_consultant == true%>
-		    	<p><span class="btn btn-primary">Consultant</span></p>
-		    <%else%>
-				<%= form_for @user, url: super_admin_user_path(@user.id), method: :put do |f| %>
-	 
-					<p>Valider en tant que : <input type="submit" name="valider" value="Bailleur"> 
-					 <input type="submit" name="valider" value="Consultant"></p>
+<div class="sans-head">
+	<div class="row justify-content-center no-gutters">
+	    <div class="card col-10 col-md-4">
+	      <div class="card-body">
+	        <h5 class="card-title tablePrint">BAILLEUR INFORMATION</h5>
+	        <p class="card-text mt-3">
+	        <p><span class="tablePrint">Nom :</span> <%=@user.first_name%></p>
+			    <p><span class="tablePrint">Prénom :</span> <%=@user.last_name%></p>
+			    <p><span class="tablePrint">Email :</span> <%=@user.email%></p>
+			    <%if @user.organisme%>
+			    	<%if @user.organisme.ptf%>
+			    		<p><span class="tablePrint">PTF :</span> <%=@user.organisme.ptf.title%></p>
+			    	<%else%>
+			    		<p><span class="tablePrint">IGA :</span> <%=@user.organisme.iga.title%></p>
+			    	<%end%>
+			    <%else%>
+			    	<p>Autres</p>
+			    <%end%>
+			</p>
+	        <p class="card-text"><small class="text-muted">    
+	        	<%if @user.is_admin == true%>
+			    	<p><span class="btn btn-secondary mt-3">Bailleur</span></p>
+			    <% elsif  @user.is_consultant == true%>
+			    	<p><span class="btn btn-secondary mt-3">Consultant</span></p>
+			    <%else%>
+					<%= form_for @user, url: super_admin_user_path(@user.id), method: :put do |f| %>
+						<p class="mt-2">Valider en tant que : </p>
+						<span><input type="submit" name="valider" value="Bailleur" class="cfnPHQ"> </span>
+						<span><input type="submit" name="valider" value="Consultant" class="cfnPHQ"></span>
+					<%end%>
 				<%end%>
-			<%end%>
-		</small></p>
-      </div>
-    </div>
-  </div>
+			</small></p>
+	      </div>
+	    </div>
+	</div>
 </div>
