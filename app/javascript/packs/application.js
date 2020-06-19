@@ -161,15 +161,10 @@ $(document).on('turbolinks:load', function() {
 		$("#range-content").addClass("toggleclass")
 		$("#iga-check").addClass("toggleclass")
 	})
-
+	
 	$("#filter-btn-open").click(function(e){
-		$("#filter-display").toggleClass("hide-filter")
+		$("#filter-display").toggleClass("gOGYTl")
 	})
-	// $("#filter-btn-close").click(function(e){
-	// 	$("#filter-display").toggleClass("toggleclass")
-	// 	$("#filter-btn-open").show()
-	// 	$("#filter-btn-close").hide()
-	// })
 
 
 // validation compteur de mot objectif general
@@ -357,6 +352,31 @@ $(document).on('turbolinks:load', function() {
 	  });
 	});
 
+	$(function() {
+	  $("#selectionDebutSmall").monthly({
+	    years: [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036],
+	    topOffset: 28,
+	    onMonthSelect: function(mi, m, y) {
+	      mi = padToTwo(mi);
+	      var debut = parseInt(mi) + 1;
+	      $("#selectionDebutSmall").val(m + " " + y);
+	      $("#selectionDebutValue").val(debut + "/" + y);
+
+	    }
+	  });
+	});
+	$(function() {
+	  $("#selectionFinSmall").monthly({
+	    years: [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036],
+	    topOffset: 28,
+	    onMonthSelect: function(mi, m, y) {
+	      mi = padToTwo(mi);
+	      var fin = parseInt(mi) + 1;
+	      $("#selectionFinSmall").val(m + " " + y);
+	      $("#selectionFinValue").val(fin + "/" + y);
+	    }
+	  });
+	});
 
 // resumé filtre
 
