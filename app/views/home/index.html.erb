@@ -560,7 +560,7 @@
                 <%end%>
 
                 <!-- Projet par Région --> 
-                <%if @pro_zones && @tout == nil && @ziga == nil && @aaa == nil && @pbz == nil%>
+                <%if @pro_zones && @tout == nil && @ziga == nil && @aaa == nil && @pbz == nil && @benrdz == nil%>
                 <%if @pro_zones.length != 0%>
                 <% @pro_zones.uniq.each do |res| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -746,6 +746,27 @@
                 <%if @projets && @tout == nil%>
                 <%if @projets.length != 0 %>
                 <% @projets.uniq.each do |b|%>               
+                  <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
+                    <div class="col-8">
+                      <%= link_to "#{b.nom_du_projet}", projet_path(b.id), target: 'blank', class: 'text-muted reshover' %>
+                    </div>
+                    <div class="col-4 text-center">
+                      <span class="tablePrint"><%= b.ptf.title %></span>
+                    </div>
+                  </div>
+                <%end%>
+                  <%else%>
+                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                  <p class= 'text-muted '>La recherche ne correspond à aucun résultat</p>  
+                </div>
+                <%end%>
+                <%end%>
+
+
+                 <!-- Secteur – periode - montant -->
+                <%if@spm && @tout == nil%>
+                <%if@spm.length != 0 %>
+                <%@spm.uniq.each do |b|%>               
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
                     <div class="col-8">
                       <%= link_to "#{b.nom_du_projet}", projet_path(b.id), target: 'blank', class: 'text-muted reshover' %>
@@ -1029,7 +1050,7 @@
                 <%end%>
 
                     <!-- Ptf - beneficiaire - zone -->
-                <%if @pbz && @tout == nil && @d == nil && @r == nil%>
+                <%if @pbz && @tout == nil%>
                 <%if @pbz.length != 0 %>
                 <% @pbz.uniq.each do |b|%>               
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -1050,9 +1071,30 @@
 
 
                     <!-- beneficiaire - montant  - periode -->
-                <%if @benrd && @tout == nil && @d == nil && @r == nil%>
+                <%if @benrd && @tout == nil && @benrdz == nil%>
                 <%if @benrd.length != 0 %>
                 <% @benrd.uniq.each do |b|%>               
+                  <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
+                    <div class="col-8">
+                      <%= link_to "#{b.nom_du_projet}", projet_path(b.id), target: 'blank', class: 'text-muted reshover' %>
+                    </div>
+                    <div class="col-4 text-center">
+                      <span class="tablePrint"><%= b.ptf.title %></span>
+                    </div>
+                  </div>
+                <%end%>
+                  <%else%>
+                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+                  <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
+                </div>
+                <%end%>
+                <%end%>
+
+                 <!-- beneficiaire - montant  - periode - zone-->
+
+                <%if @benrdz && @tout == nil%>
+                <%if @benrdz.length != 0 %>
+                <% @benrdz.uniq.each do |b|%>               
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
                     <div class="col-8">
                       <%= link_to "#{b.nom_du_projet}", projet_path(b.id), target: 'blank', class: 'text-muted reshover' %>
@@ -1256,7 +1298,7 @@
 
 
                 <!-- Projet par période -->
-                <%if @d && @tout == nil%>
+                <%if @d && @tout == nil && @benrd == nil && @spm == nil%>
                 <%if @d.length != 0%>
                 <% @d.each do |f| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
