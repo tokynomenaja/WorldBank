@@ -1,0 +1,14 @@
+<div class="container sans-head">
+
+	<div>
+		<label>Message :</label>
+		<%=@message.content%>
+		<p>Envoyé le <%=@message.created_at%> par 
+			<%if@message.sender%>
+				<a href="https://<%=@message.sender.email%>" style="color: #52c39b;" target="_blank"><%=@message.sender.email%></a>
+			<%else%>
+				<a href="https://<%=@message.email%>" style="color: #52c39b;" target="_blank"><%= @message.email%></a>
+			<%end%>
+			</p>
+	</div>
+</div>

@@ -1,26 +1,180 @@
 
-<%if @projets.count == 0 %>
-	<div class=" container sans-head">
-			<div class="text-center text-muted mt-4 mb-4">
-				<p>Rien à valider !!</p>
-			</div>
-<%else%>
-	<div class="sans-head">
+<div class="container sans-head mb-2">
 	<div class="text-center text-muted mt-4 mb-4 ">
-		<p> Projets en attente de validation !!</p>
+		<h3 class="tablePrint"> Projets validés </h3>
 	</div>
-	<div class=" container d-flex flex-wrap">
-			<% @projets.each do |p|%>
-				<div class="col-sm-6 mb-3">
-					<div class="card">
-						<div class="card-body">
-						<h5 class="card-title"><%= p.nom_du_projet %></h5>
-						<p class="card-text"><%= raw p.objectif_generale_du_projet.truncate(100) %></p>
-						<a href="<%= super_admin_projet_path(p.id)%>" class="btn btn-primary">Voir</a>
-						</div>
+		<%if @projets_valides.count == 0 %>
+			<div class="text-center text-muted mt-1 mb-4">
+				<p> Aucun projet validé </p>
+			</div>
+		<%else%>	
+	<div class="row justify-content-center">
+			<% @projets_valides.each do |p|%>
+			<div class="col-md-4 mb-3">
+				<div class="card card-height position-relative">
+					<div class="card-body">
+						<h5 class="card-title card-text-md date-projet-xl"><%= p.nom_du_projet.truncate(40) %></h5>
+						<h5 class="card-title card-text-sm date-projet-small"><%= p.nom_du_projet.truncate(30) %></h5>
+						<p class="card-text card-text-md mt-3 date-projet-xl"><%= raw truncate(sanitize(p.objectif_generale_du_projet, tags: []), length: 100)%></p>
+						<p class="card-text card-text-sm mt-3 date-projet-small"><%= raw truncate(sanitize(p.objectif_generale_du_projet, tags: []), length: 50)%></p>
+						<div class="row align-items-center mt-2 position-absolute card-foot">
+							<a href="<%= super_admin_projet_path(p.id)%>" class="col tablePrint mb-0">Voir</a>
+						</div>	
 					</div>
 				</div>
+			</div>
 			<%end%>
+		<%end%>	
+	</div>
+	<div class="text-center">
+		<%= paginate @projets_valides %>
+	</div>
+</div>
+
+<div class="container mt-4 mb-5">
+	<div class="text-center text-muted mt-4 mb-4">
+		<h3 class="tablePrint"> Liste des nouveaux projets à valider</h3>
+	</div>
+</div>
+<%if @projets.count == 0 %>
+	<div class="container mb-5">
+		<div class="text-center text-muted mt-1 mb-4">
+			<p> Rien à valider </p>
+		</div>
+	</div>
+<%else%>
+	<div class="container mb-5">
+		<div class="row justify-content-center">
+			<% @projets.each do |p|%>
+			<div class="col-md-4 mb-3">
+				<div class="card card-height position-relative">
+					<div class="card-body">
+						<h5 class="card-title card-text-md date-projet-xl"><%= p.nom_du_projet.truncate(40) %></h5>
+						<h5 class="card-title card-text-sm date-projet-small"><%= p.nom_du_projet.truncate(30) %></h5>
+						<p class="card-text card-text-md mt-3 date-projet-xl"><%= raw truncate(sanitize(p.objectif_generale_du_projet, tags: []), length: 100)%></p>
+						<p class="card-text card-text-sm mt-3 date-projet-small"><%= raw truncate(sanitize(p.objectif_generale_du_projet, tags: []), length: 50)%></p>
+						<div class="row align-items-center mt-2 position-absolute card-foot">
+							<a href="<%= super_admin_projet_path(p.id)%>" class="col tablePrint mb-0">Voir</a>
+						</div>	
+					</div>
+				</div>
+			</div>
+			<%end%>	
+		</div>
+		<div class="text-center">
+			<%= paginate @projets %>
+		</div>
 	</div>
 <%end%>
+
+
+<div class="container mt-4 mb-5">
+	<div class="text-center text-muted mt-4 mb-4">
+		<h3 class="tablePrint"> Liste des projets modifiés à revalider</h3>
 	</div>
+</div>
+<%if @projets_revalid.count == 0 %>
+	<div class="container mb-5">
+		<div class="text-center text-muted mt-1 mb-4">
+			<p> Rien à valider </p>
+		</div>
+	</div>
+<%else%>
+	<div class="container mb-5">
+		<div class="row justify-content-center">
+			<% @projets_revalid.each do |p|%>
+			<div class="col-md-4 mb-3">
+				<div class="card card-height position-relative">
+					<div class="card-body">
+						<h5 class="card-title card-text-md date-projet-xl"><%= p.nom_du_projet.truncate(40) %></h5>
+						<h5 class="card-title card-text-sm date-projet-small"><%= p.nom_du_projet.truncate(30) %></h5>
+						<p class="card-text card-text-md mt-3 date-projet-xl"><%= raw truncate(sanitize(p.objectif_generale_du_projet, tags: []), length: 100)%></p>
+						<p class="card-text card-text-sm mt-3 date-projet-small"><%= raw truncate(sanitize(p.objectif_generale_du_projet, tags: []), length: 50)%></p>
+						<div class="row align-items-center mt-2 position-absolute card-foot">
+							<a href="<%= super_admin_projet_path(p.id)%>" class="col tablePrint mb-0">Voir</a>
+						</div>	
+					</div>
+				</div>
+			</div>
+			<%end%>	
+		</div>
+		<div class="text-center">
+			<%= paginate @projets_revalid %>
+		</div>
+	</div>
+<%end%>
+
+
+
+<div class="container mt-4 mb-5">
+	<div class="text-center text-muted mt-4 mb-4">
+		<h3 class="tablePrint"> Liste des projets rejetés</h3>
+	</div>
+</div>
+<%if @projets_rejets.count == 0 %>
+	<div class="container mb-5">
+		<div class="text-center text-muted mt-1 mb-4">
+			<p> Rien à valider </p>
+		</div>
+	</div>
+<%else%>
+	<div class="container mb-5">
+		<div class="row align-items-center">
+			<% @projets_rejets.each do |p|%>
+			<div class="col-md-4 mb-3">
+				<div class="card card-height position-relative">
+					<div class="card-body">
+						<h5 class="card-title card-text-md date-projet-xl"><%= p.nom_du_projet.truncate(40) %></h5>
+						<h5 class="card-title card-text-sm date-projet-small"><%= p.nom_du_projet.truncate(30) %></h5>
+						<p class="card-text card-text-md mt-3 date-projet-xl"><%= raw truncate(sanitize(p.objectif_generale_du_projet, tags: []), length: 100)%></p>
+						<p class="card-text card-text-sm mt-3 date-projet-small"><%= raw truncate(sanitize(p.objectif_generale_du_projet, tags: []), length: 50)%></p>
+						<div class="row align-items-center mt-2 position-absolute card-foot">
+							<a href="<%= super_admin_projet_path(p.id)%>" class="col tablePrint mb-0">Voir</a>
+						</div>	
+					</div>
+				</div>
+			</div>
+			<%end%>	
+		</div>
+		<div class="text-center">
+			<%= paginate @projets_rejets %>
+		</div>
+	</div>
+<%end%>
+
+
+<div class="container mt-4 mb-5">
+	<div class="text-center text-muted mt-4 mb-4">
+		<h3 class="tablePrint"> Liste des projets modifiés par l'administrateur</h3>
+	</div>
+</div>
+<%if @updateProjets.count == 0 %>
+	<div class="container mb-5">
+		<div class="text-center text-muted mt-1 mb-4">
+			<p> Rien à valider </p>
+		</div>
+	</div>
+<%else%>
+	<div class="container mb-5">
+		<div class="row justify-content-center">
+			<% @updateProjets.each do |p|%>
+			<div class="col-md-4 mb-3">
+				<div class="card card-height position-relative">
+					<div class="card-body">
+						<h5 class="card-title card-text-md date-projet-xl"><%= p.nom_du_projet.truncate(40) %></h5>
+						<h5 class="card-title card-text-sm date-projet-small"><%= p.nom_du_projet.truncate(30) %></h5>
+						<p class="card-text card-text-md mt-3 date-projet-xl"><%= raw truncate(sanitize(p.objectif_generale_du_projet, tags: []), length: 100)%></p>
+						<p class="card-text card-text-sm mt-3 date-projet-small"><%= raw truncate(sanitize(p.objectif_generale_du_projet, tags: []), length: 50)%></p>
+						<div class="row align-items-center mt-2 position-absolute card-foot">
+							<a href="<%= super_admin_update_projet_path(p.id)%>" class="col tablePrint mb-0">Voir</a>
+						</div>	
+					</div>
+				</div>
+			</div>
+			<%end%>	
+		</div>
+		<div class="text-center">
+			<%= paginate @updateProjets %>
+		</div>
+	</div>
+<%end%>

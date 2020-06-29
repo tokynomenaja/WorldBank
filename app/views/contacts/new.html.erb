@@ -1,36 +1,151 @@
-  <header class="aci59a-0 eyAIuG haute sticky-limit">
+<%if current_user%>
+<header class="aci59a-0 eyAIuG haute sticky-limit small-device-header">
     <div class="sc-1gnwgfb-2 stom">
     </div>
-       <div class="head-te"><marquee behavior="" direction=""></marquee></div>
+       <!-- <div class="head-te"><marquee behavior="" direction="">La communauté internationale réaffirme son soutien aux pays les plus pauvres</marquee></div> -->
   </header>
-<div class="sc-11unfkk-2 fxFQyp m-5">
-  <header class="">
-    <div class="qjc24y-1 hlIrlm">  
-      <div class="qjc24y-0 jMLWRH">
-        <div class="login mx-auto">
-          <h2>Contactez-nous</h2>
-         	<%= form_tag url_for(action: 'create'), method:'post', class:'form' do%>
-         		<div class="field form-group">
-              		<div class="form-content text-left">
-              			<label for="email">Email</label>
-		                
-		               	<input type="email" class="form-control form-width" value="<%= current_user.email%>" id="email" placeholder="email@gmail.com">
-              		</div>
-            	</div>
-          
-	            <div class="field form-group">
-	              <div class="form-content text-left">
-	                 <label for="message">Message</label>      
-	                 <textarea name="message" placeholder="Laisser votre message" class="form-control form-width" rows="5" id="message" required="true"></textarea>         
-	              </div>
-	            </div>	           
-	            <div class="actions mb-4">
-                <%= submit_tag :Envoyer, :class => "sc-eerKOB cfnPHQ"%>
-	            </div>
-         	<%end%>
-           
-        </div>
+<div class="mx-auto sign-up p-4">
+  <h2 class="text-center">Contactez - nous</h2>
+  <%= form_tag url_for(action: 'create'), method:'post', class:'form' do%>
+    <div class="field mb-2 row">
+       <div class="col-md-6">
+        <label for="nom">Nom</label>
+        <input type="text" name="first_name" placeholder="<%= current_user.first_name%>" class="form-control" id="nom" readonly>
+      </div>
+      <div class="col-md-6">
+        <label for="prenom">Prénom</label>
+        <input type="text" name="last_name" placeholder="<%= current_user.last_name%>" class="form-control" id="prenom" readonly>
+      </div>
+      <div class="col-md-6">
+        <label for="phone">Téléphone</label>
+        <input type="text" name="phone" placeholder="<%= current_user.phone%>" class="form-control" id="phone" readonly>
+      </div>
+      <div class="col-md-6">
+        <label for="fonction">Fonction</label>
+        <input type="text" name="fonction" placeholder="Fonction" class="form-control" id="fonction">
+      </div>
+      <div class="col-md-6">
+         <label for="organisme">Organisme</label>
+          <%if current_user.organisme%>
+            <%if current_user.organisme.ptf != nil%>
+               <input type="text" name="organisme" placeholder="<%=current_user.organisme.ptf.title%>" class="form-control" readonly>
+            <%elsif current_user.organisme.iga != nil%>
+              <input type="text" name="organisme" placeholder="<%=current_user.organisme.iga.title%>" class="form-control" readonly>
+            <%else%>
+            <input type="text" name="organisme" placeholder="<%= current_user.organisme.nom%>" class="form-control" readonly>
+          <%end%>
+        <%end%>
+        
       </div>
     </div>
-  </header>
+
+
+    <div class="field mb-2">
+       <label for="email">Email</label>
+        <input type="email" name="email" placeholder="<%= current_user.email%>" class="form-control" readonly>
+    </div>
+
+
+    <div class="field mb-2">
+        <label for="message">Message</label>
+        <textarea name="message" placeholder="Laisser votre message" class="form-control p-2" rows="5" id="message" required="true"></textarea>
+    </div>
+
+    <div class="actions mb-2">
+      <%= submit_tag "Envoyer", class:'sc-eerKOB cfnPHQ mt-3' %>
+    </div>
+  <% end %>
+
 </div>
+<%else%>
+<header class="aci59a-0 eyAIuG haute sticky-limit small-device-header">
+    <div class="sc-1gnwgfb-2 stom">
+    </div>
+       <!-- <div class="head-te"><marquee behavior="" direction="">La communauté internationale réaffirme son soutien aux pays les plus pauvres</marquee></div> -->
+  </header>
+<div class="mx-auto sign-up p-4">
+  <h2 class="text-center">Contactez - nous</h2>
+  <%= form_tag url_for(action: 'create'), method:'post', class:'form' do%>
+
+    <div class="field mb-2 row">
+
+      <div class="col-md-6">
+        <label for="nom">Nom</label>
+        <input type="text" name="first_name" placeholder="Nom" class="form-control" id="nom" required="true">
+      </div>
+      <div class="col-md-6">
+        <label for="prenom">Prénom</label>
+        <input type="text" name="last_name" placeholder="Prénoms" class="form-control" id="prenom" required="true">
+      </div>
+      <div class="col-md-6">
+        <label for="phone">Téléphone</label>
+        <input type="text" name="phone" placeholder="Téléphone" class="form-control" id="phone">
+      </div>
+      <div class="col-md-6">
+        <label for="fonction">Fonction</label>
+        <input type="text" name="fonction" placeholder="Fonction" class="form-control" id="fonction">
+      </div>
+      <div class="col-md-6">
+         <label for="organisme">Organisme</label>
+            <%@organism = []%>
+            <% Ptf.all.order(:title).each do |p|%>
+
+              <%@organism << p%>
+
+            <%end%>
+            <% Iga.all.each do |i|%>
+
+              <%@organism << i%>
+
+            <%end%>
+
+            <select class="form-control" name="organisme" id="selectBox" onchange="changeFunc()">
+              <option value="none" selected disabled hidden>Sélectionner</option>
+              <option value="autre">Autre</option>
+              <% @organism.each do |o|%>
+                <option value="<%= o.title%>"><%= o.title%></option>
+              <%end%>
+            </select>
+        
+      </div>
+      <div class="col-md-6" style="top: 24px;">
+        <input type="hidden" name="nom" id="AutreOrganisme" placeholder="A préciser" class="form-control">
+      </div>
+    </div>
+
+
+    <div class="field mb-2">
+       <label for="email">Email</label>
+        <input type="email" name="email" placeholder="Email" class="form-control" >
+    </div>
+
+
+    <div class="field mb-2">
+        <label for="message">Message</label>
+        <textarea name="message" placeholder="Laisser votre message" class="form-control p-2" rows="5" id="message" required="true"></textarea>
+    </div>
+
+    <div class="actions mb-2">
+      <%= submit_tag "Envoyer", class:'sc-eerKOB cfnPHQ mt-3' %>
+    </div>
+  <% end %>
+
+</div>
+
+<%end%>
+
+
+<script type="text/javascript">
+    function changeFunc(){
+      var selectBox = document.getElementById("selectBox");
+      var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+      var autre = document.getElementById("AutreOrganisme");
+      var changeDiv = document.getElementById("changeDiv");
+      if(selectedValue == "autre"){
+        autre.type = "text";
+        autre.required = true;
+      }else{
+        autre.type = "hidden";
+      }
+    }
+</script>

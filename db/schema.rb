@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_19_140143) do
+ActiveRecord::Schema.define(version: 2020_06_24_065545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -41,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_03_19_140143) do
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "date_publication"
     t.index ["user_id"], name: "index_actus_on_user_id"
   end
 
@@ -61,8 +72,10 @@ ActiveRecord::Schema.define(version: 2020_03_19_140143) do
     t.bigint "beneficiaire_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "update_projet_id"
     t.index ["beneficiaire_id"], name: "index_benefprojets_on_beneficiaire_id"
     t.index ["projet_id"], name: "index_benefprojets_on_projet_id"
+    t.index ["update_projet_id"], name: "index_benefprojets_on_update_projet_id"
   end
 
   create_table "ckeditor_assets", force: :cascade do |t|
@@ -86,8 +99,10 @@ ActiveRecord::Schema.define(version: 2020_03_19_140143) do
     t.bigint "filiere_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "update_projet_id"
     t.index ["filiere_id"], name: "index_filiereprojets_on_filiere_id"
     t.index ["projet_id"], name: "index_filiereprojets_on_projet_id"
+    t.index ["update_projet_id"], name: "index_filiereprojets_on_update_projet_id"
   end
 
   create_table "filieres", force: :cascade do |t|
@@ -107,8 +122,10 @@ ActiveRecord::Schema.define(version: 2020_03_19_140143) do
     t.bigint "projet_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "update_projet_id"
     t.index ["forme_id"], name: "index_formeprojets_on_forme_id"
     t.index ["projet_id"], name: "index_formeprojets_on_projet_id"
+    t.index ["update_projet_id"], name: "index_formeprojets_on_update_projet_id"
   end
 
   create_table "formes", force: :cascade do |t|
@@ -131,8 +148,10 @@ ActiveRecord::Schema.define(version: 2020_03_19_140143) do
     t.bigint "projet_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "update_projet_id"
     t.index ["iga_id"], name: "index_igaprojets_on_iga_id"
     t.index ["projet_id"], name: "index_igaprojets_on_projet_id"
+    t.index ["update_projet_id"], name: "index_igaprojets_on_update_projet_id"
   end
 
   create_table "igas", force: :cascade do |t|
@@ -147,20 +166,28 @@ ActiveRecord::Schema.define(version: 2020_03_19_140143) do
     t.bigint "admin_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email"
+    t.string "phone"
+    t.boolean "read"
+    t.string "fonction"
+    t.string "first_name"
+    t.string "last_name"
     t.index ["admin_id"], name: "index_messages_on_admin_id"
     t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "montants", force: :cascade do |t|
-    t.integer "price"
+    t.bigint "price"
     t.bigint "unite_id"
     t.bigint "projet_id"
     t.bigint "secteur_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "update_projet_id"
     t.index ["projet_id"], name: "index_montants_on_projet_id"
     t.index ["secteur_id"], name: "index_montants_on_secteur_id"
     t.index ["unite_id"], name: "index_montants_on_unite_id"
+    t.index ["update_projet_id"], name: "index_montants_on_update_projet_id"
   end
 
   create_table "organismes", force: :cascade do |t|
@@ -169,6 +196,7 @@ ActiveRecord::Schema.define(version: 2020_03_19_140143) do
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "nom"
     t.index ["iga_id"], name: "index_organismes_on_iga_id"
     t.index ["ptf_id"], name: "index_organismes_on_ptf_id"
     t.index ["user_id"], name: "index_organismes_on_user_id"
@@ -195,8 +223,10 @@ ActiveRecord::Schema.define(version: 2020_03_19_140143) do
     t.bigint "projet_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "update_projet_id"
     t.index ["pem_id"], name: "index_pemprojets_on_pem_id"
     t.index ["projet_id"], name: "index_pemprojets_on_projet_id"
+    t.index ["update_projet_id"], name: "index_pemprojets_on_update_projet_id"
   end
 
   create_table "pems", force: :cascade do |t|
@@ -221,6 +251,8 @@ ActiveRecord::Schema.define(version: 2020_03_19_140143) do
     t.bigint "bailleur_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "revalid", default: false
+    t.boolean "rejet"
     t.index ["appui_id"], name: "index_projets_on_appui_id"
     t.index ["bailleur_id"], name: "index_projets_on_bailleur_id"
     t.index ["ptf_id"], name: "index_projets_on_ptf_id"
@@ -257,8 +289,10 @@ ActiveRecord::Schema.define(version: 2020_03_19_140143) do
     t.bigint "projet_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "update_projet_id"
     t.index ["projet_id"], name: "index_secteurprojets_on_projet_id"
     t.index ["secteur_id"], name: "index_secteurprojets_on_secteur_id"
+    t.index ["update_projet_id"], name: "index_secteurprojets_on_update_projet_id"
   end
 
   create_table "secteurs", force: :cascade do |t|
@@ -272,6 +306,7 @@ ActiveRecord::Schema.define(version: 2020_03_19_140143) do
     t.string "reference"
     t.float "valeur"
     t.bigint "unite_id"
+    t.boolean "utilise", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["unite_id"], name: "index_tarifs_on_unite_id"
@@ -281,6 +316,27 @@ ActiveRecord::Schema.define(version: 2020_03_19_140143) do
     t.string "nom"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "update_projets", force: :cascade do |t|
+    t.string "nom_du_projet"
+    t.text "objectif_generale_du_projet"
+    t.text "aspsp"
+    t.date "debut_du_projet"
+    t.date "fin"
+    t.text "comment"
+    t.string "siteweb"
+    t.boolean "validation", default: false
+    t.bigint "appui_id"
+    t.bigint "ptf_id"
+    t.bigint "projet_id"
+    t.bigint "admin_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_id"], name: "index_update_projets_on_admin_id"
+    t.index ["appui_id"], name: "index_update_projets_on_appui_id"
+    t.index ["projet_id"], name: "index_update_projets_on_projet_id"
+    t.index ["ptf_id"], name: "index_update_projets_on_ptf_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -297,8 +353,32 @@ ActiveRecord::Schema.define(version: 2020_03_19_140143) do
     t.boolean "is_admin"
     t.boolean "is_super_admin", default: false
     t.boolean "is_consultant", default: false
+    t.string "fonction"
+    t.float "total_online_time"
+    t.integer "sign_in_count"
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.boolean "is_signed_in"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "visits", force: :cascade do |t|
+    t.integer "user_id"
+    t.inet "user_ip"
+    t.string "user_email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "last_logout"
+    t.float "duration"
+    t.datetime "user_last_sign_in_at"
+    t.integer "user_phone"
+    t.string "user_fonction"
+    t.string "user_organisme"
+    t.float "user_total_online_time"
+    t.boolean "is_signed_in"
   end
 
   create_table "zoneprojets", force: :cascade do |t|
@@ -306,7 +386,9 @@ ActiveRecord::Schema.define(version: 2020_03_19_140143) do
     t.bigint "projet_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "update_projet_id"
     t.index ["projet_id"], name: "index_zoneprojets_on_projet_id"
+    t.index ["update_projet_id"], name: "index_zoneprojets_on_update_projet_id"
     t.index ["zone_id"], name: "index_zoneprojets_on_zone_id"
   end
 
@@ -317,4 +399,12 @@ ActiveRecord::Schema.define(version: 2020_03_19_140143) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "benefprojets", "update_projets"
+  add_foreign_key "filiereprojets", "update_projets"
+  add_foreign_key "formeprojets", "update_projets"
+  add_foreign_key "igaprojets", "update_projets"
+  add_foreign_key "montants", "update_projets"
+  add_foreign_key "pemprojets", "update_projets"
+  add_foreign_key "secteurprojets", "update_projets"
+  add_foreign_key "zoneprojets", "update_projets"
 end

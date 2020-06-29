@@ -2,47 +2,49 @@ class SuperAdmin::ActusController < ApplicationController
   before_action :authenticate_user!
 
   def create
-
-      @user = User.where(is_super_admin: true)
-      @actu = Actu.create!(title: params[:title], user_id: current_user.id)
+      @actu = Actu.create!(title: params[:title], date_publication: params[:date_publication], user_id: current_user.id)
 
       if @actu.save
        @actu.files.attach(params[:files])
-       redirect_to super_admin_actus_path
+       redirect_to new_super_admin_actu_path, success: "Actualité créée avec succès"
      else
        render :new
 
      end 
 
 
- end
- def new
-  @actus = Actu.all
- end
+  end
 
-def index
-  @actus = Actu.all
-end
+  def new
 
- def show
-   @actu = Actu.find(params[:id])
- end
+    @actus = Actu.where(user_id: current_user.id).order(date_publication: :desc).page(params[:page]).per(9)
+    @actu = Actu.new
+  end
 
- def edit
-   @actu = Actu.find(params[:id])
- end
+  def index
+    @actus = Actu.where(user_id: current_user.id).order(date_publication: :desc).page(params[:page]).per(9)
+  end
 
-def update
+  def show
     @actu = Actu.find(params[:id])
-    if @actu.update(title: params[:title], user_id: current_user.id)
-     redirect_to super_admin_actus_path
-   end
-end
+  end
 
-def destroy
-  @actu = Actu.find(params[:id])
-  @actu.destroy
-  redirect_to super_admin_actus_path
-end
+  def edit
+    @actu = Actu.find(params[:id])
+    @actus = Actu.where(user_id: current_user.id).order(date_publication: :desc).page(params[:page]).per(9)
+  end
+
+  def update
+      @actu = Actu.find(params[:id])
+      if @actu.update(title: params[:title],files: params[:files], user_id: current_user.id)
+       redirect_to super_admin_actu_path, succès: "Modification terminée"
+     end
+  end
+
+  def destroy
+    @actu = Actu.find(params[:id])
+    @actu.destroy
+    redirect_to super_admin_actus_path
+  end
 
 end

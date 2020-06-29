@@ -1,6 +1,11 @@
 class Projet < ApplicationRecord
+
+        has_rich_text :aspsp
+
         validates :objectif_generale_du_projet, presence: true
         validates :aspsp, presence: true
+
+        has_one :update_projet
         
         belongs_to :bailleur, optional: true, class_name: 'User'
         belongs_to :ptf, optional: true
@@ -44,6 +49,9 @@ class Projet < ApplicationRecord
        
 
         after_create :create_project_send
+        # after_update :email_validation
+        # after_update :email_rejet
+
 
         # This method calls the order_email method from user_mailer, passing the order as an argument
         def create_project_send

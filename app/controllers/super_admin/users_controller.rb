@@ -5,8 +5,15 @@ class SuperAdmin::UsersController < ApplicationController
 
 	def index
 		@users = User.where(is_admin: true).or(User.where(is_consultant: true))
-		@users_en_attente = User.where(is_consultant: false,is_super_admin: false,is_admin: nil)	
+		@users_en_attente = User.where(is_consultant: false,is_super_admin: false,is_admin: nil)
+		
+		@users.each do |u|
+			u.messages.each do |m|
+				@message_id = m.id
+			end
+		end	
 	end
+
 
 	def show
 		@user = User.find(params[:id])
@@ -22,7 +29,7 @@ class SuperAdmin::UsersController < ApplicationController
 
  	def update
  		@user = User.find(params[:id])
- 		if buttonparams == 'Consultant'
+ 		if buttonparams == 'Visiteur'
  			@user.update(is_consultant: true)
  		else
  			@user.update(is_admin: true)
@@ -38,8 +45,12 @@ class SuperAdmin::UsersController < ApplicationController
 
  	def destroy
  		@user = User.find(params[:id])
+ 		@messages = Message.where(sender_id: @user.id)
+ 		@projets = Projet.where(bailleur_id: @user.id)
+ 		@publications = Publication.where(user_id: @user.id)
  		@user.destroy
- 		redirect_to super_admin_users_path
+ 		
+ 		redirect_to super_admin_users_path, success: "Utilisateur supprimé"
  	end
 
  	private 

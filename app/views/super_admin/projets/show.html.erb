@@ -1,88 +1,93 @@
 <header class="aci59a-0 eyAIuG sticky-limit">
-    <div class="sc-1gnwgfb-2 hVIPFV pict">
+    <div class="sc-1gnwgfb-2 hVIPFV picc position-relative">
       <style type="text/css">
-        .pict {
-           <%if @projet.secteurprojets.count == 1%>
+        .picc{
+          <%if @projet.secteurprojets.count == 1%>
             <%@projet.secteurprojets.each do|sp|%>
-              background-image: url('/<%=sp.secteur.image_url%>');
+              <%if sp.secteur.title == "ENERGIE"%>
+                background-image: url('/secteur/energie.jpg'); 
+              <%else%>
+                background-image: url('/<%=sp.secteur.image_url%>');
+              <%end%>
             <%end%>
           <%else%>
             background-image: url('/secteur/accueil.jpg');
           <%end%>
         }
-
-      </style>  
+      </style>
+      <div class="position-absolute entete">
+        <h3 class="bg-fiche p-1 text-white"><%=@projet.nom_du_projet%></h3>
+      </div>
     </div>
 </header>
-  <div class="logo">
-    <div class="pic">
-      <div class="imge-rep d-flex align-items-center">
-        <%if @projet.ptf.image_url%>
-          <img src="/<%= @projet.ptf.image_url%>">
-        <%end%>
-      </div>
-    </div>
-    <div class="d-flex align-items-center h-text">
-      <div class="text-white pr-4">
-        <h3><%=@projet.nom_du_projet%></h3>
-      </div>
-    </div>
-    <div class="asi"> 
-      <div class="aside">
-          <% if  @projet.secteurprojets.count == 1%>
-              <p><span class="attr">Secteur : </span>
-          <%else%>
-              <p><span class="attr">Secteurs : </span>
+<div class="objectif mx-auto my-3 row align-items-start">
+  <div class="col-12 col-md-2">
+    <%if @projet.ptf.image_url%>
+      <img src="/<%= @projet.ptf.image_url%>">
+    <%end%>
+  </div>
+  <div class="ml-4 col-12 col-md-9 mt-2">
+    <div>
+      <div class="">
+          <% if  @projet.secteurprojets.count > 0%>
+            <%if  @projet.secteurprojets.count == 1%>
+                <p><span class="attr">Secteur : </span>
+            <%elsif @projet.secteurprojets.count > 1%>
+                <p><span class="attr">Secteurs : </span>
+            <%end%>
+              <span class="word">
+                <%@projet.secteurprojets .each do|sp|%>
+                    <% if sp == @projet.secteurprojets.last%>
+                      <%=sp.secteur.title %>
+                    <% else %>
+                      <%=sp.secteur.title %>, 
+                    <% end %>
+                <% end %>
+              </span>
+            </p>
           <%end%>
+          
+          <%if @projet.formeprojets.count > 0%>
+            <% if @projet.formeprojets.count == 1%>
+                <p><span class="attr">Forme d'appui : </span>
+            <%elsif @projet.formeprojets.count > 1%>
+                <p><span class="attr">Formes d'appui : </span>
+            <%end%>
             <span class="word">
-              <%@projet.secteurprojets .each do|sp|%>
-                  <% if sp == @projet.secteurprojets.last%>
-                    <span><%=sp.secteur.title %></span>
+                <%@projet.formeprojets .each do|fop|%>
+                  <% if fop == @projet.formeprojets.last%>
+                    <%=fop.forme.title %>
                   <% else %>
-                    <span><%=sp.secteur.title %>, </span>
+                    <%=fop.forme.title %>, 
                   <% end %>
-              <% end %>
+                <% end %>
               
             </span>
-          </p>
-       
-         <% if  @projet.formeprojets.count == 1%>
-              <p><span class="attr">Forme d'appui : </span>
-          <%else%>
-              <p><span class="attr">Formes d'appui : </span>
+            </p>
           <%end%>
-          <span class="word">
-              <%@projet.formeprojets .each do|fop|%>
-                <% if fop == @projet.formeprojets.last%>
-                  <span><%=fop.forme.title %></span>
-                <% else %>
-                  <span><%=fop.forme.title %>, </span>
+
+          <%if @projet.filiereprojets.count > 0%>
+            <% if  @projet.filiereprojets.count == 1%>
+                <p><span class="attr">Filière : </span>
+            <%elsif @projet.filiereprojets.count > 1%>
+                <p><span class="attr">Filières : </span>
+            <%end%>
+            <span class="word">
+                <%@projet.filiereprojets .each do|fp|%>
+                  <% if fp == @projet.filiereprojets.last%>
+                    <%=fp.filiere.title %>
+                  <% else %>
+                    <%=fp.filiere.title %>, 
+                  <% end %>
                 <% end %>
-              <% end %>
-            
-          </span>
-          </p>
-        
-          <% if  @projet.filiereprojets.count == 1%>
-              <p><span class="attr">Filière : </span>
-          <%else%>
-              <p><span class="attr">Filières : </span>
+            </span>
+            </p>
           <%end%>
-          <span class="word">
-              <%@projet.filiereprojets .each do|fp|%>
-                <% if fp == @projet.filiereprojets.last%>
-                  <span><%=fp.filiere.title %></span>
-                <% else %>
-                  <span><%=fp.filiere.title %>, </span>
-                <% end %>
-              <% end %>
-            
-          </span>
-          </p>
       </div>
     </div>
   </div>
-  <div class="show-cont pt-4 pb-4">
+</div>
+  <div class="show-cont pb-4">
     <div class="objectif mx-auto">
       <h2 class="text-left color">Objectif général du projet</h2>
       <div class="mt-2 pt-2">
@@ -90,87 +95,111 @@
       </div>
       <div class="appui mt-4">
         <h2 class="color text-left">Appui spécifique au secteur privé</h2>
-        <div class="p-2">
+        <div class="mt-2 p-2">
           <%= raw @projet.aspsp%>
         </div>
       </div>
       <div class="row pt-4 pb-4">
         <div class="col-md-6 list">
 
-          <% if  @projet.igaprojets.count == 1%>
-            <p><span class="attr">Institution Gouvernementale Associée : </span></p>
-          <%else%>
-            <p><span class="attr">Institutions Gouvernementales Associées : </span></p>
-          <%end%>
-          <div class="mb-3">
-              <%@projet.igaprojets .each do|g|%>
-                  <%if g == @projet.igaprojets.last%>
-                    <span><%=g.iga.title %></span>
-                  <% else %>
-                    <span><%=g.iga.title %>, </span>
-                  <% end %>
-              <% end %>
-          </div>
 
-          <% if  @projet.zoneprojets.count == 1%>
-              <p><span class="attr">Région : </span></p>
-          <%else%>
-              <p><span class="attr">Régions : </span></p>
-          <%end%>
-          <div class="mb-3">
-              <%@projet.zoneprojets.each do|zp|%>
-                <% if zp == @projet.zoneprojets.last%>
-                  <span><%=zp.zone.title %></span>
-                <%else%>
-                  <span><%=zp.zone.title %>, </span>
+          <% if  @projet.igaprojets.count > 0%>
+            <% if  @projet.igaprojets.count == 1%>
+                <p><span class="attr">Institution Gouvernementale Associée : </span></p>
+            <%elsif @projet.igaprojets.count > 1%>
+                <p><span class="attr">Institutions Gouvernementales Associées : </span></p>
+            <%end%>
+            <div class="mb-3">
+                <%@projet.igaprojets.each do|g|%>
+                    <%if g == @projet.igaprojets.last%>
+                      <span><%=g.iga.title %></span>
+                    <% else %>
+                      <span><%=g.iga.title %>, </span>
+                    <% end %>
                 <% end %>
-              <% end %>
-          </div>
+            </div>
+          <%end%>
+
+          <% if  @projet.zoneprojets.count > 0%>
+            <% if  @projet.zoneprojets.count == 1%>
+                <p><span class="attr">Région : </span></p>
+            <%elsif @projet.zoneprojets.count > 1%>
+                <p><span class="attr">Régions : </span></p>
+            <%end%>
+            <div class="mb-3">
+                <%@projet.zoneprojets .each do|zp|%>
+                  <% if zp == @projet.zoneprojets.last%>
+                    <span><%=zp.zone.title %></span>
+                  <%else%>
+                    <span><%=zp.zone.title %>, </span>
+                  <% end %>
+                <% end %>
+            </div>
+          <%end%>
           
-          <% if  @projet.partenaireprojets.count == 1%>
-              <p><span class="attr">Partenaire d'implémentation : </span></p>
-          <%else%>
-              <p><span class="attr">Partenaires d'implémentations : </span></p>
-          <%end%>
-          <div class="mb-3">
-              <%@projet.partenaireprojets .each do|pap|%>
-                <% if pap == @projet.partenaireprojets.last%>
-                  <span><%=pap.partenaire.plateforme %></span>
-                <%else%>
-                  <span><%=pap.partenaire.plateforme %>, </span>
-                <% end %>
-              <% end %>
-          </div>
-
-          <% if  @projet.benefprojets.count == 1%>
-              <p><span class="attr">Bénéficiaire : </span></p>
-          <%else%>
-              <p><span class="attr">Bénéficiaires : </span></p>
-          <%end%>
-          <div class="mb-3">
-              <%@projet.benefprojets.each do|ben|%>
-                  <%if ben == @projet.benefprojets.last%>
-                    <span><%=ben.beneficiaire.title %></span>
-                  <% else %>
-                    <span><%=ben.beneficiaire.title %>, </span>
+          <% if  @projet.partenaireprojets.count > 0%>
+            <% if  @projet.partenaireprojets.count == 1%>
+                <p><span class="attr">Partenaire d'implémentation : </span></p>
+            <%elsif @projet.partenaireprojets.count > 1%>
+                <p><span class="attr">Partenaires d'implémentations : </span></p>
+            <%end%>
+            <div class="mb-3">
+                <%@projet.partenaireprojets .each do|pap|%>
+                  <% if pap == @projet.partenaireprojets.last%>
+                    <span><%=pap.partenaire.description %></span>
+                  <%else%>
+                    <span><%=pap.partenaire.description %>, </span>
                   <% end %>
-              <% end %>
-          </div>
-
-          <% @projet.montants.each do |m|%>
-            <p><span class="attr">Montant  pour le secteur <%= m.secteur.title.downcase%> :</span>
-                <p class="mb-3"><%= m.price %> <%= m.unite.nom%></p>
-            </p>
-
+                <% end %>
+            </div>
           <%end%>
+
+
+          <% if  @projet.benefprojets.count > 0%>
+            <% if  @projet.benefprojets.count == 1%>
+                <p><span class="attr">Bénéficiaire : </span></p>
+            <%elsif @projet.benefprojets.count > 1%>
+                <p><span class="attr">Bénéficiaires : </span></p>
+            <%end%>
+            <div class="mb-3">
+                <%@projet.benefprojets .each do|ben|%>
+                    <%if ben == @projet.benefprojets.last%>
+                      <span><%=ben.beneficiaire.title %></span>
+                    <% else %>
+                      <span><%=ben.beneficiaire.title %>, </span>
+                    <% end %>
+                <% end %>
+            </div>
+          <%end%>
+
+          <% if  @projet.secteurprojets.count > 0%>
+          <%if  @projet.secteurprojets.count == 1%>
+              <p><span class="attr">Montant  pour le secteur : </span>
+          <%elsif @projet.secteurprojets.count > 1%>
+              <p><span class="attr">Montant  pour les secteurs : </span>
+          <%end%>
+          <% @projet.montants.each do |m|%>
+                <p class="mb-3"><%= m.secteur.title.titleize%> | <%=  number_with_delimiter(m.price) %> | <%= m.unite.nom%></p>
+          <%end%>
+          </p>
+          <%end%>
+
         </div>
         <div class="col-md-6 list">
           <p class="mb-3"><span class="attr">Nature de l'appui : </span><%=@projet.appui.title%></p>
-          <p class="mb-3"><span class="attr">Début : </span><%=@projet.debut_du_projet%> &nbsp;&nbsp;&nbsp;&nbsp;<span class="attr">Fin : </span><%=@projet.fin%></p>
-          <p class="mb-3"><span class="attr">Alignement aux priorités du plan Emergence de Madagascar : </span><p></span><% @projet.pemprojets.each do |p|%>
-                <p> <%=p.pem.title%></p>
-            <%end%></p>
-
+          <%if @projet.debut_du_projet && @projet.fin%>
+            <p class="mb-3"><span class="attr">Début : </span><%=@projet.debut_du_projet.year%> &nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="attr">Fin : </span><%=@projet.fin.year%></p>
+          <%end%>
+          <%if @projet.pemprojets.count >= 1%>
+          <p><span class="attr">Alignement aux priorités du plan Emergence de Madagascar : </span></p>
+            <div class="mb-3">
+              <% @projet.pemprojets.each do |p|%>
+                  <p><%=p.pem.title%></p>
+              <%end%>
+            </div>
+          <%end%>
+          
           <%if @projet.siteweb == " "%>
             <p class="mb-3"><span class="attr">Site web : </span>
                 <span class="word">
@@ -180,14 +209,41 @@
           <%end%>
 
           <%if @projet.files.attached?%>
+            <p><span class="attr">Fichiers : </span>
             <%@projet.files.each do|file|%> 
-            <p><span class="attr">Fichier : </span><%= link_to file.filename, rails_blob_path(file, disposition: "attachement") %></p>
+              <%= link_to file.filename, rails_blob_path(file, disposition: "attachement") %></p>
             <%end%>
         <%end%>
        
         </div>
     </div>
     <div class="text-right">
-      <a href="<%= super_admin_projet_path(@projet.id)%>" class="sc-eerKOB cfnPHQ bold sear" data-method="put">Valider</a>
-      <a href="<%= super_admin_projet_path(@projet.id)%>" class="btn btn-danger" data-confirm="Voulez-vous refusez ce projet ?">Annuler</a>
+      <%if @projet.validation == false && @projet.revalid == false && @projet.rejet == nil%>
+        <%= form_for @projet, url: super_admin_projet_path(@projet.id), method: :put do |f| %>
+          <input type="submit" name="rejeter" value="Valider" class="sc-eerKOB cfnPHQ bold sear">
+     
+          <input type="submit" name="rejeter" value="Rejeter" class="btn btn-danger">
+          <a href="<%= edit_super_admin_projet_path(@projet.id)%>" data-method="get" class="sc-eerKOB cfnPHQ bold sear">Modifier</a>
+          <a href="<%= super_admin_projets_path%>" class="btn btn-secondary">Retour</a>
+        <%end%>
+      <%elsif @projet.revalid == true && @projet.validation == false && @projet.rejet == nil%>
+          <%= form_for @projet, url: super_admin_projet_path(@projet.id), method: :put do |f| %>
+          <input type="submit" name="rejeter" value="Revalider" class="sc-eerKOB cfnPHQ bold sear">
+     
+            <input type="submit" name="rejeter" value="Rejeter" class="btn btn-danger">
+            <a href="<%= super_admin_projets_path%>" class="btn btn-secondary">Retour</a>
+          <%end%>
+      <%elsif @projet.rejet == true && @projet.validation == nil && @projet.revalid == false%>
+        <%= form_for @projet, url: super_admin_projet_path(@projet.id), method: :put do |f| %>
+          <input type="submit" name="rejeter" value="Valider" class="sc-eerKOB cfnPHQ bold sear">
+          <a href="<%= super_admin_projets_path%>" class="btn btn-secondary">Retour</a>
+        <%end%>
+
+      <%else%>
+        <%= form_for @projet, url: super_admin_projet_path(@projet.id), method: :put do |f| %>
+          <span class="badge badge-primary btn-bg-primary">Projet validé</span>
+          <span><input type="submit" name="rejeter" value="Rejeter" class="btn btn-danger"></span>
+          <a href="<%= super_admin_projets_path%>" class="btn btn-secondary">Retour</a>
+        <%end%>
+      <%end%>
     </div>

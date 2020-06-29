@@ -17,14 +17,17 @@ Rails.application.routes.draw do
 
  	  namespace :super_admin do
       resources :publications
-	    resources :users   
+	    resources :users 
 	    resources :projets
       resources :actus
-
+      resources :tarifs
+      resources :contacts
+      resources :update_projets
   	end
-  
+    
    root to: 'home#index'
-   devise_for :users
+   devise_for :users, :controllers => { :sessions => "sessions" }
+   get 'users/index'
    resources :projets
    get '/search' => 'projets#search', :as => 'search_projet'
 

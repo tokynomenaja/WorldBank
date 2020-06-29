@@ -8,6 +8,8 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
+require("trix")
+require("@rails/actiontext")
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -15,20 +17,6 @@ require("jquery")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-
-function Refresh() {
-	alert("alefa")
-    //vérification du cookie
-    if(document.cookie == ""){ // s'il n'existe pas on le créé 
-        var date = new Date();
-        date.setTime(date.getTime()+(30*1000));
-        var expires = "; expires="+date.toGMTString();
- 
-        document.cookie = "rafraichir=non;"+expires+"; path=/"; //http://stackoverflow.com/questions/7879810/make-a-cookie-expire-in-30-seconds
-        setTimeout(function(){ location.reload(true); }, 3000); //https://developer.mozilla.org/fr/docs/Web/API/WindowTimers/setTimeout + https://developer.mozilla.org/en-US/docs/Web/API/Location/reload on actualise la page
-    }
-         
-}
 
 
 $(document).on('turbolinks:load', function() {
@@ -132,20 +120,6 @@ $(document).on('turbolinks:load', function() {
 		$("#beneficiaire-check").addClass("toggleclass")
 	})
 
-	$("#beneficiaire-listener").click(function(e){
-		$("#beneficiaire-content").toggleClass("toggleclass")
-
-		$("#scontent").addClass("toggleclass")
-		$("#ptf-check").addClass("toggleclass")
-		$("#filiere-check").addClass("toggleclass")
-		$("#zone-check").addClass("toggleclass")
-		$("#range-year-content").addClass("toggleclass")
-		$("#range-content").addClass("toggleclass")
-		$("#forme-check").addClass("toggleclass")
-		$("#iga-check").addClass("toggleclass")
-		$("#beneficiaire-check").addClass("toggleclass")
-	})
-
 	$("#iga-listener").click(function(e){
 		$("#iga-check").toggleClass("toggleclass")
 
@@ -157,6 +131,7 @@ $(document).on('turbolinks:load', function() {
 		$("#range-content").addClass("toggleclass")
 		$("#forme-check").addClass("toggleclass")
 		$("#beneficiaire-check").addClass("toggleclass")
+		$("#appui-check").addClass("toggleclass")
 	})
 
 	$("#forme-listener").click(function(e){
@@ -176,6 +151,8 @@ $(document).on('turbolinks:load', function() {
 	$("#beneficiaire-listener").click(function(e){
 		$("#beneficiaire-check").toggleClass("toggleclass")
 
+		$("#appui-check").addClass("toggleclass")
+		$("#forme-check").addClass("toggleclass")
 		$("#scontent").addClass("toggleclass")
 		$("#ptf-check").addClass("toggleclass")
 		$("#filiere-check").addClass("toggleclass")
@@ -184,7 +161,13 @@ $(document).on('turbolinks:load', function() {
 		$("#range-content").addClass("toggleclass")
 		$("#iga-check").addClass("toggleclass")
 	})
-// validation compteur de mot
+	
+	$("#filter-btn-open").click(function(e){
+		$("#filter-display").toggleClass("gOGYTl")
+	})
+
+
+// validation compteur de mot objectif general
 	var wordLen = 150;
 	var len; // Maximum word length
 	$('#comment_body').keyup(function(event) {	
@@ -197,7 +180,7 @@ $(document).on('turbolinks:load', function() {
 		}
 		console.log(len.length + " words are typed out of an available " + wordLen);
 		wordsLeft = (wordLen) - len.length;
-		$('.words-left').html(wordsLeft+ ' mots restants à taper');
+		$('.words-left').html(wordsLeft+ ' mots restants');
 		if(wordsLeft == 0) {
 			$('.words-left').css({
 				'background':'red'
@@ -205,6 +188,27 @@ $(document).on('turbolinks:load', function() {
 		}
 	});
 
+
+	// validation compteur de mot Appui
+	var wordLenApp = 300;
+	var len2; // Maximum word length
+	$('#aspsp').keyup(function(event) {	
+		len2 = $('#aspsp').val().split(/[\s]+/);
+		if (len2.length > wordLenApp) { 
+			if ( event.keyCode == 46 || event.keyCode == 8 ) {// Allow backspace and delete buttons
+	    } else if (event.keyCode < 48 || event.keyCode > 57 ) {//all other buttons
+	    	event.preventDefault();
+	    }
+		}
+		console.log(len2.length + " words are typed out of an available " + wordLenApp);
+		wordsLeft2 = (wordLenApp) - len2.length;
+		$('.words-left2').html(wordsLeft2+ ' mots restants');
+		if(wordsLeft2 == 0) {
+			$('.words-left2').css({
+				'background':'red'
+			}).prepend('<i class="fa fa-exclamation-triangle"></i>');
+		}
+	});
 
 //calendrier
 
@@ -324,7 +328,7 @@ $(document).on('turbolinks:load', function() {
 
 	$(function() {
 	  $("#selectionDebut").monthly({
-	    years: [2020, 2021, 2022, 2023, 2024, 2025, 2026, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036],
+	    years: [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036],
 	    topOffset: 28,
 	    onMonthSelect: function(mi, m, y) {
 	      mi = padToTwo(mi);
@@ -337,7 +341,7 @@ $(document).on('turbolinks:load', function() {
 	});
 	$(function() {
 	  $("#selectionFin").monthly({
-	    years: [2020, 2021, 2022, 2023, 2024, 2025, 2026, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036],
+	    years: [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036],
 	    topOffset: 28,
 	    onMonthSelect: function(mi, m, y) {
 	      mi = padToTwo(mi);
@@ -348,8 +352,95 @@ $(document).on('turbolinks:load', function() {
 	  });
 	});
 
+	$(function() {
+	  $("#selectionDebutSmall").monthly({
+	    years: [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036],
+	    topOffset: 28,
+	    onMonthSelect: function(mi, m, y) {
+	      mi = padToTwo(mi);
+	      var debut = parseInt(mi) + 1;
+	      $("#selectionDebutSmall").val(m + " " + y);
+	      $("#selectionDebutValue").val(debut + "/" + y);
+
+	    }
+	  });
+	});
+	$(function() {
+	  $("#selectionFinSmall").monthly({
+	    years: [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036],
+	    topOffset: 28,
+	    onMonthSelect: function(mi, m, y) {
+	      mi = padToTwo(mi);
+	      var fin = parseInt(mi) + 1;
+	      $("#selectionFinSmall").val(m + " " + y);
+	      $("#selectionFinValue").val(fin + "/" + y);
+	    }
+	  });
+	});
 
 // resumé filtre
 
+	$(".truncate-pub").each(function(){
+		var content = $(this).text()
+		if (content.length > 200) {
+			var newContent = content.substr(0, 200)
+			$(this).text(newContent)
+			$(this).append('...')
+		}
+	})
+	$(".truncate-actu").each(function(){
+		var content = $(this).text()
+		if (content.length > 200) {
+			var newContent = content.substr(0, 200)
+			$(this).text(newContent)
+			$(this).append('...')
+		}
+	})
+
+  $("#simulateur").click(function(){
+    $("#document").trigger("click");
+  });
+
+  $('#document').change(function(e){
+   var files = [];
+	for (var i = 0; i < $(this)[0].files.length; i++) {
+	    files.push($(this)[0].files[i].name);
+	}
+	$(this).next('#simulateur').html(files.join(', '));
+});
+
+$("#burger").click(function(e){
+	$("#responsive-nav").toggleClass("toggleclass")
+});
+$("#pub-item").click(function(e){
+	$("#pub-list").toggleClass("toggleclass")
+	$("#projet-list").addClass("toggleclass")
+	$("#actus-list").addClass("toggleclass")
+	$("#under-list").addClass("toggleclass")
+});
+$("#projet-item").click(function(e){
+	$("#projet-list").toggleClass("toggleclass")
+	$("#pub-list").addClass("toggleclass")
+	$("#pub-list").addClass("toggleclass")
+	$("#under-list").addClass("toggleclass")
+});
+$("#actus-item").click(function(e){
+	$("#actus-list").toggleClass("toggleclass")
+	$("#pub-list").addClass("toggleclass")
+	$("#projet-list").addClass("toggleclass")
+	$("#under-list").addClass("toggleclass")
+});
+$("#user-item").click(function(e){
+	$("#user-list").toggleClass("toggleclass")
+	$("#pub-list").addClass("toggleclass")
+	$("#projet-list").addClass("toggleclass")
+	$("#actus-list").addClass("toggleclass")
+});
+
+        jQuery('#datepicker').datepicker({
+            format: 'dd-mm-yyyy',
+            startDate: '+1d'
+        });
 
 })
+

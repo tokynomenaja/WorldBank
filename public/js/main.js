@@ -11,6 +11,7 @@ var ir = document.getElementById('ir');
 var il = document.getElementById('il');
 var showMontant = document.getElementById('showMontant');
 
+
 function setLeftValue(){
     var _this = inputLeft,
     min = parseInt(_this.min)
@@ -44,12 +45,14 @@ function valueLeft(){
         outputLeft.innerHTML = values[this.value];
 
         showMontant.innerHTML = "montant en millions de USD";
+        il.value = 0;
         }
         else {
         outputLeft.innerHTML = values[this.value];
         showMontant.innerHTML = "plus de " + outputLeft.value + " millions d'usd";
-        ir.value = "max";
-        il.value = outputleft.value;
+        // ir.value = "max";
+        ir.value = 1000000000;
+        il.value = outputleft.value * 1000000;
         }
     }
     else{
@@ -59,14 +62,14 @@ function valueLeft(){
 
             showMontant.innerHTML = "moins de " + outputRight.value + " millions d'usd";
             il.value = 0;
-            ir.value = outputRight.value;
+            ir.value = outputRight.value * 1000000;
         }
         else{
             outputLeft.innerHTML = values[this.value];
             otl.innerHTML = " et "
-            il.value = values[this.value];
+            il.value = values[this.value] * 1000000;
             showMontant.innerHTML = "entre" + " " + outputLeft.value + " " + "millions et " + " " + outputRight.value + " " + "millions d'USD";
-            ir.value = outputRight.value;
+            ir.value = outputRight.value * 1000000;
         }
     }
 };
@@ -76,12 +79,13 @@ function valueRight(){
         if (outputRight.value == "+") {
             outputRight.innerHTML = values[this.value];
         showMontant.innerHTML = "montant en millions de USD";
+        ir.value = 1000000000;
         }
         else {
             outputRight.innerHTML = values[this.value];
         showMontant.innerHTML = "moins de " + outputRight.value + " millions d'usd";
         il.value = 0;
-        ir.value = outputRight.value;
+        ir.value = outputRight.value * 1000000;
         }
     }
     else{
@@ -89,15 +93,15 @@ function valueRight(){
         if (outputRight.value == "+") {
             outputRight.innerHTML = values[this.value];
         showMontant.innerHTML = "plus de " + outputLeft.value+ " millions d'usd";
-        il.value = outputLeft.value;
-        ir.value = "max";
+        il.value = outputLeft.value * 1000000;
+        ir.value = outputRight.value * 1000000;
         }
         else {
             outputRight.innerHTML = values[this.value];
             otl.innerHTML = " et "
-            ir.value = values[this.value];
+            ir.value = values[this.value] * 1000000;
             showMontant.innerHTML = "entre" + " " + outputLeft.value + " " + "millions et " + " " + outputRight.value + " " + "millions d'USD";
-            il.value = outputLeft.value;
+            il.value = outputLeft.value * 1000000;
         }
     }
 };
@@ -139,6 +143,3 @@ inputYearLeft.addEventListener("input", setLeftYearValue);
 inputYearRight.addEventListener("input", setRightYearValue);
 
 // FIN PERIODE
-
-
-

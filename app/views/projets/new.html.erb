@@ -8,31 +8,31 @@
 			<div class="row mb-2">
 				<div class="col-6">
 					<div>
-						<label for="nom" class="mr-2 table">Nom du projet </label>
+						<label for="nom" class="mr-2 tablePrint">Nom du projet </label>
 					</div>
 					<input type="text" name="nom_du_projet" id="nom" placeholder="Nom du projet" class="form-control">
 				</div>
 			</div>
 			<div class="d-flex justify-content-between mb-3">
 				<div>
-					<h6 class="table">PTF</h6>
+					<h6 class="tablePrint">PTF</h6>
 					<%= select_tag 'ptf_id', options_for_select(Ptf.all.collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
 				</div>
 				<div>
-					<h6 class="table">Début</h6>
+					<h6 class="tablePrint">Début</h6>
 					<input type="date" name="debut_du_projet" class="form-control">
 				</div>
 				<div>
-					<h6 class="table">Fin</h6>
+					<h6 class="tablePrint">Fin</h6>
 					<input type="date" name="fin" class="form-control">
 				</div>
 				<div>
-					<h6 class="table">Montant</h6>
+					<h6 class="tablePrint">Montant</h6>
 					  <input name="montant" type = "range" min="0" max="60" onchange="rangevalue.value=value"/>
                   <output id="rangevalue">0</output> 
 				</div>
 				<div>
-					<h6 class="table">Apui</h6>
+					<h6 class="tablePrint">Apui</h6>
 					<%= select_tag 'appui_id', options_for_select(Appui.all.collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
 				</div>
 			</div>
@@ -46,7 +46,7 @@
 				<div class="card card-body">
 					<div class="row">
 						<% Secteur.all.each do |c| %>
-							<div class="col-md-4">
+							<div class="col-12 col-md-6 col-xl-4">
 								<%= check_box("secteur_id",c.id, {checked: false}, {class: "form-control"}) %>
 								<%=h c.title%>
 							</div> 

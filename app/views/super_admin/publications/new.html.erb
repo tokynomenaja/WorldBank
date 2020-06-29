@@ -1,33 +1,20 @@
-
 <%= form_tag url_for(action: 'create'),method:'post', class:'form', multipart: true do%>
-
-	<div class="container sans-head login" style=" background-color: white; text-align: center; width: 40%; margin-bottom: 20px;" >
-		<h3>Creation d'un nouveau publication</h3><br>
-		<div style="margin-left: 20%;">
-		<div class=" row ">
-			<div class="col-md-4 ">
-				<div>
-					<label for="nom" class="form-content text-left table">Titre </label>
-				</div>
-				<input type="text" name="title" id="nom" placeholder="title"  required="true">
+	<div class="container sans-head publication-head border rounded p-4">
+		<h5 class="text-center tablePrint">Créer votre publication</h5>
+		<div class="mb-2">
+			<label for="nom" class="tablePrint">Titre </label>
+			<input type="text" name="title" id="nom" placeholder="title" class="form-control" required="true">
+		</div>
+		<div class="mb-2">
+			<label for="nom" class="tablePrint">Description </label>
+			<textarea type="text" name="description" id="nom" placeholder="description" class="form-control p-2" rows="5" required="true"></textarea>
+		</div>
+			<div class="mb-2 mt-4">
+				<%= file_field_tag :files, name:"files[]", required: true, multiple: true, id: :"document", class: 'toggleclass'%>
+				<span class="btn btn-secondary text-wrap text-break" id="simulateur">Ajouter des fichiers liés à la publication</span>
 			</div>
+		<div>
+			<input type="submit" name="cree" value="Publier" class="btn btn-bg-primary rounded-0 text-white btn-lg btn-block mt-4">
 		</div>
-		<div class=" row ">
-			<div class="col-md-4">
-				<div>
-					<label for="nom" class="form-content text-left mb-2  table">Description </label>
-				</div>
-				<textarea type="text" name="description" id="nom" placeholder="description" rows="10"  required="true"></textarea>
-			</div>
-		</div>
-		</div>
-			<div class="container mb-2 mt-4" style="margin-bottom: 2px;">
-			<span class=" form-content text-left table">Documents de publication :</span>
-			<p><%= file_field_tag :files, name:"files[]", required: true, multiple: true%></p> <br>
-			<p><input type="submit" name="cree" value="Publier" class="sc-eerKOB cfnPHQ"></p>
-
-		   </div>	
 	</div>
-
-
 <%end%>

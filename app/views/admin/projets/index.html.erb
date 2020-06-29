@@ -1,28 +1,68 @@
-<div class="d-flex flex-wrap sans-head container">
-<% @projets.each do |p|%>
-	<div class="col-sm-4 mb-3">
-		<div class="card">
-			<div class="card-body">
-				<h5 class="card-title"><%= p.nom_du_projet %></h5>
-				<p class="card-text"><%= raw p.objectif_generale_du_projet.truncate(150)%></p>
-				<p>
-					<%if p.picture.attached?%>
-						<%= image_tag p.picture, alt: 'picture', width: '200', height: '200', class:"card-img-circle"%>
-					<%else%>
-						<img class="card-img-top" width="200" height="200" src="/maki.jpg" alt="Card image cap">
-					<%end%>
-				</p><br>
-				<p><a href="<%= admin_projet_path(p.id)%>" class="btn btn-primary">Voir</a>
-					<%if p.validation == false%>
-						<span class="btn btn-warning">En attente de validation</span>	
-					<%elsif p.validation == nil%>
-						<span class="btn btn-danger">Non publié<span>
-					<%else%>
-						<span class="btn btn-success">Publié<span>
-					<%end%>
-				</p>	
+<div class="sans-head container">
+	<%if @projets.count == 0 %>
+			<div class="text-center text-muted mt-1 mb-4">
+				<p> Aucun projet créé</p>
 			</div>
-		</div>
+		<%else%>
+	<div class="text-center text-muted mt-4 mb-4 ">
+		<h3 class="tablePrint"> Mes projets </h3>
 	</div>
-<%end%>
+	<div class="d-flex justify-content-center flex-wrap">
+		<% @projets.each do |p|%>
+			<div class="col-md-4 mb-3">
+				<div class="card card-height position-relative">
+					<div class="card-body">
+						<h5 class="card-title card-text-md date-projet-xl"><%= p.nom_du_projet.truncate(40) %></h5>
+						<h5 class="card-title card-text-sm date-projet-small"><%= p.nom_du_projet.truncate(30) %></h5>
+						<p class="card-text card-text-md mt-3 date-projet-xl"><%= raw truncate(sanitize(p.objectif_generale_du_projet, tags: []), length: 100)%></p>
+						<p class="card-text card-text-sm mt-3 date-projet-small"><%= raw truncate(sanitize(p.objectif_generale_du_projet, tags: []), length: 50)%></p>
+						<div class="date-projet-small">
+							<div class="row align-items-center mt-2 position-absolute card-foot">
+								<p class="col-4 ml-3"><a href="<%= admin_projet_path(p.id)%>" class="tablePrint mb-0">Voir</a></p>
+								<p class="col-8 text-right mr-3 validation-projet" id="text-left-pers">							
+								<%if p.validation == false && p.revalid == false && p.rejet == nil%>
+									<span class="badge badge-info">En attente de validation</span>	
+								<%elsif p.validation == nil && p.rejet == nil && p.revalid == false%>
+									<span class="badge badge-warning">Non publié<span>
+								<%elsif p.revalid == true && p.validation == false && p.rejet == nil%>
+									<span class="badge badge-dark">En attente de revalidation</span>
+								<%elsif p.rejet == true && p.validation == nil && p.revalid == false%>
+									<span class="badge badge-danger">Rejeté</span>	
+								<%elsif p.validation == true%>
+									<span class=" badge badge-primary btn-bg-primary">Publié<span>
+								<%end%>
+								</p>
+							</div>
+						</div>
+						<div class="date-projet-xl">
+							<div class="d-flex align-items-center mt-2 position-absolute card-foot">
+								<p class="col-4 col-md-4"><a href="<%= admin_projet_path(p.id)%>" class="tablePrint mb-0">Voir</a></p>
+								<p class="col-8 col-md-8 text-right mr-3 validation-projet" id="text-left-pers">							
+								<%if p.validation == false && p.revalid == false && p.rejet == nil%>
+									<span class="badge badge-info">En attente de validation</span>	
+								<%elsif p.validation == nil && p.rejet == nil && p.revalid == false%>
+									<span class="badge badge-warning">Non publié<span>
+								<%elsif p.revalid == true && p.validation == false && p.rejet == nil%>
+									<span class="badge badge-dark">En attente de revalidation</span>
+								<%elsif p.rejet == true && p.validation == nil && p.revalid == false%>
+									<span class="badge badge-danger">Rejeté</span>	
+								<%elsif p.validation == true%>
+									<span class=" badge badge-primary btn-bg-primary">Publié<span>
+								<%end%>
+								</p>
+							</div>	
+						</div>
+					</div>
+				</div>
+			</div>
+		<%end%>
+	</div>
+	<div class="text-center">
+		<%= paginate @projets %>
+	</div>
+	<%end%>
+	<div style="margin-top: 3%; margin-bottom: 3%;">
+		<a href="<%= new_admin_projet_path%>" class="btn btn-bg-primary rounded-0 text-white btn-lg btn-block">Créer un projet</a>
+	</div>
+
 </div>

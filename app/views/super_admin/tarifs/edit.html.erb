@@ -1,0 +1,65 @@
+<div class="container-actu mx-auto row mb-5 sans-head">
+	<div class="col-md-4 border-right">
+		<h5 class="mb-4 text-center tablePrint">Modifier le taux de change n° <%= @tarif.id%></h5>
+		<%= form_tag url_for(action: 'update'),method:'put', class:'form', multipart: true do%>
+			<div class="mb-4">
+				<label for="nom" class="mr-2 tablePrint">Unité de référence </label>
+				<input type="text" name="reference" id="nom" value="<%= @tarif.reference%>" class="form-control" required="true">
+			</div>
+			<div class="mb-4">
+				<label for="nom" class="mr-2 tablePrint"> Valeur </label>
+				<input type="text" name="valeur" id="nom" value="<%= @tarif.valeur%>" class="form-control" required="true">
+			</div>
+			<div class="mb-4">				
+				<select name="unite" class="form-control">
+						<%Unite.all.each do |u|%>
+							<%if u == @tarif.unite%>
+								<option value="<%= @tarif.unite.id%>" selected><%= @tarif.unite.nom%></option>
+							<%else%>
+								<option value="<%= u.id%>"><%= u.nom%></option>
+							<%end%>
+						<%end%>
+						</select>
+			</div>
+			<div class="mb-4">
+				<% if @tarif.utilise == true%>
+					<input type="submit" name="cree" value="Changer" class="btn btn-bg-primary rounded-0 text-white btn-lg btn-block">
+				<%else%>
+					<input type="submit" name="cree" value="À utiliser" class="btn btn-bg-primary rounded-0 text-white btn-lg btn-block">
+					<input type="submit" name="cree" value="Changer" class="btn btn-bg-primary rounded-0 text-white btn-lg btn-block">
+				<%end%>
+			</div>
+		<%end%>
+	</div>
+	<div class="col-md">
+		<h5 class="mb-4 text-center tablePrint">Taux de change</h5>
+	    <% @tarifs.each do |t|%>
+		    <div class="row align-items-center no-gutters border-bottom pb-2 pt-2">
+			    <div class="col-md-11 truncate-actu">
+			    	<%= t.reference %> 
+			    </div>
+			     <div class="col-md-11 truncate-actu">
+			    	<%= t.valeur %> 
+			    </div>
+			     <div class="col-md-11 truncate-actu">
+			    	<%= t.unite.nom %> 
+			    </div>
+			    	<div class="col-md-11 truncate-actu">
+		    	<% if t.utilise == true%>
+				    	Cours de change de l'année <%= t.created_at.year%>
+				<%else%>
+			    	<a href="<%= edit_super_admin_tarif_path(t.id)%>" class="btn btn-success">A utiliser</a>
+			    <%end%>
+			    	<!-- <a href="<%= super_admin_tarif_path(t.id)%>" class="btn btn-danger" data-method="delete" data-confirm="Voulez-vous enlever ce taux ?">Suprrimer</a> -->
+			    </div>
+			    <div class="col-md-1 text-center">
+			    	<a href="<%= edit_super_admin_tarif_path(t.id)%>" class="tablePrint">Changer</a>
+			    </div>
+		    </div>
+		<%end%>	
+	</div>
+	<div class="text-center">
+		<%= paginate @tarifs %>
+	</div>
+</div>
+<%= render partial: "/super_admin/confirm.html.erb"%>

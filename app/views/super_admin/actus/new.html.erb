@@ -1,3 +1,58 @@
+<div class="container-actu mx-auto row mb-5 sans-head">
+	<div class="col-md-4 tablePrint border-right">
+		<h5 class="mb-4 text-center">Créer une actualité</h5>
+		<%= form_tag url_for(action: 'create'),method:'post', class:'form', multipart: true do%>
+			<div class="mb-4">
+				<label for="nom" class="mr-2 tablePrint">Titre </label>
+				<input type="text" name="title" id="nom" placeholder="Titre" class="form-control" required="true">
+			</div>
+			<div class="mb-4">
+				<label for="date" class="mr-2 tablePrint">Date de publication</label>
+				<input type="date" name="date_publication" id="date" class="form-control" required="true">
+			</div>
+			<div class="mb-4">
+							
+				<span class="mr-2 ">Documents :</span>
+				<%= file_field_tag :files, name: "files[]", required: true, multiple: true,  id: :"document", class: 'toggleclass' %>
+				<span class="btn btn-secondary text-wrap text-break" id="simulateur" >Ajouter des fichiers </span>
+			</div>
+			<div class="mb-4">
+				<input type="submit" name="cree" value="Publier" class="btn btn-bg-primary rounded-0 text-white btn-lg btn-block">
+			</div>
+		<%end%>
+	</div>
+	<div class="col-md small-actus">
+		<%if @actus.count == 0 %>
+			<div class="text-center text-muted mt-1 mb-4">
+				<p> Aucune actualité</p>
+			</div>
+		<%else%>
+		<h5 class="mb-4 text-center">Toutes les actualités</h5>
+	    <% @actus.each do |a|%>
+		    <div class="row align-items-center no-gutters border-bottom border-right pb-2 pt-2">
+			    <div class="col-md-11 truncate-actu">
+			    	<%= a.title %>
+			    </div>
+			    <div class="col-md-1 text-center">
+			    	<a href="<%= super_admin_actu_path(a.id)%>" class="tablePrint">Voir</a>
+			    </div>
+		    </div>
+		<%end%>	
+		<div class="text-center mt-4">
+			<%= paginate @actus %>
+		</div>
+	<%end%>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<!-- 
 
 <div class="row sans-head">
   <div class="column1 ">
@@ -23,7 +78,7 @@
 				<div class=" row mb-2 text-left">
 					<div class="col- ">
 						<div>
-							<label for="nom" class="mr-2 table">Titre </label>
+							<label for="nom" class="mr-2 tablePrint">Titre </label>
 						</div>
 						<input type="text" name="title" id="nom" placeholder="title" class="form-control" required="true">
 					</div>
@@ -31,7 +86,7 @@
 			</div>
 
 		<div class="cont mb-2 mt-4 text-left " >
-				<span class="mr-2 table">Documents :</span>
+				<span class="mr-2 tablePrint">Documents :</span>
 		
 				<p><%= file_field_tag :files, name: "files[]", required: true, multiple: true %></p> <br>
 				<p><input type="submit" name="cree" value="Publier" class="sc-eerKOB cfnPHQ"></p>
@@ -67,7 +122,7 @@
 /* Clear floats after the columns */
 .row:after {
   content: "";
-  display: table;
+  display: tablePrint;
   clear: both;
 }
 .row{
@@ -90,3 +145,4 @@ margin-left: 10%;
 	margin-right: 8%;
 }
 </style>
+ -->

@@ -8,8 +8,11 @@
     background: transparent url('/chev.png') no-repeat;
     background-position: 4.5rem center;
     border-style: none;
-    line-height: 5rem;
-    z-index: 9999;
+}
+.select-nature-forme{
+    background: transparent url('/chev.png') no-repeat;
+    background-position: 5.5rem center;
+    border-style: none;
 }
 .reset{
     background: transparent;
@@ -46,4 +49,4 @@
 .reset-search-input{background-color: transparent;border:none;width: 100%;}
 .reset-search-input-default{background-color: transparent;border:none;}
 .icon-search{cursor: pointer;}
-
+.container-actu{width: 95%;}

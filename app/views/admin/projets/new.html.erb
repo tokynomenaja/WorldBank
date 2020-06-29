@@ -1,121 +1,165 @@
-<header class="aci59a-0 eyAIuG sticky-limit">
+<header class="aci59a-0 eyAIuG sticky-limit small-device-header">
     <div class="sc-1gnwgfb-2 hVIPFV">
-      
     </div>
 </header>
 <%= form_tag url_for(action: 'create'),method:'post', class:'form', multipart: true do%>
-	<div class="mt-4 mb-4">
+	<div class="mt-4 mb-4" onmouseover ="verificationDate()">
 		<div class="container">
-			<div class=" row mb-2">
-				<div class="col-6">
+			<div class="row mb-2">
+				<div class="col-12 col-md-6">
 					<div>
-						<label for="nom" class="mr-2 table">Nom du projet </label>
+						<label for="nom" class="mr-2 tablePrint">Nom du projet </label>
 					</div>
 					<input type="text" name="nom_du_projet" id="nom" placeholder="Nom du projet" class="form-control" required="true">
 				</div>
 			</div>
-		</div>
-		<div class="container mb-2">
-			<a class="table">
-				Objectif général du projet
-			</a>
-			<div class="mt-2">
-				<div class="card card-body">
-					<textarea name="objectif_generale_du_projet" rows="10" id="comment_body" class="form-control p-2" onkeyup="checkWordLen(this);" required></textarea>
-					<span id="charlimit"><strong class="words-left">150 mots maximum</strong></span>
+			<div class="row date-projet-small">
+				<div class="col-12 col-md-2 mt-2">
+					<h6 class="tablePrint">Début de projet</h6>
+					<input type="text" id="selectionDebutSmall" placeholder="mm/aaaa" class="form-control">
+				</div>
+				<div class="col-12 col-md-2 mt-2 mb-1">			
+					<h6 class="tablePrint">Fin de projet</h6>
+					<input type="text" class="form-control" placeholder="mm/aaaa" id="selectionFinSmall" title="Fin ne doit pas être antérieure de début">
 				</div>
 			</div>
 		</div>
 		<div class="container mb-2">
-			<a class="table">
+			<a class="tablePrint">
+				Objectif général du projet
+			</a>
+			<div class="mt-2">
+				<div class="card card-body">
+				<style type="text/css">
+					.trix-content {height: 250px;overflow: auto;}
+				</style>
+				<%=rich_text_area_tag :objectif_generale_du_projet, nil, id: "comment_body", title: "L'objectif général doit être rempli" %>
+
+					<p id="charlimit"><span class="words-left">150 mots maximum</span></p>
+				</div>
+			</div>
+		</div>
+		<div class="container mb-2">
+			<a class="tablePrint">
 				Appui spécifique au secteur privé
 			</a>
 			<div class="mt-2">
 				<div class="card card-body">
-					<textarea name="aspsp" rows="10" required id="aspsp" class="form-control p-2"></textarea>
+			  <%=rich_text_area_tag :aspsp, nil, id: "aspsp", title: "L'appui spécifique doit être rempli" %>
+
+					<p id="charlimit2"><span class="words-left2">300 mots maximum</span></p>
 				</div>
 			</div>
 		</div>
 
 		<div class="container">
-			<div class=" row mb-2">
-				<div class="col-6">
-					<h6 class="table">Partenaire Technique Financier</h6>
-					<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
+			<div class="row mb-2">
+				<div class="col-12 col-md-6 mt-2">
+					<h6 class="tablePrint">Partenaire Technique Financier</h6>
+					<%if current_user.organisme%>
+						<%if current_user.organisme.ptf != nil%>
+							<%if current_user.organisme.ptf.title !=  "WBG"%>
+								<input type="text" name=""  placeholder="<%= current_user.organisme.ptf.title%>" class="form-control" readonly>
+							<%else%>*
+							<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control", required: true%>
+							<%end%>
+						<%else%>
+							<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control", required: true%>
+						<%end%>
+					<%else%>
+						<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control", required: true%>	
+					<%end%>
+
 				</div>
-				<div class="col-6">
-					<h6 class="table">Nature de l'appui</h6>
-					<%= select_tag 'appui', options_for_select(Appui.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control"%>
+				<div class="col-12 col-md-6 mt-2">
+					<h6 class="tablePrint">Nature de l'appui</h6>
+					<%= select_tag 'appui', options_for_select(Appui.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control", required: true%>
 					
-				</div>
-					
+				</div>	
 			</div>
 		</div>
 
 
 		<div class="container mb-2">
-			<a class="table">
-				Partenaires d'implémentations
+			<a class="tablePrint">
+				Partenaire d'implémentation
 			</a>
 				<div class="mt-2">
 				<div class="card card-body">
 					<div class="row">
-						<% for x in 1..2%>
-							<div class="col-md-6">
-								<input type="checkbox" name="partONG<%= x %>" id="partONG<%= x %>" onclick="partONG(<%= x%>);">
-								<label for="partONG">ONG</label>
-								<input type="hidden" name="desc_partONG<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control" id="descpartONG<%= x %>">
+						<% for x in 1..1%>
+							<div class="col-md-12 row">
+								<div class="col-12 col-md">
+									<input type="checkbox" name="partONG<%= x %>" id="partONG<%= x %>" onclick="partONG(<%= x%>);">
+									<label for="partONG">ONG</label>
+								</div>
+								<div class="col-12 col-md">
+									<input type="hidden" name="desc_partONG<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartONG<%= x %>" required="true">
+								</div>
 							</div>
 						<% end %>
 
-						<% for x in 1..2%>
-							<div class="col-md-6">
-								<input type="checkbox" name="partASS<%= x %>" id="partASS<%= x%>" onclick="partASS(<%= x%>);">
-								<label for="partASS<%= x%>">Association</label>
-								<input type="hidden" name="desc_partASS<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control" id="descpartASS<%= x %>">
+						<% for x in 1..1%>
+							<div class="col-md-12 row">
+								<div class="col-12 col-md">
+									<input type="checkbox" name="partASS<%= x %>" id="partASS<%= x%>" onclick="partASS(<%= x%>);">
+									<label for="partASS<%= x%>">Association</label>
+								</div>
+								<div class="col-12 col-md">
+									<input type="hidden" name="desc_partASS<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartASS<%= x %>" required="true">
+								</div>
 							</div>
 						<% end %>
 
-						<% for x in 1..2%>
-							<div class="col-md-6">
-								<input type="checkbox" name="partCOM<%= x %>" id="partCOM<%= x%>" onclick="partCOM(<%= x%>);">
-								<label for="partCOM<%= x%>">Chambre de commerce</label>
-								<input type="hidden" name="desc_partCOM<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control" id="descpartCOM<%= x %>">
+						<% for x in 1..1%>
+							<div class="col-md-12 row">
+								<div class="col-12 col-md">
+									<input type="checkbox" name="partCOM<%= x %>" id="partCOM<%= x%>" onclick="partCOM(<%= x%>);">
+									<label for="partCOM<%= x%>">Chambre de commerce</label>
+								</div>
+								<div class="col-12 col-md">
+									<input type="hidden" name="desc_partCOM<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartCOM<%= x %>" required="true">
+								</div>
 							</div>
 						<% end %>
 
-						<% for x in 1..2%>
-							<div class="col-md-6">
-								<input type="checkbox" name="partPRI<%= x %>" id="partPRI<%= x%>" onclick="partPRI(<%= x%>);">
-								<label for="partPRI<%= x%>">Secteur Privé</label>
-								<input type="hidden" name="desc_partPRI<%= x %>" class="pl-2 pr-2 form-control" placeholder="A préciser" id="descpartPRI<%= x %>">
+						<% for x in 1..1%>
+							<div class="col-md-12 row">
+								<div class="col-12 col-md">
+									<input type="checkbox" name="partPRI<%= x %>" id="partPRI<%= x%>" onclick="partPRI(<%= x%>);">
+									<label for="partPRI<%= x%>">Secteur Privé</label>
+								</div>
+								<div class="col-12 col-md">
+									<input type="hidden" name="desc_partPRI<%= x %>" class="pl-2 pr-2 form-control pi-custom" placeholder="A préciser" id="descpartPRI<%= x %>" required="true">
+								</div>
+
 							</div>
 						<% end %>
-						<% for x in 1..2%>
-							<div class="col-md-6 d-flex align-items-center">
+						<% for x in 1..1%>
+						<div class="col-md-12 row">
+							<div class="col-12 col-md">
 								<input type="checkbox" name="partAUTRE<%= x %>" id="partAUTRE<%= x%>" onclick="partAUTRE(<%= x%>);">
-								<input type="text" name="plat_partAUTRE<%= x%>" placeholder="Autres" class="ml-2 pl-2 pr-2 form-control">
-								<input type="hidden" name="desc_partAUTRE<%= x %>" placeholder="A préciser" id="descpartAUTRE<%= x %>">
+								<label for="partAUTRE<%= x%>">Autre</label>
 							</div>
-						<% end %>
-
-
-					
+							<div class="col-12 col-md">
+								<input type="hidden" name="desc_partAUTRE<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartAUTRE<%= x %>" required="true">
+							</div>
+						</div>
+						<%end%>
 					</div>
 				</div>
-				</div>
+			</div>
 		</div>
 
-
 		<div class="container mb-2">
-			<a class="table">
+			<a class="tablePrint">
 				Secteurs
 			</a>
 				<div class="mt-2">
 				<div class="card card-body">
 					<div class="row">
 						<% Secteur.all.order(:title).each do |c| %>
-							<div class="col-md-4">
+							<div class="col-12 col-md-6 col-xl-4">
 								<%= check_box_tag("secteur_ids[]",c.id, false, id: :"s#{c.id}",:onclick => "check(#{c.id})")%>
 								<%= c.title%>
 							</div> 
@@ -124,39 +168,42 @@
 				</div>
 				</div>
 		</div>
-		<div class="container">
-			<div class="d-flex justify-content-between mb-3">
-				<div class="col-md-4 pl-0">
-					<h6 class="table">Montant pour le secteur :</h6>
-					<% Secteur.all.each do |s|%>
-						<div class="form-control pr-0" id="montant<%=s.id%>" style="display: none;">
-							<input type="text" name="montant<%= s.id%>" placeholder="<%= s.title%>" class="border-0">
-							<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset"%>
+		<section class="container">
+			<div class="row justify-content-between mb-3">
+				<div class="col-12 col-md-8 pl-0 mt-2">
+					<h6 class="tablePrint ml-3">Montant pour le secteur :</h6>
+					<% Secteur.all.order(:title).each do |s|%>
+						<div class="no-gutters align-items-center montant-padd" id="montant<%=s.id%>" style="display: none;">
+							<div class="col-12 col-md-5 font-size"><%= s.title.upcase %> : </div>
+							<div class="col-12 col-md-7 form-control pr-0">
+								<input type="text" name="montant<%= s.id%>" placeholder="Montant" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>">
+								<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset", id: :"unite#{s.id}"%>
+							</div>
 						</div>
 					<%end%>
 				</div>
-				<div class="col-md-4">
-					<h6 class="table">Début</h6>
-					<input type="text" id="selectionDebut" placeholder="mm/aaaa" class="form-control" required="true">
-					<input type="hidden" id="selectionDebutValue" placeholder="mm/aaaa" class="form-control" required="true" name="debut_du_projet">
+				<div class="col-12 col-md-2 mt-2 date-projet-xl">
+					<h6 class="tablePrint">Début de projet</h6>
+					<input type="text" id="selectionDebut" placeholder="mm/aaaa" class="form-control">
+					<input type="hidden" id="selectionDebutValue" placeholder="mm/aaaa" class="form-control" name="debut_du_projet">
 				</div>
-				<div class="col-md-4 pr-0">			
-					<h6 class="table">Fin</h6>
-					<input type="text" class="form-control" placeholder="mm/aaaa" required="true" id="selectionFin">
-					<input type="hidden" name="fin" id="selectionFinValue" class="form-control" placeholder="mm/aaaa" required="true" name="fin">
+				<div class="col-12 col-md-2 mt-2 date-projet-xl">			
+					<h6 class="tablePrint">Fin de projet</h6>
+					<input type="text" class="form-control" placeholder="mm/aaaa" id="selectionFin" title="Fin ne doit pas être antérieure de début">
+					<input type="hidden" name="fin" id="selectionFinValue" class="form-control" placeholder="mm/aaaa">
 				</div>
 			</div>
-		</div>
+		</section>
 			<div class="container mb-2 mt-2">
-			<a class="table">
-				Filières
+			<a class="tablePrint" id="filAsso">
+				Filières associées
 			</a>
 				<div class="mt-2">
 				<div class="card card-body">
 					<div class="row">
 						<%Filiere.order(:title).all.each do |fili|%>
 							<div class="col-md-4" style="display: none" id="fil<%= fili.id%>">
-								<%= check_box_tag("filiere_ids[]", fili.id)%>
+								<%= check_box_tag("filiere_ids[]", fili.id,false, id: :"filCheck#{fili.id}")%>
 								<%= fili.title%>
 							</div>
 							<div class="col-md-4" style="display: block" id="fl<%= fili.id%>">
@@ -165,42 +212,132 @@
 							</div>
 						<% end %>
 					</div>
-
+					   <div class="mt-2">
+								<button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#fl"> Autre</button><br>	
+							</div>
+						<div class="collapse" id="fl">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-5" style="text-align: center;">
+									<h6>Ajout d'une autre filière</h6>
+							    	<input type="text" name="newfili" size=15 placeholder="Autre filière" class="form-control" id="fla"><br>	
+							    	<input type="button" class="sc-eerKOB cfnPHQ" value="Ajouter" id="add">			
+								</div>
+								<div class="col-md-7">
+										<h6 style="text-align: center;">La nouvelle filière doit être cochée</h6>
+									<% 10.times do |f|%>
+								    	<div id="check<%= f%>" style="display: block;">
+											<p id="a<%= f%>" style="display: none;">
+												<%= check_box_tag("checkfili#{f}", :id => "c#{f}") %>
+												<span id="s<%= f%>"></span>	
+												<span id="s1<%= f%>"></span>	
+												<span id="s2<%= f%>"></span>	
+												<span id="s3<%= f%>"></span>	
+												<span id="s4<%= f%>"></span>	
+												<span id="s5<%= f%>"></span>	
+												<span id="s6<%= f%>"></span>	
+												<span id="s7<%= f%>"></span>	
+												<span id="s8<%= f%>"></span>	
+												<span id="s9<%= f%>"></span>	
+												<input type="hidden" name="valfili<%= f%>" id="valfili<%= f%>">	
+											</p>								
+										</div>
+								    <%end%>
+								</div>
+							</div><br>
+								<a class="tablePrint">Cochez le secteur associé à la nouvelle filière </a>
+							    <div class="row">
+								 <% Secteur.all.order(:title).each do |c| %>
+									<div class="col-md-4">
+										<%= check_box_tag("sectfil_ids[]",c.id, false, id: :"s#{c.id}")%>
+										<%= c.title%>
+									</div> 
+								<% end %>
+							    	
+							    </div>
+						</div>
+					</div>
 				</div>
 				</div>
 			</div>
-
 			<div class="container mb-2 mt-2">
-			<a class="table">
-				Forme d'appui
+			<a class="tablePrint" id="formAsso">
+				Formes d'appuis
 			</a>
 				<div class="mt-2">
 				<div class="card card-body">
 					<div class="row">
 						<%Forme.order(:title).all.each do |form|%>
 							<div class="col-md-6" style="display: none" id="form<%= form.id%>">
-								<%= check_box_tag("forme_ids[]", form.id,)%>
+								<%= check_box_tag("forme_ids[]", form.id,false,id: :"formCheck#{form.id}")%>
 								<%= form.title%>
 							</div>
 							<div class="col-md-6" style="display: block" id="forme<%= form.id%>">
-								<%= check_box_tag("forme_ids[]", form.id,)%>
+								<%= check_box_tag("forme_ids[]", form.id)%>
 								<%= form.title%>
 							</div>
 						<% end %>
 					</div>
+
+					<div class="mt-2">
+								<button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#fap"> Autre</button><br>	
+							</div>
+						<div class="collapse" id="fap">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-5" style="text-align: center;">
+									<h6>Ajout d'une autre forme d'appui</h6>
+							    	<input type="text" name="newform" size=15 placeholder="Autre forme d'appui" class="form-control" id="fo"><br>	
+							    	<input type="button" class="sc-eerKOB cfnPHQ" value="Ajouter" id="addForm">			
+								</div>
+								<div class="col-md-7">
+										<h6 style="text-align: center;">La nouvelle forme d'appui doit être cochée</h6>
+									<% 10.times do |a|%>
+								    	<div id="check<%= a%>" style="display: block;">
+											<p id="app<%= a%>" style="display: none;">
+												<%= check_box_tag("checkform#{a}", :id => "c#{a}") %>
+												<span id="appui<%= a%>"></span>	
+												<span id="appui1<%= a%>"></span>	
+												<span id="appui2<%= a%>"></span>	
+												<span id="appui3<%= a%>"></span>	
+												<span id="appui4<%= a%>"></span>	
+												<span id="appui5<%= a%>"></span>	
+												<span id="appui6<%= a%>"></span>	
+												<span id="appui7<%= a%>"></span>	
+												<span id="appui8<%= a%>"></span>	
+												<span id="appui9<%= a%>"></span>	
+												<input type="hidden" name="valform<%= a%>" id="valform<%= a%>">	
+											</p>								
+										</div>
+								    <%end%>
+								</div>
+							</div>
+							<br>
+								<a class="tablePrint">Cochez le secteur associé à la nouvelle forme d'appui </a>
+							    <div class="row">
+								 <% Secteur.all.order(:title).each do |c| %>
+									<div class="col-md-4">
+										<%= check_box_tag("sectform_ids[]",c.id, false, id: :"s#{c.id}")%>
+										<%= c.title%>
+									</div> 
+								<% end %>
+							    	
+							    </div>
+						</div>
+						</div>
 				</div>
 				</div>
 			</div>
 
 			<div class="container mb-2">
-				<a class="table">
+				<a class="tablePrint">
 					Bénéficiaires
 				</a>
 				<div class="mt-2">
 					<div class="card card-body">
 						<div class="row">
 							<% Beneficiaire.all.order(:title).each do |c| %>
-								<div class="col-md-6">
+								<div class="col-md-12">
 									<%= check_box_tag("beneficiaire_ids[]",c.id) %>
 									<%= c.title%>
 								</div>
@@ -215,7 +352,7 @@
 							<div class="row">
 								<div class="col-md-5" style="text-align: center;">
 									<h6>Ajout d'un nouveau bénéficiaire</h6>
-							    	<input type="text" name="newben" size=15 placeholder="nouveau bénéficiaire" class="form-control" id="inp"><br>	
+							    	<input type="text" name="newben" size=15 placeholder="Autre bénéficiaire" class="form-control" id="inp"><br>	
 							    	<input type="button" class="sc-eerKOB cfnPHQ" value="Ajouter" id="ajout">			
 								</div>
 								<div class="col-md-7">
@@ -224,16 +361,16 @@
 								    	<div id="check<%= b%>" style="display: block;">
 											<p id="p<%= b%>" style="display: none;">
 												<%= check_box_tag("checkben#{b}", :id => "c#{b}") %>
-												<span id="s<%= b%>"></span>	
-												<span id="s1<%= b%>"></span>	
-												<span id="s2<%= b%>"></span>	
-												<span id="s3<%= b%>"></span>	
-												<span id="s4<%= b%>"></span>	
-												<span id="s5<%= b%>"></span>	
-												<span id="s6<%= b%>"></span>	
-												<span id="s7<%= b%>"></span>	
-												<span id="s8<%= b%>"></span>	
-												<span id="s9<%= b%>"></span>	
+												<span id="ben<%= b%>"></span>	
+												<span id="ben1<%= b%>"></span>	
+												<span id="ben2<%= b%>"></span>	
+												<span id="ben3<%= b%>"></span>	
+												<span id="ben4<%= b%>"></span>	
+												<span id="ben5<%= b%>"></span>	
+												<span id="ben6<%= b%>"></span>	
+												<span id="ben7<%= b%>"></span>	
+												<span id="ben8<%= b%>"></span>	
+												<span id="ben9<%= b%>"></span>	
 												<input type="hidden" name="valben<%= b%>" id="valben<%= b%>">	
 											</p>								
 										</div>
@@ -249,7 +386,7 @@
 
 			
 		<div class="container mb-2">
-			<a class="table">
+			<a class="tablePrint">
 				Institution Gouvernementale Associée
 			</a>
 			<div  class="mt-2">
@@ -262,11 +399,48 @@
 							</div>
 						<% end %>
 					</div>
+
+					<div class="mt-2">
+							<button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#iga"> Autre</button><br>
+							
+						</div>
+					<div class="collapse" id="iga">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-5" style="text-align: center;">
+									<h6>Ajout d'une autre IGA</h6>
+							    	<input type="text" name="newiga" size=15 placeholder="autre IGA" class="form-control" id="inpiga"><br>	
+							    	<input type="button" class="sc-eerKOB cfnPHQ" value="Ajouter" id="ajoutIga">			
+								</div>
+								<div class="col-md-7">
+										<h6 style="text-align: center;">La nouvelle IGA doit être cochée</h6>
+									<% 10.times do |i|%>
+								    	<div id="check<%= i%>" style="display: block;">
+											<p id="pi<%= i%>" style="display: none;">
+												<%= check_box_tag("checkiga#{i}", :id => "c#{i}") %>
+												<span id="igaspan<%= i%>"></span>	
+												<span id="igaspan1<%= i%>"></span>	
+												<span id="igaspan2<%= i%>"></span>	
+												<span id="igaspan3<%= i%>"></span>	
+												<span id="igaspan4<%= i%>"></span>	
+												<span id="igaspan5<%= i%>"></span>	
+												<span id="igaspan6<%= i%>"></span>	
+												<span id="igaspan7<%= i%>"></span>	
+												<span id="igaspan8<%= i%>"></span>	
+												<span id="igaspan9<%= i%>"></span>	
+												<input type="hidden" name="valiga<%= i%>" id="valiga<%= i%>">	
+											</p>								
+										</div>
+								    <%end%>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="container mb-2">
-			<a class="table">
+			<a class="tablePrint">
 				Alignement aux priorités du Plan Emergence de Madagascar
 			</a>
 				<div class="mt-2">
@@ -290,7 +464,7 @@
 				</div>
 			</div>
 		<div class="container mb-2">
-			<a class="table">
+			<a class="tablePrint">
 				Régions
 			</a>
 			<div class="mt-2">
@@ -298,7 +472,7 @@
 					<div class="row">
 						<% Zone.all.each do |c| %>
 							<div class="col-md-4">
-								<%= check_box_tag("zone_ids[]", c.id, false, id: :"") %>
+								<%= check_box_tag("zone_ids[]", c.id, false) %>
 								<%= c.title%>
 							</div>
 						<% end %>
@@ -306,22 +480,25 @@
 				</div>
 			</div>
 		</div>
-		<div class="container mb-2 mt-4">
-			Documents du projet : <%= file_field_tag :files,name:"files[]", multiple: true%>
-			
+		<div class="container mt-4">
+			<%= file_field_tag :files, name:"files[]", multiple: true, id: :"document", class: 'toggleclass'%>
+			<span class="btn btn-secondary text-wrap text-break" id="simulateur">Choisissez des fichiers liés au projet</span>
 		</div>
-		<div class="container mb-2 mt-4">
-			<p><span>Site web :</span><input type="text" name="site" class="form- control"></p>
+		<div class="container mt-4">
+			<p><span class="tablePrint">Site web :</span><input type="text" name="site" class="form-control" placeholder="votre lien"></p>
 		</div>
-		<div class="container mb-2 mt-4">
-			<label for="comment">Commentaire :</label>
+		<div class="container mt-4">
+			<label for="comment" class="tablePrint">Commentaire :</label>
 			<textarea name="comment" class="form-control p-2"  rows="5" placeholder="Commentaire qui s'adresse à l'administrateur"></textarea>
 			
 		</div>
-		<div class="container mt-4">
+		<div class="container mt-4 mb-5">
 			<%= submit_tag :Enregistrer, :name => "creer", :value => "Enregistrer", :class => "btn btn-secondary", :onclick => "validCheck()"%>
 			<%= submit_tag :Publier, :name => "creer", :value => "Publier", :class => "sc-eerKOB cfnPHQ", :onclick => "validCheck()"%>
 		</div>
 	</div>
 <% end %>
 <%= render partial: "/admin/projets/script.html.erb"%>
+
+<%= render partial: "/super_admin/confirm.html.erb"%>
+
