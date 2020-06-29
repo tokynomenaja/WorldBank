@@ -1,5 +1,39 @@
 <header class="aci59a-0 eyAIuG sticky-limit position-relative small-device-header">
-  <div class="sc-1gnwgfb-2 hVIPFV pict">
+  <div class="sc-1gnwgfb-2 hVIPFV picc">
+    <style type="text/css">
+        .picc{
+          <%if @secteur_1 != ""%>
+            <% if @params_secteur.count == 1%>
+              <%@params_secteur.each do |i|%>
+                <%@secteur_1 = Secteur.all.find(i.to_i).title%>
+                  <%if @secteur_1 == "ENTREPREUNARIAT"%>
+                    background-image: url('/secteur/entrepreunariat.jpg');
+                    <%elsif @secteur_1 == "COMMERCE"%>
+                      background-image: url('/secteur/commerce.jpg'); 
+                    <%elsif @secteur_1 == "INDUSTRIE EXTRACTIVE"%>
+                      background-image: url('/secteur/extractive.jpg');
+                    <%elsif @secteur_1 == "INFRASTRUCTURES"%>
+                      background-image: url('/secteur/infrastructure.jpg');
+                    <%elsif @secteur_1 == "TOURISME"%>
+                      background-image: url('/secteur/back.jpg');
+                    <%elsif @secteur_1 == "AGROBUSINESS"%>
+                      background-image: url('/secteur/agribusinness.jpg');
+                    <%elsif @secteur_1 == "PROMOTION DES INVESTISSEMENTS"%>
+                      background-image: url('/secteur/promotion.jpg');
+                    <%elsif @secteur_1 == "FINANCES"%>
+                      background-image: url('/secteur/finance.jpg');
+                    <%elsif @secteur_1 == "ENERGIE"%>
+                      background-image: url('/secteur/energie.jpg'); 
+                  <%end%>    
+                <%end%>
+            <%else%>
+              background-image: url('/secteur/accueil.jpg');
+            <%end%>
+          <%else%>
+            background-image: url('/secteur/accueil.jpg'); 
+          <%end%>
+        }
+      </style> 
     <div class="bt96d2-13 dwLDtk search position-absolute">
       <%= form_tag(root_path, :method => "get", class: 'sc-1ejeabr-19 gQwHOW') do %>
         <div class="d-flex justify-content-between bg-white align-items-center form-control pr-0">

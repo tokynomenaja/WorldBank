@@ -900,7 +900,7 @@ end
 
       if params[:search_secteur]
         if params[:search_secteur] && params[:search_secteur] != ""
-          if params[:search_secteur]== 1
+          if params[:search_secteur] == 1
               redirect_to(root_path)
               else
               @params_secteur = params[:search_secteur]

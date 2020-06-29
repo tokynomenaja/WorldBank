@@ -49,7 +49,7 @@ class UserMailer < ApplicationMailer
 
 	    @user = @project.bailleur
 
-	    @admin = "http://hraveloson@worldbank.org"
+	    @admin = "hraveloson@worldbank.org"
 
 	    #on définit une variable @url qu'on utilisera dans la view d’e-mail
 	    @url  = "http://82.165.122.74/admin/projets/#{@id}"
