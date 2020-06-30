@@ -70,23 +70,23 @@
     <div class="field mb-2 row">
 
       <div class="col-md-6">
-        <label for="nom">Nom</label>
+        <label for="nom">Nom *</label>
         <input type="text" name="first_name" placeholder="Nom" class="form-control" id="nom" required="true">
       </div>
       <div class="col-md-6">
-        <label for="prenom">Prénom</label>
+        <label for="prenom">Prénoms *</label>
         <input type="text" name="last_name" placeholder="Prénoms" class="form-control" id="prenom" required="true">
       </div>
       <div class="col-md-6">
-        <label for="phone">Téléphone</label>
-        <input type="text" name="phone" placeholder="Téléphone" class="form-control" id="phone">
+        <label for="phone">Téléphone *</label>
+        <input type="text" name="phone" placeholder="Téléphone" class="form-control" id="phone" required="true">
       </div>
       <div class="col-md-6">
-        <label for="fonction">Fonction</label>
+        <label for="fonction">Fonction </label>
         <input type="text" name="fonction" placeholder="Fonction" class="form-control" id="fonction">
       </div>
       <div class="col-md-6">
-         <label for="organisme">Organisme</label>
+         <label for="organisme">Organisme *</label>
             <%@organism = []%>
             <% Ptf.all.order(:title).each do |p|%>
 
@@ -109,19 +109,19 @@
         
       </div>
       <div class="col-md-6" style="top: 24px;">
-        <input type="hidden" name="nom" id="AutreOrganisme" placeholder="A préciser" class="form-control">
+        <input type="hidden" name="nom" id="AutreOrganisme" placeholder="A préciser" class="form-control" required="true">
       </div>
     </div>
 
 
     <div class="field mb-2">
-       <label for="email">Email</label>
-        <input type="email" name="email" placeholder="Email" class="form-control" >
+       <label for="email">Email *</label>
+        <input type="email" name="email" placeholder="Email" class="form-control" required="true" >
     </div>
 
 
     <div class="field mb-2">
-        <label for="message">Message</label>
+        <label for="message">Message *</label>
         <textarea name="message" placeholder="Laisser votre message" class="form-control p-2" rows="5" id="message" required="true"></textarea>
     </div>
 

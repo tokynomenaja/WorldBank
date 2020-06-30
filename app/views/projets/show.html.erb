@@ -182,6 +182,9 @@
                 <p class="mb-3"><%= m.secteur.title.titleize%> | <%=  number_with_delimiter(m.price) %> | <%= m.unite.nom%></p>
           <%end%>
           </p>
+             <span class="attr">Montant total :</span>
+             <span class="mb-3"><%= number_with_delimiter(@montant_total)%> USD </span>              
+
           <%end%>
 
         </div>

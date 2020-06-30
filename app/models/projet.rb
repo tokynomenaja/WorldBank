@@ -1,6 +1,6 @@
 class Projet < ApplicationRecord
 
-        has_rich_text :aspsp
+        has_rich_text :body
 
         validates :objectif_generale_du_projet, presence: true
         validates :aspsp, presence: true

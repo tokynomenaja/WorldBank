@@ -638,8 +638,53 @@ def index
           end 
 
 
+    #recherche montant,periode, beneficiaire , zone et iga
 
-    #recherche montant,periode et beneficiaire
+
+         if params[:fin] && params[:montant] && params[:search_ben]
+            params[:search_zone] && params[:search_iga]
+              if  
+                  @parameter= params[:fin]
+                  @params_montants = params[:montant]
+                  @params_zone = params[:search_zone]
+                  @params_iga = params[:search_iga]
+                  @params_bens = params[:search_ben]
+                  @fin = Projet.all.where(validation: true) 
+
+                  @d1 =  params[:fin][0].to_i
+                  @d2 =  params[:fin][1].to_i
+                  @m1 = @params_montants[0].to_i
+                  @m2 = @params_montants[1].to_i
+
+                   @rbmpi =[]
+
+                  @params_montants.each do |m|
+                      @fin.each do |p|
+                        price_total = 0
+                         p.montants.each do |t|
+                          price_total += t.price
+                  @params_bens.each do |s|
+                  @params_zone.each do |z|
+                  @params_iga.each do |i|
+                    @fin.each do |f|
+                      if  (price_total >= @m1 && price_total <= @m2) && (f.fin.year >= @d1 && f.fin.year <= @d2) && (f.beneficiaires.ids.include?s.to_i) 
+                        @rbmpi << f
+                     
+
+                      end
+                    end
+                  end 
+                  end 
+                  end
+                end
+                end
+              end
+            end 
+          end 
+
+
+
+    #recherche montant,periode et secteur
 
 
          if params[:fin] && params[:montant] && params[:search_secteur]
@@ -654,7 +699,7 @@ def index
                   @m1 = @params_montants[0].to_i
                   @m2 = @params_montants[1].to_i
 
-                   @spm =[]
+                 @spm =[]
 
                   @params_montants.each do |m|
                       @fin.each do |p|
@@ -675,6 +720,85 @@ def index
                 end
             end 
           end        
+
+
+
+
+
+    #recherche montant,periode et secteur
+
+
+         if params[:fin] && params[:montant] && params[:search_zone]
+              if  
+                  @parameter= params[:fin]
+                  @params_montants = params[:montant]
+                  @params_zone = params[:search_zone]
+                  @fin = Projet.all.where(validation: true) 
+
+                  @d1 =  params[:fin][0].to_i
+                  @d2 =  params[:fin][1].to_i
+                  @m1 = @params_montants[0].to_i
+                  @m2 = @params_montants[1].to_i
+
+                 @zpm =[]
+
+                  @params_montants.each do |m|
+                      @fin.each do |p|
+                        price_total = 0
+                         p.montants.each do |t|
+                          price_total += t.price
+                  @params_zone.each do |s|
+                    @fin.each do |f|
+                      if  (price_total >= @m1 && price_total <= @m2) && (f.fin.year >= @d1 && f.fin.year <= @d2) && (f.zones.ids.include?s.to_i) 
+                        @zpm << f
+                     
+
+                      end
+                    end
+                  end 
+                  end 
+                  end
+                end
+            end 
+          end               
+        
+
+    #recherche montant,periode et secteur
+
+
+         if params[:fin] && params[:montant] && params[:search_iga]
+              if  
+                  @parameter= params[:fin]
+                  @params_montants = params[:montant]
+                  @params_iga = params[:search_iga]
+                  @fin = Projet.all.where(validation: true) 
+
+                  @d1 =  params[:fin][0].to_i
+                  @d2 =  params[:fin][1].to_i
+                  @m1 = @params_montants[0].to_i
+                  @m2 = @params_montants[1].to_i
+
+                 @ipm =[]
+
+                  @params_montants.each do |m|
+                      @fin.each do |p|
+                        price_total = 0
+                         p.montants.each do |t|
+                          price_total += t.price
+                  @params_iga.each do |s|
+                    @fin.each do |f|
+                      if  (price_total >= @m1 && price_total <= @m2) && (f.fin.year >= @d1 && f.fin.year <= @d2) && (f.beneficiaires.ids.include?s.to_i) 
+                        @ipm << f
+                     
+
+                      end
+                    end
+                  end 
+                  end 
+                  end
+                end
+            end 
+          end               
         
   #recherche controller periode, montant, region , beneficiaire
 

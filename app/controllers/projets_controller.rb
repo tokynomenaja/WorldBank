@@ -16,11 +16,15 @@ class ProjetsController < ApplicationController
   
     def show
       @projet = Projet.find(params[:id])
+       @montant_total = 0
       respond_to do |format|
         format.html
         format.pdf { 
           render :pdf => "show", :layout => 'pdf.html'
         }
+      end
+        @projet.montants.each do |m|
+        @montant_total += m.price.to_i
       end
     end  
   end

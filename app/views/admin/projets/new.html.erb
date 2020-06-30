@@ -30,22 +30,35 @@
 			</a>
 			<div class="mt-2">
 				<div class="card card-body">
-				<style type="text/css">
-					.trix-content {height: 250px;overflow: auto;}
-				</style>
-				<%=rich_text_area_tag :objectif_generale_du_projet, nil, id: "comment_body", title: "L'objectif général doit être rempli" %>
-
+		
+			 <textarea name="objectif_generale_du_projet" value="nil" id="comment_body"
+			 class="editor" required></textarea>
+			 <p id="phase"></p>
+			 
 					<p id="charlimit"><span class="words-left">150 mots maximum</span></p>
 				</div>
 			</div>
 		</div>
+				<script src="https://cdn.tiny.cloud/1/cve25nsf1zx9vdlxydio4lplp7jghc6tstgpzq4xu394hmib/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+				<script>
+				 	tinymce.init({
+				    selector: 'textarea.editor',
+				  	plugins: 'lists link',
+				  	toolbar: 'bold italic | link code | aligncenter alignright alignjustify  | numlist bullist outdent indent',
+				  	menubar: false,
+				  	language : 'fr_FR'
+					
+				  });
+				</script>
 		<div class="container mb-2">
 			<a class="tablePrint">
 				Appui spécifique au secteur privé
 			</a>
 			<div class="mt-2">
 				<div class="card card-body">
-			  <%=rich_text_area_tag :aspsp, nil, id: "aspsp", title: "L'appui spécifique doit être rempli" %>
+			  <%= text_area_tag :aspsp, nil, id: "aspsp",class:'editor', title: "L'appui spécifique doit être rempli", required: true %>
+			 
 
 					<p id="charlimit2"><span class="words-left2">300 mots maximum</span></p>
 				</div>
@@ -494,11 +507,10 @@
 		</div>
 		<div class="container mt-4 mb-5">
 			<%= submit_tag :Enregistrer, :name => "creer", :value => "Enregistrer", :class => "btn btn-secondary", :onclick => "validCheck()"%>
-			<%= submit_tag :Publier, :name => "creer", :value => "Publier", :class => "sc-eerKOB cfnPHQ", :onclick => "validCheck()"%>
+			<%= submit_tag :Publier, :name => "creer", :value => "Publier", :class => "sc-eerKOB cfnPHQ", :onclick => "validCheck()" , :onclick =>"myFunction"%>
 		</div>
 	</div>
 <% end %>
 <%= render partial: "/admin/projets/script.html.erb"%>
 
 <%= render partial: "/super_admin/confirm.html.erb"%>
-

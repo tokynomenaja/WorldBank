@@ -12,22 +12,22 @@
     </ol>
     <div class="field mb-2 row">
       <div class="col-md-6 margin-b2">
-        <%= f.label :first_name, "Nom" %>
-        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class:'form-control', placeholder: 'Nom'%>
+        <%= f.label :first_name, "Nom *" %>
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class:'form-control', placeholder: 'Nom', required: true%>
       </div>
       <div class="col-md-6 margin-b2">
-        <%= f.label :last_name, "Prénoms" %>
-        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class:'form-control', placeholder: 'Prénoms' %>
+        <%= f.label :last_name, "Prénoms *" %>
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class:'form-control', placeholder: 'Prénoms', required: true %>
       </div>
     </div>
 
     <div class="field mb-2 row">
       <div class="col-md-6 margin-b2">
-        <%= f.label :phone, "Téléphone" %>
-        <%= f.text_field :phone, autofocus: true, autocomplete: "phone", class:'form-control', placeholder: 'Téléphone'%>
+        <%= f.label :phone, "Téléphone *" %>
+        <%= f.text_field :phone, autofocus: true, autocomplete: "phone", class:'form-control', placeholder: 'Téléphone', required: true%>
       </div>
       <div class="col-md-6 margin-b2">
-        <%= f.label :Organisme, "Organisme"%>
+        <%= f.label :Organisme, "Organisme *"%>
 
         <%@organism = []%>
         <% Ptf.all.order(:title).each do |p|%>
@@ -41,7 +41,7 @@
 
         <%end%>
 
-        <select class="form-control" name="organisme" id="selectBox" onchange="changeFunc()">
+        <select class="form-control" name="organisme" id="selectBox" onchange="changeFunc()" required="true">
           <option value="none" selected disabled hidden>Sélectionner</option>
           <option value="autre">Autre</option>
           <% @organism.each do |o|%>
@@ -57,8 +57,8 @@
 
 
     <div class="field mb-2">
-      <%= f.label :email, "Email" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'form-control', placeholder:'Email' %>
+      <%= f.label :email, "Email *" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'form-control', placeholder:'Email', required: true %>
     </div>
 
     <div class="field mb-2">

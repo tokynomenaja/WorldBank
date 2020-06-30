@@ -192,10 +192,15 @@ class Admin::ProjetsController < ApplicationController
 
   def show
     @projet = Projet.find(params[:id])
+    @montant_total = 0
     if params[:creer] == 'Publier'
       @projet.update(validation: false)
 
     end
+      @projet.montants.each do |m|
+        @montant_total += m.price.to_i
+      end
+
   end
 
   def edit

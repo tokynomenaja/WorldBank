@@ -742,3 +742,6 @@ background: #fff3;
 @media screen and (max-width: 1140px){
 
 }
+.tox .tox-statusbar{
+  display: none!important;
+}
