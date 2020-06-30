@@ -739,5 +739,7 @@ background: #fff3;
   #filter-btn-open, #filter-btn-close{display: none !important;}
 }
 @media screen and (max-width: 1140px){
-
+}
+.tox .tox-statusbar{
+  display: none!important;
 }

@@ -7,14 +7,34 @@
 		</div>
 		<div class="mb-2">
 			<label for="nom" class="tablePrint">Description </label>
-			<textarea type="text" name="description" id="nom" placeholder="description" class="form-control p-2" rows="5" required="true"></textarea>
+			<textarea type="text" name="description" id="nom"  class="form-control p-2 editor" required rows="5"></textarea>
 		</div>
 			<div class="mb-2 mt-4">
-				<%= file_field_tag :files, name:"files[]", required: true, multiple: true, id: :"document", class: 'toggleclass'%>
-				<span class="btn btn-secondary text-wrap text-break" id="simulateur">Ajouter des fichiers liés à la publication</span>
+				<%= file_field_tag :files, name:"files[]", multiple: true, id: :"document", class: 'toggleclass'%>
+				<span class="btn btn-secondary text-wrap text-break" id="simulateur">Joindre un fichier à cette publication</span>
 			</div>
 		<div>
 			<input type="submit" name="cree" value="Publier" class="btn btn-bg-primary rounded-0 text-white btn-lg btn-block mt-4">
 		</div>
 	</div>
 <%end%>
+
+	<script src="https://cdn.tiny.cloud/1/cve25nsf1zx9vdlxydio4lplp7jghc6tstgpzq4xu394hmib/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+	<script>
+	  tinymce.init({
+	    selector: 'textarea.editor',
+	  	plugins: 'lists link',
+	  	toolbar: 'bold italic | link code | aligncenter alignright alignjustify  | numlist bullist outdent indent',
+	  	menubar: false,
+	  	language : 'fr_FR'
+		
+     
+	  });
+
+	</script>
+<style type="text/css">
+	.tox .tox-statusbar{
+		display: none!important;
+	}
+</style>
