@@ -326,7 +326,7 @@
 						<div class="row">
 							<% Beneficiaire.all.order(:title).each do |c| %>
 								<div class="col-md-12">
-									<%= check_box_tag("beneficiaire_ids[]",c.id) %>
+									<%= check_box_tag("beneficiaire_ids[]",c.id, false, id: :"bencheck#{c.id}") %>
 									<%= c.title%>
 								</div>
 							<% end %>
