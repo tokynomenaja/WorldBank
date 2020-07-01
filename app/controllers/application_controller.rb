@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
 	before_action :set_online_time, if: proc { user_signed_in?}
 
 	def configure_devise_parameters
-	    	devise_parameter_sanitizer.permit(:sign_up) {|u| u.permit(:first_name, :last_name, :phone, :is_alive, :email, :address, :password, :password_confirmation,:is_admin)}
-	  		devise_parameter_sanitizer.permit(:account_update) {|u| u.permit(:first_name, :last_name, :phone, :is_alive, :email, :address, :password, :password_confirmation,:is_admin)}
+	    	devise_parameter_sanitizer.permit(:sign_up) {|u| u.permit(:first_name, :last_name, :phone, :fonction, :is_alive, :email, :address, :password, :password_confirmation,:is_admin)}
+	  		devise_parameter_sanitizer.permit(:account_update) {|u| u.permit(:first_name, :last_name, :phone, :fonction, :is_alive, :email, :address, :password, :password_confirmation,:is_admin)}
 	  
 	end
 

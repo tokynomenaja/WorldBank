@@ -8,7 +8,7 @@
 			<div class="row mb-2">
 				<div class="col-12 col-md-6">
 					<div>
-						<label for="nom" class="mr-2 tablePrint">Nom du projet </label>
+						<label for="nom" class="mr-2 tablePrint">Nom du projet *</label>
 					</div>
 					<input type="text" name="nom_du_projet" id="nom" placeholder="Nom du projet" class="form-control" required="true">
 				</div>
@@ -26,39 +26,22 @@
 		</div>
 		<div class="container mb-2">
 			<a class="tablePrint">
-				Objectif général du projet
+				Objectif général du projet *
 			</a>
 			<div class="mt-2">
 				<div class="card card-body">
-		
-			 <textarea name="objectif_generale_du_projet" value="nil" id="comment_body"
-			 class="editor" required></textarea>
-			 <p id="phase"></p>
-			 
+			 		<textarea name="objectif_generale_du_projet" value="nil" id="comment_body" class="editor"></textarea>
 					<p id="charlimit"><span class="words-left">150 mots maximum</span></p>
 				</div>
 			</div>
 		</div>
-				<script src="https://cdn.tiny.cloud/1/cve25nsf1zx9vdlxydio4lplp7jghc6tstgpzq4xu394hmib/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-
-				<script>
-				 	tinymce.init({
-				    selector: 'textarea.editor',
-				  	plugins: 'lists link',
-				  	toolbar: 'bold italic | link code | aligncenter alignright alignjustify  | numlist bullist outdent indent',
-				  	menubar: false,
-				  	language : 'fr_FR'
-					
-				  });
-				</script>
 		<div class="container mb-2">
 			<a class="tablePrint">
-				Appui spécifique au secteur privé
+				Appui spécifique au secteur privé *
 			</a>
 			<div class="mt-2">
 				<div class="card card-body">
-			  <%= text_area_tag :aspsp, nil, id: "aspsp",class:'editor', title: "L'appui spécifique doit être rempli", required: true %>
-			 
+			 		<textarea name="aspsp" value="nil" id="aspsp" class="editor"></textarea>
 
 					<p id="charlimit2"><span class="words-left2">300 mots maximum</span></p>
 				</div>
@@ -68,12 +51,12 @@
 		<div class="container">
 			<div class="row mb-2">
 				<div class="col-12 col-md-6 mt-2">
-					<h6 class="tablePrint">Partenaire Technique Financier</h6>
+					<h6 class="tablePrint">Partenaire Technique Financier *</h6>
 					<%if current_user.organisme%>
 						<%if current_user.organisme.ptf != nil%>
 							<%if current_user.organisme.ptf.title !=  "WBG"%>
 								<input type="text" name=""  placeholder="<%= current_user.organisme.ptf.title%>" class="form-control" readonly>
-							<%else%>*
+							<%else%>
 							<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control", required: true%>
 							<%end%>
 						<%else%>
@@ -85,7 +68,7 @@
 
 				</div>
 				<div class="col-12 col-md-6 mt-2">
-					<h6 class="tablePrint">Nature de l'appui</h6>
+					<h6 class="tablePrint">Nature de l'appui *</h6>
 					<%= select_tag 'appui', options_for_select(Appui.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control", required: true%>
 					
 				</div>	
@@ -166,7 +149,7 @@
 
 		<div class="container mb-2">
 			<a class="tablePrint">
-				Secteurs
+				Secteurs *
 			</a>
 				<div class="mt-2">
 				<div class="card card-body">
@@ -184,7 +167,7 @@
 		<section class="container">
 			<div class="row justify-content-between mb-3">
 				<div class="col-12 col-md-8 pl-0 mt-2">
-					<h6 class="tablePrint ml-3">Montant pour le secteur :</h6>
+					<h6 class="tablePrint ml-3">Montant pour le secteur *</h6>
 					<% Secteur.all.order(:title).each do |s|%>
 						<div class="no-gutters align-items-center montant-padd" id="montant<%=s.id%>" style="display: none;">
 							<div class="col-12 col-md-5 font-size"><%= s.title.upcase %> : </div>
@@ -196,13 +179,13 @@
 					<%end%>
 				</div>
 				<div class="col-12 col-md-2 mt-2 date-projet-xl">
-					<h6 class="tablePrint">Début de projet</h6>
-					<input type="text" id="selectionDebut" placeholder="mm/aaaa" class="form-control">
+					<h6 class="tablePrint">Début de projet *</h6>
+					<input type="text" id="selectionDebut" placeholder="mm/aaaa" class="form-control" required="true">
 					<input type="hidden" id="selectionDebutValue" placeholder="mm/aaaa" class="form-control" name="debut_du_projet">
 				</div>
 				<div class="col-12 col-md-2 mt-2 date-projet-xl">			
-					<h6 class="tablePrint">Fin de projet</h6>
-					<input type="text" class="form-control" placeholder="mm/aaaa" id="selectionFin" title="Fin ne doit pas être antérieure de début">
+					<h6 class="tablePrint">Fin de projet *</h6>
+					<input type="text" class="form-control" placeholder="mm/aaaa" id="selectionFin" title="Fin ne doit pas être antérieure de début" required="true">
 					<input type="hidden" name="fin" id="selectionFinValue" class="form-control" placeholder="mm/aaaa">
 				</div>
 			</div>
@@ -275,7 +258,7 @@
 			</div>
 			<div class="container mb-2 mt-2">
 			<a class="tablePrint" id="formAsso">
-				Formes d'appuis
+				Formes d'appuis *
 			</a>
 				<div class="mt-2">
 				<div class="card card-body">
@@ -344,7 +327,7 @@
 
 			<div class="container mb-2">
 				<a class="tablePrint">
-					Bénéficiaires
+					Bénéficiaires *
 				</a>
 				<div class="mt-2">
 					<div class="card card-body">
@@ -454,7 +437,7 @@
 		</div>
 		<div class="container mb-2">
 			<a class="tablePrint">
-				Alignement aux priorités du Plan Emergence de Madagascar
+				Alignement aux priorités du Plan Emergence de Madagascar *
 			</a>
 				<div class="mt-2">
 				<div class="card card-body">
@@ -478,7 +461,7 @@
 			</div>
 		<div class="container mb-2">
 			<a class="tablePrint">
-				Régions
+				Régions *
 			</a>
 			<div class="mt-2">
 				<div class="card card-body">
@@ -495,7 +478,7 @@
 		</div>
 		<div class="container mt-4">
 			<%= file_field_tag :files, name:"files[]", multiple: true, id: :"document", class: 'toggleclass'%>
-			<span class="btn btn-secondary text-wrap text-break" id="simulateur">Choisissez des fichiers liés au projet</span>
+			<span class="btn btn-secondary text-wrap text-break" id="simulateur">Choisissez un fichier lié au projet</span>
 		</div>
 		<div class="container mt-4">
 			<p><span class="tablePrint">Site web :</span><input type="text" name="site" class="form-control" placeholder="votre lien"></p>

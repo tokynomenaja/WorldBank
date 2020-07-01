@@ -42,7 +42,7 @@
         <%end%>
 
         <select class="form-control" name="organisme" id="selectBox" onchange="changeFunc()" required="true">
-          <option value="none" selected disabled hidden>Sélectionner</option>
+          <option value="" selected disabled hidden>Sélectionner</option>
           <option value="autre">Autre</option>
           <% @organism.each do |o|%>
             <option value="<%= o.title%>"><%= o.title%></option>
@@ -50,8 +50,15 @@
         </select>
 
       </div>
-      <div class="col-md-6" style="top: 15px;left: 50%;">
-        <input type="hidden" name="nom" id="AutreOrganisme" placeholder="A préciser" class="form-control">
+    </div>
+    <div class="field mb-2 row">
+      <div class="col-md-6 margin-b2">
+        <%= f.label :fonction, "Fonction" %>
+        <%= f.text_field :fonction, autofocus: true, autocomplete: "fonction", class:'form-control', placeholder: 'Fonction'%>
+      </div>
+      <div class="col-md-6 margin-b2" id="changeDiv" style="display: none">
+        <label for="autre">Autre *</label>
+        <input type="text" name="nom" id="AutreOrganisme" placeholder="A préciser" class="form-control">
       </div>
     </div>
 
@@ -85,8 +92,8 @@
       var autre = document.getElementById("AutreOrganisme");
       var changeDiv = document.getElementById("changeDiv");
       if(selectedValue == "autre"){
-        autre.type = "text";
         autre.required = true;
+        changeDiv.style.display = "block";
       }else{
         autre.type = "hidden";
       }

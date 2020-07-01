@@ -1,9 +1,43 @@
 <header class="aci59a-0 eyAIuG sticky-limit position-relative small-device-header">
-  <div class="sc-1gnwgfb-2 hVIPFV pict">
+  <div class="sc-1gnwgfb-2 hVIPFV picc">
+    <style type="text/css">
+        .picc{
+          <%if @secteur_1 != ""%>
+            <% if @params_secteur.count == 1%>
+              <%@params_secteur.each do |i|%>
+                <%@secteur_1 = Secteur.all.find(i.to_i).title%>
+                  <%if @secteur_1 == "ENTREPREUNARIAT"%>
+                    background-image: url('/secteur/entrepreunariat.jpg');
+                    <%elsif @secteur_1 == "COMMERCE"%>
+                      background-image: url('/secteur/commerce.jpg'); 
+                    <%elsif @secteur_1 == "INDUSTRIE EXTRACTIVE"%>
+                      background-image: url('/secteur/extractive.jpg');
+                    <%elsif @secteur_1 == "INFRASTRUCTURES"%>
+                      background-image: url('/secteur/infrastructure.jpg');
+                    <%elsif @secteur_1 == "TOURISME"%>
+                      background-image: url('/secteur/back.jpg');
+                    <%elsif @secteur_1 == "AGROBUSINESS"%>
+                      background-image: url('/secteur/agribusinness.jpg');
+                    <%elsif @secteur_1 == "PROMOTION DES INVESTISSEMENTS"%>
+                      background-image: url('/secteur/promotion.jpg');
+                    <%elsif @secteur_1 == "FINANCES"%>
+                      background-image: url('/secteur/finance.jpg');
+                    <%elsif @secteur_1 == "ENERGIE"%>
+                      background-image: url('/secteur/energie.jpg'); 
+                  <%end%>    
+                <%end%>
+            <%else%>
+              background-image: url('/secteur/accueil.jpg');
+            <%end%>
+          <%else%>
+            background-image: url('/secteur/accueil.jpg'); 
+          <%end%>
+        }
+      </style> 
     <div class="bt96d2-13 dwLDtk search position-absolute">
       <%= form_tag(root_path, :method => "get", class: 'sc-1ejeabr-19 gQwHOW') do %>
         <div class="d-flex justify-content-between bg-white align-items-center form-control pr-0">
-            <%= search_field_tag :search, params[:search], placeholder: "Nom du projet", class: "reset-search-input"%>
+            <%= search_field_tag :search, params[:search], placeholder: "Rechercher", class: "reset-search-input"%>
             <% if current_user %> 
               <% if current_user.is_consultant == true || current_user.is_consultant == false || current_user.is_super_admin == true || current_user.is_admin == true%>
                 <button tabindex="0" type="submit" variant="primary" class="reset-search-input-default">
@@ -149,7 +183,6 @@
           <%end%>
         </div>
       </div> 
-
       <div class="fdk8rh-3 feYJJO" id="forme-listener">
         <header class="fdk8rh-0 kYNMFW pl-1 pr-0">
           <h3 class="fdk8rh-1 eouleG">
@@ -210,7 +243,6 @@
           <label class="d-flex align-items-center" id="nofil"></label>
         </div>
       </div>
-
       <div class="fdk8rh-3 feYJJO" title="Institutions Gouvernementales Associées" id="iga-listener">
         <header class="fdk8rh-0 kYNMFW">
           <h3 class="fdk8rh-1 eouleG">
@@ -254,7 +286,6 @@
             <%end%>
           </div> 
         </div>
-
       <div class="fdk8rh-3 feYJJO" id="beneficiaire-listener">
         <header class="fdk8rh-0 kYNMFW">
           <h3 class="fdk8rh-1 eouleG">
@@ -357,7 +388,7 @@
   <!-- FIN FILTRE -->
   <div class="sc-11unfkk-2 fxFQyp sans-head-small">
     <header class="">
-      <div class="qjc24y-1 hlIrlm row no-gutters align-items-center">
+      <div class="qjc24y-1 hlIrlm row no-gutters align-items-start">
          <% if current_user%>
          <% if current_user.is_consultant == true || current_user.is_super_admin == true || current_user.is_admin == true %>
          <%if @forme_1 != "" || @ptf_1 != "" || @appui_1 != "" || @zone_1 != "" || @ben_1 != "" || @iga_1 != "" || @secteur_1 != "" || @filiere_1 != "" || @results != "" || @montant_11 != "" || @fin_1 != "" || @res != ""%>  
@@ -385,7 +416,6 @@
                       <% end %>
                   </p>
                 <%end%>
-
                 <%if @secteur_1 != ""%>
                   <% if @params_secteur.count == 1%>
                       <p class="text-muted mb-1"><span>Secteur &nbsp;:&nbsp; </span>
@@ -402,7 +432,6 @@
                       <% end %>
                   </p>
                 <%end%>
-
                 <%if @zone_1 != ""%>
                   <% if @params_zone.count == 1%>
                       <p class="text-muted mb-1"><span>Région &nbsp;:&nbsp; </span>
@@ -419,7 +448,6 @@
                       <% end %>
                   </p>
                 <%end%>
-
                 <%if @filiere_1 != ""%>
                   <% if @params_filiere.count == 1%>
                       <p class="text-muted mb-1"><span>Filière &nbsp;:&nbsp; </span>
@@ -436,7 +464,6 @@
                       <% end %>
                   </p>
                 <%end%>
-
                 <%if @iga_1 != ""%>
                 <%if @params_iga.count == 1%>
                 <p class="text-muted mb-1"><span>Institution Gouvernementale&nbsp;:</span></p>
@@ -448,7 +475,6 @@
                 <p class="text-muted mb-1"><%= @iga_1 %></p>
                 <%end%>
                 <%end%>
-
                 <%if @ben_1 != ""%>
                   <% if @params_ben.count == 1%>
                       <p class="text-muted mb-1"><span>Bénéficiaire &nbsp;:&nbsp; </span>
@@ -465,7 +491,6 @@
                       <% end %>
                   </p>
                 <%end%>
-
                <%if @appui_1 != ""%>
                   <% if @params_appui.count == 1%>
                       <p class="text-muted mb-1"><span>Nature d'appui &nbsp;:&nbsp; </span>
@@ -482,7 +507,6 @@
                       <% end %>
                   </p>
                 <%end%>
-
                <%if @forme_1 != ""%>
                   <% if @params_forme.count == 1%>
                       <p class="text-muted mb-1"><span>Forme d'appui &nbsp;:&nbsp; </span>
@@ -499,7 +523,6 @@
                       <% end %>
                   </p>
                 <%end%>
-
                 <%if @fin_1 != ""%>
                   <p class="text-muted mb-1"><span> projets entre : </span> <%= @d1%> et <%=@d2%></p>
                 <%end%>
@@ -508,7 +531,6 @@
                   <p class="text-muted mb-1"><span> montant de projet entre: &nbsp;:&nbsp; </span> </p>
                   <p class="text-muted mb-1"><%= number_to_human(@m1).upcase%> - <%= number_to_human(@m2).upcase %> | USD</p>
                 <%end%>
-
            
               </div>
             </div>
@@ -537,7 +559,6 @@
                 </div>
                 <%end%>
                 <%end%>
-
                 <!-- Résultat de filtre en global --> 
                 <%if @res != "" && @r == nil && @d == nil && @pro_zones == nil && @pro_bens == nil && @pro_igas == nil && @pro_fils == nil && @pro_formes == nil && @appui == nil && @pro_sects == nil && @ptf == nil %>
                 <%if @res.count != 0%>
@@ -558,9 +579,8 @@
                 </div>
                 <%end%>
                 <%end%>
-
                 <!-- Projet par Région --> 
-                <%if @pro_zones && @tout == nil && @ziga == nil && @aaa == nil && @pbz == nil && @benrdz == nil &&  @zpm == nil%>
+                <%if @pro_zones && @tout == nil && @ziga == nil && @aaa == nil && @pbz == nil%>
                 <%if @pro_zones.length != 0%>
                 <% @pro_zones.uniq.each do |res| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -578,9 +598,8 @@
                 </div>
                 <%end%>
                 <%end%>
-
                 <!-- Iga - Zone --> 
-                <%if @ziga && @tout == nil && @pro_igfizo == nil && @rbmpi == nil%>
+                <%if @ziga && @tout == nil && @pro_igfizo == nil%>
                 <%if @ziga.length != 0%>
                 <% @ziga.uniq.each do |res| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -598,9 +617,8 @@
                 </div>
                 <%end%>
                 <%end%>
-
                 <!-- Iga - Filiere --> 
-                <%if @zigafi && @tout == nil && @pro_igfizo == nil && @pfi == nil &&  @sifp == nil%>
+                <%if @zigafi && @tout == nil && @pro_igfizo == nil && @pfi == nil%>
                 <%if @zigafi.length != 0%>
                 <% @zigafi.uniq.each do |res| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -618,9 +636,8 @@
                 </div>
                 <%end%>
                 <%end%>
-
                 <!-- Iga-Filiere-Zone-Ptf --> 
-                <%if @pro_igfizo && @tout == nil && @pnifsfz == nil%>
+                <%if @pro_igfizo && @tout == nil%>
                 <%if @pro_igfizo.length != 0%>
                 <% @pro_igfizo.uniq.each do |res| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -638,7 +655,6 @@
                 </div>
                 <%end%>
                 <%end%>
-
                 <!-- Secteur – Région -->
                 <%if @sszone && @pro_zones == nil && @tout == nil  && @zoben == nil%>
                 <%if @sszone.length != 0%>
@@ -680,7 +696,6 @@
                 </div>
                 <%end%>
                 <%end%>
-
                 <!-- Projet par Filière -->
                 <%if @pro_fils && @projets == nil && @forme_projets == nil && @pro_sectfils == nil  && @r == nil && @d == nil &&  @zigafi == nil && @fiben == nil && @tout == nil && @forme_filieres == nil && @pro_formes == nil && @ptf_fil == nil%>
                 <%if @pro_fils.length != 0%>
@@ -700,7 +715,6 @@
                 </div>
                 <%end%>
                 <%end%>
-
                 <!-- Projet par forme d'appui -->
                 <%if @pro_formes && @forme_projets == nil && @projets == nil && @pro_sectfils == nil && @ptf_forme == nil && @r == nil && @d == nil &&  @igafor == nil && @foben == nil && @tout == nil && @forme_filieres == nil && @appui_formes == nil && @pro_sectptf == nil%>
                 <% if @pro_formes.length != 0%>
@@ -720,8 +734,6 @@
                 </div>
                 <%end%>
                 <%end%>
-
-
                 <!-- Secteur – Forme -->
                 <%if @forme_projets && @tout == nil%>
                 <%if @forme_projets.length != 0 %>
@@ -737,11 +749,11 @@
                 <%end%>
                   <%else%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <p class= 'text-muted '>La recherche ne correspond à aucun résultat</p>  
+                  <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
                 </div>
                 <%end%>
                 <%end%>
-
+                
                 <!-- Secteur – Filiere -->
                 <%if @projets && @tout == nil%>
                 <%if @projets.length != 0 %>
@@ -757,34 +769,12 @@
                 <%end%>
                   <%else%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <p class= 'text-muted '>La recherche ne correspond à aucun résultat</p>  
+                  <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
                 </div>
                 <%end%>
                 <%end%>
-
-
-                 <!-- Secteur – periode - montant -->
-                <%if@spm && @tout == nil%>
-                <%if@spm.length != 0 %>
-                <%@spm.uniq.each do |b|%>               
-                  <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
-                    <div class="col-8">
-                      <%= link_to "#{b.nom_du_projet}", projet_path(b.id), target: 'blank', class: 'text-muted reshover' %>
-                    </div>
-                    <div class="col-4 text-center">
-                      <span class="tablePrint"><%= b.ptf.title %></span>
-                    </div>
-                  </div>
-                <%end%>
-                  <%else%>
-                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <p class= 'text-muted '>La recherche ne correspond à aucun résultat</p>  
-                </div>
-                <%end%>
-                <%end%>
-
                 <!-- ptf - secteur - filiere - iga - nature d'appui - forme -->
-                <%if @pnifsf && @tout == nil && @pnifsfz == nil%>
+                <%if @pnifsf && @tout == nil%>
                 <%if @pnifsf.length != 0 %>
                 <%@pnifsf.uniq.each do |b|%>               
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -798,34 +788,10 @@
                 <%end%>
                   <%else%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
-                </div>
-                <%end%>
-                <%end%>
-
-
-                <!-- ptf - secteur - filiere - iga - nature d'appui - forme - zone-->
-                <%if @pnifsfz && @tout == nil%>
-                <%if @pnifsfz.length != 0 %>
-                <%@pnifsfz.uniq.each do |b|%>               
-                  <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
-                    <div class="col-8">
-                      <%= link_to "#{b.nom_du_projet}", projet_path(b.id), target: 'blank', class: 'text-muted reshover' %>
-                    </div>
-                    <div class="col-4 text-center">
-                      <span class="tablePrint"><%= b.ptf.title %></span>
-                    </div>
-                  </div>
-                <%end%>
-                  <%else%>
-                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                   <p class= 'text-muted '>La recherche ne correspond à aucun résultat</p>  
                 </div>
                 <%end%>
                 <%end%>
-
-
-
                 <!-- Recherche pour toutes les filtres -->
                 <%if @tout%>
                 <%if @tout.length != 0 %>
@@ -845,7 +811,6 @@
                 </div>
                 <%end%>
                 <%end%>
-
                 <!-- Projet par secteurs -->
                 <%if @pro_sects && @filiere == nil && @forme == nil && @r == nil && @ptf_pro == nil && @ptf_fil == nil && @d == nil && @sszone == nil && @aaa == nil && @tout == nil && @pro_zones == nil && @pro_sectptf == nil%>
                 <%if @pro_sects.length != 0  %>
@@ -861,11 +826,10 @@
                 <%end%>
                   <%else%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
+                  <p class= 'text-muted '>La recherche ne correspond à aucun résultat</p>  
                 </div>
                 <%end%>
                 <%end%>
-
                 <!-- Forme - Filiere -->
                 <%if @forme_filieres && @tout == nil%>
                 <%if @forme_filieres.length != 0 %>
@@ -881,14 +845,12 @@
                 <%end%>
                   <%else%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <p class= 'text-muted '>La recherche ne correspond à aucun résultat</p>  
+                  <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
                 </div>
                 <%end%>
                 <%end%>
-
                 <!-- Secteur-Filieres-Formes -->
-                <%if @pro_sectfils && @tout == nil &&  @pnifsf == nil && 
-                 @pnfsf == nil && @snff == nil%>
+                <%if @pro_sectfils && @tout == nil &&  @pnifsf == nil%>
                 <%if @pro_sectfils.length != 0 %>
                 <% @pro_sectfils.uniq.each do |b|%>               
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -906,10 +868,8 @@
                 </div>
                 <%end%>
                 <%end%>
-
-
                 <!-- Secteur-Appui-Forme-Ptf -->
-                <%if @pro_sectptf && @tout == nil && @pnifsf == nil &&  @pnfsf == nil%>
+                <%if @pro_sectptf && @tout == nil && @pnifsf == nil%>
                 <%if @pro_sectptf.length != 0 %>
                 <% @pro_sectptf.uniq.each do |b|%>               
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -927,68 +887,6 @@
                 </div>
                 <%end%>
                 <%end%>
-
-                <!-- iga-Appui-Forme-filiere -->
-                <%if @sifp && @tout == nil%>
-                <%if@sifp.length != 0 %>
-                <%@sifp.uniq.each do |b|%>               
-                  <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
-                    <div class="col-8">
-                      <%= link_to "#{b.nom_du_projet}", projet_path(b.id), target: 'blank', class: 'text-muted reshover' %>
-                    </div>
-                    <div class="col-4 text-center">
-                      <span class="tablePrint"><%= b.ptf.title %></span>
-                    </div>
-                  </div>
-                <%end%>
-                  <%else%>
-                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <p class= 'text-muted '>La recherche ne correspond à aucun résultat</p>  
-                </div>
-                <%end%>
-                <%end%>
-
-
-                <!-- Secteur-Appui-Forme-Ptf-filiere -->
-                <%if @pnfsf && @tout == nil && @pnifsf == nil%>
-                <%if @pnfsf.length != 0 %>
-                <% @pnfsf.uniq.each do |b|%>               
-                  <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
-                    <div class="col-8">
-                      <%= link_to "#{b.nom_du_projet}", projet_path(b.id), target: 'blank', class: 'text-muted reshover' %>
-                    </div>
-                    <div class="col-4 text-center">
-                      <span class="tablePrint"><%= b.ptf.title %></span>
-                    </div>
-                  </div>
-                <%end%>
-                  <%else%>
-                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <p class= 'text-muted '>La recherche ne correspond à aucun résultat</p>  
-                </div>
-                <%end%>
-                <%end%>
-
-                   <!-- Secteur-Appui-Forme-filiere -->
-                <%if @snff && @tout == nil %>
-                <%if @snff.length != 0 %>
-                <% @snff.uniq.each do |b|%>               
-                  <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
-                    <div class="col-8">
-                      <%= link_to "#{b.nom_du_projet}", projet_path(b.id), target: 'blank', class: 'text-muted reshover' %>
-                    </div>
-                    <div class="col-4 text-center">
-                      <span class="tablePrint"><%= b.ptf.title %></span>
-                    </div>
-                  </div>
-                <%end%>
-                  <%else%>
-                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <p class= 'text-muted '>La recherche ne correspond à aucun résultat</p>  
-                </div>
-                <%end%>
-                <%end%>
-
                 <!-- Ptf - Zone -->
                 <%if @ptf_zone && @tout == nil && @pro_igfizo == nil && @pbz == nil%>
                 <%if @ptf_zone.length != 0 %>
@@ -1008,9 +906,8 @@
                 </div>
                 <%end%>
                 <%end%>
-
                      <!-- Ptf - nature - forme -->
-                <%if @pnf && @tout == nil &&  @pnifsf == nil && @pro_sectptf == nil%>
+                <%if @pnf && @tout == nil &&  @pnifsf == nil%>
                 <%if @pnf.length != 0 %>
                 <% @pnf.uniq.each do |b|%>               
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -1028,7 +925,6 @@
                 </div>
                 <%end%>
                 <%end%>
-
                     <!-- Ptf - filiere - iga -->
                 <%if @pfi && @tout == nil && @pnifsf == nil%>
                 <%if @pfi.length != 0 %>
@@ -1048,7 +944,6 @@
                 </div>
                 <%end%>
                 <%end%>
-
                     <!-- Ptf - beneficiaire - zone -->
                 <%if @pbz && @tout == nil%>
                 <%if @pbz.length != 0 %>
@@ -1068,115 +963,6 @@
                 </div>
                 <%end%>
                 <%end%>
-
-
-
-                    <!-- montant - periode - zone -->
-                <%if @zpm && @tout == nil%>
-                <%if @zpm.length != 0 %>
-                <% @zpm.uniq.each do |b|%>               
-                  <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
-                    <div class="col-8">
-                      <%= link_to "#{b.nom_du_projet}", projet_path(b.id), target: 'blank', class: 'text-muted reshover' %>
-                    </div>
-                    <div class="col-4 text-center">
-                      <span class="tablePrint"><%= b.ptf.title %></span>
-                    </div>
-                  </div>
-                <%end%>
-                  <%else%>
-                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
-                </div>
-                <%end%>
-                <%end%>
-
-                   <!-- montant - periode - iga -->
-                <%if @ipm && @tout == nil%>
-                <%if @ipm.length != 0 %>
-                <% @ipm.uniq.each do |b|%>               
-                  <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
-                    <div class="col-8">
-                      <%= link_to "#{b.nom_du_projet}", projet_path(b.id), target: 'blank', class: 'text-muted reshover' %>
-                    </div>
-                    <div class="col-4 text-center">
-                      <span class="tablePrint"><%= b.ptf.title %></span>
-                    </div>
-                  </div>
-                <%end%>
-                  <%else%>
-                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
-                </div>
-                <%end%>
-                <%end%>
-
-
-                    <!-- beneficiaire - montant  - periode -->
-                <%if @benrd && @tout == nil && @benrdz == nil%>
-                <%if @benrd.length != 0 %>
-                <% @benrd.uniq.each do |b|%>               
-                  <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
-                    <div class="col-8">
-                      <%= link_to "#{b.nom_du_projet}", projet_path(b.id), target: 'blank', class: 'text-muted reshover' %>
-                    </div>
-                    <div class="col-4 text-center">
-                      <span class="tablePrint"><%= b.ptf.title %></span>
-                    </div>
-                  </div>
-                <%end%>
-                  <%else%>
-                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
-                </div>
-                <%end%>
-                <%end%>
-
-                 <!-- beneficiaire - montant  - periode - zone-->
-
-                <%if @benrdz && @tout == nil && @rbmpi== nil%>
-                <%if @benrdz.length != 0 %>
-                <% @benrdz.uniq.each do |b|%>               
-                  <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
-                    <div class="col-8">
-                      <%= link_to "#{b.nom_du_projet}", projet_path(b.id), target: 'blank', class: 'text-muted reshover' %>
-                    </div>
-                    <div class="col-4 text-center">
-                      <span class="tablePrint"><%= b.ptf.title %></span>
-                    </div>
-                  </div>
-                <%end%>
-                  <%else%>
-                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
-                </div>
-                <%end%>
-                <%end%>
-
-
-                  <!-- beneficiaire - montant  - periode - zone- iga -->
-
-                <%if @rbmpi && @tout == nil%>
-                <%if @rbmpi.length != 0 %>
-                <% @rbmpi.uniq.each do |b|%>               
-                  <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
-                    <div class="col-8">
-                      <%= link_to "#{b.nom_du_projet}", projet_path(b.id), target: 'blank', class: 'text-muted reshover' %>
-                    </div>
-                    <div class="col-4 text-center">
-                      <span class="tablePrint"><%= b.ptf.title %></span>
-                    </div>
-                  </div>
-                <%end%>
-                  <%else%>
-                    <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
-                </div>
-                <%end%>
-                <%end%>
-
-
-
                 <!-- Projet par PTF -->
                 <%if @ptf && @pro_sects == nil && @ptf_fil == nil && @ptf_forme == nil && @r == nil && @d == nil && @ptf_iga == nil && @ptf_zone == nil && @pro_zones == nil && @tout == nil && @asect == nil && @pro_sectptf == nil%>
                 <%if @ptf.count != 0%>
@@ -1196,7 +982,6 @@
                 </div> 
                 <%end%>
                 <%end%>
-
                 <!-- Ptf – Secteur   -->
                 <%if @ptf_pro && @r == nil && @d == nil && @tout == nil && @pro_sectptf == nil%>
                 <%if @ptf_pro.length != 0%>
@@ -1212,13 +997,12 @@
                 <%end%>
                 <%else%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <p class= 'text-muted '>La recherche ne correspond à aucun résultat</p> 
+                  <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p> 
                 </div> 
                 <%end%>
                 <%end%>
-
                 <!-- Ptf – Filiere  -->
-                <%if @ptf_fil && @r == nil && @d == nil && @tout == nil && @pro_igfizo == nil && @pfi == nil &&  @pnfsf == nil%>
+                <%if @ptf_fil && @r == nil && @d == nil && @tout == nil && @pro_igfizo == nil && @pfi == nil%>
                 <%if @ptf_fil.length != 0%>
                 <% @ptf_fil.uniq.each do |p| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -1236,7 +1020,6 @@
                 </div> 
                 <%end%>
                 <%end%>
-
                 <!-- Ptf – Forme -->
                 <%if @ptf_forme && @r == nil && @d == nil && @tout == nil && @pro_sectptf == nil && @pnf == nil%>
                 <%if @ptf_forme.length != 0%>
@@ -1256,7 +1039,6 @@
                 </div> 
                 <%end%>
                 <%end%>
-
                 <!-- Projet par nature d'appui -->
                 <%if @appui && @r == nil && @d == nil && @pro_sects == nil && @ptf == nil && @ptf_pro == nil && @aaa == nil  && @sia == nil && @tout == nil && @appui_formes == nil && @asect == nil && @pro_sectptf == nil%>
                 <%if @appui.count != 0%>
@@ -1276,12 +1058,8 @@
                 </div>
                 <%end%>
                 <%end%>
-
-
-
                 <!-- Appui – Forme -->
-                <%if @appui_formes && @tout == nil && @pro_sectptf == nil && @pnf == nil && 
-                  @snff == nil &&  @sifp == nil%>
+                <%if @appui_formes && @tout == nil && @pro_sectptf == nil && @pnf == nil%>
                 <%if @appui_formes.count != 0%>
                 <% @appui_formes.each do |ip| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -1295,11 +1073,10 @@
                 <%end%>
                   <%else%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <p class= 'text-muted '>La recherche ne correspond à aucun résultat</p>  
+                  <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
                 </div>
                 <%end%>
                 <%end%>
-
                 <!-- Appui – Zone   -->
                 <%if @aaa && @tout == nil && @nir == nil%>
                 <%if @aaa.count != 0%>
@@ -1315,12 +1092,10 @@
                 <%end%>
                   <%else%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <p class= 'text-muted '>La recherche ne correspond à aucun résultat</p>  
+                  <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
                 </div>
                 <%end%>
                 <%end%>
-
-
                 <!-- Appui – iga - zone   -->
                 <%if @nir && @tout == nil && @nir == nil%>
                 <%if @nir.count != 0%>
@@ -1340,8 +1115,6 @@
                 </div>
                 <%end%>
                 <%end%>
-
-
                 <!-- Projet par beneficiaire -->
                 <%if @pro_bens && @r == nil && @d == nil && @tout == nil && @zoben == nil%>
                 <%if @pro_bens.length != 0%>
@@ -1361,10 +1134,8 @@
                 </div>
                 <%end%>
                 <%end%>
-
-
                 <!-- Projet par période -->
-                <%if @d && @tout == nil && @benrd == nil && @spm == nil &&  @zpm == nil && @ipm == nil%>
+                <%if @d && @tout == nil%>
                 <%if @d.length != 0%>
                 <% @d.each do |f| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -1378,11 +1149,10 @@
                 <%end%>
                 <%else%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-                  <p class= 'text-muted '>La recherche ne correspond à aucun résultat</p>  
+                  <p class= 'text-muted '> La recherche ne correspond à aucun résultat</p>  
                 </div>
               <%end%>
               <%end%>
-
               <!-- Projet par montant -->
               <%if @r && @d == nil && @tout == nil%>
               <%if @r.count != 0%>
@@ -1404,7 +1174,6 @@
                   </div>
               <%end%>
               <%end%>
-
             </div>
             <div class="compteur mt-5">
             </div>
@@ -1461,7 +1230,6 @@
             </div>
           </div>
         </div>
-
       <%end%>
 
       <% else %>

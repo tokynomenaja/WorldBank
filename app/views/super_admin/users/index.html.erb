@@ -71,12 +71,14 @@
         </button>
       </div>
       <div class="modal-body">
-                <p><span>Nom :</span>
+            <p><span>Nom :</span>
 		    	<%=@users["#{x}".to_i].first_name%></p>
 		    <p><span>Prénom :</span>
 		    	<%=@users["#{x}".to_i].last_name%></p>
 		    <p><span>Email :</span>
 		    	<%=@users["#{x}".to_i].email%></p>
+		    <p><span>Téléphone :</span>
+		    	<%=@users["#{x}".to_i].phone%></p>
 		     <%if @users["#{x}".to_i].organisme%>
 		    	<%if @users["#{x}".to_i].organisme.ptf != nil%>
 		    		PTF : <%=@users["#{x}".to_i].organisme.ptf.title%></p>
@@ -191,6 +193,8 @@
 		    	<%=@users_en_attente["#{x}".to_i].last_name%></p>
 		    <p><span>Email :</span>
 		    	<%=@users_en_attente["#{x}".to_i].email%></p>
+		    <p><span>Téléphone :</span>
+		    	<%=@users_en_attente["#{x}".to_i].phone%></p>
 		    <%if @users_en_attente["#{x}".to_i].organisme%>
 		    	<%if @users_en_attente["#{x}".to_i].organisme.ptf != nil%>
 		    		PTF : <%=@users_en_attente["#{x}".to_i].organisme.ptf.title%></p>
