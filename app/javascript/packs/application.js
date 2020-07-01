@@ -437,10 +437,6 @@ $("#user-item").click(function(e){
 	$("#actus-list").addClass("toggleclass")
 });
 
-        jQuery('#datepicker').datepicker({
-            format: 'dd-mm-yyyy',
-            startDate: '+1d'
-        });
 
 })
 

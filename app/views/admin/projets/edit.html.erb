@@ -13,16 +13,6 @@
 					<input type="text" name="nom_du_projet" id="nom"  value="<%= @projet.nom_du_projet%>" class="form-control">
 				</div>
 			</div>
-			<div class="row date-projet-small">
-				<div class="col-12 col-md-2 mt-2">
-					<h6 class="tablePrint">Début de projet</h6>
-					<input type="text" id="selectionDebutSmall" value="<%= @projet.debut_du_projet%>" class="form-control" >
-				</div>
-				<div class="col-12 col-md-2 mt-2 mb-1">			
-					<h6 class="tablePrint">Fin de projet</h6>
-					<input type="text" class="form-control" value="<%= @projet.fin%>" id="selectionFinSmall" title="Fin ne doit pas être antérieure de début">
-				</div>
-			</div>
 		</div>
 		<div class="container mb-2">
 			<a class="tablePrint">
@@ -106,16 +96,16 @@
 				</div>
 			</div>
 		</div>
-		<div class="container calendrier position-relative">
-			<div class="d-flex justify-content-between mb-3">
-				<div class="col-12 col-md-8 pl-0 mt-2">
-					<h6 class="tablePrint ml-2">Montant pour le secteur :</h6>
+		<div class="container">
+			<div class="row justify-content-between no-gutters flex-wrap-reverse mb-3">
+				<div class="col-12 col-md-8 pl-0 mt-2 ml-2">
+					<h6 class="tablePrint">Montant pour le secteur :</h6>
 					<% Secteur.all.order(:title).each do |s|%>
 							<% if @sects %> 
 						 		<% if @sects.include? s %>
 						 			<% if @montants%>
 							 			<% if @montants.include? s.montants%>
-									<div class="no-gutters align-items-center montant-padd" id="montant<%=s.id%>" style="display: -ms-flexbox;display: flex;-ms-flex-wrap: wrap;flex-wrap: wrap;margin-right: -15px;margin-left: -15px;">
+									<div class="no-gutters align-items-center montant-padd ml-3" id="montant<%=s.id%>" style="display: -ms-flexbox;display: flex;-ms-flex-wrap: wrap;flex-wrap: wrap;">
 										<div class="col-12 col-md-5 font-size"><%= s.title.upcase %> : </div>
 										<div class="col-12 col-md-7 form-control pr-0">
 											<input type="text" name="montant<%= s.id%>" placeholder="Montant" value="<%= s.montants.find_by(projet_id: @projet.id).price%>" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" >
@@ -133,7 +123,7 @@
 										
 									</div>
 									<%else%>
-									<div class="no-gutters align-items-center montant-padd" id="montant<%=s.id%>" style="display: none;">
+									<div class="no-gutters align-items-center montant-padd ml-3" id="montant<%=s.id%>" style="display: none;">
 										<div class="col-12 col-md-5 font-size"><%= s.title.upcase %> : </div>
 										<div class="col-12 col-md-7 form-control pr-0">
 										<input type="text" name="montant<%= s.id%>" placeholder="Montant" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>">
@@ -144,7 +134,7 @@
 									<%end%>
 									<%end%>
 								<%else%>
-									<div class="no-gutters align-items-center montant-padd" id="montant<%=s.id%>" style="display: none;">
+									<div class="no-gutters align-items-center montant-padd ml-3" id="montant<%=s.id%>" style="display: none;">
 										<div class="col-12 col-md-5 font-size"><%= s.title.upcase %> : </div>
 										<div class="col-12 col-md-7 form-control pr-0">
 											<input type="text" name="montant<%= s.id%>" placeholder="Montant" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>">
@@ -156,15 +146,17 @@
 
 						<%end%>
 				</div>
-				<div class="col-12 col-md-2 mt-2 date-projet-xl">
-					<h6 class="tablePrint">Début de projet</h6>
-					<input type="text" id="selectionDebut" value="<%= @projet.debut_du_projet%>" class="form-control" >
-					<input type="hidden" id="selectionDebutValue" value="<%= @projet.debut_du_projet%>" class="form-control" name="debut_du_projet">
-				</div>
-				<div class="col-12 col-md-2 mt-2 date-projet-xl">			
-					<h6 class="tablePrint">Fin de projet</h6>
-					<input type="text" class="form-control" value="<%= @projet.fin%>" id="selectionFin" title="Fin ne doit pas être antérieure de début">
-					<input type="hidden" name="fin" id="selectionFinValue" class="form-control" value="<%= @projet.fin%>">
+				<div class="col-12 col-md-4 row">
+					<div class="col-12 col-md-6 mt-2">
+						<h6 class="tablePrint">Début de projet</h6>
+						<input type="text" id="selectionDebut" value="<%= @projet.debut_du_projet%>" class="form-control" required="true">
+						<input type="hidden" id="selectionDebutValue" value="<%= @projet.debut_du_projet%>" class="form-control" name="debut_du_projet" required="true">
+					</div>
+					<div class="col-12 col-md-6 mt-2">			
+						<h6 class="tablePrint">Fin de projet</h6>
+						<input type="text" class="form-control" value="<%= @projet.fin%>" id="selectionFin" title="Fin ne doit pas être antérieure de début" required="true">
+						<input type="hidden" name="fin" id="selectionFinValue" class="form-control" value="<%= @projet.fin%>" required="true">
+					</div>
 				</div>
 			</div>
 		</div>

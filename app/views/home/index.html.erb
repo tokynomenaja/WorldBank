@@ -74,14 +74,6 @@
     <%= image_tag "/filter.jpg" ,class:"img-filter"%>
   </div>
 </div>
-<!-- <div class="d-flex align-items-center justify-content-between w-75 mx-auto bg-white px-2 py-2 mt-2 border rounded tests" id="filter-btn-close">
-  <div>
-    FERMER LE FILTRE
-  </div>
-  <div>
-    <%= image_tag "/closef.png" ,class:"img-filter"%>
-  </div>
-</div> -->
 <%= form_tag(root_path, :method => "get", class: 'navbar-form navbar-left') do %> 
   <nav class="z0fved-5 gOGYTl filtre-margin-top" id="filter-display">
     <div class="z0fved-3 kBhqKR">
@@ -341,27 +333,29 @@
             </div>
           </div>
         </div>
-
-        <div class="btn-filtre kYNMFW eouleG fdk8rh-0 rounded">
+          <%= submit_tag "Rechercher",:class => 'd-none', :name => nil, :id => 'document'%>
           <% if current_user %> 
           <% if current_user.is_consultant == true || current_user.is_consultant == false || current_user.is_super_admin == true || current_user.is_admin == true%>
-          <%= submit_tag "Rechercher",:class => 'btn-reset sear', :name => nil%>
+            <div class="btn-filtre kYNMFW eouleG fdk8rh-0 rounded" id="simulateur">
+              <span class="link-btn sear">Rechercher</span>
+            </div> 
           <%end%>
           <%else%>
-          <a href="<%= new_user_session_path %>" class="sear">Rechercher</a>
+            <a href="<%= new_user_session_path %>" class="btn-filtre kYNMFW eouleG fdk8rh-0 rounded" id="sear">
+              <span class="link-btn">Rechercher</span>
+            </a>
           <%end%>
-        </div> 
       </div>
   </nav>
 <%end%>
   <!-- FIN FILTRE -->
   <div class="sc-11unfkk-2 fxFQyp sans-head-small">
     <header class="">
-      <div class="qjc24y-1 hlIrlm row no-gutters align-items-center">
+      <div class="qjc24y-1 hlIrlm row no-gutters align-items-start">
          <% if current_user%>
          <% if current_user.is_consultant == true || current_user.is_super_admin == true || current_user.is_admin == true %>
          <%if @forme_1 != "" || @ptf_1 != "" || @appui_1 != "" || @zone_1 != "" || @ben_1 != "" || @iga_1 != "" || @secteur_1 != "" || @filiere_1 != "" || @results != "" || @montant_11 != "" || @fin_1 != "" || @res != ""%>  
-        <div class="qjc24y-0 jMLWRH col-md-7" >
+        <div class="qjc24y-0 jMLWRH col-md-7">
           <div class="height">
             <h1 class="vx2fp9-3 ehdisu h-font text-left border-bottom pb-2">Résultats de la recherche</h1>
           </div>
@@ -508,13 +502,10 @@
                   <p class="text-muted mb-1"><span> montant de projet entre: &nbsp;:&nbsp; </span> </p>
                   <p class="text-muted mb-1"><%= number_to_human(@m1).upcase%> - <%= number_to_human(@m2).upcase %> | USD</p>
                 <%end%>
-
-           
               </div>
             </div>
             <div class="col-sm-8 pl-2">
               <div>
-       
                <!-- Résultat de barre de recherche --> 
                 <%if @results != ""%>
                 <%if @results.count != 0%>
@@ -1192,15 +1183,13 @@
               <%end%>
 
             </div>
-            <div class="compteur mt-5">
-            </div>
           </div>
         </div>
       </div>
       <%else%>
-         <div class="qjc24y-0 jMLWRH col-md-7 text-justify reset-padding" >
-          <div class="compteur">
-            <div class="d-flex  text-center justify-content-center flex-wrap apropos-projet">
+         <div class="qjc24y-0 jMLWRH col-md-7 text-justify reset-padding pt-5" >
+          <div class="compteur mt-5">
+            <div class="d-flex text-center justify-content-center flex-wrap apropos-projet">
               <div class="m-2 text-white background compt-item border">
                 <p class="border-bottom pt-2 pb-2">Nombre total des projets :</p>
                 <p class="centrage"> <%= Projet.where(validation: true).count%></p>
@@ -1225,7 +1214,7 @@
           <div class="height">
             <h1 class="vx2fp9-3 ehdisu h-font text-left border-bottom pb-2">Votre compte doit être validé pour accéder aux résultats de la recherche</h1>
           </div>       
-          <div class="qjc24y-0 jMLWRH col-md-7 text-justify reset-padding" >
+          <div class="qjc24y-0 jMLWRH col-md-7 text-justify reset-padding pt-5" >
           <div class="compteur mt-5">
             <div class="d-flex  text-center justify-content-center flex-wrap apropos-projet">
               <div class="m-2 text-white background compt-item border">
@@ -1254,7 +1243,7 @@
        <div class="height">
             <h1 class="vx2fp9-3 ehdisu h-font text-left border-bottom pb-2">Vous devez vous connecter ou vous inscrire pour accéder aux résultats de la recherche</h1>
           </div>
-        <div class="qjc24y-0 jMLWRH col-md-7 pt-5 text-justify reset-padding" >
+        <div class="qjc24y-0 jMLWRH col-md-7 pt-5 text-justify reset-padding pt-5" >
           <div class="compteur mt-5">
             <div class="d-flex  text-center justify-content-center flex-wrap apropos-projet">
               <div class="m-2 text-white background compt-item border">

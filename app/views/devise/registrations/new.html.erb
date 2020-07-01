@@ -41,7 +41,7 @@
 
         <%end%>
 
-        <select class="form-control" name="organisme" id="selectBox" onchange="changeFunc()">
+        <select class="form-control" name="organisme" id="selectBox" onchange="changeFunc()" required="true">
           <option value="none" selected disabled hidden>Sélectionner</option>
           <option value="autre">Autre</option>
           <% @organism.each do |o|%>
