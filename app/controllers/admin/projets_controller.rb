@@ -36,6 +36,10 @@ class Admin::ProjetsController < ApplicationController
 
                 if params[:creer] == 'Enregistrer'
                     @project.update(validation: nil)
+                    redirect_to admin_projets_path, success: "Votre fiche projet est sauvegardée. Vous pourrez reprendre votre travail ultérieurement et publier votre fiche lorsqu’elle sera complète"
+                else
+                    UserMailer.create_project_email(@project).deliver_now
+                    redirect_to admin_projets_path, success: "Demande de création de fiche projet envoyée avec succès. Vous serez avertis par email lorsqu'elle aura été validée et publiée par l'administrateur"
 
                 end
 
@@ -183,7 +187,6 @@ class Admin::ProjetsController < ApplicationController
 
           if @project.save
             @project.files.attach(params[:files])
-            redirect_to admin_projets_path, success: "Demande de création de fiche projet envoyée avec succès. Vous serez avertis par email lorsqu'elle aura été validée et publiée par l'administrateur"
           else
             render :new
 

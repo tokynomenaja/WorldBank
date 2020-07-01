@@ -21,8 +21,8 @@
 			</a>
 			<div class="mt-2">
 				<div class="card card-body">
-					<textarea name="objectif_generale_du_projet" rows="10" id="comment_body" class="form-control p-2" required><%= raw @projet.objectif_generale_du_projet%></textarea>
-					<span id="charlimit"><span class="words-left">150 mots maximum</span></span>
+			 		<textarea name="objectif_generale_du_projet" id="comment_body" class="editor"><%= @projet.objectif_generale_du_projet%></textarea>
+					<p id="charlimit"><span class="words-left">150 mots maximum</span></p>
 				</div>
 			</div>
 		</div>
@@ -32,12 +32,12 @@
 			</a>
 			<div class="mt-2">
 				<div class="card card-body">
-					<textarea name="aspsp" rows="10" required id="aspsp" class="form-control p-2"><%= raw @projet.aspsp%></textarea>
-					<span id="charlimit"><span class="words-left2">300 mots maximum</span></span>
+			 		<textarea name="aspsp" id="aspsp" class="editor"><%= @projet.aspsp%></textarea>
+
+					<p id="charlimit2"><span class="words-left2">300 mots maximum</span></p>
 				</div>
 			</div>
 		</div>
-
 
 			<div class="container">
 				<div class=" row mb-2">

@@ -21,11 +21,8 @@
 			</a>
 			<div class="mt-2">
 				<div class="card card-body">
-				<style type="text/css">
-					.trix-content {height: 250px;overflow: auto;}
-				</style>
-					<%=rich_text_area_tag :objectif_generale_du_projet, @projet.objectif_generale_du_projet, id: "comment_body" %>
-					<span id="charlimit"><span class="words-left">150 mots maximum</span></span>
+			 		<textarea name="objectif_generale_du_projet" id="comment_body" class="editor"><%= @projet.objectif_generale_du_projet%></textarea>
+					<p id="charlimit"><span class="words-left">150 mots maximum</span></p>
 				</div>
 			</div>
 		</div>
@@ -35,12 +32,12 @@
 			</a>
 			<div class="mt-2">
 				<div class="card card-body">
-					<%=rich_text_area_tag :aspsp, @projet.aspsp, id: "aspsp" %>
-					<span id="charlimit"><span class="words-left2">300 mots maximum</span></span>
+			 		<textarea name="aspsp" id="aspsp" class="editor"><%= @projet.aspsp%></textarea>
+
+					<p id="charlimit2"><span class="words-left2">300 mots maximum</span></p>
 				</div>
 			</div>
 		</div>
-
 
 			<div class="container">
 				<div class=" row mb-2">

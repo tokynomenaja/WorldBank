@@ -19,7 +19,9 @@
 								<div>Nom : <%= m.sender.first_name%></div>
 								<div>Prénoms : <%= m.sender.last_name%></div>
 								<div>Téléphone : <%= m.sender.phone%></div>
-								<div>Fonction : <%= m.fonction%></div>
+								<%if m.fonction != ""%>
+									<div>Fonction : <%= m.fonction%></div>
+								<%end%>
 								<div>Organisme : 
 										<%if m.sender.organisme%>
 											<%if m.sender.organisme.ptf%>
@@ -40,18 +42,21 @@
 									<div>Nom : <%= m.first_name%></div>
 									<div>Prénoms : <%= m.last_name%></div>
 									<div>Téléphone : <%= m.phone%></div>
+									<%if m.fonction != ""%>
 									<div>Fonction : <%= m.fonction%></div>
+									<%end%>
 									<div>Organisme : 
-										<%if m.organismecontact%>
-											<%if m.organismecontact.ptf%>
-												<%= m.organismecontact.ptf.title%>
-											<%elsif m.organismecontact.iga%>
-												<%= m.organismecontact.iga.title%>
-											<%else%>
-												<%= m.organismecontact.title%>
-											<%end%>
+										<%@b = OrganismeContact.find_by(message_id: m.id)%>
+											<%if @b%>
+												<%if @b.ptf%>
+													<%= @b.ptf.title%>
+												<%elsif @b.iga%>
+													<%= @b.iga.title%>
+												<%else%>
+													<%= @b.title%>
+												<%end%>
 
-										<%end%>
+											<%end%>
 										
 									</div>
 								</div>
@@ -69,7 +74,9 @@
 								<div>Nom : <%= m.sender.first_name%></div>
 								<div>Prénoms : <%= m.sender.last_name%></div>
 								<div>Téléphone : <%= m.sender.phone%></div>
-								<div>Fonction : <%= m.fonction%></div>
+								<%if m.fonction != ""%>
+									<div>Fonction : <%= m.fonction%></div>
+								<%end%>
 								<div>Organisme : 
 										<%if m.sender.organisme%>
 											<%if m.sender.organisme.ptf%>
@@ -91,18 +98,22 @@
 									<div>Nom : <%= m.first_name%></div>
 									<div>Prénoms : <%= m.last_name%></div>
 									<div>Téléphone : <%= m.phone%></div>
-									<div>Fonction : <%= m.fonction%></div>
+									<%if m.fonction != ""%>
+										<div>Fonction : <%= m.fonction%></div>
+									<%end%>
 									<div>Organisme : 
-										<%if m.organismecontact%>
-											<%if m.organismecontact.ptf%>
-												<%= m.organismecontact.ptf.title%>
-											<%elsif m.organismecontact.iga%>
-												<%= m.organismecontact.iga.title%>
-											<%else%>
-												<%= m.organismecontact.title%>
-											<%end%>
+										<%@b = OrganismeContact.find_by(message_id: m.id)%>
+											<%if @b%>
+												<%if @b.ptf%>
+													<%= @b.ptf.title%>
+												<%elsif @b.iga%>
+													<%= @b.iga.title%>
+												<%else%>
+													<%= @b.title%>
+												<%end%>
 
-										<%end%>
+											<%end%>
+										
 										
 									</div>
 								</div>
