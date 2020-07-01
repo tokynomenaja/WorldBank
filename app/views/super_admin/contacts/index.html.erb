@@ -20,6 +20,19 @@
 								<div>Prénoms : <%= m.sender.last_name%></div>
 								<div>Téléphone : <%= m.sender.phone%></div>
 								<div>Fonction : <%= m.fonction%></div>
+								<div>Organisme : 
+										<%if m.sender.organisme%>
+											<%if m.sender.organisme.ptf%>
+												<%= m.sender.organisme.ptf.title%>
+											<%elsif m.sender.organisme.iga%>
+												<%= m.sender.organisme.iga.title%>
+											<%else%>
+												<%= m.sender.organisme.nom%>
+											<%end%>
+
+										<%end%>
+										
+								</div>
 							</div>
 							<%else%>
 								<span>E-mail : <a href="https://<%= m.email%>" target="_blank" class="tablePrint font-weight-bolder" id="user"><%= m.email%></a></span>
@@ -28,6 +41,19 @@
 									<div>Prénoms : <%= m.last_name%></div>
 									<div>Téléphone : <%= m.phone%></div>
 									<div>Fonction : <%= m.fonction%></div>
+									<div>Organisme : 
+										<%if m.organismecontact%>
+											<%if m.organismecontact.ptf%>
+												<%= m.organismecontact.ptf.title%>
+											<%elsif m.organismecontact.iga%>
+												<%= m.organismecontact.iga.title%>
+											<%else%>
+												<%= m.organismecontact.title%>
+											<%end%>
+
+										<%end%>
+										
+									</div>
 								</div>
 							<%end%>				      
 				       <p class="text-muted pt-1 pb-1 my-2">Message : <%= m.content%> </p>	
@@ -44,6 +70,20 @@
 								<div>Prénoms : <%= m.sender.last_name%></div>
 								<div>Téléphone : <%= m.sender.phone%></div>
 								<div>Fonction : <%= m.fonction%></div>
+								<div>Organisme : 
+										<%if m.sender.organisme%>
+											<%if m.sender.organisme.ptf%>
+												<%= m.sender.organisme.ptf.title%>
+											<%elsif m.sender.organisme.iga%>
+												<%= m.sender.organisme.iga.title%>
+											<%else%>
+												<%= m.sender.organisme.nom%>
+											<%end%>
+
+
+										<%end%>
+										
+								</div>
 							</div>
 							<%else%>
 								<a href="https://<%= m.email%>" target="_blank" class="tablePrint"><%= m.email%></a>
@@ -52,6 +92,19 @@
 									<div>Prénoms : <%= m.last_name%></div>
 									<div>Téléphone : <%= m.phone%></div>
 									<div>Fonction : <%= m.fonction%></div>
+									<div>Organisme : 
+										<%if m.organismecontact%>
+											<%if m.organismecontact.ptf%>
+												<%= m.organismecontact.ptf.title%>
+											<%elsif m.organismecontact.iga%>
+												<%= m.organismecontact.iga.title%>
+											<%else%>
+												<%= m.organismecontact.title%>
+											<%end%>
+
+										<%end%>
+										
+									</div>
 								</div>
 							<%end%>				      
 				       <p class="text-muted pt-1 pb-1 my-2">Message : <%= m.content%> </p>	

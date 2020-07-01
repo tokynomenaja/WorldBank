@@ -8,7 +8,7 @@
           <h6 class="tablePrint my-2">Visiteurs non connectés: <span class="text-muted"><%= @users.where(is_signed_in: false).count%></span></h6>
           <h6 class="tablePrint my-2">Visiteurs connectés: <span class="text-muted"><%= @users.where(is_signed_in: true).count%></span></h6>
           <% @users.each do |user| %>
-              <%if user.is_super_admin == false && user.is_signed_in == true%>
+              <%if user.is_super_admin == false%>
                  <%if user.current_sign_in_at%>
                  <%if user.current_sign_in_at.to_date == Time.now.to_date%>
                   <%if user.total_online_time != nil%>
@@ -19,12 +19,12 @@
                         <div class="mt-2">
                           <span class="text-muted mt-3">Aujourd'hui <%= user.current_sign_in_at.strftime("à %I:%M %p")%></span><br>
                           <span class="text-muted"> Durée de connexion : <%= Time.at((user.total_online_time) * 60).utc.strftime("%H:%M:%S")%></span>
+                        </div>
+                      </div>        
                     </div>
                   <%end%>
                   <%end%>
                   <%end%>                
-                </div>        
-            </div>
               <% end %>
           <% end %>
         

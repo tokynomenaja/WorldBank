@@ -461,7 +461,11 @@
 						<% Zone.all.each do |c| %>
 							<div class="col-md-4">
 								<%= check_box_tag("zone_ids[]", c.id, false) %>
-								<%= c.title%>
+								<%if c.id == 1%>
+									National
+								<%else%>
+									<%= c.title%>
+								<%end%>
 							</div>
 						<% end %>
 					</div>
