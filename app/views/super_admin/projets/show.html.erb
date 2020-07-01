@@ -129,9 +129,17 @@
             <div class="mb-3">
                 <%@projet.zoneprojets .each do|zp|%>
                   <% if zp == @projet.zoneprojets.last%>
-                    <span><%=zp.zone.title %></span>
+                    <%if zp.zone.id == 1%>
+                      <span>National</span>
+                    <%else%>
+                      <span><%=zp.zone.title %></span>
+                    <%end%>
                   <%else%>
-                    <span><%=zp.zone.title %>, </span>
+                    <%if zp.zone.id == 1%>
+                      <span>National, </span>
+                    <%else%>
+                      <span><%=zp.zone.title %>, </span>
+                    <%end%>
                   <% end %>
                 <% end %>
             </div>
@@ -182,8 +190,6 @@
                 <p class="mb-3"><%= m.secteur.title.titleize%> | <%=  number_with_delimiter(m.price) %> | <%= m.unite.nom%></p>
           <%end%>
           </p>
-          <span class="attr">Montant total :</span>
-             <span class="mb-3"><%= number_with_delimiter(@montant_total)%> USD </span>              
           <%end%>
 
         </div>

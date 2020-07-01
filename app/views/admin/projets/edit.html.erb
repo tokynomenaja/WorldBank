@@ -475,7 +475,11 @@
 								 			<%= check_box_tag("zone_#{x}",c.id) %>
 								 		<%end%>
 								 	<%end%>
-								 	<%= c.title%>
+								 	<%if c.id == 1%>
+										National
+									<%else%>
+										<%= c.title%>
+									<%end%>
 								</div>
 							<% end %>
 						</div>

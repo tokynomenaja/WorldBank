@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_30_063629) do
+ActiveRecord::Schema.define(version: 2020_07_01_131937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -172,7 +172,9 @@ ActiveRecord::Schema.define(version: 2020_06_30_063629) do
     t.string "fonction"
     t.string "first_name"
     t.string "last_name"
+    t.bigint "organismecontact_id"
     t.index ["admin_id"], name: "index_messages_on_admin_id"
+    t.index ["organismecontact_id"], name: "index_messages_on_organismecontact_id"
     t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
@@ -188,6 +190,18 @@ ActiveRecord::Schema.define(version: 2020_06_30_063629) do
     t.index ["secteur_id"], name: "index_montants_on_secteur_id"
     t.index ["unite_id"], name: "index_montants_on_unite_id"
     t.index ["update_projet_id"], name: "index_montants_on_update_projet_id"
+  end
+
+  create_table "organisme_contacts", force: :cascade do |t|
+    t.bigint "ptf_id"
+    t.bigint "iga_id"
+    t.bigint "message_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "title"
+    t.index ["iga_id"], name: "index_organisme_contacts_on_iga_id"
+    t.index ["message_id"], name: "index_organisme_contacts_on_message_id"
+    t.index ["ptf_id"], name: "index_organisme_contacts_on_ptf_id"
   end
 
   create_table "organismes", force: :cascade do |t|

@@ -5,7 +5,7 @@ class SuperAdmin::ProjetsController < ApplicationController
 
 
   def index
-  	@projets = Projet.where(validation: false, revalid: false).order(id: :desc).page(params[:page]).per(9)
+    @projets = Projet.where(validation: false, revalid: false).order(id: :desc).page(params[:page]).per(9)
     @projets_revalid = Projet.where(revalid: true, validation: false).order(id: :desc).page(params[:page]).per(9)
     @projets_valides = Projet.where(validation: true).order(id: :desc).page(params[:page]).per(9)
     @projets_rejets = Projet.where(rejet: true, validation: nil).order(id: :desc).page(params[:page]).per(9)
@@ -14,11 +14,8 @@ class SuperAdmin::ProjetsController < ApplicationController
 
   def show
     @projet = Projet.find(params[:id])
-    @montant_total = 0
-    @projet.montants.each do |m|
-    @montant_total += m.price.to_i
+
   end
-end
 
   def edit
     @projet = Projet.find(params[:id])
@@ -350,9 +347,9 @@ end
 
 
   def destroy
-  	@projet = Projet.find(params[:id])
-  	@projet.destroy
-  	redirect_to super_admin_projets_path
+    @projet = Projet.find(params[:id])
+    @projet.destroy
+    redirect_to super_admin_projets_path
   end
 
 
@@ -377,16 +374,16 @@ end
   #   @projet.save
   # end
 
-  def email_validation
-    if self.validation == true
-        UserMailer.email_validation(self).deliver_now
-    end
+  # def email_validation
+  #   if self.validation == true
+  #       UserMailer.email_validation(self).deliver_now
+  #   end
 
-  end
+  # end
 
-  def email_rejet
-      if self.rejet == true
-          UserMailer.email_rejet(self).deliver_now
-      end
-  end
+  # def email_rejet
+  #     if self.rejet == true
+  #         UserMailer.email_rejet(self).deliver_now
+  #     end
+  # end
 end
