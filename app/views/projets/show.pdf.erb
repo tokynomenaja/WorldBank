@@ -186,11 +186,22 @@
           <%elsif @projet.secteurprojets.count > 1%>
               <p><span class="attr">Montant  pour les secteurs : </span>
           <%end%>
-          <% @projet.montants.each do |m|%>
-                <p class="mb-3"><%= m.secteur.title.titleize%> | <%=  number_with_delimiter(m.price) %> | <%= m.unite.nom%></p>
-          <%end%>
           </p>
+          <div class="row">
+            <% @projet.montants.each do |m|%>
+                  <div class="col-12 col-md-7">
+                    <span><%= m.secteur.title.titleize%> : </span>
+                  </div>
+                  <div class="col-12 col-md-5">
+                    <span><%=  number_with_delimiter(m.price) %> <%= m.unite.nom%></span> 
+                  </div>
+            <%end%>
+          </div>
           <%end%>
+          <p>
+            <span class="attr">Montant total :</span>
+            <span class="mb-3"><%= number_with_delimiter(@montant_total)%> USD </span>    
+          </p>
           
         </div>
         <div class="col-md-6 list">
@@ -200,7 +211,7 @@
             <span class="attr">Fin : </span><%=@projet.fin.year%></p>
           <%end%>
           <%if @projet.pemprojets.count >= 1%>
-          <p><span class="attr">Alignement aux priorités du Plan Emergence de Madagascar : </span></p>
+          <p><span class="attr">Alignement aux priorités du Plan Emergence Madagascar : </span></p>
             <div class="mb-3">
               <% @projet.pemprojets.each do |p|%>
                   <p><%=p.pem.title%></p>

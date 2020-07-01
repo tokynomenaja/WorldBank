@@ -75,7 +75,7 @@
 
       <%= form_tag(root_path, :method => "get", class: 'sc-1ejeabr-19 gQwHOW text-white') do %>
         <div class="d-flex justify-content-between bg-white align-items-center form-control pr-0 border-bottom m-3 px-2 py-0 navbar-elem">
-            <%= search_field_tag :search, params[:search], placeholder: "Rechercher", class: "reset-search-input"%>
+            <%= search_field_tag :search, params[:search], placeholder: "Nom du projet", class: "reset-search-input"%>
             <% if current_user %> 
               <% if current_user.is_consultant == true || current_user.is_consultant == false || current_user.is_super_admin == true || current_user.is_admin == true%>
                 <button tabindex="0" type="submit" variant="primary" class="reset-search-input-default border-left px-1 pt-1">

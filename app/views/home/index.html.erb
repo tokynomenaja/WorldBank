@@ -37,7 +37,7 @@
     <div class="bt96d2-13 dwLDtk search position-absolute">
       <%= form_tag(root_path, :method => "get", class: 'sc-1ejeabr-19 gQwHOW') do %>
         <div class="d-flex justify-content-between bg-white align-items-center form-control pr-0">
-            <%= search_field_tag :search, params[:search], placeholder: "Rechercher", class: "reset-search-input"%>
+            <%= search_field_tag :search, params[:search], placeholder: "Nom du projet", class: "reset-search-input"%>
             <% if current_user %> 
               <% if current_user.is_consultant == true || current_user.is_consultant == false || current_user.is_super_admin == true || current_user.is_admin == true%>
                 <button tabindex="0" type="submit" variant="primary" class="reset-search-input-default">
@@ -1175,7 +1175,7 @@
           <div class="compteur mt-5">
             <div class="d-flex text-center justify-content-center flex-wrap apropos-projet">
               <div class="m-2 text-white background compt-item border">
-                <p class="border-bottom pt-2 pb-2">Nombre total des projets :</p>
+                <p class="border-bottom pt-2 pb-2">Nombre total de projets :</p>
                 <p class="centrage"> <%= Projet.where(validation: true).count%></p>
               </div>
               <div class="m-2 bg-dark compt-item border text-color">
@@ -1202,7 +1202,7 @@
           <div class="compteur mt-5">
             <div class="d-flex  text-center justify-content-center flex-wrap apropos-projet">
               <div class="m-2 text-white background compt-item border">
-                <p class="border-bottom pt-2 pb-2">Nombre total des projets :</p>
+                <p class="border-bottom pt-2 pb-2">Nombre total de projets :</p>
                 <p class="centrage"> <%= Projet.where(validation: true).count%></p>
               </div>
               <div class="m-2 bg-dark compt-item border text-color">
@@ -1230,7 +1230,7 @@
           <div class="compteur mt-5">
             <div class="d-flex  text-center justify-content-center flex-wrap apropos-projet">
               <div class="m-2 text-white background compt-item border">
-                <p class="border-bottom pt-2 pb-2">Nombre total des projets :</p>
+                <p class="border-bottom pt-2 pb-2">Nombre total de projets :</p>
                 <p class="centrage"> <%= Projet.where(validation: true).count%></p>
               </div>
               <div class="m-2 bg-dark compt-item border text-color">
