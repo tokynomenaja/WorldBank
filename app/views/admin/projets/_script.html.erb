@@ -196,11 +196,11 @@
 		    var m = document.getElementById('montant'+x);
 		    var inputMontant = document.getElementById('inputMontant'+x);
 		    var unite = document.getElementById('unite'+x);
-		    if(m.style.display == "block"){
+		    if(m.style.display == "flex"){
 		        m.style.display = "none";
 		        m.classList.remove('row');
 		    }else{
-		        m.style.display = "block";
+		        m.style.display = "flex";
 		        m.classList.add('row');
 		        inputMontant.required = true;
 		        unite.required = true;

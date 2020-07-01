@@ -410,6 +410,12 @@ a.position:hover{color: #ffffff;text-decoration: none;}
 .bg-message{background: #ecf0f7;}
 .btn-right{background-color: transparent;border: 0;text-align: right;}
 .dropvisiteur{width: 16rem !important}
+.link-btn{width: auto !important;border-radius: 0 !important;margin: 0 auto!important;}
+#sear {
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+}
 /*RANGE*/
   .toggleclass{
     display: none !important;
@@ -593,6 +599,7 @@ width: 0.3rem;
 .left::-webkit-scrollbar-thumb {
 background: #fff3; 
 }
+.tox .tox-statusbar{display: none!important;}
 .img-filter{width: 1.5rem;}
 /*projets*/
 .date-projet-small{display: none !important;}
@@ -739,7 +746,33 @@ background: #fff3;
   #filter-btn-open, #filter-btn-close{display: none !important;}
 }
 @media screen and (max-width: 1140px){
-}
-.tox .tox-statusbar{
-  display: none!important;
+  .hVIPFV{background-size: cover;}
+  .eyAIuG{height: 15rem;}
+  .search{top: 25% !important;}
+  .ghzkpM{display: none;}
+  .responsive-nav{background-color:#31333b;z-index: 2;}
+  .navbar-elem:hover{background-color: #52c39b;}
+  .burger{font-size: 2rem;cursor: pointer;}
+  .kBhqKR{height: auto;}
+  .jfmoVU{display: block;}
+  .feYJJO{border-bottom: 1px solid #dee2e6!important;}
+  .kYNMFW{width: 100%;height: 3rem;}
+  .kYNMFW.pl-1{padding-left:1rem !important;padding-right: 1rem !important;}
+  .eouleG{font-size:0.75rem;width: 100%;}
+  .select, .select-nature-forme{background-position: 98% center}
+  .filter-drop{display: block;position: inherit;}
+  .btn-filtre{background-color: #52c39b;}
+  .sear{margin: 0 auto;}
+  .beneficiaire-content{width: auto;right: 5.1rem;}
+  .iga-content{right: 13rem;width: auto;}
+  .range-year-content{width: auto;right:7rem;}
+  .forme-content{left: 20.9rem;}
+  .secteur-content{left: 7rem;}
+  .ptf-content{left: 0rem; min-width:auto;}
+  .appui-content{left: 14.9rem;}
+  .filiere-content{left: 27.9rem;width: auto;}
+  .zone-content{left:41.9rem !important;width: auto;}
+  .drop-height{max-height: 15rem;overflow: auto;}
+   #scontent{width: auto;}
+   .dwLDtk .sc-1ejeabr-19,.dwLDtk .sc-1ejeabr-25{margin-top: 0;}
 }
