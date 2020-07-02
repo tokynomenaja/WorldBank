@@ -22,6 +22,79 @@
 					s<%= ids[rand(0..ids.length-1)]%>.required = true;
 				}
 
+	//Required forme d'appui
+			<%ben = [] %>
+			<% Beneficiaire.all.each do |s|%>
+				<% ben << s.id%>
+				var b<%= s.id%> = document.getElementById("b<%= s.id%>");
+			<%end%>
+				var check = false;
+			<% Beneficiaire.all.each do |s|%>
+				b<%= s.id%>.required = false;
+				if(b<%= s.id%>.checked == true){
+					check = true;
+				}	
+			<%end%>
+				if(check == false){
+					b<%= ben[rand(0..ben.length-1)]%>.required = true;
+				}
+
+
+
+	//Required region
+			<%zone = [] %>
+			<% Zone.all.each do |s|%>
+				<% zone << s.id%>
+				var z<%= s.id%> = document.getElementById("z<%= s.id%>");
+			<%end%>
+				var check = false;
+			<% Zone.all.each do |s|%>
+				z<%= s.id%>.required = false;
+				if(z<%= s.id%>.checked == true){
+					check = true;
+				}	
+			<%end%>
+				if(check == false){
+					z<%= zone[rand(0..zone.length-1)]%>.required = true;
+				}
+
+
+	//Required PEM
+			<%pem = [] %>
+			<% Engagement.all.each do |s|%>
+				<% pem << s.id%>
+				var pp<%= s.id%> = document.getElementById("pp<%= s.id%>");
+			<%end%>
+				var check = false;
+			<% Engagement.all.each do |s|%>
+				pp<%= s.id%>.required = false;
+				if(pp<%= s.id%>.checked == true){
+					check = true;
+				}	
+			<%end%>
+				if(check == false){
+					pp<%= pem[rand(0..pem.length-1)]%>.required = true;
+				}
+	//Required forme d'appui
+
+			<%form = [] %>
+			<% Forme.all.each do |s|%>
+				<% form << s.id%>
+				var req<%= s.id%> = document.getElementById("req<%= s.id%>");
+			<%end%>
+				var check = false;
+			<% Forme.all.each do |s|%>
+				req<%= s.id%>.required = false;
+				if(req<%= s.id%>.checked == true){
+					check = true;
+				}	
+			<%end%>
+				if(check == false){
+					req<%= form[rand(0..form.length-1)]%>.required = true;
+				}
+			
+	
+
 	}
 
 	//Autres bénéficiaires
