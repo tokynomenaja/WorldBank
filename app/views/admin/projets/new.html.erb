@@ -261,7 +261,7 @@
 								<%= form.title%>
 							</div>
 							<div class="col-md-6" style="display: block" id="forme<%= form.id%>">
-								<%= check_box_tag("forme_ids[]", form.id)%>
+								<%= check_box_tag("forme_ids[]", form.id,false, id: :"req#{form.id}")%>
 								<%= form.title%>
 							</div>
 						<% end %>
@@ -326,7 +326,7 @@
 						<div class="row">
 							<% Beneficiaire.all.order(:title).each do |c| %>
 								<div class="col-md-12">
-									<%= check_box_tag("beneficiaire_ids[]",c.id, false, id: :"bencheck#{c.id}") %>
+									<%= check_box_tag("beneficiaire_ids[]",c.id,false,id: :"b#{c.id}") %>
 									<%= c.title%>
 								</div>
 							<% end %>
@@ -441,7 +441,7 @@
 								</p>
 								<%c.pems.each do |p|%>
 								<div class="ml-4">
-									<%=check_box_tag("pem_ids[]",p.id) %> 
+									<%=check_box_tag("pem_ids[]",p.id,false,id: :"pp#{c.id}") %> 
 									<%= p.title %>
 								</div>
 								<%end%>
@@ -460,7 +460,7 @@
 					<div class="row">
 						<% Zone.all.each do |c| %>
 							<div class="col-md-4">
-								<%= check_box_tag("zone_ids[]", c.id, false) %>
+								<%= check_box_tag("zone_ids[]", c.id, false,id: :"z#{c.id}") %>
 								<%if c.id == 1%>
 									National
 								<%else%>
