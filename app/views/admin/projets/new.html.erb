@@ -261,7 +261,7 @@
 								<%= form.title%>
 							</div>
 							<div class="col-md-6" style="display: block" id="forme<%= form.id%>">
-								<%= check_box_tag("forme_ids[]", form.id,false, id: :"req#{form.id}")%>
+								<%= check_box_tag("forme_ids[]", form.id,false)%>
 								<%= form.title%>
 							</div>
 						<% end %>
@@ -491,5 +491,4 @@
 	</div>
 <% end %>
 <%= render partial: "/admin/projets/script.html.erb"%>
-
 <%= render partial: "/super_admin/confirm.html.erb"%>

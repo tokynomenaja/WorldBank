@@ -77,23 +77,13 @@
 				}
 	//Required forme d'appui
 
-			<%form = [] %>
-			<% Forme.all.each do |s|%>
-				<% form << s.id%>
-				var req<%= s.id%> = document.getElementById("req<%= s.id%>");
-			<%end%>
-				var check = false;
-			<% Forme.all.each do |s|%>
-				req<%= s.id%>.required = false;
-				if(req<%= s.id%>.checked == true){
-					check = true;
-				}	
-			<%end%>
-				if(check == false){
-					req<%= form[rand(0..form.length-1)]%>.required = true;
-				}
-			
-	
+		  var obj = document.getElementsByClassName("editor");
+          var elmnt = obj.contentWindow.document.getElementsByTagName("body")[0];
+ 			if (elmnt.length == 0){
+				alert("voici")	
+ 			}
+ 			 
+		
 
 	}
 
