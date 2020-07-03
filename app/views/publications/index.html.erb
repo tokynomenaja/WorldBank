@@ -8,16 +8,23 @@
 		<h3 class="tablePrint">Toutes les publications</h3>
 		</div>
 	<div class="mx-auto row justify-content-center pub-width">
-		<% @pubs.each do |p|%>
+		<% @pubs.each do |a|%>
 			<div class="col-10 col-md-3 card mx-1 mb-2 position-relative">
 				<div class="card-body">
 					 	 	<div class="card-title">
-						    <h5 class="primary-color"><%= p.title %></h5>
+						    <h5 class="primary-color"><%= a.title %></h5>
 						    </div>
 						<div class="card-text">
-							<p class="card-text text-muted mb-5 truncate-pub"><%= p.description %></p>
+							<p class="card-text text-muted mb-2 truncate-pub">
+								<div class="mt-2 mb-5">
+								<%=raw a.description %></p>
+								</div>
 						</div>
-						<p class="mt-3 position-absolute more-info-pub"><a href="<%= publication_path(p.id)%>" class="tablePrint">Voir</a></p>
+						<%if current_user.is_super_admin == false%>
+						<p class="mt-3 position-absolute more-info-pub"><a href="<%= publication_path(a.id)%>" class="tablePrint">Voir</a></p>
+						<%else%>
+						<p class="mt-3 position-absolute more-info-pub"><a href="<%= admin_publication_path(a.id)%>" class="tablePrint">Voir</a></p>
+						<%end%>
 				</div>
 			</div>
       <%end%>

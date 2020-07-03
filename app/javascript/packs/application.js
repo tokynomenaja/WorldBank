@@ -436,7 +436,7 @@ $("#user-item").click(function(e){
 	$("#projet-list").addClass("toggleclass")
 	$("#actus-list").addClass("toggleclass")
 });
-
+	
 
 })
 

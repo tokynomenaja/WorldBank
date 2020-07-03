@@ -25,6 +25,7 @@ class SuperAdmin::PublicationsController < ApplicationController
 		   	end
 
 	end 
+
 	def destroy
 	  @pub = Publication.find(params[:id])
 	  @pub.destroy
@@ -38,6 +39,7 @@ class SuperAdmin::PublicationsController < ApplicationController
 	
 	def show
 		@pub = Publication.find(params[:id])
-		
 	end
+		
+	
 end

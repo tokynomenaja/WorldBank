@@ -11,7 +11,7 @@
 			<textarea type="text" name="description" id="nom"  class="form-control p-2 editor" required rows="5"></textarea>
 		</div>
 			<div class="mb-2 mt-4">
-				<%= file_field_tag :files, name:"files[]", required: true, multiple: true, id: :"document", class: 'toggleclass'%>
+				<%= file_field_tag :files, name:"files[]", multiple: true, id: :"document", class: 'toggleclass'%>
 				<span class="btn btn-secondary text-wrap text-break" id="simulateur">Joindre un fichier à cette publication</span>
 			</div>
 		<div>
