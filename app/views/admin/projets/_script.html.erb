@@ -1,92 +1,38 @@
 <script type="text/javascript">
 
 
+	//Required
 
-
-	//Required secteur
-	function validCheck(){
-
-			<%ids = [] %>
-			<% Secteur.all.each do |s|%>
-				<% ids << s.id%>
-				var s<%= s.id%> = document.getElementById("s<%= s.id%>");
-			<%end%>
-				var check = false;
-			<% Secteur.all.each do |s|%>
-				s<%= s.id%>.required = false;
-				if(s<%= s.id%>.checked == true){
-					check = true;
-				}	
-			<%end%>
-				if(check == false){
-					s<%= ids[rand(0..ids.length-1)]%>.required = true;
+	function verifyValue(){
+			let inputs = document.getElementsByClassName('exist')
+			let errors = []
+			for (var i = inputs.length - 1; i >= 0; i--) {
+				if (inputs[i].value.length == 0){
+					errors.push(inputs[i].dataset.error)
 				}
+			}
+			return errors
+		}
 
-	//Required forme d'appui
-			<%ben = [] %>
-			<% Beneficiaire.all.each do |s|%>
-				<% ben << s.id%>
-				var b<%= s.id%> = document.getElementById("b<%= s.id%>");
-			<%end%>
-				var check = false;
-			<% Beneficiaire.all.each do |s|%>
-				b<%= s.id%>.required = false;
-				if(b<%= s.id%>.checked == true){
-					check = true;
-				}	
-			<%end%>
-				if(check == false){
-					b<%= ben[rand(0..ben.length-1)]%>.required = true;
+		// let form = document.getElementById('form')
+
+		function validSend(sendType) {
+			console.log(sendType)
+			document.getElementById('typeSend').value = sendType
+			let inputs = document.getElementsByClassName('exist')
+			let listErrors = verifyValue()	
+			if (listErrors.length == 0) {
+				document.getElementById("newform").submit()
+			}else{
+				for (var i = inputs.length - 1; i >= 0; i--) {
+					if(listErrors.includes(inputs[i].dataset.error)){
+						document.getElementsByClassName(inputs[i].id)[0].classList.remove("d-none")
+					}
 				}
+			}
 
-
-
-	//Required region
-			<%zone = [] %>
-			<% Zone.all.each do |s|%>
-				<% zone << s.id%>
-				var z<%= s.id%> = document.getElementById("z<%= s.id%>");
-			<%end%>
-				var check = false;
-			<% Zone.all.each do |s|%>
-				z<%= s.id%>.required = false;
-				if(z<%= s.id%>.checked == true){
-					check = true;
-				}	
-			<%end%>
-				if(check == false){
-					z<%= zone[rand(0..zone.length-1)]%>.required = true;
-				}
-
-
-	//Required PEM
-			<%pem = [] %>
-			<% Engagement.all.each do |s|%>
-				<% pem << s.id%>
-				var pp<%= s.id%> = document.getElementById("pp<%= s.id%>");
-			<%end%>
-				var check = false;
-			<% Engagement.all.each do |s|%>
-				pp<%= s.id%>.required = false;
-				if(pp<%= s.id%>.checked == true){
-					check = true;
-				}	
-			<%end%>
-				if(check == false){
-					pp<%= pem[rand(0..pem.length-1)]%>.required = true;
-				}
-	//Required forme d'appui
-
-		  var obj = document.getElementsByClassName("editor");
-          var elmnt = obj.contentWindow.document.getElementsByTagName("body")[0];
- 			if (elmnt.length == 0){
-				alert("voici")	
- 			}
- 			 
+		}
 		
-
-	}
-
 	//Autres bénéficiaires
 	function ajoutBen(){
 		<% 10.times do |x|%>			
@@ -195,16 +141,39 @@
 
 
 	function saveMontant(inp) {
+		var InputMontantValue1 = document.getElementById('InputMontantValue1');
+		var InputMontantValue2 = document.getElementById('InputMontantValue2');
+		var InputMontantValue3 = document.getElementById('InputMontantValue3');
+		var InputMontantValue4 = document.getElementById('InputMontantValue4');
+		var InputMontantValue5 = document.getElementById('InputMontantValue5');
+		var InputMontantValue6 = document.getElementById('InputMontantValue6');
+		var InputMontantValue7 = document.getElementById('InputMontantValue7');
+		var InputMontantValue8 = document.getElementById('InputMontantValue8');
+		var InputMontantValue9 = document.getElementById('InputMontantValue9');
 		var nbr = inp.value;
 		var NombreSaisi = "";
+		var NombreSaisiUx = "";
+		var arrayNew = [InputMontantValue1, InputMontantValue2, InputMontantValue3, InputMontantValue4, InputMontantValue5, InputMontantValue6, InputMontantValue7, InputMontantValue8, InputMontantValue9]
 
-		// Enlevez les virgules
 		for (var i = 0; i < nbr.length; i++) {
-			if (nbr[i] != ","){
 				NombreSaisi+= nbr[i];
-			}
 		}
 		inp.value = NombreSaisi;
+		// Enlevez les virgules
+		for (var n = 0; n < nbr.length; n++) {
+			if (nbr[n] != ","){
+				NombreSaisiUx+= nbr[n];
+			}
+		}
+		var art = inp.id
+		for (var i = 0; i < 9; i++) {
+			var arrayNewValue = arrayNew[i].id
+			console.log()
+			if( art[art.length-1] === arrayNewValue[arrayNewValue.length-1]){
+				arrayNew[i].value = NombreSaisiUx
+			}
+		}
+
 	}
 
 	function InputMontantPicker(inp) {

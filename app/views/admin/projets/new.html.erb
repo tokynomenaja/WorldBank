@@ -2,7 +2,7 @@
     <div class="sc-1gnwgfb-2 hVIPFV">
     </div>
 </header>
-<%= form_tag url_for(action: 'create'),method:'post', class:'form', multipart: true do%>
+<%= form_tag url_for(action: 'create'), method: 'post', class: 'form', id: 'newform', multipart: true do%>
 	<div class="mt-4 mb-4" onmouseover ="verificationDate()">
 		<div class="container">
 			<div class="row mb-2">
@@ -10,7 +10,11 @@
 					<div>
 						<label for="nom" class="mr-2 tablePrint">Nom du projet *</label>
 					</div>
-					<input type="text" name="nom_du_projet" id="nom" placeholder="Nom du projet" class="form-control" required="true">
+					<input type="text" name="nom_du_projet" id="nom" placeholder="Nom du projet" class="form-control exist">
+
+					<div class="d-none nom">
+						<span class="tablePrint">Le nom de projet ne doit pas être vide</span>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -20,8 +24,11 @@
 			</a>
 			<div class="mt-2">
 				<div class="card card-body">
-			 		<textarea name="objectif_generale_du_projet" value="nil" id="comment_body" class="editor"></textarea>
+			 		<textarea name="objectif_generale_du_projet" value="nil" id="comment_body" class="editor exist"></textarea>
 					<p id="charlimit"><span class="words-left">150 mots maximum</span></p>
+					<div class="d-none comment_body">
+						<span class="tablePrint">L'objectif général doit être rempli</span>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -143,7 +150,7 @@
 			</a>
 				<div class="mt-2">
 				<div class="card card-body">
-					<div class="row">
+					<div class="row"  id="mololo">
 						<% Secteur.all.order(:title).each do |c| %>
 							<div class="col-12 col-md-6 col-xl-4">
 								<%= check_box_tag("secteur_ids[]",c.id, false, id: :"s#{c.id}",:onclick => "check(#{c.id})")%>
@@ -162,11 +169,13 @@
 						<div class="no-gutters align-items-center montant-padd ml-3" id="montant<%=s.id%>" style="display: none;">
 							<div class="col-12 col-md-5 font-size"><%= s.title.upcase %> : </div>
 							<div class="col-12 col-md-7 form-control pr-0">
-								<input type="text" name="montant<%= s.id%>" placeholder="Montant" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>">
+								<input type="text" placeholder="Montant" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>">
+								<input type="text" name="montant<%= s.id%>" id="InputMontantValue<%=s.id%>" hidden>
 								<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset", id: :"unite#{s.id}"%>
 							</div>
 						</div>
 					<%end%>
+					
 				</div>
 				<div class="col-12 col-md-4 row">
 					<div class="col-12 col-md-6 mt-2">
@@ -261,7 +270,7 @@
 								<%= form.title%>
 							</div>
 							<div class="col-md-6" style="display: block" id="forme<%= form.id%>">
-								<%= check_box_tag("forme_ids[]", form.id,false)%>
+								<%= check_box_tag("forme_ids[]", form.id)%>
 								<%= form.title%>
 							</div>
 						<% end %>
@@ -441,7 +450,7 @@
 								</p>
 								<%c.pems.each do |p|%>
 								<div class="ml-4">
-									<%=check_box_tag("pem_ids[]",p.id,false,id: :"pp#{c.id}") %> 
+									<%=check_box_tag("pem_ids[]",p.id,false,id: :"pp#{p.id}") %> 
 									<%= p.title %>
 								</div>
 								<%end%>
@@ -482,13 +491,34 @@
 		<div class="container mt-4">
 			<label for="comment" class="tablePrint">Commentaire :</label>
 			<textarea name="comment" class="form-control p-2"  rows="5" placeholder="Commentaire qui s'adresse à l'administrateur"></textarea>
+
 			
 		</div>
 		<div class="container mt-4 mb-5">
-			<%= submit_tag :Enregistrer, :name => "creer", :value => "Sauvegarder", :class => "btn btn-secondary", :onclick => "validCheck()"%>
-			<%= submit_tag :Publier, :name => "creer", :value => "Sauvegarder et Publier", :class => "sc-eerKOB cfnPHQ", :onclick => "validCheck()"%>
+
+			<input class="d-none" id="typeSend" type="text" name="valueSave" value="Sauvegarder">
+			
+			<span class="btn btn-secondary" onclick="validSend('Sauvegarder')">Sauvegarder</span>
+
+			<span class="sc-eerKOB cfnPHQ" onclick="validSend('Sauvegarder et Publier')">Sauvegarder et Publier</span>
+			
+			<%= submit_tag 'Sauvegarder', :name => "creer", :class => "btn btn-secondary d-none", :onclick => "validCheck()"%>
+			<%= submit_tag 'Sauvegarder et Publier', :name => "creer",:class => "sc-eerKOB cfnPHQ d-none", :onclick => "validCheck()"%>
 		</div>
 	</div>
 <% end %>
 <%= render partial: "/admin/projets/script.html.erb"%>
 <%= render partial: "/super_admin/confirm.html.erb"%>
+
+<!-- <script type="text/javascript">
+	function validSend(sendType) {
+
+		document.getElementById('typeSend').value = sendType
+
+		document.querySelectorAll("[name='secteur_ids[]']")
+
+		[0].checked
+
+
+	}
+</script> -->
