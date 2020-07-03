@@ -132,16 +132,39 @@
 
 
 	function saveMontant(inp) {
+		var InputMontantValue1 = document.getElementById('InputMontantValue1');
+		var InputMontantValue2 = document.getElementById('InputMontantValue2');
+		var InputMontantValue3 = document.getElementById('InputMontantValue3');
+		var InputMontantValue4 = document.getElementById('InputMontantValue4');
+		var InputMontantValue5 = document.getElementById('InputMontantValue5');
+		var InputMontantValue6 = document.getElementById('InputMontantValue6');
+		var InputMontantValue7 = document.getElementById('InputMontantValue7');
+		var InputMontantValue8 = document.getElementById('InputMontantValue8');
+		var InputMontantValue9 = document.getElementById('InputMontantValue9');
 		var nbr = inp.value;
 		var NombreSaisi = "";
+		var NombreSaisiUx = "";
+		var arrayNew = [InputMontantValue1, InputMontantValue2, InputMontantValue3, InputMontantValue4, InputMontantValue5, InputMontantValue6, InputMontantValue7, InputMontantValue8, InputMontantValue9]
 
-		// Enlevez les virgules
 		for (var i = 0; i < nbr.length; i++) {
-			if (nbr[i] != ","){
 				NombreSaisi+= nbr[i];
-			}
 		}
 		inp.value = NombreSaisi;
+		// Enlevez les virgules
+		for (var n = 0; n < nbr.length; n++) {
+			if (nbr[n] != ","){
+				NombreSaisiUx+= nbr[n];
+			}
+		}
+		var art = inp.id
+		for (var i = 0; i < 9; i++) {
+			var arrayNewValue = arrayNew[i].id
+			console.log()
+			if( art[art.length-1] === arrayNewValue[arrayNewValue.length-1]){
+				arrayNew[i].value = NombreSaisiUx
+			}
+		}
+
 	}
 
 	function InputMontantPicker(inp) {
