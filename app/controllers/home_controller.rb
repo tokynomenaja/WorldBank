@@ -33,7 +33,7 @@ def index
   #recherche controller globale(recherche)
   if params[:montant] && params[:fin]
     if params[:montant][0]== "" && params[:montant][1] == "" && params[:fin][0]== "2008" && params[:fin][1] == "2030"
-       @res = Projet.where(validation: true)
+       @res = Projet.where(validation: true).order(id: :desc).page(params[:page]).per(9)
     end
   end
 
@@ -46,7 +46,7 @@ def index
             else  
              @params_ptf = params[:ptf_id]
                @params_ptf.each do |p|
-              @ptf = Projet.all.where(ptf_id: params[:ptf_id], validation: true)
+              @ptf = Projet.all.where(ptf_id: params[:ptf_id], validation: true).order(id: :desc).page(params[:page]).per(9)
               @ptf_1 = Ptf.all.find(p.to_i).title 
 
           end
@@ -367,7 +367,7 @@ def index
           else  
             @params_appui = params[:appui_id] 
             @params_appui.each do |a|
-            @appui = Projet.all.where(appui_id: params[:appui_id], validation: true)  
+            @appui = Projet.all.where(appui_id: params[:appui_id], validation: true).order(id: :desc).page(params[:page]).per(9)
             @appui_1 = Appui.all.find(a.to_i).title
        end 
       end

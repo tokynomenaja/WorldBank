@@ -34,7 +34,7 @@ class Admin::ProjetsController < ApplicationController
                 fin: params[:fin].to_date, siteweb: params[:site],
                 bailleur_id: current_user.id)
 
-                if params[:creer] == 'Enregistrer'
+                if params[:valueSave] == 'Sauvegarder'
                     @project.update(validation: nil)
                     redirect_to admin_projets_path, success: "Votre fiche projet est sauvegardée. Vous pourrez reprendre votre travail ultérieurement et publier votre fiche lorsqu’elle sera complète"
                 else

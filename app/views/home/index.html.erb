@@ -564,7 +564,9 @@
                   </div>
                 </div>
                 <%end%>
-                  
+                  <div class="text-center mt-2">
+                    <%= paginate @res %>
+                  </div>
                  <%else%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                   <p class= 'text-muted '>La recherche ne correspond à aucun résultat</p>  
@@ -968,6 +970,9 @@
                     </div>
                   </div>
                 <%end%>
+                <div class="text-center mt-2">
+                    <%= paginate @ptf %>
+                  </div>
                 <%else%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                   <p class= 'text-muted '>La recherche ne correspond à aucun résultat</p> 
@@ -1044,6 +1049,9 @@
                     </div>
                   </div>
                 <%end%>
+                <div class="text-center mt-2">
+                    <%= paginate @appui%>
+                  </div>
                   <%else%>
                     <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
                   <p class= 'text-muted '>La recherche ne correspond à aucun résultat</p>  
