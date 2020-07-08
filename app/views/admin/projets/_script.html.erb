@@ -1,38 +1,100 @@
 <script type="text/javascript">
 
 
-	//Required
 
-	function verifyValue(){
-			let inputs = document.getElementsByClassName('exist')
-			let errors = []
-			for (var i = inputs.length - 1; i >= 0; i--) {
-				if (inputs[i].value.length == 0){
-					errors.push(inputs[i].dataset.error)
+
+	//Required secteur
+	function validCheck(){
+
+			<%ids = [] %>
+			<% Secteur.all.each do |s|%>
+				<% ids << s.id%>
+				var s<%= s.id%> = document.getElementById("s<%= s.id%>");
+			<%end%>
+				var check = false;
+			<% Secteur.all.each do |s|%>
+				s<%= s.id%>.required = false;
+				if(s<%= s.id%>.checked == true){
+					check = true;
+				}	
+			<%end%>
+				if(check == false){
+					s<%= ids[rand(0..ids.length-1)]%>.required = true;
 				}
-			}
-			return errors
-		}
 
-		// let form = document.getElementById('form')
-
-		function validSend(sendType) {
-			console.log(sendType)
-			document.getElementById('typeSend').value = sendType
-			let inputs = document.getElementsByClassName('exist')
-			let listErrors = verifyValue()	
-			if (listErrors.length == 0) {
-				document.getElementById("newform").submit()
-			}else{
-				for (var i = inputs.length - 1; i >= 0; i--) {
-					if(listErrors.includes(inputs[i].dataset.error)){
-						document.getElementsByClassName(inputs[i].id)[0].classList.remove("d-none")
-					}
+	//Required beneficiaires
+			<%ben = [] %>
+			<% Beneficiaire.all.each do |s|%>
+				<% ben << s.id%>
+				var b<%= s.id%> = document.getElementById("b<%= s.id%>");
+			<%end%>
+				var checkben = false;
+			<% Beneficiaire.all.each do |s|%>
+				b<%= s.id%>.required = false;
+				if(b<%= s.id%>.checked == true){
+					checkben = true;
+				}	
+			<%end%>
+				if(checkben == false){
+					b<%= ben[rand(0..ben.length-1)]%>.required = true;
 				}
-			}
 
-		}
-		
+	//Required region
+			<%zone = [] %>
+			<% Zone.all.each do |s|%>
+				<% zone << s.id%>
+				var z<%= s.id%> = document.getElementById("z<%= s.id%>");
+			<%end%>
+				var checkzone = false;
+			<% Zone.all.each do |s|%>
+				z<%= s.id%>.required = false;
+				if(z<%= s.id%>.checked == true){
+					checkzone = true;
+				}	
+			<%end%>
+				if(checkzone == false){
+					z<%= zone[rand(0..zone.length-1)]%>.required = true;
+				}
+
+
+	//Required PEM
+			<%pem = [] %>
+			<% Engagement.all.each do |s|%>
+				<% pem << s.id%>
+				var pp<%= s.id%> = document.getElementById("pp<%= s.id%>");
+			<%end%>
+				var checkpem = false;
+			<% Engagement.all.each do |s|%>
+				pp<%= s.id%>.required = false;
+				if(pp<%= s.id%>.checked == true){
+					checkpem = true;
+				}	
+			<%end%>
+				if(checkpem == false){
+					pp<%= pem[rand(0..pem.length-1)]%>.required = true;
+				}
+	//Required forme d'appui
+
+			<%form = [] %>
+			<% Forme.all.each do |s|%>
+				<% form << s.id%>
+				var req<%= s.id%> = document.getElementById("req<%= s.id%>");
+			<%end%>
+				var check = false;
+			<% Forme.all.each do |s|%>
+				req<%= s.id%>.required = false;
+				if(req<%= s.id%>.checked == true){
+					check = true;
+				}	
+			<%end%>
+				if(check == false){
+					req<%= form[rand(0..form.length-1)]%>.required = true;
+				}
+			
+	
+
+	}
+
 	//Autres bénéficiaires
 	function ajoutBen(){
 		<% 10.times do |x|%>			
@@ -154,7 +216,6 @@
 		var NombreSaisi = "";
 		var NombreSaisiUx = "";
 		var arrayNew = [InputMontantValue1, InputMontantValue2, InputMontantValue3, InputMontantValue4, InputMontantValue5, InputMontantValue6, InputMontantValue7, InputMontantValue8, InputMontantValue9]
-
 		for (var i = 0; i < nbr.length; i++) {
 				NombreSaisi+= nbr[i];
 		}
@@ -173,7 +234,6 @@
 				arrayNew[i].value = NombreSaisiUx
 			}
 		}
-
 	}
 
 	function InputMontantPicker(inp) {

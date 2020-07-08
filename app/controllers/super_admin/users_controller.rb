@@ -33,6 +33,7 @@ class SuperAdmin::UsersController < ApplicationController
  			@user.update(is_consultant: true)
  		else
  			@user.update(is_admin: true)
+ 			UserMailer.welcome_email(@user).deliver_now
  		end
 
  		# if @user.is_consultant == false
