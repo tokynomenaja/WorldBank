@@ -34,7 +34,7 @@ class Admin::ProjetsController < ApplicationController
                 fin: params[:fin].to_date, siteweb: params[:site],
                 bailleur_id: current_user.id)
 
-                if params[:valueSave] == 'Sauvegarder'
+                if params[:creer] == 'Sauvegarder'
                     @project.update(validation: nil)
                     redirect_to admin_projets_path, success: "Votre fiche projet est sauvegardée. Vous pourrez reprendre votre travail ultérieurement et publier votre fiche lorsqu’elle sera complète"
                 else
@@ -72,11 +72,15 @@ class Admin::ProjetsController < ApplicationController
                     Montant.create(price: @convert_usd.to_i,secteur_id: x, projet_id: @project.id, unite_id: 1)
                   end
                 end
-                     
-                  @secteur_ids = params[:secteur_ids]
-                @secteur_ids.each do |x|
-                  Secteurprojet.create(projet_id: @project.id , secteur_id: x.to_i)
+                  
+
+                if params[:secteur_ids]   
+                    @secteur_ids = params[:secteur_ids]
+                  @secteur_ids.each do |x|
+                    Secteurprojet.create(projet_id: @project.id , secteur_id: x.to_i)
+                  end
                 end
+                
                   10.times do |x|
                   if params[:"checkfili#{x}"] && params[:newfili] != ""
                     @fili = Filiere.create(title: params[:"valfili#{x}"])

@@ -11,12 +11,7 @@ class User < ApplicationRecord
    has_many :messages, foreign_key: 'sender_id'
    has_many :visits, foreign_key: 'user_id'
 
-   after_create :update_admin, :welcome_send, :notify_pusher
-  
-
-    def welcome_send
-      UserMailer.welcome_email(self).deliver_now
-    end
+   after_create :update_admin, :notify_pusher
     
 	  def update_admin
 	  	@user = User.last

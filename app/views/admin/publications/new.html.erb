@@ -4,14 +4,14 @@
 		<h5 class="text-center tablePrint">Créer votre publication</h5>
 		<div class="mb-2">
 			<label for="nom" class="tablePrint">Titre </label>
-			<input type="text" name="title" id="nom" placeholder="title" class="form-control" required="true">
+			<input type="text" name="title" id="nom" placeholder="title" class="form-control" oninvalid="this.setCustomValidity('Titre de publication est obligatoire')"  oninput="setCustomValidity('')" required>
 		</div>
 		<div class="mb-2">
-			<label for="nom" class="tablePrint">Description </label>
-			<textarea type="text" name="description" id="nom"  class="form-control p-2 editor" required rows="5"></textarea>
+			<label for="description" class="tablePrint">Description </label>
+			<textarea type="text" name="description" id="description"  class="form-control p-2 editor" rows="5"></textarea>
 		</div>
 			<div class="mb-2 mt-4">
-				<%= file_field_tag :files, name:"files[]", required: true, multiple: true, id: :"document", class: 'toggleclass'%>
+				<%= file_field_tag :files, name:"files[]", multiple: true, id: :"document", class: 'toggleclass'%>
 				<span class="btn btn-secondary text-wrap text-break" id="simulateur">Joindre un fichier à cette publication</span>
 			</div>
 		<div>
