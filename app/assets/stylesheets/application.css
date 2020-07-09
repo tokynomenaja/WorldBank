@@ -599,7 +599,7 @@ width: 0.3rem;
 .left::-webkit-scrollbar-thumb {
 background: #fff3; 
 }
-.tox .tox-statusbar{display: none!important;}
+.tox-statusbar__branding{display: none !important}
 .img-filter{width: 1.5rem;}
 /*projets*/
 .date-projet-small{display: none !important;}

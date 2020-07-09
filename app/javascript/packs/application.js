@@ -166,6 +166,11 @@ $(document).on('turbolinks:load', function() {
 		$("#filter-display").toggleClass("gOGYTl")
 	})
 
+ 
+
+
+
+
 
 // validation compteur de mot objectif general
 	var wordLen = 150;
