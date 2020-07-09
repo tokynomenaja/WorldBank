@@ -1,8 +1,6 @@
 <script type="text/javascript">
 
 
-
-
 	//Required secteur
 	function validCheck(){
 
@@ -22,7 +20,7 @@
 					s<%= ids[rand(0..ids.length-1)]%>.required = true;
 				}
 
-	//Required beneficiaires
+	//Required beneficiaire
 			<%ben = [] %>
 			<% Beneficiaire.all.each do |s|%>
 				<% ben << s.id%>
@@ -38,6 +36,8 @@
 				if(checkben == false){
 					b<%= ben[rand(0..ben.length-1)]%>.required = true;
 				}
+
+
 
 	//Required region
 			<%zone = [] %>
@@ -73,28 +73,14 @@
 				if(checkpem == false){
 					pp<%= pem[rand(0..pem.length-1)]%>.required = true;
 				}
-	//Required forme d'appui
-
-			<%form = [] %>
-			<% Forme.all.each do |s|%>
-				<% form << s.id%>
-				var req<%= s.id%> = document.getElementById("req<%= s.id%>");
-			<%end%>
-				var check = false;
-			<% Forme.all.each do |s|%>
-				req<%= s.id%>.required = false;
-				if(req<%= s.id%>.checked == true){
-					check = true;
-				}	
-			<%end%>
-				if(check == false){
-					req<%= form[rand(0..form.length-1)]%>.required = true;
-				}
 			
 	
 
 	}
 
+
+
+	
 	//Autres bénéficiaires
 	function ajoutBen(){
 		<% 10.times do |x|%>			
