@@ -64,12 +64,28 @@
 <script>
   tinymce.init({
     selector: 'textarea.editor',
-    plugins: 'lists link',
-    toolbar: 'bold italic | link code | aligncenter alignright alignjustify  | numlist bullist outdent indent',
+    plugins: 'lists link wordcount',
+    toolbar: 'bold italic | link code | aligncenter alignright alignjustify  | numlist bullist outdent indent ',
     menubar: false,
     language : 'fr_FR'
   
   });
+
+
+
+
+
+  function paste(x){
+    var limit = document.getElementById('charLimit');
+    var limit2 = document.getElementById('charLimit2');
+    if(x.length > 150){
+      limit.style.background = "red";
+    }else if(x.length > 300){
+      limit2.style.background = "red";
+    }
+  }
+
+
 </script>
 </html>
 
