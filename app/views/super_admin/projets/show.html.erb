@@ -186,12 +186,18 @@
           <%elsif @projet.secteurprojets.count > 1%>
               <p><span class="attr">Montant  pour les secteurs : </span>
           <%end%>
-          <% @projet.montants.each do |m|%>
-                <p class="mb-3"><%= m.secteur.title.titleize%> | <%=  number_with_delimiter(m.price) %> | <%= m.unite.nom%></p>
-          <%end%>
           </p>
+            <div class="row">
+              <% @projet.montants.each do |m|%>
+                <div class="col-12 col-md-7">
+                  <span><%= m.secteur.title.titleize%> : </span>
+                </div>
+                <div class="col-12 col-md-5">
+                  <span><%=  number_with_delimiter(m.price) %> <%= m.unite.nom%></span> 
+                </div>
+              <%end%>
+            </div> 
           <%end%>
-
         </div>
         <div class="col-md-6 list">
           <p class="mb-3"><span class="attr">Nature de l'appui : </span><%=@projet.appui.title%></p>
