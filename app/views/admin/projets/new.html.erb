@@ -144,7 +144,7 @@
 					<div class="row">
 						<% Secteur.all.order(:title).each do |c| %>
 							<div class="col-12 col-md-6 col-xl-4">
-								<%= check_box_tag("secteur_ids[]",c.id, false, id: :"s#{c.id}",:onclick => "check(#{c.id})", :oninvalid => "this.setCustomValidity('Veuillez selectionner un secteur')",:oninput => "setCustomValidity('')")%>
+								<input type="checkbox" name="secteur_ids[]" value="<%= c.id%>" onclick="check(<%= c.id%>)" id="s<%= c.id%>">
 								<%= c.title%>
 							</div> 
 						<% end %>
@@ -325,7 +325,7 @@
 						<div class="row">
 							<% Beneficiaire.all.order(:title).each do |c| %>
 								<div class="col-md-12">
-									<%= check_box_tag("beneficiaire_ids[]",c.id,false,id: :"b#{c.id}", :oninvalid => "this.setCustomValidity('Veuillez selectionner bénéficiaire')", :oninput => "setCustomValidity('')") %>
+									<input type="checkbox" name="beneficiaire_ids[]" value="<%= c.id%>" id="b<%= c.id%>">
 									<%= c.title%>
 								</div>
 							<% end %>
@@ -440,7 +440,7 @@
 								</p>
 								<%c.pems.each do |p|%>
 								<div class="ml-4">
-									<%=check_box_tag("pem_ids[]",p.id,false,id: :"pp#{p.id}", :oninvalid => "this.setCustomValidity('Veuillez selectionner Alignement aux priorités du Plan Emergence de Madagascar')", :oninput => "setCustomValidity('')") %> 
+									<input type="checkbox" name="pem_ids[]" value="<%= p.id%>" id="pp<%= p.id%>"> 
 									<%= p.title %>
 								</div>
 								<%end%>
@@ -459,7 +459,7 @@
 					<div class="row">
 						<% Zone.all.each do |c| %>
 							<div class="col-md-4">
-								<%= check_box_tag("zone_ids[]", c.id, false,id: :"z#{c.id}", :oninvalid => "this.setCustomValidity('Veuillez selectionner régions')", :oninput => "setCustomValidity('')") %>
+								<input type="checkbox" name="zone_ids[]" value="<%= c.id%>" id="z<%= c.id%>">
 								<%if c.id == 1%>
 									National
 								<%else%>
@@ -482,6 +482,9 @@
 			<label for="comment" class="tablePrint">Commentaire :</label>
 			<textarea name="comment" class="form-control p-2"  rows="5" placeholder="Commentaire qui s'adresse à l'administrateur"></textarea>
 			
+		</div>
+		<div class="container mt-4">
+			<p><span class="tablePrint">Site web :</span><input type="text" name="site" class="form-control" placeholder="votre lien"></p>
 		</div>
 		<div class="container mt-4 mb-5">
 			<%= submit_tag 'Sauvegarder', :name => "creer",  :class => "btn btn-secondary"%>
