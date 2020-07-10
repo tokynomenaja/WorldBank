@@ -172,6 +172,7 @@ $(document).on('turbolinks:load', function() {
 
 
 
+<<<<<<< HEAD
 //validation compteur de mot objectif general
 	var a = tinymce.activeEditor.plugins.wordcount;
 	var len = a.getCount();
@@ -216,6 +217,50 @@ $(document).on('turbolinks:load', function() {
 			}).prepend('<i class="fa fa-exclamation-triangle"></i>');
 		}
 	});
+=======
+// // validation compteur de mot objectif general
+// 	var wordLen = 150;
+// 	var len; // Maximum word length
+// 	$('#comment_body').keyup(function(event) {	
+// 		len = $('#comment_body').val().split(/[\s]+/);
+// 		if (len.length > wordLen) { 
+// 			if ( event.keyCode == 46 || event.keyCode == 8 ) {// Allow backspace and delete buttons
+// 	    } else if (event.keyCode < 48 || event.keyCode > 57 ) {//all other buttons
+// 	    	event.preventDefault();
+// 	    }
+// 		}
+// 		console.log(len.length + " words are typed out of an available " + wordLen);
+// 		wordsLeft = (wordLen) - len.length;
+// 		$('.words-left').html(wordsLeft+ ' mots restants');
+// 		if(wordsLeft == 0) {
+// 			$('.words-left').css({
+// 				'background':'red'
+// 			}).prepend('<i class="fa fa-exclamation-triangle"></i>');
+// 		}
+// 	});
+
+
+	// // validation compteur de mot Appui
+	// var wordLenApp = 300;
+	// var len2; // Maximum word length
+	// $('#aspsp').keyup(function(event) {	
+	// 	len2 = $('#aspsp').val().split(/[\s]+/);
+	// 	if (len2.length > wordLenApp) { 
+	// 		if ( event.keyCode == 46 || event.keyCode == 8 ) {// Allow backspace and delete buttons
+	//     } else if (event.keyCode < 48 || event.keyCode > 57 ) {//all other buttons
+	//     	event.preventDefault();
+	//     }
+	// 	}
+	// 	console.log(len2.length + " words are typed out of an available " + wordLenApp);
+	// 	wordsLeft2 = (wordLenApp) - len2.length;
+	// 	$('.words-left2').html(wordsLeft2+ ' mots restants');
+	// 	if(wordsLeft2 == 0) {
+	// 		$('.words-left2').css({
+	// 			'background':'red'
+	// 		}).prepend('<i class="fa fa-exclamation-triangle"></i>');
+	// 	}
+	// });
+>>>>>>> 5377dd13f6aac40bedbd09bbe1c8142e7735c397
 
 //calendrier
 

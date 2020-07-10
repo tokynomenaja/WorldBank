@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_01_161657) do
+ActiveRecord::Schema.define(version: 2020_07_09_114131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -172,9 +172,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_161657) do
     t.string "fonction"
     t.string "first_name"
     t.string "last_name"
-    t.bigint "organismecontact_id"
     t.index ["admin_id"], name: "index_messages_on_admin_id"
-    t.index ["organismecontact_id"], name: "index_messages_on_organismecontact_id"
     t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 

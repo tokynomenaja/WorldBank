@@ -599,7 +599,12 @@ width: 0.3rem;
 .left::-webkit-scrollbar-thumb {
 background: #fff3; 
 }
+<<<<<<< HEAD
 .tox-statusbar__branding{display: none !important;}
+=======
+.ft-sz{font-size: 1.1rem !important;}
+.tox-statusbar{display: none !important}
+>>>>>>> 5377dd13f6aac40bedbd09bbe1c8142e7735c397
 .img-filter{width: 1.5rem;}
 /*projets*/
 .date-projet-small{display: none !important;}
@@ -740,7 +745,10 @@ background: #fff3;
   .b-footer-center{margin: 10px 6px !important;}
   /*==============*/
 }
-
+@media screen and (min-width: 768px) and (max-width: 1140){
+  .responsive-nav{display: none;}
+  #filter-btn-open, #filter-btn-close{display: none !important;}
+}
 @media screen and (min-width: 1140px){
   .responsive-nav{display: none;}
   #filter-btn-open, #filter-btn-close{display: none !important;}
