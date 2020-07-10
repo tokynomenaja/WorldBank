@@ -172,11 +172,13 @@ $(document).on('turbolinks:load', function() {
 
 
 
-// validation compteur de mot objectif general
+//validation compteur de mot objectif general
+	var a = tinymce.activeEditor.plugins.wordcount;
+	var len = a.getCount();
 	var wordLen = 150;
 	var len; // Maximum word length
-	$('#comment_body').keyup(function(event) {	
-		len = $('#comment_body').val().split(/[\s]+/);
+	$('.editor').keyup(function(event) {	
+		len = $('.editor').val().split(/[\s]+/);
 		if (len.length > wordLen) { 
 			if ( event.keyCode == 46 || event.keyCode == 8 ) {// Allow backspace and delete buttons
 	    } else if (event.keyCode < 48 || event.keyCode > 57 ) {//all other buttons
