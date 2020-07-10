@@ -22,11 +22,10 @@
 			<div class="mt-2">
 				<div class="card card-body">
 			 		<textarea name="objectif_generale_du_projet" value="nil" id="comment_body" class="editor"></textarea>
-			 		<p id="charlimit"><span class="words-left">150 mots maximum</span></p>
+					<p id="charlimit"><span class="words-left">150 mots maximum</span></p>
 				</div>
 			</div>
 		</div>
-		
 		<div class="container mb-2">
 			<a class="tablePrint">
 				Appui spécifique au secteur privé *
@@ -34,7 +33,7 @@
 			<div class="mt-2">
 				<div class="card card-body">
 			 		<textarea name="aspsp" value="nil" id="aspsp" class="editor"></textarea>
-			 		<p id="charlimit2"><span class="words-left2">300 mots maximum</span></p>
+					<p id="charlimit2"><span class="words-left2">300 mots maximum</span></p>
 				</div>
 			</div>
 		</div>
@@ -146,7 +145,7 @@
 					<div class="row">
 						<% Secteur.all.order(:title).each do |c| %>
 							<div class="col-12 col-md-6 col-xl-4">
-								<input type="checkbox" name="secteur_ids[]" value="<%= c.id%>" id="s<%= c.id%>" onclick="check(<%= c.id%>)">
+								<input type="checkbox" name="secteur_ids[]" value="<%=c.id%>" id="s<%=c.id%>" onclick="check(<%= c.id%>)" required="true" data-ErrorMessage="Cochez au moins un secteur">
 								<%= c.title%>
 							</div> 
 						<% end %>
@@ -170,12 +169,12 @@
 					<%end%>
 				</div>
 				<div class="col-12 col-md-4 row">
-					<div class="col-12 col-md-6 mt-2 position-relative" id="bloom1">
+					<div class="col-12 col-md-6 mt-2">
 						<h6 class="tablePrint">Début de projet *</h6>
-						<input type="text" name="debut_du_projet" id="selectionDebut" placeholder="mm/aaaa" class="form-control" required="true" >
+						<input type="text" name="debut_du_projet" id="selectionDebut" placeholder="mm/aaaa" class="form-control" required="true">
 						<input type="hidden" id="selectionDebutValue" placeholder="mm/aaaa" class="form-control" name="debut_du_projet" required="true">
 					</div>
-					<div class="col-12 col-md-6 mt-2 position-relative" id="bloom2">			
+					<div class="col-12 col-md-6 mt-2">			
 						<h6 class="tablePrint">Fin de projet *</h6>
 						<input type="text" name="fin" class="form-control" placeholder="mm/aaaa" id="selectionFin" title="Fin ne doit pas être antérieure de début" required="true">
 						<input type="hidden" name="fin" id="selectionFinValue" class="form-control" placeholder="mm/aaaa" required="true">
@@ -327,7 +326,7 @@
 						<div class="row">
 							<% Beneficiaire.all.order(:title).each do |c| %>
 								<div class="col-md-12">
-									<input type="checkbox" name="beneficiaire_ids[]" value="<%= c.id%>" id="b<%= c.id%>">
+									<input type="checkbox" name="beneficiaire_ids[]" value="<%=c.id%>" required="true" data-ErrorMessage="Cochez au moins un bénéficiaire">
 									<%= c.title%>
 								</div>
 							<% end %>
@@ -441,8 +440,8 @@
 									<%= c.title%> 
 								</p>
 								<%c.pems.each do |p|%>
-								<div class="ml-4">
-									<input type="checkbox" name="pem_ids[]" value="<%= p.id%>" id="pp<%= p.id%>"> 
+								<div class="ml-4"> 
+									<input type="checkbox" name="pem_ids[]" value="<%=p.id%>" required="true" data-ErrorMessage="Cochez au moins un Alignement aux priorités du Plan Emergence de Madagascar">
 									<%= p.title %>
 								</div>
 								<%end%>
@@ -461,7 +460,7 @@
 					<div class="row">
 						<% Zone.all.each do |c| %>
 							<div class="col-md-4">
-								<input type="checkbox" name="zone_ids[]" value="<%= c.id%>" id="z<%= c.id%>">
+								<input type="checkbox" name="zone_ids[]" value="<%=c.id%>" required="true" data-ErrorMessage="Cochez au moins une région">
 								<%if c.id == 1%>
 									National
 								<%else%>
@@ -486,7 +485,7 @@
 			
 		</div>
 		<div class="container mt-4 mb-5">
-			<%= submit_tag 'Sauvegarder', :name => "creer",  :class => "btn btn-secondary",:onclick => "validCheck()"%>
+			<%= submit_tag 'Sauvegarder', :name => "creer",  :class => "btn btn-secondary"%>
 			<%= submit_tag 'Sauvegarder et Publier', :name => "creer", :class => "sc-eerKOB cfnPHQ", :onclick => "validCheck()"%>
 		</div>
 	</div>
@@ -494,3 +493,24 @@
 <%= render partial: "/admin/projets/script.html.erb"%>
 
 <%= render partial: "/super_admin/confirm.html.erb"%>
+<script type="text/javascript">
+	var requiredCheckboxes = $(':checkbox[required]');
+	  	requiredCheckboxes.on('change', function(e) {
+	    var checkboxGroup = requiredCheckboxes.filter('[name="' + $(this).attr('name') + '"]');
+	    var isChecked = checkboxGroup.is(':checked');
+	    checkboxGroup.prop('required', !isChecked);
+
+	    checkboxGroup.each(function() {       
+	     if (!isChecked) {           
+	     	for (var i=0; i<requiredCheckboxes.length; i++){
+			    var message = $(requiredCheckboxes[i]).attr("data-ErrorMessage");
+			    $(requiredCheckboxes[i]).get(0).setCustomValidity(message);
+			}      
+	    } else {
+	        this.setCustomValidity('');        
+	    }   
+	});
+	  });
+	requiredCheckboxes.trigger('change');
+
+</script>
