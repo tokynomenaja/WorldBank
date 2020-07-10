@@ -1,8 +1,9 @@
 <script type="text/javascript">
 
 
-	//Required secteur
 	function validCheck(){
+	
+	//Required secteur
 
 			<%ids = [] %>
 			<% Secteur.all.each do |s|%>
@@ -73,7 +74,16 @@
 				if(checkpem == false){
 					pp<%= pem[rand(0..pem.length-1)]%>.required = true;
 				}
-			
+
+
+			if(tinyMCE.get('aspsp').getContent() == "" && tinyMCE.get('comment_body').getContent() != ""){
+				alert("Veuillez remplir l'appui spécifique au secteur privé");
+			}
+			else if(tinyMCE.get('comment_body').getContent() == "" && tinyMCE.get('aspsp').getContent() != ""){
+				alert("Veuillez remplir l'objectif général du projet");
+			}else if(tinyMCE.get('comment_body').getContent() == "" && tinyMCE.get('aspsp').getContent() == ""){
+				alert("Veuillez remplir l'objectif général du projet et l'appui spécifique au secteur privé");	
+			}
 			
 
 	}
