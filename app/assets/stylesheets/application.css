@@ -600,7 +600,7 @@ width: 0.3rem;
 background: #fff3; 
 }
 .ft-sz{font-size: 1.1rem !important;}
-.tox-statusbar__branding{display: none !important}
+.tox-statusbar{display: none !important}
 .img-filter{width: 1.5rem;}
 /*projets*/
 .date-projet-small{display: none !important;}
