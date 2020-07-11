@@ -14,7 +14,10 @@ class SuperAdmin::ProjetsController < ApplicationController
 
   def show
     @projet = Projet.find(params[:id])
-
+    @montant_total = 0
+      @projet.montants.each do |m|
+        @montant_total += m.price.to_i
+      end
   end
 
   def edit
