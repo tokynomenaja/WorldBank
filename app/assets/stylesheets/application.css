@@ -599,6 +599,7 @@ width: 0.3rem;
 .left::-webkit-scrollbar-thumb {
 background: #fff3; 
 }
+
 .ft-sz{font-size: 1.1rem !important;}
 .tox-statusbar{display: none !important}
 .img-filter{width: 1.5rem;}

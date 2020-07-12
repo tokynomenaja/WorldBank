@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: worldbank_bdd
-  username: worldbank
-  password: <%= ENV['DB_PASS'] %>
+  url: postgresql://worldbank:worldbank2020@127.0.0.1/worldbank_db

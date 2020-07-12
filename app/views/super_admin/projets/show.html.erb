@@ -196,6 +196,10 @@
                   <span><%=  number_with_delimiter(m.price) %> <%= m.unite.nom%></span> 
                 </div>
               <%end%>
+              <p>
+               <span class="attr">Montant total :</span>
+               <span class="mb-3"><%= number_with_delimiter(@montant_total)%> USD </span>  
+              </p>
             </div> 
           <%end%>
         </div>
