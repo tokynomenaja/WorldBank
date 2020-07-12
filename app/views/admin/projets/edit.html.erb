@@ -1,3 +1,22 @@
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Plateforme Secteur Privé / Energie et Tourisme</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="modal-body-val">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div> 
 <header class="aci59a-0 eyAIuG sticky-limit small-device-header">
     <div class="sc-1gnwgfb-2 hVIPFV">
     </div>
@@ -482,10 +501,10 @@
 
 			<div class="container mt-4">
 				<%if @projet.validation == nil || @projet.validation == false && @projet.revalid == false && @projet.revalid == nil%>
-					<input type="submit" name="modifier" value="Enregistrer la modification" class="btn btn-secondary">
-					<input type="submit" name="modifier" value="Publier" class="sc-eerKOB cfnPHQ">
+					<input type="submit" name="modifier" value="Enregistrer la modification" class="btn btn-secondary" data-toggle="" data-target="">
+					<input type="submit" name="modifier" value="Publier" class="sc-eerKOB cfnPHQ" data-toggle="" data-target="">
 				<%else%>
-					<input type="submit" name="modifier" value="Re-publier" class="sc-eerKOB cfnPHQ">
+					<input type="submit" name="modifier" value="Re-publier" class="sc-eerKOB cfnPHQ" data-toggle="" data-target="">
 				<%end%>
 				<a href="<%= admin_projet_path(@projet.id)%>" class="btn btn-danger">Annuler la modification</a>
 			</div>		

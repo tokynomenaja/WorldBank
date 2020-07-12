@@ -3,16 +3,18 @@
 
 	//Required secteur
 	function validCheck(){
-				
-	
-	
+
 			if(tinyMCE.get('aspsp').getContent() == "" && tinyMCE.get('comment_body').getContent() != ""){
-				alert("Veuillez remplir l'appui spécifique au secteur privé");
+				document.getElementById('modal-body-val').textContent = "Veuillez remplir l'appui spécifique au secteur privé"
 			}
 			else if(tinyMCE.get('comment_body').getContent() == "" && tinyMCE.get('aspsp').getContent() != ""){
-				alert("Veuillez remplir l'objectif général du projet");
+				document.getElementById('modal-body-val').textContent = "Veuillez remplir l'objectif général du projet"
 			}else if(tinyMCE.get('comment_body').getContent() == "" && tinyMCE.get('aspsp').getContent() == ""){
-				alert("Veuillez remplir l'objectif général du projet et l'appui spécifique au secteur privé");	
+				document.getElementById('modal-body-val').textContent = "Veuillez remplir l'objectif général du projet et l'appui spécifique au secteur privé"
+			}else if(tinyMCE.get('aspsp').getContent() != "" && tinyMCE.get('comment_body').getContent() != ""){
+				var annule = document.getElementById('Sauvegarder-publier')
+				annule.removeAttribute("data-toggle")
+				annule.removeAttribute("data-target")
 			}
 
 	}
