@@ -17,7 +17,7 @@
 						<div class="card-text">
 							<p class="card-text text-muted mb-2 truncate-pub">
 								<div class="mt-2 mb-5">
-								<%= raw p.description %></p>
+								<%= raw truncate(sanitize(p.description, tags: []), length: 100) %></p>
 								</div>
 						</div>
 						<p class="mt-3 position-absolute more-info-pub"><a href="<%= super_admin_publication_path(p.id)%>" class="tablePrint">Voir</a></p>

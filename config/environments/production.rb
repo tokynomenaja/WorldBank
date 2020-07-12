@@ -20,13 +20,14 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+ # config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = true
+  config.serve_static_files = true
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
@@ -61,7 +62,6 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "worldbank_production"
 
   config.action_mailer.perform_caching = false
-  config.action_mailer.perform_deliveries = true
   config.action_mailer.default_url_options = {:host => 'http://82.165.122.74'}
 
   # Ignore bad email addresses and do not raise email delivery errors.
@@ -90,6 +90,28 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  
+config.action_mailer.delivery_method = :sendmail
+# Defaults to:
+# config.action_mailer.sendmail_settings = {
+#   location: '/usr/sbin/sendmail',
+#   arguments: '-i'
+# }
+#config.action_mailer.perform_deliveries = true
+#config.action_mailer.raise_delivery_errors = true
+#config.action_mailer.default_options = {from: 'no-reply.secteurprivefinance@gmail.com'}
+
+   config.action_mailer.delivery_method = :smtp
+   config.action_mailer.smtp_settings = {
+     address:              'smtp.gmail.com',
+     port:                 587,
+     domain:               'spamandona.fr',
+     user_name:            'michael77rakotovao@gmail.com',
+     password:             'zzadaorgdtcibfti',
+     authentication:       'plain',
+     enable_starttls_auto: true 
+   }
 
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector

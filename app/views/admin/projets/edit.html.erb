@@ -103,8 +103,7 @@
 									<div class="no-gutters align-items-center montant-padd ml-3" id="montant<%=s.id%>" style="display: -ms-flexbox;display: flex;-ms-flex-wrap: wrap;flex-wrap: wrap;">
 										<div class="col-12 col-md-5 font-size"><%= s.title.upcase %> : </div>
 										<div class="col-12 col-md-7 form-control pr-0">
-											<input type="text" placeholder="Montant" value="<%= s.montants.find_by(projet_id: @projet.id).price%>" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>">
-											<input type="text" name="montant<%= s.id%>" id="InputMontantValue<%=s.id%>" hidden>
+											<input type="text" placeholder="Montant" value="<%= s.montants.find_by(projet_id: @projet.id).price%>" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>" name="montant<%= s.id%>">
 											<select name="unite_id<%= s.id%>" class="text-center border-left unit pl-2 btn-reset">
 												<% Unite.all.each do |u|%>
 													<%if u == s.montants.find_by(projet_id: @projet.id).unite %>

@@ -7,6 +7,10 @@ class SuperAdmin::UpdateProjetsController < ApplicationController
 
   def show
     @projet = UpdateProjet.find(params[:id])
+    @montant_total = 0
+    @projet.montants.each do |m|
+        @montant_total += m.price.to_i
+      end
   end
 
 def destroy

@@ -3,78 +3,17 @@
 
 	//Required secteur
 	function validCheck(){
-
-			<%ids = [] %>
-			<% Secteur.all.each do |s|%>
-				<% ids << s.id%>
-				var s<%= s.id%> = document.getElementById("s<%= s.id%>");
-			<%end%>
-				var check = false;
-			<% Secteur.all.each do |s|%>
-				s<%= s.id%>.required = false;
-				if(s<%= s.id%>.checked == true){
-					check = true;
-				}	
-			<%end%>
-				if(check == false){
-					s<%= ids[rand(0..ids.length-1)]%>.required = true;
-				}
-
-	//Required beneficiaire
-			<%ben = [] %>
-			<% Beneficiaire.all.each do |s|%>
-				<% ben << s.id%>
-				var b<%= s.id%> = document.getElementById("b<%= s.id%>");
-			<%end%>
-				var checkben = false;
-			<% Beneficiaire.all.each do |s|%>
-				b<%= s.id%>.required = false;
-				if(b<%= s.id%>.checked == true){
-					checkben = true;
-				}	
-			<%end%>
-				if(checkben == false){
-					b<%= ben[rand(0..ben.length-1)]%>.required = true;
-				}
-
-
-
-	//Required region
-			<%zone = [] %>
-			<% Zone.all.each do |s|%>
-				<% zone << s.id%>
-				var z<%= s.id%> = document.getElementById("z<%= s.id%>");
-			<%end%>
-				var checkzone = false;
-			<% Zone.all.each do |s|%>
-				z<%= s.id%>.required = false;
-				if(z<%= s.id%>.checked == true){
-					checkzone = true;
-				}	
-			<%end%>
-				if(checkzone == false){
-					z<%= zone[rand(0..zone.length-1)]%>.required = true;
-				}
-
-
-	//Required PEM
-			<%pem = [] %>
-			<% Engagement.all.each do |s|%>
-				<% pem << s.id%>
-				var pp<%= s.id%> = document.getElementById("pp<%= s.id%>");
-			<%end%>
-				var checkpem = false;
-			<% Engagement.all.each do |s|%>
-				pp<%= s.id%>.required = false;
-				if(pp<%= s.id%>.checked == true){
-					checkpem = true;
-				}	
-			<%end%>
-				if(checkpem == false){
-					pp<%= pem[rand(0..pem.length-1)]%>.required = true;
-				}
-			
-			
+				
+	
+	
+			if(tinyMCE.get('aspsp').getContent() == "" && tinyMCE.get('comment_body').getContent() != ""){
+				alert("Veuillez remplir l'appui spécifique au secteur privé");
+			}
+			else if(tinyMCE.get('comment_body').getContent() == "" && tinyMCE.get('aspsp').getContent() != ""){
+				alert("Veuillez remplir l'objectif général du projet");
+			}else if(tinyMCE.get('comment_body').getContent() == "" && tinyMCE.get('aspsp').getContent() == ""){
+				alert("Veuillez remplir l'objectif général du projet et l'appui spécifique au secteur privé");	
+			}
 
 	}
 
@@ -305,26 +244,6 @@
 
 				}
 
-				// Si l'utilisateur click le sécteur 'x':
-		        if(x == <%= s.id%>){
-		        	// Chercher toutes les filières qui correspondent au secteur X
-		            <%s.secteur_filieres.each do |sf|%>
-		                var f = document.getElementById('fil'+<%= sf.filiere.id%>);
-		                if (document.getElementById('idfil'+<%= sf.id%>) != null) {
-		                	var idfil = document.getElementById('idfil'+<%= sf.id%>);
-		                }
-		                // si le secteur X est décoché, décocher et cacher toutes les filières qui correspondent à X
-		                if(f.style.display == "block"){
-		                    if (idfil != null) {
-		                		f.style.display = "none";
-		                    	idfil.checked = false;
-		                    }
-		                // si le secteur X est coché, afficher toutes les filières qui correspondent à X
-		                }else{
-		                    f.style.display = "block";
-		                }
-		            <%end%>
-		        }
 		    <%end%>
 
 
@@ -374,29 +293,6 @@
 				fs.style.display = "none";
 			<%end%>
 
-		    <%Secteur.all.each do |s|%>
-		    
-		    	// Si l'utilisateur click le sécteur 'x':
-		        if(x == <%= s.id%>){
-		        	// Chercher toutes les formes d'appui qui correspondent au secteur X
-		            <%s.formesecteurs.each do |fs|%>
-		                var fs = document.getElementById('form'+<%= fs.forme.id%>);
-		                if (document.getElementById('idform'+<%= fs.id%>) != null) {
-		                	var idform = document.getElementById('idform'+<%= fs.id%>);
-		                }
-		                // si le secteur X est décoché, décocher et cacher toutes les formes d'appui qui correspondent à X
-		                if(fs.style.display == "block"){
-		                    if (idform != null) {
-		                    	fs.style.display = "none";
-		                    	idform.checked = false;
-		                    }
-		                // si le secteur X est coché, afficher toutes les formes d'appui qui correspondent à X
-		                }else{
-		                    fs.style.display = "block";
-		                }
-		            <%end%>
-		        }
-		    <%end%>
 
 		    if(formAsso == true){
 		    	document.getElementById('formAsso').innerHTML = "Aucune forme d'appui associée";
@@ -411,11 +307,15 @@
 		    <% end %>
 
 			// Afficher tous les formes d'appui qui correspondent aux sécteurs cochés
+			
 			<%Forme.order(:title).all.each do |form|%>
+			
+					
 				<% form.formesecteurs.each do |fs| %>
 					var secteur_de_form = document.getElementById('s<%= fs.secteur.id %>');
 					if (secteur_de_form.checked == true ) {
 						document.getElementById('form'+<%= form.id%>).style.display = "block";
+						
 					}
 				<% end %>
 			<% end %>
