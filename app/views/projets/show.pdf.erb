@@ -208,7 +208,7 @@
           <%end%>
           <p>
             <span class="attr">Montant total :</span>
-            <%montant_total_pdf = 0%>
+            <%@montant_total_pdf = 0%>
             <%@projet.montants.each do |m|%>
               <% @montant_total_pdf += m.price.to_i%>
             <%end%>
