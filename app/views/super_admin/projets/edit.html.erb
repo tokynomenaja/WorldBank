@@ -95,9 +95,9 @@
 				</div>
 		</div>
 		<div class="container">
-			<div class="row justify-content-between flex-wrap-reverse mb-3">
+			<div class="row justify-content-between no-gutters flex-wrap-reverse mb-3">
 				<div class="col-12 col-md-8 pl-0 mt-2 ml-2">
-					<h6 class="tablePrint ml-2">Montant pour le secteur :</h6>
+					<h6 class="tablePrint">Montant pour le secteur :</h6>
 					<% Secteur.all.order(:title).each do |s|%>
 							<% if @sects %> 
 						 		<% if @sects.include? s %>
@@ -106,17 +106,17 @@
 									<div class="no-gutters align-items-center montant-padd ml-3" id="montant<%=s.id%>" style="display: -ms-flexbox;display: flex;-ms-flex-wrap: wrap;flex-wrap: wrap;">
 										<div class="col-12 col-md-5 font-size"><%= s.title.upcase %> : </div>
 										<div class="col-12 col-md-7 form-control pr-0">
-										<input type="text" placeholder="Montant" value="<%= s.montants.find_by(projet_id: @projet.id).price%>" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" id="inputMontant<%=s.id%>" onmouseout="saveMontant(this)">
-										<input type="text" name="montant<%= s.id%>" id="InputMontantValue<%=s.id%>" hidden>
-										<select name="unite_id<%= s.id%>" class="text-center border-left unit pl-2 btn-reset">
-											<% Unite.all.each do |u|%>
-												<%if u == s.montants.find_by(projet_id: @projet.id).unite %>
-													<option value="<%= s.montants.find_by(projet_id: @projet.id).unite.id%>" selected><%= u.nom%></option>
-												<%else%>
-													<option value="<%= u.id%>"><%= u.nom%></option>
+											<input type="text" placeholder="Montant" value="<%= s.montants.find_by(projet_id: @projet.id).price%>" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>" name="montant<%= s.id%>">
+											<input type="text" name="montant<%= s.id%>" id="InputMontantValue<%=s.id%>" hidden value="<%= s.montants.find_by(projet_id: @projet.id).price%>">
+											<select name="unite_id<%= s.id%>" class="text-center border-left unit pl-2 btn-reset">
+												<% Unite.all.each do |u|%>
+													<%if u == s.montants.find_by(projet_id: @projet.id).unite %>
+														<option value="<%= s.montants.find_by(projet_id: @projet.id).unite.id%>" selected><%= u.nom%></option>
+													<%else%>
+														<option value="<%= u.id%>"><%= u.nom%></option>
+													<%end%>
 												<%end%>
-											<%end%>
-										</select>
+											</select>
 										</div>
 										
 									</div>
@@ -124,7 +124,7 @@
 									<div class="no-gutters align-items-center montant-padd ml-3" id="montant<%=s.id%>" style="display: none;">
 										<div class="col-12 col-md-5 font-size"><%= s.title.upcase %> : </div>
 										<div class="col-12 col-md-7 form-control pr-0">
-										<input type="text" placeholder="Montant" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>">
+										<input type="text" name="montant<%= s.id%>" placeholder="Montant" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>">
 										<input type="text" name="montant<%= s.id%>" id="InputMontantValue<%=s.id%>" hidden>
 										<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset", id: :"unite#{s.id}"%>
 										</div>
@@ -135,26 +135,25 @@
 									<div class="no-gutters align-items-center montant-padd ml-3" id="montant<%=s.id%>" style="display: none;">
 										<div class="col-12 col-md-5 font-size"><%= s.title.upcase %> : </div>
 										<div class="col-12 col-md-7 form-control pr-0">
-											<input type="text" placeholder="Montant" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>">
+											<input type="text" name="montant<%= s.id%>" placeholder="Montant" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>">
 											<input type="text" name="montant<%= s.id%>" id="InputMontantValue<%=s.id%>" hidden>
 											<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset", id: :"unite#{s.id}"%>
 										</div>
 									</div>
 								<%end%>
 							<%end%>
-
 						<%end%>
 				</div>
 				<div class="col-12 col-md-4 row">
 					<div class="col-12 col-md-6 mt-2">
 						<h6 class="tablePrint">Début de projet</h6>
-						<input type="text" id="selectionDebut" value="<%= @projet.debut_du_projet%>" class="form-control" >
-						<input type="hidden" id="selectionDebutValue" value="<%= @projet.debut_du_projet%>" class="form-control" name="debut_du_projet">
+						<input type="text" id="selectionDebut" value="<%= @projet.debut_du_projet%>" class="form-control" required="true">
+						<input type="hidden" id="selectionDebutValue" value="<%= @projet.debut_du_projet%>" class="form-control" name="debut_du_projet" required="true">
 					</div>
 					<div class="col-12 col-md-6 mt-2">			
 						<h6 class="tablePrint">Fin de projet</h6>
-						<input type="text" class="form-control" value="<%= @projet.fin%>" id="selectionFin">
-						<input type="hidden" name="fin" id="selectionFinValue" class="form-control" value="<%= @projet.fin%>" name="fin">
+						<input type="text" class="form-control" value="<%= @projet.fin%>" id="selectionFin" title="Fin ne doit pas être antérieure de début" required="true">
+						<input type="hidden" name="fin" id="selectionFinValue" class="form-control" value="<%= @projet.fin%>" required="true">
 					</div>
 				</div>
 			</div>
