@@ -17,7 +17,7 @@
 						<div class="card-text">
 							<p class="card-text text-muted mb-2 truncate-pub">
 								<div class="mt-2 mb-5">
-								<%=raw a.description %></p>
+								<%= raw truncate(sanitize(a.description, tags: []), length: 100) %></p>
 								</div>
 						</div>
 						<%if current_user.is_super_admin == false%>

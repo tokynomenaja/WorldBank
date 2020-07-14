@@ -24,7 +24,7 @@ class ProjetsController < ApplicationController
         }
       end
         @projet.montants.each do |m|
-        @montant_total += m.price.to_i
-      end
+          @montant_total += m.price.to_i
+        end
     end  
   end
