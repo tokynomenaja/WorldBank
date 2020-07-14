@@ -24,24 +24,24 @@ class SuperAdmin::TarifsController < ApplicationController
       end  
   end
 
-  def new
-  	@tarif = Tarif.new
-    @tarifs = Tarif.all.order(id: :desc).page(params[:page]).per(9)
-  end
+  # def new
+  # 	@tarif = Tarif.new
+  #   @tarifs = Tarif.all.order(id: :desc).page(params[:page]).per(9)
+  # end
 
-  def create
-	  	@tarif = Tarif.create!(reference: params[:reference], valeur: params[:valeur], unite_id: params[:unite])
-        if params[:cree] == 'A utiliser'
-          @tarif.update(utilise: true)
+  # def create
+	 #  	@tarif = Tarif.create!(reference: params[:reference], valeur: params[:valeur], unite_id: params[:unite])
+  #       if params[:cree] == 'A utiliser'
+  #         @tarif.update(utilise: true)
 
-        end
-		  if @tarif.save
-		    redirect_to new_super_admin_tarif_path, success: "Taux de change créé!!"
-		  else
-		    render :new
+  #       end
+		#   if @tarif.save
+		#     redirect_to new_super_admin_tarif_path, success: "Taux de change créé!!"
+		#   else
+		#     render :new
 
-		  end  
-  end
+		#   end  
+  # end
 
   def destroy
     @tarif = Tarif.find(params[:id])

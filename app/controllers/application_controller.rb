@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
-	add_flash_types :success, :danger
+	add_flash_types :success, :danger, :notice
 	before_action :configure_devise_parameters, if: :devise_controller?
 	after_action :add_organism, if: :devise_controller?
 	before_action :set_online_time, if: proc { user_signed_in?}

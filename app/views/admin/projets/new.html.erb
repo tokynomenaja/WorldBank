@@ -275,7 +275,7 @@
 					<div class="row">
 						<%Forme.order(:title).all.each do |form|%>
 							<div class="col-md-6" style="display: none" id="form<%= form.id%>">
-								<%= check_box_tag("forme_ids[]", form.id,false,id: :"formCheck#{form.id}")%>
+								<input type="checkbox" name="forme_ids[]" value="<%=form.id%>" id="formCheck<%=form.id%>">
 								<%= form.title%>
 							</div>
 							<div class="col-md-6" style="display: block" id="forme<%= form.id%>">

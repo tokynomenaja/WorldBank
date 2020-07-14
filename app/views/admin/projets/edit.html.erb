@@ -500,8 +500,10 @@
 			</div>
 
 			<div class="container mt-4">
-				<%if @projet.validation == nil || @projet.validation == false && @projet.revalid == false && @projet.revalid == nil%>
+				<%if @projet.validation == nil && @projet.revalid == false && @projet.rejet == nil || @projet.rejet == true%>
 					<input type="submit" name="modifier" value="Enregistrer la modification" class="btn btn-secondary" data-toggle="" data-target="">
+					<input type="submit" name="modifier" value="Publier" class="sc-eerKOB cfnPHQ" data-toggle="" data-target="">
+				<%elsif @projet.validation == false  && @projet.revalid == false && @projet.rejet == nil%>
 					<input type="submit" name="modifier" value="Publier" class="sc-eerKOB cfnPHQ" data-toggle="" data-target="">
 				<%else%>
 					<input type="submit" name="modifier" value="Re-publier" class="sc-eerKOB cfnPHQ" data-toggle="" data-target="">
