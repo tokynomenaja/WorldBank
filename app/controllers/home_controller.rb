@@ -641,7 +641,7 @@ def index
     #recherche montant,periode, beneficiaire , zone et iga
 
 
-         if params[:fin] && params[:montant] && params[:search_ben]
+         if params[:fin] && params[:montant] && params[:search_ben] &&
             params[:search_zone] && params[:search_iga]
               if  
                   @parameter= params[:fin]
@@ -667,7 +667,8 @@ def index
                   @params_zone.each do |z|
                   @params_iga.each do |i|
                     @fin.each do |f|
-                      if  (price_total >= @m1 && price_total <= @m2) && (f.fin.year >= @d1 && f.fin.year <= @d2) && (f.beneficiaires.ids.include?s.to_i) 
+                      if  (price_total >= @m1 && price_total <= @m2) && (f.fin.year >= @d1 && f.fin.year <= @d2) && 
+                        (f.beneficiaires.ids.include?s.to_i) && (f.zones.ids.include?z.to_i) 
                         @rbmpi << f
                      
 
