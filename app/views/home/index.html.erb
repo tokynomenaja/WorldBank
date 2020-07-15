@@ -691,7 +691,7 @@
                 <%end%>
                 <%end%>
                 <!-- Projet par Filière -->
-                <%if @pro_fils && @projets == nil && @forme_projets == nil && @pro_sectfils == nil  && @r == nil && @d == nil &&  @zigafi == nil && @fiben == nil && @tout == nil && @forme_filieres == nil && @pro_formes == nil && @ptf_fil == nil%>
+                <%if @pro_fils && @projets_fils == nil && @forme_projets == nil && @pro_sectfils == nil  && @r == nil && @d == nil &&  @zigafi == nil && @fiben == nil && @tout == nil && @forme_filieres == nil && @pro_formes == nil && @ptf_fil == nil%>
                 <%if @pro_fils.length != 0%>
                 <% @pro_fils.uniq.each do |res| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -710,7 +710,7 @@
                 <%end%>
                 <%end%>
                 <!-- Projet par forme d'appui -->
-                <%if @pro_formes && @forme_projets == nil && @projets == nil && @pro_sectfils == nil && @ptf_forme == nil && @r == nil && @d == nil &&  @igafor == nil && @foben == nil && @tout == nil && @forme_filieres == nil && @appui_formes == nil && @pro_sectptf == nil%>
+                <%if @pro_formes && @forme_projets == nil && @projets_fils == nil && @pro_sectfils == nil && @ptf_forme == nil && @r == nil && @d == nil &&  @igafor == nil && @foben == nil && @tout == nil && @forme_filieres == nil && @appui_formes == nil && @pro_sectptf == nil%>
                 <% if @pro_formes.length != 0%>
                 <% @pro_formes.uniq.each do |rs| %>  
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
@@ -749,9 +749,9 @@
                 <%end%>
                 
                 <!-- Secteur – Filiere -->
-                <%if @projets && @tout == nil%>
-                <%if @projets.length != 0 %>
-                <% @projets.uniq.each do |b|%>               
+                <%if @projets_fils && @tout == nil%>
+                <%if @projets_fils.length != 0 %>
+                <% @projets_fils.uniq.each do |b|%>               
                   <div class="result pt-3 pb-3 pl-2 no-gutters row align-items-center border-bottom">
                     <div class="col-8">
                       <%= link_to "#{b.nom_du_projet}", projet_path(b.id), target: 'blank', class: 'text-muted reshover' %>
@@ -1265,6 +1265,20 @@
               <%= image_tag "/minimada.png" ,class:"minimada position-absolute border"%>
               <% if current_user %> 
                 <% if current_user.is_consultant == true || current_user.is_consultant == false || current_user.is_super_admin == true || current_user.is_admin == true%>
+                <%if @params_ptf%>
+                <%@params_ptf.each do |p|%>
+                <% Zone.all.each do |zone| %>
+                <a class="region r-<%= zone.id %>">
+                  <div data-toggle="modal" data-target="#exampleModalLong<%= zone.id %>">
+                    <div><%= zone.title%></div>
+                    <div>
+                      <div class="rond mx-auto text-center"><%= zone.projets.where(validation: true,ptf_id: params[:ptf_id]).count%></div>
+                    </div>
+                  </div>
+                </a>
+                <% end %>
+                <% end %>
+                <% else %>
                 <% Zone.all.each do |zone| %>
                 <a class="region r-<%= zone.id %>">
                   <div data-toggle="modal" data-target="#exampleModalLong<%= zone.id %>">
@@ -1274,6 +1288,7 @@
                     </div>
                   </div>
                 </a>
+                <% end %>
                 <% end %>
                 <% end %>
               <% else %>
