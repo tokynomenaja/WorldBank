@@ -8,9 +8,9 @@
 </head>
 <body>
     <header class="aci59a-0 eyAIuG sticky-limit">
-    <div class="sc-1gnwgfb-2 hVIPFV picc position-relative">
+    <div class="sc-1gnwgfb-2 hVIPFV picture position-relative">
     <style type="text/css">     
-      .picc {
+      .picture {
         <%if @projet.secteurprojets.count == 1%>
           <%@projet.secteurprojets.each do|sp|%>
             <% if sp.secteur.title == "ENERGIE" %>
@@ -33,7 +33,7 @@
 <div class="objectif mx-auto my-3 row align-items-start">
   <div class="logoPtf col">
     <%if @projet.ptf.image_url%>
-      <%= wicked_pdf_image_tag "/#{@projet.ptf.image_url}" %>
+      <%= wicked_pdf_image_tag "#{@projet.ptf.image_url}" %>
     <%end%>
   </div>
   <div class="ml-4 col-10">
@@ -208,7 +208,11 @@
           <%end%>
           <p>
             <span class="attr">Montant total :</span>
-            <span class="mb-3"><%= number_with_delimiter(@montant_total)%> USD </span>    
+            <%@montant_total_pdf = 0%>
+            <%@projet.montants.each do |m|%>
+              <% @montant_total_pdf += m.price.to_i%>
+            <%end%>
+            <span class="mb-3"><%= number_with_delimiter(@montant_total_pdf)%> USD </span>    
           </p>
           
         </div>

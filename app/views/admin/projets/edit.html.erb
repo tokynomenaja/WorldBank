@@ -1,3 +1,22 @@
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Plateforme Secteur Privé / Energie et Tourisme</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="modal-body-val">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div> 
 <header class="aci59a-0 eyAIuG sticky-limit small-device-header">
     <div class="sc-1gnwgfb-2 hVIPFV">
     </div>
@@ -103,8 +122,8 @@
 									<div class="no-gutters align-items-center montant-padd ml-3" id="montant<%=s.id%>" style="display: -ms-flexbox;display: flex;-ms-flex-wrap: wrap;flex-wrap: wrap;">
 										<div class="col-12 col-md-5 font-size"><%= s.title.upcase %> : </div>
 										<div class="col-12 col-md-7 form-control pr-0">
-											<input type="text" placeholder="Montant" value="<%= s.montants.find_by(projet_id: @projet.id).price%>" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>">
-											<input type="text" name="montant<%= s.id%>" id="InputMontantValue<%=s.id%>" hidden>
+											<input type="text" placeholder="Montant" value="<%= s.montants.find_by(projet_id: @projet.id).price%>" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>" name="montant<%= s.id%>">
+											<input type="text" name="montant<%= s.id%>" id="InputMontantValue<%=s.id%>" hidden value="<%= s.montants.find_by(projet_id: @projet.id).price%>">
 											<select name="unite_id<%= s.id%>" class="text-center border-left unit pl-2 btn-reset">
 												<% Unite.all.each do |u|%>
 													<%if u == s.montants.find_by(projet_id: @projet.id).unite %>
@@ -481,11 +500,13 @@
 			</div>
 
 			<div class="container mt-4">
-				<%if @projet.validation == nil || @projet.validation == false && @projet.revalid == false && @projet.revalid == nil%>
-					<input type="submit" name="modifier" value="Enregistrer la modification" class="btn btn-secondary">
-					<input type="submit" name="modifier" value="Publier" class="sc-eerKOB cfnPHQ">
+				<%if @projet.validation == nil && @projet.revalid == false && @projet.rejet == nil || @projet.rejet == true%>
+					<input type="submit" name="modifier" value="Enregistrer la modification" class="btn btn-secondary" data-toggle="" data-target="">
+					<input type="submit" name="modifier" value="Publier" class="sc-eerKOB cfnPHQ" data-toggle="" data-target="">
+				<%elsif @projet.validation == false  && @projet.revalid == false && @projet.rejet == nil%>
+					<input type="submit" name="modifier" value="Publier" class="sc-eerKOB cfnPHQ" data-toggle="" data-target="">
 				<%else%>
-					<input type="submit" name="modifier" value="Re-publier" class="sc-eerKOB cfnPHQ">
+					<input type="submit" name="modifier" value="Re-publier" class="sc-eerKOB cfnPHQ" data-toggle="" data-target="">
 				<%end%>
 				<a href="<%= admin_projet_path(@projet.id)%>" class="btn btn-danger">Annuler la modification</a>
 			</div>		

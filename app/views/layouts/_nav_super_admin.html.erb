@@ -37,7 +37,7 @@ window.__INITIAL_STATE__ = {"form":{},"routing":{"location":null},"notifications
             <span class="q0xs59-6 q0xs59-7 fwuAZd"><div>Projets</div></span>
             <div class="droppos dropublication">
               <a href="<%= super_admin_projets_path%>"><p class="dropdwn-content border-bottom mb-0 p-3">Tous les projets</p></a>
-              <a href="<%= new_super_admin_tarif_path%>"><p class="dropdwn-content mb-0 p-3">Cours de change</p></a>
+              <a href="/super_admin/tarifs"><p class="dropdwn-content mb-0 p-3">Cours de change</p></a>
             </div>
           </div>
         </nav>
@@ -93,7 +93,7 @@ window.__INITIAL_STATE__ = {"form":{},"routing":{"location":null},"notifications
         </div>
         <div class="toggleclass btn-bg-primary" id="projet-list">
           <a href="<%= super_admin_projets_path%>" class="text-white"><p class="dropdwn-content mb-0 p-3">Tous les projets</p></a>
-          <a href="<%= new_super_admin_tarif_path%>" class="text-white"><p class="dropdwn-content border-bottom mb-0 p-3">Cours de change</p></a>
+          <a href="/super_admin/tarifs" class="text-white"><p class="dropdwn-content border-bottom mb-0 p-3">Cours de change</p></a>
         </div>
         <%=link_to 'Se déconnecter', destroy_user_session_path, method: :delete, class: 'fwuAZd text-white border-bottom p-3 navbar-elem'%>
 

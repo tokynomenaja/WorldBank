@@ -212,26 +212,6 @@
 				}
 		}
 
-	//Required secteur
-	function validCheck(){
-
-			<%ids = [] %>
-			<% Secteur.all.each do |s|%>
-				<% ids << s.id%>
-				var s<%= s.id%> = document.getElementById("s<%= s.id%>");
-			<%end%>
-				var check = false;
-			<% Secteur.all.each do |s|%>
-				s<%= s.id%>.required = false;
-				if(s<%= s.id%>.checked == true){
-					check = true;
-				}	
-			<%end%>
-				if(check == false){
-					s<%= ids[rand(0..ids.length-1)]%>.required = true;
-				}
-
-	}
 
 	//Autres bénéficiaires
 	function ajoutBen(){
@@ -433,6 +413,8 @@
 		    if(m.style.display == "flex"){
 		        m.style.display = "none";
 		        m.classList.remove('row');
+		        inputMontant.required = false;
+		        unite.required = false;
 		    }else{
 		        m.style.display = "flex";
 		        m.classList.add('row');

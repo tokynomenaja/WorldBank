@@ -1,18 +1,20 @@
 <script type="text/javascript">
 
 
-	//Required secteur
+	//Required l'objectif général du projet et l'appui spécifique au secteur privé
 	function validCheck(){
-				
-	
-	
+
 			if(tinyMCE.get('aspsp').getContent() == "" && tinyMCE.get('comment_body').getContent() != ""){
-				alert("Veuillez remplir l'appui spécifique au secteur privé");
+				document.getElementById('modal-body-val').textContent = "Veuillez remplir l'appui spécifique au secteur privé"
 			}
 			else if(tinyMCE.get('comment_body').getContent() == "" && tinyMCE.get('aspsp').getContent() != ""){
-				alert("Veuillez remplir l'objectif général du projet");
+				document.getElementById('modal-body-val').textContent = "Veuillez remplir l'objectif général du projet"
 			}else if(tinyMCE.get('comment_body').getContent() == "" && tinyMCE.get('aspsp').getContent() == ""){
-				alert("Veuillez remplir l'objectif général du projet et l'appui spécifique au secteur privé");	
+				document.getElementById('modal-body-val').textContent = "Veuillez remplir l'objectif général du projet et l'appui spécifique au secteur privé"
+			}else if(tinyMCE.get('aspsp').getContent() != "" && tinyMCE.get('comment_body').getContent() != ""){
+				var annule = document.getElementById('Sauvegarder-publier')
+				annule.removeAttribute("data-toggle")
+				annule.removeAttribute("data-target")
 			}
 
 	}
@@ -154,7 +156,6 @@
 		var art = inp.id
 		for (var i = 0; i < 9; i++) {
 			var arrayNewValue = arrayNew[i].id
-			console.log()
 			if( art[art.length-1] === arrayNewValue[arrayNewValue.length-1]){
 				arrayNew[i].value = NombreSaisiUx
 			}
@@ -216,6 +217,8 @@
 		    if(m.style.display == "flex"){
 		        m.style.display = "none";
 		        m.classList.remove('row');
+		        inputMontant.required = false;
+		        unite.required = false;
 		    }else{
 		        m.style.display = "flex";
 		        m.classList.add('row');
@@ -298,7 +301,7 @@
 		    	document.getElementById('formAsso').innerHTML = "Aucune forme d'appui associée";
 
 		    }else{
-		    	document.getElementById('formAsso').innerHTML = "Formes d'appuis";
+		    	document.getElementById('formAsso').innerHTML = "Formes d'appuis *";
 		    }
 
 		    // Cacher d'abord tout les formes d'appui
