@@ -1170,12 +1170,12 @@ end
        @pro = Projet.all.where(validation: true)
        @psect = params[:search_secteur]
        @pfil = params[:search_filiere]
-       @projets = []
+       @projets_fils = []
           @psect.each do |s|
           @pfil.each do |f|
        @pro.each do |p|
           if (p.secteurs.ids.include?s.to_i) && (p.filieres.ids.include?f.to_i)
-              @projets << p
+              @projets_fils << p
           end
         end
         end
@@ -1671,9 +1671,9 @@ end
   def notifAdmin
     if current_user
       if current_user.is_super_admin == true
-        @projets = Projet.where(validation: false, revalid: false).order(:id).page(params[:page]).per(9)
-        @projets_revalid = Projet.where(revalid: true, validation: false).order(:id).page(params[:page]).per(9)
-        @projets_valides = Projet.where(validation: true).order(:id).page(params[:page]).per(9)
+        @projets = Projet.where(validation: false, revalid: false)
+        @projets_revalid = Projet.where(revalid: true, validation: false)
+        @projets_valides = Projet.where(validation: true)
         flash.now[:success] = "#{@projets.count} projets sont en cours d’attente de validation, #{@projets_revalid.count} projets sont en cours d’attente de revalidation et #{Message.where(read: nil).count} messages ont été reçus"
         flash.delete(:notice)
       elsif current_user.is_admin == nil && current_user.is_consultant == false && current_user.is_super_admin == false
