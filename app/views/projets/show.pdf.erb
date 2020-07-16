@@ -8,9 +8,9 @@
 </head>
 <body>
     <header class="aci59a-0 eyAIuG sticky-limit">
-    <div class="sc-1gnwgfb-2 hVIPFV picc position-relative">
+    <div class="sc-1gnwgfb-2 hVIPFV picture position-relative">
     <style type="text/css">     
-      .picc {
+      .picture{
         <%if @projet.secteurprojets.count == 1%>
           <%@projet.secteurprojets.each do|sp|%>
             <% if sp.secteur.title == "ENERGIE" %>
@@ -75,7 +75,6 @@
             </span>
             </p>
           <%end%>
-
           <%if @projet.filiereprojets.count > 0%>
             <% if  @projet.filiereprojets.count == 1%>
                 <p><span class="attr">Filière : </span>
@@ -100,12 +99,12 @@
   <div class="show-cont pt-4 pb-4">
     <div class="objectif mx-auto">
       <h2 class="text-left color">Objectif général du projet</h2>
-      <div class="mt-2 pt-2">
+      <div class="mt-2 ml-3 p-2">
         <%= raw @projet.objectif_generale_du_projet%>
       </div>
       <div class="appui mt-4">
         <h2 class="color text-left">Appui spécifique au secteur privé</h2>
-        <div class="mt-2 p-2">
+        <div class="mt-2 ml-3 p-2">
           <%= raw @projet.aspsp%>
         </div>
       </div>
@@ -238,7 +237,6 @@
                 </span>
             </p>
           <%end%>
-
           <%if @projet.files.attached?%>
             <p><span class="attr">Fichiers : </span>
             <%@projet.files.each do|file|%> 
