@@ -62,7 +62,8 @@
 					<%if current_user.organisme%>
 						<%if current_user.organisme.ptf != nil%>
 							<%if current_user.organisme.ptf.title !=  "WBG"%>
-								<input type="text" name=""  placeholder="<%= current_user.organisme.ptf.title%>" class="form-control" readonly>
+								<input type="text" name="ptf" value="<%= current_user.organisme.ptf.title%>" class="form-control" >
+								
 							<%else%>
 							<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control", required: true, :oninvalid => "this.setCustomValidity('Veuillez selectionner le PTF')",:oninput => "setCustomValidity('')"%>
 							<%end%>

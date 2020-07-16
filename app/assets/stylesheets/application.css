@@ -602,6 +602,11 @@ background: #fff3;
 
 .ft-sz{font-size: 1.1rem !important;}
 .tox-statusbar{display: none !important}
+.tox-notification__body{display: none !important}
+.tox-notification__icon{display: none !important}
+.tox-notification, .tox-notification--in, .tox-notification--warning{
+  display: none !important
+}
 .img-filter{width: 1.5rem;}
 /*projets*/
 .date-projet-small{display: none !important;}
@@ -614,8 +619,8 @@ background: #fff3;
 
  .entete{bottom: 20px;left: 5%;right: 5%; }
  .conteneur-entete{margin-left: 4rem;}
- .logoPtf{width: 230px}
- .logoPtf img{width: 300px;}
+ .logoPtf{width: 230px }
+ .logoPtf img{width: 300px ;}
  .h3{line-height: 2.65rem;}
 
 
