@@ -12,7 +12,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="disableBtn()">OK</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
       </div>
     </div>
   </div>
@@ -21,7 +21,7 @@
     <div class="sc-1gnwgfb-2 hVIPFV">
     </div>
 </header>
-<%= form_tag url_for(action: 'create'),method:'post', class:'form', onsubmit: "return validCheck()", multipart: true do%>
+<%= form_tag url_for(action: 'create'),method:'post', class:'form', multipart: true do%>
 	<div class="mt-4 mb-4" onmouseover ="verificationDate()">
 		<div class="container">
 			<div class="row mb-2">
@@ -492,7 +492,7 @@
 			<div class="mt-2">
 				<div class="card card-body">
 					<div class="row">
-						<% Zone.all.each do |c| %>
+						<% Zone.all.order(:title).each do |c| %>
 							<div class="col-md-4">
 								<input type="checkbox" name="zone_ids[]" value="<%=c.id%>" required="true" data-ErrorMessage="Cochez au moins une région">
 								<%if c.id == 1%>
@@ -520,7 +520,7 @@
 		</div>
 		<div class="container mt-4 mb-5">
 			<%= submit_tag 'Sauvegarder', :name => "creer",  :class => "btn btn-secondary"%>
-			<%= submit_tag 'Sauvegarder et Publier', :name => "creer", :id => "Sauvegarder-publier", :class => "sc-eerKOB cfnPHQ", :onmouseover => "validCheck()",'data-toggle' => "modal", 'data-target' => '#staticBackdrop'%>
+			<%= submit_tag 'Sauvegarder et Publier', :name => "creer", :id => "Sauvegarder-publier", :class => "sc-eerKOB cfnPHQ", :onclick => "validCheck()",'data-toggle' => "modal", 'data-target' => '#staticBackdrop'%>
 		</div>
 	</div>
 <% end %>

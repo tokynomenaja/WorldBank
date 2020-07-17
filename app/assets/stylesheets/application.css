@@ -603,11 +603,11 @@ background: #fff3;
 }
 
 .ft-sz{font-size: 1.1rem !important;}
-.tox-statusbar{display: none !important}
-.tox-notification__body{display: none !important}
-.tox-notification__icon{display: none !important}
+.tox-statusbar{display: none !important;}
+.tox-notification__body{display: none !important;}
+.tox-notification__icon{display: none !important;}
 .tox-notification, .tox-notification--in, .tox-notification--warning{
-  display: none !important
+  display: none !important;
 }
 .img-filter{width: 1.5rem;}
 /*projets*/
