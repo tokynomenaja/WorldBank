@@ -8,6 +8,7 @@
 			if(tinyMCE.get('aspsp').getContent() == "" && tinyMCE.get('comment_body').getContent() != ""){
 				document.getElementById('modal-body-val').textContent = "Veuillez remplir l'appui spécifique au secteur privé"
 				return false
+				 alert("Veuillez remplir l'appui spécifique au secteur privé"); 
 			}
 			else if(tinyMCE.get('comment_body').getContent() == "" && tinyMCE.get('aspsp').getContent() != ""){
 				document.getElementById('modal-body-val').textContent = "Veuillez remplir l'objectif général du projet"
