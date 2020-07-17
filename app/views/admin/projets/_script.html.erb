@@ -52,6 +52,9 @@
 			}else if (tinyMCE.get('comment_body').getContent() == "" && debut.value != "" && fin.value == "" && tinyMCE.get('aspsp').getContent() == "") {
 				document.getElementById('modal-body-val').innerHTML = "<ol><li>Veuillez remplir l'objectif général du projet</li><li>Veuillez remplir l'appui spécifique au secteur privé</li><li>Veuillez sélectionner la date de fin</li><ol>"
 				return false
+			}else if (tinyMCE.get('comment_body').getContent() == "" && debut.value != "" && fin.value != "" && tinyMCE.get('aspsp').getContent() != "") {
+				document.getElementById('modal-body-val').innerHTML = "<ol><li>Veuillez remplir l'objectif général du projet</li><ol>"
+				return false
 			}
 
 	}
