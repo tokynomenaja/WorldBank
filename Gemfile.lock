@@ -379,7 +379,6 @@ GEM
     websocket-extensions (0.1.5)
     wicked_pdf (2.1.0)
       activesupport
-    wkhtmltopdf (0.1.2)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.3.0)
@@ -432,7 +431,6 @@ DEPENDENCIES
   webdrivers
   webpacker (~> 4.0)
   wicked_pdf
-  wkhtmltopdf
 
 RUBY VERSION
    ruby 2.5.3p105
