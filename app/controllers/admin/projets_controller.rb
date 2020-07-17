@@ -8,7 +8,7 @@ class Admin::ProjetsController < ApplicationController
           if current_user.organisme.ptf.title == "WBG"
             @projets = Projet.where(bailleur_id: current_user.id).order(id: :desc).page(params[:page]).per(9)
           else
-            @projets = Projet.where(ptf_id: current_user.organisme.ptf.id).order(id: :desc).page(params[:page]).per(9)
+            @projets = Projet.where(bailleur_id: current_user.id).order(id: :desc).page(params[:page]).per(9)
           end
         elsif current_user.organisme.nom != nil
             @projets = Projet.where(bailleur_id: current_user.id).order(id: :desc).page(params[:page]).per(9)

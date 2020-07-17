@@ -13,17 +13,19 @@ WickedPdf.config = {
   # one of the wkhtmltopdf-binary family of gems.
   # exe_path: '/usr/local/bin/wkhtmltopdf'
   #   or
-  # exe_path: Gem.bin_path('wkhtmltopdf-binary', 'wkhtmltopdf')
+  #exe_path: Gem.bin_path('wkhtmltopdf-binary', 'wkhtmltopdf')
 
-  # Layout file to be used for all PDFs
-  # (but can be overridden in `render :pdf` calls)
-  # layout: 'pdf.html',
-}
-# if Rails.env.production?
-#   wkhtmltopdf_path = "#{Rails.root}/bin/wkhtmltopdf-amd64"
-# else
-#   wkhtmltopdf_path = '/usr/local/bin/wkhtmltopdf'            
-# end
+
+#   # Layout file to be used for all PDFs
+#   # (but can be overridden in `render :pdf` calls)
+#   # layout: 'pdf.html',
+# }
+if Rails.env.staging? || Rails.env.production?
+  exe_path = Rails.root.join('bin', 'wkhtmltopdf-amd64').to_s
+else
+  exe_path = Rails.root.join('bin', 'wkhtmltopdf').to_s
+  # exe_path = '/usr/local/bin/wkhtmltopdf'
+end
 
 # WickedPdf.config = { exe_path: wkhtmltopdf_path, wkhtmltopdf: wkhtmltopdf_path }
 

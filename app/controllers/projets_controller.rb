@@ -19,9 +19,9 @@ class ProjetsController < ApplicationController
        @montant_total = 0
       respond_to do |format|
         format.html 
-        format.pdf do 
-          render :pdf => "#{@projet.id}", :layout => 'pdf.html'
-        
+        format.pdf do
+          render :pdf => "#{@projet.nom_du_projet}", :layout => 'pdf.html'
+                
        end
       end
 

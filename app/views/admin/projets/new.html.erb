@@ -12,7 +12,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="disableBtn()">OK</button>
       </div>
     </div>
   </div>
@@ -21,7 +21,7 @@
     <div class="sc-1gnwgfb-2 hVIPFV">
     </div>
 </header>
-<%= form_tag url_for(action: 'create'),method:'post', class:'form', multipart: true do%>
+<%= form_tag url_for(action: 'create'),method:'post', class:'form', onsubmit: "return validCheck()", multipart: true do%>
 	<div class="mt-4 mb-4" onmouseover ="verificationDate()">
 		<div class="container">
 			<div class="row mb-2">
@@ -51,7 +51,7 @@
 			<div class="mt-2">
 				<div class="card card-body">
 			 		<textarea name="aspsp" value="nil" id="aspsp" class="editor"></textarea>
-					<p id="charlimit2"><span class="words-left2">300 mots maximum</span></p>
+					<p id="charlimit2"><span class="words-left2">750 mots maximum</span></p>
 				</div>
 			</div>
 		</div>
@@ -62,7 +62,8 @@
 					<%if current_user.organisme%>
 						<%if current_user.organisme.ptf != nil%>
 							<%if current_user.organisme.ptf.title !=  "WBG"%>
-								<input type="text" name=""  placeholder="<%= current_user.organisme.ptf.title%>" class="form-control" readonly>
+								<input type="text" name="ptf" placeholder="<%= current_user.organisme.ptf.title%>"class="form-control" readonly>
+								<input type="hidden" name="ptf" value="<%= current_user.organisme.ptf.id%>"class="form-control">
 							<%else%>
 							<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control", required: true, :oninvalid => "this.setCustomValidity('Veuillez selectionner le PTF')",:oninput => "setCustomValidity('')"%>
 							<%end%>
@@ -455,12 +456,27 @@
 						<%Engagement.all.order(:id).each do |c| %>
 							<div class="col-md-12">
 								<p class="mt-2 mb-0">
-									<%= c.title%> 
+									<%if c.id < 10%>
+										<%@title = c.title%>
+										<% @title[15] = @title.upcase[15]%> 
+										<%= @title%> 
+									<%elsif c.id >= 10 && c.id < 13 %>
+										<%@title = c.title%>
+										<% @title[16] = @title.upcase[16]%> 
+										<%= @title%> 
+									<%elsif c.id == 13 %>
+										Engagement 13 : La gestion durable et la conservation de nos ressources naturelles
+									<%end%>
 								</p>
 								<%c.pems.each do |p|%>
 								<div class="ml-4"> 
-									<input type="checkbox" name="pem_ids[]" value="<%=p.id%>" required="true" data-ErrorMessage="Cochez au moins un Alignement aux priorités du Plan Emergence de Madagascar">
-									<%= p.title %>
+									<%if p.id == 10%>
+										<input type="checkbox" name="pem_ids[]" value="<%=p.id%>" required="true" data-ErrorMessage="Cochez au moins un Alignement aux priorités du Plan Emergence de Madagascar">
+										PRIORITÉ 10 : L'accès aux soins et bien-être social pour tous
+									<%else%>
+										<input type="checkbox" name="pem_ids[]" value="<%=p.id%>" required="true" data-ErrorMessage="Cochez au moins un Alignement aux priorités du Plan Emergence de Madagascar">
+										<%= p.title %>
+									<%end%>
 								</div>
 								<%end%>
 							</div>
@@ -504,7 +520,7 @@
 		</div>
 		<div class="container mt-4 mb-5">
 			<%= submit_tag 'Sauvegarder', :name => "creer",  :class => "btn btn-secondary"%>
-			<%= submit_tag 'Sauvegarder et Publier', :name => "creer", :id => "Sauvegarder-publier", :class => "sc-eerKOB cfnPHQ", :onclick => "validCheck()",'data-toggle' => "modal", 'data-target' => '#staticBackdrop'%>
+			<%= submit_tag 'Sauvegarder et Publier', :name => "creer", :id => "Sauvegarder-publier", :class => "sc-eerKOB cfnPHQ", :onmouseover => "validCheck()",'data-toggle' => "modal", 'data-target' => '#staticBackdrop'%>
 		</div>
 	</div>
 <% end %>
