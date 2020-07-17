@@ -437,18 +437,215 @@
 						<div class="row">
 							<% Zone.all.each_with_index do |c,x| %>
 								<div class="col-md-4">
-									<% if @zones%>
-								 		<% if @zones.include? c %>
-											<%= check_box_tag("zone_#{x}",c.id, checked: true) %>
-										<%else%>
-								 			<%= check_box_tag("zone_#{x}",c.id) %>
-								 		<%end%>
-								 	<%end%>
 								 	<%if c.id == 1%>
+									 	<% if @zones%>
+									 		<% if @zones.include? c %>
+												<%= check_box_tag("zone_#{x}",1, checked: true) %>
+											<%else%>
+									 			<%= check_box_tag("zone_#{x}",1) %>
+									 		<%end%>
+									 	<%end%>
 										National
-									<%else%>
-										<%= c.title%>
-									<%end%>
+									<%elsif c.id == 2%>
+										<% if @zones%>
+									 		<% if @zones.include? c %>
+												<%= check_box_tag("zone_#{x}",9, checked: true) %>
+											<%else%>
+									 			<%= check_box_tag("zone_#{x}",9) %>
+									 		<%end%>
+									 	<%end%>
+										Atsimo Atsinanana
+									<%elsif c.id == 3%>
+										<% if @zones%>
+									 		<% if @zones.include? c %>
+												<%= check_box_tag("zone_#{x}",17, checked: true) %>
+											<%else%>
+									 			<%= check_box_tag("zone_#{x}",17) %>
+									 		<%end%>
+									 	<%end%>
+										Itasy
+									<%elsif c.id == 4%>
+										<% if @zones%>
+									 		<% if @zones.include? c %>
+												<%= check_box_tag("zone_#{x}",2, checked: true) %>
+											<%else%>
+									 			<%= check_box_tag("zone_#{x}",2) %>
+									 		<%end%>
+									 	<%end%>
+										Alaotra Mangoro
+									<%elsif c.id == 5%>
+										<% if @zones%>
+									 		<% if @zones.include? c %>
+												<%= check_box_tag("zone_#{x}",10, checked: true) %>
+											<%else%>
+									 			<%= check_box_tag("zone_#{x}",10) %>
+									 		<%end%>
+									 	<%end%>
+										Atsinanana
+									<%elsif c.id == 6%>
+										<% if @zones%>
+									 		<% if @zones.include? c %>
+												<%= check_box_tag("zone_#{x}",18, checked: true) %>
+											<%else%>
+									 			<%= check_box_tag("zone_#{x}",18) %>
+									 		<%end%>
+									 	<%end%>
+										Melaky
+									<%elsif c.id == 7%>
+										<% if @zones%>
+									 		<% if @zones.include? c %>
+												<%= check_box_tag("zone_#{x}",3, checked: true) %>
+											<%else%>
+									 			<%= check_box_tag("zone_#{x}",3) %>
+									 		<%end%>
+									 	<%end%>
+										Amoron'i Mania
+									<%elsif c.id == 8%>
+										<% if @zones%>
+									 		<% if @zones.include? c %>
+												<%= check_box_tag("zone_#{x}",11, checked: true) %>
+											<%else%>
+									 			<%= check_box_tag("zone_#{x}",11) %>
+									 		<%end%>
+									 	<%end%>
+										Betsiboka
+									<%elsif c.id == 9%>
+										<% if @zones%>
+									 		<% if @zones.include? c %>
+												<%= check_box_tag("zone_#{x}",19, checked: true) %>
+											<%else%>
+									 			<%= check_box_tag("zone_#{x}",19) %>
+									 		<%end%>
+									 	<%end%>
+										Menabe
+									<%elsif c.id == 10%>
+										<% if @zones%>
+									 		<% if @zones.include? c %>
+												<%= check_box_tag("zone_#{x}",4, checked: true) %>
+											<%else%>
+									 			<%= check_box_tag("zone_#{x}",4) %>
+									 		<%end%>
+									 	<%end%>
+										Analamanga
+									<%elsif c.id == 11%>
+										<% if @zones%>
+									 		<% if @zones.include? c %>
+												<%= check_box_tag("zone_#{x}",12, checked: true) %>
+											<%else%>
+									 			<%= check_box_tag("zone_#{x}",12) %>
+									 		<%end%>
+									 	<%end%>
+										Boeny
+									<%elsif c.id == 12%>
+										<% if @zones%>
+									 		<% if @zones.include? c %>
+												<%= check_box_tag("zone_#{x}",20, checked: true) %>
+											<%else%>
+									 			<%= check_box_tag("zone_#{x}",20) %>
+									 		<%end%>
+									 	<%end%>
+										Sava
+									<%elsif c.id == 13%>
+										<% if @zones%>
+									 		<% if @zones.include? c %>
+												<%= check_box_tag("zone_#{x}",5, checked: true) %>
+											<%else%>
+									 			<%= check_box_tag("zone_#{x}",5) %>
+									 		<%end%>
+									 	<%end%>
+										Analanjirofo
+									<%elsif c.id == 14%>
+										<% if @zones%>
+									 		<% if @zones.include? c %>
+												<%= check_box_tag("zone_#{x}",13, checked: true) %>
+											<%else%>
+									 			<%= check_box_tag("zone_#{x}",13) %>
+									 		<%end%>
+									 	<%end%>
+
+										Bongolava
+									<%elsif c.id == 15%>
+										<% if @zones%>
+									 		<% if @zones.include? c %>
+												<%= check_box_tag("zone_#{x}",21, checked: true) %>
+											<%else%>
+									 			<%= check_box_tag("zone_#{x}",21) %>
+									 		<%end%>
+									 	<%end%>
+										Sofia
+									<%elsif c.id == 16%>
+										<% if @zones%>
+									 		<% if @zones.include? c %>
+												<%= check_box_tag("zone_#{x}",6, checked: true) %>
+											<%else%>
+									 			<%= check_box_tag("zone_#{x}",6) %>
+									 		<%end%>
+									 	<%end%>
+										Androy
+									<%elsif c.id == 17%>
+										<% if @zones%>
+									 		<% if @zones.include? c %>
+												<%= check_box_tag("zone_#{x}",15, checked: true) %>
+											<%else%>
+									 			<%= check_box_tag("zone_#{x}",15) %>
+									 		<%end%>
+									 	<%end%>
+										Diana
+									<%elsif c.id == 18%>
+										<% if @zones%>
+									 		<% if @zones.include? c %>
+												<%= check_box_tag("zone_#{x}",22, checked: true) %>
+											<%else%>
+									 			<%= check_box_tag("zone_#{x}",22) %>
+									 		<%end%>
+									 	<%end%>
+										Vakinankaratra
+									<%elsif c.id == 19%>
+										<% if @zones%>
+									 		<% if @zones.include? c %>
+												<%= check_box_tag("zone_#{x}",7, checked: true) %>
+											<%else%>
+									 			<%= check_box_tag("zone_#{x}",7) %>
+									 		<%end%>
+									 	<%end%>
+										Anosy
+									<%elsif c.id == 20%>
+										<% if @zones%>
+									 		<% if @zones.include? c %>
+												<%= check_box_tag("zone_#{x}",16, checked: true) %>
+											<%else%>
+									 			<%= check_box_tag("zone_#{x}",16) %>
+									 		<%end%>
+									 	<%end%>
+										Haute Matsiatra
+									<%elsif c.id == 21%>
+									<% if @zones%>
+									 		<% if @zones.include? c %>
+												<%= check_box_tag("zone_#{x}",23, checked: true) %>
+											<%else%>
+									 			<%= check_box_tag("zone_#{x}",23) %>
+									 		<%end%>
+									 	<%end%>
+										Vatovavy-Fitovinany
+									<%elsif c.id == 22%>
+										<% if @zones%>
+									 		<% if @zones.include? c %>
+												<%= check_box_tag("zone_#{x}",8, checked: true) %>
+											<%else%>
+									 			<%= check_box_tag("zone_#{x}",8) %>
+									 		<%end%>
+									 	<%end%>
+										Atsimo Andrefana
+									<%elsif c.id == 23%>
+										<% if @zones%>
+									 		<% if @zones.include? c %>
+												<%= check_box_tag("zone_#{x}",17, checked: true) %>
+											<%else%>
+									 			<%= check_box_tag("zone_#{x}",17) %>
+									 		<%end%>
+									 	<%end%>
+										Ihorombe
+								<%end%>
 								</div>
 							<% end %>
 						</div>
