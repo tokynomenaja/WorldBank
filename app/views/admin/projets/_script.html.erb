@@ -3,23 +3,29 @@
 
 	//Required l'objectif général du projet et l'appui spécifique au secteur privé
 	function validCheck(){
-
+			var fin = document.getElementById('selectionFin')
+			var debut = document.getElementById('selectionDebut')
 			if(tinyMCE.get('aspsp').getContent() == "" && tinyMCE.get('comment_body').getContent() != ""){
 				document.getElementById('modal-body-val').textContent = "Veuillez remplir l'appui spécifique au secteur privé"
+				return false
 			}
 			else if(tinyMCE.get('comment_body').getContent() == "" && tinyMCE.get('aspsp').getContent() != ""){
 				document.getElementById('modal-body-val').textContent = "Veuillez remplir l'objectif général du projet"
+				return false
 			}else if(tinyMCE.get('comment_body').getContent() == "" && tinyMCE.get('aspsp').getContent() == ""){
 				document.getElementById('modal-body-val').textContent = "Veuillez remplir l'objectif général du projet et l'appui spécifique au secteur privé"
+				return false
 			}else if(tinyMCE.get('aspsp').getContent() != "" && tinyMCE.get('comment_body').getContent() != ""){
 				var annule = document.getElementById('Sauvegarder-publier')
 				annule.removeAttribute("data-toggle")
 				annule.removeAttribute("data-target")
+				return true
 			}
 
 	}
-
-
+	function disableBtn(){
+		document.getElementById("Sauvegarder-publier").disabled = false;
+	}
 
 	
 	//Autres bénéficiaires
