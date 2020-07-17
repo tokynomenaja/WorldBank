@@ -494,11 +494,75 @@
 					<div class="row">
 						<% Zone.all.order(:title).each do |c| %>
 							<div class="col-md-4">
-								<input type="checkbox" name="zone_ids[]" value="<%=c.id%>" required="true" data-ErrorMessage="Cochez au moins une région">
 								<%if c.id == 1%>
+								<input type="checkbox" name="zone_ids[]" value="1" required="true" data-ErrorMessage="Cochez au moins une région">
 									National
-								<%else%>
-									<%= c.title%>
+								<%elsif c.id == 2%>
+								<input type="checkbox" name="zone_ids[]" value="9" required="true" data-ErrorMessage="Cochez au moins une région">
+									Atsimo Atsinanana
+								<%elsif c.id == 3%>
+								<input type="checkbox" name="zone_ids[]" value="17" required="true" data-ErrorMessage="Cochez au moins une région">
+									Itasy
+								<%elsif c.id == 4%>
+								<input type="checkbox" name="zone_ids[]" value="2" required="true" data-ErrorMessage="Cochez au moins une région">
+									Alaotra Mangoro
+								<%elsif c.id == 5%>
+								<input type="checkbox" name="zone_ids[]" value="10" required="true" data-ErrorMessage="Cochez au moins une région">
+									Atsinanana
+								<%elsif c.id == 6%>
+								<input type="checkbox" name="zone_ids[]" value="18" required="true" data-ErrorMessage="Cochez au moins une région">
+									Melaky
+								<%elsif c.id == 7%>
+								<input type="checkbox" name="zone_ids[]" value="3" required="true" data-ErrorMessage="Cochez au moins une région">
+									Amoron'i Mania
+								<%elsif c.id == 8%>
+								<input type="checkbox" name="zone_ids[]" value="11" required="true" data-ErrorMessage="Cochez au moins une région">
+									Betsiboka
+								<%elsif c.id == 9%>
+								<input type="checkbox" name="zone_ids[]" value="19" required="true" data-ErrorMessage="Cochez au moins une région">
+									Menabe
+								<%elsif c.id == 10%>
+								<input type="checkbox" name="zone_ids[]" value="4" required="true" data-ErrorMessage="Cochez au moins une région">
+									Analamanga
+								<%elsif c.id == 11%>
+								<input type="checkbox" name="zone_ids[]" value="12" required="true" data-ErrorMessage="Cochez au moins une région">
+									Boeny
+								<%elsif c.id == 12%>
+								<input type="checkbox" name="zone_ids[]" value="20" required="true" data-ErrorMessage="Cochez au moins une région">
+									Sava
+								<%elsif c.id == 13%>
+								<input type="checkbox" name="zone_ids[]" value="5" required="true" data-ErrorMessage="Cochez au moins une région">
+									Analanjirofo
+								<%elsif c.id == 14%>
+								<input type="checkbox" name="zone_ids[]" value="13" required="true" data-ErrorMessage="Cochez au moins une région">
+									Bongolava
+								<%elsif c.id == 15%>
+								<input type="checkbox" name="zone_ids[]" value="21" required="true" data-ErrorMessage="Cochez au moins une région">
+									Sofia
+								<%elsif c.id == 16%>
+								<input type="checkbox" name="zone_ids[]" value="6" required="true" data-ErrorMessage="Cochez au moins une région">
+									Androy
+								<%elsif c.id == 17%>
+								<input type="checkbox" name="zone_ids[]" value="15" required="true" data-ErrorMessage="Cochez au moins une région">
+									Diana
+								<%elsif c.id == 18%>
+								<input type="checkbox" name="zone_ids[]" value="22" required="true" data-ErrorMessage="Cochez au moins une région">
+									Vakinankaratra
+								<%elsif c.id == 19%>
+								<input type="checkbox" name="zone_ids[]" value="7" required="true" data-ErrorMessage="Cochez au moins une région">
+									Anosy
+								<%elsif c.id == 20%>
+								<input type="checkbox" name="zone_ids[]" value="16" required="true" data-ErrorMessage="Cochez au moins une région">
+									Haute Matsiatra
+								<%elsif c.id == 21%>
+								<input type="checkbox" name="zone_ids[]" value="23" required="true" data-ErrorMessage="Cochez au moins une région">
+									Vatovavy-Fitovinany
+								<%elsif c.id == 22%>
+								<input type="checkbox" name="zone_ids[]" value="8" required="true" data-ErrorMessage="Cochez au moins une région">
+									Atsimo Andrefana
+								<%elsif c.id == 23%>
+								<input type="checkbox" name="zone_ids[]" value="17" required="true" data-ErrorMessage="Cochez au moins une région">
+									Ihorombe
 								<%end%>
 							</div>
 						<% end %>
