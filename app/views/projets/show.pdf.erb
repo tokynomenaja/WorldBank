@@ -14,13 +14,13 @@
         <%if @projet.secteurprojets.count == 1%>
           <%@projet.secteurprojets.each do|sp|%>
             <% if sp.secteur.title == "ENERGIE" %>
-              background-image: url('file://<%= Rails.root.join('public/secteur/energie.jpg') %>');
+              background-image: url('file://<%= Rails.root.join('public/secteur/energie.jpg') %>') !important;
             <%else%>
-              background-image: url('file://<%= Rails.root.join('public', "#{sp.secteur.image_url}") %>');
+              background-image: url('file://<%= Rails.root.join('public', "#{sp.secteur.image_url}") %>') !important;
             <%end%>
           <%end%>
         <%else%>
-          background-image: url('file://<%= Rails.root.join('public/secteur/accueil.jpg') %>');    
+          background-image: url('file://<%= Rails.root.join('public/secteur/accueil.jpg') %>')!important;    
         <%end%>
         }
     
