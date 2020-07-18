@@ -6,13 +6,13 @@
 			var fin = document.getElementById('selectionFin')
 			var debut = document.getElementById('selectionDebut')
 			if (tinyMCE.get('comment_body').getContent() != "" && debut.value == "" && fin.value == "" && tinyMCE.get('aspsp').getContent() == "") {
-				document.getElementById('modal-body-val').innerHTML = "<ol><li>Veuillez remplir l'appui spécifique au secteur privé</li><li>Veuillez sélectionner la date de début</li><li>Veuillez sélectionner la date de fin</li><ol>"
+				document.getElementById('modal-body-val').innerHTML = "<ul><li>Veuillez remplir l'appui spécifique au secteur privé</li><li>Veuillez sélectionner la date de début</li><li>Veuillez sélectionner la date de fin</li></ul>"
 				return false
 			}else if (tinyMCE.get('comment_body').getContent() != "" && debut.value == "" && fin.value == "" && tinyMCE.get('aspsp').getContent() != "") {
-				document.getElementById('modal-body-val').innerHTML = "<ol><li>Veuillez sélectionner la date de début</li><li>Veuillez sélectionner la date de fin</li><ol>"
+				document.getElementById('modal-body-val').innerHTML = "<ul><li>Veuillez sélectionner la date de début</li><li>Veuillez sélectionner la date de fin</li></ul>"
 				return false
 			}else if (tinyMCE.get('comment_body').getContent() != "" && debut.value != "" && fin.value == "" && tinyMCE.get('aspsp').getContent() != "") {
-				document.getElementById('modal-body-val').innerHTML = "<ol><li>Veuillez sélectionner la date de fin</li><ol>"
+				document.getElementById('modal-body-val').innerHTML = "<ul><li>Veuillez sélectionner la date de fin</li></ul>"
 				return false
 			}else if (tinyMCE.get('comment_body').getContent() != "" && debut.value != "" && fin.value != "" && tinyMCE.get('aspsp').getContent() != "") {
 				var annule = document.getElementById('Sauvegarder-publier')
@@ -20,44 +20,62 @@
 				annule.removeAttribute("data-target")
 				return true
 			}else if (tinyMCE.get('comment_body').getContent() == "" && debut.value == "" && fin.value == "" && tinyMCE.get('aspsp').getContent() == "") {
-				document.getElementById('modal-body-val').innerHTML = "<ol><li>Veuillez remplir l'objectif général du projet</li><li>Veuillez remplir l'appui spécifique au secteur privé</li><li>Veuillez sélectionner la date de début</li><li>Veuillez sélectionner la date de fin</li><ol>"
+				document.getElementById('modal-body-val').innerHTML = "<ul><li>Veuillez remplir l'objectif général du projet</li><li>Veuillez remplir l'appui spécifique au secteur privé</li><li>Veuillez sélectionner la date de début</li><li>Veuillez sélectionner la date de fin</li></ul>"
 				return false
 			}else if (tinyMCE.get('comment_body').getContent() == "" && debut.value == "" && fin.value == "" && tinyMCE.get('aspsp').getContent() != "") {
-				document.getElementById('modal-body-val').innerHTML = "<ol><li>Veuillez remplir l'objectif général du projet</li><li>Veuillez sélectionner la date de début</li><li>Veuillez sélectionner la date de fin</li><ol>"
+				document.getElementById('modal-body-val').innerHTML = "<ul><li>Veuillez remplir l'objectif général du projet</li><li>Veuillez sélectionner la date de début</li><li>Veuillez sélectionner la date de fin</li></ul>"
 				return false
 			}else if (tinyMCE.get('comment_body').getContent() != "" && debut.value != "" && fin.value == "" && tinyMCE.get('aspsp').getContent() == "") {
-				document.getElementById('modal-body-val').innerHTML = "<ol><li>Veuillez remplir l'appui spécifique au secteur privé</li><li>Veuillez sélectionner la date de fin</li><ol>"
+				document.getElementById('modal-body-val').innerHTML = "<ul><li>Veuillez remplir l'appui spécifique au secteur privé</li><li>Veuillez sélectionner la date de fin</li></ul>"
 				return false
 			}else if (tinyMCE.get('comment_body').getContent() != "" && debut.value != "" && fin.value != "" && tinyMCE.get('aspsp').getContent() == "") {
-				document.getElementById('modal-body-val').innerHTML = "<ol><li>Veuillez remplir l'appui spécifique au secteur privé</li><ol>"
+				document.getElementById('modal-body-val').innerHTML = "<ul><li>Veuillez remplir l'appui spécifique au secteur privé</li></ul>"
 				return false
 			}else if (tinyMCE.get('comment_body').getContent() != "" && debut.value == "" && fin.value != "" && tinyMCE.get('aspsp').getContent() != "") {
-				document.getElementById('modal-body-val').innerHTML = "<ol><li>Veuillez sélectionner la date de début</li><ol>"
+				document.getElementById('modal-body-val').innerHTML = "<ul><li>Veuillez sélectionner la date de début</li></ul>"
 				return false
 			}else if (tinyMCE.get('comment_body').getContent() == "" && debut.value != "" && fin.value != "" && tinyMCE.get('aspsp').getContent() == "") {
-				document.getElementById('modal-body-val').innerHTML = "<ol><li>Veuillez remplir l'objectif général du projet</li><li>Veuillez remplir l'appui spécifique au secteur privé</li><ol>"
+				document.getElementById('modal-body-val').innerHTML = "<ul><li>Veuillez remplir l'objectif général du projet</li><li>Veuillez remplir l'appui spécifique au secteur privé</li></ul>"
 				return false
 			}else if (tinyMCE.get('comment_body').getContent() != "" && debut.value == "" && fin.value != "" && tinyMCE.get('aspsp').getContent() == "") {
-				document.getElementById('modal-body-val').innerHTML = "<ol><li>Veuillez remplir l'appui spécifique au secteur privé</li><li>Veuillez sélectionner la date de début</li><ol>"
+				document.getElementById('modal-body-val').innerHTML = "<ul><li>Veuillez remplir l'appui spécifique au secteur privé</li><li>Veuillez sélectionner la date de début</li></ul>"
 				return false
 			}else if (tinyMCE.get('comment_body').getContent() == "" && debut.value != "" && fin.value == "" && tinyMCE.get('aspsp').getContent() != "") {
-				document.getElementById('modal-body-val').innerHTML = "<ol><li>Veuillez remplir l'objectif général du projet</li><li>Veuillez sélectionner la date de fin</li><ol>"
+				document.getElementById('modal-body-val').innerHTML = "<ul><li>Veuillez remplir l'objectif général du projet</li><li>Veuillez sélectionner la date de fin</li></ul>"
 				return false
 			}else if (tinyMCE.get('comment_body').getContent() == "" && debut.value == "" && fin.value != "" && tinyMCE.get('aspsp').getContent() != "") {
-				document.getElementById('modal-body-val').innerHTML = "<ol><li>Veuillez remplir l'objectif général du projet</li><li>Veuillez sélectionner la date de début</li><ol>"
+				document.getElementById('modal-body-val').innerHTML = "<ul><li>Veuillez remplir l'objectif général du projet</li><li>Veuillez sélectionner la date de début</li></ul>"
 				return false
 			}else if (tinyMCE.get('comment_body').getContent() == "" && debut.value == "" && fin.value != "" && tinyMCE.get('aspsp').getContent() == "") {
-				document.getElementById('modal-body-val').innerHTML = "<ol><li>Veuillez remplir l'objectif général du projet</li><li>Veuillez remplir l'appui spécifique au secteur privé</li><li>Veuillez sélectionner la date de début</li><ol>"
+				document.getElementById('modal-body-val').innerHTML = "<ul><li>Veuillez remplir l'objectif général du projet</li><li>Veuillez remplir l'appui spécifique au secteur privé</li><li>Veuillez sélectionner la date de début</li></ul>"
 				return false
 			}else if (tinyMCE.get('comment_body').getContent() == "" && debut.value != "" && fin.value == "" && tinyMCE.get('aspsp').getContent() == "") {
-				document.getElementById('modal-body-val').innerHTML = "<ol><li>Veuillez remplir l'objectif général du projet</li><li>Veuillez remplir l'appui spécifique au secteur privé</li><li>Veuillez sélectionner la date de fin</li><ol>"
+				document.getElementById('modal-body-val').innerHTML = "<ul><li>Veuillez remplir l'objectif général du projet</li><li>Veuillez remplir l'appui spécifique au secteur privé</li><li>Veuillez sélectionner la date de fin</li></ul>"
+				return false
+			}else if (tinyMCE.get('comment_body').getContent() == "" && debut.value != "" && fin.value != "" && tinyMCE.get('aspsp').getContent() != "") {
+				document.getElementById('modal-body-val').innerHTML = "<ul><li>Veuillez remplir l'objectif général du projet</li></ul>"
 				return false
 			}
 
 	}
+
+	function compteurMots(){
+		var editor1 = tinymce.get('comment_body');
+		var counts = editor1.plugins.wordcount.getCount();
+		var editor2 = tinymce.get('aspsp');
+		var counts2 = editor2.plugins.wordcount.getCount();
+		 if ( counts > 150 && counts2 > 750) {
+			document.getElementById('modal-body-val').innerHTML = "<ul><li>L'objectif général du projet doit être inférieur à 150 mots</li><li>L'appui spécifique au secteur privé doit être inférieur à 750 mots</li></ul>"
+		}else if (counts2 > 750) {
+			document.getElementById('modal-body-val').innerHTML = "<ul><li>L'appui spécifique au secteur privé doit être inférieur à 750 mots</li></ul>"
+		}else if ( counts > 150) {
+			document.getElementById('modal-body-val').innerHTML = "<ul><li>L'objectif général du projet doit être inférieur à 150 mots</li></ul>"
+		}
+	}
 	function disableBtn(){
 		document.getElementById("Sauvegarder-publier").disabled = false;
 	}
+
 
 	
 	//Autres bénéficiaires
