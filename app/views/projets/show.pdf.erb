@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-  <%= wicked_pdf_stylesheet_link_tag "application" %>
-  <%= wicked_pdf_stylesheet_link_tag "bootstrap" %>
-  </head>
-</head>
-<body>
     <header class="aci59a-0 eyAIuG sticky-limit">
     <div class="sc-1gnwgfb-2 hVIPFV picc position-relative">
     <style type="text/css">     
@@ -33,7 +24,7 @@
 <div class="objectif mx-auto my-3 row align-items-start">
   <div class="logoPtf col">
     <%if @projet.ptf.image_url%>
-      <%= wicked_pdf_image_tag "#{@projet.ptf.image_url}" %>
+      <%= wicked_pdf_image_tag "/#{@projet.ptf.image_url}" %>
     <%end%>
   </div>
   <div class="ml-4 col-10">
@@ -250,5 +241,3 @@
        
         </div>
     </div>
-</body>
-</html>

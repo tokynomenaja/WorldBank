@@ -20,7 +20,7 @@ class ProjetsController < ApplicationController
       respond_to do |format|
         format.html 
         format.pdf do
-          render :pdf => "#{@projet.nom_du_projet}", :layout => 'pdf.html'
+          render :pdf => "#{@projet.nom_du_projet}", :layout => '/layouts/pdf.html'
                 
        end
       end
