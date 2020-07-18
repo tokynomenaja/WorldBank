@@ -14,13 +14,13 @@
         <%if @projet.secteurprojets.count == 1%>
           <%@projet.secteurprojets.each do|sp|%>
             <% if sp.secteur.title == "ENERGIE" %>
-              background-image: url('file://<%= Rails.root.join('public/secteur/energie.jpg') %>');
+              background-image: url('file://<%= Rails.root.join('public/secteur/energie.jpg') %>') !important;
             <%else%>
-              background-image: url('file://<%= Rails.root.join('public', "#{sp.secteur.image_url}") %>');
+              background-image: url('file://<%= Rails.root.join('public', "#{sp.secteur.image_url}") %>') !important;
             <%end%>
           <%end%>
         <%else%>
-          background-image: url('file://<%= Rails.root.join('public/secteur/accueil.jpg') %>');    
+          background-image: url('file://<%= Rails.root.join('public/secteur/accueil.jpg') %>')!important;    
         <%end%>
         }
     
@@ -196,11 +196,13 @@
           </p>
           <div class="row">
             <% @projet.montants.each do |m|%>
-                  <div class="col-12 col-md-7">
+                  <div class="col-4 col-md-6">
                     <span><%= m.secteur.title.titleize%> : </span>
                   </div>
-                  <div class="col-12 col-md-5">
+                  <div class="col-4 col-md-6">
                     <span><%=  number_with_delimiter(m.price) %> <%= m.unite.nom%></span> 
+                  </div>
+                  <div class="col-4">
                   </div>
             <%end%>
           </div>
