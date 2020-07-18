@@ -461,9 +461,11 @@ def index
          @d2 =  params[:fin][1].to_i
          @d =[]
          @fin.each do |f|
+          if f.fin
           if f.fin.year >= @d1 && f.fin.year <= @d2
             @d << f
 
+          end
           end
         end
             @fin_1= @d1
@@ -493,9 +495,11 @@ def index
                   if @params_ptfs
                   @params_ptfs.each do |s|
                     @fin.each do |f|
+                      if f.fin
                       if (f.fin.year >= @d1 && f.fin.year <= @d2) && (f.ptf_id == s.to_i) 
                         @d << f
 
+                      end
                       end
                     end
                   end 
@@ -503,9 +507,11 @@ def index
                   if @params_appuis
                   @params_appuis.each do |s|
                     @fin.each do |f|
+                      if f.fin
                       if (f.fin.year >= @d1 && f.fin.year <= @d2) && (f.appui_id == s.to_i) 
                         @d << f
 
+                      end
                       end
                     end
                   end 
@@ -514,9 +520,11 @@ def index
                   if @params_secteurs
                   @params_secteurs.each do |s|
                     @fin.each do |f|
+                      if f.fin
                       if (f.fin.year >= @d1 && f.fin.year <= @d2) && (f.secteurs.ids.include?s.to_i) 
                         @d << f
 
+                      end
                       end
                     end
                   end 
@@ -525,9 +533,11 @@ def index
                   if @params_filieres
                   @params_filieres.each do |s|
                     @fin.each do |f|
+                      if f.fin
                       if (f.fin.year >= @d1 && f.fin.year <= @d2) && (f.filieres.ids.include?s.to_i) 
                         @d << f
 
+                      end
                       end
                     end
                   end 
@@ -536,9 +546,11 @@ def index
                   if @params_formes
                   @params_formes.each do |s|
                     @fin.each do |f|
+                      if f.fin
                       if (f.fin.year >= @d1 && f.fin.year <= @d2) && (f.formes.ids.include?s.to_i) 
                         @d << f
 
+                      end
                       end
                     end
                   end 
@@ -547,9 +559,11 @@ def index
                   if @params_bens
                   @params_bens.each do |s|
                     @fin.each do |f|
+                      if f.fin
                       if (f.fin.year >= @d1 && f.fin.year <= @d2) && (f.beneficiaires.ids.include?s.to_i) 
                         @d << f
 
+                      end
                       end
                     end
                   end 
@@ -558,9 +572,11 @@ def index
                   if @params_igas
                   @params_igas.each do |s|
                     @fin.each do |f|
+                      if f.fin
                       if (f.fin.year >= @d1 && f.fin.year <= @d2) && (f.igas.ids.include?s.to_i) 
                         @d << f
 
+                      end
                       end
                     end
                   end 
@@ -569,9 +585,11 @@ def index
                   if @params_zones
                   @params_zones.each do |s|
                     @fin.each do |f|
+                      if f.fin
                       if (f.fin.year >= @d1 && f.fin.year <= @d2) && (f.zones.ids.include?s.to_i) 
                         @d << f
 
+                      end
                       end
                     end
                   end 
@@ -583,10 +601,12 @@ def index
                       f.montants.each do |m|
                           price_total += m.price
                       end
+                      if f.fin
                         if (f.fin.year >= @d1 && f.fin.year <= @d2) && (price_total >= @m1 && price_total <= @m2)
                           @d << f
                         
                         end
+                      end
                     end 
                     end 
 
@@ -624,10 +644,12 @@ def index
                           price_total += t.price
                   @params_bens.each do |s|
                     @fin.each do |f|
+                      if f.fin
                       if  (price_total >= @m1 && price_total <= @m2) && (f.fin.year >= @d1 && f.fin.year <= @d2) && (f.beneficiaires.ids.include?s.to_i) 
                         @benrd << f
                      
 
+                      end
                       end
                     end
                   end 
@@ -667,11 +689,13 @@ def index
                   @params_zone.each do |z|
                   @params_iga.each do |i|
                     @fin.each do |f|
+                      if f.fin
                       if  (price_total >= @m1 && price_total <= @m2) && (f.fin.year >= @d1 && f.fin.year <= @d2) && 
                         (f.beneficiaires.ids.include?s.to_i) && (f.zones.ids.include?z.to_i) 
                         @rbmpi << f
                      
 
+                      end
                       end
                     end
                   end 
@@ -709,10 +733,12 @@ def index
                           price_total += t.price
                   @params_secteur.each do |s|
                     @fin.each do |f|
+                      if f.fin
                       if  (price_total >= @m1 && price_total <= @m2) && (f.fin.year >= @d1 && f.fin.year <= @d2) && (f.secteurs.ids.include?s.to_i) 
                         @spm << f
                      
 
+                      end
                       end
                     end
                   end 
@@ -726,7 +752,7 @@ def index
 
 
 
-    #recherche montant,periode et secteur
+    #recherche montant,periode et zone
 
 
          if params[:fin] && params[:montant] && params[:search_zone]
@@ -750,10 +776,12 @@ def index
                           price_total += t.price
                   @params_zone.each do |s|
                     @fin.each do |f|
+                      if f.fin
                       if  (price_total >= @m1 && price_total <= @m2) && (f.fin.year >= @d1 && f.fin.year <= @d2) && (f.zones.ids.include?s.to_i) 
                         @zpm << f
                      
 
+                      end
                       end
                     end
                   end 
@@ -764,7 +792,7 @@ def index
           end               
         
 
-    #recherche montant,periode et secteur
+    #recherche montant,periode et iga
 
 
          if params[:fin] && params[:montant] && params[:search_iga]
@@ -788,10 +816,12 @@ def index
                           price_total += t.price
                   @params_iga.each do |s|
                     @fin.each do |f|
+                      if f.fin
                       if  (price_total >= @m1 && price_total <= @m2) && (f.fin.year >= @d1 && f.fin.year <= @d2) && (f.beneficiaires.ids.include?s.to_i) 
                         @ipm << f
                      
 
+                      end
                       end
                     end
                   end 
@@ -826,10 +856,12 @@ def index
                   @params_bens.each do |s|
                   @params_zone.each do |z|
                     @fin.each do |f|
+                      if f.fin
                       if  (price_total >= @m1 && price_total <= @m2) && (f.fin.year >= @d1 && f.fin.year <= @d2) && (f.beneficiaires.ids.include?s.to_i) && (f.zones.ids.include?z.to_i) 
                         @benrdz << f
                      
 
+                      end
                       end
                     end
                   end 
