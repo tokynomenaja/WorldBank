@@ -396,9 +396,13 @@ $(document).on('turbolinks:load', function() {
 		}
 	})
 
-  $("#simulateur").click(function(){
+  $("#Sauvegarder-publier").click(function(){
+    $("#simulateurSubmit").trigger("click");
+  });
+    $("#simulateur").click(function(){
     $("#document").trigger("click");
   });
+
 
   $('#document').change(function(e){
    var files = [];

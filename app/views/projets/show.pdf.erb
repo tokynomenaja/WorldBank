@@ -194,8 +194,8 @@
               <p><span class="attr">Montant  pour les secteurs : </span>
           <%end%>
           </p>
-          <div class="row">
-            <% @projet.montants.each do |m|%>
+          <% @projet.montants.each do |m|%>
+            <div class="row">
                   <div class="col-4 col-md-6">
                     <span><%= m.secteur.title.titleize%> : </span>
                   </div>
@@ -204,8 +204,8 @@
                   </div>
                   <div class="col-4">
                   </div>
-            <%end%>
-          </div>
+            </div>
+          <%end%>
           <%end%>
           <p>
             <span class="attr">Montant total :</span>
