@@ -12,7 +12,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="disableBtn()">OK</button>
       </div>
     </div>
   </div>
@@ -21,7 +21,7 @@
     <div class="sc-1gnwgfb-2 hVIPFV">
     </div>
 </header>
-<%= form_tag url_for(action: 'create'),method:'post', class:'form', multipart: true do%>
+<%= form_tag url_for(action: 'create'),method:'post', class:'form', onsubmit: "return validCheck()", multipart: true do%>
 	<div class="mt-4 mb-4" onmouseover ="verificationDate()">
 		<div class="container">
 			<div class="row mb-2">
@@ -39,7 +39,7 @@
 			</a>
 			<div class="mt-2">
 				<div class="card card-body">
-			 		<textarea name="objectif_generale_du_projet" value="nil" id="comment_body" class="editor"></textarea>
+			 		<textarea name="objectif_generale_du_projet" value="nil" id="comment_body" class="editor" onfocus="compteurMots()"></textarea>
 					<p id="charlimit"><span class="words-left">150 mots maximum</span></p>
 				</div>
 			</div>
@@ -584,7 +584,7 @@
 		</div>
 		<div class="container mt-4 mb-5">
 			<%= submit_tag 'Sauvegarder', :name => "creer",  :class => "btn btn-secondary"%>
-			<%= submit_tag 'Sauvegarder et Publier', :name => "creer", :id => "Sauvegarder-publier", :class => "sc-eerKOB cfnPHQ", :onclick => "validCheck()",'data-toggle' => "modal", 'data-target' => '#staticBackdrop'%>
+			<%= submit_tag 'Sauvegarder et Publier', :name => "creer", :id => "Sauvegarder-publier", :class => "sc-eerKOB cfnPHQ", :onclick => "validCheck(); compteurMots();",'data-toggle' => "modal", 'data-target' => '#staticBackdrop'%>
 		</div>
 	</div>
 <% end %>
