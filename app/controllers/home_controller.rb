@@ -601,12 +601,14 @@ def index
                       f.montants.each do |m|
                           price_total += m.price
                       end
-                      if f.fin
+                        if f.fin
+
                         if (f.fin.year >= @d1 && f.fin.year <= @d2) && (price_total >= @m1 && price_total <= @m2)
                           @d << f
                         
                         end
                       end
+
                     end 
                     end 
 
