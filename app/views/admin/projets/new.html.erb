@@ -492,7 +492,7 @@
 			<div class="mt-2">
 				<div class="card card-body">
 					<div class="row">
-						<% Zone.all.order(:title).each do |c| %>
+						<% Zone.all.each do |c| %>
 							<div class="col-md-4">
 								<%if c.id == 1%>
 								<input type="checkbox" name="zone_ids[]" value="1" required="true" data-ErrorMessage="Cochez au moins une région">
