@@ -1,6 +1,6 @@
 <header class="aci59a-0 eyAIuG sticky-limit">
     <div class="sc-1gnwgfb-2 hVIPFV picc position-relative">
-       <style type="text/css">
+      <style type="text/css">
         .picc{
           <%if @projet.secteurprojets.count == 1%>
             <%@projet.secteurprojets.each do|sp|%>
@@ -20,13 +20,13 @@
       </div>
     </div>
 </header>
-<div class="objectif mx-auto my-3 d-flex align-items-start">
-  <div class="logoPtf">
+<div class="objectif mx-auto my-3 row align-items-start">
+  <div class="col-12 col-md-2">
     <%if @projet.ptf.image_url%>
       <img src="/<%= @projet.ptf.image_url%>">
     <%end%>
   </div>
-  <div class="ml-4">
+  <div class="ml-4 col-12 col-md-9 mt-2">
     <div>
       <div class="">
           <% if  @projet.secteurprojets.count > 0%>
@@ -90,13 +90,13 @@
   <div class="show-cont pt-4 pb-4">
     <div class="objectif mx-auto">
       <h2 class="text-left color">Objectif général du projet</h2>
-      <div class="mt-2 pt-2">
-        <%= raw @projet.objectif_generale_du_projet%>
+      <div class="mt-2 ml-3 pt-2">
+        <%=  raw @projet.objectif_generale_du_projet%>
       </div>
       <div class="appui mt-4">
         <h2 class="color text-left">Appui spécifique au secteur privé</h2>
-        <div class="mt-2 p-2">
-          <%= raw @projet.aspsp%>
+        <div class="mt-2 ml-3 p-2">
+          <%=  raw @projet.aspsp %>
         </div>
       </div>
       <div class="row pt-4 pb-4">
@@ -162,6 +162,7 @@
                 <% end %>
             </div>
           <%end%>
+
           <% if  @projet.secteurprojets.count > 0%>
           <%if  @projet.secteurprojets.count == 1%>
               <p><span class="attr">Montant  pour le secteur : </span>
@@ -181,10 +182,9 @@
           </div>
           <%end%>
           <p>
-             <span class="attr">Montant total :</span>
-             <span class="mb-3"><%= number_with_delimiter(@montant_total)%> USD </span>  
+            <span class="attr">Montant total :</span>
+            <span class="mb-3"><%= number_with_delimiter(@montant_total)%> USD </span>              
           </p>
-
         </div>
         <div class="col-md-6 list">
           <p class="mb-3"><span class="attr">Nature de l'appui : </span><%=@projet.appui.title%></p>

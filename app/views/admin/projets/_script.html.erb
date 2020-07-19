@@ -65,13 +65,13 @@
 		var editor2 = tinymce.get('aspsp');
 		var counts2 = editor2.plugins.wordcount.getCount();
 		 if ( counts > 150 && counts2 > 750) {
-			document.getElementById('modal-body-val').innerHTML = "<ul><li>L'objectif général du projet doit être inférieur à 150 mots</li><li>L'appui spécifique au secteur privé doit être inférieur à 750 mots</li></ul>"
+			document.getElementById('modal-body-val').innerHTML = "<ul><li>L'objectif général du projet est 150mots maximun</li><li>L'appui spécifique au secteur privé est 750 mots maximun</li></ul>"
 			document.getElementById("Sauvegarder-publier").disabled = true;
-		}else if (counts2 > 750) {
-			document.getElementById('modal-body-val').innerHTML = "<ul><li>L'appui spécifique au secteur privé doit être inférieur à 750 mots</li></ul>"
+		}else if (counts2 > 750 && counts <= 150) {
+			document.getElementById('modal-body-val').innerHTML = "<ul><li>L'appui spécifique au secteur privé est 750 mots maximum</li></ul>"
 			document.getElementById("Sauvegarder-publier").disabled = true;
-		}else if ( counts > 150) {
-			document.getElementById('modal-body-val').innerHTML = "<ul><li>L'objectif général du projet doit être inférieur à 150 mots</li></ul>"
+		}else if ( counts > 150 && counts2 <= 750) {
+			document.getElementById('modal-body-val').innerHTML = "<ul><li>L'objectif général du projet est 150 mots maximum</li></ul>"
 			document.getElementById("Sauvegarder-publier").disabled = true;
 		}else if ( counts <= 150 && counts2 <= 750){
 			var annule = document.getElementById('Sauvegarder-publier')
