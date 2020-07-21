@@ -1,6 +1,6 @@
 class UpdateProjet < ApplicationRecord
-		validates :objectif_generale_du_projet, presence: true
-        validates :aspsp, presence: true
+		# validates :objectif_generale_du_projet, presence: true
+  #       validates :aspsp, presence: true
         
         belongs_to :admin, optional: true, class_name: 'User'
         belongs_to :ptf, optional: true

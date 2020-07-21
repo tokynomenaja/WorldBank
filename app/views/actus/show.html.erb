@@ -8,7 +8,7 @@
 				<p>Liste des documents associés :</p>
 				<ol class="ml-4">
 					<%@actu.files.all.each do|file|%> 
-						<li class="mb-3 mt-3"><%= link_to file.filename, rails_blob_path(file, disposition: "attachement"), class: "doc-relative ml-2 text-break text-wrap" %></li>
+						<li class="mb-3 mt-3"><%= link_to file.filename, rails_blob_path(file, disposition: "attachement"), class: "doc-relative ml-2 text-break text-wrap" , target: :_blank%></li>
 					<%end%>
 				</ol>
 			<%end%>

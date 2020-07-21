@@ -98,7 +98,7 @@
 									<label for="partONG">ONG</label>
 								</div>
 								<div class="col-12 col-md">
-									<input type="hidden" name="desc_partONG<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartONG<%= x %>" required="true">
+									<input type="hidden" name="desc_partONG<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartONG<%= x %>" oninvalid="this.setCustomValidity('ONG à préciser')" required="true" oninput="setCustomValidity('')">
 								</div>
 							</div>
 						<% end %>
@@ -110,7 +110,7 @@
 									<label for="partASS<%= x%>">Association</label>
 								</div>
 								<div class="col-12 col-md">
-									<input type="hidden" name="desc_partASS<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartASS<%= x %>" required="true">
+									<input type="hidden" name="desc_partASS<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartASS<%= x %>" oninvalid="this.setCustomValidity('Association à préciser')" required="true" oninput="setCustomValidity('')">
 								</div>
 							</div>
 						<% end %>
@@ -122,7 +122,7 @@
 									<label for="partCOM<%= x%>">Chambre de commerce</label>
 								</div>
 								<div class="col-12 col-md">
-									<input type="hidden" name="desc_partCOM<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartCOM<%= x %>" required="true">
+									<input type="hidden" name="desc_partCOM<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartCOM<%= x %>" oninvalid="this.setCustomValidity('Chambre de commerce à préciser')" required="true" oninput="setCustomValidity('')">
 								</div>
 							</div>
 						<% end %>
@@ -134,7 +134,7 @@
 									<label for="partPRI<%= x%>">Secteur Privé</label>
 								</div>
 								<div class="col-12 col-md">
-									<input type="hidden" name="desc_partPRI<%= x %>" class="pl-2 pr-2 form-control pi-custom" placeholder="A préciser" id="descpartPRI<%= x %>" required="true">
+									<input type="hidden" name="desc_partPRI<%= x %>" class="pl-2 pr-2 form-control pi-custom" placeholder="A préciser" id="descpartPRI<%= x %>" oninvalid="this.setCustomValidity('Secteur Privé à préciser')" required="true" oninput="setCustomValidity('')">
 								</div>
 
 							</div>
@@ -146,7 +146,7 @@
 								<label for="partAUTRE<%= x%>">Autre</label>
 							</div>
 							<div class="col-12 col-md">
-								<input type="hidden" name="desc_partAUTRE<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartAUTRE<%= x %>" required="true">
+								<input type="hidden" name="desc_partAUTRE<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartAUTRE<%= x %>" oninvalid="this.setCustomValidity('Autre à préciser')" required="true" oninput="setCustomValidity('')">
 							</div>
 						</div>
 						<%end%>

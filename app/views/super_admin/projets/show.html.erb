@@ -229,7 +229,7 @@
           <%if @projet.files.attached?%>
             <p><span class="attr">Fichiers : </span>
             <%@projet.files.each do|file|%> 
-              <%= link_to file.filename, rails_blob_path(file, disposition: "attachement") %></p>
+              <%= link_to file.filename, rails_blob_path(file, disposition: "attachement"),target: :_blank %></p>
             <%end%>
         <%end%>
        

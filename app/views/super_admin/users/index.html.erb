@@ -59,6 +59,7 @@
 		</table>
 	<%end%>
 </div>
+<%= render partial: "/super_admin/confirm.html.erb"%>
 
 <%for x in 0..@users.length-1%>
 <div class="modal fade" id="mod<%= @users["#{x}".to_i].id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -175,6 +176,7 @@
 		</table>
 	<% end %>
 </div>
+<%= render partial: "/super_admin/confirm.html.erb"%>
 
 <%for x in 0..@users_en_attente.length-1%>
 <div class="modal fade" id="mod<%= @users_en_attente["#{x}".to_i].id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -218,4 +220,3 @@
   </div>
 </div>
 <%end%>
-<%= render partial: "/super_admin/confirm.html.erb"%>
