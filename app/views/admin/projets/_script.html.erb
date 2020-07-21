@@ -65,13 +65,13 @@
 		var editor2 = tinymce.get('aspsp');
 		var counts2 = editor2.plugins.wordcount.getCount();
 		 if ( counts > 150 && counts2 > 750) {
-			document.getElementById('modal-body-val').innerHTML = "<ul><li>L'objectif général du projet doit être inférieur à 150 mots</li><li>L'appui spécifique au secteur privé doit être inférieur à 750 mots</li></ul>"
+			document.getElementById('modal-body-val').innerHTML = "<ul><li>L'objectif général du projet est 150mots maximun</li><li>L'appui spécifique au secteur privé est 750 mots maximun</li></ul>"
 			document.getElementById("Sauvegarder-publier").disabled = true;
-		}else if (counts2 > 750) {
-			document.getElementById('modal-body-val').innerHTML = "<ul><li>L'appui spécifique au secteur privé doit être inférieur à 750 mots</li></ul>"
+		}else if (counts2 > 750 && counts <= 150) {
+			document.getElementById('modal-body-val').innerHTML = "<ul><li>L'appui spécifique au secteur privé est 750 mots maximum</li></ul>"
 			document.getElementById("Sauvegarder-publier").disabled = true;
-		}else if ( counts > 150) {
-			document.getElementById('modal-body-val').innerHTML = "<ul><li>L'objectif général du projet doit être inférieur à 150 mots</li></ul>"
+		}else if ( counts > 150 && counts2 <= 750) {
+			document.getElementById('modal-body-val').innerHTML = "<ul><li>L'objectif général du projet est 150 mots maximum</li></ul>"
 			document.getElementById("Sauvegarder-publier").disabled = true;
 		}else if ( counts <= 150 && counts2 <= 750){
 			var annule = document.getElementById('Sauvegarder-publier')
@@ -190,8 +190,6 @@
 	document.getElementById("ajoutIga").addEventListener('click',function () {
 		ajoutiga();
 	}  ); 
-
-
 	function saveMontant(inp) {
 		var InputMontantValue1 = document.getElementById('InputMontantValue1');
 		var InputMontantValue2 = document.getElementById('InputMontantValue2');
@@ -224,19 +222,15 @@
 			}
 		}
 	}
-
 	function InputMontantPicker(inp) {
 		var nbr = inp.value;
-
 			var NombreSaisi = "";
-
 			// Enlevez les virgules
 			for (var i = 0; i < nbr.length; i++) {
 				if (nbr[i] != ","){
 					NombreSaisi+= nbr[i];
 				}
 			}
-
 			if (NombreSaisi.length < 4) {
 				inp.value = NombreSaisi
 			}
@@ -267,13 +261,9 @@
 			if (NombreSaisi.length >= 12) {
 				inp.value = NombreSaisi[0] + NombreSaisi[1] + NombreSaisi[2] + "," + NombreSaisi[3] + NombreSaisi[4] + NombreSaisi[5] + "," + NombreSaisi[6] + NombreSaisi[7] + NombreSaisi[8] + "," + NombreSaisi[9] + NombreSaisi[10] + NombreSaisi[11];
 			}
-
 	}	
-
 	function check(x){
-
 		//Montant par secteur et Filiere par secteur
-
 		    var m = document.getElementById('montant'+x);
 		    var inputMontant = document.getElementById('inputMontant'+x);
 		    var unite = document.getElementById('unite'+x);
@@ -288,7 +278,6 @@
 		        inputMontant.required = true;
 		        unite.required = true;
 		    }
-
 		//secteur par filiere
 			var filAsso = true;
 			var formAsso = true
@@ -306,10 +295,7 @@
 					<%if s.formesecteurs.count > 0 %>
 						formAsso = false;
 					<%end%>
-
-
 				}
-
 		    <%end%>
 
 
@@ -408,13 +394,11 @@
 					var fl = document.getElementById('fl'+<%= fili.id%>);
 					fl.style.display = "none";
 				<%end%>
-
 		    	// ne pas afficher toutes les formes
 				<%Forme.order(:title).all.each do |form|%>
 				var forme = document.getElementById('forme'+<%= form.id%>);
 					forme.style.display = "none";
 				<%end%>
-
 			// Si aucun sécteur n'est coché
 		    } else{
 		    	// Affiche toutes les filieres
@@ -424,7 +408,6 @@
 					fl.style.display = "block";
 					fil.style.display = "none";
 				<%end%>
-
 				// Afficher tous les formes
 				<%Forme.order(:title).all.each do |form|%>
 				var forme = document.getElementById('forme'+<%= form.id%>);

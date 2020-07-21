@@ -397,7 +397,17 @@ $(document).on('turbolinks:load', function() {
 	})
 
   $("#Sauvegarder-publier").click(function(){
-    $("#simulateurSubmit").trigger("click");
+	var editor1 = tinymce.get('comment_body');
+	var counts = editor1.plugins.wordcount.getCount();
+	var editor2 = tinymce.get('aspsp');
+	var counts2 = editor2.plugins.wordcount.getCount();
+	var fin = document.getElementById('selectionFin')
+	var debut = document.getElementById('selectionDebut')
+  	if ( fin.value !="" && debut.value != "" && tinyMCE.get('aspsp').getContent() != "" && tinyMCE.get('comment_body').getContent() != "" && counts <= 150 && counts2 <= 750) {
+  		///// PROJET CREER AVEC SUCCES
+  	}else{
+    	$("#simulateurSubmit").trigger("click");
+  	}
   });
     $("#simulateur").click(function(){
     $("#document").trigger("click");
