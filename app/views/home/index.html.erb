@@ -78,16 +78,30 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <% if zone.projets.where(validation: true).count == 0%>
-      <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-        <p>Pas de projet pour le moment</p>
-      </div>
+      <%if @params_ptf%>
+        <% if zone.projets.where(validation: true,ptf_id: params[:ptf_id]).count == 0%>
+        <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+          <p>Pas de projet pour le moment</p>
+        </div>
+        <%else%>
+        <% zone.projets.where(validation: true,ptf_id: params[:ptf_id]).each do |zoneprojet| %>
+        <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+          <a href="<%= projet_path(zoneprojet.id)%>" class="text-muted reshover"><%=zoneprojet.nom_du_projet %></a>
+        </div>
+        <% end %>
+        <% end %>
       <%else%>
-      <% zone.projets.where(validation: true).each do |zoneprojet| %>
-      <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-        <a href="<%= projet_path(zoneprojet.id)%>" class="text-muted reshover"><%=zoneprojet.nom_du_projet %></a>
-      </div>
-      <% end %>
+       <% if zone.projets.where(validation: true).count == 0%>
+        <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+          <p>Pas de projet pour le moment</p>
+        </div>
+        <%else%>
+        <% zone.projets.where(validation: true).each do |zoneprojet| %>
+        <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
+          <a href="<%= projet_path(zoneprojet.id)%>" class="text-muted reshover"><%=zoneprojet.nom_du_projet %></a>
+        </div>
+        <% end %>
+        <% end %>
       <% end %>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
