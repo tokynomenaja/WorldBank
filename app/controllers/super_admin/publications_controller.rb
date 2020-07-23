@@ -20,8 +20,14 @@ class SuperAdmin::PublicationsController < ApplicationController
 	def update
 		@pub = Publication.find(params[:id])
 
-	    	if @pub.update(title: params[:title], description: params[:description],files: params[:files],user_id: current_user.id)
-	       		redirect_to super_admin_publication_path, success: "Modification terminéé"
+			if params[:files] != nil
+		    	if @pub.update(title: params[:title], description: params[:description],files: params[:files],user_id: current_user.id)
+		       		redirect_to super_admin_publication_path, success: "Modification terminéé"
+			   	end
+			else
+				if @pub.update(title: params[:title], description: params[:description],user_id: current_user.id)
+		       		redirect_to super_admin_publication_path, success: "Modification terminéé"
+			   	end
 		   	end
 
 	end 

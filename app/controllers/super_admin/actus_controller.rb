@@ -36,9 +36,15 @@ class SuperAdmin::ActusController < ApplicationController
 
   def update
       @actu = Actu.find(params[:id])
-      if @actu.update(title: params[:title],files: params[:files], user_id: current_user.id)
-       redirect_to super_admin_actu_path, succès: "Modification terminée"
-     end
+      if params[:files] != nil
+        if @actu.update(title: params[:title],files: params[:files], user_id: current_user.id)
+         redirect_to super_admin_actu_path, succès: "Modification terminée"
+        end
+      else
+        if @actu.update(title: params[:title], user_id: current_user.id)
+         redirect_to super_admin_actu_path, succès: "Modification terminée"
+        end
+      end
   end
 
   def destroy

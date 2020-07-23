@@ -8,7 +8,7 @@ class UserMailer < ApplicationMailer
 	    @url  = 'http://82.165.122.74/users/sign_in' 
 
 	    # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-	    mail(to: @user.email, subject: 'Email de validation de compte ') 
+	    mail(to: @user.email, subject: 'Email de validation de compte bailleur') 
 	end
 
 	def create_project_email(project)
