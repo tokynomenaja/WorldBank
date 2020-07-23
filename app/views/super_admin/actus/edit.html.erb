@@ -9,13 +9,13 @@
 			<div class="mb-4">
 							
 				<span class="mr-2 tablePrint">Documents :</span>
-				<%= file_field_tag :files, name: "files[]", required: true, multiple: true, class: 'toggleclass', id: :'document' %>
+				<%= file_field_tag :files, name: "files[]", multiple: true, class: 'toggleclass', id: :'document' %>
 				<span class="btn btn-secondary text-wrap text-break" id="simulateur" >Modifier les fichiers </span>
 			</div>
 			<div>
 				<p>Documents associés</p>
 				<%for i in 0..@actu.files.length-1%>
-					<span class="sc-eerKOB cfnPHQ" id="simulateur" style="margin-bottom: 10px;"><%= @actu.files[i].blob.filename%></span>
+					<%= link_to @actu.files[i].filename, rails_blob_path(@actu.files[i], disposition: "attachement"), target: :_blank, style: :"text-decoration: none;color: white;margin-bottom: 10px;", id: :simulateur, class: :"sc-eerKOB cfnPHQ text-wrap text-break"%>
 				<%end%>
 			</div>
 			<div class="mb-4">

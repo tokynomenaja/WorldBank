@@ -11,13 +11,13 @@
 		</div>
 		<div class="mb-2 mt-4">
 			<%= file_field_tag :files, name: "files[]", multiple: true, id: :"document", class: 'toggleclass' %>	
-			<span class="btn btn-secondary" id="simulateur">Modifier les fichiers liés à cette publication</span>	
+			<span class="btn btn-secondary text-wrap text-break" id="simulateur">Modifier les fichiers liés à cette publication</span>	
 
 		</div>
 		<div class="mb-2 mt-4">
 			<p>Documents associés</p>
 			<%for i in 0..@pub.files.length-1%>
-				<span class="sc-eerKOB cfnPHQ" id="simulateur" style="margin-bottom: 10px;"><%= @pub.files[i].blob.filename%></span>
+				<%= link_to @pub.files[i].filename, rails_blob_path(@pub.files[i], disposition: "attachement"), target: :_blank, style: :"text-decoration: none;color: white;margin-bottom: 10px;", id: :simulateur, class: :"sc-eerKOB cfnPHQ"%>
 			<%end%>
 		</div>
 				
