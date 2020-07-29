@@ -65,19 +65,19 @@
 								<input type="text" name="ptf" placeholder="<%= current_user.organisme.ptf.title%>"class="form-control" readonly>
 								<input type="hidden" name="ptf" value="<%= current_user.organisme.ptf.id%>"class="form-control">
 							<%else%>
-							<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control", required: true, :oninvalid => "this.setCustomValidity('Veuillez selectionner le PTF')",:oninput => "setCustomValidity('')"%>
+							<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "Choisir", class: "form-control", required: true, :oninvalid => "this.setCustomValidity('Veuillez selectionner le PTF')",:oninput => "setCustomValidity('')"%>
 							<%end%>
 						<%else%>
-							<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control", required: true, :oninvalid => "this.setCustomValidity('Veuillez selectionner le PTF')",:oninput => "setCustomValidity('')"%>
+							<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "Choisir", class: "form-control", required: true, :oninvalid => "this.setCustomValidity('Veuillez selectionner le PTF')",:oninput => "setCustomValidity('')"%>
 						<%end%>
 					<%else%>
-						<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control", required: true, :oninvalid => "this.setCustomValidity('Veuillez selectionner le PTF')",:oninput => "setCustomValidity('')"%>	
+						<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "Choisir", class: "form-control", required: true, :oninvalid => "this.setCustomValidity('Veuillez selectionner le PTF')",:oninput => "setCustomValidity('')"%>	
 					<%end%>
 
 				</div>
 				<div class="col-12 col-md-6 mt-2">
 					<h6 class="tablePrint">Nature de l'appui *</h6>
-					<%= select_tag 'appui', options_for_select(Appui.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "choisir", class: "form-control", required: true, :oninvalid => "this.setCustomValidity('Veuillez selectionner la nature de lappui')",:oninput => "setCustomValidity('')"%>
+					<%= select_tag 'appui', options_for_select(Appui.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "Choisir", class: "form-control", required: true, :oninvalid => "this.setCustomValidity('Veuillez selectionner la nature de lappui')",:oninput => "setCustomValidity('')"%>
 					
 				</div>	
 			</div>
@@ -94,18 +94,6 @@
 						<% for x in 1..1%>
 							<div class="col-md-12 row">
 								<div class="col-12 col-md">
-									<input type="checkbox" name="partONG<%= x %>" id="partONG<%= x %>" onclick="partONG(<%= x%>);">
-									<label for="partONG">ONG</label>
-								</div>
-								<div class="col-12 col-md">
-									<input type="hidden" name="desc_partONG<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartONG<%= x %>" oninvalid="this.setCustomValidity('ONG à préciser')" required="true" oninput="setCustomValidity('')">
-								</div>
-							</div>
-						<% end %>
-
-						<% for x in 1..1%>
-							<div class="col-md-12 row">
-								<div class="col-12 col-md">
 									<input type="checkbox" name="partASS<%= x %>" id="partASS<%= x%>" onclick="partASS(<%= x%>);">
 									<label for="partASS<%= x%>">Association</label>
 								</div>
@@ -114,6 +102,19 @@
 								</div>
 							</div>
 						<% end %>
+						
+						<% for x in 1..1%>
+							<div class="col-md-12 row">
+								<div class="col-12 col-md">
+									<input type="checkbox" name="partAUTRE<%= x %>" id="partAUTRE<%= x%>" onclick="partAUTRE(<%= x%>);">
+									<label for="partAUTRE<%= x%>">Autre</label>
+								</div>
+								<div class="col-12 col-md">
+									<input type="hidden" name="desc_partAUTRE<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartAUTRE<%= x %>" oninvalid="this.setCustomValidity('Autre à préciser')" required="true" oninput="setCustomValidity('')">
+								</div>
+							</div>
+						<%end%>
+
 
 						<% for x in 1..1%>
 							<div class="col-md-12 row">
@@ -130,6 +131,18 @@
 						<% for x in 1..1%>
 							<div class="col-md-12 row">
 								<div class="col-12 col-md">
+									<input type="checkbox" name="partONG<%= x %>" id="partONG<%= x %>" onclick="partONG(<%= x%>);">
+									<label for="partONG">ONG</label>
+								</div>
+								<div class="col-12 col-md">
+									<input type="hidden" name="desc_partONG<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartONG<%= x %>" oninvalid="this.setCustomValidity('ONG à préciser')" required="true" oninput="setCustomValidity('')">
+								</div>
+							</div>
+						<% end %>
+
+						<% for x in 1..1%>
+							<div class="col-md-12 row">
+								<div class="col-12 col-md">
 									<input type="checkbox" name="partPRI<%= x %>" id="partPRI<%= x%>" onclick="partPRI(<%= x%>);">
 									<label for="partPRI<%= x%>">Secteur Privé</label>
 								</div>
@@ -139,17 +152,7 @@
 
 							</div>
 						<% end %>
-						<% for x in 1..1%>
-						<div class="col-md-12 row">
-							<div class="col-12 col-md">
-								<input type="checkbox" name="partAUTRE<%= x %>" id="partAUTRE<%= x%>" onclick="partAUTRE(<%= x%>);">
-								<label for="partAUTRE<%= x%>">Autre</label>
-							</div>
-							<div class="col-12 col-md">
-								<input type="hidden" name="desc_partAUTRE<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartAUTRE<%= x %>" oninvalid="this.setCustomValidity('Autre à préciser')" required="true" oninput="setCustomValidity('')">
-							</div>
-						</div>
-						<%end%>
+						
 					</div>
 				</div>
 			</div>
@@ -182,7 +185,7 @@
 							<div class="col-12 col-md-7 form-control pr-0">
 								<input type="text" placeholder="Montant" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>" oninvalid = "this.setCustomValidity('Veuillez saisir le montant par secteur')" oninput = "setCustomValidity('')">
 								<input type="text" name="montant<%= s.id%>" id="InputMontantValue<%=s.id%>" hidden>
-								<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "choisir", class: "text-center border-left unit pl-2 btn-reset", id: :"unite#{s.id}", :oninvalid => "this.setCustomValidity('Veuillez selectionner une unité pour le montant')", :oninput => "setCustomValidity('')"%>
+								<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "Choisir", class: "text-center border-left unit pl-2 btn-reset", id: :"unite#{s.id}", :oninvalid => "this.setCustomValidity('Veuillez selectionner une unité pour le montant')", :oninput => "setCustomValidity('')"%>
 							</div>
 						</div>
 					<%end%>
@@ -575,7 +578,7 @@
 			<span class="btn btn-secondary text-wrap text-break" id="simulateur">Choisissez un fichier lié au projet</span>
 		</div>
 		<div class="container mt-4">
-			<p><span class="tablePrint">Site web :</span><input type="text" name="site" class="form-control" placeholder="votre lien"></p>
+			<p><span class="tablePrint">Site web :</span><input type="text" name="site" class="form-control" placeholder="Votre lien"></p>
 		</div>
 		<div class="container mt-4">
 			<label for="comment" class="tablePrint">Commentaire :</label>

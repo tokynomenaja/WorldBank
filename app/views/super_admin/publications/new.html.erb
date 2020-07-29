@@ -3,7 +3,7 @@
 		<h5 class="text-center tablePrint">Créer votre publication</h5>
 		<div class="mb-2">
 			<label for="nom" class="tablePrint">Titre </label>
-			<input type="text" name="title" id="nom" placeholder="title" class="form-control" required="true">
+			<input type="text" name="title" id="nom" placeholder="Titre" class="form-control" oninvalid="this.setCustomValidity('Titre de publication est obligatoire')"  oninput="setCustomValidity('')" required>
 		</div>
 		<div class="mb-2">
 			<label for="nom" class="tablePrint">Description </label>

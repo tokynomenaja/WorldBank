@@ -213,8 +213,8 @@
         <div class="col-md-6 list">
           <p class="mb-3"><span class="attr">Nature de l'appui : </span><%=@projet.appui.title%></p>
           <%if @projet.debut_du_projet && @projet.fin%>
-            <p class="mb-3"><span class="attr">Début : </span><%=@projet.debut_du_projet.year%> &nbsp;&nbsp;&nbsp;&nbsp;
-            <span class="attr">Fin : </span><%=@projet.fin.year%></p>
+            <p class="mb-3"><span class="attr">Début de projet : </span><%=@projet.debut_du_projet.year%> &nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="attr">Fin de projet : </span><%=@projet.fin.year%></p>
           <%end%>
           <%if @projet.pemprojets.count >= 1%>
           <p><span class="attr">Alignement aux priorités du Plan Emergence Madagascar : </span></p>
