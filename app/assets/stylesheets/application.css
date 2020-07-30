@@ -43,7 +43,7 @@ body{background: #f9f9f9 !important;}
   border-color: #52c39b !important;
   box-shadow: 0 0 0 0 !important;
 }
-.body{font-family: welcomeweb !important;}
+.body{font-family: Arial, Helvetica, sans-serif;}
 .haute{height: 15rem !important;position: relative;}
 .head-te{position: absolute;top: 10rem;color: #fff;font-size: 2rem;text-transform: uppercase;}
 .form-content{
@@ -68,7 +68,7 @@ body{background: #f9f9f9 !important;}
     background: #52c39b;
     height: 100%;
     cursor: pointer;
-    font-family: welcomeweb;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .pub-width{max-width: 100%;}
 .btn-bg-primary{background-color: #52c39b !important;}
@@ -94,48 +94,7 @@ login
 .unit{cursor: pointer;width: 5.5rem;}
 .mt-cust{top: 0.3rem !important; min-width: 0rem !important;cursor: pointer;}
 .doc-relative{color: #52c39b; font-size: 1rem;}
-.more-info-pub{bottom: 1rem;}
-@font-face{
-  font-family:welcomeweb;src:url('https://cdn.welcometothejungle.co/common/assets/fonts/welcomeweb-regular.woff2')
-  format('woff2'),url('https://cdn.welcometothejungle.co/common/assets/fonts/welcomeweb-regular.woff') 
-  format('woff'),url('https://cdn.welcometothejungle.co/common/assets/fonts/welcomeweb-regular.ttf') 
-  format('truetype');font-display:fallback;font-weight:400;} 
-@font-face{
-  font-family:welcomeweb;src:url('https://cdn.welcometothejungle.co/common/assets/fonts/welcomeweb-medium.woff2') 
-  format('woff2'),url('https://cdn.welcometothejungle.co/common/assets/fonts/welcomeweb-medium.woff') 
-  format('woff'),url('https://cdn.welcometothejungle.co/common/assets/fonts/welcomeweb-medium.ttf') 
-  format('truetype');font-display:fallback;font-weight:500;}
-@font-face{
-  font-family:welcomeweb;src:url('https://cdn.welcometothejungle.co/common/assets/fonts/welcomeweb-bold.woff2') 
-  format('woff2'),url('https://cdn.welcometothejungle.co/common/assets/fonts/welcomeweb-bold.woff') 
-  format('woff'),url('https://cdn.welcometothejungle.co/common/assets/fonts/welcomeweb-bold.ttf') 
-  format('truetype');font-display:fallback;font-weight:600;} 
-@font-face{
-  font-family:welcomeweb;src:url('https://cdn.welcometothejungle.co/common/assets/fonts/welcomeweb-black.woff2') 
-  format('woff2'),url('https://cdn.welcometothejungle.co/common/assets/fonts/welcomeweb-black.woff') 
-  format('woff'),url('https://cdn.welcometothejungle.co/common/assets/fonts/welcomeweb-black.ttf') 
-  format('truetype');font-display:fallback;font-weight:700;}
-@font-face{
-  font-family:welcomeweb;src:url('https://cdn.welcometothejungle.co/common/assets/fonts/welcomeweb-regularitalic.woff2') 
-  format('woff2'),url('https://cdn.welcometothejungle.co/common/assets/fonts/welcomeweb-regularitalic.woff') 
-  format('woff'),url('https://cdn.welcometothejungle.co/common/assets/fonts/welcomeweb-regularitalic.ttf') 
-  format('truetype');font-display:fallback;font-weight:400;font-style:italic;} 
-@font-face{
-  font-family:welcomeweb;src:url('https://cdn.welcometothejungle.co/common/assets/fonts/welcomeweb-mediumitalic.woff2') 
-  format('woff2'),url('https://cdn.welcometothejungle.co/common/assets/fonts/welcomeweb-mediumitalic.woff') 
-  format('woff'),url('https://cdn.welcometothejungle.co/common/assets/fonts/welcomeweb-mediumitalic.ttf') 
-  format('truetype');font-display:fallback;font-weight:500;font-style:italic;} 
-@font-face{
-  font-family:welcomeweb;src:url('https://cdn.welcometothejungle.co/common/assets/fonts/welcomeweb-bolditalic.woff2') 
-  format('woff2'),url('https://cdn.welcometothejungle.co/common/assets/fonts/welcomeweb-bolditalic.woff') 
-  format('woff'),url('https://cdn.welcometothejungle.co/common/assets/fonts/welcomeweb-bolditalic.ttf') 
-  format('truetype');font-display:fallback;font-weight:600;font-style:italic;} 
-@font-face{
-  font-family:welcomeweb;src:url('https://cdn.welcometothejungle.co/common/assets/fonts/welcomeweb-blackitalic.woff2') 
-  format('woff2'),url('https://cdn.welcometothejungle.co/common/assets/fonts/welcomeweb-blackitalic.woff')
-  format('woff'),url('https://cdn.welcometothejungle.co/common/assets/fonts/welcomeweb-blackitalic.ttf')
-  format('truetype');font-display:fallback;font-weight:700;font-style:italic;} 
-  
+.more-info-pub{bottom: 1rem;}  
   html{line-height:1.15;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
   body{margin:0;} h1{font-size:2em;margin:0.67em 0;} 
   hr{box-sizing:content-box;height:0;overflow:visible;} 
@@ -173,8 +132,8 @@ login
   :focus{outline:none;} 
   *,*::after,*::before{box-sizing:border-box;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;} 
   html{height:100%;} body{min-height:100%;padding-top:1px;margin-top:-1px;} 
-  body,button,input,select,textarea{font-family:welcomeweb,sans-serif;-webkit-font-smoothing:antialiased;} 
-  h1,h2,h3,h4,h5,h6{font-family:welcomeweb,welcomeweb,sans-serif;} 
+  body,button,input,select,textarea{font-family: Arial, Helvetica, sans-serif;} 
+  h1,h2,h3,h4,h5,h6{font-family: Arial, Helvetica, sans-serif;} 
   ::selection{background-color:#00C29A;color:#FFFFFF;}
 /* sc-component-id: styles__Icon-sc-16ndowf-0 */
 .gUQXeA{width:0.9375rem;height:0.9375rem;height:1rem;} .gUQXeA g,.gUQXeA path{fill:currentColor;stroke:none;}.kSBSfL{width:0.9375rem;height:0.9375rem;width:0.9375rem;} .kSBSfL g,.kSBSfL path{fill:currentColor;stroke:none;}
@@ -439,7 +398,7 @@ a.position:hover{color: #ffffff;text-decoration: none;}
 .forme-content{left: 20.9rem;}
 .secteur-content{left: 7rem;}
 .ptf-content{left: 0rem; min-width:7rem;}
-.appui-content{left: 14.9rem;}
+.appui-content{left: 13.9rem;}
 .filiere-content{left: 27.9rem;width: 13rem;}
 .zone-content{left:41.9rem !important;width: 15rem;}
 .drop-height{max-height: 15rem;overflow: auto;}
@@ -563,13 +522,13 @@ a.position:hover{color: #ffffff;text-decoration: none;}
 .image-c2{width: 3.3rem;}
 .image-c3{width: 13.5rem;}
 .image-c4{width: 5.2rem;}
-.image-c5{width: 3.9rem;}
+.image-c5{width: 9.9rem;}
 .image-c6{width: 3.5rem;}
 .image-c7{width: 8rem;}
 .image-c8{width: 4.5rem;}
 .image-c9{width: 4.5rem;}
 .image-c10{width: 6.5rem;}
-.image-c11{width: 3rem;}
+.image-c11{width: 4rem;}
 .image-c12{width: 8rem;}
 .image-c13{width: 5.7rem;}
 .image-c14{width: 2.8rem;}
@@ -609,6 +568,7 @@ background: #fff3;
 .tox-notification, .tox-notification--in, .tox-notification--warning{
   display: none !important;
 }
+
 .img-filter{width: 1.5rem;}
 /*projets*/
 .date-projet-small{display: none !important;}
@@ -736,7 +696,7 @@ background: #fff3;
   .forme-content{left: 20.9rem;}
   .secteur-content{left: 7rem;}
   .ptf-content{left: 0rem; min-width:auto;}
-  .appui-content{left: 14.9rem;}
+  .appui-content{left: 13.9rem;}
   .filiere-content{left: 27.9rem;width: auto;}
   .zone-content{left:41.9rem !important;width: auto;}
   .drop-height{max-height: 15rem;overflow: auto;}
@@ -784,7 +744,7 @@ background: #fff3;
   .forme-content{left: 20.9rem;}
   .secteur-content{left: 7rem;}
   .ptf-content{left: 0rem; min-width:auto;}
-  .appui-content{left: 14.9rem;}
+  .appui-content{left: 13.9rem;}
   .filiere-content{left: 27.9rem;width: auto;}
   .zone-content{left:41.9rem !important;width: auto;}
   .drop-height{max-height: 15rem;overflow: auto;}
