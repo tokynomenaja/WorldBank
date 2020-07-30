@@ -39,7 +39,7 @@ class Admin::ProjetsController < ApplicationController
                     redirect_to admin_projets_path, success: "Votre fiche projet est sauvegardée. Vous pourrez reprendre votre travail ultérieurement et publier votre fiche lorsqu’elle sera complète"
                 else
                     UserMailer.create_project_email(@project).deliver_now
-                    redirect_to admin_projets_path, success: "Demande de création de fiche projet envoyée avec succès. Vous serez avertis par email lorsqu'elle aura été validée et publiée par l'administrateur"
+                    redirect_to admin_projets_path, success: " Demande de création de fiche projet envoyée avec succès. Vous serez averti par email lorsqu'elle aura été validée et publiée par l'administrateur. Veuillez vérifier votre boîte « indésirables » ou « spam », le mail pourrait s’y trouver. "
 
                 end
 
