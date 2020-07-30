@@ -254,7 +254,7 @@ $(document).on('turbolinks:load', function() {
 	            display: "none",
 	            position: "absolute",
 	            top:
-	              linkPosition.top + this._el.height() + (options.topOffset || 0) + 300,
+	              linkPosition.top + this._el.height() + (options.topOffset || 0) + 588,
 	            left: linkPosition.left
 	          };
 	        this._container = $('<div class="monthly-wrp">')
