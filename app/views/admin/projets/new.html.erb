@@ -24,12 +24,15 @@
 <%= form_tag url_for(action: 'create'),method:'post', class:'form', onsubmit: "return validCheck()", multipart: true do%>
 	<div class="mt-4 mb-4" onmouseover ="verificationDate()">
 		<div class="container">
-			<div class="row mb-2">
+			<div class="row mb-2 align-items-end">
 				<div class="col-12 col-md-6">
 					<div>
 						<label for="nom" class="mr-2 tablePrint">Nom du projet *</label>
 					</div>
 					<input type="text" name="nom_du_projet" id="nom" placeholder="Nom du projet" class="form-control" oninvalid="this.setCustomValidity('Nom de projet à remplir')" required="true" oninput="setCustomValidity('')">
+				</div>
+				<div class="col-12 col-md-6">
+					<p class="tablePrint mb-2">“(*) Champs Obligatoires” </p>
 				</div>
 			</div>
 		</div>
