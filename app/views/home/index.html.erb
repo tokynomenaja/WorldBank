@@ -381,12 +381,12 @@
           <%= submit_tag "Rechercher",:class => 'd-none', :name => nil, :id => 'document'%>
           <% if current_user %> 
           <% if current_user.is_consultant == true || current_user.is_consultant == false || current_user.is_super_admin == true || current_user.is_admin == true%>
-            <div class="btn-filtre kYNMFW eouleG fdk8rh-0 rounded" id="simulateur">
+            <div class="btn-filtre kYNMFW eouleG fdk8rh-0 rounded px-2" id="simulateur">
               <span class="link-btn sear">Rechercher</span>
             </div> 
           <%end%>
           <%else%>
-            <a href="<%= new_user_session_path %>" class="btn-filtre kYNMFW eouleG fdk8rh-0 rounded" id="sear">
+            <a href="<%= new_user_session_path %>" class="btn-filtre kYNMFW eouleG fdk8rh-0 rounded px-2" id="sear">
               <span class="link-btn">Rechercher</span>
             </a>
           <%end%>
