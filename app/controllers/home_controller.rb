@@ -1711,7 +1711,7 @@ end
         flash.now[:success] = "#{@projets.count} projets sont en cours d’attente de validation, #{@projets_revalid.count} projets sont en cours d’attente de revalidation et #{Message.where(read: nil).count} messages ont été reçus"
         flash.delete(:notice)
       elsif current_user.is_admin == nil && current_user.is_consultant == false && current_user.is_super_admin == false
-        flash.now[:success] = "Votre compte est en attente de validation"
+        flash.now[:success] = "Demande de création de compte envoyée avec succès. Vous serez averti par email lorsqu'il aura été validé par l'administrateur. Veuillez vérifier votre boîte « indésirables » ou « spam », le mail pourrait s’y trouver."
         flash.delete(:notice)
       end
     end
