@@ -199,15 +199,25 @@
             </div>
           <%end%>
 
-          <%end%>
-          <p>
-            <span class="attr">Montant total :</span>
+          <%end%><br>
+         
+            
             <%@montant_total_pdf = 0%>
             <%@projet.montants.each do |m|%>
               <% @montant_total_pdf += m.price.to_i%>
             <%end%>
-            <span class="mb-3"><%= number_with_delimiter(@montant_total_pdf)%> USD </span>    
-          </p>
+            <div class="row">
+              
+            <div class="col-4 col-md-6">
+                <span class="attr">Montant total :</span>
+            </div>
+            <div class="col-4 col-md-6">
+              <span><%=  number_with_delimiter(@montant_total_pdf) %> USD </span> 
+            </div>
+            <div class="col-4">
+            </div>   
+            </div><br>
+       
           
         </div>
         <div class="col-md-6 list">

@@ -11,6 +11,17 @@ class UserMailer < ApplicationMailer
 	    mail(to: @user.email, subject: 'Email de validation de compte bailleur') 
 	end
 
+	def welcome_visit(user)
+	    #on récupère l'instance user pour ensuite pouvoir la passer à la view en @user
+	    @user = user 
+
+	    #on définit une variable @url qu'on utilisera dans la view d’e-mail
+	    @url  = 'http://82.165.122.74/users/sign_in' 
+
+	    # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
+	    mail(to: @user.email, subject: 'Email de validation de compte visiteur') 
+	end
+
 	def create_project_email(project)
 	    #on récupère l'instance user pour ensuite pouvoir la passer à la view en @user
 	    @project = project
