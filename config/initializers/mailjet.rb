@@ -2,7 +2,7 @@
 Mailjet.configure do |config|
   config.api_key = ENV['mailjet_api_key']
   config.secret_key = ENV['mailjet_secret_key']
-  config.default_from = 'no-reply.secteurprivefinance@gmail.com'
+  config.default_from = 'no-reply@plateforme-spi.mg'
   config.api_version = "v3.1"
 
 end
