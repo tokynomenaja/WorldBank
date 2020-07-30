@@ -94,24 +94,24 @@ Rails.application.configure do
   
 config.action_mailer.delivery_method = :sendmail
 # Defaults to:
-# config.action_mailer.sendmail_settings = {
-#   location: '/usr/sbin/sendmail',
+config.action_mailer.sendmail_settings = {
+  location: '/usr/sbin/sendmail'
 #   arguments: '-i'
-# }
-#config.action_mailer.perform_deliveries = true
-#config.action_mailer.raise_delivery_errors = true
-#config.action_mailer.default_options = {from: 'no-reply.secteurprivefinance@gmail.com'}
+}
+config.action_mailer.perform_deliveries = true
+config.action_mailer.raise_delivery_errors = true
+config.action_mailer.default_options = {from: 'no-reply@plateforme-spi.mg'}
 
-   config.action_mailer.delivery_method = :smtp
-   config.action_mailer.smtp_settings = {
-     address:              'smtp.gmail.com',
-     port:                 587,
-     domain:               'spamandona.fr',
-     user_name:            'michael77rakotovao@gmail.com',
-     password:             'zzadaorgdtcibfti',
-     authentication:       'plain',
-     enable_starttls_auto: true 
-   }
+  #  config.action_mailer.delivery_method = :smtp
+  #  config.action_mailer.smtp_settings = {
+  #    address:              'smtp.gmail.com',
+  #    port:                 587,
+  #    domain:               'plateforme-spi.mg',
+  #    user_name:            'itokianarajoelison@gmail.com',
+  #    password:             'hsvrmtndweeonmbt',
+  #    authentication:       'plain',
+  #    enable_starttls_auto: true 
+  #  }
 
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
