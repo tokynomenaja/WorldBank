@@ -4,16 +4,16 @@
 		<%= form_tag url_for(action: 'create'),method:'post', class:'form', multipart: true do%>
 			<div class="mb-4">
 				<label for="nom" class="mr-2 tablePrint">Titre </label>
-				<input type="text" name="title" id="nom" placeholder="Titre" class="form-control" required="true">
+				<input type="text" name="title" id="nom" placeholder="Titre" class="form-control" oninvalid="this.setCustomValidity('Titre actualité obligatoire')"  oninput="setCustomValidity('')" required>
 			</div>
 			<div class="mb-4">
 				<label for="date" class="mr-2 tablePrint">Date de publication</label>
-				<input type="date" name="date_publication" id="date" class="form-control" required="true">
+				<input type="date" name="date_publication" id="date" class="form-control" oninvalid="this.setCustomValidity('Date de publication obligatoire')" oninput="this.setCustomValidity('')" required="true">
 			</div>
 			<div class="mb-4">
 							
 				<span class="mr-2 ">Documents :</span>
-				<%= file_field_tag :files, name: "files[]", required: true, multiple: true,  id: :"document", class: 'toggleclass' %>
+				<%= file_field_tag :files, name: "files[]", multiple: true,  id: :"document", class: 'toggleclass' %>
 				<span class="btn btn-secondary text-wrap text-break" id="simulateur" >Ajouter des fichiers </span>
 			</div>
 			<div class="mb-4">
