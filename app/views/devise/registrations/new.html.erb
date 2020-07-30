@@ -58,7 +58,7 @@
       </div>
       <div class="col-md-6 margin-b2" id="changeDiv" style="display: none">
         <label for="autre">Autre *</label>
-        <input type="text" name="nom" id="AutreOrganisme" placeholder="A préciser" class="form-control">
+        <input type="text" name="nom" id="AutreOrganisme" placeholder="A préciser" class="form-control" oninvalid="this.setCustomValidity('Autre à préciser obligatoire')" oninput="this.setCustomValidity('')">
       </div>
     </div>
 
@@ -95,7 +95,8 @@
         autre.required = true;
         changeDiv.style.display = "block";
       }else{
-        autre.type = "hidden";
+        autre.required = false;
+        changeDiv.style.display = "none";
       }
     }
 </script>
