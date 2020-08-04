@@ -248,7 +248,7 @@
      
           <input type="submit" name="rejeter" value="Rejeter" class="btn btn-danger">
           <!-- <a href="<%= edit_super_admin_projet_path(@projet.id)%>" data-method="get" class="sc-eerKOB cfnPHQ bold sear">Modifier</a> -->
-          <a href="<%= edit_admin_projet_path(@projet.id)%>" class="sc-eerKOB cfnPHQ bold sear">Modifier</a>
+          <a href="<%= edit_admin_projet_path(@projet.id)%>" class="btn btn-primary">Modifier</a>
           <a href="<%= super_admin_projets_path%>" class="btn btn-secondary">Retour</a>
         <%end%>
       <%elsif @projet.revalid == true && @projet.validation == false && @projet.rejet == nil%>

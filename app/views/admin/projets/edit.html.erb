@@ -4,7 +4,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">Plateforme Secteur Privé / Energie et Tourisme</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="disableBtn()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -12,7 +12,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="disableBtn()">OK</button>
       </div>
     </div>
   </div>
@@ -21,7 +21,7 @@
     <div class="sc-1gnwgfb-2 hVIPFV">
     </div>
 </header>
-<%= form_tag url_for(action: 'update'),method:'put', class:'form', multipart: true do%>
+<%= form_tag url_for(action: 'update'),method:'put', class:'form',onsubmit: "return compteurMots()", multipart: true do%>
 	<div class="mt-4 mb-4" onmouseover ="verificationDate()">
 		<div class="container">
 			<div class="row mb-2">
@@ -698,18 +698,23 @@
 
 			<div class="container mt-4">
 				<%if current_user.is_admin == true%>
-					<%if @projet.validation == nil && @projet.revalid == false && @projet.rejet == nil || @projet.rejet == true%>
-						<input type="submit" name="modifier" value="Enregistrer la modification" class="btn btn-secondary" data-toggle="" data-target="">
-						<input type="submit" name="modifier" value="Publier" class="sc-eerKOB cfnPHQ" data-toggle="" data-target="">
-					<%elsif @projet.validation == false  && @projet.revalid == false && @projet.rejet == nil%>
-						<input type="submit" name="modifier" value="Publier" class="sc-eerKOB cfnPHQ" data-toggle="" data-target="">
-					<%else%>
-						<input type="submit" name="modifier" value="Re-publier" class="sc-eerKOB cfnPHQ" data-toggle="" data-target="">
-					<%end%>
 					<a href="<%= admin_projet_path(@projet.id)%>" class="btn btn-danger">Annuler la modification</a>
+					<%if @projet.validation == nil && @projet.revalid == false && @projet.rejet == nil || @projet.rejet == true%>
+						<input type="submit" name="modifier" value="Enregistrer la modification" class="btn btn-secondary" data-toggle="" data-target="" id="Sauvegarder-publier" onclick="compteurMots();">
+						<div id="simulateurSubmit" hidden="" data-toggle="modal" data-target="#staticBackdrop">
+						<input type="submit" name="modifier" value="Publier" class="sc-eerKOB cfnPHQ" data-toggle="" data-target="" id="Sauvegarder-publier" onclick="compteurMots();">
+						<div id="simulateurSubmit" hidden="" data-toggle="modal" data-target="#staticBackdrop">
+					<%elsif @projet.validation == false  && @projet.revalid == false && @projet.rejet == nil%>
+						<input type="submit" name="modifier" value="Publier" class="sc-eerKOB cfnPHQ" data-toggle="" data-target="" id="Sauvegarder-publier" onclick="compteurMots();">
+						<div id="simulateurSubmit" hidden="" data-toggle="modal" data-target="#staticBackdrop">
+					<%else%>
+						<input type="submit" name="modifier" value="Re-publier" class="sc-eerKOB cfnPHQ" data-toggle="" data-target="" id="Sauvegarder-publier" onclick="compteurMots();">
+						<div id="simulateurSubmit" hidden="" data-toggle="modal" data-target="#staticBackdrop">
+					<%end%>
 				<%else%>
 					<a href="<%= admin_projet_path(@projet.id)%>" class="btn btn-danger">Annuler la modification</a>
-					<input type="submit" name="modifier" value="Enregistrer la modification" class="sc-eerKOB cfnPHQ" data-toggle="" data-target="">
+					<input type="submit" name="modifier" value="Enregistrer la modification" class="sc-eerKOB cfnPHQ" data-toggle="" data-target="" id="Sauvegarder-publier" onclick="compteurMots();">
+					<div id="simulateurSubmit" hidden="" data-toggle="modal" data-target="#staticBackdrop">
 				<%end%>
 			</div>		
 	</div>
