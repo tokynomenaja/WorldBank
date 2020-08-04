@@ -242,9 +242,21 @@
         </div>
     </div>
     <div class="text-right">
-      <a href="<%= edit_admin_projet_path(@projet.id)%>" class="sc-eerKOB cfnPHQ bold sear">Modifier</a>
-      <a href="<%= admin_projet_path(@projet.id)%>" class="btn btn-danger" data-method="delete" data-confirm="Voulez-vous supprimer ce projet ?"> Supprimer</a>
-      <a href="<%= admin_projets_path%>" class="btn btn-secondary">Retour</a>
+      <%if current_user.is_super_admin == true%>
+        <%= form_for @projet, url: super_admin_projet_path(@projet.id), method: :put do |f| %>
+          <input type="submit" name="rejeter" value="Valider" class="sc-eerKOB cfnPHQ bold sear">
+     
+          <input type="submit" name="rejeter" value="Rejeter" class="btn btn-danger">
+          <!-- <a href="<%= edit_super_admin_projet_path(@projet.id)%>" data-method="get" class="sc-eerKOB cfnPHQ bold sear">Modifier</a> -->
+          <a href="<%= edit_admin_projet_path(@projet.id)%>" class="btn btn-primary">Modifier</a>
+
+          <a href="<%= super_admin_projets_path%>" class="btn btn-secondary">Retour</a>
+        <%end%>
+      <%elsif current_user.is_admin == true%>
+        <a href="<%= edit_admin_projet_path(@projet.id)%>" class="sc-eerKOB cfnPHQ bold sear">Modifier</a>
+        <a href="<%= admin_projet_path(@projet.id)%>" class="btn btn-danger" data-method="delete" data-confirm="Voulez-vous supprimer ce projet ?"> Supprimer</a>
+        <a href="<%= admin_projets_path%>" class="btn btn-secondary">Retour</a>
+      <%end%>
     </div>
 
 <%= render partial: "/super_admin/confirm.html.erb"%>

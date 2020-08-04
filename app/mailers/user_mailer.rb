@@ -5,7 +5,7 @@ class UserMailer < ApplicationMailer
 	    @user = user 
 
 	    #on définit une variable @url qu'on utilisera dans la view d’e-mail
-	    @url  = 'http://82.165.122.74/users/sign_in' 
+	    @url  = 'http://plateforme-spi.mg/users/sign_in' 
 
 	    # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
 	    mail(to: @user.email, subject: 'Email de validation de compte bailleur') 
@@ -16,7 +16,7 @@ class UserMailer < ApplicationMailer
 	    @user = user 
 
 	    #on définit une variable @url qu'on utilisera dans la view d’e-mail
-	    @url  = 'http://82.165.122.74/users/sign_in' 
+	    @url  = 'http://plateforme-spi.mg/users/sign_in' 
 
 	    # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
 	    mail(to: @user.email, subject: 'Email de validation de compte visiteur') 
@@ -31,7 +31,7 @@ class UserMailer < ApplicationMailer
 	    @user = @project.bailleur
 
 	    #on définit une variable @url qu'on utilisera dans la view d’e-mail
-	    @url  = "http://82.165.122.74/admin/projets/#{@id}"
+	    @url  = "http://plateforme-spi.mg/admin/projets/#{@id}"
 
 	    # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
 	    mail(to: @user.email, subject: 'Email de validation de projet ') 
@@ -45,7 +45,7 @@ class UserMailer < ApplicationMailer
 	    @user = @project.bailleur
 
 	    #on définit une variable @url qu'on utilisera dans la view d’e-mail
-	    @url  = "http://82.165.122.74/admin/projets/#{@id}"
+	    @url  = "http://plateforme-spi.mg/admin/projets/#{@id}"
 
 	    # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
 	    mail(to: @user.email, subject: 'SECTEUR PRIVE-FINANCE : Fiche Projet Validée') 
@@ -60,10 +60,8 @@ class UserMailer < ApplicationMailer
 
 	    @user = @project.bailleur
 
-	    @admin = "http://hraveloson@worldbank.org"
-
 	    #on définit une variable @url qu'on utilisera dans la view d’e-mail
-	    @url  = "http://82.165.122.74/admin/projets/#{@id}"
+	    @url  = "http://plateforme-spi.mg/admin/projets/#{@id}"
 
 	    # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
 	    mail(to: @user.email, subject: 'SECTEUR PRIVE-FINANCE : Fiche Projet Rejetée') 

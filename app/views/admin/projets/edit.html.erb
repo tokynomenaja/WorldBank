@@ -697,15 +697,20 @@
 			</div>
 
 			<div class="container mt-4">
-				<%if @projet.validation == nil && @projet.revalid == false && @projet.rejet == nil || @projet.rejet == true%>
-					<input type="submit" name="modifier" value="Enregistrer la modification" class="btn btn-secondary" data-toggle="" data-target="">
-					<input type="submit" name="modifier" value="Publier" class="sc-eerKOB cfnPHQ" data-toggle="" data-target="">
-				<%elsif @projet.validation == false  && @projet.revalid == false && @projet.rejet == nil%>
-					<input type="submit" name="modifier" value="Publier" class="sc-eerKOB cfnPHQ" data-toggle="" data-target="">
+				<%if current_user.is_admin == true%>
+					<%if @projet.validation == nil && @projet.revalid == false && @projet.rejet == nil || @projet.rejet == true%>
+						<input type="submit" name="modifier" value="Enregistrer la modification" class="btn btn-secondary" data-toggle="" data-target="">
+						<input type="submit" name="modifier" value="Publier" class="sc-eerKOB cfnPHQ" data-toggle="" data-target="">
+					<%elsif @projet.validation == false  && @projet.revalid == false && @projet.rejet == nil%>
+						<input type="submit" name="modifier" value="Publier" class="sc-eerKOB cfnPHQ" data-toggle="" data-target="">
+					<%else%>
+						<input type="submit" name="modifier" value="Re-publier" class="sc-eerKOB cfnPHQ" data-toggle="" data-target="">
+					<%end%>
+					<a href="<%= admin_projet_path(@projet.id)%>" class="btn btn-danger">Annuler la modification</a>
 				<%else%>
-					<input type="submit" name="modifier" value="Re-publier" class="sc-eerKOB cfnPHQ" data-toggle="" data-target="">
+					<a href="<%= admin_projet_path(@projet.id)%>" class="btn btn-danger">Annuler la modification</a>
+					<input type="submit" name="modifier" value="Enregistrer la modification" class="sc-eerKOB cfnPHQ" data-toggle="" data-target="">
 				<%end%>
-				<a href="<%= admin_projet_path(@projet.id)%>" class="btn btn-danger">Annuler la modification</a>
 			</div>		
 	</div>
 <% end %>

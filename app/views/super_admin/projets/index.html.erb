@@ -70,7 +70,7 @@
 
 <div class="container mt-4 mb-5">
 	<div class="text-center text-muted mt-4 mb-4">
-		<h3 class="tablePrint"> Liste des projets modifiés à revalider</h3>
+		<h3 class="tablePrint"> Liste des projets modifiés par bailleur à revalider</h3>
 	</div>
 </div>
 <%if @projets_revalid.count == 0 %>
@@ -143,12 +143,12 @@
 <%end%>
 
 
-<div class="container mt-4 mb-5">
+<!-- <div class="container mt-4 mb-5">
 	<div class="text-center text-muted mt-4 mb-4">
 		<h3 class="tablePrint"> Liste des projets modifiés par l'administrateur</h3>
 	</div>
 </div>
-<%if @updateProjets.count == 0 %>
+# <% if @updateProjets.count == 0 %>
 	<div class="container mb-5">
 		<div class="text-center text-muted mt-1 mb-4">
 			<p> Rien à valider </p>
@@ -177,4 +177,4 @@
 			<%= paginate @updateProjets %>
 		</div>
 	</div>
-<%end%>
+<%end%> -->

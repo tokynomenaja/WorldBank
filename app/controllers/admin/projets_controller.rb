@@ -1,6 +1,6 @@
 class Admin::ProjetsController < ApplicationController
     before_action :authenticate_user!
-    before_action :check_if_admin
+    # before_action :check_if_admin
 
     def index
       if current_user.organisme
@@ -260,6 +260,11 @@ class Admin::ProjetsController < ApplicationController
       @pems << ppro.pem
     end
 
+    @partenaireprojets = Partenaireprojet.where(projet_id: @projet.id)
+    @partenaires = []
+    @partenaireprojets.each do |part|
+      @partenaires << part.partenaire
+    end
   end
 
   def update
@@ -268,8 +273,7 @@ class Admin::ProjetsController < ApplicationController
      debut_du_projet: params[:debut_du_projet].to_date,
       objectif_generale_du_projet: params[:objectif_generale_du_projet],
      aspsp: params[:aspsp],fin: params[:fin].to_date, 
-     appui_id: params[:appui], ptf_id: params[:ptf], 
-     bailleur_id: current_user.id)
+     appui_id: params[:appui], ptf_id: params[:ptf])
 
 
     if params[:modifier] == 'Publier' 
@@ -355,6 +359,34 @@ class Admin::ProjetsController < ApplicationController
       end
     end
 
+    @projet.partenaireprojets.destroy_all
+    for x in 1..2
+      if params[:"partONG#{x}"]
+        @partenaire = Partenaire.create(plateforme: "ONG", description: params[:"desc_partONG#{x}"])
+        Partenaireprojet.create(projet_id: @projet.id , partenaire_id: @partenaire.id)
+      end
+      if params[:"partASS#{x}"]
+        @partenaire = Partenaire.create(plateforme: "Associations", description: params[:"desc_partASS#{x}"])
+        Partenaireprojet.create(projet_id: @projet.id , partenaire_id: @partenaire.id)
+      end
+
+      if params[:"partPRI#{x}"]
+        @partenaire = Partenaire.create(plateforme: "Secteurs Privés", description: params[:"desc_partPRI#{x}"])
+        Partenaireprojet.create(projet_id: @projet.id , partenaire_id: @partenaire.id)
+      end
+
+      if params[:"partCOM#{x}"]
+        @partenaire = Partenaire.create(plateforme: "Chambres de Commerce", description: params[:"desc_partCOM#{x}"])
+        Partenaireprojet.create(projet_id: @projet.id , partenaire_id: @partenaire.id)
+      end
+
+      if params[:"partAUTRE#{x}"]
+        @partenaire = Partenaire.create(plateforme: params[:"plat_partAUTRE#{x}"], description: params[:"desc_partAUTRE#{x}"])
+        Partenaireprojet.create(projet_id: @projet.id , partenaire_id: @partenaire.id)
+      end
+
+    end
+
 
 
 
@@ -421,7 +453,7 @@ end
 
 private
 def check_if_admin
-  if current_user.is_admin == nil || current_user.is_admin == false
+  if current_user.is_admin == nil || current_user.is_admin == false || current_user.is_super_admin == false
 
     flash[:danger] = "Vous n'êtes pas bailleur"
     redirect_to root_path
