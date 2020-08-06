@@ -220,7 +220,6 @@ class Admin::ProjetsController < ApplicationController
       @sects.each do |s|
           @montants << s.montants
         end
-      end
     end
  
 

@@ -163,12 +163,12 @@
 				<div class="col-12 col-md-4 row">
 					<div class="col-12 col-md-6 mt-2">
 						<h6 class="tablePrint">Début de projet</h6>
-						<input type="text" id="selectionDebut" value="<%= @projet.debut_du_projet%>" class="form-control" onkeyup="resetDebut()">
+						<input type="text" id="selectionDebut" value="<%= @projet.debut_du_projet%>" class="form-control" required="true">
 						<input type="hidden" id="selectionDebutValue" value="<%= @projet.debut_du_projet%>" class="form-control" name="debut_du_projet" required="true">
 					</div>
 					<div class="col-12 col-md-6 mt-2">			
 						<h6 class="tablePrint">Fin de projet</h6>
-						<input type="text" class="form-control" value="<%= @projet.fin%>" id="selectionFin" title="Fin ne doit pas être antérieure de début" onkeyup="reset()">
+						<input type="text" class="form-control" value="<%= @projet.fin%>" id="selectionFin" title="Fin ne doit pas être antérieure de début" required="true">
 						<input type="hidden" name="fin" id="selectionFinValue" class="form-control" value="<%= @projet.fin%>" required="true">
 					</div>
 				</div>
@@ -628,9 +628,9 @@
 									<%elsif c.id == 17%>
 										<% if @zones%>
 									 		<% if @zones.include? c %>
-												<%= check_box_tag("zone_#{x}",15, checked: true) %>
+												<%= check_box_tag("zone_#{x}",14, checked: true) %>
 											<%else%>
-									 			<%= check_box_tag("zone_#{x}",15) %>
+									 			<%= check_box_tag("zone_#{x}",14) %>
 									 		<%end%>
 									 	<%end%>
 										Diana
@@ -655,9 +655,9 @@
 									<%elsif c.id == 20%>
 										<% if @zones%>
 									 		<% if @zones.include? c %>
-												<%= check_box_tag("zone_#{x}",16, checked: true) %>
+												<%= check_box_tag("zone_#{x}",15, checked: true) %>
 											<%else%>
-									 			<%= check_box_tag("zone_#{x}",16) %>
+									 			<%= check_box_tag("zone_#{x}",15) %>
 									 		<%end%>
 									 	<%end%>
 										Haute Matsiatra
@@ -682,9 +682,9 @@
 									<%elsif c.id == 23%>
 										<% if @zones%>
 									 		<% if @zones.include? c %>
-												<%= check_box_tag("zone_#{x}",17, checked: true) %>
+												<%= check_box_tag("zone_#{x}",16, checked: true) %>
 											<%else%>
-									 			<%= check_box_tag("zone_#{x}",17) %>
+									 			<%= check_box_tag("zone_#{x}",16) %>
 									 		<%end%>
 									 	<%end%>
 										Ihorombe
