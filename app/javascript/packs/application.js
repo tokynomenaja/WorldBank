@@ -253,7 +253,7 @@ $(document).on('turbolinks:load', function() {
 	          cssOptions = {
 	            display: "none",
 	            position: "absolute",
-	            top: 2114.4,
+	            top: linkPosition.top + this._el.height() + (options.topOffset || 0) + 693,
 	            left: linkPosition.left
 	          };
 	        this._container = $('<div class="monthly-wrp">')
@@ -448,6 +448,8 @@ $("#user-item").click(function(e){
 	$("#projet-list").addClass("toggleclass")
 	$("#actus-list").addClass("toggleclass")
 });
+
+
 	
 
 })

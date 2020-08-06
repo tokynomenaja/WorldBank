@@ -147,12 +147,12 @@
 				<div class="col-12 col-md-4 row">
 					<div class="col-12 col-md-6 mt-2">
 						<h6 class="tablePrint">Début de projet</h6>
-						<input type="text" id="selectionDebut" value="<%= @projet.debut_du_projet%>" class="form-control" required="true">
+						<input type="text" id="selectionDebut" value="<%= @projet.debut_du_projet%>" class="form-control" onkeyup="resetDebut()" >
 						<input type="hidden" id="selectionDebutValue" value="<%= @projet.debut_du_projet%>" class="form-control" name="debut_du_projet" required="true">
 					</div>
 					<div class="col-12 col-md-6 mt-2">			
 						<h6 class="tablePrint">Fin de projet</h6>
-						<input type="text" class="form-control" value="<%= @projet.fin%>" id="selectionFin" title="Fin ne doit pas être antérieure de début" required="true">
+						<input type="text" class="form-control" value="<%= @projet.fin%>" id="selectionFin" title="Fin ne doit pas être antérieure de début" onkeyup="reset()" >
 						<input type="hidden" name="fin" id="selectionFinValue" class="form-control" value="<%= @projet.fin%>" required="true">
 					</div>
 				</div>
