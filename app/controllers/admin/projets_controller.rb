@@ -218,7 +218,8 @@ class Admin::ProjetsController < ApplicationController
     @secteurprojets.each do |sp|
       @sects << sp.secteur
       @sects.each do |s|
-        @montants << s.montants
+          @montants << s.montants
+        end
       end
     end
  
@@ -258,12 +259,6 @@ class Admin::ProjetsController < ApplicationController
     @pems = []
     @pemprojets.each do |ppro|
       @pems << ppro.pem
-    end
-
-    @partenaireprojets = Partenaireprojet.where(projet_id: @projet.id)
-    @partenaires = []
-    @partenaireprojets.each do |part|
-      @partenaires << part.partenaire
     end
   end
 
@@ -358,37 +353,6 @@ class Admin::ProjetsController < ApplicationController
         Formeprojet.create(projet_id: @projet.id, forme_id: forme_id.to_i)
       end
     end
-
-    @projet.partenaireprojets.destroy_all
-    for x in 1..2
-      if params[:"partONG#{x}"]
-        @partenaire = Partenaire.create(plateforme: "ONG", description: params[:"desc_partONG#{x}"])
-        Partenaireprojet.create(projet_id: @projet.id , partenaire_id: @partenaire.id)
-      end
-      if params[:"partASS#{x}"]
-        @partenaire = Partenaire.create(plateforme: "Associations", description: params[:"desc_partASS#{x}"])
-        Partenaireprojet.create(projet_id: @projet.id , partenaire_id: @partenaire.id)
-      end
-
-      if params[:"partPRI#{x}"]
-        @partenaire = Partenaire.create(plateforme: "Secteurs Privés", description: params[:"desc_partPRI#{x}"])
-        Partenaireprojet.create(projet_id: @projet.id , partenaire_id: @partenaire.id)
-      end
-
-      if params[:"partCOM#{x}"]
-        @partenaire = Partenaire.create(plateforme: "Chambres de Commerce", description: params[:"desc_partCOM#{x}"])
-        Partenaireprojet.create(projet_id: @projet.id , partenaire_id: @partenaire.id)
-      end
-
-      if params[:"partAUTRE#{x}"]
-        @partenaire = Partenaire.create(plateforme: params[:"plat_partAUTRE#{x}"], description: params[:"desc_partAUTRE#{x}"])
-        Partenaireprojet.create(projet_id: @projet.id , partenaire_id: @partenaire.id)
-      end
-
-    end
-
-
-
 
     @projet.benefprojets.destroy_all
    10.times do |x|
