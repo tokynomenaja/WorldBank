@@ -105,19 +105,6 @@
 								</div>
 							</div>
 						<% end %>
-						
-						<% for x in 1..1%>
-							<div class="col-md-12 row">
-								<div class="col-12 col-md">
-									<input type="checkbox" name="partAUTRE<%= x %>" id="partAUTRE<%= x%>" onclick="partAUTRE(<%= x%>);">
-									<label for="partAUTRE<%= x%>">Autre</label>
-								</div>
-								<div class="col-12 col-md">
-									<input type="hidden" name="desc_partAUTRE<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartAUTRE<%= x %>" oninvalid="this.setCustomValidity('Autre à préciser')" required="true" oninput="setCustomValidity('')">
-								</div>
-							</div>
-						<%end%>
-
 
 						<% for x in 1..1%>
 							<div class="col-md-12 row">
@@ -156,6 +143,18 @@
 							</div>
 						<% end %>
 						
+						<% for x in 1..1%>
+							<div class="col-md-12 row">
+								<div class="col-12 col-md">
+									<input type="checkbox" name="partAUTRE<%= x %>" id="partAUTRE<%= x%>" onclick="partAUTRE(<%= x%>);">
+									<label for="partAUTRE<%= x%>">Autre</label>
+								</div>
+								<div class="col-12 col-md">
+									<input type="hidden" name="desc_partAUTRE<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartAUTRE<%= x %>" oninvalid="this.setCustomValidity('Autre à préciser')" required="true" oninput="setCustomValidity('')">
+								</div>
+							</div>
+						<%end%>
+
 					</div>
 				</div>
 			</div>
@@ -166,16 +165,46 @@
 				Secteurs *
 			</a>
 				<div class="mt-2">
-				<div class="card card-body">
-					<div class="row">
-						<% Secteur.all.order(:title).each do |c| %>
+					<div class="card card-body">
+						<div class="row">
 							<div class="col-12 col-md-6 col-xl-4">
-								<input type="checkbox" name="secteur_ids[]" value="<%=c.id%>" id="s<%=c.id%>" onclick="check(<%= c.id%>)" required="true" data-ErrorMessage="Cochez au moins un secteur">
-								<%= c.title%>
+								<input type="checkbox" name="secteur_ids[]" value="6" id="s6" onclick="check(6)" required="" data-errormessage="Cochez au moins un secteur">
+								AGROBUSINESS
 							</div> 
-						<% end %>
+							<div class="col-12 col-md-6 col-xl-4">
+								<input type="checkbox" name="secteur_ids[]" value="5" id="s5" onclick="check(5)" required="" data-errormessage="Cochez au moins un secteur">
+								ENTREPREUNARIAT
+							</div> 
+							<div class="col-12 col-md-6 col-xl-4">
+								<input type="checkbox" name="secteur_ids[]" value="3" id="s3" onclick="check(3)" required="" data-errormessage="Cochez au moins un secteur">
+								INFRASTRUCTURES
+							</div> 
+							<div class="col-12 col-md-6 col-xl-4">
+								<input type="checkbox" name="secteur_ids[]" value="2" id="s2" onclick="check(2)" required="" data-errormessage="Cochez au moins un secteur">
+								COMMERCE
+							</div> 
+							<div class="col-12 col-md-6 col-xl-4">
+								<input type="checkbox" name="secteur_ids[]" value="8" id="s8" onclick="check(8)" required="" data-errormessage="Cochez au moins un secteur">
+								FINANCES
+							</div> 
+							<div class="col-12 col-md-6 col-xl-4">
+								<input type="checkbox" name="secteur_ids[]" value="7" id="s7" onclick="check(7)" required="" data-errormessage="Cochez au moins un secteur">
+								PROMOTION DES INVESTISSEMENTS
+							</div> 
+							<div class="col-12 col-md-6 col-xl-4">
+								<input type="checkbox" name="secteur_ids[]" value="9" id="s9" onclick="check(9)" required="" data-errormessage="Cochez au moins un secteur">
+								ENERGIE
+							</div> 
+							<div class="col-12 col-md-6 col-xl-4">
+								<input type="checkbox" name="secteur_ids[]" value="1" id="s1" onclick="check(1)" required="" data-errormessage="Cochez au moins un secteur">
+								INDUSTRIE EXTRACTIVE
+							</div> 
+							<div class="col-12 col-md-6 col-xl-4">
+								<input type="checkbox" name="secteur_ids[]" value="4" id="s4" onclick="check(4)" required="" data-errormessage="Cochez au moins un secteur">
+								TOURISME
+							</div> 
+						</div>
 					</div>
-				</div>
 				</div>
 		</div>
 		<section class="container">
@@ -196,12 +225,12 @@
 				<div class="col-12 col-md-4 row">
 					<div class="col-12 col-md-6 mt-2">
 						<h6 class="tablePrint">Début de projet *</h6>
-						<input type="text" id="selectionDebut" placeholder="mm/aaaa" class="form-control" required="true" >
+						<input type="text" id="selectionDebut" placeholder="mm/aaaa" class="form-control" onkeyup="resetDebut()">
 						<input type="hidden" id="selectionDebutValue" placeholder="mm/aaaa" class="form-control" name="debut_du_projet" required="true">
 					</div>
 					<div class="col-12 col-md-6 mt-2">			
 						<h6 class="tablePrint">Fin de projet *</h6>
-						<input type="text" class="form-control" placeholder="mm/aaaa" id="selectionFin" title="Fin ne doit pas être antérieure de début" required="true">
+						<input type="text" class="form-control" placeholder="mm/aaaa" id="selectionFin" title="Fin ne doit pas être antérieure de début" onkeyup="reset()">
 						<input type="hidden" name="fin" id="selectionFinValue" class="form-control" placeholder="mm/aaaa" required="true">
 					</div>
 				</div>
@@ -279,7 +308,7 @@
 			</a>
 				<div class="mt-2">
 				<div class="card card-body">
-					<div class="row">
+					<div class="">
 						<%Forme.order(:title).all.each do |form|%>
 							<div class="col-md-12" style="display: none" id="form<%= form.id%>">
 								<input type="checkbox" name="forme_ids[]" value="<%=form.id%>" id="formCheck<%=form.id%>">
