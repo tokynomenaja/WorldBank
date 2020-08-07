@@ -29,12 +29,15 @@ class SuperAdmin::UsersController < ApplicationController
 
  	def update
  		@user = User.find(params[:id])
+ 		@admin = User.find(21)
  		if buttonparams == 'Visiteur'
  			@user.update(is_consultant: true)
  			UserMailer.welcome_visit(@user).deliver_now
+ 			UserMailer.welcome_visit(@admin).deliver_now
  		else
  			@user.update(is_admin: true)
  			UserMailer.welcome_email(@user).deliver_now
+ 			UserMailer.welcome_email(@admin).deliver_now
  		end
 
  		# if @user.is_consultant == false

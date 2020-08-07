@@ -74,14 +74,17 @@ class SuperAdmin::ProjetsController < ApplicationController
 
   def update
     @projet = Projet.find(params[:id])
+    @admin = User.find(21)
 
     if rejetparam == 'Valider' || rejetparam == 'Revalider'
       @projet.update(validation: true, rejet: nil, revalid: false)
         UserMailer.email_validation(@projet).deliver_now
+        UserMailer.email_validation(@admin).deliver_now
         redirect_to super_admin_projet_path, success: "Projet validé"
     elsif rejetparam == 'Rejeter'
       @projet.update(rejet: true, validation: nil, revalid: false)    
         UserMailer.email_rejet(@projet).deliver_now
+        UserMailer.email_rejet(@admin).deliver_now
         redirect_to super_admin_projet_path, success: "Projet rejeté"
 
     else
