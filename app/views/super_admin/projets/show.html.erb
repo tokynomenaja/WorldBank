@@ -238,6 +238,14 @@
               <%= link_to file.filename, rails_blob_path(file, disposition: "attachement"),target: :_blank %></p>
             <%end%>
         <%end%>
+          <p>La fiche projet <span class="attr"><%= @projet.nom_du_projet%> </span>de <%= @projet.ptf.title%> a été soumise par <%= @projet.bailleur.first_name%> <%= @projet.bailleur.last_name%> avec ses coordonnées ci-dessous: 
+            <p>Email :
+              <a href="mailto:<%= @projet.bailleur.email%>" class="attr"><%= @projet.bailleur.email%></a></p>
+            <p>Téléphone : <%= @projet.bailleur.phone%></p>
+            <%if @projet.bailleur.fonction%>
+             <p>Fonction : <%= @projet.bailleur.fonction%></p>
+            <%end%>
+          </p>
        
         </div>
     </div>

@@ -3,7 +3,7 @@ class UserMailer < ApplicationMailer
 	def welcome_email(user)
 	    #on récupère l'instance user pour ensuite pouvoir la passer à la view en @user
 	    @user = user 
-	    @admin = User.find(30)
+	    @admin = User.find(20)
 	    #on définit une variable @url qu'on utilisera dans la view d’e-mail
 	    @url  = 'http://plateforme-spi.mg/users/sign_in' 
 
@@ -14,7 +14,7 @@ class UserMailer < ApplicationMailer
 	def welcome_visit(user)
 	    #on récupère l'instance user pour ensuite pouvoir la passer à la view en @user
 	    @user = user 
-	    @admin = User.find(30)
+	    @admin = User.find(20)
 
 	    #on définit une variable @url qu'on utilisera dans la view d’e-mail
 	    @url  = 'http://plateforme-spi.mg/users/sign_in' 
@@ -30,7 +30,7 @@ class UserMailer < ApplicationMailer
 	    @id = @project.id
 
 	    @user = @project.bailleur
-	    @admin = User.find(30)
+	    @admin = User.find(20)
 
 	    #on définit une variable @url qu'on utilisera dans la view d’e-mail
 	    @url  = "http://plateforme-spi.mg/admin/projets/#{@id}"
@@ -45,7 +45,7 @@ class UserMailer < ApplicationMailer
 	    @id = @project.id
 
 	    @user = @project.bailleur
-	    @admin = User.find(30)
+	    @admin = User.find(20)
 
 	    #on définit une variable @url qu'on utilisera dans la view d’e-mail
 	    @url  = "http://plateforme-spi.mg/admin/projets/#{@id}"
@@ -62,7 +62,7 @@ class UserMailer < ApplicationMailer
 	    @id = @project.id
 
 	    @user = @project.bailleur
-	    @admin = User.find(30)
+	    @admin = User.find(20)
 
 	    #on définit une variable @url qu'on utilisera dans la view d’e-mail
 	    @url  = "http://plateforme-spi.mg/admin/projets/#{@id}"

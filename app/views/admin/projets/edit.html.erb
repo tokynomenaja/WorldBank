@@ -482,7 +482,7 @@
 								<div class="col-md-4">
 								 	<%if c.id == 1%>
 									 	<% if @zones%>
-									 		<% if @zones.include? c %>
+									 		<% if @zones.include? 1 %>
 												<%= check_box_tag("zone_#{x}",1, checked: true) %>
 											<%else%>
 									 			<%= check_box_tag("zone_#{x}",1) %>
@@ -491,7 +491,7 @@
 										National
 									<%elsif c.id == 2%>
 										<% if @zones%>
-									 		<% if @zones.include? c %>
+									 		<% if @zones.include? 9 %>
 												<%= check_box_tag("zone_#{x}",9, checked: true) %>
 											<%else%>
 									 			<%= check_box_tag("zone_#{x}",9) %>
@@ -500,7 +500,7 @@
 										Atsimo Atsinanana
 									<%elsif c.id == 3%>
 										<% if @zones%>
-									 		<% if @zones.include? c %>
+									 		<% if @zones.include? 17 %>
 												<%= check_box_tag("zone_#{x}",17, checked: true) %>
 											<%else%>
 									 			<%= check_box_tag("zone_#{x}",17) %>
@@ -509,7 +509,7 @@
 										Itasy
 									<%elsif c.id == 4%>
 										<% if @zones%>
-									 		<% if @zones.include? c %>
+									 		<% if @zones.include? 2 %>
 												<%= check_box_tag("zone_#{x}",2, checked: true) %>
 											<%else%>
 									 			<%= check_box_tag("zone_#{x}",2) %>
@@ -518,7 +518,7 @@
 										Alaotra Mangoro
 									<%elsif c.id == 5%>
 										<% if @zones%>
-									 		<% if @zones.include? c %>
+									 		<% if @zones.include? 10 %>
 												<%= check_box_tag("zone_#{x}",10, checked: true) %>
 											<%else%>
 									 			<%= check_box_tag("zone_#{x}",10) %>
@@ -527,7 +527,7 @@
 										Atsinanana
 									<%elsif c.id == 6%>
 										<% if @zones%>
-									 		<% if @zones.include? c %>
+									 		<% if @zones.include? 18 %>
 												<%= check_box_tag("zone_#{x}",18, checked: true) %>
 											<%else%>
 									 			<%= check_box_tag("zone_#{x}",18) %>
@@ -536,7 +536,7 @@
 										Melaky
 									<%elsif c.id == 7%>
 										<% if @zones%>
-									 		<% if @zones.include? c %>
+									 		<% if @zones.include? 3 %>
 												<%= check_box_tag("zone_#{x}",3, checked: true) %>
 											<%else%>
 									 			<%= check_box_tag("zone_#{x}",3) %>
@@ -545,7 +545,7 @@
 										Amoron'i Mania
 									<%elsif c.id == 8%>
 										<% if @zones%>
-									 		<% if @zones.include? c %>
+									 		<% if @zones.include? 11 %>
 												<%= check_box_tag("zone_#{x}",11, checked: true) %>
 											<%else%>
 									 			<%= check_box_tag("zone_#{x}",11) %>
@@ -554,7 +554,7 @@
 										Betsiboka
 									<%elsif c.id == 9%>
 										<% if @zones%>
-									 		<% if @zones.include? c %>
+									 		<% if @zones.include? 19 %>
 												<%= check_box_tag("zone_#{x}",19, checked: true) %>
 											<%else%>
 									 			<%= check_box_tag("zone_#{x}",19) %>
@@ -563,7 +563,7 @@
 										Menabe
 									<%elsif c.id == 10%>
 										<% if @zones%>
-									 		<% if @zones.include? c %>
+									 		<% if @zones.include? 4 %>
 												<%= check_box_tag("zone_#{x}",4, checked: true) %>
 											<%else%>
 									 			<%= check_box_tag("zone_#{x}",4) %>
@@ -572,7 +572,7 @@
 										Analamanga
 									<%elsif c.id == 11%>
 										<% if @zones%>
-									 		<% if @zones.include? c %>
+									 		<% if @zones.include? 12 %>
 												<%= check_box_tag("zone_#{x}",12, checked: true) %>
 											<%else%>
 									 			<%= check_box_tag("zone_#{x}",12) %>
@@ -581,7 +581,7 @@
 										Boeny
 									<%elsif c.id == 12%>
 										<% if @zones%>
-									 		<% if @zones.include? c %>
+									 		<% if @zones.include? 20 %>
 												<%= check_box_tag("zone_#{x}",20, checked: true) %>
 											<%else%>
 									 			<%= check_box_tag("zone_#{x}",20) %>
@@ -590,7 +590,7 @@
 										Sava
 									<%elsif c.id == 13%>
 										<% if @zones%>
-									 		<% if @zones.include? c %>
+									 		<% if @zones.include? 5 %>
 												<%= check_box_tag("zone_#{x}",5, checked: true) %>
 											<%else%>
 									 			<%= check_box_tag("zone_#{x}",5) %>
@@ -599,7 +599,7 @@
 										Analanjirofo
 									<%elsif c.id == 14%>
 										<% if @zones%>
-									 		<% if @zones.include? c %>
+									 		<% if @zones.include? 13 %>
 												<%= check_box_tag("zone_#{x}",13, checked: true) %>
 											<%else%>
 									 			<%= check_box_tag("zone_#{x}",13) %>
@@ -609,7 +609,7 @@
 										Bongolava
 									<%elsif c.id == 15%>
 										<% if @zones%>
-									 		<% if @zones.include? c %>
+									 		<% if @zones.include? 21 %>
 												<%= check_box_tag("zone_#{x}",21, checked: true) %>
 											<%else%>
 									 			<%= check_box_tag("zone_#{x}",21) %>
@@ -618,7 +618,7 @@
 										Sofia
 									<%elsif c.id == 16%>
 										<% if @zones%>
-									 		<% if @zones.include? c %>
+									 		<% if @zones.include? 6 %>
 												<%= check_box_tag("zone_#{x}",6, checked: true) %>
 											<%else%>
 									 			<%= check_box_tag("zone_#{x}",6) %>
@@ -627,7 +627,7 @@
 										Androy
 									<%elsif c.id == 17%>
 										<% if @zones%>
-									 		<% if @zones.include? c %>
+									 		<% if @zones.include? 14 %>
 												<%= check_box_tag("zone_#{x}",14, checked: true) %>
 											<%else%>
 									 			<%= check_box_tag("zone_#{x}",14) %>
@@ -636,7 +636,7 @@
 										Diana
 									<%elsif c.id == 18%>
 										<% if @zones%>
-									 		<% if @zones.include? c %>
+									 		<% if @zones.include? 22 %>
 												<%= check_box_tag("zone_#{x}",22, checked: true) %>
 											<%else%>
 									 			<%= check_box_tag("zone_#{x}",22) %>
@@ -645,7 +645,7 @@
 										Vakinankaratra
 									<%elsif c.id == 19%>
 										<% if @zones%>
-									 		<% if @zones.include? c %>
+									 		<% if @zones.include? 7 %>
 												<%= check_box_tag("zone_#{x}",7, checked: true) %>
 											<%else%>
 									 			<%= check_box_tag("zone_#{x}",7) %>
@@ -654,7 +654,7 @@
 										Anosy
 									<%elsif c.id == 20%>
 										<% if @zones%>
-									 		<% if @zones.include? c %>
+									 		<% if @zones.include? 15 %>
 												<%= check_box_tag("zone_#{x}",15, checked: true) %>
 											<%else%>
 									 			<%= check_box_tag("zone_#{x}",15) %>
@@ -663,7 +663,7 @@
 										Haute Matsiatra
 									<%elsif c.id == 21%>
 									<% if @zones%>
-									 		<% if @zones.include? c %>
+									 		<% if @zones.include? 23 %>
 												<%= check_box_tag("zone_#{x}",23, checked: true) %>
 											<%else%>
 									 			<%= check_box_tag("zone_#{x}",23) %>
@@ -672,7 +672,7 @@
 										Vatovavy-Fitovinany
 									<%elsif c.id == 22%>
 										<% if @zones%>
-									 		<% if @zones.include? c %>
+									 		<% if @zones.include? 8 %>
 												<%= check_box_tag("zone_#{x}",8, checked: true) %>
 											<%else%>
 									 			<%= check_box_tag("zone_#{x}",8) %>
@@ -681,7 +681,7 @@
 										Atsimo Andrefana
 									<%elsif c.id == 23%>
 										<% if @zones%>
-									 		<% if @zones.include? c %>
+									 		<% if @zones.include? 16 %>
 												<%= check_box_tag("zone_#{x}",16, checked: true) %>
 											<%else%>
 									 			<%= check_box_tag("zone_#{x}",16) %>

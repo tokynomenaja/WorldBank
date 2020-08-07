@@ -251,7 +251,7 @@ class Admin::ProjetsController < ApplicationController
     @zoneprojets = Zoneprojet.where(projet_id: @projet.id)
     @zones = []
     @zoneprojets.each do |zp|
-      @zones << zp.zone
+      @zones << zp.zone.id
     end
 
     @pemprojets = Pemprojet.where(projet_id: @projet.id)
