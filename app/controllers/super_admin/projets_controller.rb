@@ -74,7 +74,7 @@ class SuperAdmin::ProjetsController < ApplicationController
 
   def update
     @projet = Projet.find(params[:id])
-    @admin = User.find(21)
+    @admin = User.find(29)
 
     if rejetparam == 'Valider' || rejetparam == 'Revalider'
       @projet.update(validation: true, rejet: nil, revalid: false)
