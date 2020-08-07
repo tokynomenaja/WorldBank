@@ -29,7 +29,7 @@ class SuperAdmin::UsersController < ApplicationController
 
  	def update
  		@user = User.find(params[:id])
- 		@admin = User.find(29)
+ 		@admin = User.find(30)
  		if buttonparams == 'Visiteur'
  			@user.update(is_consultant: true)
  			UserMailer.welcome_visit(@user).deliver_now
