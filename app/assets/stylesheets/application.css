@@ -404,7 +404,9 @@ a.position:hover{color: #ffffff;text-decoration: none;}
 .drop-height{max-height: 15rem;overflow: auto;}
  #scontent{width: 15rem;}
  .modal-body{margin: 0 1rem;}
-
+.filheigth{height: 500px;}
+.zone-heigth{height: 200px;}
+.secteur-heigth{height: 75px;}
 
   .range-y-content{
     top: 0rem;
