@@ -165,46 +165,16 @@
 				Secteurs *
 			</a>
 				<div class="mt-2">
-					<div class="card card-body">
-						<div class="row">
-							<div class="col-12 col-md-6 col-xl-4">
-								<input type="checkbox" name="secteur_ids[]" value="6" id="s6" onclick="check(6)" required="" data-errormessage="Cochez au moins un secteur">
-								AGROBUSINESS
+				<div class="card card-body">
+					<div class="row flex-md-column secteur-heigth ml-2">
+						<% Secteur.all.order(:title).each do |c| %>
+							<div>
+								<input type="checkbox" name="secteur_ids[]" value="<%=c.id%>" id="s<%=c.id%>" onclick="check(<%= c.id%>)" required="true" data-ErrorMessage="Cochez au moins un secteur">
+								<%= c.title%>
 							</div> 
-							<div class="col-12 col-md-6 col-xl-4">
-								<input type="checkbox" name="secteur_ids[]" value="5" id="s5" onclick="check(5)" required="" data-errormessage="Cochez au moins un secteur">
-								ENTREPREUNARIAT
-							</div> 
-							<div class="col-12 col-md-6 col-xl-4">
-								<input type="checkbox" name="secteur_ids[]" value="3" id="s3" onclick="check(3)" required="" data-errormessage="Cochez au moins un secteur">
-								INFRASTRUCTURES
-							</div> 
-							<div class="col-12 col-md-6 col-xl-4">
-								<input type="checkbox" name="secteur_ids[]" value="2" id="s2" onclick="check(2)" required="" data-errormessage="Cochez au moins un secteur">
-								COMMERCE
-							</div> 
-							<div class="col-12 col-md-6 col-xl-4">
-								<input type="checkbox" name="secteur_ids[]" value="8" id="s8" onclick="check(8)" required="" data-errormessage="Cochez au moins un secteur">
-								FINANCES
-							</div> 
-							<div class="col-12 col-md-6 col-xl-4">
-								<input type="checkbox" name="secteur_ids[]" value="7" id="s7" onclick="check(7)" required="" data-errormessage="Cochez au moins un secteur">
-								PROMOTION DES INVESTISSEMENTS
-							</div> 
-							<div class="col-12 col-md-6 col-xl-4">
-								<input type="checkbox" name="secteur_ids[]" value="9" id="s9" onclick="check(9)" required="" data-errormessage="Cochez au moins un secteur">
-								ENERGIE
-							</div> 
-							<div class="col-12 col-md-6 col-xl-4">
-								<input type="checkbox" name="secteur_ids[]" value="1" id="s1" onclick="check(1)" required="" data-errormessage="Cochez au moins un secteur">
-								INDUSTRIE EXTRACTIVE
-							</div> 
-							<div class="col-12 col-md-6 col-xl-4">
-								<input type="checkbox" name="secteur_ids[]" value="4" id="s4" onclick="check(4)" required="" data-errormessage="Cochez au moins un secteur">
-								TOURISME
-							</div> 
-						</div>
+						<% end %>
 					</div>
+				</div>
 				</div>
 		</div>
 		<section class="container">
@@ -236,27 +206,29 @@
 				</div>
 			</div>
 		</section>
-			<div class="container mb-2 mt-2">
+		<div class="container mb-2 mt-2">
 			<a class="tablePrint" id="filAsso">
 				Filières associées
 			</a>
-				<div class="mt-2">
+			<div class="mt-2">
 				<div class="card card-body">
-					<div class="row">
+					<div class="row flex-md-column filheigth ml-2">
 						<%Filiere.order(:title).all.each do |fili|%>
-							<div class="col-md-4" style="display: none" id="fil<%= fili.id%>">
-								<%= check_box_tag("filiere_ids[]", fili.id,false, id: :"filCheck#{fili.id}")%>
-								<%= fili.title%>
-							</div>
-							<div class="col-md-4" style="display: block" id="fl<%= fili.id%>">
-								<%= check_box_tag("filiere_ids[]", fili.id)%>
-								<%= fili.title%>
+							<div>
+								<div style="display: none" id="fil<%= fili.id%>">
+									<%= check_box_tag("filiere_ids[]", fili.id,false, id: :"filCheck#{fili.id}")%>
+									<%= fili.title%>
+								</div>
+								<div style="display: block" id="fl<%= fili.id%>">
+									<%= check_box_tag("filiere_ids[]", fili.id)%>
+									<%= fili.title%>
+								</div>
 							</div>
 						<% end %>
 					</div>
 					   <div class="mt-2">
-								<button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#fl"> Autre</button><br>	
-							</div>
+							<button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#fl"> Autre</button><br>	
+						</div>
 						<div class="collapse" id="fl">
 						<div class="container">
 							<div class="row">
@@ -308,7 +280,7 @@
 			</a>
 				<div class="mt-2">
 				<div class="card card-body">
-					<div class="row">
+					<div class="">
 						<%Forme.order(:title).all.each do |form|%>
 							<div class="col-md-12" style="display: none" id="form<%= form.id%>">
 								<input type="checkbox" name="forme_ids[]" value="<%=form.id%>" id="formCheck<%=form.id%>">
@@ -526,99 +498,17 @@
 			</a>
 			<div class="mt-2">
 				<div class="card card-body">
-					<div class="row">
-						<div class="col-12 col-md-6 col-xl-4">
-						<input type="checkbox" name="zone_ids[]" value="1" required="true" data-ErrorMessage="Cochez au moins une région">
-							National
-						</div>
-						<div class="col-12 col-md-6 col-xl-4">
-						<input type="checkbox" name="zone_ids[]" value="9" required="true" data-ErrorMessage="Cochez au moins une région">
-							Atsimo Atsinanana
-						</div>
-						<div class="col-12 col-md-6 col-xl-4">
-						<input type="checkbox" name="zone_ids[]" value="17" required="true" data-ErrorMessage="Cochez au moins une région">
-							Itasy
-						</div>
-						<div class="col-12 col-md-6 col-xl-4">
-						<input type="checkbox" name="zone_ids[]" value="2" required="true" data-ErrorMessage="Cochez au moins une région">
-							Alaotra Mangoro
-						</div>
-						<div class="col-12 col-md-6 col-xl-4">
-						<input type="checkbox" name="zone_ids[]" value="10" required="true" data-ErrorMessage="Cochez au moins une région">
-							Atsinanana
-						</div>
-						<div class="col-12 col-md-6 col-xl-4">
-						<input type="checkbox" name="zone_ids[]" value="18" required="true" data-ErrorMessage="Cochez au moins une région">
-							Melaky
-						</div>
-						<div class="col-12 col-md-6 col-xl-4">
-						<input type="checkbox" name="zone_ids[]" value="3" required="true" data-ErrorMessage="Cochez au moins une région">
-							Amoron'i Mania
-						</div>
-						<div class="col-12 col-md-6 col-xl-4">
-						<input type="checkbox" name="zone_ids[]" value="11" required="true" data-ErrorMessage="Cochez au moins une région">
-							Betsiboka
-						</div>
-						<div class="col-12 col-md-6 col-xl-4">
-						<input type="checkbox" name="zone_ids[]" value="19" required="true" data-ErrorMessage="Cochez au moins une région">
-							Menabe
-						</div>
-						<div class="col-12 col-md-6 col-xl-4">
-						<input type="checkbox" name="zone_ids[]" value="4" required="true" data-ErrorMessage="Cochez au moins une région">
-							Analamanga
-						</div>
-						<div class="col-12 col-md-6 col-xl-4">
-						<input type="checkbox" name="zone_ids[]" value="12" required="true" data-ErrorMessage="Cochez au moins une région">
-							Boeny
-						</div>
-						<div class="col-12 col-md-6 col-xl-4">
-						<input type="checkbox" name="zone_ids[]" value="20" required="true" data-ErrorMessage="Cochez au moins une région">
-							Sava
-						</div>
-						<div class="col-12 col-md-6 col-xl-4">
-						<input type="checkbox" name="zone_ids[]" value="5" required="true" data-ErrorMessage="Cochez au moins une région">
-							Analanjirofo
-						</div>
-						<div class="col-12 col-md-6 col-xl-4">
-						<input type="checkbox" name="zone_ids[]" value="13" required="true" data-ErrorMessage="Cochez au moins une région">
-							Bongolava
-						</div>
-						<div class="col-12 col-md-6 col-xl-4">
-						<input type="checkbox" name="zone_ids[]" value="21" required="true" data-ErrorMessage="Cochez au moins une région">
-							Sofia
-						</div>
-						<div class="col-12 col-md-6 col-xl-4">
-						<input type="checkbox" name="zone_ids[]" value="6" required="true" data-ErrorMessage="Cochez au moins une région">
-							Androy
-						</div>
-						<div class="col-12 col-md-6 col-xl-4">
-						<input type="checkbox" name="zone_ids[]" value="14" required="true" data-ErrorMessage="Cochez au moins une région">
-							Diana
-						</div>
-						<div class="col-12 col-md-6 col-xl-4">
-						<input type="checkbox" name="zone_ids[]" value="22" required="true" data-ErrorMessage="Cochez au moins une région">
-							Vakinankaratra
-						</div>
-						<div class="col-12 col-md-6 col-xl-4">
-						<input type="checkbox" name="zone_ids[]" value="7" required="true" data-ErrorMessage="Cochez au moins une région">
-							Anosy
-						</div>
-						<div class="col-12 col-md-6 col-xl-4">
-						<input type="checkbox" name="zone_ids[]" value="15" required="true" data-ErrorMessage="Cochez au moins une région">
-							Haute Matsiatra
-						</div>
-						<div class="col-12 col-md-6 col-xl-4">
-						<input type="checkbox" name="zone_ids[]" value="23" required="true" data-ErrorMessage="Cochez au moins une région">
-							Vatovavy-Fitovinany
-						</div>
-						<div class="col-12 col-md-6 col-xl-4">
-						<input type="checkbox" name="zone_ids[]" value="8" required="true" data-ErrorMessage="Cochez au moins une région">
-							Atsimo Andrefana
-						</div>
-						<div class="col-12 col-md-6 col-xl-4">
-						<input type="checkbox" name="zone_ids[]" value="16" required="true" data-ErrorMessage="Cochez au moins une région">
-							Ihorombe
-						</div>
+					<div class="row flex-md-column zone-heigth ml-2">
+						<% Zone.all.each do |c| %>
+							<div>
+								<input type="checkbox" name="zone_ids[]" value="<%=c.id%>" required="true" data-ErrorMessage="Cochez au moins une région">
+								<%if c.id == 1%>
+									National
+								<%else%>
+									<%= c.title%>
+								<%end%>
+							</div>
+						<% end %>
 					</div>
 				</div>
 			</div>
