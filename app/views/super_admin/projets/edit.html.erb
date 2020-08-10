@@ -76,9 +76,9 @@
 			</a>
 				<div class="mt-2">
 				<div class="card card-body">
-					<div class="row">
+					<div class="row flex-md-column secteur-heigth ml-2">
 						<% Secteur.all.order(:title).each_with_index do |c,x| %>
-							<div class="col-12 col-md-6 col-xl-4">
+							<div>
 								<% if @sects %> 
 						 			<% if @sects.include? c %>
 
@@ -166,9 +166,9 @@
 				</a>
 				<div class="mt-2">
 					<div class="card card-body">
-						<div class="row">
+						<div class="row flex-md-column filheigth ml-2">
 							<%Filiere.order(:title).all.each do |fili|%>
-									<div class="col-md-4" style="display: none" id="fil<%= fili.id%>">
+									<div style="display: none" id="fil<%= fili.id%>">
 										<%if @fils%>
 										<% if @fils.include? fili %>
 											<%= check_box_tag("filiere_ids[]", fili.id,true, id: :"filCheck#{fili.id}")%>
@@ -178,7 +178,7 @@
 										<% end %>
 										<%= fili.title%>
 									</div>
-								<div class="col-md-4" style="display: block" id="fl<%= fili.id%>">
+								<div style="display: block" id="fl<%= fili.id%>">
 									<%= check_box_tag("filiere_ids[]", fili.id)%>
 									<%= fili.title%>
 								</div>
@@ -240,7 +240,7 @@
 				</a>
 				<div class="mt-2">
 					<div class="card card-body">
-						<div class="row">
+						<div>
 							<%Forme.order(:title).all.each do |form|%>
 								<div class="col-md-6" style="display: none" id="form<%= form.id%>">
 									<% if @forms.include? form %>
