@@ -337,7 +337,7 @@
 							 				<%= check_box_tag("beneficiaire_#{x}",c.id) %>
 							 			<%end%>
 							 		<%end%>
-							   		<%= c.title%> 
+							   		<%= c.title.capitalize%> 
 								</div>
 							<% end %>
 						</div>
@@ -397,7 +397,7 @@
 								 			<%= check_box_tag("iga_#{x}",c.id) %>
 								 		<%end%>
 								 	<%end%>
-								 	<%= c.title%>
+								 	<%= c.title.capitalize%>
 								</div>
 							<% end %>
 						</div>

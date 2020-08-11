@@ -355,7 +355,7 @@
 							<% Beneficiaire.all.order(:title).each do |c| %>
 								<div class="col-md-12">
 									<input type="checkbox" name="beneficiaire_ids[]" value="<%=c.id%>" required="true" data-ErrorMessage="Cochez au moins un bénéficiaire">
-									<%= c.title%>
+									<%= c.title.capitalize%>
 								</div>
 							<% end %>
 						</div>
@@ -411,7 +411,7 @@
 						<% Iga.all.order(:title).each do |c| %>
 							<div class="col-md-12">
 								<%= check_box_tag("iga_ids[]",c.id, false) %>
-								<%= c.title%>
+								<%= c.title.capitalize%>
 							</div>
 						<% end %>
 					</div>
