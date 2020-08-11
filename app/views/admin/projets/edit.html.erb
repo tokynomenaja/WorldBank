@@ -254,7 +254,7 @@
 				</a>
 				<div class="mt-2">
 					<div class="card card-body">
-						<div>
+						<div class="row">
 							<%Forme.order(:title).all.each do |form|%>
 								<div class="col-md-6" style="display: none" id="form<%= form.id%>">
 									<% if @forms.include? form %>
