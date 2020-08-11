@@ -106,6 +106,19 @@
 								</div>
 							</div>
 						<% end %>
+						
+						<% for x in 1..1%>
+							<div class="col-md-12 row">
+								<div class="col-12 col-md">
+									<input type="checkbox" name="partAUTRE<%= x %>" id="partAUTRE<%= x%>" onclick="partAUTRE(<%= x%>);">
+									<label for="partAUTRE<%= x%>">Autre</label>
+								</div>
+								<div class="col-12 col-md">
+									<input type="hidden" name="desc_partAUTRE<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartAUTRE<%= x %>" oninvalid="this.setCustomValidity('Autre à préciser')" required="true" oninput="setCustomValidity('')">
+								</div>
+							</div>
+						<%end%>
+
 
 						<% for x in 1..1%>
 							<div class="col-md-12 row">
@@ -144,18 +157,6 @@
 							</div>
 						<% end %>
 						
-						<% for x in 1..1%>
-							<div class="col-md-12 row">
-								<div class="col-12 col-md">
-									<input type="checkbox" name="partAUTRE<%= x %>" id="partAUTRE<%= x%>" onclick="partAUTRE(<%= x%>);">
-									<label for="partAUTRE<%= x%>">Autre</label>
-								</div>
-								<div class="col-12 col-md">
-									<input type="hidden" name="desc_partAUTRE<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartAUTRE<%= x %>" oninvalid="this.setCustomValidity('Autre à préciser')" required="true" oninput="setCustomValidity('')">
-								</div>
-							</div>
-						<%end%>
-
 					</div>
 				</div>
 			</div>
