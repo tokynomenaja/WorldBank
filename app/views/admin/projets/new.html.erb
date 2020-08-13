@@ -172,7 +172,7 @@
 						<% Secteur.all.order(:title).each do |c| %>
 							<div>
 								<input type="checkbox" name="secteur_ids[]" value="<%=c.id%>" id="s<%=c.id%>" onclick="check(<%= c.id%>)" required="true" data-ErrorMessage="Cochez au moins un secteur">
-								<%= c.title%>
+								<label for="s<%=c.id%>"><%= c.title%></label>
 							</div> 
 						<% end %>
 					</div>
@@ -209,7 +209,7 @@
 			</div>
 		</section>
 		<div class="container mb-2 mt-2">
-			<a class="tablePrint" id="filAsso">
+			<a class="tablePrint">
 				Filières associées
 			</a>
 			<div class="mt-2">
@@ -217,11 +217,7 @@
 					<div class="row flex-md-column filheigth ml-2">
 						<%Filiere.order(:title).all.each do |fili|%>
 							<div>
-								<div style="display: none" id="fil<%= fili.id%>">
-									<%= check_box_tag("filiere_ids[]", fili.id,false, id: :"filCheck#{fili.id}")%>
-									<%= fili.title.capitalize%>
-								</div>
-								<div style="display: block" id="fl<%= fili.id%>">
+								<div style="display: block">
 									<%= check_box_tag("filiere_ids[]", fili.id)%>
 									<%= fili.title.capitalize%>
 								</div>
@@ -277,18 +273,14 @@
 				</div>
 			</div>
 			<div class="container mb-2 mt-2">
-			<a class="tablePrint" id="formAsso">
+			<a class="tablePrint">
 				Formes d'appuis *
 			</a>
 				<div class="mt-2">
 				<div class="card card-body">
 					<div class="row">
 						<%Forme.order(:title).all.each do |form|%>
-							<div class="col-md-12" style="display: none" id="form<%= form.id%>">
-								<input type="checkbox" name="forme_ids[]" value="<%=form.id%>" id="formCheck<%=form.id%>">
-								<%= form.title.capitalize%>
-							</div>
-							<div class="col-md-12" style="display: block" id="forme<%= form.id%>">
+							<div class="col-md-12" style="display: block">
 								<%= check_box_tag("forme_ids[]", form.id)%>
 								<%= form.title.capitalize%>
 							</div>

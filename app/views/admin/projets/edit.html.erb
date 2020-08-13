@@ -175,27 +175,24 @@
 			</div>
 		</div>
 			<div class="container mb-2 mt-2">
-				<a class="tablePrint" id="filAsso">
+				<a class="tablePrint">
 					Filières associées
 				</a>
 				<div class="mt-2">
 					<div class="card card-body">
 						<div class="row flex-md-column filheigth ml-2">
 							<%Filiere.order(:title).all.each do |fili|%>
-									<div style="display: none" id="fil<%= fili.id%>">
+									<div style="display: block">
 										<%if @fils%>
 										<% if @fils.include? fili %>
-											<%= check_box_tag("filiere_ids[]", fili.id,true, id: :"filCheck#{fili.id}")%>
+											<%= check_box_tag("filiere_ids[]", fili.id,true)%>
 										<% else %>
-											<%= check_box_tag("filiere_ids[]", fili.id,false, id: :"filCheck#{fili.id}")%>
+											<%= check_box_tag("filiere_ids[]", fili.id,false)%>
 										<% end %>
 										<% end %>
 										<%= fili.title.capitalize%>
 									</div>
-								<div style="display: block" id="fl<%= fili.id%>">
-									<%= check_box_tag("filiere_ids[]", fili.id)%>
-									<%= fili.title.capitalize%>
-								</div>
+							
 							<% end %>
 						</div>
 						<div class="mt-2">
@@ -249,23 +246,19 @@
 
 
 			<div class="container mb-2 mt-2">
-				<a class="tablePrint" id="formAsso">
+				<a class="tablePrint">
 					Formes d'appuis
 				</a>
 				<div class="mt-2">
 					<div class="card card-body">
 						<div class="row">
 							<%Forme.order(:title).all.each do |form|%>
-								<div class="col-md-6" style="display: none" id="form<%= form.id%>">
+								<div class="col-md-12" style="display: block;">
 									<% if @forms.include? form %>
-										<%= check_box_tag("forme_ids[]", form.id,true,id: :"formCheck#{form.id}")%>
+										<%= check_box_tag("forme_ids[]", form.id,true)%>
 									<% else %>
-										<%= check_box_tag("forme_ids[]", form.id,false,id: :"formCheck#{form.id}")%>
+										<%= check_box_tag("forme_ids[]", form.id,false)%>
 									<% end %>
-									<%= form.title.capitalize%>
-								</div>
-								<div class="col-md-6" style="display: block" id="forme<%= form.id%>">
-									<%= check_box_tag("forme_ids[]", form.id)%>
 									<%= form.title.capitalize%>
 								</div>
 							<% end %>
@@ -449,16 +442,30 @@
 							<% Engagement.all.order(:id).each_with_index do |c,x| %>
 								<div class="col-md-12">
 									<p class="mt-2 mb-0">
-										<%= c.title%> 
+										<%if c.id < 10%>
+											<%@title = c.title%>
+											<% @title[15] = @title.upcase[15]%> 
+											<%= @title%> 
+										<%elsif c.id >= 10 && c.id < 13 %>
+											<%@title = c.title%>
+											<% @title[16] = @title.upcase[16]%> 
+											<%= @title%> 
+										<%elsif c.id == 13 %>
+											Engagement 13 : La gestion durable et la conservation de nos ressources naturelles
+										<%end%>
 									</p>
 									<%c.pems.each do |p|%>
 										<div class="ml-4">
 											<% if @pems%>
 										 		<% if @pems.include? p %>
 													<%=check_box_tag("pem_#{x}",p.id,checked: true) %> 
-													<%= p.title %>
 												<%else%>
 													<%=check_box_tag("pem_#{x}",p.id) %> 
+													
+												<%end%>
+												<%if p.id == 10%>
+													PRIORITÉ 10 : L'accès aux soins et bien-être social pour tous
+												<%else%>
 													<%= p.title %>
 												<%end%>
 											<%end%>
