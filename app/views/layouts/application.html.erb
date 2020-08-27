@@ -4,13 +4,11 @@
     <title>Worldbank</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <!-- <meta charset="utf-8"> -->
+    <meta charset="utf-8">
     <% if content_for?(:head) %>
-      <title>Plateforme Secteur Privé et Industrialisation</title>
       <%= yield(:head) %>
     <% end %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'users' %>
