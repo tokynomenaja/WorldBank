@@ -198,7 +198,7 @@ class Admin::ProjetsController < ApplicationController
      end
 
   def show
-    organisme = Organisme.where(user_id)[0]
+    organisme = Organisme.where(current_user.id)[0]
     if organisme.ptf_id != nil
       @projet = Projet.where(ptf_id: organisme.ptf_id)
     elsif organisme.iga_id != nil
