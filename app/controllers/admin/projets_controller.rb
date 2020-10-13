@@ -23,9 +23,12 @@ class Admin::ProjetsController < ApplicationController
         p "##################################"
         p Projet.where(ptf_id: organisme.ptf_id).order(id: :desc)
         p "##################################"
-        @projets = Projet.where(ptf_id: organisme.ptf_id).order(id: :desc).page(params[:page]).per(9)
+        @projets = Projet.where(ptf_id: organisme.ptf_id).order(id: :desc)
       elsif organisme.iga_id != nil
-        @projets = Projet.joins(:igaprojets).where(igaprojets: { iga_id: organisme.iga_id }).page(params[:page]).per(9)
+        p "##################################"
+        p Projet.joins(:igaprojets).where(igaprojets: { iga_id: organisme.iga_id })
+        p "##################################"
+        @projets = Projet.joins(:igaprojets).where(igaprojets: { iga_id: organisme.iga_id })
       else
         @projets = []
       end
