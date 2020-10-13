@@ -172,9 +172,7 @@ ActiveRecord::Schema.define(version: 2020_07_12_175614) do
     t.string "fonction"
     t.string "first_name"
     t.string "last_name"
-    t.bigint "organismecontact_id"
     t.index ["admin_id"], name: "index_messages_on_admin_id"
-    t.index ["organismecontact_id"], name: "index_messages_on_organismecontact_id"
     t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 

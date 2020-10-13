@@ -198,7 +198,15 @@ class Admin::ProjetsController < ApplicationController
      end
 
   def show
-    @projet = Projet.find(params[:id])
+    organisme = Organisme.where(user_id)[0]
+    if organisme.ptf_id != nil
+      @projet = Projet.where(ptf_id: organisme.ptf_id)
+    elsif organisme.iga_id != nil
+      @projet = Projet.joins(:igaprojets).where(igaprojets: { iga_id: organisme.iga_id })
+    else
+      @projet = []
+    end
+    # @projet = Projet.find(params[:id])
     @montant_total = 0
     if params[:creer] == 'Publier'
       @projet.update(validation: false)
