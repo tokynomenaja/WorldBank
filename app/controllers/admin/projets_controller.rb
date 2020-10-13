@@ -20,9 +20,9 @@ class Admin::ProjetsController < ApplicationController
       # end
       organisme = Organisme.where(user_id: current_user.id)[0]
       if organisme.ptf_id != nil
-        @projets = Projet.where(ptf_id: organisme.ptf_id)
+        @projets = Projet.where(ptf_id: organisme.ptf_id).page(params[:page]).per(9)
       elsif organisme.iga_id != nil
-        @projets = Projet.joins(:igaprojets).where(igaprojets: { iga_id: organisme.iga_id })
+        @projets = Projet.joins(:igaprojets).where(igaprojets: { iga_id: organisme.iga_id }).page(params[:page]).per(9)
       else
         @projets = []
       end
