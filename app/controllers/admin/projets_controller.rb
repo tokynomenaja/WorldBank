@@ -3,20 +3,28 @@ class Admin::ProjetsController < ApplicationController
     # before_action :check_if_admin
 
     def index
-      if current_user.organisme
-        if current_user.organisme.ptf != nil
-          if current_user.organisme.ptf.title == "WBG"
-            @projets = Projet.where(bailleur_id: current_user.id).order(id: :desc).page(params[:page]).per(9)
-          else
-            @projets = Projet.where(bailleur_id: current_user.id).order(id: :desc).page(params[:page]).per(9)
-          end
-        elsif current_user.organisme.nom != nil
-            @projets = Projet.where(bailleur_id: current_user.id).order(id: :desc).page(params[:page]).per(9)
-        elsif current_user.organisme.iga != nil
-            @projets = Projet.where(bailleur_id: current_user.id).order(id: :desc).page(params[:page]).per(9)
-        end
+      # if current_user.organisme
+      #   if current_user.organisme.ptf != nil
+      #     if current_user.organisme.ptf.title == "WBG"
+      #       @projets = Projet.where(bailleur_id: current_user.id).order(id: :desc).page(params[:page]).per(9)
+      #     else
+      #       @projets = Projet.where(bailleur_id: current_user.id).order(id: :desc).page(params[:page]).per(9)
+      #     end
+      #   elsif current_user.organisme.nom != nil
+      #       @projets = Projet.where(bailleur_id: current_user.id).order(id: :desc).page(params[:page]).per(9)
+      #   elsif current_user.organisme.iga != nil
+      #       @projets = Projet.where(bailleur_id: current_user.id).order(id: :desc).page(params[:page]).per(9)
+      #   end
+      # else
+      #     @projets = Projet.where(bailleur_id: current_user.id).order(id: :desc).page(params[:page]).per(9)
+      # end
+      organisme = Organisme.where(user_id: current_user.id)[0]
+      if organisme.ptf_id != nil
+        @projet = Projet.where(ptf_id: organisme.ptf_id)
+      elsif organisme.iga_id != nil
+        @projet = Projet.joins(:igaprojets).where(igaprojets: { iga_id: organisme.iga_id })
       else
-          @projets = Projet.where(bailleur_id: current_user.id).order(id: :desc).page(params[:page]).per(9)
+        @projet = []
       end
 
     end
@@ -198,15 +206,7 @@ class Admin::ProjetsController < ApplicationController
      end
 
   def show
-    organisme = Organisme.where(user_id: current_user.id)[0]
-    if organisme.ptf_id != nil
-      @projet = Projet.where(ptf_id: organisme.ptf_id)
-    elsif organisme.iga_id != nil
-      @projet = Projet.joins(:igaprojets).where(igaprojets: { iga_id: organisme.iga_id })
-    else
-      @projet = []
-    end
-    # @projet = Projet.find(params[:id])
+    @projet = Projet.find(params[:id])
     @montant_total = 0
     if params[:creer] == 'Publier'
       @projet.update(validation: false)
