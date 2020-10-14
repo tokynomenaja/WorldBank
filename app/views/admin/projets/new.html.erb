@@ -111,7 +111,7 @@
 									<label for="partASS<%= x%>">Association</label>
 								</div>
 								<div class="col-12 col-md">
-									<input type="hidden" name="desc_partASS<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartASS<%= x %>" oninvalid="this.setCustomValidity('Association à préciser')" required="true" oninput="setCustomValidity('')">
+									<input type="hidden" name="desc_partASS<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartASS<%= x %>">
 								</div>
 							</div>
 						<% end %>
@@ -123,7 +123,7 @@
 									<label for="partAUTRE<%= x%>">Autre</label>
 								</div>
 								<div class="col-12 col-md">
-									<input type="hidden" name="desc_partAUTRE<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartAUTRE<%= x %>" oninvalid="this.setCustomValidity('Autre à préciser')" required="true" oninput="setCustomValidity('')">
+									<input type="hidden" name="desc_partAUTRE<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartAUTRE<%= x %>">
 								</div>
 							</div>
 						<%end%>
@@ -136,7 +136,7 @@
 									<label for="partCOM<%= x%>">Chambre de commerce</label>
 								</div>
 								<div class="col-12 col-md">
-									<input type="hidden" name="desc_partCOM<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartCOM<%= x %>" oninvalid="this.setCustomValidity('Chambre de commerce à préciser')" required="true" oninput="setCustomValidity('')">
+									<input type="hidden" name="desc_partCOM<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartCOM<%= x %>">
 								</div>
 							</div>
 						<% end %>
@@ -148,7 +148,7 @@
 									<label for="partONG">ONG</label>
 								</div>
 								<div class="col-12 col-md">
-									<input type="hidden" name="desc_partONG<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartONG<%= x %>" oninvalid="this.setCustomValidity('ONG à préciser')" required="true" oninput="setCustomValidity('')">
+									<input type="hidden" name="desc_partONG<%= x %>" placeholder="A préciser" class="pl-2 pr-2 form-control pi-custom" id="descpartONG<%= x %>">
 								</div>
 							</div>
 						<% end %>
@@ -160,7 +160,7 @@
 									<label for="partPRI<%= x%>">Secteur Privé</label>
 								</div>
 								<div class="col-12 col-md">
-									<input type="hidden" name="desc_partPRI<%= x %>" class="pl-2 pr-2 form-control pi-custom" placeholder="A préciser" id="descpartPRI<%= x %>" oninvalid="this.setCustomValidity('Secteur Privé à préciser')" required="true" oninput="setCustomValidity('')">
+									<input type="hidden" name="desc_partPRI<%= x %>" class="pl-2 pr-2 form-control pi-custom" placeholder="A préciser" id="descpartPRI<%= x %>">
 								</div>
 
 							</div>
@@ -180,7 +180,7 @@
 					<div class="row flex-md-column secteur-heigth ml-2" id="test">
 						<% Secteur.all.order(:title).each do |c| %>
 							<div>
-								<input type="checkbox" name="secteur_ids[]" value="<%=c.id%>" id="s<%=c.id%>" onclick="check(<%= c.id%>)" required="true" data-ErrorMessage="Cochez au moins un secteur">
+								<input type="checkbox" name="secteur_ids[]" value="<%=c.id%>" id="s<%=c.id%>">
 								<label for="s<%=c.id%>"><%= c.title%></label>
 							</div> 
 						<% end %>
@@ -196,9 +196,9 @@
 						<div class="no-gutters align-items-center montant-padd ml-3" id="montant<%=s.id%>" style="display: none;">
 							<div class="col-12 col-md-5 font-size"><%= s.title.upcase %> : </div>
 							<div class="col-12 col-md-7 form-control pr-0">
-								<input type="text" placeholder="Montant" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>" oninvalid = "this.setCustomValidity('Veuillez saisir le montant par secteur')" oninput = "setCustomValidity('')">
+								<input type="text" placeholder="Montant" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>">
 								<input type="text" name="montant<%= s.id%>" id="InputMontantValue<%=s.id%>" hidden>
-								<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "Choisir", class: "text-center border-left unit pl-2 btn-reset", id: :"unite#{s.id}", :oninvalid => "this.setCustomValidity('Veuillez selectionner une unité pour le montant')", :oninput => "setCustomValidity('')"%>
+								<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "Choisir", class: "text-center border-left unit pl-2 btn-reset", id: :"unite#{s.id}"%>
 							</div>
 						</div>
 					<%end%>
@@ -355,7 +355,7 @@
 						<div class="row" id="beneId">
 							<% Beneficiaire.all.order(:title).each do |c| %>
 								<div class="col-md-12">
-									<input type="checkbox" name="beneficiaire_ids[]" value="<%=c.id%>" required="true" data-ErrorMessage="Cochez au moins un bénéficiaire">
+									<input type="checkbox" name="beneficiaire_ids[]" value="<%=c.id%>">
 									<%= c.title.capitalize%>
 								</div>
 							<% end %>
