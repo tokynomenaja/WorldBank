@@ -64,6 +64,7 @@
 		var counts = editor1.plugins.wordcount.getCount();
 		var editor2 = tinymce.get('aspsp');
 		var counts2 = editor2.plugins.wordcount.getCount();
+
 		 if ( counts > 150 && counts2 > 750) {
 			document.getElementById('modal-body-val').innerHTML = "<ul><li>L'objectif général du projet est 150mots maximun</li><li>L'appui spécifique au secteur privé est 750 mots maximun</li></ul>"
 			document.getElementById("Sauvegarder-publier").disabled = true;
@@ -78,6 +79,67 @@
 			annule.removeAttribute("data-toggle")
 			annule.removeAttribute("data-target")
 		}
+ 		//  nom du projet
+		var nomError = document.getElementById('nomError')
+		if (document.getElementById('nom').value == "") {
+			nomError.innerHTML = "<li>Veuillez remplir le nom du projet</li>"
+			document.getElementById('nom').style.border = "1px solid red"
+		}else{
+			nomError.removeChild(nomError.childNodes[0]);
+			document.getElementById('nom').style.border = "1px solid rgba(0,0,0,.125)"
+		}
+		// PTF
+		var ptfError = document.getElementById('ptfError')
+		if (document.getElementById('ptf').value == "") {
+			document.getElementById('ptfError').innerHTML = "<li>Veuillez sélectionner le nom du PTF</li>"
+		}else{
+			ptfError.removeChild(ptfError.childNodes[0]);
+		}
+		// nature d'appui natureError
+		var natureError = document.getElementById('natureError')
+		if (document.getElementById('appui').value == "") {
+			document.getElementById('natureError').innerHTML = "<li>Veuillez selectionner la nature de l'appui</li>"
+		}else{
+			natureError.removeChild(natureError.childNodes[0]);
+		}
+		// partenaire d'implemantation
+		var descpartASS1 = document.getElementById("descpartASS1")
+		var descpartAUTRE1 = document.getElementById("descpartAUTRE1")
+		var descpartCOM1 = document.getElementById("descpartCOM1")
+		var descpartONG1 = document.getElementById("descpartONG1")
+		var descpartPRI1 = document.getElementById("descpartPRI1")
+		var partError = document.getElementById('partError')
+		if ( (descpartASS1.type == "text" && descpartASS1.value == "") || (descpartAUTRE1.type == "text" && descpartAUTRE1.value == "") || (descpartCOM1.type == "text" && descpartCOM1.value == "") || (descpartONG1.type == "text" && descpartONG1.value == "") || (descpartPRI1.type == "text" && descpartPRI1.value == "") ) {
+			partError.innerHTML = "<li>Veuillez préciser la partenaire d'implémentation</li>"
+		} else {
+			if ( partError.childNodes.length != 0){
+				partError.removeChild(partError.childNodes[0]);
+			}
+		}
+		// SECTTEUR
+		var secteurError = document.getElementById('secteurError')
+		if ( $('div#test :checkbox:checked').length == 0 ) {
+			secteurError.innerHTML = "<li>Veuillez cocher au moins un secteur</li>"
+		} else {
+			secteurError.removeChild(secteurError.childNodes[0]);
+		}
+		// Forme d'appui
+		var formDappuiError = document.getElementById('formDappuiError')
+		if ( $('div#formDappui :checkbox:checked').length == 0 ) {
+			formDappuiError.innerHTML = "<li>Veuillez cocher au moins un forme d'appui</li>"
+			document.getElementById("Sauvegarder-publier").disabled = true;
+		} else {
+			formDappuiError.removeChild(formDappuiError.childNodes[0]);
+		}
+		// Beneficiaire benError
+		if ( $('div#beneId :checkbox:checked').length == 0 ) {
+			benError.innerHTML = "<li>Veuillez cocher au moins une bénéficiaire</li>"
+			document.getElementById("Sauvegarder-publier").disabled = true;
+		} else {
+			benError.removeChild(benError.childNodes[0]);
+		}
+
+
 	}
 	function disableBtn(){
 		document.getElementById("Sauvegarder-publier").disabled = false;
