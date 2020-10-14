@@ -93,7 +93,7 @@
         <%else%>
         <% zone.projets.where(validation: true,ptf_id: params[:ptf_id]).each do |zoneprojet| %>
         <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-          <a href="<%= projet_path(zoneprojet.id)%>" target="_blank" class="text-muted reshover"><%=zoneprojet.nom_du_projet %></a>
+          <a href="<%= projet_path(zoneprojet.id)%>" class="text-muted reshover"><%=zoneprojet.nom_du_projet %></a>
         </div>
         <% end %>
         <% end %>
@@ -105,7 +105,7 @@
         <%else%>
         <% zone.projets.where(validation: true).each do |zoneprojet| %>
         <div class="result pt-3 pb-3 pl-2 pr-2 border-bottom">
-          <a href="<%= projet_path(zoneprojet.id)%>" target="_blank" class="text-muted reshover"><%=zoneprojet.nom_du_projet %></a>
+          <a href="<%= projet_path(zoneprojet.id)%>" class="text-muted reshover"><%=zoneprojet.nom_du_projet %></a>
         </div>
         <% end %>
         <% end %>
