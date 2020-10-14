@@ -19,6 +19,9 @@
 		      <div><ul id="formDappuiError"></ul></div>
 		      <div><ul id="benError"></ul></div>
 
+					<div><ul id="pemError"></ul></div>
+					<div><ul id="regionError"></ul></div>
+
 	      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="disableBtn()">OK</button>
@@ -38,7 +41,7 @@
 					<div>
 						<label for="nom" class="mr-2 tablePrint">Nom du projet *</label>
 					</div>
-					<input type="text" name="nom_du_projet" id="nom" placeholder="Nom du projet" class="form-control">
+					<input type="text" name="nom_du_projet" id="nom" placeholder="Nom du projet" class="form-control input-required">
 				</div>
 				<div class="col-12 col-md-6">
 					<p class="tablePrint mb-2"> “ (*) Champs Obligatoires ” </p>
@@ -531,6 +534,7 @@
 		<div class="container mt-4 mb-5">
 			<%= submit_tag 'Sauvegarder', :name => "creer", :class => "sc-eerKOB cfnPHQ btn-secondary"%>
 			<%= submit_tag 'Sauvegarder et Publier', :name => "creer", :id => "Sauvegarder-publier", :class => "sc-eerKOB cfnPHQ", :onclick => "validCheck(); compteurMots();"%>
+			<button class="sc-eerKOB cfnPHQ" id="btn-trigger" type="button">Sauvegarder et Publier</button>
 			<div id="simulateurSubmit" hidden="" data-toggle="modal" data-target="#staticBackdrop">
 				
 			</div>
@@ -538,6 +542,7 @@
 	</div>
 <% end %>
 <%= render partial: "/admin/projets/script.html.erb"%>
+<%= render partial: "/admin/projets/script_inputs_required.html.erb"%>
 
 <%= render partial: "/super_admin/confirm.html.erb"%>
 <script type="text/javascript">

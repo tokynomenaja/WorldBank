@@ -85,7 +85,9 @@
 			nomError.innerHTML = "<li>Veuillez remplir le nom du projet</li>"
 			document.getElementById('nom').style.border = "1px solid red"
 		}else{
-			nomError.removeChild(nomError.childNodes[0]);
+			try {
+				nomError.removeChild(nomError.childNodes[0]);
+			} catch (error) {}
 			document.getElementById('nom').style.border = "1px solid rgba(0,0,0,.125)"
 		}
 		// PTF
@@ -93,14 +95,18 @@
 		if (document.getElementById('ptf').value == "") {
 			document.getElementById('ptfError').innerHTML = "<li>Veuillez sélectionner le nom du PTF</li>"
 		}else{
-			ptfError.removeChild(ptfError.childNodes[0]);
+			try{
+				ptfError.removeChild(ptfError.childNodes[0]);
+			} catch (error) {}
 		}
 		// nature d'appui natureError
 		var natureError = document.getElementById('natureError')
 		if (document.getElementById('appui').value == "") {
 			document.getElementById('natureError').innerHTML = "<li>Veuillez selectionner la nature de l'appui</li>"
 		}else{
-			natureError.removeChild(natureError.childNodes[0]);
+			try{
+				natureError.removeChild(natureError.childNodes[0]);
+			} catch (error) {}
 		}
 		// partenaire d'implemantation
 		var descpartASS1 = document.getElementById("descpartASS1")
@@ -121,7 +127,9 @@
 		if ( $('div#test :checkbox:checked').length == 0 ) {
 			secteurError.innerHTML = "<li>Veuillez cocher au moins un secteur</li>"
 		} else {
-			secteurError.removeChild(secteurError.childNodes[0]);
+			try{
+				secteurError.removeChild(secteurError.childNodes[0]);
+			} catch (error) {}
 		}
 		// Forme d'appui
 		var formDappuiError = document.getElementById('formDappuiError')
@@ -129,14 +137,22 @@
 			formDappuiError.innerHTML = "<li>Veuillez cocher au moins un forme d'appui</li>"
 			document.getElementById("Sauvegarder-publier").disabled = true;
 		} else {
+			try {
 			formDappuiError.removeChild(formDappuiError.childNodes[0]);
+			} catch (error) {
+				
+			}
 		}
 		// Beneficiaire benError
 		if ( $('div#beneId :checkbox:checked').length == 0 ) {
 			benError.innerHTML = "<li>Veuillez cocher au moins une bénéficiaire</li>"
 			document.getElementById("Sauvegarder-publier").disabled = true;
 		} else {
+			try {
 			benError.removeChild(benError.childNodes[0]);
+			} catch (error) {
+				
+			}
 		}
 
 
@@ -371,17 +387,29 @@
 
 
 		    if(filAsso == true){
-		    	document.getElementById('filAsso').innerHTML = "Aucune filière associée";
+					try {
+		    	document.getElementById('filAsso').innerHTML = "Aucune filière associée";	
+					} catch (error) {
+						
+					}
 		    }else{
+					try {
 		    	document.getElementById('filAsso').innerHTML = "Filières associées";
+					} catch (error) {
+						
+					}
 		    }
 
 
 
 		    // Cacher d'abord tout les filières
-		    <% Filiere.all.each do |fili| %>
-		    	document.getElementById('fil'+<%= fili.id%>).style.display = "none";
-		    <% end %>
+				try {
+					<% Filiere.all.each do |fili| %>
+						document.getElementById('fil'+<%= fili.id%>).style.display = "none";
+					<% end %>
+				} catch (error) {
+					
+				}
 
 			// Afficher tous les filières qui correspondent aux sécteurs cochés
 			<%Filiere.order(:title).all.each do |fili|%>

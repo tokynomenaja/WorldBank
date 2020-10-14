@@ -1,0 +1,25 @@
+<script type="text/javascript">
+$("#Sauvegarder-publier").prop("disabled", true)
+$("#btn-trigger").click(e => {
+  let pemRequired = $('input[name="pem_ids[]"]:checked').length
+  let regionRequired = $('input[name="zone_ids[]"]:checked').length
+  e.preventDefault();
+  if(validCheck() === false || pemRequired === 0 || regionRequired === 0){
+    validCheck(); 
+    compteurMots();
+    checkRequired("pemError", pemRequired, "Veuillez cocher au moins un alignement aux priorités du Plan Emergence de Madagascar")
+    checkRequired("regionError", regionRequired, "Veuillez cocher au moins une région")
+    $("#simulateurSubmit").click()
+  } else {
+    $("#Sauvegarder-publier").prop("disabled", false).click()
+  }
+})
+
+let checkRequired = (nameError, checkbox, msg) => {
+  if(checkbox === 0){
+    $("#" + nameError).html("<li>"+ msg +"</li>")
+  } else {
+    $("#" + nameError).empty()
+  }
+}
+</script>
