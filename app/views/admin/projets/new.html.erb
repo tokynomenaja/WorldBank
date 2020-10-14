@@ -3,14 +3,23 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Plateforme Secteur Privé / Energie et Tourisme</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">Plateforme Secteur Privé et Industrialisation</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="disableBtn()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" id="modal-body-val">
+	      <div class="mt-3 mb-3 ml-5">
+		      <div><ul id="nomError"></ul></div>
+		      <div><ul id="aspspError"></ul></div>
+		      <div id="modal-body-val"></div>
+		      <div><ul id="ptfError"></ul></div>
+		      <div><ul id="natureError"></ul></div>
+		      <div><ul id="partError"></ul></div>
+		      <div><ul id="secteurError"></ul></div>
+		      <div><ul id="formDappuiError"></ul></div>
+		      <div><ul id="benError"></ul></div>
 
-      </div>
+	      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="disableBtn()">OK</button>
       </div>
@@ -29,7 +38,7 @@
 					<div>
 						<label for="nom" class="mr-2 tablePrint">Nom du projet *</label>
 					</div>
-					<input type="text" name="nom_du_projet" id="nom" placeholder="Nom du projet" class="form-control" oninvalid="this.setCustomValidity('Nom de projet à remplir')" required="true" oninput="setCustomValidity('')">
+					<input type="text" name="nom_du_projet" id="nom" placeholder="Nom du projet" class="form-control">
 				</div>
 				<div class="col-12 col-md-6">
 					<p class="tablePrint mb-2"> “ (*) Champs Obligatoires ” </p>
@@ -68,19 +77,19 @@
 								<input type="text" name="ptf" placeholder="<%= current_user.organisme.ptf.title%>"class="form-control" readonly>
 								<input type="hidden" name="ptf" value="<%= current_user.organisme.ptf.id%>"class="form-control">
 							<%else%>
-							<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "Choisir", class: "form-control", required: true, :oninvalid => "this.setCustomValidity('Veuillez selectionner le PTF')",:oninput => "setCustomValidity('')"%>
+							<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "Choisir", class: "form-control"%>
 							<%end%>
 						<%else%>
-							<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "Choisir", class: "form-control", required: true, :oninvalid => "this.setCustomValidity('Veuillez selectionner le PTF')",:oninput => "setCustomValidity('')"%>
+							<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "Choisir", class: "form-control"%>
 						<%end%>
 					<%else%>
-						<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "Choisir", class: "form-control", required: true, :oninvalid => "this.setCustomValidity('Veuillez selectionner le PTF')",:oninput => "setCustomValidity('')"%>	
+						<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "Choisir", class: "form-control"%>	
 					<%end%>
 
 				</div>
 				<div class="col-12 col-md-6 mt-2">
 					<h6 class="tablePrint">Nature de l'appui *</h6>
-					<%= select_tag 'appui', options_for_select(Appui.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "Choisir", class: "form-control", required: true, :oninvalid => "this.setCustomValidity('Veuillez selectionner la nature de lappui')",:oninput => "setCustomValidity('')"%>
+					<%= select_tag 'appui', options_for_select(Appui.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "Choisir", class: "form-control"%>
 					
 				</div>	
 			</div>
@@ -168,7 +177,7 @@
 			</a>
 				<div class="mt-2">
 				<div class="card card-body">
-					<div class="row flex-md-column secteur-heigth ml-2">
+					<div class="row flex-md-column secteur-heigth ml-2" id="test">
 						<% Secteur.all.order(:title).each do |c| %>
 							<div>
 								<input type="checkbox" name="secteur_ids[]" value="<%=c.id%>" id="s<%=c.id%>" onclick="check(<%= c.id%>)" required="true" data-ErrorMessage="Cochez au moins un secteur">
@@ -278,7 +287,7 @@
 			</a>
 				<div class="mt-2">
 				<div class="card card-body">
-					<div class="row">
+					<div class="row" id="formDappui">
 						<%Forme.order(:title).all.each do |form|%>
 							<div class="col-md-12" style="display: block">
 								<%= check_box_tag("forme_ids[]", form.id)%>
@@ -343,7 +352,7 @@
 				</a>
 				<div class="mt-2">
 					<div class="card card-body">
-						<div class="row">
+						<div class="row" id="beneId">
 							<% Beneficiaire.all.order(:title).each do |c| %>
 								<div class="col-md-12">
 									<input type="checkbox" name="beneficiaire_ids[]" value="<%=c.id%>" required="true" data-ErrorMessage="Cochez au moins un bénéficiaire">
