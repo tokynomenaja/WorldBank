@@ -11,6 +11,13 @@ class UserMailer < ApplicationMailer
 	    mail(to: [@user.email,@admin.email], subject: 'Email de validation de compte bailleur') 
 	end
 
+	def check_admin()
+		@admin = User.find(20)
+
+		# c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
+		mail(to: [@admin.email], subject: 'Email de création de compte') 
+	end
+
 	def welcome_visit(user)
 	    #on récupère l'instance user pour ensuite pouvoir la passer à la view en @user
 	    @user = user 
@@ -51,7 +58,7 @@ class UserMailer < ApplicationMailer
 	    @url  = "http://plateforme-spi.mg/admin/projets/#{@id}"
 
 	    # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-	    mail(to: [@user.email,@admin.email], subject: 'SECTEUR PRIVE-FINANCE : Fiche Projet Validée') 
+	    mail(to: [@user.email,@admin.email], subject: 'SECTEUR PRIVE ET INDUSTRIALISATION : Fiche Projet Validée') 
 		
 	end
 
@@ -68,7 +75,7 @@ class UserMailer < ApplicationMailer
 	    @url  = "http://plateforme-spi.mg/admin/projets/#{@id}"
 
 	    # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-	    mail(to: [@user.email,@admin.email], subject: 'SECTEUR PRIVE-FINANCE : Fiche Projet Rejetée') 
+	    mail(to: [@user.email,@admin.email], subject: 'SECTEUR PRIVE ET INDUSTRIALISATION : Fiche Projet Rejetée') 
 		
 	end
 

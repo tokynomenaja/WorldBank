@@ -19,17 +19,18 @@ class ApplicationController < ActionController::Base
 			if Ptf.find_by(title: @organism)
 				@ptf = Ptf.find_by(title: @organism)
 				Organisme.create(user_id: User.last.id, ptf_id: @ptf.id)
+				UserMailer.check_admin.deliver_now
 			end
 			if Iga.find_by(title: @organism)
 				@iga = Iga.find_by(title: @organism)
 				Organisme.create(user_id: User.last.id, iga_id: @iga.id)
+				UserMailer.check_admin.deliver_now
 			end
 		else
 			if @nom
 				Organisme.create(user_id: User.last.id, nom: @nom)
 			end
 		end
-
 	end
 
 	def set_online_time
