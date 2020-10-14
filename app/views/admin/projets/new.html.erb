@@ -180,7 +180,7 @@
 					<div class="row flex-md-column secteur-heigth ml-2" id="test">
 						<% Secteur.all.order(:title).each do |c| %>
 							<div>
-								<input type="checkbox" name="secteur_ids[]" value="<%=c.id%>" id="s<%=c.id%>">
+								<input type="checkbox" name="secteur_ids[]" value="<%=c.id%>" id="s<%=c.id%>" onclick="check(<%= c.id%>)">
 								<label for="s<%=c.id%>"><%= c.title%></label>
 							</div> 
 						<% end %>
@@ -196,7 +196,7 @@
 						<div class="no-gutters align-items-center montant-padd ml-3" id="montant<%=s.id%>" style="display: none;">
 							<div class="col-12 col-md-5 font-size"><%= s.title.upcase %> : </div>
 							<div class="col-12 col-md-7 form-control pr-0">
-								<input type="text" placeholder="Montant" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>">
+								<input type="text" placeholder="Montant" class="border-0 pl-2 input-montant" onkeyup="InputMontantPicker(this)" onmouseout="saveMontant(this)" id="inputMontant<%=s.id%>" >
 								<input type="text" name="montant<%= s.id%>" id="InputMontantValue<%=s.id%>" hidden>
 								<%= select_tag "unite_id#{s.id}", options_for_select(Unite.all.order(:nom).collect{ |c| [c.nom, c.id] }), :include_blank => "Choisir", class: "text-center border-left unit pl-2 btn-reset", id: :"unite#{s.id}"%>
 							</div>
@@ -481,10 +481,10 @@
 								<%c.pems.each do |p|%>
 								<div class="ml-4"> 
 									<%if p.id == 10%>
-										<input type="checkbox" name="pem_ids[]" value="<%=p.id%>" required="true" data-ErrorMessage="Cochez au moins un Alignement aux priorités du Plan Emergence de Madagascar">
+										<input type="checkbox" name="pem_ids[]" value="<%=p.id%>">
 										PRIORITÉ 10 : L'accès aux soins et bien-être social pour tous
 									<%else%>
-										<input type="checkbox" name="pem_ids[]" value="<%=p.id%>" required="true" data-ErrorMessage="Cochez au moins un Alignement aux priorités du Plan Emergence de Madagascar">
+										<input type="checkbox" name="pem_ids[]" value="<%=p.id%>" >
 										<%= p.title %>
 									<%end%>
 								</div>
