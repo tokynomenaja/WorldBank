@@ -8,7 +8,7 @@ class UserMailer < ApplicationMailer
 	    @url  = 'http://plateforme-spi.mg/users/sign_in' 
 
 	    # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-	    mail(to: [@user.email,@admin.email], subject: 'Email de validation de compte bailleur') 
+	    mail(to: [@user.email,@admin.email], subject: 'SECTEUR PRIVÉ ET INDUSTRIALISATION : Compte validé') 
 	end
 
 	def check_admin()
@@ -27,7 +27,7 @@ class UserMailer < ApplicationMailer
 	    @url  = 'http://plateforme-spi.mg/users/sign_in' 
 
 	    # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-	    mail(to: [@user.email,@admin.email], subject: 'Email de validation de compte visiteur') 
+	    mail(to: [@user.email,@admin.email], subject: 'SECTEUR PRIVÉ ET INDUSTRIALISATION : Compte validé') 
 	end
 
 	def create_project_email(project)
