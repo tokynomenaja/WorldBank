@@ -83,7 +83,6 @@
 		var nomError = document.getElementById('nomError')
 		if (document.getElementById('nom').value == "") {
 			nomError.innerHTML = "<li>Veuillez remplir le nom du projet</li>"
-			document.getElementById('nom').style.border = "1px solid red"
 		}else{
 			try {
 				nomError.removeChild(nomError.childNodes[0]);

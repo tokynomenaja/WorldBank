@@ -17,6 +17,7 @@
  /* html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6,label{margin:0 !important;padding:0 !important;} */
  h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}
  /*ul{list-style:none}*/
+ label{margin: 0 !important;padding: 0 !important;}
  button,input,select,textarea{margin:0}
  html{box-sizing:border-box}
  *,*::before,*::after{box-sizing:inherit}
