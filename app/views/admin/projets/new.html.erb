@@ -1,3 +1,10 @@
+<% content_for :head do %>
+  <style type="text/css">
+ ul#aspspError, ul#ptfError, ul#natureError ,ul#partError, ul#secteurError, ul#formDappuiError, ul#benError, ul#pemError, ul#regionError, ul#nomError{margin: 0 !important;padding: 0 !important;}
+ div#modal-body-val ul{margin: 0 !important;padding: 0 !important;}
+  </style>
+<% end %>
+
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -9,19 +16,17 @@
         </button>
       </div>
 	      <div class="mt-3 mb-3 ml-5">
-		      <div><ul id="nomError"></ul></div>
-		      <div><ul id="aspspError"></ul></div>
-		      <div id="modal-body-val"></div>
-		      <div><ul id="ptfError"></ul></div>
-		      <div><ul id="natureError"></ul></div>
-		      <div><ul id="partError"></ul></div>
-		      <div><ul id="secteurError"></ul></div>
-		      <div><ul id="formDappuiError"></ul></div>
-		      <div><ul id="benError"></ul></div>
-
-					<div><ul id="pemError"></ul></div>
-					<div><ul id="regionError"></ul></div>
-
+			<div><ul id="nomError"></ul></div>
+			<div><ul id="aspspError"></ul></div>
+			<div id="modal-body-val"></div>
+			<div><ul id="ptfError"></ul></div>
+			<div><ul id="natureError"></ul></div>
+			<div><ul id="partError"></ul></div>
+			<div><ul id="secteurError"></ul></div>
+			<div><ul id="formDappuiError"></ul></div>
+			<div><ul id="benError"></ul></div>
+			<div><ul id="pemError"></ul></div>
+			<div><ul id="regionError"></ul></div>
 	      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="disableBtn()">OK</button>
