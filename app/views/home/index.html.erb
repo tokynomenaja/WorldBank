@@ -2,6 +2,10 @@
   <title>Plateforme Secteur Privé et Industrialisation : Titre de la page</title>
   <meta name="description" content="La Plateforme Multi-Bailleurs pour le Secteur Privé et l’Industrialisation est chargée, à un niveau technique, de la coordination des projets relatifs à l’industrialisation, à l’environnement des affaires et au développement du secteur privé "/>
   <meta name="keywords" content="Agribusiness ,Agrobusiness ,Aide ,Appui ,Appui au secteur privé ,Assistance technique ,Bailleur de fonds ,Banque Mondiale ,Chaine de valeur ,Commerce ,Coordination ,Développement ,Don ,EDBM ,Entreprenariat ,Environnement des affaires ,Financement ,Finances ,Gouvernement ,Groupe de dialogue stratégique ,GDS ,Industrialisation ,Infrastructures ,Madagascar ,Ministère de l’industrie, du commerce et de l’artisanat  ,MICA ,Ministère des transports, du tourisme et de la météorologie  ,MTTM ,Partenaires techniques et financiers ,Partenaire technique et financier ,Participation aux risques ,Plan Emergence Madagascar, PEM, Plateforme Sectorielle et thématique ,Prêt ,Primature ,Programme ,Programmes ,Projet ,Projets ,Promotions des investissements ,PTF ,Publications ,Secteur privé ,Secteur public ,STP-CA ,STPCA ,Secrétariat Technique Permanent pour la Coordination de l'Aide ,Tourisme ,Plateforme Secteur Privé et Industrialisation ,plateforme-spi ,plateforme spi ">
+
+  <style type="text/css">
+    h3{margin: 0 !important;padding: 0 !important;}
+  </style>
 <% end %>
 
 <!-- REFERENCE -->
@@ -1204,19 +1208,19 @@
           <div class="compteur mt-5">
             <div class="d-flex text-center justify-content-center flex-wrap apropos-projet">
               <div class="m-2 text-white background compt-item border">
-                <p class="border-bottom pt-2 pb-2 ft-sz">Nombre total de projets :</p>
+                <p class="border-bottom pt-2 pb-2 ft-sz m-0">Nombre total de projets :</p>
                 <p class="centrage"> <%= Projet.where(validation: true).count%></p>
               </div>
               <div class="m-2 bg-dark compt-item border text-color">
-                <p class="border-bottom pt-2 pb-2 ft-sz">Nombre total de PTF :</p>
+                <p class="border-bottom pt-2 pb-2 ft-sz m-0">Nombre total de PTF :</p>
                 <p class="centrage"><%= Ptf.count%></p>
               </div>
               <div class="m-2 bg-dark compt-item border text-color">
-                <p class="border-bottom pt-2 pb-2 ft-sz">Montant total des projets : </p>
+                <p class="border-bottom pt-2 pb-2 ft-sz m-0">Montant total des projets : </p>
                 <p class="centrage"><%= number_to_human(@montant_total) %> USD</p>
               </div>
               <div class="m-2 text-white background compt-item border">
-                <p class="border-bottom pt-2 pb-2 ft-sz">Nombre de secteurs couverts : </p>
+                <p class="border-bottom pt-2 pb-2 ft-sz m-0">Nombre de secteurs couverts : </p>
                 <p class="centrage"><%= Secteur.all.count%></p>
               </div> 
             </div>
@@ -1231,19 +1235,19 @@
           <div class="compteur mt-5">
             <div class="d-flex  text-center justify-content-center flex-wrap apropos-projet">
               <div class="m-2 text-white background compt-item border">
-                <p class="border-bottom pt-2 pb-2 ft-sz">Nombre total de projets :</p>
+                <p class="border-bottom pt-2 pb-2 ft-sz m-0">Nombre total de projets :</p>
                 <p class="centrage"> <%= Projet.where(validation: true).count%></p>
               </div>
               <div class="m-2 bg-dark compt-item border text-color">
-                <p class="border-bottom pt-2 pb-2 ft-sz">Nombre total de PTF :</p>
+                <p class="border-bottom pt-2 pb-2 ft-sz m-0">Nombre total de PTF :</p>
                 <p class="centrage"><%= Ptf.count%></p>
               </div>
               <div class="m-2 bg-dark compt-item border text-color">
-                <p class="border-bottom pt-2 pb-2 ft-sz">Montant total des projets : </p>
+                <p class="border-bottom pt-2 pb-2 ft-sz m-0">Montant total des projets : </p>
                 <p class="centrage"><%= number_to_human(@montant_total) %> USD</p>
               </div>
               <div class="m-2 text-white background compt-item border">
-                <p class="border-bottom pt-2 pb-2 ft-sz">Nombre de secteurs couverts : </p>
+                <p class="border-bottom pt-2 pb-2 ft-sz m-0">Nombre de secteurs couverts : </p>
                 <p class="centrage"><%= Secteur.all.count%></p>
               </div> 
             </div>
@@ -1259,19 +1263,19 @@
           <div class="compteur mt-5">
             <div class="d-flex  text-center justify-content-center flex-wrap apropos-projet">
               <div class="m-2 text-white background compt-item border">
-                <p class="border-bottom pt-2 pb-2 ft-sz">Nombre total de projets :</p>
+                <p class="border-bottom pt-2 pb-2 ft-sz m-0">Nombre total de projets :</p>
                 <p class="centrage"> <%= Projet.where(validation: true).count%></p>
               </div>
               <div class="m-2 bg-dark compt-item border text-color">
-                <p class="border-bottom pt-2 pb-2 ft-sz">Nombre total de PTF :</p>
+                <p class="border-bottom pt-2 pb-2 ft-sz m-0">Nombre total de PTF :</p>
                 <p class="centrage"><%= Ptf.count%></p>
               </div>
               <div class="m-2 bg-dark compt-item border text-color">
-                <p class="border-bottom pt-2 pb-2 ft-sz">Montant total des projets : </p>
+                <p class="border-bottom pt-2 pb-2 ft-sz m-0">Montant total des projets : </p>
                 <p class="centrage"><%= number_to_human(@montant_total) %> USD</p>
               </div>
               <div class="m-2 text-white background compt-item border">
-                <p class="border-bottom pt-2 pb-2 ft-sz">Nombre de secteurs couverts : </p>
+                <p class="border-bottom pt-2 pb-2 ft-sz m-0">Nombre de secteurs couverts : </p>
                 <p class="centrage"><%= Secteur.all.count%></p>
               </div> 
             </div>
