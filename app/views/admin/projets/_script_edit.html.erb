@@ -1,13 +1,12 @@
 <script type="text/javascript">
 
-
-
 	function compteurMots(){
 		var editor1 = tinymce.get('comment_body');
 		var counts = editor1.plugins.wordcount.getCount();
 		var editor2 = tinymce.get('aspsp');
 		var counts2 = editor2.plugins.wordcount.getCount();
-		 if ( counts > 150 && counts2 > 750) {
+
+		if ( counts > 150 && counts2 > 750) {
 			document.getElementById('modal-body-val').innerHTML = "<ul><li>L'objectif général du projet est 150mots maximun</li><li>L'appui spécifique au secteur privé est 750 mots maximun</li></ul>"
 			document.getElementById("Sauvegarder-publier").disabled = true;
 		}else if (counts2 > 750 && counts <= 150) {
@@ -16,17 +15,135 @@
 		}else if ( counts > 150 && counts2 <= 750) {
 			document.getElementById('modal-body-val').innerHTML = "<ul><li>L'objectif général du projet est 150 mots maximum</li></ul>"
 			document.getElementById("Sauvegarder-publier").disabled = true;
-		}else if ( counts <= 150 && counts2 <= 750){
-			var annule = document.getElementById('Sauvegarder-publier')
-			annule.removeAttribute("data-toggle")
-			annule.removeAttribute("data-target")
 		}
+ 		//  nom du projet
+		var nomError = document.getElementById('nomError')
+		if (document.getElementById('nom').value == "") {
+			nomError.innerHTML = "<li>Veuillez remplir le nom du projet</li>"
+			document.getElementById("Sauvegarder-publier").disabled = true;
+		}else{
+			try {
+				nomError.removeChild(nomError.childNodes[0]);
+			} catch (error) {}
+		}
+		// SECTTEUR
+		var secteurError = document.getElementById('secteurError')
+		if ( $('div#test :checkbox:checked').length == 0 ) {
+			secteurError.innerHTML = "<li>Veuillez cocher au moins un secteur</li>"
+		} else {
+			try{
+				secteurError.removeChild(secteurError.childNodes[0]);
+			} catch (error) {}
+		}
+		// Forme d'appui
+		var formDappuiError = document.getElementById('formDappuiError')
+		if ( $('div#formDappui :checkbox:checked').length == 0 ) {
+			formDappuiError.innerHTML = "<li>Veuillez cocher au moins un forme d'appui</li>"
+			document.getElementById("Sauvegarder-publier").disabled = true;
+		} else {
+			try {
+			formDappuiError.removeChild(formDappuiError.childNodes[0]);
+			} catch (error) {
+				
+			}
+		}
+		// Beneficiaire benError
+		if ( $('div#beneId :checkbox:checked').length == 0 ) {
+			benError.innerHTML = "<li>Veuillez cocher au moins une bénéficiaire</li>"
+			document.getElementById("Sauvegarder-publier").disabled = true;
+		} else {
+			try {
+			benError.removeChild(benError.childNodes[0]);
+			} catch (error) {
+				
+			}
+		}
+		// PEM
+		if ( $('div#pemId :checkbox:checked').length == 0 ) {
+			pemError.innerHTML = "<li>Veuillez cocher au moins un alignement aux priorités du Plan Emergence de Madagascar</li>"
+			document.getElementById("Sauvegarder-publier").disabled = true;
+		} else {
+			try {
+			pemError.removeChild(pemError.childNodes[0]);
+			} catch (error) {
+				
+			}
+		}
+		// Region
+		if ( $('div#regionId :checkbox:checked').length == 0 ) {
+			regionError.innerHTML = "<li>Veuillez cocher au moins une région</li>"
+			document.getElementById("Sauvegarder-publier").disabled = true;
+		} else {
+			try {
+			regionError.removeChild(regionError.childNodes[0]);
+			} catch (error) {
+				
+			}
+		}
+		// Date
+		var fin = document.getElementById('selectionFin')
+		var debut = document.getElementById('selectionDebut')
+		var finError = document.getElementById('finError')
+		var debutError = document.getElementById('debutError')
+		if (fin.value == "") {
+			finError.innerHTML = "<li>Veuillez sélectionner la date de fin</li>"
+			document.getElementById("Sauvegarder-publier").disabled = true;
+		}else{
+			try {
+				finError.removeChild(finError.childNodes[0]);
+			} catch (error) {}
+		}
+		if (debut.value == "") {
+			debutError.innerHTML = "<li>Veuillez sélectionner la date de début</li>"
+			document.getElementById("Sauvegarder-publier").disabled = true;
+		}else{
+			try {
+				debutError.removeChild(debutError.childNodes[0]);
+			} catch (error) {}
+		}
+
+		// Editeur de text
+		var objectifError = document.getElementById('objectifError')
+		var aspspError = document.getElementById('aspspError')
+		if (tinyMCE.get('comment_body').getContent() == "") {
+			objectifError.innerHTML = "<li>Veuillez sélectionner la date de fin</li>"
+			document.getElementById("Sauvegarder-publier").disabled = true;
+		}else{
+			try {
+				objectifError.removeChild(objectifError.childNodes[0]);
+			} catch (error) {}
+		}
+		if (tinyMCE.get('aspsp').getContent() == "") {
+			aspspError.innerHTML = "<li>Veuillez sélectionner la date de début</li>"
+			document.getElementById("Sauvegarder-publier").disabled = true;
+		}else{
+			try {
+				aspspError.removeChild(aspspError.childNodes[0]);
+			} catch (error) {}
+		}
+
+
+
+		if ( document.getElementById('nom').value != "" && $('div#beneId :checkbox:checked').length != 0 && $('div#formDappui :checkbox:checked').length != 0 && $('div#test :checkbox:checked').length != 0 && $('div#pemId :checkbox:checked').length != 0 && $('div#regionId :checkbox:checked').length != 0 && fin.value != "" && debut.value != "" && counts <= 150 && counts2 <= 750 && tinyMCE.get('comment_body').getContent() != "" &&tinyMCE.get('aspsp').getContent() != "" ){
+			document.getElementById("Sauvegarder-publier").disabled = false;
+		}
+
+		// console.log(document.getElementById("Sauvegarder-publier").disabled)
+		return document.getElementById("Sauvegarder-publier").disabled
 	}
-	function disableBtn(){
-		document.getElementById("Sauvegarder-publier").disabled = false;
-	}
-	
-	// 
+
+
+
+  $("#btn-trigger").click(function(){
+	  if(compteurMots()){
+	    $("#Sauvegarder-publier-edit").click()
+	  } else {
+
+	    $("#Sauvegarder-publier").click()
+
+	  }
+  });
+
 
 
 	function reset(){
@@ -37,32 +154,6 @@
 		var debut = document.getElementById('selectionDebut')
 		debut.value = ''
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 		// Prévenir si la date de fin du projet est antérieur à sa date de début
@@ -312,8 +403,6 @@
 		    }else{
 		        m.style.display = "flex";
 		        m.classList.add('row');
-		        inputMontant.required = true;
-		        unite.required = true;
 		    }
 
 
