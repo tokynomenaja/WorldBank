@@ -83,14 +83,9 @@
 					<% u_org = Organisme.where(user_id: current_user.id)[0] %>
 					<%if u_org %>
 						<%if u_org.ptf != nil%>
-							<%if u_org.ptf.title !=  "WBG"%>
-								<input type="text" name="ptf" placeholder="<%= current_user.organisme.ptf.title%>"class="form-control" readonly>
-								<input type="hidden" name="ptf" value="<%= current_user.organisme.ptf.id%>"class="form-control">
-							<%else%>
-							<%= select_tag "ptf", options_from_collection_for_select(Ptf.all.order(:title), 'id', 'title', u_org.ptf.id), class: "form-control"  %>
-							<%end%>
-						<%else%>
-							<%= select_tag "ptf", options_from_collection_for_select(Ptf.all.order(:title), 'id', 'title', u_org.ptf.id), class: "form-control" %>
+								<input type="text" name="ptf" placeholder="<%= u_org.ptf.title%>"class="form-control" readonly>
+								<input type="hidden" name="ptf" value="<%= u_org.ptf.id %>"class="form-control">
+							<%# select_tag "ptf", options_from_collection_for_select(Ptf.all.order(:title), 'id', 'title', u_org.ptf.id), class: "form-control"  %>
 						<%end%>
 					<%else%>
 						<%= select_tag "ptf", options_from_collection_for_select(Ptf.all.order(:title), 'id', 'title', u_org.ptf.id), class: "form-control" %>

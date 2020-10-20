@@ -81,7 +81,7 @@
 				<div class=" row mb-2">
 					<div class="col-12 col-md-6 mt-2">
 						<h6 class="tablePrint">Partenaire Technique Financier *</h6>
-						<select name="ptf" class="form-control">
+						<!-- <select name="ptf" class="form-control">
 							<%Ptf.all.order(:title).each do |p|%>
 								<%if p == @projet.ptf%>
 									<option value="<%= @projet.ptf.id%>" selected><%= @projet.ptf.title%></option>
@@ -89,7 +89,9 @@
 									<option value="<%= p.id%>"><%= p.title%></option>
 								<%end%>
 							<%end%>
-						</select>
+						</select>-->
+						<input type="text" name="ptf" placeholder="<%= @projet.ptf.title%>"class="form-control" readonly>
+						<input type="hidden" name="ptf" value="<%= @projet.ptf.id %>"class="form-control">
 					</div>
 					<div class="col-12 col-md-6 mt-2">
 						<h6 class="tablePrint">Nature de l'appui *</h6>
