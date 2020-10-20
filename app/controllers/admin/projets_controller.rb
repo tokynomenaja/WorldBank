@@ -19,11 +19,19 @@ class Admin::ProjetsController < ApplicationController
       #     @projets = Projet.where(bailleur_id: current_user.id).order(id: :desc).page(params[:page]).per(9)
       # end
       organisme = Organisme.where(user_id: current_user.id)[0]
-      if organisme.ptf_id != nil
-        @projets = Projet.where(ptf_id: organisme.ptf_id).order(id: :desc).page(params[:page]).per(9)
-      elsif organisme.iga_id != nil
-        @projets = Projet.joins(:igaprojets).where(igaprojets: { iga_id: organisme.iga_id }).page(params[:page]).per(9)
-      else
+      begin
+        if organisme.ptf_id != nil
+          @projets = Projet.where(ptf_id: organisme.ptf_id).order(id: :desc)
+          @projets += Projet.where(bailleur_id: current_user.id).order(id: :desc)
+          @projets = @projets.page(params[:page]).per(9)
+        elsif organisme.iga_id != nil
+          @projets = Projet.joins(:igaprojets).where(igaprojets: { iga_id: organisme.iga_id })
+          @projets += Projet.where(bailleur_id: current_user.id).order(id: :desc)
+          @projets = @projets.page(params[:page]).per(9)
+        else
+          @projets = []
+        end
+      rescue
         @projets = []
       end
 
