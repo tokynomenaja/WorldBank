@@ -80,19 +80,20 @@
 			<div class="row mb-2">
 				<div class="col-12 col-md-6 mt-2">
 					<h6 class="tablePrint">Partenaire Technique Financier *</h6>
-					<%if current_user.organisme%>
-						<%if current_user.organisme.ptf != nil%>
-							<%if current_user.organisme.ptf.title !=  "WBG"%>
+					<% u_org = Organisme.where(user_id: current_user.id)[0] %>
+					<%if u_org %>
+						<%if u_org.ptf != nil%>
+							<%if u_org.ptf.title !=  "WBG"%>
 								<input type="text" name="ptf" placeholder="<%= current_user.organisme.ptf.title%>"class="form-control" readonly>
 								<input type="hidden" name="ptf" value="<%= current_user.organisme.ptf.id%>"class="form-control">
 							<%else%>
-							<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "Choisir", class: "form-control"%>
+							<%= select_tag "ptf", options_from_collection_for_select(Ptf.all.order(:title), 'id', 'title', u_org.ptf.id), class: "form-control"  %>
 							<%end%>
 						<%else%>
-							<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "Choisir", class: "form-control"%>
+							<%= select_tag "ptf", options_from_collection_for_select(Ptf.all.order(:title), 'id', 'title', u_org.ptf.id), class: "form-control" %>
 						<%end%>
 					<%else%>
-						<%= select_tag 'ptf', options_for_select(Ptf.all.order(:title).collect{ |c| [c.title, c.id] }), :include_blank => "Choisir", class: "form-control"%>	
+						<%= select_tag "ptf", options_from_collection_for_select(Ptf.all.order(:title), 'id', 'title', u_org.ptf.id), class: "form-control" %>
 					<%end%>
 
 				</div>
