@@ -62,7 +62,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "worldbank_production"
 
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = {:host => 'http://82.165.122.74'}
+  config.action_mailer.default_url_options = {:host => 'https://plateforme-spi.mg'}
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
