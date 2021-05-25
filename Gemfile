@@ -20,6 +20,7 @@ gem 'table_print'
   
 gem 'faker'
 gem 'kaminari'
+gem 'rails_admin', '~> 2.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2' 
 # Use postgresql as the database for Active Record
